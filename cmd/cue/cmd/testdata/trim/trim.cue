@@ -69,5 +69,5 @@ group: {
 		aa: 8 // new value
 	}
 
-	comp baz: {} // removed: fully implied by comprehension above
+	comp baz: {} // TODO: remove fully implied by comprehension above
 }
