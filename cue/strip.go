@@ -30,6 +30,7 @@ func stripRewriter(ctx *context, v value) (value, bool) {
 	eval := ctx.manifest(v)
 	switch x := eval.(type) {
 	case *structLit:
+		x.expand(ctx)
 		if x.template != nil {
 			arcs := make(arcs, len(x.arcs))
 			for i, a := range x.arcs {
