@@ -64,7 +64,7 @@ For more details see [Installing CUE](./doc/install.md).
 
 A demonstration of how to convert and restructure and existing
 set of Kubernetes configurations is available in
-[written form](./doc/examples/kubernetes/Readme.md) or as
+[written form](./doc/tutorial/kubernetes/README.md) or as
 [video]().
 
 ### References
