@@ -213,17 +213,12 @@ In this tutorial we show how to quickly eliminate boilerplate from a set
 of configurations.
 Manual tailoring will usually give better results, but takes considerably
 more thought, while taking the quick and dirty approach gets you mostly there.
-The steps presented here also help to create a manual config
+The result of such a quick conversion also forms a good basis for
+a more thoughtful manual optimization.
 
 ### Create top-level template
 
 Now we have imported the YAML files we can start the simplification process.
-Let's focus on the objects defined in the various `kube.cue` files.
-
-```
-$ find . | grep kube.cue | xargs cat | wc
-    1733    3444   33615
-```
 
 Before we start the restructuring, lets save a full evaluation so that we
 can verify that simplifications yield the same results.
@@ -232,6 +227,7 @@ can verify that simplifications yield the same results.
 $ cue eval ./... > snapshot
 ```
 
+We focus on the objects defined in the various `kube.cue` files.
 A quick inspection reveals that many of the Deployments and Services share
 common structure.
 
@@ -243,7 +239,6 @@ $ cp frontend/breaddispatcher/kube.cue .
 ```
 
 Modify this file as below.
-Comments are added just as an explanation and can be omitted.
 
 ```
 $ cat <<EOF > kube.cue
@@ -253,7 +248,7 @@ service <Name>: {
     apiVersion: "v1"  
     kind:       "Service"
     metadata: {
-        name: Name // as per the cue import command this is the field name
+        name: Name
         labels: {
             app:       Name    // by convention
             domain:    "prod"  // always the same in the given files
@@ -274,7 +269,7 @@ service <Name>: {
 deployment <Name>: {
     apiVersion: "extensions/v1beta1"
     kind:       "Deployment"
-    metadata name: Name // by the cue import command the same as the field name
+    metadata name: Name
     spec: {
         // 1 is the default, but we allow any number
         replicas: 1 | int
@@ -294,15 +289,20 @@ EOF
 
 By replacing the service and deployment name with `<Name>` we have changed the
 definition into a template.
-Templates are applied to (are unified with) all entries in the struct in which
-they are defined.
-So we need to strip all fields specific to the `breaddispatcher` definition.
+CUE bind the field name to `Name` as a result.
+During importing we used `metadata.data` as a key for the object names,
+so we can now set this field to `Name`.
 
-We also generalized some fields: it seems that each Kubernets object in our
-config file has a component label corresponding to the directory in which
-it is defined.
+Templates are applied to (are unified with) all entries in the struct in which
+they are defined,
+so we need to either strip fields specific to the `breaddispatcher` definition,
+generalize them, or remove them.
+
+One of the labels defined in the Kubernetes metadata seems to be always set
+to parent directory name.
 We enforce this by defining `component: string`, meaning that a field
-of name `component` must be set to some string value.
+of name `component` must be set to some string value, and then define this
+later on.
 Any underspecified field results in an error when converting to, for instance,
 JSON.
 So a deployment or service will only be valid if this label is defined.
