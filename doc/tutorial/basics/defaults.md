@@ -1,3 +1,7 @@
+[TOC](Readme.md) [Prev](disjunctions.md) [Next](disjstruct.md)
+
+_Types and Values_
+
 # Default Values
 
 If at the time of evaluation a sum type still has more than one possible
@@ -25,6 +29,5 @@ protocol: "udp" | "tcp"
 <!-- result -->
 ```
 replicas: 1
-
 protocol: _|_
 ```
