@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "717ec8bd_1c191f45",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c12d8a2_99bae463",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6988a5a1_bc586eb7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "I\u0027m using the official SI standard, where \"K\" is not a valid multiplier.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6577c7_8adecc53",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Okay, but how many users will know that vs. be annoyed that they can\u0027t write 10K?\n\nIs it because K is Kelvin? That\u0027s not a confounding factor in this application.",
+      "parentUuid": "6988a5a1_bc586eb7",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ea0d36c1_f1feae93",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f10b3184_a22395ed",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "428c08ab_e68d05b9",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d3d55b70_45140a0a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "428c08ab_e68d05b9",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f06d417_f36d1fdb",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "Yes. Default values are quite disruptive to the logical simplicity. But it is crucial to have and looking at other languages (logic programming, non-unification constrained-based languages, etc.) I haven\u0027t found anything better.\n\nDefaults also allow for null-coalescing, which is something that is at least very nice to be able to do and which would break the formalism analogously.\n\nIn the end defaults are the best compromise I could find.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af846a4_5f37c8d7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "As I mention in my comment in coalesce.md, I don\u0027t see why bottom-coalescing is a special feature. bottom | x \u003d\u003d x for any x.",
+      "parentUuid": "7f06d417_f36d1fdb",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "836c6204_6593583e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4832b7df_03a010e6",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af03dd51_100cf326",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -115,6 +223,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "The issue is if one writes: 3..4.0. In this case the set of values is {x | x in float and x \u003e\u003d 3.0 and x \u003c\u003d 4.0 }, because (int | float) \u0026 float \u003d\u003d float.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c067380e_81800f79",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I understand that, I just object to the wording. You write:\n\n    The type of range is ...\n    Note that this may be more than one type.\n\n\"The\" implies one.\n\nYou\u0027re thinking of the case 3..4, where the type is int | float. That is one type, but two defined types.",
+      "parentUuid": "af03dd51_100cf326",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "b717cd5f_c5a442c1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I\u0027m still confused. You write NFC(a) as if NFC were a function. If it\u0027s not a function, what do your inequalities mean? And I guess I don\u0027t understand what \"respective\" is referring to. Can you elaborate?",
+      "parentUuid": "a1284ee5_67dd8832",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c43606_77931009",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -152,6 +296,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf68f543_08a60bc3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c43606_77931009",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "08e9df54_6e6c2e22",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d821374a_289a1f9a",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c2a2325_cd3c0951",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -183,6 +363,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "The latter. The meaning of unification of structs follows from the definition of unification and the subsumption relation on structs.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b27544d_213736f1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Right, so the word \"defined\" is inappropriate in this sentence. Changed it.",
+      "parentUuid": "5c2a2325_cd3c0951",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "496c04dd_e8d04b4c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd98e0f8_3b0a2ef5",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a2c459_835e1658",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -220,6 +436,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154e64fc_2610eb67",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3a2c459_835e1658",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +474,24 @@
     },
     {
       "key": {
+        "uuid": "1e8edd66_f1dd7e25",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f445ab78_c0768c47",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3305a386_1705d5d7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -251,6 +503,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "No. This is more to show that we do not need to introduce a special formalism to handle lists.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "349c0ae5_1aa7c658",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "You should clarify. Don\u0027t use the word \"definition\", instead use phrases like \"can be thought of as\" and explicitly disavow the identity. E.g. Elem and Tail aren\u0027t special, len behaves differently, etc.",
+      "parentUuid": "3305a386_1705d5d7",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -274,6 +544,24 @@
     },
     {
       "key": {
+        "uuid": "42d18cb4_3e6b4262",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e557b125_455701c1",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8af4c179_2db79a7e",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "19bd2d17_67552663",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8af4c179_2db79a7e",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41266719_cc2f181f",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -302,6 +608,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "Functions are gone from the language.\n\nFunctions are problematic in configuration languages as they are non-orthogonal with structs. There was a user report from the Kubernetes team explaining how functions may lead to poor design (functions are often used to generate structs. This pattern is almost always wrong. The designer has to pick which fields are used to generate the struct, disallowing the user to make any changes. This often results in a too narrow set, requiring first to create the template, then modify it, etc. This maybe less of an issue in CUE as concrete fields cannot be modified anyway.)\n\nNote that a function can be constructed with a struct:\nsquare: {\n  in:  int | float\n  out: in * in\n}\n\nres: square{in: 4}.out // 16\n\nThis is awkward, of course, but it avoids the issues referred to in the k8s doc. We can make this less awkward, by generalizing emit values:\n\nsquare: {\n  in: int | float\n\n  in * in // the emitted value\n}\n\nres: square{in: 4} // 16 when emitting the config.\n\nGeneralizing emit values also opens up a possibility to introduce attribute in a way that CUE becomes more pleasant to use to generate XML.\n\nThen, lambdas were introduced in BCL to (locally) avoid repetition of some more complicated expressions.\nBut in CUE one can use aliases for that.\n\nAnyway, given all the badness that ensues from functions and given the available alternatives, I decided to remove them.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef79cb9_d53eb823",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Glad functions are gone.\n\nI don\u0027t like the generalized emit values--too much sugar. I don\u0027t think it\u0027s so bad to write foo{...}.out. It is clear and generalizes to multiple \"return values\".",
+      "parentUuid": "41266719_cc2f181f",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -325,6 +649,24 @@
     },
     {
       "key": {
+        "uuid": "d49d3f12_a582d179",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e63c2c09_b951615d",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9fd405b_cf88736f",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -336,6 +678,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "They must be concrete.\n\nThere is one detail I haven\u0027t worked out yet. If they are not concrete, do I just not evaluate the values or is it an error? Clearly it is an error when emitted, but what about\n\nint * int | 4\n\nShould the answer be int * int or 4? 4, I would say, but then we must be very precise as to when default values are chosen (without default values all of this would be trivial).\n\nI think the current implementation has it right, except for cycles.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83b839c_cf07d31e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I would say:\n- If the answer is the same for all instances, evaluate to that answer.\n   E.g.\n          5 \u003c 6..8  \u003d\u003e true\n          int * 0 \u003d\u003e 0\n- If the answer is not the same for all instances, and you can never get more info (via defaulting), then evaluate to bottom.\n   E.g.\n          5 \u003c 3..8 \u003d\u003e _|_\n- If defaulting will make all values concrete, keep it as a constraint.\n  E.g.\n         a: 4 | 3..8 \n         5 \u003c a",
+      "parentUuid": "c9fd405b_cf88736f",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -359,6 +719,24 @@
     },
     {
       "key": {
+        "uuid": "f81b9577_d8565d4f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f68986ac_a3bda4ca",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1c4a21_c2163b65",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -370,6 +748,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "It still returns the entire grapheme cluster.\nCUE strings are based on Swift strings, both in syntax and semantics.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b83c07_9cf1af01",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "OK, but you\u0027ll have to explain all that here (and/or refer to the swift doc).",
+      "parentUuid": "fd1c4a21_c2163b65",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -393,6 +789,24 @@
     },
     {
       "key": {
+        "uuid": "ea7fab46_cd444ef1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a160de3f_8491f1b3",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f97fd147_2eaead44",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -407,6 +821,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7afa7b1_4e99eea7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f97fd147_2eaead44",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -427,6 +859,24 @@
     },
     {
       "key": {
+        "uuid": "6183e661_3e07e080",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "9af35b18_eff4b9d3",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7d5c919_34353da4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -441,6 +891,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd941f4_291bfa8f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7d5c919_34353da4",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -461,6 +929,24 @@
     },
     {
       "key": {
+        "uuid": "8df73676_c80340b8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "7a343b55_7a949da1",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5874597b_1a6b4b34",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -472,6 +958,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "correct",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b39270_76bc13e8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "OK, then I removed the mention of type.",
+      "parentUuid": "5874597b_1a6b4b34",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -495,6 +999,24 @@
     },
     {
       "key": {
+        "uuid": "24f0bae2_f2cf91e1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7ee3026_a147bd7e",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e9eccf_0116e4b4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -512,6 +1034,24 @@
     },
     {
       "key": {
+        "uuid": "c68521fa_f5fb6057",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7e9eccf_0116e4b4",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "340786c0_1671b241",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -523,6 +1063,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "I don\u0027t have to. The result of unifying two values where a is an instance of b is a itself.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71b5bed_2fe7cccd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I don\u0027t understand your reply. \nI only know three things about T(x) for structs:\n\n0. The result must be an instance of T (from the beginning of the Conversions section)\n1 \u0026 2: the two statements so numbered just above.\n\nFrom these many possible results for T(x) follow. E.g. T(x).f could be x.f.\n\nWhat part of the spec implies that T(x).f is T.f \u0026 x.f?",
+      "parentUuid": "340786c0_1671b241",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -546,6 +1104,24 @@
     },
     {
       "key": {
+        "uuid": "55348080_d5c8d03f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2123,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e92f955_94a1951d",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644e644e_a05cae25",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -557,6 +1133,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "2: manifest to a concrete value and evaluate.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "359a345b_69af1f35",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2124,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Requires doc.",
+      "parentUuid": "644e644e_a05cae25",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -580,6 +1174,24 @@
     },
     {
       "key": {
+        "uuid": "f2d2a2ad_f79ebd3e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2125,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ed3eb7b0_dc448bc5",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9c57c3e_d34efa59",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -597,6 +1209,24 @@
     },
     {
       "key": {
+        "uuid": "5845715a_5b830610",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c57c3e_d34efa59",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a14827d_573dccea",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -608,6 +1238,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "This allows templates and constraints to be defined at different levels of scope, e.g. organization wide, sub-org, team, project, etc., where each subdirectory specifies more stringent constraints. This pattern of organizing configurations seems to come up a lot.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d0ce51_e0eb1ae7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I noticed that\n\n _base label component: \"XYZ\"\n\nappears in multiple files in the kube package, and I was wondering why they didn\u0027t all unify together to _|_. Do \"instances\" explain that? If so, they seems to be a way to have your inheritance cake and eat it too. But it\u0027s an obscure mechanism to me. I guess that if you load some files into a cue process and not others, then you don\u0027t see certain declarations, so they don\u0027t contradict each other -- maybe that\u0027s all this is. But it\u0027s hard to see from the files themselves what\u0027s going on.\n\nWhat would happen if you combined instance and package? A package is a set of files in a directory (like Go), and the fundamental operation is evaluating and emitting one package. That package may import others, and define values in it. So package \"kitchen\" imports \"kubebase\" and defines \n\n   kubebase._base label component: \"kitchen\"\n\nThat doesn\u0027t contradict with package \"frontend\" defining that field to be a different value, as long as you don\u0027t \"kitchen\" doesn\u0027t depend on \"frontend\" or vice versa.",
+      "parentUuid": "0a14827d_573dccea",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -631,6 +1279,24 @@
     },
     {
       "key": {
+        "uuid": "2c489b76_c94f0989",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2223,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7171026b_ffc0b5d7",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a47ffe1_fd60ae71",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -642,6 +1308,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "The issue is that on the one hand I want to make the spec understandable for people not familiar with the formalism, while on the other hand I want to relate it to what is available in the literature. This formalism has 35 years of research backing it. Specifying it in terms of the above style will make it very hard to relate such research to CUE. On the other hand, specifying the entire spec in terms of this formalism will make it hard for people not familiar with this formalism to read it.\n\nAnyway, this was my reasoning. Please let me know if you still it should be approached differently.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40f29ee_368ca5a3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2327,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Have two docs. The spec should be like the Go spec, highly readable all the way through.",
+      "parentUuid": "7a47ffe1_fd60ae71",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -665,6 +1349,24 @@
     },
     {
       "key": {
+        "uuid": "9b25bddf_07c1d35b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Yes, that was my point, it seems like an implementation detail. I do recommend a separate doc for that.",
+      "parentUuid": "b2a30c0e_6cc0d8de",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78ca61a6_71bb84ad",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -682,6 +1384,24 @@
     },
     {
       "key": {
+        "uuid": "e670acb8_0b2f6fd0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78ca61a6_71bb84ad",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1340251c_9b5829d9",
         "filename": "doc/tutorial/basics/aliases.md",
         "patchSetId": 4
@@ -693,6 +1413,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "You change does not make it entirely clear to me that the following isn\u0027t possible:\n\na: { B \u003d 4 }\n\nb: a.B // not possible",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47e1ce4_13ca3a6e",
+        "filename": "doc/tutorial/basics/aliases.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "But *your* version has the opposite problem: if they \"cannot be accessed,\" then how can you refer to them at all?\n\nMaybe \"cannot be accessed outside the struct\"?",
+      "parentUuid": "1340251c_9b5829d9",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -716,6 +1454,24 @@
     },
     {
       "key": {
+        "uuid": "8252eca0_2bcc83d8",
+        "filename": "doc/tutorial/basics/bytes.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13d99118_1482144f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e54dc7bc_ccd1c5c2",
         "filename": "doc/tutorial/basics/emit.md",
         "patchSetId": 4
@@ -730,6 +1486,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24d719e_7a1498b8",
+        "filename": "doc/tutorial/basics/emit.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e54dc7bc_ccd1c5c2",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -750,6 +1524,24 @@
     },
     {
       "key": {
+        "uuid": "3468d347_dc19b6a1",
+        "filename": "doc/tutorial/basics/ranges.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "I think either 3.  or float(3) is OK.",
+      "parentUuid": "c464a78e_d3ceab8e",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe7faed6_f26919a9",
         "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
         "patchSetId": 4
@@ -761,6 +1553,24 @@
       "writtenOn": "2019-01-21T09:20:13Z",
       "side": 1,
       "message": "Name gets bound to the field name and thus is a concrete string \"| string\" allows users to override the value with any string.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd953dab_a26ec023",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "OK, I think I see. So with\n   deployment \u003cName\u003e : { name: Name }\nif I write\n   d: deployment foo\nmy result can only be\n   d: { name: \"foo\" }\n\nBut if I use\n   deployment \u003cName\u003e : { name: Name | string}\nthen I can write\n   d: deployment foo\nand then \n   e: d \u0026 {name: \"bar\"}\nand then e.name \u003d\u003d \"bar\"?\n\nSo this lets me \"copy\" an existing deployment and change its name?",
+      "parentUuid": "fe7faed6_f26919a9",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -784,6 +1594,24 @@
     },
     {
       "key": {
+        "uuid": "7836a6b0_a6018560",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5ff3606_7ffa82cc",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "964d7112_a9688026",
         "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
         "patchSetId": 4
@@ -798,6 +1626,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7eb8826_1e5f9e22",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T15:27:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "964d7112_a9688026",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
