@@ -142,6 +142,40 @@
     },
     {
       "key": {
+        "uuid": "ca278caf_46a51663",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "always strings.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104ceb37_310c5d79",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "arguably. Doesn\u0027t matter for the model either way.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "428c08ab_e68d05b9",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -174,6 +208,23 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa09a36_44a3d2e5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "Yeah. So just calling it value is nicer. Dropping it.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     },
     {
       "key": {
@@ -224,6 +275,74 @@
       "side": 1,
       "message": "It is not special, as it follows from the disjunctions definition. It may just not be obvious to users that one can use this to provide default values for failed lookups, as in \nfoo[\"non-existing\"] | 5 is 5.",
       "parentUuid": "6af846a4_5f37c8d7",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb4ba5f_44909230",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "CUE will always evaluate the unification of all values defined for a field.\n\nSo after compilation, your example is:\n\na: (1 | int) \u0026 2 \u003d\u003e \na: 1 \u0026 2 | int \u0026 2 \u003d\u003e\na: _|_ | 2 \u003d\u003e\na: 2\n\nonly after this is completed will the value of a be chosen, so in this case always 2.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e52fec_79dd7f2c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "Disjunctions are not evaluated when they are just a field value, only if used.\nAnd all values defined for a field are unified before the value for a field is computed.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5aa7826_ed380b03",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "All defaults are selected locally after evaluating all values assigned to a field. There is no backtracking ala Prolog. Any order of evaluation will always result in the same defaults being picked. In this case, this means conflict. In this case, evaluating in arbitrary order:\n\nc: (a + b) \u0026 4 \u003d\u003e\nc: 4 // punt a + b \u003d\u003d 4 as assertion (an internal concept) This trick allows cycle breaking\n     // note that a valid configuration can only exist if c is 4 as there is an error otherwise.\na: 1 | int \u003d\u003e\nb: 2 | int \u003d\u003e\nevaluate internal assertions:\na + b \u003d\u003d 4\n// select 1 for a and 2 for b as default.\n1 + 2 \u003d\u003d 4\n3 \u003d\u003d 4\n_|_",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439a0a67_ca181187",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T18:36:45Z",
+      "side": 1,
+      "message": "Yeah that is why I explicitly labeled the column with Default and not value. This table is different from the other tables.",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
