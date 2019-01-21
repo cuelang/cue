@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2dbe864_fe1c7bf6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "human-readable",
+      "range": {
+        "startLine": 818,
+        "startChar": 31,
+        "endLine": 818,
+        "endChar": 45
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a8ec58_8b4b7176",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "Why not bottom?",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 28
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ead51a52_c24d73e4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "comma after `b`",
+      "range": {
+        "startLine": 863,
+        "startChar": 14,
+        "endLine": 863,
+        "endChar": 17
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b5c28f_8835e28e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "such strings",
+      "range": {
+        "startLine": 878,
+        "startChar": 20,
+        "endLine": 878,
+        "endChar": 55
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae922ba4_06477f6d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "form",
+      "range": {
+        "startLine": 1017,
+        "startChar": 41,
+        "endLine": 1017,
+        "endChar": 44
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01af2b08_b083e606",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T22:10:02Z",
+      "side": 1,
+      "message": "sentence ends prematurely here",
+      "range": {
+        "startLine": 1263,
+        "startChar": 31,
+        "endLine": 1263,
+        "endChar": 33
+      },
+      "revId": "dac3940db6bd020ab7b3acf84f95c94563993c8d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
