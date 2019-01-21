@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "164dd9e7_9d23c3b0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0d36c1_f1feae93",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca278caf_46a51663",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -156,6 +174,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319f6acc_4ee5ffb3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca278caf_46a51663",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +385,23 @@
     },
     {
       "key": {
+        "uuid": "d03b0b3f_f5859b60",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "CUE would not attempt to solve such expressions (though the APIs allow solvers to augment or solve configurations). But granted, such tools would need to annotate infinity.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4832b7df_03a010e6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -378,6 +431,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "4832b7df_03a010e6",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9146d09_7d2023b0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "836c6204_6593583e",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
@@ -431,6 +502,24 @@
       "side": 1,
       "message": "Got it. will reword.",
       "parentUuid": "c067380e_81800f79",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b03a20f0_96848121",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "Considerably reworded and simplified it.",
+      "parentUuid": "25ef0156_0d7314d9",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -978,6 +1067,23 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5af9388d_7069e97b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T20:41:21Z",
+      "side": 1,
+      "message": "It must be a concrete value, but the default value is chosen if there is one.\nIf the result is still not concrete, or there is no default, it is an error.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     },
     {
       "key": {
