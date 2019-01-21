@@ -1,0 +1,803 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c12d8a2_99bae463",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "When",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6988a5a1_bc586eb7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I\u0027m using the official SI standard, where \"K\" is not a valid multiplier.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f10b3184_a22395ed",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Hmmm. I meant to remove this section altogether. Raw strings have been removed as wanted to give it a bit more thought. The Go one has some unfortunate limitations. I plan to use Swift 5-style raw strings instead.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428c08ab_e68d05b9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Good point, will replace by 42.0.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f06d417_f36d1fdb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Yes. Default values are quite disruptive to the logical simplicity. But it is crucial to have and looking at other languages (logic programming, non-unification constrained-based languages, etc.) I haven\u0027t found anything better.\n\nDefaults also allow for null-coalescing, which is something that is at least very nice to be able to do and which would break the formalism analogously.\n\nIn the end defaults are the best compromise I could find.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4832b7df_03a010e6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Correct. I changed the definition and forgot to remove the old one. Will update. It\u0027s the length of the byte sequence now.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af03dd51_100cf326",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "The issue is if one writes: 3..4.0. In this case the set of values is {x | x in float and x \u003e\u003d 3.0 and x \u003c\u003d 4.0 }, because (int | float) \u0026 float \u003d\u003d float.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1284ee5_67dd8832",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "There are multiple normal forms. Hence respective. Maybe \"namesake Unicode normal form\"?",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c43606_77931009",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "That is confusing, though. Syntactically, a struct may have multiple fields with the same label.\nMaybe remove the sentence altogether?",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d821374a_289a1f9a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I like that. In the formal definition I like to stick a bit closer to the notation used in literature, but here this is better indeed.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2a2325_cd3c0951",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "The latter. The meaning of unification of structs follows from the definition of unification and the subsumption relation on structs.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd98e0f8_3b0a2ef5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I like yours better.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a2c459_835e1658",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Oops. I removed this from the spec, but I see I removed this from the wrong client and thus didn\u0027t make it in.\n\nIn the new definition it may only be a string, but including interpolated strings.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f445ab78_c0768c47",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I\u0027ve removed the tag definition for now. It is not yet implemented and I\u0027m not sure how it should look like.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3305a386_1705d5d7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "No. This is more to show that we do not need to introduce a special formalism to handle lists.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e557b125_455701c1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Functions should have been removed from the spec. I had them as an option for a while, but now complete removed them, except within the implementation where they are used to implement templates as comprehensions.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af4c179_2db79a7e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "The package refers to the package referred to by an ImportDecl.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41266719_cc2f181f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Functions are gone from the language.\n\nFunctions are problematic in configuration languages as they are non-orthogonal with structs. There was a user report from the Kubernetes team explaining how functions may lead to poor design (functions are often used to generate structs. This pattern is almost always wrong. The designer has to pick which fields are used to generate the struct, disallowing the user to make any changes. This often results in a too narrow set, requiring first to create the template, then modify it, etc. This maybe less of an issue in CUE as concrete fields cannot be modified anyway.)\n\nNote that a function can be constructed with a struct:\nsquare: {\n  in:  int | float\n  out: in * in\n}\n\nres: square{in: 4}.out // 16\n\nThis is awkward, of course, but it avoids the issues referred to in the k8s doc. We can make this less awkward, by generalizing emit values:\n\nsquare: {\n  in: int | float\n\n  in * in // the emitted value\n}\n\nres: square{in: 4} // 16 when emitting the config.\n\nGeneralizing emit values also opens up a possibility to introduce attribute in a way that CUE becomes more pleasant to use to generate XML.\n\nThen, lambdas were introduced in BCL to (locally) avoid repetition of some more complicated expressions.\nBut in CUE one can use aliases for that.\n\nAnyway, given all the badness that ensues from functions and given the available alternatives, I decided to remove them.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e63c2c09_b951615d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "No longer applicable. Functions are completely removed. Also did that in the wrong version I see now.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fd405b_cf88736f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "They must be concrete.\n\nThere is one detail I haven\u0027t worked out yet. If they are not concrete, do I just not evaluate the values or is it an error? Clearly it is an error when emitted, but what about\n\nint * int | 4\n\nShould the answer be int * int or 4? 4, I would say, but then we must be very precise as to when default values are chosen (without default values all of this would be trivial).\n\nI think the current implementation has it right, except for cycles.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68986ac_a3bda4ca",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "also. Bytes were added later and I missed updating this.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1c4a21_c2163b65",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "It still returns the entire grapheme cluster.\nCUE strings are based on Swift strings, both in syntax and semantics.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a160de3f_8491f1b3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Yes.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97fd147_2eaead44",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I don\u0027t know what it means, unless we close it before multiplication. This would argue that indexing/slicing a list closes it before performing the operation (which is also consistent with the manifestation of the indexing values).",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af35b18_eff4b9d3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I should probably disallow this. It is inconsistent with the manifestation rules for number expressions. This is a leftover from before the existence of open lists.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d5c919_34353da4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Yes, that is an error (the first null should go).\n\nI may consider not allowing ranges here, though, as it makes the story about binary expressions more consistent.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a343b55_7a949da1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "It should either mean _|_ or 3 \u003c 1..5. Either would result in an error when converting to JSON or manifesting otherwise. The difference is relevant when evaluating disjunctions of structs containing such values. I think it should be _|_. Until this is clear, or even regardless, it should probably be an error to have a disjunction of structs where a struct field has such a unevaluatable value.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5874597b_1a6b4b34",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "correct",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ee3026_a147bd7e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "oops, there are none.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e9eccf_0116e4b4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Yes, good idea.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340786c0_1671b241",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "I don\u0027t have to. The result of unifying two values where a is an instance of b is a itself.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e92f955_94a1951d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2123,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "This is correct.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644e644e_a05cae25",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2124,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "2: manifest to a concrete value and evaluate.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3eb7b0_dc448bc5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2125,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "No. Tail: null does not count as an element. One can define this as one wants.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c57c3e_d34efa59",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Good point. It indeed can be removed.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a14827d_573dccea",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "This allows templates and constraints to be defined at different levels of scope, e.g. organization wide, sub-org, team, project, etc., where each subdirectory specifies more stringent constraints. This pattern of organizing configurations seems to come up a lot.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7171026b_ffc0b5d7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2223,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "It is very useful in one particular, but probably very common case:\n\nCUE files can be classified in three categories: 1) templates for existing systems (very general, data types), 2) \"model files\" which define nice abstractions and ways to convert concrete instances of such abstractions to be instances of the templates of category 1, and 3) users creating concrete instances of such abstractions.\n\n1 can be generated from code. 2 will typically be written once and then used by many, 3 is what the majority of the people will be writing.\n\nThe \".\" import is very useful for importing model files.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a47ffe1_fd60ae71",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2327,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "The issue is that on the one hand I want to make the spec understandable for people not familiar with the formalism, while on the other hand I want to relate it to what is available in the literature. This formalism has 35 years of research backing it. Specifying it in terms of the above style will make it very hard to relate such research to CUE. On the other hand, specifying the entire spec in terms of this formalism will make it hard for people not familiar with this formalism to read it.\n\nAnyway, this was my reasoning. Please let me know if you still it should be approached differently.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a30c0e_6cc0d8de",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Most TFS/GU formalisms don\u0027t have expressions and are purely symbolic (although some allow n-ary operators). They also typically don\u0027t have references (although they allow binding nodes). The constraint functions allow me to relate CUE to existing formalisms. For instance, even though CUE was inspired by and modeled after the TFS formalisms described by Bob Carpenter and Ann Copestake, it took me a while to realize that, despite large superficial differences, CUE is in fact almost entirely identical except for a few small differences. These differences, in turn, helps one understand which of the existing graph unification one could use for CUE or what adaptions they would need.\n\nThis is not just a matter of simple features. These algorithms are often very subtle and cunning wrt cycle detection, optimization, etc. but they also are very peculiar limitations for which one needs to understand very precisely what is going on.\n\nI could maybe move this stuff to a separate document on implementing CUE.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ca61a6_71bb84ad",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "correct. Working on this at the moment.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1340251c_9b5829d9",
+        "filename": "doc/tutorial/basics/aliases.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "You change does not make it entirely clear to me that the following isn\u0027t possible:\n\na: { B \u003d 4 }\n\nb: a.B // not possible",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d99118_1482144f",
+        "filename": "doc/tutorial/basics/bytes.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Yes, this is a typo.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54dc7bc_ccd1c5c2",
+        "filename": "doc/tutorial/basics/emit.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Good point. The syntax is, but the semantics isn\u0027t.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c464a78e_d3ceab8e",
+        "filename": "doc/tutorial/basics/ranges.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "indeed\n\nOne open issue: because I use decimal floats, the number of decimals is preserved. So 3.00 in the input appears as 3.00 in the output. But it gets tricky if the number of decimals is 0. In that case I could show either \"3.0\" anyway or perhaps \"3.\" or \"float(3)\" to disambiguate.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe7faed6_f26919a9",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Name gets bound to the field name and thus is a concrete string \"| string\" allows users to override the value with any string.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ff3606_7ffa82cc",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "Port is the default value, but the user may specify another integer in any struct that unifies with this service definition.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964d7112_a9688026",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T09:20:13Z",
+      "side": 1,
+      "message": "That is correct.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
