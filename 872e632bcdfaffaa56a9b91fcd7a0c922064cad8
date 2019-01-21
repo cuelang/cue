@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cda77276_6e3eec1c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Works for me.",
+      "parentUuid": "c4ac33b3_244db263",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c12d8a2_99bae463",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -104,6 +122,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3412ec6_867e5f17",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Yes, I think dropping \"k\" for \"K\" is fine. SI be damned.\n\nI made the change.",
+      "parentUuid": "15705110_54a0578a",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "91fcf45b_cea9756c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca278caf_46a51663",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "104ceb37_310c5d79",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -209,6 +263,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd42be9_cd87c237",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "104ceb37_310c5d79",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -247,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "c9c24bee_820448ce",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d3d55b70_45140a0a",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa09a36_44a3d2e5",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -261,6 +351,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c476b7ee_edcf9fd3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Will let you make the change, since it\u0027s pervasive.",
+      "parentUuid": "caa09a36_44a3d2e5",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -317,6 +425,24 @@
     },
     {
       "key": {
+        "uuid": "ec5088aa_e1e7dc3f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "082e20e3_1eca1de5",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1eb4ba5f_44909230",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -328,6 +454,24 @@
       "writtenOn": "2019-01-21T18:36:45Z",
       "side": 1,
       "message": "CUE will always evaluate the unification of all values defined for a field.\n\nSo after compilation, your example is:\n\na: (1 | int) \u0026 2 \u003d\u003e \na: 1 \u0026 2 | int \u0026 2 \u003d\u003e\na: _|_ | 2 \u003d\u003e\na: 2\n\nonly after this is completed will the value of a be chosen, so in this case always 2.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb76f289_1cfe5cd1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "That is what I\u0027d expect, but the wording makes it unclear.",
+      "parentUuid": "1eb4ba5f_44909230",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -351,6 +495,24 @@
     },
     {
       "key": {
+        "uuid": "9186abe5_6f72dc15",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84e52fec_79dd7f2c",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5aa7826_ed380b03",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -368,6 +530,24 @@
     },
     {
       "key": {
+        "uuid": "64a8f652_91649bb9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "That all sounds good to me (although I don\u0027t know what \"locally\" means). But it\u0027s not clear from the spec. That\u0027s a particular problem since some traditional constraint languages could come up with solutions for this set of constraints. (I mean the problem is in the specification of the behavior -- I think your behavior is a better choice for this application.)",
+      "parentUuid": "d5aa7826_ed380b03",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "439a0a67_ca181187",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -379,6 +559,24 @@
       "writtenOn": "2019-01-21T18:36:45Z",
       "side": 1,
       "message": "Yeah that is why I explicitly labeled the column with Default and not value. This table is different from the other tables.",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860467d3_279b34ea",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "The last line of the table makes no sense, because the expression in the first column doesn\u0027t evaluate to a disjunction, so it\u0027s meaningless to talk about its default value.\n\nHow about this formulation:\n\n- If an expression is a disjunction, its default value is its first value.\n\n- If the expression is the unification of disjunctions, and the unification `d` of the first values of those disjunctions is not bottom, then the expression\u0027s default value is `d`.\n\n- Otherwise, the expression does not have a default value.\n\nIf you\u0027re willing to equate \"has no default value\" with \"has a default value of bottom,\" you can simplify the middle clause.",
+      "parentUuid": "439a0a67_ca181187",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -526,6 +724,24 @@
     },
     {
       "key": {
+        "uuid": "b70193e4_5f3a9cbb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25ef0156_0d7314d9",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1284ee5_67dd8832",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -576,6 +792,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a1b10d0_eadcdab2",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5486d00d_0761306f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -681,6 +915,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421ede22_f5e70cc5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b27544d_213736f1",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -842,6 +1094,24 @@
     },
     {
       "key": {
+        "uuid": "a50cb472_39466554",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ae288b0_35ef406b",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e557b125_455701c1",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -962,6 +1232,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734c1c14_ea996b9f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b62a2c50_fd3f81c3",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -1332,6 +1620,24 @@
     },
     {
       "key": {
+        "uuid": "50e6c67a_8f0083ce",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b39270_76bc13e8",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7ee3026_a147bd7e",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -1452,6 +1758,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437c8a3d_b860300a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Of course, I see now.",
+      "parentUuid": "9e2ea2dc_2566e3a6",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -1859,6 +2183,24 @@
     },
     {
       "key": {
+        "uuid": "18e83394_e1592f20",
+        "filename": "doc/tutorial/basics/aliases.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "I did something similar.",
+      "parentUuid": "3c25104b_89a1f3e5",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13d99118_1482144f",
         "filename": "doc/tutorial/basics/bytes.md",
         "patchSetId": 4
@@ -2014,6 +2356,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbd29c9_1209ee11",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-21T21:18:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db85eb22_7871f30f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
