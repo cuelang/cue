@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4ac33b3_244db263",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "I have toyed with the idea of just calling it keywords, as pretty much all keywords are to some extent pseudo-keywords in CUE anyway (they can all be used as labels, for instance).",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c12d8a2_99bae463",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "Okay, but how many users will know that vs. be annoyed that they can\u0027t write 10K?\n\nIs it because K is Kelvin? That\u0027s not a confounding factor in this application.",
       "parentUuid": "6988a5a1_bc586eb7",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15705110_54a0578a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Not sure why. I think it is just historical, because kilo is traditionally written as k. All \"small\" amounts are small caps and large amounts large caps, where the cutoff for small apparently is a 1000.\n\nHow would you feel about replacing \"k\" with \"K\"? Altogether?\n\nIf we support both we should probably fmt one into the other.",
+      "parentUuid": "ba6577c7_8adecc53",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -177,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "082e20e3_1eca1de5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "It is not special, as it follows from the disjunctions definition. It may just not be obvious to users that one can use this to provide default values for failed lookups, as in \nfoo[\"non-existing\"] | 5 is 5.",
+      "parentUuid": "6af846a4_5f37c8d7",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4832b7df_03a010e6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -247,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "25ef0156_0d7314d9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Got it. will reword.",
+      "parentUuid": "c067380e_81800f79",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1284ee5_67dd8832",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -276,6 +347,24 @@
       "side": 1,
       "message": "I\u0027m still confused. You write NFC(a) as if NFC were a function. If it\u0027s not a function, what do your inequalities mean? And I guess I don\u0027t understand what \"respective\" is referring to. Can you elaborate?",
       "parentUuid": "a1284ee5_67dd8832",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5486d00d_0761306f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "I\u0027m using NFC here as a function converting a string to NFC.\n\nMy problem was \"the Unicode normal form of `x`\". There is not one Unicode normal form (there are many multiple). I can rephrase it, though.",
+      "parentUuid": "b717cd5f_c5a442c1",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -527,6 +616,24 @@
     },
     {
       "key": {
+        "uuid": "3ae288b0_35ef406b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "349c0ae5_1aa7c658",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e557b125_455701c1",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -626,6 +733,24 @@
       "side": 1,
       "message": "Glad functions are gone.\n\nI don\u0027t like the generalized emit values--too much sugar. I don\u0027t think it\u0027s so bad to write foo{...}.out. It is clear and generalizes to multiple \"return values\".",
       "parentUuid": "41266719_cc2f181f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62a2c50_fd3f81c3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "I\u0027m not in a rush with the emit values. It may solve a bunch of issues, but there should be some evidence it is worth it. \n\nIdeally I would also remove the top-level emit. But that makes CUE no longer a superset of JSON and I lose the property I can represent values other than objects/structs.",
+      "parentUuid": "2ef79cb9_d53eb823",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -1087,6 +1212,24 @@
     },
     {
       "key": {
+        "uuid": "9e2ea2dc_2566e3a6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "If T and x both have an f, it must follow from rule 1 that T.f subsumes x.f (x.f is an instance of T.f). The result of unifying x.f and T.f in that case is x.f, as the unifying a value with an instance of that value is always the instance of that value.\n\nOr, if t.F \u0026 x.f were not x.f, then x.f is not an instance of t.F (inclusive) and would violate rule 1.\n\nYou would be right if x were allowed to be unifiable with T without being an instance of T, but this is not how it is defined now.",
+      "parentUuid": "f71b5bed_2fe7cccd",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e92f955_94a1951d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -1154,6 +1297,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844eb028_3c8a2471",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2124,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "359a345b_69af1f35",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -1332,6 +1493,24 @@
     },
     {
       "key": {
+        "uuid": "05e169ed_d86c341b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2327,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Makes sense. Hadn\u0027t thought about that before. I\u0027ll first do a first round of updates and fixes and then split the docs.",
+      "parentUuid": "b40f29ee_368ca5a3",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2a30c0e_6cc0d8de",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -1431,6 +1610,24 @@
       "side": 1,
       "message": "But *your* version has the opposite problem: if they \"cannot be accessed,\" then how can you refer to them at all?\n\nMaybe \"cannot be accessed outside the struct\"?",
       "parentUuid": "1340251c_9b5829d9",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c25104b_89a1f3e5",
+        "filename": "doc/tutorial/basics/aliases.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "I like that wording.",
+      "parentUuid": "e47e1ce4_13ca3a6e",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -1571,6 +1768,24 @@
       "side": 1,
       "message": "OK, I think I see. So with\n   deployment \u003cName\u003e : { name: Name }\nif I write\n   d: deployment foo\nmy result can only be\n   d: { name: \"foo\" }\n\nBut if I use\n   deployment \u003cName\u003e : { name: Name | string}\nthen I can write\n   d: deployment foo\nand then \n   e: d \u0026 {name: \"bar\"}\nand then e.name \u003d\u003d \"bar\"?\n\nSo this lets me \"copy\" an existing deployment and change its name?",
       "parentUuid": "fe7faed6_f26919a9",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db85eb22_7871f30f",
+        "filename": "doc/tutorial/kubernetes/manual/services/cloud.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-21T16:34:58Z",
+      "side": 1,
+      "message": "Rewriting your example to be correct:\n\nSo with\n   deployment \u003cName\u003e : { name: Name }\nif I write\n   deployment foo\nmy result can only be\n   deployment foo: { name: \"foo\" }\n\nBut if I use\n   deployment \u003cName\u003e : { name: Name | string}\nthen I can write\n   deployment foo: { name: \"bar\" } foo.name will have value \"bar\"\n\nAs disjunctions are evaluated lazily, I could also write\n   deployment baz: {} // baz.name will have value \"baz\" | string\nand then\n   e: deployment.baz \u0026 { name: \"goo\" }\nand then e.name \u003d\u003d \"goo\"?\n\nSo to your last question: yes, I guess, although that is not the specific point. The templates define a value that gets unified with all sibling members, binding a sibling\u0027s field name to the template identifier in each case.\n\nTemplates define types (to be unified with values) for undefined struct fields, analogous to how the type for the elements of an open list constrains the types for the remaining elements.",
+      "parentUuid": "bd953dab_a26ec023",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
