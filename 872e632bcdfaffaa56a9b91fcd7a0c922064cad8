@@ -1779,6 +1779,24 @@
     },
     {
       "key": {
+        "uuid": "2b889468_914840e5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T10:14:12Z",
+      "side": 1,
+      "message": "One more note to explain why it is defined this way:\nTL;DR: it allows conversion to act as an additional type check.\n\nIt is also consistent with CUE\u0027s approach. In BCL and descendants, templates are for reducing boilerplate. In TFS systems, constraints are for reducing boiler plate AND for type checking. This definition of type conversion is likely to catch when a wrong value is passed to it.",
+      "parentUuid": "437c8a3d_b860300a",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e92f955_94a1951d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
