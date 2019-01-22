@@ -478,6 +478,24 @@
     },
     {
       "key": {
+        "uuid": "48d6cd04_ffb42ce5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb76f289_1cfe5cd1",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84e52fec_79dd7f2c",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -548,6 +566,24 @@
     },
     {
       "key": {
+        "uuid": "22e94e79_ae8485ad",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64a8f652_91649bb9",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "439a0a67_ca181187",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -583,6 +619,24 @@
     },
     {
       "key": {
+        "uuid": "db3f9263_30a1e486",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Getting there, although this definition is still not so clear, as we need the \"first value\", after eliminating impossible combinations. I have an idea I will send in a different CL",
+      "parentUuid": "860467d3_279b34ea",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03b0b3f_f5859b60",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -597,6 +651,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f93036b_e11f87cd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03b0b3f_f5859b60",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -1323,6 +1395,24 @@
     },
     {
       "key": {
+        "uuid": "d1c6700c_f2119bdd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Expressions are only evaluated once the field is evaluated. Until then, we just accumulate a list of expressions that needs to be unified during evaluation. The only modification is that references to nodes are replaced (dereferenced in jargon) to their new copy, if applicable (mentioned in the spec.) This implies the last condition already.\n\nOriginally I implemented your suggestion, but it makes the documentation a bit tricky. For instance, we now define ranges to be (a possible infinite set of) disjunctions of values, (without a valid default). I quite like this definition. But we also say defaults are chosen when not involved in an expression.\n\nAlso, where does it stop? 2..3 + 4 \u003d\u003d 6..7? -1..1 - -2..2 \u003d\u003d -3..3? Then what about 0..3 / 0..5 (if they are really disjunctions it gets very interesting)? !bool \u003d\u003d bool?\nIt seems to get quite messy. So I reverted to just not allowing it.\n\nIf the conditions under which it is allowed can be written down cleanly, it is worth considering though.",
+      "parentUuid": "a83b839c_cf07d31e",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f68986ac_a3bda4ca",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -1407,6 +1497,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3ee190_d446443a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b83c07_9cf1af01",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -1984,6 +2092,24 @@
       "side": 1,
       "message": "I noticed that\n\n _base label component: \"XYZ\"\n\nappears in multiple files in the kube package, and I was wondering why they didn\u0027t all unify together to _|_. Do \"instances\" explain that? If so, they seems to be a way to have your inheritance cake and eat it too. But it\u0027s an obscure mechanism to me. I guess that if you load some files into a cue process and not others, then you don\u0027t see certain declarations, so they don\u0027t contradict each other -- maybe that\u0027s all this is. But it\u0027s hard to see from the files themselves what\u0027s going on.\n\nWhat would happen if you combined instance and package? A package is a set of files in a directory (like Go), and the fundamental operation is evaluating and emitting one package. That package may import others, and define values in it. So package \"kitchen\" imports \"kubebase\" and defines \n\n   kubebase._base label component: \"kitchen\"\n\nThat doesn\u0027t contradict with package \"frontend\" defining that field to be a different value, as long as you don\u0027t \"kitchen\" doesn\u0027t depend on \"frontend\" or vice versa.",
       "parentUuid": "0a14827d_573dccea",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11993928_6a0fe02f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-22T14:43:45Z",
+      "side": 1,
+      "message": "Well spotted. :) \n\nThe CUE spec is like the Go spec, in that it explains packages (and instances), but does not say how a tool should organize it. The Go tool defines packages, but does not define they all belong to the same directory. Similarly, CUE defines how to mark a file belonging to a package, but does not specify how this should be organized.\n\nUnifying all files in the package clearly results in evaluation errors. However, CUE evaluation is done per instance (directory plus ancestor directories), which is a subset of the files defined by the tool. You should not see conflicting values within an instance.\n\nRemember how CUE/TFS constraints are intended for removing boilerplate as well as enforcement. This is carried through to the directory layout, analogously to ACLs: parent directories specify constraints that apply to all its subdirectories. This allows one to enforce a standard for an entire org, and allows orgs to set standards for suborgs, etc. For instance, I can enforce a certain standard for the use of a specific port or url for exporting metrics. I think this is a very useful property.\n\nLike Go, though, the CUE language spec leaves the details of the organization up to the tooling.\nSome possibilities:\n- include it in the spec (rather not)\n- include it as an example implementation with motivation in the spec\n- find another approach with similar properties (preferably also not using imports)\n\nI note that organizing configurations this way seems to be a common pattern.\n\nI think this setup doesn\u0027t share the bad properties of overlay systems like Kustomize or HCL. There is no \"inheritance cake\". There is no overwriting of values. If you include too few files, you have an error for underspecification. If you select too many, you will have a conflict.\n\nThat said, there is one place where there is a bit of finagling: the scripting layer (not part of the CUE spec). The cue tool allows defining commands on configurations (in *_tool.cue files). In many cases it is useful to consider all instances selected on the command line as one configuration. For the kubernetes tutorial, for instance, the result of all instances combined should be all Kubernetes objects of the instances to a unique namespace.\n\nFor this purpose, the cue command line tool has a unified view obtained by:\n1. fully evaluating every instance individually as defined by the CUE spec (fully checked for errors)\n2. removing the templates from the structs of these instances \n   (alternatively one could combine 1 and 2 and say that instances are evaluated to\n   their concrete values.)\n3. unifying all these instances at its root.\n4. disable proactive error checking and only check errors for the part of the resulting configuration used by the commands\n\nSo in this scenario, the labels you mention will fail to evaluate. However, as long as the command will not refer to them, it will not result in a failure. All I care about is that the result of unifying Kubernetes objects of all instances unify into a consistent whole. The failures I do run in to are failures I really want to know about, but would not easily get if there were no unified view. \n\nIn any case, in none of these scenarios will I rely on overwriting, the order of evaluation will still not matter, and it gives me a relatively easy way to enforce org-wide consistency.\n\nI could make this merged view in the scripting layer an opt-in feature, though my experience is that writing tools is more awkward that way. A viable alternative could be to make each instance available to the tools and provide a package to for explicit merging of instances.",
+      "parentUuid": "39d0ce51_e0eb1ae7",
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
