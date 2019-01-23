@@ -1413,6 +1413,24 @@
     },
     {
       "key": {
+        "uuid": "93bbe280_64217c52",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T11:13:38Z",
+      "side": 1,
+      "message": "Agreed, it\u0027s simpler to disallow interval arithmetic and the like.",
+      "parentUuid": "d1c6700c_f2119bdd",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f68986ac_a3bda4ca",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -1462,6 +1480,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7237b85e_da54540e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T11:13:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5af9388d_7069e97b",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -2116,6 +2152,24 @@
     },
     {
       "key": {
+        "uuid": "08e6900c_2a32e55f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T11:13:38Z",
+      "side": 1,
+      "message": "OK, thanks for explaining.",
+      "parentUuid": "11993928_6a0fe02f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7171026b_ffc0b5d7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -2201,6 +2255,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e052cc9f_eb77d2a0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2327,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T11:13:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05e169ed_d86c341b",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
