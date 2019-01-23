@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "add74692_34eed8bf",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T19:10:29Z",
+      "side": 1,
+      "message": "Do you have examples of why this is the right approach?\n\nIn other words, given\n\n   a: {x: _|_} | 3\n\nit isn\u0027t obvious to me whether the right result is 3, or an error because I didn\u0027t constrain `a` enough.",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 21
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4670b281_be135980",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -87,6 +110,29 @@
         "startChar": 1,
         "endLine": 665,
         "endChar": 33
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a310ece1_f4b582cd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T19:10:29Z",
+      "side": 1,
+      "message": "It occurs to me that you need default values for _fields_, but not really for _disjunctions_. If you made that change, so that one would write\n\n  replicas: default(1)\n  replicas: int\n\n(or something more concise), then disjunctions could behave \"normally\" and you could drop all the complicated rules about whether they have a default value and when it is used. The only case I think of where you need a disjunctive expression to have a default is integer literals, and you could just special-case those. That would be a small price to pay for the simplicity of pure disjunctions.",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
       },
       "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
