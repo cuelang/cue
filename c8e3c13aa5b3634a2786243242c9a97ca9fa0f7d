@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc3f157f_b8302d7b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T12:26:19Z",
+      "side": 1,
+      "message": "to",
+      "range": {
+        "startLine": 548,
+        "startChar": 49,
+        "endLine": 548,
+        "endChar": 51
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4670b281_be135980",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T12:26:19Z",
+      "side": 1,
+      "message": "\"In other words, unification distributes over disjunction.\"",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 6
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc856706_77e47c77",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T12:26:19Z",
+      "side": 1,
+      "message": "eliminating",
+      "range": {
+        "startLine": 651,
+        "startChar": 6,
+        "endLine": 651,
+        "endChar": 17
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96477686_23b86f51",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T12:26:19Z",
+      "side": 1,
+      "message": "You specified an order for unifying disjunctions, so why the talk about different orders?",
+      "range": {
+        "startLine": 662,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d486beba_4d81ae8d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-23T12:26:19Z",
+      "side": 1,
+      "message": "You are showing evaluations here, not defaults.",
+      "range": {
+        "startLine": 692,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 34
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
