@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "484479d9_7c8a8764",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T13:59:31Z",
+      "side": 1,
+      "message": "Oh, that example doesn\u0027t work, but one could simply do\n\na: {s:\"low\", v:0..25 } | *{ s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 }\n\nof course.\n\nPicking \"low\" over \"medium\" over \"high\" is more involved, though:\n\nOne solution:\n\na: {s:\"low\", v:0..19 } | {s: *\"low\"|\"medium\", v:20..25 } | { s: \"medium\", v:26..74 } | { s: *\"medium\"|\"high\", v:75..80 } | { s:\"high\", v:81..100 }\n\nAnother:\n\na: *{s:\"low\", v:0..25 } | (*{ s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 })\n\nThe later example shows the importance of erasing the default mark for non-disjunctions.",
+      "parentUuid": "657cb94d_8aeff89e",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d486beba_4d81ae8d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
