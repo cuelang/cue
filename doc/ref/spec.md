@@ -604,6 +604,10 @@ but a definition of a single value?-->
 A _disjunction_ of two values `a` and `b`, denoted as `a | b` in CUE,
 defines the smallest value `d` such that `a ⊑ d` and `b ⊑ d`.
 This style of disjunctions is sometimes also referred to as sum types.
+Disjunctions can have any number of elements.
+<!--
+Important now we have marks, as *a | *b | c differs from *a | (*b | c).
+-->
 
 These all follow from the definition of disjunction:
 - The disjunction of `a` with itself is always `a`.
@@ -636,68 +640,210 @@ Expression                Result
 ("a" | "b") & "c"         _|_
 ```
 
-Unification of two disjunctions is defined to retain a strict ordering
-of the elements of the resulting disjunction:
-
-```
-(a_0 | ... | a_n) & (b_0 | ... | b_m) =>
-a_0&b_0 | ... | a_n&b_0 | a_0&b_1 | ... | a_n&b_m
-```
-<!-- Note that there are several variants of ordering that would work here.
-It only matters that there exists a pre-determined order.
--->
-
-The _first value_ of a disjunction is the first element in a disjunction
-after eliminating values evaluating to bottom.
-The ordering is irrelevant for the placement of a disjunction within the
-lattice of values, but it is relevant for default values, which we will
-discuss next.
 
 #### Default values
 
-A disjunction evaluates to its _default_ value if it is used as a value for any
-operation other than unification or disjunction.
-The default value of a disjunction is its first value or
-bottom in case of a manifest failure.
-A _manifest failure_ occurs if
-the disjunction resulted from the unification of two or more disjunctions and
-these disjunctions can be unified in different orders such that they
-result in different first values.
+One or more values in a disjunction can be _marked_
+by prefixing it with a `*` ([`Preference`](#Primary-expressions)).
+When a marked value is unified, the result is marked when the other value is
+from a disjunction and also marked or a single value not part of a disjunction.
+(When unification results in a single value, the mark is dropped,
+as single values cannot be marked.)
 
-<!-- TODO(mpvl): consider it to be a manifest failure if if non-concrete
-values are used in expressions requiring concrete values.
+A disjunction is _normalized_ if there is no unmarked element
+`a` for which there is an element `b` such that `a ⊑ b`.
+A disjunction literal must be normalized.
+<!--
+(non-normalized entries could also be implicitly marked, allowing writing
+int | 1, instead of int | *1, but that can be done in a backwards
+compatible way later if really desirable).
+
+Normalization is important, as we need to account for spurious elements
+For instance
+"tcp" | "tcp", or
+({a:1} | {b:1}) & ({a:1} | {b:2}) -> {a:1} | {a:1,b:1} | {a:1,b:2},
+
+In the latter case, elements {a:1,b:1} and {a:1,b:2} are subsumed by {a:1}.
+Note that without defaults, {a:1} | {a:1,b:1} | {a:1,b:2} is logically
+identical to {a:1}.
+More to the point, without normalization unifying {a:1} | {b:1} with {a:1,b:2}
+results in a single value and thus resolves,
+whereas unifying {a:1} | {a:1,b:1} | {a:1,b:2} with {a:1,b:2}
+results in two values, and thus does not resolve.
+With normalization:
+({a:1} | {a:1,b:1} | {a:1,b:2}) & {a:1,b:2}      {a:1,b:2}, instead of _|_,
+({a:1} | {a:1,b:1} | {a:1,b:2}) & {a:1}          {a:1}, instead of _|_,
+({a:1} | {a:1,b:1} | {a:1,b:2}) & {b:1}          {a:1,b:1}, instead of _|_,
+
+({a:1} | {b:1}) & {a:1}            {a:1} (instead of _|_), as {a:1,b:1} ⊑ {a:1}
+
+The above rule is equivalent to saying that a default
+among non-marked entries is the single value that subsumes all other values
+if it exists, or bottom otherwise.
+
+Another consequence of this rule:
+({a:1} | {b:1}) & {a:1} -> {a:1} (instead of _|_), as {a:1,b:1} ⊑ {a:1}
+
+** Another definition: the default exists (in absence of marked values)
+** if all values allowed by a disjunction can be expressed as a single value.
+
+** Or: the default (in absence of marked values) is the disjunction itself
+** if it can be expressed as a single value.
+
+The above rule loosely defines picking the least-specific
+element of the disjunction if it can be uniquely defined.
+The alternative outlined below, on the other hand, loosely, defines picking
+the most-specific element of the disjunction if it can be uniquely defined.
+
+Note that with the below variant, the normalization rule would be unnecessary,
+as such redundant elements would have no effect on the outcome
+of the unification.
+In that case:
+({a:1} | {b:1}) & {a:1} -> {a:1,b:1},  most specific of {a:1} | {a:1,b:1}
+
+**** I think selecting the least-specific outcome captures
+**** the meaning of the disjunction most accurately: namely all possible allowed
+**** values. In this case, only explicitly marked values can cause
+**** the evaluation into something more specific than otherwise allowed by
+**** the disjunction.
+
+I would define types, ranges, etc. as single values, or, parenthesized
+disjunctions for this purpose to avoid the issue mentioned earlier.
 -->
 
-A default value is chosen if the disjunction is not used
-in a unification or disjunction operation.
-This means that in practice, a default is chosen for almost any expression
-that does not involve `&` and `|`, including slices, indices, selectors,
-and all but a few explicitly marked builtin functions.
+If a disjunction appears where a concrete value is required
+(that is, as an operand or in a location where it will be emitted),
+the result is, after normalization, the unification of its marked values.
+Note that in the absence of marked elements,
+the default value is the single value capturing all values allowed by
+the disjunction or bottom if the disjunction cannot be expressed as such.
+
+<!--
+ Values that are an element in a disjunction may be marked as _preferred_
+Any other value cannot be marked as preferred. --
+The _default value of a disjunction_ is the unification of its elements
+that are marked as preferred.
+-->
+
+<!-- TODO: consider treating all elements as preferred in the absence of
+any other preferred values.
+This has several benefits:
+1) With this definition there is no need to add the removal of duplicates rule.
+
+2) It eliminates the need to specify a preferred value in the common case of
+`int | 1`.
+It also eliminates the need to report `int | 1` as an error: without this
+definition, `1` is a useless addition to this disjunction.
+
+3) It resolves the disjunction {a:1} | {b:1} if a user defines {b:1}, for
+instance. Without this rule, ({a:1} | {b:1}) & {b:1} would be
+{a:1,b:1} | {b:1}, and thus still ambiguous. The old rule (pick first)
+would disambiguate by picking the first. The new rule results in the same
+answer, but in a more well-defined and more order-independent manner.
+NOT resolving it would likely be very surprising to the user.
+
+Users can still prefer to specify which struct is chosen by default by
+adding a preference mark.
+The requirement {a:1} XOR {b:1} can be written as
+{a: 1, b: !=1}, {a: !=1, b: 1} (TODO: unary comparison operators.)
+
+But maybe it is not so bad to just require users to pick a default explicitly
+whenever they specify a disjunction of structs, for instance. Might just be
+a matter of getting used to.
+
+The below examples would look like:
 
 ```
 Expression                       Default
-"tcp" | "udp"                    "tcp"
-1 | int                          1
-string | 1.0                     string
+"tcp"|"udp"                      _|_ // "tcp" & "udp"
+*"tcp" | "udp"                   "tcp"
+float | 1                        1.0 // float & 1
+*string | 1.0                    string
 
-("tcp"|"udp") & ("tcp"|"udp")    "tcp"
-("tcp"|"udp") & ("udp"|"tcp")    _|_ // ambiguous: no unique first value
+(*"tcp"|"udp") & ("udp"|"tcp")   _|_
+(*"tcp"|"udp") & (*"udp"|"tcp")  _|_ // "tcp" & "udp"
+
+{a: 1} | {b: 1}                  {a:1, b:1} // {a:1} & {b:1}
+{a: 1} | *{b: 1}                 {b:1}
+*{a: 1} | *{b: 1}                {a:1, b:1}
+{a: 1, b !=1} | {a: !=1, b: 1}   _|_
+```
+
+Note:
+This definition may seem strange, as sometimes it is undesirable that fields
+of different structs merge.
+For instance, Kubernetes requires that for a volume only one type be specified,
+each having their own struct.
+We do not want to have merging fields for these types.
+
+This can be solved by ensuring each volume type is associated with a unique
+type field:
+
+// assign a hidden field with unique value for each volume type
+VolumeType <Name>: {
+    _kind: Name
+}
+VolumeType: {
+    Local: { /* fields for local volumes */ }
+    PersistentDisk: { /* fields for persistent volumes */ }
+    Secrets: { /* ditto */ }
+}
+
+// Now define a volume definition:
+Volume:
+    VolumeType.Local |
+    VolumeType.PersistentDisk |
+    VolumeType.Secrets
+
+Only one of these can ever be selected without conflict. As a nice aside,
+the two different _kind values resulting from a conflict will make it very
+clear to a user what needs to be disambiguated.
+As no asterisk is given, the user must always fully disambiguate which volume
+is chosen.
+This even works if the structs for these volumes have overlapping fields.
+
+TODO:
+We could consider standardizing on this by allowing structs to have types.
+Actually, many TFS systems have a mechanism like this, and it is known
+that this will not adversely affect the model.
+In fact, CUE partly already implements this with numbers, which are always
+decimal floating points, but have an additional type field to distinguish
+between ints, floats, and their disjunction.
+-->
+
+<!-- TODO: is the above definition precise enough, or perhaps too abstract?
+A default value is chosen if the disjunction is not used
+in a unification or disjunction operation.
+This means that, in practice, a default is chosen for almost any expression
+that does not involve `&` and `|`, including slices, indices, selectors,
+and all but a few explicitly marked builtin functions. -->
+
+```
+Expression                       Default
+"tcp"|"udp"                      _|_ // more than one element remaining
+*"tcp" | "udp"                   "tcp"
+float | *1                       1
+*string | 1.0                    string
+
+(*"tcp"|"udp") & ("udp"|*"tcp")  "tcp"
+(*"tcp"|"udp") & ("udp"|"tcp")   _|_ // "tcp" & "udp"
+(*"tcp"|"udp") & (*"udp"|"tcp")  _|_ // "tcp" & "udp"
+
+{a: 1} | {b: 1}                  _|_ // more than one element remaining
+{a: 1} | *{b: 1}                 {b:1}
+*{a: 1} | *{b: 1}                {a:1, b:1}
+({a: 1} | {b: 1}) & {a:1}        {a:1} // after eliminating {a:1,b:1}
 ```
 
 A disjunction always evaluates to the same default value, regardless of
 the context in which the value is used.
-For instance, `[1, 3]["a" | 1]` will result in an error, as `"a"` will be
+For instance, `[1, 3][*"a" | 1]` will result in an error, as `"a"` will be
 selected as the default value.
 
-
 ```
-[1, 2]["a" | 1]          //  _|_ // "a" is not an integer value
-[1, 2][("a" | 1) & int]  //  2
+[1, 2][*"a" | 1]          //  _|_ // "a" is not an integer value
+[1, 2][(*"a" | 1) & int]  //  2, as "a" is eliminated before choosing a default.
 ```
-
-Implementations should report an error for a disjunction `a | ... | b`,
-where `b` is an instance of `a`, as `b` will be superfluous and can never
-be selected as a default.
 
 
 ### Bottom and errors
@@ -1179,16 +1325,19 @@ math.Sin    // denotes the Sin function in package math
 ### Primary expressions
 
 Primary expressions are the operands for unary and binary expressions.
+A default expression is only valid as an operand to a disjunction.
 
 ```
 PrimaryExpr =
 	Operand |
 	Conversion |
+	Preference |
 	PrimaryExpr Selector |
 	PrimaryExpr Index |
 	PrimaryExpr Slice |
 	PrimaryExpr Arguments .
 
+Preference     = "*" Expression
 Selector       = "." identifier .
 Index          = "[" Expression "]" .
 Slice          = "[" [ Expression ] ":" [ Expression ] "]"
@@ -1899,17 +2048,6 @@ len("Hellø")         6
 len([1, 2, 3])       3
 len([1, 2, ...])     2
 len({a:1, b:2})      2
-```
-
-
-### `required`
-
-The built-in function `required` discards the default mechanism of
-a disjunction.
-
-```
-"tcp" | "udp"             // default is "tcp"
-required("tcp" | "udp")   // no default, user must specify either "tcp" or "udp"
 ```
 
 
