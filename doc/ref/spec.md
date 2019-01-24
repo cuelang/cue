@@ -634,68 +634,46 @@ Expression                Result
 ("a" | "b") & "c"         _|_
 ```
 
-Unification of two disjunctions is defined to retain a strict ordering
-of the elements of the resulting disjunction:
-
-```
-(a_0 | ... | a_n) & (b_0 | ... | b_m) =>
-a_0&b_0 | ... | a_n&b_0 | a_0&b_1 | ... | a_n&b_m
-```
-<!-- Note that there are several variants of ordering that would work here.
-It only matters that there exists a pre-determined order.
--->
-
-The _first value_ of a disjunction is the first element in a disjunction
-after eliminating values evaluating to bottom.
-The ordering is irrelevant for the placement of a disjunction within the
-lattice of values, but it is relevant for default values, which we will
-discuss next.
 
 #### Default values
 
-A disjunction evaluates to its _default_ value if it is used as a value for any
-operation other than unification or disjunction.
-The default value of a disjunction is its first value or
-bottom in case of a manifest failure.
-A _manifest failure_ occurs if
-the disjunction resulted from the unification of two or more disjunctions and
-these disjunctions can be unified in different orders such that they
-result in different first values.
+Values that are an element in a disjunction may be marked as _default_
+by prefixing it with a `=` ([`DefaultExpr`](#Primary-expressions)).
+Any other value cannot be marked as default.
+The _default value of a disjunction_ is the unification of all its elements
+that are marked as default.
 
-<!-- TODO(mpvl): consider it to be a manifest failure if if non-concrete
-values are used in expressions requiring concrete values.
--->
+A default mark is "sticky".
+That is, if a disjunction is unified with another value resulting
+in a new disjunction, any element that results from a unification with a value
+marked as default will also be marked as default.
 
 A default value is chosen if the disjunction is not used
 in a unification or disjunction operation.
-This means that in practice, a default is chosen for almost any expression
+This means that, in practice, a default is chosen for almost any expression
 that does not involve `&` and `|`, including slices, indices, selectors,
 and all but a few explicitly marked builtin functions.
 
 ```
 Expression                       Default
-"tcp" | "udp"                    "tcp"
-1 | int                          1
-string | 1.0                     string
+*"tcp" | "udp"                   "tcp"
+int | *1                         1
+*string | 1.0                    string
 
-("tcp"|"udp") & ("tcp"|"udp")    "tcp"
-("tcp"|"udp") & ("udp"|"tcp")    _|_ // ambiguous: no unique first value
+(*"tcp"|"udp") & ("udp"|"tcp")   "tcp"
+(*"tcp"|"udp") & (*"udp"|"tcp")  _|_ // "tcp" & "udp"
 ```
 
 A disjunction always evaluates to the same default value, regardless of
 the context in which the value is used.
-For instance, `[1, 3]["a" | 1]` will result in an error, as `"a"` will be
+For instance, `[1, 3][*"a" | 1]` will result in an error, as `"a"` will be
 selected as the default value.
 
 
 ```
-[1, 2]["a" | 1]          //  _|_ // "a" is not an integer value
-[1, 2][("a" | 1) & int]  //  2
+[1, 2][*"a" | 1]          //  _|_ // "a" is not an integer value
+[1, 2][(*"a" | 1) & int]  //  2, as "a" is eliminated before choosing a default.
 ```
-
-Implementations should report an error for a disjunction `a | ... | b`,
-where `b` is an instance of `a`, as `b` will be superfluous and can never
-be selected as a default.
 
 
 ### Bottom and errors
@@ -1177,16 +1155,19 @@ math.Sin    // denotes the Sin function in package math
 ### Primary expressions
 
 Primary expressions are the operands for unary and binary expressions.
+A default expression is only valid as an operand to a disjunction.
 
 ```
 PrimaryExpr =
 	Operand |
 	Conversion |
+	DefaultExpr |
 	PrimaryExpr Selector |
 	PrimaryExpr Index |
 	PrimaryExpr Slice |
 	PrimaryExpr Arguments .
 
+DefaultExpr    = "*" Expression
 Selector       = "." identifier .
 Index          = "[" Expression "]" .
 Slice          = "[" [ Expression ] ":" [ Expression ] "]"
@@ -1897,17 +1878,6 @@ len("Hellø")         6
 len([1, 2, 3])       3
 len([1, 2, ...])     2
 len({a:1, b:2})      2
-```
-
-
-### `required`
-
-The built-in function `required` discards the default mechanism of
-a disjunction.
-
-```
-"tcp" | "udp"             // default is "tcp"
-required("tcp" | "udp")   // no default, user must specify either "tcp" or "udp"
 ```
 
 
