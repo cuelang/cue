@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "deb98cbf_ce1fea42",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "Removed this definition altogether. See below.",
+      "parentUuid": "bc3f157f_b8302d7b",
+      "range": {
+        "startLine": 548,
+        "startChar": 49,
+        "endLine": 548,
+        "endChar": 51
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "add74692_34eed8bf",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-23T19:10:29Z",
       "side": 1,
       "message": "Do you have examples of why this is the right approach?\n\nIn other words, given\n\n   a: {x: _|_} | 3\n\nit isn\u0027t obvious to me whether the right result is 3, or an error because I didn\u0027t constrain `a` enough.",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 21
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badb0acb_efbc8eb9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "TL;DR; Constraints should be definable across nodes, not just for a single node.\n\nEXAMPLE\nAs a simple case consider the following fuzzy set definitions:\n\na: {s:\"low\", v:0..25 } | { s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 }\n\nUnifying this with { s: \"medium\" } should remove the first and last results, which happens if we adopt the current definition. Not doing so, leaving {s:_|_, v:0.25}, for instance, would quickly cause configurations to become unsatisfiable in unexpected ways.\n\nBACKGROUND\nTraditionally unification of two graphs is defined to fail (be bottom) if unification of any of its edges (fields) fails, recursively. What I\u0027m describing in the spec is essentially the same, but I just realized I was focussing too much on describing the implementation details. I changed the spec to be more like the traditional definition, which removes this failure concept.\n\nMORE ON DEFAULTS\nAlso note the overlap in the ranges. This example also shows the use for having defaults defined the way they are: unifying with { v:80 } will result in two values remaining allowing both \"medium\" and \"high\" for s. With the defaults mechanism as defined now, it will pick \"medium\", rather than fail.\n\nMy experience from a distant past with various systems using graph unification is that it is common to define both more and less specific variants of a struct, where the more specific one should be favored. \n\nSee reply below for an alternative that addresses your concerns, I think, and could be a useful alternative.",
+      "parentUuid": "add74692_34eed8bf",
       "range": {
         "startLine": 614,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ee6769bc_6e69cc79",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4670b281_be135980",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 6
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc856706_77e47c77",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6f6a9276_d531fd89",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc856706_77e47c77",
+      "range": {
+        "startLine": 651,
+        "startChar": 6,
+        "endLine": 651,
+        "endChar": 17
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96477686_23b86f51",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-01-23T12:26:19Z",
       "side": 1,
       "message": "You specified an order for unifying disjunctions, so why the talk about different orders?",
+      "range": {
+        "startLine": 662,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e14139_371f8afd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "I specified the order of the elements in the resulting disjunction when evaluating \"a \u0026 b\", where \"a\" and \"b\" are disjunctions. What I\u0027m requiring here is that the first value should be the same regardless of evaluating \"a \u0026 b\" or \"b \u0026 a\"",
+      "parentUuid": "96477686_23b86f51",
       "range": {
         "startLine": 662,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "657cb94d_8aeff89e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "I think the default() notation is too much typing (it is very pervasive). But I see your point. It separates concerns neatly.\n\nOne slight variant of your suggestion is to \"mark\" a value as being allowed as default in a disjunction and then at the end all values remaining marked as default are unified to define the default. One solution is to say the first value of a disjunction is implicitly default. I find that confusing syntactically, though (and thought about that before). But something like \n\n  replicas: * 1 | int\n\nwhere \"*\" marks an allowed default, could work.\n\nPROS:\n- minimal typing, and probably not too cumbersome even when default values are pervasive\n- will be trivial to define defaultless disjunctions (currently \"required(a | b)\")\n- can represent syntactically the internal bit to indicate \"defaultability\" that already exists to compute the definition currently in the spec.\n- removes several concepts from the spec (manifest failure, ordering wrt disjunctions, the required builtin)\n- I suspect this approach will also lead to better error messages.\n\nCONS (that are probably pros):\nWhat do the following mean?\n1. (* \"tcp\" | \"udp\" ) \u0026 ( \"tcp\" | \"udp\" )\n2. (* { a:3 } | {}) \u0026 ({ b:4 } | { b:3 } )\nFor 1. \"tcp\" should really remain the default after unification. So the default bit must be \"sticky\".\nBut for 2. the default mechanism becomes quite restrictive, but maybe that is good.\nSo 2 would mean:\n*{a:3,b:4} | *{a:3,b:3} | {b:4} | {b:3}\nand the default would be {a:3,b:4} \u0026 {a:3,b:3} \u003d\u003d _|_, meaning there is no default unless the user explicitly disambiguates b.\n\nEXAMPLE:\nThe example of earlier could then be written as:\n\na: {s:\"low\", v:0..25 } | { s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 }\na s: \"low\" | *\"medium\" | \"high\"\n\npreferring the term \"medium\" over \"low\" or \"high\" if left a choice, leaving all other constraints as a pure disjunction.\n\nOPERATOR?:\nNext would be to define the appropriate operator. \"#\", \"$\", and \"@\" are out (reserved). \n\"*\" is syntactically unambiguous and has this nice check-the-box feel to it, but overloads the use of \"*\".\n\"\u003d\": used, but not in expressions. No shift needed. Captures meaning reasonably well.\n\"\\\": also no shift, could be a useful operator at some point, though.\n\"^\", \"?\", \"~\": unused, require shift\n\nSee CL  https://cue-review.googlesource.com/c/cue/+/1221",
+      "parentUuid": "a310ece1_f4b582cd",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d486beba_4d81ae8d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -157,6 +301,47 @@
         "endLine": 693,
         "endChar": 34
       },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6f618d_e8b95e37",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "d486beba_4d81ae8d",
+      "range": {
+        "startLine": 692,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 34
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79274014_c3c8555f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T12:49:19Z",
+      "side": 1,
+      "message": "With the alternative to defaults, this requirement will drop as well and we will probably not need something in its place, as the order in which defaults are defined will become irrelevant.",
       "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
