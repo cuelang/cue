@@ -2170,6 +2170,24 @@
     },
     {
       "key": {
+        "uuid": "8dc9f7c7_0e185d47",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T09:02:49Z",
+      "side": 1,
+      "message": "If you have an alternative clearer definition, I\u0027m open to it.",
+      "parentUuid": "08e6900c_2a32e55f",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7171026b_ffc0b5d7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -2308,6 +2326,24 @@
       "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62e76a3_a22e3161",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-24T09:02:49Z",
+      "side": 1,
+      "message": "to complete this comment, will also move into the implementation doc.",
+      "parentUuid": "9b25bddf_07c1d35b",
+      "revId": "872e632bcdfaffaa56a9b91fcd7a0c922064cad8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
