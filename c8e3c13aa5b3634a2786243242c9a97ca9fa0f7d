@@ -380,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "a0bec0e4_18ae9fab",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:44:56Z",
+      "side": 1,
+      "message": "Sorry, when I wrote this I hadn\u0027t read your other CL. Will comment there.",
+      "parentUuid": "34370f0e_e2742c3b",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d486beba_4d81ae8d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
