@@ -404,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "13a15ba3_fd874342",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T13:53:20Z",
+      "side": 1,
+      "message": "That is an interesting point, regarding order. That is of course unacceptable. We have defined 1..2 to be a disjunction of values, so it is not an issue here, but one can get the same argument with:  ( *1..3 | \"foo\" ) \u0026 int \u0026 ( 1 | 2).\n\nSo something needs some adjustment.",
+      "parentUuid": "a0bec0e4_18ae9fab",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d486beba_4d81ae8d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
