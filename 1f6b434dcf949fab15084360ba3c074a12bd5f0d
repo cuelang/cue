@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84506fe1_c890426c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T18:31:56Z",
+      "side": 1,
+      "message": "except when the expression evaluates to bottom.",
+      "range": {
+        "startLine": 2005,
+        "startChar": 49,
+        "endLine": 2005,
+        "endChar": 50
+      },
+      "revId": "1f6b434dcf949fab15084360ba3c074a12bd5f0d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e294bd_44cf84bd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T18:31:56Z",
+      "side": 1,
+      "message": "Why just structs? It looks like this will work for anything.\n\n a: b \u0026 1..10  // a: 5..10\n b: a \u0026 5..11  // b: 5..10",
+      "range": {
+        "startLine": 2027,
+        "startChar": 54,
+        "endLine": 2027,
+        "endChar": 60
+      },
+      "revId": "1f6b434dcf949fab15084360ba3c074a12bd5f0d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
