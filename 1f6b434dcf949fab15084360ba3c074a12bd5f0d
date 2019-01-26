@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea50daaf_83a4e70e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T19:15:16Z",
+      "side": 1,
+      "message": "That was supposed to be covered by the \"valid CUE file\". But I guess this is not a defined term.\nAlso, expression here is a bit ambiguous (a\u0026e or e). I\u0027ve reworded it a bit.",
+      "parentUuid": "84506fe1_c890426c",
+      "range": {
+        "startLine": 2005,
+        "startChar": 49,
+        "endLine": 2005,
+        "endChar": 50
+      },
+      "revId": "1f6b434dcf949fab15084360ba3c074a12bd5f0d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0e294bd_44cf84bd",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-26T18:31:56Z",
       "side": 1,
       "message": "Why just structs? It looks like this will work for anything.\n\n a: b \u0026 1..10  // a: 5..10\n b: a \u0026 5..11  // b: 5..10",
+      "range": {
+        "startLine": 2027,
+        "startChar": 54,
+        "endLine": 2027,
+        "endChar": 60
+      },
+      "revId": "1f6b434dcf949fab15084360ba3c074a12bd5f0d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42efc1f7_d9c96152",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T19:15:16Z",
+      "side": 1,
+      "message": "A historic blind spot, probably. Structs cannot appear in another type of expression. Ranges can:\na: 3 + (b \u0026 1..10)\nb: a \u0026 5..11\nso after realizing the complication there I never gave it much thought. But with the restriction of it being at field level, as here for struct, this is indeed likely fine. Intriguing.\n\nWill give it some thought if it indeed can be generalized to all values. But it seems so.",
+      "parentUuid": "e0e294bd_44cf84bd",
       "range": {
         "startLine": 2027,
         "startChar": 54,
