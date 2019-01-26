@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "cd092aa2_a94ea9c1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T18:43:39Z",
+      "side": 1,
+      "message": "OK. I think templates need more examples (not necessarily in the spec). I didn\u0027t appreciate fully how they work.",
+      "parentUuid": "e959dc0a_71b3e089",
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecace47f_906d5642",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -190,6 +208,30 @@
       "side": 1,
       "message": "Looking at it quickly: I can see two possible fixes:\n1) When unifying two disjunction only elements resulting from unifying two marked elements are marked.\nAs a result: (*\"tcp\"|\"udp\") \u0026 (\"udp\"|\"tcp\") is now _|_ (ambiguous). But maybe that is not so bad as I thought before.\nAnother advantage: unifying \"{a: 1} | *{b: 1}\" with itself will keep the same value, so also keeping idempotence as well!:\n\n{a: 1} | *{b: 1}\nWith 1)\n{a:1} | {a:1,b:1} | *{b:1} -\u003e represents same set of values, same default\n\nOtherwise)\n{a:1} | {a:1,b:1} | *{a:1,b:1} | *{b:1} -\u003e {a:1,b:1} same values, different default!\n\n\n2) Don\u0027t discard any marks before a value is referred to. This doesn\u0027t solve the additional idempotence issue, though.\n\nNumber 1 wins.",
       "parentUuid": "9b2af9b4_2f8480b1",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49dd2d1b_3371dc4c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T18:43:39Z",
+      "side": 1,
+      "message": "If you also require that disjunction literals have at most one marked disjunct, then (1) implies that all disjunctions have at most one. Which is easier to think about (for me).\n\nUnfortunately this breaks things like\n\n  [1, 2][(*1 | 2 | int) \u0026 1..5]\n\nbut maybe that\u0027s okay because they never come up in practice.",
+      "parentUuid": "94b9442f_6ba2482a",
       "range": {
         "startLine": 734,
         "startChar": 1,

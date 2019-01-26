@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f05ba2c4_a3b55dcd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T18:43:39Z",
+      "side": 1,
+      "message": "are eliminated",
+      "range": {
+        "startLine": 613,
+        "startChar": 33,
+        "endLine": 613,
+        "endChar": 43
+      },
+      "revId": "07f52bbe9a18a27d2b21b3c7bb3576af887c2c29",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
