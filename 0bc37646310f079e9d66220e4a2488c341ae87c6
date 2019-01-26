@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57811b73_b0b7552d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T14:34:22Z",
+      "side": 1,
+      "message": "Maybe duplicates, updated def, but not bottom. It is okay for a disjunction to have an element that is subsumed by another, for instance `int | 1`. Similarly, bottom could be a member of a disjunction if not explicitly disallowed.",
+      "parentUuid": "1bacb1a5_0c02b62c",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf64cc86_0088c5a4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-26T14:00:24Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 30
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1710a03_a478e7a4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T14:34:22Z",
+      "side": 1,
+      "message": "removed mention of duplicates.",
+      "parentUuid": "cf64cc86_0088c5a4",
       "range": {
         "startLine": 631,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "e959dc0a_71b3e089",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T14:34:22Z",
+      "side": 1,
+      "message": "VolumeType: {\n    // assign a hidden field with unique value for each volume type\n    \u003cName\u003e: { _kind: Name }\n    Local: { /* fields for local volumes */ }\n    PersistentDisk: { /* fields for persistent volumes */ }\n    Secrets: { /* ditto */ }\n}\n\nexpands to:\n\nVolumeType: {\n    Local: { _kind: \"Local\", ... }\n    PersistentDisk: { _kind: \"PersistentDisk\", ... }\n    Secrets: { _kind: \"Secrets\", ... }\n}\n\n(For each field, Name gets bound to the field\u0027s name and the resulting struct gets unified to the fields value. Templates fields (e.g. { \u003cX\u003e: int }) are to structs, what list element types (e.g. [...int]) are to lists.\n\nI could have written: \n// All volume types must be structs with a namesake kind field.\nVolumeType \u003cName\u003e: { _kind: Name } \nVolumeType: {\n    Local: { /* fields for local volumes */ }\n    PersistentDisk: { /* fields for persistent volumes */ }\n    Secrets: { /* ditto */ }\n}\n\nSo in the disjunction, all volume types have a different _kind an can never unify. The user would have to constrain the fields enough such that only one alternative remains.",
+      "parentUuid": "c43ba642_c77c3f9c",
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecace47f_906d5642",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -76,6 +142,30 @@
       "writtenOn": "2019-01-26T14:00:24Z",
       "side": 1,
       "message": "As mentioned on the other CL, this implies that if the result isn\u0027t a disjunction, the mark is dropped, which I think breaks commutativity.",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2af9b4_2f8480b1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T14:34:22Z",
+      "side": 1,
+      "message": "Thinking about this more: commutativity is not really broken for the given examples: *1 | *2 would be equivalent to 1 | 2  (both fail if not disambiguated). Also, ( *1..3 | \"foo\" ) \u0026 int would still evaluate to *1..3, considering we defined 1..3 as disjunctions.\n\nThat said: (*{a:1} | {b:1}) \u0026 {b:2} \u0026 (*{c:1} | {d:1}) still produces different results.\nThe differences are almost eliminated with the variant described in the comments above, but not quite.",
+      "parentUuid": "ecace47f_906d5642",
       "range": {
         "startLine": 734,
         "startChar": 1,
