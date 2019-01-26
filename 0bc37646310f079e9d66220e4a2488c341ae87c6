@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "2462e057_8624b024",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T23:01:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd092aa2_a94ea9c1",
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecace47f_906d5642",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -232,6 +250,30 @@
       "side": 1,
       "message": "If you also require that disjunction literals have at most one marked disjunct, then (1) implies that all disjunctions have at most one. Which is easier to think about (for me).\n\nUnfortunately this breaks things like\n\n  [1, 2][(*1 | 2 | int) \u0026 1..5]\n\nbut maybe that\u0027s okay because they never come up in practice.",
       "parentUuid": "94b9442f_6ba2482a",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4322382_e1c3e5ff",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T23:01:06Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense to require that. In some cases one will want to force the user to make a choice and not have a default. That is one of the appeals of this approach.\n\n\u003e Unfortunately this breaks things like\n\u003e    [1, 2][(*1 | 2 | int) \u0026 1..5]\n\nYes, that might be broken. But I think that is okay, indeed.\nThere may be workarounds, though: if we do not qualify ranges as a disjunction, or, at least make it qualify as a single value. If we allow *a | (*b | c) to mean the original semantics expressed with the new approach, that would be justifiable. Also, types and ranges should be treated equivalently in this matter.",
+      "parentUuid": "49dd2d1b_3371dc4c",
       "range": {
         "startLine": 734,
         "startChar": 1,
