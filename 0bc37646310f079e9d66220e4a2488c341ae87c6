@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bacb1a5_0c02b62c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T14:00:24Z",
+      "side": 1,
+      "message": "I think these all follow from the definition. You can state them, but clarify that they follow.",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf64cc86_0088c5a4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T14:00:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 30
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43ba642_c77c3f9c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T14:00:24Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this need to be\n\n   (VolumeType \"local\").Local\n\n? Otherwise (a) where does \u003cName\u003e come from and (b) VolumeType.Local is just some arbitrary struct -- why couldn\u0027t it unify with VolumeType.Secrets?",
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecace47f_906d5642",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T14:00:24Z",
+      "side": 1,
+      "message": "As mentioned on the other CL, this implies that if the result isn\u0027t a disjunction, the mark is dropped, which I think breaks commutativity.",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
