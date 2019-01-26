@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4c3bda3b_e24ce97a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:43:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "badb0acb_efbc8eb9",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 21
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4670b281_be135980",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -237,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "dd8c72e8_3ca04428",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:43:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03e14139_371f8afd",
+      "range": {
+        "startLine": 662,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 33
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a310ece1_f4b582cd",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -296,6 +344,30 @@
       "side": 1,
       "message": "Oh, that example doesn\u0027t work, but one could simply do\n\na: {s:\"low\", v:0..25 } | *{ s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 }\n\nof course.\n\nPicking \"low\" over \"medium\" over \"high\" is more involved, though:\n\nOne solution:\n\na: {s:\"low\", v:0..19 } | {s: *\"low\"|\"medium\", v:20..25 } | { s: \"medium\", v:26..74 } | { s: *\"medium\"|\"high\", v:75..80 } | { s:\"high\", v:81..100 }\n\nAnother:\n\na: *{s:\"low\", v:0..25 } | (*{ s: \"medium\", v:20..80 } | { s:\"high\", v:75..100 })\n\nThe later example shows the importance of erasing the default mark for non-disjunctions.",
       "parentUuid": "657cb94d_8aeff89e",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 0
+      },
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34370f0e_e2742c3b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:43:50Z",
+      "side": 1,
+      "message": "I\u0027d proceed as follows.\n\nFirst, find real examples where you need defaults in _disjunctions_ as opposed to fields. I haven\u0027t seen any yet.\n\nIf you can\u0027t find any, then consider having defaults only for fields. My proposed semantics, assuming an if-else construct, is that a field f with default d and value v (v being the unification of all v\u0027 where \"f: v\u0027\" is in the instance) is equivalent to:\n\n  f: v if v !\u003d _|_ else d\n\nIf you\u0027re not happy with limiting defaults to fields and you decide to continue with explicitly marking defaults in disjunctions, then write down the rules here to make sure they are simple and intuitive. Here is my take:\n\n -  One or more values in a disjunction can be _marked_. When a marked value is unified, the result is also marked. (When unification results in a single value, the mark is dropped, as single values cannot be marked.) \n\n -  If a disjunction appears in where a concrete value is required (that is, as an operand or in a location where it will be emitted), the result is the unification of its marked values.\n\nThe problem with the first clause is that it gives different results depending on evaluation order. For example,\n\n    (* 1..3 | 4) \u0026 1..2 \u0026 (1 | 2)\n\nDone left to right, the first unification is 1..2 (dropping the mark because it\u0027s not a disjunction), then the second gives 1 | 2. But if we unify the first and third operands first, we get (*1 | *2), which when unified with 1..2 yields itself.\n\nLast and least, syntax: I like * and many years of experience with C-like languages has show that people don\u0027t have a problem distinguishing prefix and infix *.",
+      "parentUuid": "484479d9_7c8a8764",
       "range": {
         "startLine": 671,
         "startChar": 1,
@@ -369,6 +441,24 @@
       "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcbab72_87676052",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:43:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79274014_c3c8555f",
+      "revId": "c8e3c13aa5b3634a2786243242c9a97ca9fa0f7d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }

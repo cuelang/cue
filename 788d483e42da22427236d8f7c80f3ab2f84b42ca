@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f510c3c6_5cb1e541",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-26T13:43:50Z",
+      "side": 1,
+      "message": "This is a nice simplification that gets rid of the concept of a \"failed\" value. But there are a few problems:\n\n1. It contradicts the definition of \"instance of\" for structs on line 855. By that definition, {a: 1} and {a: 2} successfully unify to {a: _|_}.\n\n2. I can write the literal {a: _|_}. That is not equivalent to _|_ by the current spec, because it is not the result of a unification. So you still have \"failed\" structs floating around.\n\n3. When my 100-field config fails because one field is bottom, I don\u0027t want to see the output _|_. I want to see 99 good values and one _|_. But that is a debugging issue more than semantics—-I suppose that the 99 good fields could be attached to the bottom and displayed.",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 870,
+        "endChar": 23
+      },
+      "revId": "788d483e42da22427236d8f7c80f3ab2f84b42ca",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
