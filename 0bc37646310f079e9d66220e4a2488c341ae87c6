@@ -175,6 +175,30 @@
       "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b9442f_6ba2482a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-26T15:08:55Z",
+      "side": 1,
+      "message": "Looking at it quickly: I can see two possible fixes:\n1) When unifying two disjunction only elements resulting from unifying two marked elements are marked.\nAs a result: (*\"tcp\"|\"udp\") \u0026 (\"udp\"|\"tcp\") is now _|_ (ambiguous). But maybe that is not so bad as I thought before.\nAnother advantage: unifying \"{a: 1} | *{b: 1}\" with itself will keep the same value, so also keeping idempotence as well!:\n\n{a: 1} | *{b: 1}\nWith 1)\n{a:1} | {a:1,b:1} | *{b:1} -\u003e represents same set of values, same default\n\nOtherwise)\n{a:1} | {a:1,b:1} | *{a:1,b:1} | *{b:1} -\u003e {a:1,b:1} same values, different default!\n\n\n2) Don\u0027t discard any marks before a value is referred to. This doesn\u0027t solve the additional idempotence issue, though.\n\nNumber 1 wins.",
+      "parentUuid": "9b2af9b4_2f8480b1",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
