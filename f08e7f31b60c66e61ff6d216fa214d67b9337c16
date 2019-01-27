@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61dbdf1e_707dedc9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T18:08:42Z",
+      "side": 1,
+      "message": "Ah, true in this case (if one dedups). But the issue remains in other cases, such as\n({a:1}|{b:1}) \u0026 {a:1}.\n\nYes, I think this is the right spec. The definition for disjunction now consists of two more separate parts: the disjunctions and marked defaults. As far as the definition of disjunctions I think the normalization is the right approach. The marks are good as well, I think, but might need some shaving.",
+      "parentUuid": "9fb8a59c_12ad51ad",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 75
+      },
+      "revId": "f08e7f31b60c66e61ff6d216fa214d67b9337c16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac0b0ba9_a09748ac",
         "filename": "doc/ref/spec.md",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-27T15:26:01Z",
       "side": 1,
       "message": "It\u0027s a little surprising that \"float | 1\" means \"float \u0026 1\" when I use it as an operand. For that reason alone, I would hold off on treating all elements as marked if none are until there are very clear advantages. I don\u0027t think saving one character by writing \"1 | int\" instead of \"*1 | int\" is worth it.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 18
+      },
+      "revId": "f08e7f31b60c66e61ff6d216fa214d67b9337c16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d8f272_c1419034",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T18:08:42Z",
+      "side": 1,
+      "message": "Note that this is commented out and would be the consequence of using unification of remaining non-marked elements. I really think the normalization approach is the right spec and not this one.\n\nWith the normalization approach float | 1 does not have a default.",
+      "parentUuid": "ac0b0ba9_a09748ac",
       "range": {
         "startLine": 760,
         "startChar": 0,
