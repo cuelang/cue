@@ -325,6 +325,30 @@
       "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec140a2_944e6a68",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T10:32:17Z",
+      "side": 1,
+      "message": "BTW, another nice consequence of the currently preferred definition is that, for instance,\n\nbool \u003d\u003d true | false\n\nPreviously that was not the case as bool does not default to true or false.\n\nThis allows us to express CUE in itself in terms of sets whereas this was previously not possible.",
+      "parentUuid": "3ec535bc_37b54859",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
