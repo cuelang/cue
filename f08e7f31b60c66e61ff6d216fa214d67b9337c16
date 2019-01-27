@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb8a59c_12ad51ad",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-27T15:26:01Z",
+      "side": 1,
+      "message": "I\u0027m not following this. If you do the unification here as written (that is, without normalization) you get\n\n   {a:1,b:2} | _|_ | {a:1,b:2}\n\nwhich after dropping bottom and deduping gives\n\n   {a:1,b:2}\n\nwhich is the same answer you get with normalization. I don\u0027t see how you ever get _|_.\n\n\nThat said, I think normalizing disjunctions is a good idea in general. There is no reason why a config should fail if it generates {a:1} | {a:1,b:2}, when that is just a verbose way of writing {a:1}. Saying \"disjunctions are normalized\" also subsumes the rules for dropping bottom and deduping, simplifying the spec.\n\n[sorry, this comment is in the wrong CL...]",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 75
+      },
+      "revId": "f08e7f31b60c66e61ff6d216fa214d67b9337c16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0b0ba9_a09748ac",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-27T15:26:01Z",
+      "side": 1,
+      "message": "It\u0027s a little surprising that \"float | 1\" means \"float \u0026 1\" when I use it as an operand. For that reason alone, I would hold off on treating all elements as marked if none are until there are very clear advantages. I don\u0027t think saving one character by writing \"1 | int\" instead of \"*1 | int\" is worth it.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 18
+      },
+      "revId": "f08e7f31b60c66e61ff6d216fa214d67b9337c16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
