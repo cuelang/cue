@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f65b59b_8996b5a1",
+        "filename": "doc/tutorial/jsonnet/syntax.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T18:16:09Z",
+      "side": 1,
+      "message": "This will indent the text block. In CUE, the space preceding the \"\"\" is removed from the text lines (Swift-style).",
+      "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b324bc57_748e4722",
+        "filename": "doc/tutorial/jsonnet/syntax.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T18:16:09Z",
+      "side": 1,
+      "message": "I removed it (used to have Go style back-quoted raw strings), but intend to implement Swift-5-style raw strings, which is an overall better design.",
+      "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21114050_45eba84b",
+        "filename": "doc/tutorial/jsonnet/variables.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-27T18:16:09Z",
+      "side": 1,
+      "message": "Aliases are still a bit buggy here and there. I\u0027m interested to hear of issues you find with them.",
+      "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
