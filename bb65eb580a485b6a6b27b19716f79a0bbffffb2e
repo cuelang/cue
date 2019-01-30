@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69e0958_c1565d30",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-30T22:55:39Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that associativity is lost.",
+      "revId": "bb65eb580a485b6a6b27b19716f79a0bbffffb2e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
