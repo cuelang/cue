@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "700cbb09_f733cf92",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-30T13:38:23Z",
+      "side": 1,
+      "message": "Text removed. It is now implied by normalization (which is necessary for defaults to work).",
+      "parentUuid": "57811b73_b0b7552d",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf64cc86_0088c5a4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ae7108_44e17eb6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-30T13:38:23Z",
+      "side": 1,
+      "message": "Removed. Removal is only relevant for defaults and this mechanism is covered by normalization.",
+      "parentUuid": "c1710a03_a478e7a4",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 30
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +397,30 @@
       "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64428687_8b97ae85",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-30T13:38:23Z",
+      "side": 1,
+      "message": "The latest definition should be fully commutative and idempotent, also for defaults. (*2|3) \u0026 2..3, (*2|3) \u0026 (2|3), and (2|3) \u0026 (*2|3), now all give the same result. true|false and bool are now equivalent (it may be that the definition allows errors to be triggered at different spots, but logically they are the same).",
+      "parentUuid": "1ec140a2_944e6a68",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0bc37646310f079e9d66220e4a2488c341ae87c6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
