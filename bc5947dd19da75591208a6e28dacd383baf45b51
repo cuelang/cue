@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51b8472a_248dc70e",
+        "filename": "doc/tutorial/basics/cycleref.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-30T21:06:53Z",
+      "side": 1,
+      "message": "unifying?",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "bc5947dd19da75591208a6e28dacd383baf45b51",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bf2c0b_14348471",
+        "filename": "doc/tutorial/basics/cycleref.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-01-30T21:06:53Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "bc5947dd19da75591208a6e28dacd383baf45b51",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
