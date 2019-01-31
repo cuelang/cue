@@ -16,6 +16,24 @@
       "revId": "bb65eb580a485b6a6b27b19716f79a0bbffffb2e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434f2e68_8ca956b5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-01-31T06:58:01Z",
+      "side": 1,
+      "message": "The disjunctions themselves still are, just the defaults are not.\n\nI chose to preserve the property of being able to see locally that a default resolves. Consider:\n\nx: *1 | y\ny: *2 | 3\n\nWhen looking at \u0027x\u0027, as there is one default, one would think there is no need to specify a field.\nThere are two ways to solve this:\n\n- make it associative anyway\n- leave it, but disallow disjunction literals with parentheses.\n\nThe latter has the unfortunate property that one cannot represent certain intermediate states in legal CUE.\n\nI would be quite easy to detect the above case in a vet tool or so and warn the user.\n\nI\u0027ve sent CL https://cue-review.googlesource.com/c/cue/+/1287 with a fix.",
+      "parentUuid": "f69e0958_c1565d30",
+      "revId": "bb65eb580a485b6a6b27b19716f79a0bbffffb2e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
