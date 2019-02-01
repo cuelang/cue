@@ -269,11 +269,11 @@ These may be used as identifiers to refer to fields in all other contexts.
 The following character sequences represent operators and punctuation:
 
 ```
-+    &     &&    ==    !=    (    )
--    |     ||    <     <=    [    ]
-*    :     !     >     >=    {    }
-/          ;     =     ...   ..   .
-div  mod   quo   rem   _|_   <-   ,
++    div   &&    ==    !=    (    )
+-    mod   ||    <     <=    [    ]
+*    quo   !     >     >=    {    }
+/    rem   &     :     <-    ;    ,
+%    _|_   |     =     ...   ..   .
 ```
 <!-- :: for "is-a" definitions -->
 
@@ -631,7 +631,7 @@ Expression                Result
 #### Default values
 
 One or more values in a disjunction can be _marked_
-by prefixing it with a `*` ([`Preference`](#Primary-expressions)).
+by prefixing it with a `*` ([a unary expression](#Operators)).
 A bottom value cannot be marked.
 When a marked value is unified, the result is also marked.
 (When unification results in a single value,
@@ -1212,13 +1212,11 @@ A default expression is only valid as an operand to a disjunction.
 ```
 PrimaryExpr =
 	Operand |
-	Preference |
 	PrimaryExpr Selector |
 	PrimaryExpr Index |
 	PrimaryExpr Slice |
 	PrimaryExpr Arguments .
 
-Preference     = "*" Expression
 Selector       = "." identifier .
 Index          = "[" Expression "]" .
 Slice          = "[" [ Expression ] ":" [ Expression ] "]"
@@ -1386,7 +1384,7 @@ rel_op     = "==" | "!=" | "<" | "<=" | ">" | ">=" .
 add_op     = "+" | "-" .
 mul_op     = "*" | "/" | "%" | "div" | "mod" | "quo" | "rem" .
 
-unary_op   = "+" | "-" | "!" .
+unary_op   = "+" | "-" | "!" | "*" .
 ```
 <!-- TODO: consider adding unary_op: "<" | "<=" | ">" | ">=" -->
 
