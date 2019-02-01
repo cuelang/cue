@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01637250_36414faa",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-01T20:14:09Z",
+      "side": 1,
+      "message": "I think the sum is needed, as it may be the only way to grow an existing list. Then not allowing  multiply would be strange. But it may be useful to express open ended lists as disjunctions where the shortest allowed one is the default.\n\nAnother thing that came up related to Kubernetes is \"strategic merges\", i.e. mapping lists to maps, unify, and then back. This pattern is all over the place there.",
+      "parentUuid": "1bc44f83_b711e622",
+      "range": {
+        "startLine": 1542,
+        "startChar": 0,
+        "endLine": 1542,
+        "endChar": 37
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41360200_04f42e36",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247af09b_f546163d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-01T20:14:09Z",
+      "side": 1,
+      "message": "That is cute one. We can just require that the value must be an integer.\n\nSo far we have not allowed operands to be constraint by parameter types, but this is possible. Must be done consistently though.",
+      "parentUuid": "41360200_04f42e36",
+      "range": {
+        "startLine": 1546,
+        "startChar": 5,
+        "endLine": 1548,
+        "endChar": 3
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
