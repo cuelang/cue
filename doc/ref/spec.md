@@ -845,6 +845,29 @@ To access the individual bytes of a string one should convert it to
 a sequence of bytes first.
 
 
+### Bounds
+
+A _bound_, syntactically_ a [unary expression](#Operands), defines
+a (possibly infinite) disjunction of concrete values than can be represented
+as a single comparisson.
+A concrete value `c` unifies with `op a`,
+where `op` is any [comparison operator](#Comparison-operators) except `==`,
+if `c op a`.
+
+```
+2 & >=2 & <=5           // 2, where 2 is either an int or float.
+2.5 & >=1 & <=5         // 2.5
+2 & >=1.0 & <3.0        // 2.0
+2 & 1..3.0              // 2.0
+2.5 & int & >1 & <5     // _|_
+2.5 & float & >1 & <5   // 2.5
+int & 2 & >1.0 & <3.0   // _|_
+2.5 & >=(int & 1) & <5  // _|_
+>=0 & <=7 & >=3 & <=10  // >=3 & <=7
+!=null & 1              // 1
+```
+
+<!-- TODO: do we want this?
 ### Ranges
 
 A _range type_, syntactically a [binary expression](#Operands), defines
