@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bc44f83_b711e622",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-01T16:54:05Z",
+      "side": 1,
+      "message": "Suggestion: disallow this and other similar operations on open lists until there\u0027s a compelling use case. I think they are confusing.",
+      "range": {
+        "startLine": 1542,
+        "startChar": 0,
+        "endLine": 1542,
+        "endChar": 37
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41360200_04f42e36",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-01T16:54:05Z",
+      "side": 1,
+      "message": "Multiplication should distribute over disjunction, so int(1)..int(3) * [x] \u003d [x] | [x, x] | [x, x, x]. The hard part is figuring out what 1..3 * [x] means, since 1..3 includes many floats.",
+      "range": {
+        "startLine": 1546,
+        "startChar": 5,
+        "endLine": 1548,
+        "endChar": 3
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
