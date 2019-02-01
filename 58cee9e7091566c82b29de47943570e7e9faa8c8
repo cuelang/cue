@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c340452e_8aeb1c97",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-01T21:03:03Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s strange to allow + and not *. Go strings do that.\n\nI don\u0027t understand the strategic merge pattern. You map `[a, b]` to `{0: a, 1: b}`? And then unify with what?\n\nOr is this just the de-duping algorithm: `[a, b, a] \u003d\u003e {a, b} \u003d\u003e [a, b]`?",
+      "parentUuid": "01637250_36414faa",
+      "range": {
+        "startLine": 1542,
+        "startChar": 0,
+        "endLine": 1542,
+        "endChar": 37
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41360200_04f42e36",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
