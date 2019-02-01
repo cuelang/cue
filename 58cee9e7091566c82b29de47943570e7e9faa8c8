@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c5d9da02_d8892ce5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-01T21:21:16Z",
+      "side": 1,
+      "message": "Ah you mean not allow multiplication altogether. It is useful for things like 4*[byte] (for IPs), but that could be written as [byte, byte, byte, byte]. I clarified in the doc that open ended lists have a default, It is a bit weirder for sum, as the second argument remains open.\n\nYou map a list keyed to a field, like [{name: \"a\", ...}, {name: \"b\":, ...}] to { \"a\": { name: \"a\", ...}, \"b\": { name: \"b\", ... } }, unify with another list mapped the same, and then map back to a list. There are probably rules for preserving order, which values override (which CUE would not allow), etc\n\nIt would be nice to allow pre and post mappings in the language somehow. This is a very common thing, and unification formalisms are quite poor at handling lists.\n\nTo expand on the emit top-level pattern, one could allow something like (never mind the syntax for now):\n\nmyList: [ ...{ name: string } ]\n\n// before evaluation, the list is converted to a map like this\nmyList: \u003c- { \"\\(x.name)\" : x for x in myList }\n\n// after evaluation, it is converted back to this format.\nmyList: -\u003e [ x for x in myList ]\n\n\nSee https://github.com/cuelang/cue/issues/14.",
+      "parentUuid": "c340452e_8aeb1c97",
+      "range": {
+        "startLine": 1542,
+        "startChar": 0,
+        "endLine": 1542,
+        "endChar": 37
+      },
+      "revId": "58cee9e7091566c82b29de47943570e7e9faa8c8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41360200_04f42e36",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
