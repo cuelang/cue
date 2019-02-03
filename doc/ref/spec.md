@@ -649,13 +649,25 @@ When a marked value is unified, the result is also marked.
 (When unification results in a single value,
 the mark is dropped, as single values cannot be marked.)
 
+An expression must be _resolved_ to a concrete value when it occurs as an
+operand or when it is about to be emitted. Resolution occurs as follows:
+1. Rewrite the expression `e` to a new expression `*e` by dropping all unmarked
+   disjuncts. If `*e` evaluates to a value that is not bottom, then use
+   that value as `v` in step 3 below.
+2. Otherwise, evaluate `e` ignoring marks to obtain `v`.
+3. If `v` is concrete, then `e` resolves to `v`. Else `e` resolves to bottom.
+
+
+
+<!--
+
 A disjunction is _normalized_ if there is no unmarked element
 `a` for which there is an element `b` such that `a ⊑ b`
 and no marked element `c` for which there is a marked element
 `d` such that `c ⊑ d`.
 A disjunction literal must be normalized.
 
-<!--
+
 (non-normalized entries could also be implicitly marked, allowing writing
 int | 1, instead of int | *1, but that can be done in a backwards
 compatible way later if really desirable).
@@ -677,11 +689,6 @@ With normalization:
 ({a:1} | {b:1}) & {a:1}         {a:1} (instead of _|_), as {a:1,b:1} ⊑ {a:1}
 -->
 
-If a disjunction appears where a concrete value is required
-(that is, as an operand or in a location where it will be emitted),
-the result is, after normalization and after dropping non-marked elements
-if some elements are marked,
-the resulting value itself if only a single value remains or bottom otherwise.
 
 <!--
 We treat remaining marked and unmarked elements the same to have less surprises:
@@ -705,11 +712,11 @@ that does not involve `&` and `|`, including slices, indices, selectors,
 and all but a few explicitly marked builtin functions. -->
 
 ```
-Expression                       Default
+Expression                       Resolves To
 "tcp" | "udp"                    _|_ // more than one element remaining
 *"tcp" | "udp"                   "tcp"
 float | *1                       1
-*string | 1.0                    string
+*string | 1.0                    _|_ // evaluates to string, which is not concrete
 
 (*"tcp"|"udp") & ("udp"|*"tcp")  "tcp"
 (*"tcp"|"udp") & ("udp"|"tcp")   "tcp"
@@ -724,6 +731,8 @@ float | *1                       1
 *{a: 1} | *{b: 1}                _|_ // more than one marked element remaining
 ({a: 1} | {b: 1}) & {a:1}        {a:1} // after eliminating {a:1,b:1}
 ({a:1}|*{b:1}) & ({a:1}|*{b:1})  {b:1} // after eliminating *{a:1,b:1}
+
+(* >=5 | int) & (* <=5 | int)    5
 ```
 
 A disjunction always evaluates to the same default value, regardless of
