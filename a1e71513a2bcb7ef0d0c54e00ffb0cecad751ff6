@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8e585af_9b328fad",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T15:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431c888e_c2ac28cd",
+      "range": {
+        "startLine": 852,
+        "startChar": 12,
+        "endLine": 852,
+        "endChar": 23
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb6a548_c0529881",
         "filename": "doc/ref/spec.md",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85bcda7_1d79eae1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T15:47:03Z",
+      "side": 1,
+      "message": "That is indeed nicer. Changed.\n\n\u003c1 satisfies int(1) \u003c 1 and float(1) \u003c 1, so that works. If it doesn\u0027t, then the definition of comparison should be changed.",
+      "parentUuid": "3fb6a548_c0529881",
+      "range": {
+        "startLine": 853,
+        "startChar": 21,
+        "endLine": 853,
+        "endChar": 28
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dd98cdef_5283ecb7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T15:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac1ca14_3bd304bf",
+      "range": {
+        "startLine": 867,
+        "startChar": 0,
+        "endLine": 867,
+        "endChar": 28
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3c9d7a7_2753901b",
         "filename": "doc/ref/spec.md",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97d01aa_cd096450",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T15:47:03Z",
+      "side": 1,
+      "message": "Removed in follow up CL.",
+      "parentUuid": "c3c9d7a7_2753901b",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 10
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
