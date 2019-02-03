@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2183140d_778d9bb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T22:07:09Z",
+      "side": 1,
+      "message": "I guess this property existed before with ranges: *0..5 | *5..10, but is now more apparent with unary constraints.\n\nHowever, whereas \u003e\u003d5 \u0026 \u003c\u003d5 simplifies to 5, \u003e\u003d5 | \u003c\u003d5 should simplify to, or is at least logically equivalent to, int.",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ca72f5_6f11fd78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-03T22:07:09Z",
+      "side": 1,
+      "message": "It wasn\u0027t fully obvious to me at first too, but it shows that the existing definition is correct. It would be strange for it to resolve to 5 if the default is equivalent to int.",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
