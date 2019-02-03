@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "431c888e_c2ac28cd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-03T14:43:51Z",
+      "side": 1,
+      "message": "comparison",
+      "range": {
+        "startLine": 852,
+        "startChar": 12,
+        "endLine": 852,
+        "endChar": 23
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb6a548_c0529881",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-03T14:43:51Z",
+      "side": 1,
+      "message": "Unification is not partial. I think you mean:\n\nIf `c` is a concrete value, then `c \u0026 op a` is `c` if `c op a`, bottom otherwise.\n\nBut I think rather than this special case, you should provide a general definition:\n`op a` is the disjunction of every x s.t. x op a. But that probably doesn\u0027t account for the specialness of int literals.",
+      "range": {
+        "startLine": 853,
+        "startChar": 21,
+        "endLine": 853,
+        "endChar": 28
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac1ca14_3bd304bf",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-03T14:43:51Z",
+      "side": 1,
+      "message": "What about\n\n\u003e\u003d5 \u0026 \u003c\u003d5      // 5",
+      "range": {
+        "startLine": 867,
+        "startChar": 0,
+        "endLine": 867,
+        "endChar": 28
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c9d7a7_2753901b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-03T14:43:51Z",
+      "side": 1,
+      "message": "So you\u0027re keeping ranges?",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 10
+      },
+      "revId": "a1e71513a2bcb7ef0d0c54e00ffb0cecad751ff6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
