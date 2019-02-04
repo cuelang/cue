@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "00f2488c_3e5b0518",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-04T04:23:25Z",
+      "side": 1,
+      "message": "I agree with the technical details, but disagree about what these two lines should mean (what it\u0027s most useful for them to mean).\n\nLet\u0027s look at some other cases:\n```\na: \u003e\u003d5\na: *5 | int\n```\nHere I\u0027m sure we agree that the result for `a` is 5. The first line sets up a constraint which the default in the second line fulfills.\n\nNow consider\n```\na: \u003e\u003d5 | int\na: * 5 | int\n```\nThis doesn\u0027t change anything; the result is still 5. Both definitions give the same answer.\n\nNow consider\n```\na: * \u003e\u003d5 | int\na: * 5 | int\n```\nThe only difference here is that the first line has a preference for values \u003e\u003d 5, rather than a hard requirement as in my first example. It still seems to me that 5 is the best answer. These two constraints probably came together from two different configs, combined. Both configs will take any int for `a`. One config prefers that `a` is at least 5; the other has a more definite preference for exactly 5. It is hard to see why either config would be unhappy with 5. But the existing definition does not resolve `a`, leaving it at `\u003e\u003d 5`. The user would get an error at emit time, and I think they would be puzzled, since when they examine the config they will see a default of 5, with nothing contradicting that.",
+      "parentUuid": "04411246_aa2e62c4",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
