@@ -167,7 +167,7 @@ func TestSubsume(t *testing.T) {
 		97: {subsumes: true, in: `a: number + number, b: int + int`},
 		// TODO: allow subsumption of unevaluated values?
 		// TODO: may be false if we allow arithmetic on incomplete values.
-		98: {subsumes: true, in: `a: int + int, b: int * int`},
+		98: {subsumes: false, in: `a: int + int, b: int * int`},
 
 		99:  {subsumes: true, in: `a: !int, b: !int`},
 		100: {subsumes: true, in: `a: !number, b: !int`},
@@ -175,8 +175,8 @@ func TestSubsume(t *testing.T) {
 		// true because both evaluate to bottom
 		101: {subsumes: true, in: `a: !int, b: !number`},
 		// TODO: allow subsumption of unevaluated values?
-		// true because both evaluate to bottom
-		102: {subsumes: true, in: `a: int + int, b: !number`},
+		// May be true because both evaluate to bottom. false is always allowed.
+		102: {subsumes: false, in: `a: int + int, b: !number`},
 		// TODO: allow subsumption of unevaluated values?
 		// true because both evaluate to bool
 		103: {subsumes: true, in: `a: !bool, b: bool`},
