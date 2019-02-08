@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0439da47_85284f22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-08T17:26:14Z",
+      "side": 1,
+      "message": "But that is not the same as saying *\u003e\u003d5 | *\u003c\u003d5 defaults to 5, as these two values can be normalized to *int.\n\nOkay, I see where you are coming from. So we\u0027re back at the definition where the remaining values are unified to obtain the default value.\n\nThe problem was that this was not idempotent.\n\n*{a: 1}|{b: 1} default to {a: 1}, but \nnorm(*{a: 1}|{b: 1} \u0026 *{a: 1}|{b: 1}) \u003d\u003e *{a: 1}|*{b: 1} \u003d\u003e defaults to *{a: 1, b:1}.\n\nOne solution could be to only allow starring of concrete values.",
+      "parentUuid": "00f2488c_3e5b0518",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -66,6 +84,23 @@
       "writtenOn": "2019-02-03T22:07:09Z",
       "side": 1,
       "message": "It wasn\u0027t fully obvious to me at first too, but it shows that the existing definition is correct. It would be strange for it to resolve to 5 if the default is equivalent to int.",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b774da_54bae154",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-08T17:26:14Z",
+      "side": 1,
+      "message": "I guess I\u0027m not fully clear with what \"evaluates to\" means.",
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
