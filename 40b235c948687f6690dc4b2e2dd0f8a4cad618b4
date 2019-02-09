@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "c5d22786_cd40c142",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-09T18:47:30Z",
+      "side": 1,
+      "message": "My definition gives the same answer for \n\n  *{a:1}|{b:1}\n\nand for\n\n   (*{a:1}}{b:1}) \u0026 (*{a:1}}{b:1})\n\nIt says, first try dropping the unmarked items and if you don\u0027t get bottom, you\u0027re done. For the first you get\n\n   {a:1}\n\nimmediately, and for the second you get\n\n   {a:1} \u0026 {a:1}\n\nwhich is {a:1}.\n\nThere is no normalization in this definition. Normalization is a syntactic operation which tries to put an expression in a form closer to its true lattice point without changing its default. I\u0027m saying that for the definition at least, don\u0027t talk about syntax. Talking about marks syntactically doesn\u0027t seem to work out right. So never do algebra with marks. Instead, when it\u0027s time to actually get an answer (figure out which lattice point an expression denotes), examine the expression as a whole, semantically. First remove the unmarked parts, and see if that denotes something. If it does, you have a usable default value, so use it. If it doesn\u0027t, the marks are not helping, so erase them and see what you have.\n\nThe spec doesn\u0027t care how you implement this. It\u0027s giving only the semantics. The reason I think you can get away with not having an algebra for marks is that you have a completely functional language, so you never really have to simplify or reduce any expression until it\u0027s time to actually turn it into a concrete value.\n\n\"Inside\" each of the two steps of my definition -- the \"drop unmarked\" step and the \"erase marks\" step -- you have an expression with no marks. In that context you can use mark-free algebra to simplify. That doesn\u0027t require normalization, just the commutativity, associativity and distribution of \u0026 and |.\n\nSo let\u0027s look at this example again:\n\n  a: * \u003e\u003d5 | int\n  a: * \u003c\u003d5 | int \n\nWhen it\u0027s time to emit a, you get\n\n   (* \u003e\u003d5 | int) \u0026 (* \u003c\u003d5 | int)\n\nUsing my definition, first drop the unmarked elements and see what you get:\n\n    \u003e\u003d5 \u0026 \u003c\u003d5\n\nThat evaluates to (denotes) 5, so that is your answer.\n\nNote that in my definition you never encounter  \u003e\u003d5 | \u003c\u003d5, which I agree denotes int.\n\nIf instead the expression was\n\n   (* \u003e\u003d5 | int) \u0026 (* \u003c\u003d4 | int)\n\nthen dropping the unmarked elements results in bottom, so the marks are erased and the result is\n\n   (\u003e\u003d5 | int) \u0026 (\u003c\u003d4 | int)\n  \u003d int \u0026 int\n  \u003d int",
+      "parentUuid": "0439da47_85284f22",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -90,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "be6a7aa3_74c81885",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-09T18:47:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08ca72f5_6f11fd78",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91b774da_54bae154",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -101,6 +137,24 @@
       "writtenOn": "2019-02-08T17:26:14Z",
       "side": 1,
       "message": "I guess I\u0027m not fully clear with what \"evaluates to\" means.",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50223440_966259a0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-09T18:47:30Z",
+      "side": 1,
+      "message": "I mean denotes, in the semantics. The lattice point that the expression represents. Hopefully that is also what the interpreter evaluates the expression to.",
+      "parentUuid": "91b774da_54bae154",
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
