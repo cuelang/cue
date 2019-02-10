@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fb6d004_7c9a448d",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "Yes, swap is a better word.",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "762329bf_d04eae5a",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "The type, if not bottom is often unused and recomputed later. But you\u0027re right it is incorrect. \n\nIt should be something like:\n\t\tk :\u003d nullKind\n\t\tswitch op {\n\t\tcase opEql, opNeq:\n\t\t\tfallthrough\n\t\tcase opUnify:\n\t\t\tif a\u0026nullKind !\u003d 0 {\n\t\t\t\treturn k, false\n\t\t\t}\n\t\t\tif b\u0026nullKind !\u003d 0 {\n\t\t\t\treturn k, true\n\t\t\t}\n\t\t\treturn bottomKind, false\n\t\t}",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e1c6d8_08432101",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "yes, a bug. Should strictly be floats.",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b7c8dc_29325795",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "yes, a bug, ditto.",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1256207_02b29912",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "durations are not implemented yet. Once these were introduced I figured it is unclear what they mean in relation to duration. So okay to not worry about it for now.",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef99661_be34d62f",
+        "filename": "doc/tutorial/jsonnet/functions.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "This probably doesn\u0027t belong in this CL.",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b0087b_318781f6",
+        "filename": "doc/tutorial/jsonnet/sours.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:29:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
