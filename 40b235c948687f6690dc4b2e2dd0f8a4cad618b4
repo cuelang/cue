@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "02fa24bb_22cb6751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-10T17:23:45Z",
+      "side": 1,
+      "message": "I see now what you\u0027re saying. Let me think about it a bit more.",
+      "parentUuid": "1aebe71e_75feb9aa",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
