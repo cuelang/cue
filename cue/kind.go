@@ -163,8 +163,11 @@ type kindInfo struct {
 
 var toKindInfo = map[kind]*kindInfo{}
 
-// matchBinOpKind reports whether the given op is possible for the given kinds
-// and what the result will be. Evaluating binary expressions uses this to
+// matchBinOpKind returns the result kind of applying the given op to operands with
+// the given kinds. The operation is disallowed if the return value is bottomKind. If
+// the second return value is true, the operands should be swapped before evaluation.
+//
+// Evaluating binary expressions uses this to
 // - fail incompatible operations early, even if the concrete types are
 //   not known,
 // - check the result type of unification,
@@ -174,6 +177,7 @@ var toKindInfo = map[kind]*kindInfo{}
 // - reduce the amount op type switching.
 // - simplifies testing
 func matchBinOpKind(op op, a, b kind) (k kind, invert bool) {
+	// jba: consider renaming 'invert' to 'swap'. invert has a different meaning with operations.
 	if op == opDisjunction {
 		return a | b, false
 	}
@@ -186,6 +190,7 @@ func matchBinOpKind(op op, a, b kind) (k kind, invert bool) {
 	b = b & typeKinds
 	if valBits == bottomKind {
 		if op == opEql || op == opNeq || op == opUnify {
+			// jba: I don't understand why opUnify is here. Unifying a null with a non-null results in a boolean?
 			// Set invert for better error messages
 			// invert = aGround && !bGround
 			if a&nullKind != 0 {
@@ -265,14 +270,17 @@ func matchBinOpKind(op op, a, b kind) (k kind, invert bool) {
 			return u&scalarKinds | catBits, false
 		}
 	case opRem:
+		// jba: '%' is supposed to be for floats (see spec, issue #16).
 		if u.isAnyOf(durationKind | intKind) {
 			return u&(durationKind|intKind) | catBits, false
 		}
 	case opQuo:
+		// jba: '/' is supposed to be for floats only (ditto)
 		if u.isAnyOf(durationKind | numKind) {
 			return floatKind | catBits, false
 		}
 	case opIRem, opIMod:
+		// jba: don't durations belong here? Aren't they more like ints than floats?
 		if u.isAnyOf(intKind) {
 			return u&(intKind) | catBits, false
 		}
