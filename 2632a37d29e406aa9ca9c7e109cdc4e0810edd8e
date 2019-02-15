@@ -16,6 +16,24 @@
       "revId": "2632a37d29e406aa9ca9c7e109cdc4e0810edd8e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9677008_48c0ddda",
+        "filename": "doc/tutorial/basics/selectors.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000010
+      },
+      "writtenOn": "2019-02-15T17:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161b1ec3_71283060",
+      "revId": "2632a37d29e406aa9ca9c7e109cdc4e0810edd8e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
