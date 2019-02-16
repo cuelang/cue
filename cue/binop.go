@@ -966,16 +966,18 @@ func (x *list) binOp(ctx *context, src source, op op, other evaluated) evaluated
 		case 0:
 		case 1:
 			n.typ = binOp(ctx, src, opUnify, typ, x.a[0].evalPartial(ctx))
+			fallthrough
 		default:
 			if !k.isGround() {
-				return x
+				break
 			}
 			if ln := other.(*numLit).intValue(ctx); ln > 0 {
-				// TODO: check error
 				for i := 0; i < ln; i++ {
 					// TODO: copy values
 					n.a = append(n.a, x.a...)
 				}
+			} else if ln < 0 {
+				return ctx.mkErr(src, "negative number %d multiplies list", ln)
 			}
 		}
 		switch v := x.len.(type) {

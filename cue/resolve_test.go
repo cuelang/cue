@@ -332,6 +332,28 @@ func TestBasicRewrite(t *testing.T) {
 			`,
 		out: `<0>{list: [1,2,3], index: 2, unify: [1,2,3], e: _|_(([] & 4):unsupported op &(list, number)), e2: _|_("d":invalid list index "d" (type string)), e3: _|_(-1:invalid list index -1 (index must be non-negative)), e4: _|_((<=5 & 8):8 not within bound <=5), e5: _|_((<=5 & 8):8 not within bound <=5)}`,
 	}, {
+		desc: "list arithmetic",
+		in: `
+			list: [1,2,3]
+			mul0: list*0
+			mul1: list*1
+			mul2: 2*list
+			list1: [1]
+		    mul1_0: list1*0
+			mul1_1: 1*list1
+			mul1_2: list1*2
+			e: list*-1
+			`,
+		out: `<0>{list: [1,2,3], ` +
+			`mul0: [], ` +
+			`mul1: [1,2,3], ` +
+			`mul2: [1,2,3,1,2,3], ` +
+			`list1: [1], ` +
+			`mul1_0: [], ` +
+			`mul1_1: [1], ` +
+			`mul1_2: [1,1], ` +
+			`e: _|_((<1>.list * -1):negative number -1 multiplies list)}`,
+	}, {
 		desc: "selecting",
 		in: `
 			obj: {a: 1, b: 2}
@@ -409,7 +431,7 @@ func TestBasicRewrite(t *testing.T) {
 		`,
 		out: `<0>{i: int, j: 3, s: string, t: "s", e: _|_((int & string):unsupported op &((int)*, (string)*)), e2: _|_((1 & string):unsupported op &(number, (string)*)), b: _|_(!int:unary '!' requires bool value, found (int)*), p: _|_(+true:unary '+' requires numeric value, found bool), m: _|_(-false:unary '-' requires numeric value, found bool)}`,
 	}, {
-		desc: "comparisson",
+		desc: "comparison",
 		in: `
 			lss: 1 < 2
 			leq: 1 <= 1.0
@@ -1521,7 +1543,12 @@ func TestFullEval(t *testing.T) {
 
 		MyIP: Inst & [_, _, 10, 10 ]
 		`,
-		out: `<0>{IP: 4*[(>=0 & <=255)], Private: [192,168,(>=0 & <=255),(>=0 & <=255)], Inst: [10,10,(>=0 & <=255),(>=0 & <=255)], MyIP: [10,10,10,10]}`,
+		out: `<0>{` +
+			`IP: [(>=0 & <=255),(>=0 & <=255),(>=0 & <=255),(>=0 & <=255)], ` +
+			`Private: [192,168,(>=0 & <=255),(>=0 & <=255)], ` +
+			`Inst: [10,10,(>=0 & <=255),(>=0 & <=255)], ` +
+			`MyIP: [10,10,10,10]` +
+			`}`,
 	}, {
 		desc: "complex interaction of groundness",
 		in: `

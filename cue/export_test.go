@@ -87,7 +87,7 @@ func TestExport(t *testing.T) {
 		}`,
 		out: unindent(`
 		{
-			a: 5*[int] & [1, 2, ...int]
+			a: [1, 2, int, int, int]
 			b: (>=2 & <=5)*[int] & [1, 2, ...int]
 			c: (<=5 & >=3)*[int] & [1, 2, ...int]
 			d: [1, 2, ...int]

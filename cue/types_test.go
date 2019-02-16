@@ -515,6 +515,7 @@ func TestList(t *testing.T) {
 	}, {
 		value: `>=5*[1,2,3, ...int]`,
 		res:   "[1,2,3,]",
+		err:   "incomplete",
 	}, {
 		value: `[x for x in y if x > 1]
 		y: [1,2,3]`,
@@ -999,7 +1000,7 @@ func TestMashalJSON(t *testing.T) {
 		err:   `cannot convert incomplete value`,
 	}, {
 		value: `(>=3 * [1, 2])`,
-		json:  `[1,2]`,
+		err:   "unsupported op *(int, (number)*)", // TODO: improve error
 	}, {
 		value: `{}`,
 		json:  `{}`,
@@ -1071,8 +1072,8 @@ func TestWalk(t *testing.T) {
 		value: `[int]`,
 		out:   `[int]`,
 	}, {
-		value: `(>=3 * [1, 2])`,
-		out:   `[1,2]`,
+		value: `3 * [1, 2]`,
+		out:   `[1,2,1,2,1,2]`,
 	}, {
 		value: `{}`,
 		out:   `{}`,
