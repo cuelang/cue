@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b1e360_858ac913",
+        "filename": "cue/binop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-16T23:19:50Z",
+      "side": 1,
+      "message": "The fallthrough seems to be the right thing, but I don\u0027t understand this line. It seems to be narrowing down the type of the result list based on the first element of the arg list, but it\u0027s unclear why the arg list\u0027s type would not already have been narrowed down in this way, or why you only want to do this for one-element lists.",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 65
+      },
+      "revId": "853cde4759ebfbed46972caf957561fc772dc1d4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
