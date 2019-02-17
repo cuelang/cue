@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "5a750057_f0a34265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:50:57Z",
+      "side": 1,
+      "message": "I didn\u0027t state the rule precisely. In the first phase, you drop unmarked items *only for disjuncts that have marked items*. That\u0027s similar to one of the clauses of normalization.\n\nSo \n   (*1 | \"foo\") \u0026 string\nbecomes\n   1 \u0026 string\nwhich is bottom.\n\nIn phase two we erase the marks, giving\n   (1 | \"foo\") \u0026 string\nwhich is \"foo\".\n\nBy the way, I reject arguments of the form \"this breaks \u003calgebraic property\u003e,\" because I don\u0027t believe that you need an algebra that works for *, and while it would be nice to have anyway, I don\u0027t think one is possible that preserves all the desired algebraic properties.\n\nI don\u0027t know what you mean by \"ACID properties\" in this context, but if you mean \"algebraic properties of commutativity, associativity and distribution\" then see above.\n\nTo restate our debate in different terms: I agree an algebra that included * would be best, but I don\u0027t believe there is one. I don\u0027t think what you have now is correct because I think it gives the wrong answer for expressions like\n\n   (* \u003e\u003d5 | int) \u0026 (* \u003c\u003d5 | int)\n\nwhich, as I\u0027ve argued above, should resolve to 5.",
+      "parentUuid": "b2943371_9e51983b",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
