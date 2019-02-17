@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "729fe2c5_c02e56b9",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7fb6d004_7c9a448d",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "762329bf_d04eae5a",
         "filename": "cue/kind.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67876d6_ec50b474",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "762329bf_d04eae5a",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3e7a4b0c_486fc945",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9e1c6d8_08432101",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b7c8dc_29325795",
         "filename": "cue/kind.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6716c08a_9fb6cfe7",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39b7c8dc_29325795",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "9c8f02d1_9198457a",
+        "filename": "cue/kind.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1256207_02b29912",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eef99661_be34d62f",
         "filename": "doc/tutorial/jsonnet/functions.cue",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "4aca1620_58ed543b",
+        "filename": "doc/tutorial/jsonnet/functions.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef99661_be34d62f",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1b0087b_318781f6",
         "filename": "doc/tutorial/jsonnet/sours.cue",
         "patchSetId": 2
@@ -118,6 +226,24 @@
       "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd5dbbf_48625bfa",
+        "filename": "doc/tutorial/jsonnet/sours.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-17T13:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b0087b_318781f6",
+      "revId": "37bb3194c1902252861d2280baa2479d8d81de4b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
