@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "b2943371_9e51983b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-17T08:36:23Z",
+      "side": 1,
+      "message": "Gave it some more thought and don\u0027t think this will work either, as it breaks distributiveness, at least.\n\n(*1 | \"foo\") \u0026 string\n\nshould be `\"foo\"`, but with this rule I think it will be `1`.\n\nI don\u0027t think you can get around some kind of normalization, if only to make it easier to prove the approach has the ACID properties. This approach may be easy to explain, but it took me a while to comprehend it within terms of the formalism.",
+      "parentUuid": "02fa24bb_22cb6751",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
