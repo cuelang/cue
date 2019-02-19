@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "430b1eb7_b47abc44",
+        "filename": "cue/binop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-19T07:12:43Z",
+      "side": 1,
+      "message": "Both are correct. \nNote that 3*[1] \u003d\u003e [1, 1, 1]\n\nThen analogously:\n5*[int] \u0026 [1, 2, ...] \u003d\u003e\n[int, int, int, int, int] \u0026 [1, 2, ...] \u003d\u003e\n[int\u00261, int\u00262, int, int, int] \u003d\u003e\n[1, 2, int, int, int] // (the 1 and 2 are internally int only. I should render that differently)",
+      "parentUuid": "4da2093a_ab34d212",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 65
+      },
+      "revId": "853cde4759ebfbed46972caf957561fc772dc1d4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dc2d48b_f795a511",
         "filename": "cue/resolve_test.go",
         "patchSetId": 1
