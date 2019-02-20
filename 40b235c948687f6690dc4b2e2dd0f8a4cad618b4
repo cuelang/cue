@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "c2496812_9e4ae411",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-20T01:16:33Z",
+      "side": 1,
+      "message": "I see, the resolution comes from the second phase. \n\nDo you think one can prove this approach is associative, commutative, idempotent and distributive?\n\nThe problem with a non-algebraic approach is that it is hard to reason about in implementations and it may limit flexibility in order of evaluation. Also, two-phase evaluation is somewhat cumbersome.\n\nSo just to be clear and see if I understand: \na: *1 | 2\na: 1 | 2\n\nwould evaluate to\n(*1 | 2) \u0026 (1 | 2) \u003d\u003e  \nstep1: 1 \u0026 _|_ \u003d\u003e _|_ \nstep2: (1 | 2) \u0026 (1 | 2) \u003d\u003e (1 | 2)\n\nIt seems a bit unfortunate that defaults marks can be erased like this. A template may define an enum of values without a default while a specialization of that template may want to add a default value.",
+      "parentUuid": "5a750057_f0a34265",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
