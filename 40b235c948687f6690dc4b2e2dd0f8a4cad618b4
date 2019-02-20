@@ -181,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "162466b4_283a4b4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-02-20T02:16:48Z",
+      "side": 1,
+      "message": "\u003e Do you think one can prove this approach is associative, commutative, idempotent and distributive?\n\nI\u0027ll think about that. (I\u0027m on vacation this week—-perfect time to do it!)\n\n  (*1 | 2) \u0026 (1 | 2) \u003d\u003e\nstep 1: drop non-marked elements of a disjunction that has marked elements:\n   1 \u0026 (1 | 2) \u003d\u003e 1\nso the answer is 1.",
+      "parentUuid": "c2496812_9e4ae411",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
