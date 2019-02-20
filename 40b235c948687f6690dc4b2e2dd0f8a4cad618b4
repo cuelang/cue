@@ -199,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "a763047b_43484338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-20T09:21:25Z",
+      "side": 1,
+      "message": "That was not clear from the definition.\n\nSo, I think this is the same as saying that marks are \"non-sticky\", and that any conjunct that has no marks is implicitly marked (i.e. for a disjunction without marks, all values are marked, all other non-disjunctions are implicitly marked as well).\n\nA different way to view this altogether: \n\nEach value x is really two lattice points, say (v, d) where v subsumes d, and where d is referred to as the default. (v1, d1) \u0026 (v2, d2) is (v1\u0026v2, d1\u0026d2). Note that as v1\u0026v2 subsumes d1\u0026d2, the subsumption property is preserved without requiring any additional definitions. During manifestation, d is taken if it is not bottom, otherwise v is taken.\nA unification of x1 and x2 succeeds if v1\u0026v2 is not bottom.\n\nSyntactically, default values can be introduced with disjunctions, where the value pair is (all disjuncts, marked disjuncts) if a disjunctions has marks or (all disjuncts, all disjuncts) otherwise.\n\nI think this gives exactly the properties you want. It is trivially clear that default values will become more specific after unifying any two values. For instance, (int, \u003c\u003d5) \u0026 (int, \u003e\u003d5) \u003d\u003e (int, 5). Also (1|2) \u0026 (*1|2) becomes (1|2, 1|2) \u0026 (1|2, 1) \u003d\u003e (1|2, 1).\n\nIt also, except for syntax, completely separates the notion of defaults from disjunctions. Normalization of disjunctions is now a matter separate from normalization of default values. For instance, (\u003e\u003d5 | int, \u003e\u003d5 | 10) can trivially be normalized to (int, \u003e\u003d5) without having to worry about marks and what they mean.\n\nIn general, one could (roughly) view evaluation now as doing two evaluations in parallel using regular unification, without worrying about the concept of defaults. Sort of like the AMT tax, but picking the best option instead of the worst, and more fun. :)",
+      "parentUuid": "162466b4_283a4b4d",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -263,6 +281,41 @@
       "side": 1,
       "message": "I mean denotes, in the semantics. The lattice point that the expression represents. Hopefully that is also what the interpreter evaluates the expression to.",
       "parentUuid": "91b774da_54bae154",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168fa8d7_365ec36a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-20T09:21:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50223440_966259a0",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c1bbf5_ac2a7c4f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-20T09:21:25Z",
+      "side": 1,
+      "message": "Would this not be \"tcp\" | \"udp\"?",
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
