@@ -319,6 +319,24 @@
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eecf54d_699662dd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-20T18:20:14Z",
+      "side": 1,
+      "message": "Never mind, considering your other response.",
+      "parentUuid": "69c1bbf5_ac2a7c4f",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
