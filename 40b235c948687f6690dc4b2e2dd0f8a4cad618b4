@@ -217,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "99fc0d43_2e1298d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-21T12:34:07Z",
+      "side": 1,
+      "message": "Regarding the alternative view, one could even conceptually separate the marks from disjunctions:\n\nIn this case, a value v _may_ be associated with a default, denoted (v, d) (not CUE syntax). The rules would then be (all associative and commutative):\n\n (v1, d1) \u0026 v2       \u003d\u003e (v1\u0026v2, d1\u0026v2)\n (v1, d1) \u0026 (v2, d2) \u003d\u003e (v1\u0026v2, d1\u0026d2)\n\n (v1, d1) | v2       \u003d\u003e (v1|v2, d1)\n (v1, d1) | (v2, d2) \u003d\u003e (v1|v2, d1|d2)\n\n(In text: \nAny value `v` may be associated with a default value `d`, denoted `(v, d)` (not CUE syntax),\nwhere `d` must be in instance of `v` (`d ⊑ v`).\nThe rules for unifying and disjoining such values are as follows:\n\n  \u003cas above\u003e\n\nFor any other operation, such as arithmetic expressions, indices, slices, and selectors,\nthe value `(v, d)` yields `d` if it is not bottom, or `v` otherwise.\n)\n\nRules for markers:\n\n // only allowed in disjunction, but otherwise independent:\n *v        \u003d\u003e (v, v)  \n *(v1, d1) \u003d\u003e (v1, d1)  (noop)\n\n\n(In text: \nDefault values may be introduced within disjunctions. The terms of a disjunction may be marked with an asterisk `*`. Such a marker sets the default value of that value to itself, making it a default over non-marked disjuncts. The marker has no effect if a value already has an associated default.\n)\n\nThese two pieces of text would be sufficient. No need to talk about normalization in conjunction with defaults (as in your proposal) or rules for how marks carry over. Markers are only used to relate syntax to semantics, but are not involved at all in resolution itself. Operations on defaults can be defined in terms of binary expressions, instead of considering a sequence of disjuncts in its entirety. The latter always made me a bit squeamish.\n\nI think this writeup is semantically equivalent to your proposal, but as I find reasoning about markers quite tricky, I am not sure.\n\nIt may be good to also mention the rules of subsumption, which we do not do now.  \nRules of subsumption are quite easy\n\n- (v2, d2) ⊑ (v1, d1)  if v2 ⊑ v1 and d2 ⊑ d1\n- (v1, d1) ⊑ v         if v1 ⊑ v (note that by definition d1 ⊑ v1, so d1 ⊑ v1 ⊑ v)\n- v ⊑ (v1, d1)         if v ⊑ d1\n\nthe last one is so restrictive as v could still be made more specific by associating it with a default that is not subsumed by d1. Proof: \nby definition for any d ⊑ v, it holds that (v, d) ⊑ v, where the most general value is (v, v).\nGiven the subsumption rule for (v2, d2) ⊑ (v1, d1), from (v, v) ⊑ v ⊑ (v1, d1) it follows that v ⊑ d1 exactly defines the boundary of this subsumption.\n\nI\u0027m not sure about the noop rule, but had to pick something.\n\n *(a | *b) | (c | *d) \u003d\u003e (a|b|c|d, b|d) // not (a|b|c|d, a|b|d)\n *(a | *b) | c        \u003d\u003e (a|b|c, b)\n  (a | *b) | *c       \u003d\u003e (a|b|c, b|c)\n\nseems reasonable, but variants are possible. Maybe not ideal, but it is a simple rule.\n\nNote that defaults are preserved across references:\n\n a: int | *1\n b: a | *2   \u003d\u003e (int|1|2, 1|2) \u003d\u003e (int, 1|2)\n\nAlso note:\n\n a: int | *1\n b: int | *2\n c: a \u0026 b \u003d\u003e int | *_|_ (note the importance of the the last term)\n d: c | *3 \u003d\u003e (int| _|_ |3, _|_ | 3) \u003d\u003e (int, 3)\n\nAll seems quite reasonable.\n\nPeople will get funky. For instance, to discard a default:\n\n a: int | *1       // (int, 1)\n b: a \u0026 (_ | *_|_) // set default to bottom (int, 1) \u0026 (_, _|_) \u003d\u003e (int, _|_)\n c: b | *2         // set new default: (int, _|_) | (2, 2) \u003d\u003e (int|2, _|_|2) \u003d\u003e (int, 2)\n d: b | *b         // allow any default again in unification \u003d\u003e (int, int)\n\nor just\n\n c: (a \u0026 (_|*_|_)) | *2\n\nor\n\n ClearDefault \u003d *_|_ | _  // need to ensure formatter adds spaces to *_|_|_ :)\n c: ClearDefault\u0026a | *2\n\nAll not that great, but as far as abuse goes, it could be worse (one cannot set a new default for an existing field, of course, as it will be unified right back in).",
+      "parentUuid": "a763047b_43484338",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -302,6 +320,23 @@
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f9154a8_cc56a0d5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-02-21T12:34:07Z",
+      "side": 1,
+      "message": "Normalization is still relevant even if no defaults are involved. In this example, {a:1} is equivalent to the result, and it would be weird and logically wrong to treat it differently.\n\nWithout the interaction with defaults, this could arguably be seen as an implementation detail. But I think it is good to at least informally remark on it, for example by leaving this paragraph in possibly rephrasing it as:\n\nA disjunction is _normalized_ if there is no element\n`a` for which there is an element `b` such that `a ⊑ b`.\nA disjunction literal must be normalized, where marked elements are exempted from this rule as long as a disjunction defined by multiple marked disjuncts is itself normalized.\n\nThis rephrasing is a bit longer, but decouples the notion of normalization of disjunctions from markers and default values. The first sentence could be in the section of disjunction, whereas the second sentence could be put in the section about defaults. Notice the distinction here between disjunctions (the concept) and disjunction literals, where the latter allows markers defining default values whereas these are irrelevant to the former.\n\nThe second sentence forbids code like:\n\na: float | 1.0\nb: float | *\u003c\u003d5.0 | *1.0\n\netc. which seems like a good idea, as this will likely be an error and there is no good use for such definitions otherwise.",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     },
     {
       "key": {
