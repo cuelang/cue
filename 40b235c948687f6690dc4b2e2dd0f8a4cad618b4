@@ -235,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "f4dad21b_4a693bf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-02T21:30:27Z",
+      "side": 1,
+      "message": "\u003e I think this writeup is semantically equivalent to your proposal\n\nYes, I think it\u0027s a more elegant way to describe it. I think everything you have matches my more mechanical description, including the noop rule.\n\n\u003e Such a marker sets the default value of that value to itself, making it a default over non-marked disjuncts. \n\nThis is unclear. Maybe: \"The default value of a disjunction with marked terms is the disjunction of those marked terms.\" And immediately follow with a simple example.\n\nI don\u0027t know if clearing a default is necessarily abuse. Maybe it\u0027s a good thing?",
+      "parentUuid": "99fc0d43_2e1298d1",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
