@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "352f943a_1f526a48",
+        "filename": "doc/ref/resolve-proof.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-14T12:54:28Z",
+      "side": 1,
+      "message": "Would you not say that with the alternative alternative definition I gave the marks *are* distributive wrt default values?\nI think the key difference is that the evaluation does not consider marks at all.\n\nI think the default values are distributive fo the case \u0026 and |.\nsyntax:\n*a \u0026 (*b | c) // siq, invalid CUE\n\nsemantics:\n  (a, a) \u0026 (b|c, b)\n\u003d (a\u0026b|a\u0026c, a\u0026b)\n\nAnd\n  (*a \u0026 *b) | (*a \u0026 c) // siq, invalid CUE\n\u003d ((a, a) \u0026 (b, b)) | ((a, a) \u0026 c)\n\u003d (a\u0026b, a\u0026b) | (a\u0026c, a\u0026c)\n\u003d (a\u0026b|a\u0026c, a\u0026b|a\u0026c)\n\nDistributiveness indeed does not hold for all operators other than \u0026 and |:\n\nConsider\n\n  ((a, b) | (c, d)) op (e, f)\n\u003d (a, b) op (e, f) | (c, d) op (e, f)\n\u003d b\u0027 op f\u0027 | d\u0027 op f\u0027 ((for (x, y) y\u0027 is y if y is not _|_ or x otherwise)\n\n  ((a, b) | (c, d)) op (e, f)\n\u003d (a|c, b|d) op (e, f)\n\u003d (b|d)\u0027 op f\u0027\n\nb\u0027 op f\u0027 | d\u0027 op f\u0027 \u003d\u003d (b|d)\u0027 op f\u0027\n\nfor any arithmetic op, as b|d must be a concrete values for this to resolve, assuming that a concrete value is required in the end. But this is not the case for integer division.\n\nSo, concretely, a counter example is:\n\n  (int, 1) | (int, 2) div (int, 3)\n\u003d (int, 1|2) div (int, 3)\n\u003d (1|2) div 3\n\u003d _|_ // division on non-concrete value\nwhile with distribution:\n\u003d (int, 1) div (int, 3) | (int, 2) div (int, 3)\n\u003d 1 div 3 | 2 div 3\n\u003d 0 | 0\n\u003d 0\n\n\nFor most concrete algorithms, however, having distributiveness for \u0026 and | is key and as far as I can tell this property is still preserved for these operations.\n\nFor the general case:\n  ((a1, a2) | (b1, b2)) \u0026 (c1, c2)\n\u003d (a1|b1, a2|b2) \u0026 (c1, c2)\n\u003d ((a1|b1)\u0026c1, (a2|b2)\u0026c2)\n\u003d (a1\u0026c1 | b1\u0026c1, a2\u0026c2 | b2\u0026c2)\nvs\n\u003d ((a1, a2) \u0026 (c1, c2)) | ((b1, b2) \u0026 (c1, c2))\n\u003d (a1\u0026c1, a2\u0026c2) | (b1\u0026c1, b2\u0026c2)\n\u003d (a1\u0026c1 | b1\u0026c1, a2\u0026c2 | b2\u0026c2)\n\nAnd\n\n  ((a1, a2) \u0026 (b1, b2)) | (c1, c2)\n\u003d (a1\u0026b1, a2\u0026b2) | (c1, c2)\n\u003d ((a1\u0026b1)|c1, (a2\u0026b2)|c2)\n\u003d ((a1|c1) \u0026 (b1|c1), (a2|c2) \u0026 (b2|c2))\nvs\n\u003d ((a1, a2) | (c1, c2)) \u0026 ((b1, b2) | (c1, c2))\n\u003d (a1|c1, a2|c2) \u0026 (b1|c1, b2|c2)\n\u003d ((a1|c1) \u0026 (b1|c1), (a2|c2) \u0026 (b2|c2))\n\nAnd\n\n  ((a1, a2) | (b1, b2)) \u0026 ((c1, c2) | (d1, d2))\n\u003d (a1|b1, a2|b2) \u0026 (c1|d1, c2|d2)\n\u003d ((a1|b1) \u0026 (c1|d1), (a2|b2) \u0026 (c2|d2))\n\u003d (a1\u0026(c1|d1) | b1\u0026(c1|d1), a2\u0026(c2|d2) | (b2\u0026(c2|d2))\nvs\n\u003d ((a1, a2) \u0026 ((c1, c2) | (d1, d2))) | ((b1, b2) \u0026 ((c1, c2) | (d1, d2)))\n\u003d ((a1, a2)\u0026(c1, c2) | (a1, a2)\u0026(d1, d2)) | ((b1, b2)\u0026(c1, c2) | (b1, b2)\u0026(d1, d2)) \n\u003d ((a1\u0026c1, a2\u0026c2) | (a1\u0026d1, a2\u0026d2)) | ((b1\u0026c1, b2\u0026c2) | (b1\u0026d1, b2\u0026d2)) \n\u003d (a1\u0026(c1|d1), a2\u0026(c2|d2)) | (b1\u0026(c1|d1), b2\u0026(c2|d2))\n\u003d (a1\u0026(c1|d1) | b1\u0026(c1|d1), a2\u0026(c2|d2) | (b2\u0026(c2|d2))",
+      "revId": "b84b95904c737e5b104ae9c50225662ca51915ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
