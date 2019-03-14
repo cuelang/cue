@@ -253,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "f0e3c6f5_f13426ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-14T14:53:30Z",
+      "side": 1,
+      "message": "I\u0027ll write this all up in a separate CL.\n\nAgreed that being able to clear a default is not necessarily bad, and maybe good.",
+      "parentUuid": "f4dad21b_4a693bf9",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08ca72f5_6f11fd78",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -390,6 +408,24 @@
       "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401f121f_95a4680b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-14T14:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eecf54d_699662dd",
+      "revId": "40b235c948687f6690dc4b2e2dd0f8a4cad618b4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
