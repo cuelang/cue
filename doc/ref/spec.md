@@ -982,12 +982,18 @@ field and is visible within the template value.
 ```
 StructLit     = "{" [ { Declaration "," } Declaration ] "}" .
 Declaration   = FieldDecl | AliasDecl | ComprehensionDecl .
-FieldDecl     = Label { Label } ":" Expression .
+FieldDecl     = Label { Label } ":" Expression [ Attributes ].
 
 AliasDecl     = Label "=" Expression .
 Label         = identifier | simple_string_lit | TemplateLabel .
 TemplateLabel = "<" identifier ">" .
-Tag           = "#" identifier [ ":" json_string ] .
+
+Attributes    = { attribute }
+attribute     = "@" identifier "(" { attr_string ","} attr_string ")" .
+
+attr_char   = /* an arbitrary Unicode code point except newline, ',', '"', and ')' */ .
+attr_escape = '"' { unicode_value } '"' .
+attr_string = { attr_char | attr_escape }
 ```
 
 ```
@@ -1012,6 +1018,41 @@ Expression                             Result
 {a: 1, b: int} & {b: 2}                {a: 1, b: int(2)}
 
 {a: 1} & {a: 2}                        _|_
+```
+
+Fields may be associated with attributes.
+Attributes define additional information about a field,
+such as a mapping to a protobuf tag or alternative
+name of the field when mapping to a different language.
+
+A field may be associated with more than one attribute with the
+same identifier,
+although those with identical values are removed.
+Attributes are not directly part of the data model, but may be
+accessed through the API or other means of reflection.
+The interpretation of the attribute value
+(a comma-separated list of strings) depends on the attribute.
+
+The recommended convention, however, is to interpret the first
+`n` arguments as positional arguments,
+where duplicate conflicting entries are an error,
+and the remaining arguments as a combination of flags
+(an identifier) and key value pairs, separated by a `=`.
+
+```
+MyStruct1: {
+    field: string @go(Field)
+    attr:  int    @xml(,attr) @go(Attr)
+}
+
+MyStruct2: {
+    field: string @go(Field)
+    attr:  int    @xml(a1,attr) @go(Attr)
+}
+
+Combined: MyStruct1 & MyStruct2
+// field: string @go(Field)
+// attr:  int    @xml(,attr) @xml(a1,attr) @go(Attr)
 ```
 
 In addition to fields, a struct literal may also define aliases.
