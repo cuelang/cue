@@ -351,6 +351,39 @@ func TestParse(t *testing.T) {
 	}
 }
 
+func TestParseErrors(t *testing.T) {
+	testCases := []struct {
+		desc, in, out string
+		err           error
+	}{{
+		"one dot too little",
+		`
+		package foo
+
+		a: { b: [..bytes] }
+		`,
+		"[...]", nil,
+	}, {
+		"empty struct", "{}", "{}", nil,
+	}}
+	for _, tc := range testCases {
+		t.Run(tc.desc, func(t *testing.T) {
+			fset := token.NewFileSet()
+			mode := []Option{AllErrors}
+			if strings.Contains(tc.desc, "comments") {
+				mode = append(mode, ParseComments)
+			}
+			f, err := ParseFile(fset, "input", tc.in, mode...)
+			if err != tc.err {
+				t.Errorf("error:\n got %v;\nwant %v", err, tc.err)
+			}
+			if got := debugStr(f); got != tc.out {
+				t.Errorf("\ngot  %q;\nwant %q", got, tc.out)
+			}
+		})
+	}
+}
+
 func TestParseExpr(t *testing.T) {
 	// just kicking the tires:
 	// a valid arithmetic expression
