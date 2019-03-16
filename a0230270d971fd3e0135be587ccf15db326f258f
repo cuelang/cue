@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0eecc7b_aa6a58dc",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-16T11:33:34Z",
+      "side": 1,
+      "message": "So to include a comma in a string I would write\n\n  @foo(a\",\"b, c)\n\nThat\u0027s an unusual syntax that doesn\u0027t correspond to anything else in the language. What about just using backslashes instead?",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 41
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1ffb77_97f43b48",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-16T11:33:34Z",
+      "side": 1,
+      "message": "Be more precise. They don\u0027t have the syntax of strings. Maybe distinguish the internal representation, []string, from the syntax.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 27,
+        "endLine": 1034,
+        "endChar": 34
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a103d2_9f7ddeaa",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-16T11:33:34Z",
+      "side": 1,
+      "message": "You need a sentence in the spec saying how unification concatenates attributes.",
+      "range": {
+        "startLine": 1054,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 52
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
