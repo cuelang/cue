@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae9a3dd6_70eb07e4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-17T15:30:23Z",
+      "side": 1,
+      "message": "It\u0027s a bit how bash works. It seems to be a useful approach for fairly free form strings. For instance, it would allow @foo(a, b, name\u003d\",\").\n\nBackslashes doesn\u0027t seem to be nice or natural in the latter case.\n\nBut maybe the better approach is to leave it completely free form, like Go (but then per attribute). I\u0027ll consider this.\n\nAnother approach would be to add _more_ structure, something like:\n\nAttributes   \u003d { Attribute } .\nAttribute    \u003d attr_ident \"(\" { attr_elem \",\"} attr_elem \")\" .\nattr_elem    \u003d  attr_string | identifier \"\u003d\" attr_string .\nattr_ident   \u003d \"@\" identifier .\nattr_string  \u003d { attr_char } | string_lit .\n \nThis is a bit more opinionated than free form, but it still allows some free form, while describing the vast majority of cases in a structured (and informative) way.\n\nInterpolation would be disallowed, but it may be useful to have general string capabilities.\n\nYet another approach would be:\nAttributes   \u003d { attribute } .\nattribute    \u003d \"@\" identifier \"(\" { attr_char } \")\" .\nattr_char   \u003d /* an arbitrary Unicode code point except newline and \u0027)\u0027 */ .\n\nBut that would not be backwards compatible with adding string capabilities later.",
+      "parentUuid": "c0eecc7b_aa6a58dc",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 41
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1ffb77_97f43b48",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-03-16T11:33:34Z",
       "side": 1,
       "message": "You need a sentence in the spec saying how unification concatenates attributes.",
+      "range": {
+        "startLine": 1054,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 52
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1d2389_10bf8b3f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-17T15:30:23Z",
+      "side": 1,
+      "message": "I describe that above. They behave like a set, duplicate entries for a single attribute are removed, but otherwise all variants are retained as is. What to do with multiple differing values is up to the interpretation. In most cases it will be an error.\n\nIt will be hard to have a standard way to dedup: a typical attribute would make the first \"n\" arguments positional, while the rest are flags or key-value pairs, where n varies per attribute.\nThis convention seems to be fairly standard across languages (Go, C#, Swift, etc.) The issue is, of course that \"n\" varies per attribute.\n\nI could also just require that attributes with the same identifier be unique for now. It will be useful, though, to be able to add attributes of different kinds. Not being able to do so is annoying in Go and would be more so in CUE.",
+      "parentUuid": "b2a103d2_9f7ddeaa",
       "range": {
         "startLine": 1054,
         "startChar": 3,
