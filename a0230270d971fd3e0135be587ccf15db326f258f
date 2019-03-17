@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bf91575f_88b22a93",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-17T23:55:12Z",
+      "side": 1,
+      "message": "I think I like \n  attr_string  \u003d { attr_char } | string_lit \n\nThat almost means that you can write any string the same way you do in the rest of the language, but there\u0027s a shorthand syntax that lets you omit the quotation marks when the string literal is simple enough.",
+      "parentUuid": "ae9a3dd6_70eb07e4",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 41
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e1ffb77_97f43b48",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "I describe that above. They behave like a set, duplicate entries for a single attribute are removed, but otherwise all variants are retained as is. What to do with multiple differing values is up to the interpretation. In most cases it will be an error.\n\nIt will be hard to have a standard way to dedup: a typical attribute would make the first \"n\" arguments positional, while the rest are flags or key-value pairs, where n varies per attribute.\nThis convention seems to be fairly standard across languages (Go, C#, Swift, etc.) The issue is, of course that \"n\" varies per attribute.\n\nI could also just require that attributes with the same identifier be unique for now. It will be useful, though, to be able to add attributes of different kinds. Not being able to do so is annoying in Go and would be more so in CUE.",
       "parentUuid": "b2a103d2_9f7ddeaa",
+      "range": {
+        "startLine": 1054,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 52
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78290f88_018ff2b9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-17T23:55:12Z",
+      "side": 1,
+      "message": "\u003e I describe that above.\n\nYou describe the set-like nature of the attribute list, but you don\u0027t say that unification concatenates attributes. I don\u0027t think that follows from any other statements.",
+      "parentUuid": "2d1d2389_10bf8b3f",
       "range": {
         "startLine": 1054,
         "startChar": 3,
