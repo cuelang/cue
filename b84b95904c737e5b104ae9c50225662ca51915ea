@@ -16,6 +16,24 @@
       "revId": "b84b95904c737e5b104ae9c50225662ca51915ea",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14601bc9_e639c286",
+        "filename": "doc/ref/resolve-proof.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-17T12:56:45Z",
+      "side": 1,
+      "message": "\u003e *a \u0026 (*b | c) // siq, invalid CUE\nsemantics:\n  (a, a) \u0026 (b|c, b)\n\u003d (a\u0026b|a\u0026c, a\u0026b)\nAnd\n  (*a \u0026 *b) | (*a \u0026 c) // siq, invalid CUE\n\u003d ((a, a) \u0026 (b, b)) | ((a, a) \u0026 c)\n\u003d (a\u0026b, a\u0026b) | (a\u0026c, a\u0026c)\n\u003d (a\u0026b|a\u0026c, a\u0026b|a\u0026c)\n\nYou get different answers here but you prove the general case below, so something is wrong.\n\nIt\u0027s where you go from \n  (a, a) \u0026 c \nto\n  (a\u0026c, a\u0026c)\nI think an unmarked element should be represented as (c, _|_), so this should be\n   (a, a) \u0026 (c, _|_)\n\u003d  (a\u0026c, _|_)\nThat will give the same answer.\n\nSo I was wrong before when I said our two ideas were equivalent. Your semantics is better because it\u0027s clearer and has this distributive property. I can\u0027t think of a case where mine gives a more intuitive answer.\n\nI\u0027ll abandon this CL but you should write up the semantics in the spec.",
+      "parentUuid": "352f943a_1f526a48",
+      "revId": "b84b95904c737e5b104ae9c50225662ca51915ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
