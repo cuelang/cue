@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dfd7de33_a61ca6a0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-18T20:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf91575f_88b22a93",
+      "range": {
+        "startLine": 994,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 41
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e1ffb77_97f43b48",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2019-03-16T11:33:34Z",
       "side": 1,
       "message": "Be more precise. They don\u0027t have the syntax of strings. Maybe distinguish the internal representation, []string, from the syntax.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 27,
+        "endLine": 1034,
+        "endChar": 34
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca3f2c6_de0a5246",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-18T20:24:09Z",
+      "side": 1,
+      "message": "Done, I think.",
+      "parentUuid": "8e1ffb77_97f43b48",
       "range": {
         "startLine": 1034,
         "startChar": 27,
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "\u003e I describe that above.\n\nYou describe the set-like nature of the attribute list, but you don\u0027t say that unification concatenates attributes. I don\u0027t think that follows from any other statements.",
       "parentUuid": "2d1d2389_10bf8b3f",
+      "range": {
+        "startLine": 1054,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 52
+      },
+      "revId": "a0230270d971fd3e0135be587ccf15db326f258f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa801962_3cc4bf6d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-03-18T20:24:09Z",
+      "side": 1,
+      "message": "got it. changed",
+      "parentUuid": "78290f88_018ff2b9",
       "range": {
         "startLine": 1054,
         "startChar": 3,
