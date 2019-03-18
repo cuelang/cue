@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc158830_5f79ec8c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-18T21:25:04Z",
+      "side": 1,
+      "message": "remove \"a\"",
+      "range": {
+        "startLine": 992,
+        "startChar": 38,
+        "endLine": 992,
+        "endChar": 39
+      },
+      "revId": "52d9d9ff26fe61485aeb7167a52799a33e5df40c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
