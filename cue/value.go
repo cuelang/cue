@@ -162,8 +162,8 @@ func (b baseValue) base() baseValue {
 	return b
 }
 
-func (x baseValue) strValue() string { panic("unimplemented") }
-func (x baseValue) returnKind() kind { panic("unimplemented") }
+func (b baseValue) strValue() string { panic("unimplemented") }
+func (b baseValue) returnKind() kind { panic("unimplemented") }
 
 // top is the top of the value lattice. It subsumes all possible values.
 type top struct{ baseValue }
@@ -672,9 +672,11 @@ func (x *structLit) expandFields(ctx *context) *structLit {
 	emit := x.emit
 	template := x.template
 	newArcs := []arc{}
+	optional := false
 
 	for _, c := range comprehensions {
-		result := c.clauses.yield(ctx, func(k, v evaluated) *bottom {
+		result := c.clauses.yield(ctx, func(k, v evaluated, opt bool) *bottom {
+			optional = opt
 			if !k.kind().isAnyOf(stringKind) {
 				return ctx.mkErr(k, "key must be of type string")
 			}
@@ -727,11 +729,12 @@ outer:
 						ctx.labelStr(f))
 				} else {
 					x.arcs[i].v = mkBin(ctx, x.Pos(), opUnify, a.v, na.v)
+					x.arcs[i].optional = x.arcs[i].optional && optional
 				}
 				continue outer
 			}
 		}
-		x.arcs = append(x.arcs, arc{feature: f, v: na.v})
+		x.arcs = append(x.arcs, arc{feature: f, optional: optional, v: na.v})
 	}
 	sort.Stable(x)
 	return x
@@ -762,11 +765,17 @@ const hidden label = 0x01 // only set iff identifier starting with $
 // however, may have both. In this case, the value must ultimately evaluate
 // to a node, which will then be merged with the existing one.
 type arc struct {
-	feature label
+	feature  label
+	optional bool
 
 	v     value
 	cache evaluated // also used as newValue during unification.
 	attrs *attributes
+}
+
+func (a *arc) setValue(v value) {
+	a.v = v
+	a.cache = nil
 }
 
 type arcInfo struct {
@@ -777,15 +786,18 @@ type arcInfo struct {
 var hiddenArc = &arcInfo{hidden: true}
 
 // insertValue is used during initialization but never during evaluation.
-func (x *structLit) insertValue(ctx *context, f label, value value, a *attributes) {
+func (x *structLit) insertValue(ctx *context, f label, optional bool, value value, a *attributes) {
 	for i, p := range x.arcs {
 		if f != p.feature {
 			continue
 		}
 		x.arcs[i].v = mkBin(ctx, token.NoPos, opUnify, p.v, value)
+		// TODO: should we warn if there is a mixed mode of optional and non
+		// optional fields at this point?
+		x.arcs[i].optional = x.arcs[i].optional && optional
 		return
 	}
-	x.arcs = append(x.arcs, arc{feature: f, v: value, attrs: a})
+	x.arcs = append(x.arcs, arc{f, optional, value, nil, a})
 	sort.Stable(x)
 }
 
@@ -855,7 +867,7 @@ func (x *params) add(f label, v value) {
 	if v == nil {
 		panic("nil node")
 	}
-	x.arcs = append(x.arcs, arc{f, v, nil, nil})
+	x.arcs = append(x.arcs, arc{feature: f, v: v})
 }
 
 func (x *params) iterAt(ctx *context, i int) (evaluated, value) {
@@ -917,7 +929,7 @@ func (x *lambdaExpr) call(ctx *context, p source, args ...evaluated) value {
 		if isBottom(v) {
 			return v
 		}
-		arcs[i] = arc{a.feature, v, v, nil}
+		arcs[i] = arc{feature: a.feature, v: v, cache: v}
 	}
 	lambda := &lambdaExpr{x.baseValue, &params{arcs}, nil}
 	defer ctx.pushForwards(x, lambda).popForwards()
@@ -1099,7 +1111,7 @@ func (x *fieldComprehension) kind() kind {
 	return topKind | nonGround
 }
 
-type yieldFunc func(k, v evaluated) *bottom
+type yieldFunc func(k, v evaluated, optional bool) *bottom
 
 type yielder interface {
 	value
@@ -1108,6 +1120,7 @@ type yielder interface {
 
 type yield struct {
 	baseValue
+	opt   bool
 	key   value
 	value value
 }
@@ -1128,7 +1141,7 @@ func (x *yield) yield(ctx *context, fn yieldFunc) evaluated {
 	if isBottom(v) {
 		return v
 	}
-	if err := fn(k, v); err != nil {
+	if err := fn(k, v, x.opt); err != nil {
 		return err
 	}
 	return nil

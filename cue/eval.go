@@ -241,7 +241,7 @@ func (x *list) evalPartial(ctx *context) (result evaluated) {
 
 func (x *listComprehension) evalPartial(ctx *context) evaluated {
 	list := &list{baseValue: x.baseValue}
-	result := x.clauses.yield(ctx, func(k, v evaluated) *bottom {
+	result := x.clauses.yield(ctx, func(k, v evaluated, _ bool) *bottom {
 		if !k.kind().isAnyOf(intKind) {
 			return ctx.mkErr(k, "key must be of type int")
 		}
