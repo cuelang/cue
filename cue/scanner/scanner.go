@@ -836,6 +836,9 @@ scanAgain:
 		case ';':
 			tok = token.SEMICOLON
 			insertEOL = true
+		case '?':
+			tok = token.OPTION
+			insertEOL = true
 		case '.':
 			if '0' <= s.ch && s.ch <= '9' {
 				insertEOL = true
