@@ -46,6 +46,30 @@
       "revId": "b02e78ebbcd354a20ede191f2bf4d54caa37763c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86edb42_5638b337",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-31T10:48:22Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "895146b5_26d8abd5",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 707,
+        "endChar": 3
+      },
+      "revId": "b02e78ebbcd354a20ede191f2bf4d54caa37763c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
