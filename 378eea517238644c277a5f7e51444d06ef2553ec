@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca5dedfc_13931d19",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-31T11:06:49Z",
+      "side": 1,
+      "message": "Is other whitespace already excluded somehow? Otherwise the following is valid:\n\n  @foo(\u003cspace\u003e\u003ctab\u003e)\n\nYou might also consider excluding `\u003d`, just to avoid confusion in\n\n  @foo(x\u003dy\u003dz)",
+      "range": {
+        "startLine": 1001,
+        "startChar": 19,
+        "endLine": 1001,
+        "endChar": 101
+      },
+      "revId": "378eea517238644c277a5f7e51444d06ef2553ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634fd032_d2dd5987",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-03-31T11:06:49Z",
+      "side": 1,
+      "message": "\"accumulate\"",
+      "range": {
+        "startLine": 1034,
+        "startChar": 11,
+        "endLine": 1034,
+        "endChar": 22
+      },
+      "revId": "378eea517238644c277a5f7e51444d06ef2553ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
