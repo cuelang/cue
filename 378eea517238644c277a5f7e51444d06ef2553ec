@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f468e7c_27ec1e61",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-02T11:45:26Z",
+      "side": 1,
+      "message": "Yes, space is valid. I\u0027ve looked at Swift, for instance, where spaces are allowed in things like @version(cue 1.13).\n\nIn general these tags are quite free from. I thought about at least disallowing leading and trailing space, but that complicates the spec.\n\nDisallowing \u0027\u003d\u0027 seems reasonable and could always be allowed later if need be. Done",
+      "parentUuid": "ca5dedfc_13931d19",
+      "range": {
+        "startLine": 1001,
+        "startChar": 19,
+        "endLine": 1001,
+        "endChar": 101
+      },
+      "revId": "378eea517238644c277a5f7e51444d06ef2553ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "634fd032_d2dd5987",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "378eea517238644c277a5f7e51444d06ef2553ec",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6f235c3_d9f7cb76",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-02T11:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "634fd032_d2dd5987",
+      "range": {
+        "startLine": 1034,
+        "startChar": 11,
+        "endLine": 1034,
+        "endChar": 22
+      },
+      "revId": "378eea517238644c277a5f7e51444d06ef2553ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
