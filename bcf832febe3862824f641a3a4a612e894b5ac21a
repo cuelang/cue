@@ -46,6 +46,30 @@
       "revId": "bcf832febe3862824f641a3a4a612e894b5ac21a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08fce36e_c922ec4c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-06T21:31:34Z",
+      "side": 1,
+      "message": "or remove the comment, that is. :)",
+      "parentUuid": "dcc54b0d_10e88e3c",
+      "range": {
+        "startLine": 1279,
+        "startChar": 35,
+        "endLine": 1280,
+        "endChar": 73
+      },
+      "revId": "bcf832febe3862824f641a3a4a612e894b5ac21a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
