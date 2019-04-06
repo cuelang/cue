@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cb395c5_92048f25",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-06T12:10:20Z",
+      "side": 1,
+      "message": "I know Go is a stickler for having as few keywords as possible. But in practice I don\u0027t think it really matters. Just make it impossible to override `string`, `int` and so on. The language will be simpler and less prone to abuse.",
+      "range": {
+        "startLine": 1279,
+        "startChar": 35,
+        "endLine": 1280,
+        "endChar": 73
+      },
+      "revId": "bcf832febe3862824f641a3a4a612e894b5ac21a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
