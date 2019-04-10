@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "128e576c_50220be5",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "From the implementation, it seems like each time you call this on T, you replace the previous constraints with new ones.\n\nSo AddConstraints isn\u0027t the best name. How about just Constrain, which works nicely with the other simple verbs in this package: Update, Verify.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75fefb6_b1d0a346",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "How do you know which values are undefined?",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4778b4a5_f2890b00",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "missing struct fields",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e917d7_8d01067b",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e00d5d_bd38a66f",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "by the struct value.",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16262840_f6dfa537",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "What does \"opt\" mean? Maybe omit to start.",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8c6648_24d59b4a",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "These are just convenience functions. At this point they are just clutter because the reader is trying to understand the basic idea of the package.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62065fdd_fac5dbaa",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "I don\u0027t see these anywhere.",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce03a383_b0dd2a00",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "Or this.",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e8abc7_6700815a",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "\"To check whether a struct\u0027s values satisfy its constraints, call Validate:\n\n  if err :\u003d cuego.Validate(p); err !\u003d nil {\n     return err\n  }\n\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c558cd_bc873643",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-10T20:11:37Z",
+      "side": 1,
+      "message": "I don\u0027t understand what \"from an update\" adds to this sentence.",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
