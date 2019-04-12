@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cec5d95_b30f234f",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "It does add the constraints, actually. load retrieves the existing definition or the standard definition of the type if that doesn\u0027t exist. Add constraints then unifies the new constraints with the old ones (Add) and stores the new value.\n\nBut maybe Constrain is a better name even if it is additive?",
+      "parentUuid": "128e576c_50220be5",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75fefb6_b1d0a346",
         "filename": "cuego/cuego.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-10T20:11:37Z",
       "side": 1,
       "message": "How do you know which values are undefined?",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d59fee8_9de40215",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "Good question. A value is undefined if it is either a pointer type and it is nil or if it is a Go zero value and it has the json:\",omitempty\" tag.\n\nBut there are cases I found in the wild (Prometheus for instance), where the zero value is supposed to mean undefined, even though there is no json:\",omitempty\" tag. The K8s code, on the other hand, applies this consistently.",
+      "parentUuid": "b75fefb6_b1d0a346",
       "range": {
         "startLine": 91,
         "startChar": 26,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "ead90ca5_4cf8b107",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e917d7_8d01067b",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbbba9ff_743d81f9",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4778b4a5_f2890b00",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e00d5d_bd38a66f",
         "filename": "cuego/doc.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "c892c253fc98cb631f13c6d181b91841de176274",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e6a0ca_c3448029",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e00d5d_bd38a66f",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6ed604cf_1c058b86",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "Replaced it with the json:\",omitempty\". We somehow need to indicate that the zero value is interpreted as undefined.",
+      "parentUuid": "16262840_f6dfa537",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d8c6648_24d59b4a",
         "filename": "cuego/doc.go",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2019-04-10T20:11:37Z",
       "side": 1,
       "message": "These are just convenience functions. At this point they are just clutter because the reader is trying to understand the basic idea of the package.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98842a0d_3555f733",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "8d8c6648_24d59b4a",
       "range": {
         "startLine": 34,
         "startChar": 3,
@@ -243,6 +411,30 @@
       "writtenOn": "2019-04-10T20:11:37Z",
       "side": 1,
       "message": "I don\u0027t understand what \"from an update\" adds to this sentence.",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0316d6_e8665cba",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-12T20:52:52Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "45c558cd_bc873643",
       "range": {
         "startLine": 61,
         "startChar": 16,
