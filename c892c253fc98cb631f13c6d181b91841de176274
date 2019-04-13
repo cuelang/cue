@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5f3a4007_a0c5996b",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-13T23:09:23Z",
+      "side": 1,
+      "message": "Yes, I think it is.",
+      "parentUuid": "9cec5d95_b30f234f",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75fefb6_b1d0a346",
         "filename": "cuego/cuego.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Good question. A value is undefined if it is either a pointer type and it is nil or if it is a Go zero value and it has the json:\",omitempty\" tag.\n\nBut there are cases I found in the wild (Prometheus for instance), where the zero value is supposed to mean undefined, even though there is no json:\",omitempty\" tag. The K8s code, on the other hand, applies this consistently.",
       "parentUuid": "b75fefb6_b1d0a346",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5035a06_c55237df",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-13T23:09:23Z",
+      "side": 1,
+      "message": "OK, that seems reasonable, but you should add that clarification to this doc.",
+      "parentUuid": "6d59fee8_9de40215",
       "range": {
         "startLine": 91,
         "startChar": 26,
@@ -284,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "33a0f21f_2edc1826",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-13T23:09:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ed604cf_1c058b86",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d8c6648_24d59b4a",
         "filename": "cuego/doc.go",
         "patchSetId": 2
@@ -328,6 +400,30 @@
       "revId": "c892c253fc98cb631f13c6d181b91841de176274",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3555c57_74d27f76",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-13T23:09:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98842a0d_3555f733",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -444,6 +540,30 @@
       "revId": "c892c253fc98cb631f13c6d181b91841de176274",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c44c3f5_3bb665fd",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-13T23:09:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b0316d6_e8665cba",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
