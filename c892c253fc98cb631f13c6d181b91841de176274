@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f297869d_001dfc51",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T19:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3a4007_a0c5996b",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75fefb6_b1d0a346",
         "filename": "cuego/cuego.go",
         "patchSetId": 2
@@ -141,6 +165,30 @@
       "revId": "c892c253fc98cb631f13c6d181b91841de176274",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1efdcf_4488f875",
+        "filename": "cuego/cuego.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T19:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5035a06_c55237df",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -450,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "cf76509f_02ed89f9",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T19:35:26Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "62065fdd_fac5dbaa",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce03a383_b0dd2a00",
         "filename": "cuego/doc.go",
         "patchSetId": 2
@@ -473,6 +545,30 @@
     },
     {
       "key": {
+        "uuid": "31c9ef68_987ae983",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T19:35:26Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "ce03a383_b0dd2a00",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82e8abc7_6700815a",
         "filename": "cuego/doc.go",
         "patchSetId": 2
@@ -493,6 +589,30 @@
       "revId": "c892c253fc98cb631f13c6d181b91841de176274",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969048bd_4a23745e",
+        "filename": "cuego/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-04-17T19:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82e8abc7_6700815a",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "c892c253fc98cb631f13c6d181b91841de176274",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
