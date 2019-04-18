@@ -225,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "4ead4746_d2c1c7b1",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-18T13:18:04Z",
+      "side": 1,
+      "message": "Interestingly, there are a very few words in English where a final \"t\" can be used instead of an \"ed\" (although the usage looks old-fashioned, maybe even archaic):\n\n  learnt\n  spelt\n  \nThose are all I can think of offhand.",
+      "parentUuid": "47d6c68d_0a047c0b",
+      "revId": "90e4a58a9b9045a03f966a409172f213a9b6edb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6333790_99d67c37",
         "filename": "cmd/cue/cmd/get_go.go",
         "patchSetId": 3
@@ -304,6 +322,30 @@
       "revId": "90e4a58a9b9045a03f966a409172f213a9b6edb0",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a9b116_128807a6",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-18T13:18:04Z",
+      "side": 1,
+      "message": "Or I may just be pedantic. \n\nIf enough people spell something wrong, then eventually it becomes right.",
+      "parentUuid": "8444ea40_3e2f49e9",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "90e4a58a9b9045a03f966a409172f213a9b6edb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
