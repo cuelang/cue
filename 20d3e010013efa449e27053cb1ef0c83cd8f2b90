@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1addc2_ab437df1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "that",
+      "range": {
+        "startLine": 1405,
+        "startChar": 51,
+        "endLine": 1405,
+        "endChar": 66
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85421560_54fceb25",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "a copy",
+      "range": {
+        "startLine": 1405,
+        "startChar": 28,
+        "endLine": 1405,
+        "endChar": 33
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1163508c_47a732c2",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "they were",
+      "range": {
+        "startLine": 1408,
+        "startChar": 11,
+        "endLine": 1408,
+        "endChar": 16
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d03c2d3_e3be6364",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 1409,
+        "startChar": 20,
+        "endLine": 1409,
+        "endChar": 24
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1e73ae_716a1f1a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "or just \"must be concrete\", since everything unified with `int` is an integer.",
+      "range": {
+        "startLine": 1563,
+        "startChar": 35,
+        "endLine": 1563,
+        "endChar": 61
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5aa735f_c472a65d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "put this one first, say \"... or a list (which need not be complete)\" to clarify",
+      "range": {
+        "startLine": 1565,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 50
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b1dd55_ba675fd4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "You should move this to the definition of \"in range\" on line 1564.",
+      "range": {
+        "startLine": 1571,
+        "startChar": 65,
+        "endLine": 1572,
+        "endChar": 64
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed17d01_e4821ccb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "or \"must be concrete\"",
+      "range": {
+        "startLine": 1583,
+        "startChar": 38,
+        "endLine": 1583,
+        "endChar": 64
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ed4887_f849cdab",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1719,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-04-22T11:47:57Z",
+      "side": 1,
+      "message": "02 and 03 are implied by v \u003d\u003e (v, v) and 04.",
+      "range": {
+        "startLine": 1715,
+        "startChar": 1,
+        "endLine": 1719,
+        "endChar": 48
+      },
+      "revId": "20d3e010013efa449e27053cb1ef0c83cd8f2b90",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
