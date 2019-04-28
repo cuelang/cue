@@ -3,6 +3,7 @@ module cuelang.org/go
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/cockroachdb/apd v1.1.0
+	github.com/emicklei/proto v1.6.11
 	github.com/ghodss/yaml v1.0.0
 	github.com/google/go-cmp v0.2.0
 	github.com/lib/pq v1.0.0 // indirect
