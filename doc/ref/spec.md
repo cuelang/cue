@@ -303,6 +303,10 @@ octal_lit   = "0o" octal_digit { [ "_" ] octal_digit } .
 multiplier  = ( "K" | "M" | "G" | "T" | "P" | "E" | "Y" | "Z" ) [ "i" ]
 ```
 
+<!-- TODO: should we also allow 0755 for octal and reformat?
+May systems CUE interacts with use this notation (OpenAPI, Proto, Go, etc.)
+-->
+
 ```
 42
 1.5Gi
@@ -860,17 +864,26 @@ The _integer type_ represents the set of all integral numbers.
 The _decimal floating-point type_ represents the set of all decimal floating-point
 numbers.
 They are two distinct types.
-The predeclared integer and decimal floating-point types are `int` and `float`;
-they are defined types.
+Both are instances instances of a generic `number` type.
+
+<!--
+                    number
+                   /      \
+                int      float
+-->
+
+The predeclared number, integer, decimal floating-point types are
+`number`, `int` and `float`; they are defined types.
+<!--
+TODO: should we drop float? It is somewhat preciser and probably a good idea
+to have it in the programmatic API, but it may be confusing to have to deal
+with it in the language.
+-->
 
 A decimal floating-point literal always has type `float`;
 it is not an instance of `int` even if it is an integral number.
 
-An integer literal has both type `int` and `float`, with the integer variant
-being the default if no other constraints are applied.
-Expressed in terms of disjunction and [type conversion](#conversions),
-the literal `1`, for instance, is defined as `int(1) | float(1)`.
-Hexadecimal, octal, and binary integer literals are always of type `int`.
+Integer literals are always of type `int and don't match type `float`.
 
 Numeric literals are exact values of arbitrary precision.
 If the operation permits it, numbers should be kept in arbitrary precision.
@@ -985,8 +998,11 @@ ConcreteLabel = identifier | simple_string_lit
 OptionalLabel = ConcreteLabel "?"
 Label         = ConcreteLabel | OptionalLabel | TemplateLabel .
 
-attribute     = "@" identifier "(" attr_elem { "," attr_elem } ")" .
-attr_elem     =  attr_string | identifier "=" attr_string .
+attribute     = "@" identifier "(" attr_elems ")" .
+attr_elems    = attr_elem { "," attr_elem }
+attr_elem     =  attr_string | attr_label | attr_nest .
+attr_label    = identifier "=" attr_string .
+attr_nest     = identifier "(" attr_elems ")" .
 attr_string   = { attr_char } | string_lit .
 attr_char     = /* an arbitrary Unicode code point except newline, ',', '"', `'`, '#', '=', '(', and ')' */ .
 ```
@@ -1165,13 +1181,16 @@ g: a & { foo?: number }          _|_
 ### Lists
 
 A list literal defines a new value of type list.
-A list may be open or closed.
-An open list is indicated with a `...` at the end of an element list,
+Each list has a capacity associated with it, which must be an integer value.
+The capacity is at least the number of elements it has.
+A closed list is a list with a concrete integral value as capacity.
+An open list is a list with variable capacity.
+An open list with unbounded capacity is indicated with a `...`
+at the end of an element list,
 optionally followed by a value for the remaining elements.
-
-The length of a closed list is the number of elements it contains.
-The length of an open list is the its number of elements as a lower bound
-and an unlimited number of elements as its upper bound.
+The `cap` builtin allows limiting this capacity to an arbitrary value.
+An open list is associated with a default value matching the length of
+its current elements if this length falls within its capacity.
 
 ```
 ListLit       = "[" [ ElementList [ "," [ "..." [ Expression ] ] ] "]" .
@@ -1294,6 +1313,10 @@ int64     >=-9_223_372_036_854_775_808 & <=9_223_372_036_854_775_807
 uint128   >=0 & <=340_282_366_920_938_463_463_374_607_431_768_211_455
 int128    >=-170_141_183_460_469_231_731_687_303_715_884_105_728 &
            <=170_141_183_460_469_231_731_687_303_715_884_105_727
+float32   >=-3.40282346638528859811704183484516925440e+38 &
+          <=3.40282346638528859811704183484516925440e+38
+float64   >=-1.797693134862315708145274237317043567981e+308 &
+          <=1.797693134862315708145274237317043567981e+308
 ```
 
 
@@ -1787,6 +1810,12 @@ quo  quotient               integers
 rem  remainder              integers
 ```
 
+For any operator that accepts operands of type `float`, any operand may be
+of type `int` or `float`, in which case the result will be `float` if any
+of the operands is `float` or `int` otherwise.
+For `/` and `%` the result is always `float`.
+
+
 #### Integer operators
 
 For two integer values `x` and `y`,
@@ -1851,25 +1880,19 @@ from the value obtained by executing and rounding the instructions individually.
 #### List operators
 
 Lists can be concatenated using the `+` operator.
-For lists `a` and `b`,
-```
-a + b
-```
-will produce an open list if `b` is open.
-If list `a` is open, its default value, the shortest variant, is selected.
+Opens list are closed to their default value beforehand.
 
 ```
 [ 1, 2 ]      + [ 3, 4 ]       // [ 1, 2, 3, 4 ]
 [ 1, 2, ... ] + [ 3, 4 ]       // [ 1, 2, 3, 4 ]
-[ 1, 2 ]      + [ 3, 4, ... ]  // [ 1, 2, 3, 4, ... ]
-[ 1, 2, ... ] + [ 3, 4, ... ]  // [ 1, 2, 3, 4, ... ]
+[ 1, 2 ]      + [ 3, 4, ... ]  // [ 1, 2, 3, 4 ]
 ```
 
 Lists can be multiplied with a non-negative`int` using the `*` operator
 to create a repeated the list by the indicated number.
 ```
 3*[1,2]         // [1, 2, 1, 2, 1, 2]
-3*[1, 2, ...]   // [1, 2, 1, 2, 1 ,2, ...]
+3*[1, 2, ...]   // [1, 2, 1, 2, 1 ,2]
 [byte]*4        // [byte, byte, byte, byte]
 0*[1,2]         // []
 ```
@@ -1901,6 +1924,7 @@ A string can be repeated by multiplying it:
 s: "etc. "*3  // "etc. etc. etc. "
 ```
 <!-- jba: Do these work for byte sequences? If not, why not? -->
+
 
 ##### Comparison operators
 
@@ -2241,17 +2265,42 @@ Argument type    Result
 
 string            string length in bytes
 bytes             length of byte sequence
-list              list length, smallest length for an open list
-struct            number of distinct fields
+list              the capacity of the list
 ```
+<!-- TODO: support, but figure out precise meaning first.
+struct            number of distinct fields, not counting optional or hidden.
+-->
 
 ```
 Expression           Result
 len("Hellø")         6
 len([1, 2, 3])       3
-len([1, 2, ...])     2
-len({a:1, b:2})      2
+len([1, 2, ...])     >=2
 ```
+
+
+### `cap`
+
+The built-in function `cap` returns a constraint on the number of elements
+in lists, the number of fields in a struct,
+or the number of bytes in a `bytes` instance, which unifies with the respective
+types only if the constraint is met.
+
+```
+Expression                  Result
+[1, 2, 3] & cap(3)          [1, 2, 3]
+[1, 2, 3] & cap(2)          _|_
+[1, 2, 3, 4] & cap(<10)     [1, 2, 3, 4]
+[1, 2, ...] & cap(<10)      [1, 2, ...] & cap(<10)
+
+'\x00\x33a' & cap(3)        '\x00\x33a'
+'\x00\x33a' & cap(4)        _|_
+'\x00\x33a' & cap(<4)       '\x00\x33a'
+
+{a: 1, b: 2} & cap(1)       _|_
+{a: 1, b: 2} & cap(>1&<10)  {a: 1, b: 2} & & cap(<10)
+```
+
 
 ### `and`
 
@@ -2270,10 +2319,12 @@ The built-in function `or` takes a list and returns the result of applying
 the `|` operator to all elements in the list.
 It returns bottom for the empty list.
 
+```
 Expression:          Result
 and([a, b])          a | b
 and([a])             a
 and([])              _|_
+```
 
 
 ## Cycles
