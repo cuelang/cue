@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "874b1d80_6307a014",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-05-13T10:23:36Z",
+      "side": 1,
+      "message": "Maybe: \"The default value of an open list is the number of its\ndefined elements, if it unifies with the specified capacity, or\nundefined otherwise.\"\n\nIt could indeed also default to the default capacity of a list, but that may be slightly hard to define: For this to work smoothly one would have a default default as described above, but then if the user specifies another default, that default must be eliminated, rather than ignored as is usually the case within CUE. This just keeps it simpler, I think.",
+      "parentUuid": "12310fd3_6f18de39",
+      "range": {
+        "startLine": 1192,
+        "startChar": 34,
+        "endLine": 1192,
+        "endChar": 47
+      },
+      "revId": "cab27f4d9c26675b084fc0d83e3fe526b9bc4ce3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6883d3eb_ef741c26",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "74a24b89_bf6180e6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-05-13T10:23:36Z",
+      "side": 1,
+      "message": "Mostly to be consistent. There is also \"mod\" and \"rem\", which must take integers.\n\nBut if you think it is not weird, I can change it to no demote it to a float.",
+      "parentUuid": "6883d3eb_ef741c26",
+      "range": {
+        "startLine": 1816,
+        "startChar": 13,
+        "endLine": 1816,
+        "endChar": 43
+      },
+      "revId": "cab27f4d9c26675b084fc0d83e3fe526b9bc4ce3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41154f1b_ee722957",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-13T09:52:26Z",
       "side": 1,
       "message": "Isn\u0027t this the same as len? I think it would be less confusing if cap didn\u0027t apply instead of meaning the same as len.",
+      "range": {
+        "startLine": 2284,
+        "startChar": 3,
+        "endLine": 2284,
+        "endChar": 44
+      },
+      "revId": "cab27f4d9c26675b084fc0d83e3fe526b9bc4ce3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd072d0_defb2061",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2284,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-05-13T10:23:36Z",
+      "side": 1,
+      "message": "Not sure I follow. `len` is used to \"read\" the current length (capacity) of a value, whereas `cap` is used to \"set\" a cap on some value.\n\nSo `cap(3) \u0026 [...int]` is like `make([]int, 0, 3)` in Go, whereas `len(a)` is like `len(a)` in Go.  `cap(\u003c\u003d10) \u0026 [...int]` represents a list of integers of at most size 10.",
+      "parentUuid": "41154f1b_ee722957",
       "range": {
         "startLine": 2284,
         "startChar": 3,
