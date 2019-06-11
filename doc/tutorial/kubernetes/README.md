@@ -17,7 +17,7 @@ In this tutorial we will address the folowing topics:
 1. use the tooling to rewrite CUE files to drop unnecessary fields
 1. repeat from step 2 for different subdirectories
 1. define commands to operate on the configuration
-1. extract CUE templates directly from Kubernetes Go source (TODO)
+1. extract CUE templates directly from Kubernetes Go source
 1. manually tailor the configuration
 1. map a Kubernetes configuration to `docker-compose` (TODO)
 
@@ -1034,7 +1034,7 @@ deployment.extensions "waterdispatcher" created (dry run)
 A production real-life version of this could should omit the `--dry-run` flag
 of course.
 
-### Get Kubernetes Objects from Go source
+### Extract CUE templates directly from Kubernetes Go source
 
 ```
 $ cue get go k8s.io/api/core/v1
@@ -1046,12 +1046,11 @@ $ cue get go k8s.io/api/apps/v1beta1
 Now that we have the Kubernetes definitions in `pkg`, we can import and use them:
 
 ```
-sed -i "" "/package kube/r /dev/stdin" kube.cue <<EOF
-
+$ cat <<EOF > k8s_defs.cue
 import (
-        "k8s.io/api/core/v1"
-        extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
-        apps_v1beta1 "k8s.io/api/apps/v1beta1"
+  "k8s.io/api/core/v1"
+  extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
+  apps_v1beta1 "k8s.io/api/apps/v1beta1"
 )
 
 service <Name>: v1.Service & {}
@@ -1061,9 +1060,22 @@ statefulSet <Name>: apps_v1beta1.StatefulSet & {}
 EOF
 ```
 
+```
+# set the component label to our new top-level field
+$ sed -i "" '/package kube/rk8s_defs.cue' kube.cue
+```
+
+Let's clean up after ourselves.
+
+```
+$ rm k8s_defs.cue
+```
+
 And, finally, we'll format again:
 
-```cue fmt```
+```
+cue fmt
+```
 
 ## Manually tailored configuration
 

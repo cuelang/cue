@@ -135,7 +135,8 @@ func TestTutorial(t *testing.T) {
 				})
 
 			case strings.HasPrefix(cmd, "sed "),
-				strings.HasPrefix(cmd, "touch "):
+				strings.HasPrefix(cmd, "touch "),
+				strings.HasPrefix(cmd, "rm "):
 				logf(t, "$ %s", cmd)
 				args := cuetest.SplitArgs(t, cmd)
 				cx := exec.Command(args[0], args[1:]...)
