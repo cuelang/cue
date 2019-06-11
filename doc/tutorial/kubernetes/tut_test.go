@@ -60,6 +60,7 @@ func TestTutorial(t *testing.T) {
 	if *cleanup {
 		defer os.RemoveAll(dir)
 	} else {
+		defer logf(t, "Temporary dir: %v", dir)
 		logf(t, "Temporary dir: %v", dir)
 	}
 
@@ -67,11 +68,33 @@ func TestTutorial(t *testing.T) {
 	if err := copy.Dir(filepath.Join("original", "services"), wd); err != nil {
 		t.Fatal(err)
 	}
+
+	if *update {
+		// The test environment won't work in all environments. We create
+		// a fake go.mod so that Go will find the module root. By default
+		// we won't set it and assume correct file fetching.
+		if err := os.Chdir(dir); err != nil {
+			t.Fatal(err)
+		}
+		cmd := exec.Command("go", "mod", "init", "cuelang.org/dummy")
+		b, err := cmd.CombinedOutput()
+		logf(t, string(b))
+		if err != nil {
+			t.Fatal(err)
+		}
+	} else {
+		// We only fetch new kubernetes files with when updating.
+		err := copy.Dir(filepath.Join("quick", "pkg"), filepath.Join(dir, "pkg"))
+		if err != nil {
+			t.Fatal(err)
+		}
+	}
+
 	if err := os.Chdir(wd); err != nil {
 		t.Fatal(err)
 	}
 	defer os.Chdir(cwd)
-	logf(t, "Tmp dir: %s", wd)
+	logf(t, "Changed to directory: %s", wd)
 
 	// Execute the tutorial.
 	for c := cuetest.NewChunker(t, b); c.Next("```", "```"); {
@@ -165,17 +188,25 @@ func TestTutorial(t *testing.T) {
 			return nil
 		})
 
-		filepath.Walk(wd, func(path string, info os.FileInfo, err error) error {
+		err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 			if isCUE(path) {
-				return copy.File(path, "services"+path[len(wd):])
+				dst := path[len(dir)+1:]
+				err := os.MkdirAll(filepath.Dir(dst), 0755)
+				if err != nil {
+					return err
+				}
+				return copy.File(path, dst)
 			}
 			return nil
 		})
+		if err != nil {
+			t.Fatal(err)
+		}
 		return
 	}
 
 	// Compare the output in the temp directory with the quick output.
-	err = filepath.Walk(wd, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if filepath.Ext(path) != ".cue" {
 			return nil
 		}
@@ -183,7 +214,7 @@ func TestTutorial(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		b2, err := ioutil.ReadFile("services" + path[len(wd):])
+		b2, err := ioutil.ReadFile(path[len(dir)+1:])
 		if err != nil {
 			t.Fatal(err)
 		}
