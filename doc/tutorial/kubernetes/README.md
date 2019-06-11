@@ -1059,8 +1059,11 @@ deployment <Name>: extensions_v1beta1.Deployment & {}
 daemonSet <Name>: extensions_v1beta1.DaemonSet & {}
 statefulSet <Name>: apps_v1beta1.StatefulSet & {}
 EOF
-
 ```
+
+And, finally, we'll format again:
+
+```cue fmt```
 
 ## Manually tailored configuration
 
