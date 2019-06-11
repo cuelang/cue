@@ -1043,6 +1043,25 @@ $ cue get go k8s.io/api/apps/v1beta1
 
 ```
 
+Now that we have the Kubernetes definitions in `pkg`, we can import and use them:
+
+```
+sed -i "" "/package kube/r /dev/stdin" kube.cue <<EOF
+
+import (
+        "k8s.io/api/core/v1"
+        extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
+        apps_v1beta1 "k8s.io/api/apps/v1beta1"
+)
+
+service <Name>: v1.Service & {}
+deployment <Name>: extensions_v1beta1.Deployment & {}
+daemonSet <Name>: extensions_v1beta1.DaemonSet & {}
+statefulSet <Name>: apps_v1beta1.StatefulSet & {}
+EOF
+
+```
+
 ## Manually tailored configuration
 
 In Section "Quick 'n Dirty" we showed how to quickly get going with CUE.
