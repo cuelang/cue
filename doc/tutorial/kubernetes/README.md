@@ -1047,6 +1047,8 @@ Now that we have the Kubernetes definitions in `pkg`, we can import and use them
 
 ```
 $ cat <<EOF > k8s_defs.cue
+package kube
+
 import (
   "k8s.io/api/core/v1"
   extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
@@ -1058,17 +1060,6 @@ deployment <Name>: extensions_v1beta1.Deployment & {}
 daemonSet <Name>: extensions_v1beta1.DaemonSet & {}
 statefulSet <Name>: apps_v1beta1.StatefulSet & {}
 EOF
-```
-
-```
-# set the component label to our new top-level field
-$ sed -i "" '/package kube/rk8s_defs.cue' kube.cue
-```
-
-Let's clean up after ourselves.
-
-```
-$ rm k8s_defs.cue
 ```
 
 And, finally, we'll format again:
