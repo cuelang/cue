@@ -1034,6 +1034,14 @@ deployment.extensions "waterdispatcher" created (dry run)
 A production real-life version of this could should omit the `--dry-run` flag
 of course.
 
+### Get Kubernetes Objects from Go source
+
+```
+$ cue get go k8s.io/api/core/v1
+$ cue get go k8s.io/api/extensions/v1beta1
+$ cue get go k8s.io/api/apps/v1beta1
+
+```
 
 ## Manually tailored configuration
 
