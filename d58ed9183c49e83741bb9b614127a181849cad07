@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e09fc85_52c7431a",
+        "filename": "doc/tutorial/kubernetes/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-11T16:15:38Z",
+      "side": 1,
+      "message": "add package kube and newline here.  See below.",
+      "revId": "d58ed9183c49e83741bb9b614127a181849cad07",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e0d4d7_94d19818",
+        "filename": "doc/tutorial/kubernetes/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-11T16:15:38Z",
+      "side": 1,
+      "message": "There is no need to merge these definitions into the same file. You can just keep them in the k8s_defs.cue file, with the same package header, and let CUE merge them. I think this makes the tutorial a bit more readable.",
+      "revId": "d58ed9183c49e83741bb9b614127a181849cad07",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
