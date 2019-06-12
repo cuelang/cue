@@ -17,7 +17,6 @@ package cmd
 import (
 	"bytes"
 	"io"
-	"os"
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/build"
@@ -40,10 +39,6 @@ func exitOnErr(cmd *cobra.Command, err error, fatal bool) {
 	if err == nil {
 		return
 	}
-	cwd := "////"
-	if p, _ := os.Getwd(); p != "" {
-		cwd = p
-	}
 
 	// Link x/text as our localizer.
 	lang, _ := jibber_jabber.DetectIETF()
@@ -55,9 +50,7 @@ func exitOnErr(cmd *cobra.Command, err error, fatal bool) {
 	w := &bytes.Buffer{}
 	errors.Print(w, err, &errors.Config{Format: format})
 
-	// TODO: do something more principled than this.
 	b := w.Bytes()
-	b = bytes.ReplaceAll(b, []byte(cwd), []byte("."))
 	cmd.OutOrStderr().Write(b)
 	if fatal {
 		exit()

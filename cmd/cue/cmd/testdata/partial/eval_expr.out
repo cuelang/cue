@@ -2,4 +2,4 @@
 4
 // b.idx
 invalid non-ground value string (must be concrete int|string):
-    ./testdata/partial/partial.cue:7:9
+    $CWD/testdata/partial/partial.cue:7:9
