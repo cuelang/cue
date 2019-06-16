@@ -962,11 +962,15 @@ which has a name, called a _label_, and value.
 
 We say a label is defined for a struct if the struct has a field with the
 corresponding label.
-The value for a label `f` of struct `a` is denoted `f.a`.
+The value for a label `f` of struct `a` is denoted `a.f`.
 A struct `a` is an instance of `b`, or `a ⊑ b`, if for any label `f`
 defined for `b`, label `f` is also defined for `a` and `a.f ⊑ b.f`.
 Note that if `a` is an instance of `b` it may have fields with labels that
 are not defined for `b`.
+
+A field may be required or optional.
+Syntactically, optional fields are followed by a question mark `?`.
+The question mark is not part of the field name.
 
 The (unique) struct with no fields, written `{}`, has every struct as an
 instance. It can be considered the type of all structs.
@@ -975,42 +979,46 @@ The successful unification of structs `a` and `b` is a new struct `c` which
 has all fields of both `a` and `b`, where
 the value of a field `f` in `c` is `a.f & b.f` if `f` is in both `a` and `b`,
 or just `a.f` or `b.f` if `f` is in just `a` or `b`, respectively.
+If a field `f` is in both `a` and `b`, `c.f` is optional only if both
+`a.f` and `b.f` are optional.
 Any [references](#References) to `a` or `b`
 in their respective field values need to be replaced with references to `c`.
-The result of a unification is bottom (`_|_`) if any of its fields evaluates
-to bottom, recursively.
+The result of a unification is bottom (`_|_`) if any of its required
+fields evaluates to bottom, recursively.
 
+Syntactically, labels may be an identifier or string or an expression
+in square brackets, which must resolve to a string.
+An expression label marked as optional may define an open set of labels.
 A field name may also be an interpolated string.
-Identifiers used in such strings are evaluated within
-the scope of the struct in which the label is defined.
+<!-- where should this go? (not here, but) Is this covered elsewhere?
+Identifiers used in expression labels or interpolated strings are evaluated
+within the scope of the struct in which the label is defined.
+-->
 
 Syntactically, a struct literal may contain multiple fields with
 the same label, the result of which is a single field with a value
 that is the unification of the values of those fields.
 
-A TemplateLabel indicates a template value that is to be unified with
-the values of all fields within a struct.
-The identifier of a template label binds to the field name of each
-field and is visible within the template value.
 
 ```
-StructLit     = "{" [ Declaration { "," Declaration } [ "," ] ] "}" .
-Declaration   = FieldDecl | AliasDecl | ComprehensionDecl .
-FieldDecl     = Label { Label } ":" Expression { attribute } .
+StructLit       = "{" [ Declaration { "," Declaration } [ "," ] ] "}" .
+Declaration     = FieldDecl | AliasDecl | ComprehensionDecl | Embedding .
+FieldDecl       = Label { Label } (":"  | "::") Expression { attribute } .
+Embedding       = Operand .
 
-AliasDecl     = Label "=" Expression .
-TemplateLabel = "<" identifier ">" .
-ConcreteLabel = identifier | simple_string_lit
-OptionalLabel = ConcreteLabel "?"
-Label         = ConcreteLabel | OptionalLabel | TemplateLabel .
+AliasDecl       = Label "=" Expression .
+BindLabel       = "<" identifier ">" .
+ConcreteLabel   = identifier | simple_string_lit .
+ExpressionLabel = BindLabel | [ BindLabel ] "[" Expression "]" .
+Label           = ConcreteLabel | ExpressionLabel [ "?" ] .
 
-attribute     = "@" identifier "(" attr_elems ")" .
-attr_elems    = attr_elem { "," attr_elem }
-attr_elem     =  attr_string | attr_label | attr_nest .
-attr_label    = identifier "=" attr_string .
-attr_nest     = identifier "(" attr_elems ")" .
-attr_string   = { attr_char } | string_lit .
-attr_char     = /* an arbitrary Unicode code point except newline, ',', '"', `'`, '#', '=', '(', and ')' */ .
+attribute       = "@" identifier "(" attr_elems ")" .
+attr_elems      = attr_elem { "," attr_elem }
+attr_elem       =  attr_string | attr_label | attr_nest .
+attr_label      = identifier "=" attr_string .
+attr_nest       = identifier "(" attr_elems ")" .
+attr_string     = { attr_char } | string_lit .
+attr_char        = /* an arbitrary Unicode code point except newline, ',', '"', `'`, '#', '=', '(', and ')' */ .
 ```
 
 ```
@@ -1025,17 +1033,101 @@ attr_char     = /* an arbitrary Unicode code point except newline, ',', '"', `'`
 ```
 
 ```
-Expression                             Result
-{a: int, a: 1}                         {a: int(1)}
-{a: int} & {a: 1}                      {a: int(1)}
+Expression                             Result (without optional fields)
+{a: int, a: 1}                         {a: 1}
+{a: int} & {a: 1}                      {a: 1}
 {a: >=1 & <=7} & {a: >=5 & <=9}        {a: >=5 & <=7}
 {a: >=1 & <=7, a: >=5 & <=9}           {a: >=5 & <=7}
 
 {a: 1} & {b: 2}                        {a: 1, b: 2}
-{a: 1, b: int} & {b: 2}                {a: 1, b: int(2)}
+{a: 1, b: int} & {b: 2}                {a: 1, b: 2}
 
 {a: 1} & {a: 2}                        _|_
+
+a: { foo?: string }                    {}
+b: { foo: "bar" }                      { foo: "bar" }
+c: { foo?: *"bar" | string }           {}
+d: { [string]?: string }
+
+d: a & b                               { foo: "bar" }
+e: b & c                               { foo: "bar" }
+f: a & c                               {}
+g: a & { foo?: number }                {}
+h: b & { foo?: number }                _|_
 ```
+
+
+#### Closed structs
+
+By default, structs are open to adding fields.
+One could say that an optional field `f` with value to is defined for any
+unspecified field.
+A _closed struct_ `c` is a struct whose instances may not have fields
+not defined in `c`.
+Closing a struct is equivalent to adding an optional field with value `_|_`
+for any undefined field.
+
+Note that fields created with field comprehensions are not considered
+defined fields.
+Fields inserted by a field comprehension defined in a closed struct
+must are only permitted when defined explicitly by a required or optional field.
+
+Syntactically, closed struct can be explicitly created with the `close` builtin
+or implicitly by [definitions](#Definitions).
+
+
+#### Definitions
+
+A fields of a struct may be declared as a regular field (using `:`)
+or as a _defintion_ (using `::`).
+Definitions are not emitted as part of the model and are never required
+to be concrete when emitting data.
+Defintions are otherwise treated as optional fields.
+It is illegal to have a normal field and a definition with the same name
+within the same struct.
+A definition that defines a struct type implicitly defines this struct
+as closed.
+A definition defining a disjunction closes each of its disjuncts.
+
+<!-- #### Embedding -->
+
+A struct may contain an _embedded value_, an Operand used
+as a field declaration.
+Struct embeddings are unified with the struct in which they are embedded
+but disregarding the restrictions imposed by closed structs.
+
+
+```
+MyStruct :: {
+    field:    string
+    enabled?: bool
+}
+
+myValue: MyStruct & {
+    feild:   2     // error, feild not defined in MyStruct
+    enabled: true  // okay
+}
+
+yourStruct :: {
+    MyStruct
+
+    extra: int // adds this field.
+
+    OneOf
+}
+
+OneOf :: { a: int } | { b: int }
+```
+
+
+<!---
+JSON fields are usual camelCase. Clashes can be avoided by adopting the
+convention that definitions be TitleCase. Unexported definitions are still
+subject to clashes, but those are likely easier to resolve because they are
+package internal.
+--->
+
+#### Field attributes
 
 Fields may be associated with attributes.
 Attributes define additional information about a field,
@@ -1060,17 +1152,17 @@ and the remaining arguments as a combination of flags
 (an identifier) and key value pairs, separated by a `=`.
 
 ```
-MyStruct1: {
+myStruct1: {
     field: string @go(Field)
     attr:  int    @xml(,attr) @go(Attr)
 }
 
-MyStruct2: {
+myStruct2: {
     field: string @go(Field)
     attr:  int    @xml(a1,attr) @go(Attr)
 }
 
-Combined: MyStruct1 & MyStruct2
+Combined: myStruct1 & myStruct2
 // field: string @go(Field)
 // attr:  int    @xml(,attr) @xml(a1,attr) @go(Attr)
 ```
@@ -1114,21 +1206,8 @@ job: {
 }
 ```
 
+<!-- OPTIONAL FIELDS:
 
-#### Optional fields
-
-An identifier or string label may be followed by a question mark `?`
-to indicate a field is optional.
-The question mark is not part of the field name.
-Constraints defined by an optional field should only be applied when
-a field is present.
-A field with such a marker may be omitted from output and should not cause
-an error when emitting a concrete configuration, even if its value is
-not concrete or bottom.
-The result of unifying two fields only has an optional marker
-if both fields have such a marker.
-
-<!--
 The optional marker solves the issue of having to print large amounts of
 boilerplate when dealing with large types with many optional or default
 values (such as Kubernetes).
@@ -1170,19 +1249,6 @@ though.
 [4] There should be an option to emit all concrete optional values.
 ```
 -->
-
-```
-Input                            Result
-a: { foo?: string }              {}
-b: { foo: "bar" }                { foo: "bar" }
-c: { foo?: *"bar" | string }     {}
-
-d: a & b                         { foo: "bar" }
-e: b & c                         { foo: "bar" }
-f: a & c                         {}
-g: a & { foo?: number }          _|_
-```
-
 
 ### Lists
 
@@ -1326,19 +1392,38 @@ float64   >=-1.797693134862315708145274237317043567981e+308 &
 ```
 
 
-### Exported and manifested identifiers
+### Exported identifiers
 
 An identifier of a package may be exported to permit access to it
 from another package.
-An identifier is exported if both:
-the first character of the identifier's name is not a Unicode lower case letter
-(Unicode class "Ll") or the underscore "_"; and
+A top-level identifier is exported if
+the first character of the identifier's name is a Unicode upper case letter
+(Unicode class "Lu"); and
 the identifier is declared in the file block.
-All other identifiers are not exported.
+All other top-level identifiers used for fields not exported.
 
-An identifier that starts with the underscore "_" is not
-emitted in any data output.
-Quoted labels that start with an underscore are emitted, however.
+In addition, any definition declared anywhere within a package of which
+the first character of the identifier's name is a Unicode upper case letter
+(Unicode class "Lu") is visible outside this package.
+Any other defintion is not visible outside the package and resides
+in a separate namespace than namesake identifiers of other packages.
+
+```
+package mypackage
+
+foo: string  // not visible outside mypackage
+
+Foo: {       // visible outside mypackage
+    a: 1     // visible outside mypackage
+    B: 2     // visible outside mypackage
+
+    C :: {   // visible outside mypackage
+        d: 4 // visible outside mypackage
+    }
+    e :: foo // not visible outside mypackage
+}
+```
+
 
 ### Uniqueness of identifiers
 
@@ -1346,9 +1431,7 @@ Given a set of identifiers, an identifier is called unique if it is different
 from every other in the set, after applying normalization following
 Unicode Annex #31.
 Two identifiers are different if they are spelled differently.
-<!--
 or if they appear in different packages and are not exported.
---->
 Otherwise, they are the same.
 
 
@@ -1357,13 +1440,12 @@ Otherwise, they are the same.
 A field declaration binds a label (the name of the field) to an expression.
 The name for a quoted string used as label is the string it represents.
 Tne name for an identifier used as a label is the identifier itself.
-Quoted strings and identifiers can be used used interchangeably, with the
-exception of identifiers starting with an underscore '_'.
-The latter represent hidden fields and are treated in a different namespace.
+Quoted strings and identifiers can be used used interchangeably.
 
 If an expression may result in a value associated with a default value
 as described in [default values](#default-values), the field binds to this
 value-default pair.
+
 
 <!-- TODO: disallow creating identifiers starting with __
 ...and reserve them for builtin values.
@@ -1974,6 +2056,10 @@ These terms and the result of the comparisons are defined as follows:
   except for `\C`.
 - `s =~ r` is true if `s` matches the regular expression `r`.
 - `s !~ r` is true if `s` does not match regular expression `r`.
+<!--- TODO: consider the following
+- For regular expression, named capture groups are interpreted as CUE references
+  that must unify with the strings matching this capture group.
+--->
 <!-- TODO: Implementations should adopt an algorithm that runs in linear time? -->
 <!-- Consider implementing Level 2 of Unicode regular expression. -->
 
@@ -2306,6 +2392,14 @@ Expression                  Result
 {a: 1, b: 2} & cap(1)       _|_
 {a: 1, b: 2} & cap(>1&<10)  {a: 1, b: 2} & & cap(<10)
 ```
+
+
+### `close`
+
+The builtin function `close` converts a partially defined, or open, struct
+to a fully defined, or closed, struct.
+The value passed to close may be a disjunction of structs, in which case each
+disjunct of the disjunctive normal form is closed.
 
 
 ### `and`
