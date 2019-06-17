@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ce52e36_18ebb79d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "I don\u0027t understand this sentence. Can you give an example?",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 72
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e795c70b_774fbbc8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "grammar? (I think the word \"to\" should be replaced by something else.)",
+      "range": {
+        "startLine": 1063,
+        "startChar": 23,
+        "endLine": 1063,
+        "endChar": 65
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cc7cad_99445923",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "I guess you\u0027re saying, if someone adds a field f to a closed struct, it\u0027s as if the struct had \"f?: _|_\", so the resulting unification has a field f with value bottom, and therefore the struct is bottom.\n\nThat\u0027s true, but why is that interesting? If it\u0027s a definition of \"closed,\" it seems a bit circuitous. \n\nAlso, it doesn\u0027t work if I add an optional field to the closed struct, right?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 24
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6fc280_cd8e8030",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "remove? (grammar)",
+      "range": {
+        "startLine": 1073,
+        "startChar": 0,
+        "endLine": 1073,
+        "endChar": 4
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a724d1c_15a1d48c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "This paragraph needs an example or two.",
+      "range": {
+        "startLine": 1070,
+        "startChar": 1,
+        "endLine": 1073,
+        "endChar": 80
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c3784e6_5beb9c4b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "definition",
+      "range": {
+        "startLine": 1082,
+        "startChar": 8,
+        "endLine": 1082,
+        "endChar": 19
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb3265e_2d6e561a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "What\u0027s the distinction between \"top-level\" and \"declared in the file block\"?",
+      "range": {
+        "startLine": 1402,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 45
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50dcddde_dc6906f5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "How can a field identifier be top-level?",
+      "range": {
+        "startLine": 1403,
+        "startChar": 10,
+        "endLine": 1403,
+        "endChar": 46
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb2fd44_d7dd28bf",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-17T10:59:29Z",
+      "side": 1,
+      "message": "Isn\u0027t this a general property of unexported identifiers?",
+      "range": {
+        "startLine": 1408,
+        "startChar": 59,
+        "endLine": 1409,
+        "endChar": 67
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
