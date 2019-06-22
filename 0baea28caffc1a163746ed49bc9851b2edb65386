@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12e16aad_e2d32a83",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "For example, a map of strings to strings would be written as:\n[string]?: string\n\n(This particular case is already allowed in CUE as \u003cName\u003e: string, where the key type string is implied an all strings are always allowed.\n\nThis syntax would also allow, for instance, [\u003d~\"^[A-Z]\"]?: string to define a may of all strings starting with a Latin Capital letter.\n\nIn both cases, the set of of labels is infinite. So open here means infinite. Maybe better wording is:\n\n\"When an expression label is marked as optional the expression may be a non-concrete string, indicating a set of labels.\"",
+      "parentUuid": "4ce52e36_18ebb79d",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 72
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e795c70b_774fbbc8",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "46fcc327_4f46dd4f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "Done s/to/top/",
+      "parentUuid": "e795c70b_774fbbc8",
+      "range": {
+        "startLine": 1063,
+        "startChar": 23,
+        "endLine": 1063,
+        "endChar": 65
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9cc7cad_99445923",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-06-17T10:59:29Z",
       "side": 1,
       "message": "I guess you\u0027re saying, if someone adds a field f to a closed struct, it\u0027s as if the struct had \"f?: _|_\", so the resulting unification has a field f with value bottom, and therefore the struct is bottom.\n\nThat\u0027s true, but why is that interesting? If it\u0027s a definition of \"closed,\" it seems a bit circuitous. \n\nAlso, it doesn\u0027t work if I add an optional field to the closed struct, right?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 24
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415d6ee2_bcdf95de",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "\u003e  it seems a bit circuitous. \n\nThe semantics of closed structs turned out to be very subtle. This definition makes it clear where closed structs stand in the value lattice w.r.t. open structs. For several definitions I (and Bjarke) tried this wasn\u0027t too obvious. But open for other ideas.\nBut it is true that an average or even advanced user would not need to worry about this detail.\n\n\u003e Also, it doesn\u0027t work if I add an optional field to the closed struct, right?\n\nThis is correct! It may still be something to detect for a vet check equivalent, but not in the lattice. This balance here is to find something that doesn\u0027t introduce ambiguity in the value lattice but is still relatively straightforward.",
+      "parentUuid": "f9cc7cad_99445923",
       "range": {
         "startLine": 1067,
         "startChar": 0,
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "bfdbad40_99fadd42",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a6fc280_cd8e8030",
+      "range": {
+        "startLine": 1073,
+        "startChar": 0,
+        "endLine": 1073,
+        "endChar": 4
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab66dc5_ece6fa11",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "Added examples",
+      "parentUuid": "5a724d1c_15a1d48c",
+      "range": {
+        "startLine": 1070,
+        "startChar": 1,
+        "endLine": 1073,
+        "endChar": 80
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c3784e6_5beb9c4b",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e506a0_4c7ee9e5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3784e6_5beb9c4b",
+      "range": {
+        "startLine": 1082,
+        "startChar": 8,
+        "endLine": 1082,
+        "endChar": 19
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "bd82a49e_17fe858b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "Silly me. Reverted.",
+      "parentUuid": "edb3265e_2d6e561a",
+      "range": {
+        "startLine": 1402,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 45
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50dcddde_dc6906f5",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "4aa0083b_c59a0ff9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "A Field is a Declaration, which are allowed at top level. So this is different from Go. In JSON term this kind of makes sense, though, if one considers that the top-level entries are converted to a JSON struct.\n\nThe TFS term for fields are \"features\".",
+      "parentUuid": "50dcddde_dc6906f5",
+      "range": {
+        "startLine": 1403,
+        "startChar": 10,
+        "endLine": 1403,
+        "endChar": 46
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fb2fd44_d7dd28bf",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -197,6 +389,30 @@
       "writtenOn": "2019-06-17T10:59:29Z",
       "side": 1,
       "message": "Isn\u0027t this a general property of unexported identifiers?",
+      "range": {
+        "startLine": 1408,
+        "startChar": 59,
+        "endLine": 1409,
+        "endChar": 67
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c115d680_c9a59d34",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-06-22T10:07:55Z",
+      "side": 1,
+      "message": "No. For fields that are not definitions, one wants those to unify. That is the point of CUE. However, definitions are not part of the data model. If they are not visible outside the package, one should consider these names local. Unification should still hold within the package, but not outside. This prevents spurious conflicts. It also provides a mechanism to users to introduce fields for local unification that will not conflict.\n\nNote that this is fully analogous to non-exported field names in Go, which are also further qualified with a package path.",
+      "parentUuid": "4fb2fd44_d7dd28bf",
       "range": {
         "startLine": 1408,
         "startChar": 59,
