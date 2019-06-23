@@ -1739,7 +1739,7 @@ kubernetes: {
                 }]
                 serviceName: "etcd"
             }
-            apiVersion: "apps/v1beta1"
+            apiVersion: "apps/v1"
             metadata: {
                 name: "etcd"
                 labels: {

@@ -429,7 +429,7 @@ daemonSet <Name>: _spec & {
 }
 
 statefulSet <Name>: _spec & {
-    apiVersion: "apps/v1beta1"
+    apiVersion: "apps/v1"
     kind:       "StatefulSet"
     _name:      Name
 }
@@ -1039,7 +1039,7 @@ of course.
 ```
 $ cue get go k8s.io/api/core/v1
 $ cue get go k8s.io/api/extensions/v1beta1
-$ cue get go k8s.io/api/apps/v1beta1
+$ cue get go k8s.io/api/apps/v1
 
 ```
 
@@ -1052,7 +1052,7 @@ package kube
 import (
   "k8s.io/api/core/v1"
   extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
-  apps_v1beta1 "k8s.io/api/apps/v1beta1"
+  apps_v1beta1 "k8s.io/api/apps/v1"
 )
 
 service <Name>: v1.Service & {}

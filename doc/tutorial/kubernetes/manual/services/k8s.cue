@@ -35,7 +35,7 @@ kubernetes deployments: {
 
 kubernetes statefulSets: {
 	"\(k)": (_k8sSpec & {X: x}).X.kubernetes & {
-		apiVersion: "apps/v1beta1"
+		apiVersion: "apps/v1"
 		kind:       "StatefulSet"
 		spec replicas: x.replicas
 	} for k, x in deployment if x.kind == "stateful"

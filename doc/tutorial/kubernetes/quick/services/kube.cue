@@ -50,13 +50,13 @@ daemonSet <Name>: _spec & {
 }
 
 statefulSet <Name>: _spec & {
-	apiVersion: "apps/v1beta1"
+	apiVersion: "apps/v1"
 	kind:       "StatefulSet"
 	_name:      Name
 }
 
 deployment <Name>: _spec & {
-	apiVersion: "extensions/v1beta1"
+	apiVersion: "apps/v1"
 	kind:       "Deployment"
 	_name:      Name
 	spec replicas: *1 | int
