@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2031c23c_71d3a2f8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-29T13:06:44Z",
+      "side": 1,
+      "message": "I like your rewording better.",
+      "parentUuid": "12e16aad_e2d32a83",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 72
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e795c70b_774fbbc8",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "1370ecd7_c3d60945",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-29T13:06:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "415d6ee2_bcdf95de",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 24
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a6fc280_cd8e8030",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -234,6 +282,30 @@
       "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7971df_d6681330",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-29T13:06:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ab66dc5_ece6fa11",
+      "range": {
+        "startLine": 1070,
+        "startChar": 1,
+        "endLine": 1073,
+        "endChar": 80
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -378,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "c0b4875e_4203ea6e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-29T13:06:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4aa0083b_c59a0ff9",
+      "range": {
+        "startLine": 1403,
+        "startChar": 10,
+        "endLine": 1403,
+        "endChar": 46
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fb2fd44_d7dd28bf",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -413,6 +509,30 @@
       "side": 1,
       "message": "No. For fields that are not definitions, one wants those to unify. That is the point of CUE. However, definitions are not part of the data model. If they are not visible outside the package, one should consider these names local. Unification should still hold within the package, but not outside. This prevents spurious conflicts. It also provides a mechanism to users to introduce fields for local unification that will not conflict.\n\nNote that this is fully analogous to non-exported field names in Go, which are also further qualified with a package path.",
       "parentUuid": "4fb2fd44_d7dd28bf",
+      "range": {
+        "startLine": 1408,
+        "startChar": 59,
+        "endLine": 1409,
+        "endChar": 67
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e77a33_03dbce16",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-06-29T13:06:44Z",
+      "side": 1,
+      "message": "OK, got it. Maybe add a sentence like \"This is in contrast to non-definitions [or ordinary field declarations, or whatever they\u0027re called] that do not begin with an upper-case letter, which are visible outside the package so they can be unified.\"",
+      "parentUuid": "c115d680_c9a59d34",
       "range": {
         "startLine": 1408,
         "startChar": 59,
