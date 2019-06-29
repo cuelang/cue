@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/token"
@@ -75,7 +76,8 @@ type Config struct {
 
 	loader *loader
 
-	modRoot string // module root for package paths ("" if unknown)
+	modRoot   string // module root for package paths ("" if unknown)
+	modPrefix string
 
 	// cache specifies the package cache in which to look for packages.
 	cache string
@@ -191,6 +193,22 @@ func (c Config) complete() (cfg *Config, err error) {
 
 	if c.cache == "" {
 		c.cache = filepath.Join(home(), defaultDir)
+	}
+
+	// TODO: also make this work if run from outside the module?
+	switch {
+	case c.modRoot != "":
+		mod := filepath.Join(c.modRoot, modFile)
+		f, cerr := c.fileSystem.openFile(mod)
+		if cerr != nil {
+			break
+		}
+		var r cue.Runtime
+		inst, err := r.Parse(mod, f)
+		if err != nil {
+			return nil, errors.Wrapf(err, token.NoPos, "invalid cue.mod file")
+		}
+		c.modPrefix, _ = inst.Lookup("module").String()
 	}
 
 	return &c, nil

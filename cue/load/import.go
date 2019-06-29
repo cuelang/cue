@@ -81,6 +81,11 @@ func (l *loader) importPkg(pos token.Pos, path, srcDir string) *build.Instance {
 	p.DisplayPath = path
 
 	isLocal := isLocalImport(path)
+
+	if cfg.modPrefix != "" && isLocal {
+		p.ImportPath = filepath.Join(cfg.modPrefix, path)
+	}
+
 	var modDir string
 	// var modErr error
 	if !isLocal {
@@ -182,7 +187,13 @@ func (l *loader) loadFunc(parentPath string) build.LoadFunc {
 					"import %q not found in the pkg directory", path))
 				return i
 			}
-			return l.importPkg(pos, path, filepath.Join(cfg.modRoot, "pkg"))
+			root := cfg.modRoot
+			if mod := cfg.modPrefix; path == mod || strings.HasPrefix(path, mod+"/") {
+				path = path[len(mod)+1:]
+			} else {
+				root = filepath.Join(root, "pkg")
+			}
+			return l.importPkg(pos, path, root)
 		}
 
 		if strings.Contains(path, "@") {
