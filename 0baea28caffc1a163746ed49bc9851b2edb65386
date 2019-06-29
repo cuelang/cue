@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "2913adc3_1016f478",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-06-29T14:23:16Z",
+      "side": 1,
+      "message": "Of course if we could find a definition that also catches typos in optional fields, that would be great. So ideas are welcome. But I guess we can relax that later.",
+      "parentUuid": "1370ecd7_c3d60945",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 24
+      },
+      "revId": "0baea28caffc1a163746ed49bc9851b2edb65386",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a6fc280_cd8e8030",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
