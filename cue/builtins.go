@@ -8,6 +8,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/base64"
 	"encoding/csv"
 	"encoding/hex"
 	"encoding/json"
@@ -177,6 +178,49 @@ var builtinPackages = map[string]*builtinPkg{
 				data := c.bytes(0)
 				c.ret = func() interface{} {
 					return sha512.Sum512_256(data)
+				}()
+			},
+		}},
+	},
+	"encoding/base64": &builtinPkg{
+		native: []*builtin{{
+			Name:   "EncodedLen",
+			Params: []kind{intKind},
+			Result: intKind,
+			Func: func(c *callCtxt) {
+				n := c.int(0)
+				c.ret = func() interface{} {
+					return base64.StdEncoding.EncodedLen(n)
+				}()
+			},
+		}, {
+			Name:   "DecodedLen",
+			Params: []kind{intKind},
+			Result: intKind,
+			Func: func(c *callCtxt) {
+				x := c.int(0)
+				c.ret = func() interface{} {
+					return base64.StdEncoding.DecodedLen(x)
+				}()
+			},
+		}, {
+			Name:   "Encode",
+			Params: []kind{stringKind},
+			Result: stringKind,
+			Func: func(c *callCtxt) {
+				src := c.bytes(0)
+				c.ret = func() interface{} {
+					return base64.StdEncoding.EncodeToString(src)
+				}()
+			},
+		}, {
+			Name:   "Decode",
+			Params: []kind{stringKind},
+			Result: stringKind,
+			Func: func(c *callCtxt) {
+				s := c.string(0)
+				c.ret, c.err = func() (interface{}, error) {
+					return base64.StdEncoding.DecodeString(s)
 				}()
 			},
 		}},
