@@ -77,7 +77,7 @@ func export(ctx *context, v value, m options) ast.Node {
 	if obj, ok := value.(*ast.StructLit); ok {
 		file.Decls = append(file.Decls, obj.Elts...)
 	} else {
-		file.Decls = append(file.Decls, &ast.EmitDecl{Expr: value})
+		file.Decls = append(file.Decls, &ast.EmbedDecl{Expr: value})
 	}
 
 	// resolve the file.
@@ -345,12 +345,12 @@ func (p *exporter) expr(v value) ast.Expr {
 			}
 		}
 		if x.emit != nil {
-			obj.Elts = append(obj.Elts, &ast.EmitDecl{Expr: p.expr(x.emit)})
+			obj.Elts = append(obj.Elts, &ast.EmbedDecl{Expr: p.expr(x.emit)})
 		}
 		if !doEval(p.mode) && x.template != nil {
 			l, ok := x.template.evalPartial(p.ctx).(*lambdaExpr)
 			if ok {
-				obj.Elts = append(obj.Elts, &ast.Field{
+				obj.Elts = append(obj.Elts, &ast.FieldDecl{
 					Label: &ast.TemplateLabel{
 						Ident: p.identifier(l.params.arcs[0].feature),
 					},
@@ -359,7 +359,7 @@ func (p *exporter) expr(v value) ast.Expr {
 			} // TODO: else record error
 		}
 		for i, a := range x.arcs {
-			f := &ast.Field{
+			f := &ast.FieldDecl{
 				Label: p.label(a.feature),
 			}
 			// TODO: allow the removal of hidden fields. However, hidden fields
@@ -411,7 +411,7 @@ func (p *exporter) expr(v value) ast.Expr {
 					if yield.opt {
 						opt = token.NoSpace.Pos() // anything but token.NoPos
 					}
-					f := &ast.Field{
+					f := &ast.FieldDecl{
 						Label:    label,
 						Optional: opt,
 						Value:    p.expr(yield.value),

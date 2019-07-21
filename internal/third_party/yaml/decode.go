@@ -683,7 +683,7 @@ outer:
 			d.p.failf(n.startPos.line, "invalid map key: sequence")
 		}
 
-		field := &ast.Field{}
+		field := &ast.FieldDecl{}
 		d.attachDocComments(n.children[i].startPos, 0, field)
 
 		label := d.label(n.children[i])
@@ -693,7 +693,7 @@ outer:
 		if merge {
 			key := labelStr(label)
 			for _, decl := range m.Elts {
-				f := decl.(*ast.Field)
+				f := decl.(*ast.FieldDecl)
 				name, _ := ast.LabelName(f.Label)
 				if name == key {
 					f.Value = d.unmarshal(n.children[i+1])

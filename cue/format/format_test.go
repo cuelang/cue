@@ -237,7 +237,7 @@ func TestPackage(t *testing.T) {
 	f := &ast.File{
 		Name: ast.NewIdent("foo"),
 		Decls: []ast.Decl{
-			&ast.EmitDecl{
+			&ast.EmbedDecl{
 				Expr: &ast.BasicLit{
 					ValuePos: token.NoSpace.Pos(),
 					Value:    "1",
@@ -399,7 +399,7 @@ func TestIncorrectIdent(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(tc.ident, func(t *testing.T) {
-			b, _ := Node(&ast.Field{Label: ast.NewIdent(tc.ident), Value: ast.NewIdent("A")})
+			b, _ := Node(&ast.FieldDecl{Label: ast.NewIdent(tc.ident), Value: ast.NewIdent("A")})
 			if got, want := string(b), tc.out+`: A`; got != want {
 				t.Errorf("got %q; want %q", got, want)
 			}

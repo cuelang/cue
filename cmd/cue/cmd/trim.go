@@ -212,7 +212,7 @@ func (t *trimSet) markNodes(n ast.Node) {
 				t.markAlwaysGen(x.Type, false)
 			}
 
-		case *ast.Field:
+		case *ast.FieldDecl:
 			if _, ok := x.Label.(*ast.TemplateLabel); ok {
 				t.markAlwaysGen(x.Value, false)
 			}
@@ -513,7 +513,7 @@ func (t *trimSet) trimDecls(decls []ast.Decl, rm []ast.Node, m cue.Value, allow 
 	a := make([]ast.Decl, 0, len(decls))
 
 	for _, d := range decls {
-		if f, ok := d.(*ast.Field); ok {
+		if f, ok := d.(*ast.FieldDecl); ok {
 			label, _ := ast.LabelName(f.Label)
 			v := m.Lookup(label)
 			if inNodes(rm, f.Value) && (allow || v.Exists()) {

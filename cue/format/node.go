@@ -61,7 +61,7 @@ func (f *formatter) walkDeclList(list []ast.Decl) {
 		f.decl(x)
 		if j := i + 1; j < len(list) {
 			switch x := list[j].(type) {
-			case *ast.Field:
+			case *ast.FieldDecl:
 				switch x := x.Value.(type) {
 				case *ast.StructLit:
 					// TODO: not entirely correct: could have multiple elements,
@@ -129,7 +129,7 @@ func (f *formatter) decl(decl ast.Decl) {
 		goto after
 	}
 	switch n := decl.(type) {
-	case *ast.Field:
+	case *ast.FieldDecl:
 		// shortcut single-element structs.
 		lastSize := len(f.labelBuf)
 		f.labelBuf = f.labelBuf[:0]
@@ -154,7 +154,7 @@ func (f *formatter) decl(decl ast.Decl) {
 				break
 			}
 
-			mem, ok := obj.Elts[0].(*ast.Field)
+			mem, ok := obj.Elts[0].(*ast.FieldDecl)
 			if !ok {
 				break
 			}
@@ -244,7 +244,7 @@ func (f *formatter) decl(decl ast.Decl) {
 		}
 		f.print(newsection, nooverride)
 
-	case *ast.EmitDecl:
+	case *ast.EmbedDecl:
 		f.expr(n.Expr)
 		f.print(newline, newsection, nooverride) // force newline
 

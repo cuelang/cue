@@ -67,10 +67,8 @@ func debugStr(x interface{}) (out string) {
 		}
 		return out
 
-	case *ast.EmitDecl:
-		// out := "<"
+	case *ast.EmbedDecl:
 		out += debugStr(v.Expr)
-		// out += ">"
 		return out
 
 	case *ast.ImportDecl:
@@ -135,7 +133,7 @@ func debugStr(x interface{}) (out string) {
 		out += debugStr(v.Condition)
 		return out
 
-	case *ast.Field:
+	case *ast.FieldDecl:
 		out := debugStr(v.Label)
 		if v.Optional != token.NoPos {
 			out += "?"

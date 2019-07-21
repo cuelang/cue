@@ -79,11 +79,11 @@ type Decl interface {
 	declNode()
 }
 
-func (*Field) declNode()             {}
+func (*FieldDecl) declNode()         {}
 func (*ComprehensionDecl) declNode() {}
 func (*ImportDecl) declNode()        {}
 func (*BadDecl) declNode()           {}
-func (*EmitDecl) declNode()          {}
+func (*EmbedDecl) declNode()         {}
 func (*Alias) declNode()             {}
 func (*CommentGroup) declNode()      {}
 
@@ -275,8 +275,8 @@ type Attribute struct {
 func (a *Attribute) Pos() token.Pos { return a.At }
 func (a *Attribute) End() token.Pos { return a.At.Add(len(a.Text)) }
 
-// A Field represents a field declaration in a struct.
-type Field struct {
+// A FieldDecl represents a field declaration in a struct.
+type FieldDecl struct {
 	comments
 	Label    Label // must have at least one element.
 	Optional token.Pos
@@ -288,8 +288,8 @@ type Field struct {
 	Attrs []*Attribute
 }
 
-func (d *Field) Pos() token.Pos { return d.Label.Pos() }
-func (d *Field) End() token.Pos {
+func (d *FieldDecl) Pos() token.Pos { return d.Label.Pos() }
+func (d *FieldDecl) End() token.Pos {
 	if len(d.Attrs) > 0 {
 		return d.Attrs[len(d.Attrs)-1].End()
 	}
@@ -310,7 +310,7 @@ func (a *Alias) End() token.Pos { return a.Expr.End() }
 // A ComprehensionDecl node represents a field comprehension.
 type ComprehensionDecl struct {
 	comments
-	Field   *Field
+	Field   *FieldDecl
 	Select  token.Pos
 	Clauses []Clause
 }
@@ -610,12 +610,12 @@ type (
 		Rparen token.Pos // position of ')', if any
 	}
 
-	// An EmitDecl node represents a single expression used as a declaration.
+	// An EmbedDecl node represents a single expression used as a declaration.
 	// The expressions in this declaration is what will be emitted as
 	// configuration output.
 	//
-	// An EmitDecl may only appear at the top level.
-	EmitDecl struct {
+	// An EmbedDecl may only appear at the top level.
+	EmbedDecl struct {
 		comments
 		Expr Expr
 	}
@@ -625,7 +625,7 @@ type (
 
 func (d *BadDecl) Pos() token.Pos    { return d.From }
 func (d *ImportDecl) Pos() token.Pos { return d.Import }
-func (d *EmitDecl) Pos() token.Pos   { return d.Expr.Pos() }
+func (d *EmbedDecl) Pos() token.Pos  { return d.Expr.Pos() }
 
 func (d *BadDecl) End() token.Pos { return d.To }
 func (d *ImportDecl) End() token.Pos {
@@ -637,7 +637,7 @@ func (d *ImportDecl) End() token.Pos {
 	}
 	return d.Specs[0].End()
 }
-func (d *EmitDecl) End() token.Pos { return d.Expr.End() }
+func (d *EmbedDecl) End() token.Pos { return d.Expr.End() }
 
 // ----------------------------------------------------------------------------
 // Files and packages

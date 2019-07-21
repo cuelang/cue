@@ -695,7 +695,7 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 		v := x.arcs[i].v.evalPartial(ctx)
 		ctx.evalStack = popped
 
-		var doc *ast.Field
+		var doc *ast.FieldDecl
 		v, doc = x.applyTemplate(ctx, i, v)
 
 		if (len(ctx.evalStack) > 0 && ctx.cycleErr) || cycleError(v) != nil {
@@ -811,7 +811,7 @@ outer:
 	return x
 }
 
-func (x *structLit) applyTemplate(ctx *context, i int, v evaluated) (evaluated, *ast.Field) {
+func (x *structLit) applyTemplate(ctx *context, i int, v evaluated) (evaluated, *ast.FieldDecl) {
 	if x.template != nil {
 		fn, err := evalLambda(ctx, x.template)
 		if err != nil {
@@ -822,7 +822,7 @@ func (x *structLit) applyTemplate(ctx *context, i int, v evaluated) (evaluated, 
 		w := fn.call(ctx, x, arg).evalPartial(ctx)
 		v = binOp(ctx, x, opUnify, v, w)
 
-		f, _ := x.template.base().syntax().(*ast.Field)
+		f, _ := x.template.base().syntax().(*ast.FieldDecl)
 		return v, f
 	}
 	return v, nil
@@ -853,7 +853,7 @@ type arc struct {
 }
 
 type docNode struct {
-	n     *ast.Field
+	n     *ast.FieldDecl
 	left  *docNode
 	right *docNode
 }

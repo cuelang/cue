@@ -394,7 +394,7 @@ func (p *protoConverter) subref(pos scanner.Position, name string) *ast.Ident {
 	}
 }
 
-func (p *protoConverter) addTag(f *ast.Field, body string) {
+func (p *protoConverter) addTag(f *ast.FieldDecl, body string) {
 	tag := "@protobuf(" + body + ")"
 	f.Attrs = append(f.Attrs, &ast.Attribute{Text: tag})
 }
@@ -462,7 +462,7 @@ func (p *protoConverter) message(v *proto.Message) {
 	if v.Comment == nil {
 		ref.NamePos = newSection
 	}
-	f := &ast.Field{Label: ref, Value: s}
+	f := &ast.FieldDecl{Label: ref, Value: s}
 	addComments(f, 1, v.Comment, nil)
 
 	p.file.Decls = append(p.file.Decls, f)
@@ -492,7 +492,7 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 		defer func(saved []string) { p.path = saved }(p.path)
 		p.path = append(p.path, x.Name)
 
-		f := &ast.Field{}
+		f := &ast.FieldDecl{}
 
 		// All keys are converted to strings.
 		// TODO: support integer keys.
@@ -500,7 +500,7 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 		f.Value = p.toExpr(x.Position, p.resolve(x.Position, x.Type, x.Options))
 
 		name := p.ident(x.Position, x.Name)
-		f = &ast.Field{
+		f = &ast.FieldDecl{
 			Label: name,
 			Value: &ast.StructLit{Elts: []ast.Decl{f}},
 		}
@@ -569,14 +569,14 @@ func (p *protoConverter) enum(x *proto.Enum) {
 	}
 
 	// Top-level enum entry.
-	enum := &ast.Field{Label: name}
+	enum := &ast.FieldDecl{Label: name}
 	addComments(enum, 1, x.Comment, nil)
 
 	// Top-level enum values entry.
 	valueName := ast.NewIdent(name.Name + "_value")
 	valueName.NamePos = newSection
 	valueMap := &ast.StructLit{}
-	d := &ast.Field{Label: valueName, Value: valueMap}
+	d := &ast.FieldDecl{Label: valueName, Value: valueMap}
 	// addComments(valueMap, 1, x.Comment, nil)
 
 	if strings.Contains(name.Name, "google") {
@@ -598,7 +598,7 @@ func (p *protoConverter) enum(x *proto.Enum) {
 		switch y := v.(type) {
 		case *proto.EnumField:
 			// Add enum value to map
-			f := &ast.Field{
+			f := &ast.FieldDecl{
 				Label: p.stringLit(y.Position, y.Name),
 				Value: &ast.BasicLit{Value: strconv.Itoa(y.Integer)},
 			}
@@ -642,7 +642,7 @@ func (p *protoConverter) enum(x *proto.Enum) {
 }
 
 func (p *protoConverter) oneOf(x *proto.Oneof) {
-	f := &ast.Field{
+	f := &ast.FieldDecl{
 		Label: p.ref(x.Position),
 	}
 	f.AddComment(comment(x.Comment, true))
@@ -669,11 +669,11 @@ func (p *protoConverter) oneOf(x *proto.Oneof) {
 	}
 }
 
-func (p *protoConverter) parseField(s *ast.StructLit, i int, x *proto.Field) *ast.Field {
+func (p *protoConverter) parseField(s *ast.StructLit, i int, x *proto.Field) *ast.FieldDecl {
 	defer func(saved []string) { p.path = saved }(p.path)
 	p.path = append(p.path, x.Name)
 
-	f := &ast.Field{}
+	f := &ast.FieldDecl{}
 	addComments(f, i, x.Comment, x.InlineComment)
 
 	name := p.ident(x.Position, x.Name)
@@ -703,7 +703,7 @@ func (p *protoConverter) parseField(s *ast.StructLit, i int, x *proto.Field) *as
 
 type optionParser struct {
 	message  *ast.StructLit
-	field    *ast.Field
+	field    *ast.FieldDecl
 	required bool
 	tags     string
 }
@@ -726,7 +726,7 @@ func (p *optionParser) parse(options []*proto.Option) {
 				failf(o.Position, "invalid cue.val value: %v", err)
 			}
 			// Any further checks will be done at the end.
-			constraint := &ast.Field{Label: p.field.Label, Value: expr}
+			constraint := &ast.FieldDecl{Label: p.field.Label, Value: expr}
 			addComments(constraint, 1, o.Comment, o.InlineComment)
 			p.message.Elts = append(p.message.Elts, constraint)
 			if !p.required {

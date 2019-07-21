@@ -77,7 +77,7 @@ func walk(v visitor, node ast.Node) {
 	case *ast.Attribute:
 		// nothing to do
 
-	case *ast.Field:
+	case *ast.FieldDecl:
 		walk(v, n.Label)
 		if n.Value != nil {
 			walk(v, n.Value)
@@ -155,7 +155,7 @@ func walk(v visitor, node ast.Node) {
 			walk(v, s)
 		}
 
-	case *ast.EmitDecl:
+	case *ast.EmbedDecl:
 		walk(v, n.Expr)
 
 	case *ast.Alias:

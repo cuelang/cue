@@ -104,7 +104,7 @@ func (r *Runtime) CompileExpr(expr ast.Expr) (*Instance, error) {
 		_ = p.AddSyntax(&ast.File{Decls: x.Elts})
 	default:
 		_ = p.AddSyntax(&ast.File{
-			Decls: []ast.Decl{&ast.EmitDecl{Expr: expr}},
+			Decls: []ast.Decl{&ast.EmbedDecl{Expr: expr}},
 		})
 	}
 	if p.Err != nil {
@@ -167,7 +167,7 @@ func Build(instances []*build.Instance) []*Instance {
 func (r *Runtime) FromExpr(expr ast.Expr) (*Instance, error) {
 	i := r.index().newInstance(nil)
 	err := i.insertFile(&ast.File{
-		Decls: []ast.Decl{&ast.EmitDecl{Expr: expr}},
+		Decls: []ast.Decl{&ast.EmbedDecl{Expr: expr}},
 	})
 	if err != nil {
 		return nil, err
@@ -308,7 +308,7 @@ func resolveFiles(idx *index, p *build.Instance) errors.Error {
 	allFields := map[string]ast.Node{}
 	for _, file := range p.Files {
 		for _, d := range file.Decls {
-			if f, ok := d.(*ast.Field); ok && f.Value != nil {
+			if f, ok := d.(*ast.FieldDecl); ok && f.Value != nil {
 				if ident, ok := f.Label.(*ast.Ident); ok {
 					allFields[ident.Name] = f.Value
 				}
@@ -330,7 +330,7 @@ func resolveFile(idx *index, f *ast.File, p *build.Instance, allFields map[strin
 	}
 	fields := map[string]ast.Node{}
 	for _, d := range f.Decls {
-		if f, ok := d.(*ast.Field); ok && f.Value != nil {
+		if f, ok := d.(*ast.FieldDecl); ok && f.Value != nil {
 			if ident, ok := f.Label.(*ast.Ident); ok {
 				fields[ident.Name] = d
 			}

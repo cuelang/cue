@@ -470,10 +470,10 @@ func combineExpressions(cmd *cobra.Command, pkg, cueFile string, objs ...ast.Exp
 			}
 			f.Decls = append(f.Decls, obj.Elts...)
 		} else {
-			field := &ast.Field{Label: pathElems[0]}
+			field := &ast.FieldDecl{Label: pathElems[0]}
 			f.Decls = append(f.Decls, field)
 			for _, e := range pathElems[1:] {
-				newField := &ast.Field{Label: e}
+				newField := &ast.FieldDecl{Label: e}
 				newVal := &ast.StructLit{Elts: []ast.Decl{newField}}
 				field.Value = newVal
 				field = newField
@@ -509,7 +509,7 @@ func combineExpressions(cmd *cobra.Command, pkg, cueFile string, objs ...ast.Exp
 		case *ast.StructLit:
 			f.Decls = append(f.Decls, x.Elts...)
 		case *ast.ListLit:
-			f.Decls = append(f.Decls, &ast.EmitDecl{Expr: x})
+			f.Decls = append(f.Decls, &ast.EmbedDecl{Expr: x})
 		default:
 			panic("unreachable")
 		}
@@ -530,13 +530,13 @@ func combineExpressions(cmd *cobra.Command, pkg, cueFile string, objs ...ast.Exp
 type listIndex struct {
 	index map[string]*listIndex
 	file  *ast.File // top-level only
-	field *ast.Field
+	field *ast.FieldDecl
 }
 
 func newIndex() *listIndex {
 	return &listIndex{
 		index: map[string]*listIndex{},
-		field: &ast.Field{},
+		field: &ast.FieldDecl{},
 	}
 }
 
@@ -548,7 +548,7 @@ func (x *listIndex) label(label ast.Label) *listIndex {
 			x.field.Value = &ast.StructLit{}
 		}
 		obj := x.field.Value.(*ast.StructLit)
-		newField := &ast.Field{Label: label}
+		newField := &ast.FieldDecl{Label: label}
 		obj.Elts = append(obj.Elts, newField)
 		idx = &listIndex{
 			index: map[string]*listIndex{},
@@ -570,7 +570,7 @@ func parsePath(exprs string) (p []ast.Label, err error) {
 	}
 
 	for d := f.Decls[0]; ; {
-		field, ok := d.(*ast.Field)
+		field, ok := d.(*ast.FieldDecl)
 		if !ok {
 			// This should never happen
 			return nil, errors.New("%q not a sequence of labels")
@@ -655,7 +655,7 @@ func (h *hoister) hoist(expr ast.Expr) {
 	ast.Walk(expr, nil, func(n ast.Node) {
 		name := ""
 		switch x := n.(type) {
-		case *ast.Field:
+		case *ast.FieldDecl:
 			name, _ = ast.LabelName(x.Label)
 		case *ast.Alias:
 			name = x.Ident.Name
@@ -678,7 +678,7 @@ func (h *hoister) hoist(expr ast.Expr) {
 			return
 		}
 		for i := 0; i < len(obj.Elts); i++ {
-			f, ok := obj.Elts[i].(*ast.Field)
+			f, ok := obj.Elts[i].(*ast.FieldDecl)
 			if !ok {
 				continue
 			}

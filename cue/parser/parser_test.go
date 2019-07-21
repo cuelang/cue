@@ -401,7 +401,7 @@ func TestParseExpr(t *testing.T) {
 		t.Fatalf("ParseExpr(%q): %v", src, err)
 	}
 	for _, d := range x.(*ast.StructLit).Elts {
-		v := d.(*ast.Field).Value.(*ast.Ident)
+		v := d.(*ast.FieldDecl).Value.(*ast.Ident)
 		if v.Scope == nil {
 			t.Errorf("ParseExpr(%q): scope of field %v not set", src, v.Name)
 		}

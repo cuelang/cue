@@ -59,7 +59,7 @@ func newScope(f *ast.File, outer *scope, node ast.Node, decls []ast.Decl) *scope
 	}
 	for _, d := range decls {
 		switch x := d.(type) {
-		case *ast.Field:
+		case *ast.FieldDecl:
 			if name, ok := ast.LabelName(x.Label); ok {
 				s.insert(name, x.Value)
 			}
@@ -121,7 +121,7 @@ func (s *scope) Before(n ast.Node) (w visitor) {
 	case *ast.ListComprehension:
 		s = scopeClauses(s, x.Clauses)
 
-	case *ast.Field:
+	case *ast.FieldDecl:
 		switch label := x.Label.(type) {
 		case *ast.Interpolation:
 			walk(s, label)
