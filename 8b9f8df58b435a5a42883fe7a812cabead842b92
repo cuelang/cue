@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dacb63d3_a490d175",
+        "filename": "pkg/encoding/base64/manual.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-07-25T12:14:50Z",
+      "side": 1,
+      "message": "s/2018/2019/",
+      "revId": "8b9f8df58b435a5a42883fe7a812cabead842b92",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03005672_d12d165a",
+        "filename": "pkg/encoding/base64/manual.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-07-25T12:14:50Z",
+      "side": 1,
+      "message": "Package comment. From Go:\n\n\"Package base64 implements base64 encoding as specified by RFC 4648.\"",
+      "revId": "8b9f8df58b435a5a42883fe7a812cabead842b92",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
