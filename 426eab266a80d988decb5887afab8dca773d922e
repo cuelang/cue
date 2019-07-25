@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bd83cf8_7b379a8e",
+        "filename": "doc/tutorial/basics/instances.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-07-25T12:22:07Z",
+      "side": 1,
+      "message": "It could be that this is not enforced yet, but the spec says only fields starting with a capital letter may be imported. So s/foo/Foo/",
+      "revId": "426eab266a80d988decb5887afab8dca773d922e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cedad3e_e9577b0e",
+        "filename": "doc/tutorial/basics/instances.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-07-25T12:22:07Z",
+      "side": 1,
+      "message": "s/foo/example.Foo/\n\ndid this work? If so that is a bug.",
+      "revId": "426eab266a80d988decb5887afab8dca773d922e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
