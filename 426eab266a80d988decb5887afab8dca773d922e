@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4eaf94c5_79e337bd",
+        "filename": "doc/tutorial/basics/instances.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-07-26T21:25:26Z",
+      "side": 1,
+      "message": "This is not enforced yet, but I\u0027m changing the example and mention it in the documentation. I will open a issue for tracking this.",
+      "parentUuid": "5bd83cf8_7b379a8e",
+      "revId": "426eab266a80d988decb5887afab8dca773d922e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cedad3e_e9577b0e",
         "filename": "doc/tutorial/basics/instances.md",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "426eab266a80d988decb5887afab8dca773d922e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3913ad2_91150b12",
+        "filename": "doc/tutorial/basics/instances.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-07-26T21:25:26Z",
+      "side": 1,
+      "message": "\u003e $ cue eval ./...\n\u003e imported and not used: \"cuelang.org/example\":\n\u003e    ./a.cue:3:8\n\u003e terminating because of errors\ngood catch. changed it.",
+      "parentUuid": "4cedad3e_e9577b0e",
+      "revId": "426eab266a80d988decb5887afab8dca773d922e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
