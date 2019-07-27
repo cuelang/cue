@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "39a68e2b_aee3b1c0",
+        "filename": "pkg/encoding/base64/manual.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-07-27T00:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef78661_1049336d",
+      "revId": "8b9f8df58b435a5a42883fe7a812cabead842b92",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03005672_d12d165a",
         "filename": "pkg/encoding/base64/manual.go",
         "patchSetId": 4
