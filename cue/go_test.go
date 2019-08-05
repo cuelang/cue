@@ -241,29 +241,3 @@ func TestConvertType(t *testing.T) {
 		})
 	}
 }
-
-// func TestConvertType2(t *testing.T) {
-// 	testCases := []struct {
-// 		goTyp interface{}
-// 		want  string
-// 	}{{
-// 		struct {
-// 			D *big.Int
-// 		}{},
-// 		// TODO: indicate that B is explicitly an int only.
-// 		`<0>{D: int, ` +
-// 			`F?: _}`,
-// 	}}
-// 	inst := getInstance(t, "foo")
-
-// 	for _, tc := range testCases {
-// 		ctx := inst.newContext()
-// 		t.Run("", func(t *testing.T) {
-// 			v := goTypeToValue(ctx, true, reflect.TypeOf(tc.goTyp))
-// 			got := debugStr(ctx, v)
-// 			if got != tc.want {
-// 				t.Errorf("\n got %q;\nwant %q", got, tc.want)
-// 			}
-// 		})
-// 	}
-// }

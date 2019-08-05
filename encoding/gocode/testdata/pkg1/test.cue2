@@ -1,0 +1,5 @@
+package pkg1
+
+// MyStruct I A: 200
+
+MyStruct O A: "car"
