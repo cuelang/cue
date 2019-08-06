@@ -48,8 +48,11 @@ var scalars = map[string]string{
 	"bytes":  "bytes",
 }
 
-func (p *protoConverter) setBuiltin(from, to string, pkg *protoConverter) {
-	p.scope[0][from] = mapping{to, "", pkg}
+func (p *protoConverter) setBuiltin(from, to, pkg string) {
+	p.scope[0][from] = mapping{to, "", nil} // protoConverter with "time" as package path
+	if pkg != "" {
+		p.imported[pkg] = true
+	}
 }
 
 func (p *protoConverter) mapBuiltinPackage(pos scanner.Position, file string, required bool) (generate bool) {
@@ -58,25 +61,32 @@ func (p *protoConverter) mapBuiltinPackage(pos scanner.Position, file string, re
 	case "gogoproto/gogo.proto":
 
 	case "google/protobuf/struct.proto":
-		p.setBuiltin("google.protobuf.Struct", "{}", nil)
-		p.setBuiltin("google.protobuf.Value", "_", nil)
-		p.setBuiltin("google.protobuf.NullValue", "null", nil)
-		p.setBuiltin("google.protobuf.ListValue", "[...]", nil)
-		p.setBuiltin("google.protobuf.StringValue", "string", nil)
-		p.setBuiltin("google.protobuf.BoolValue", "bool", nil)
-		p.setBuiltin("google.protobuf.NumberValue", "number", nil)
+		p.setBuiltin("google.protobuf.Struct", "{}", "")
+		p.setBuiltin("google.protobuf.Value", "_", "")
+		p.setBuiltin("google.protobuf.NullValue", "null", "")
+		p.setBuiltin("google.protobuf.ListValue", "[...]", "")
+		p.setBuiltin("google.protobuf.StringValue", "string", "")
+		p.setBuiltin("google.protobuf.BoolValue", "bool", "")
+		p.setBuiltin("google.protobuf.NumberValue", "number", "")
 		return false
 
-	// TODO: consider mapping the following:
+	case "google/protobuf/empty.proto":
+		p.setBuiltin("google.protobuf.Empty", "struct.MaxFields(0)", "struct")
+		return false
 
-	// case "google/protobuf/duration.proto":
-	// 	p.setBuiltin("google.protobuf.Duration", "time.Duration", "time")
+	case "google/protobuf/duration.proto":
+		p.setBuiltin("google.protobuf.Duration", "time.Duration", "time")
+		return false
 
-	// case "google/protobuf/timestamp.proto":
-	// 	p.setBuiltin("google.protobuf.Timestamp", "time.Time", "time")
+	case "google/protobuf/timestamp.proto":
+		p.setBuiltin("google.protobuf.Timestamp", "time.Time", "time")
+		return false
 
-	// case "google/protobuf/empty.proto":
-	// 	p.setBuiltin("google.protobuf.Empty", "struct.MaxFields(0)", nil)
+	// case "google/protobuf/field_mask.proto":
+	// 	p.setBuiltin("google.protobuf.FieldMask", "protobuf.FieldMask", nil)
+
+	// case "google/protobuf/field_mask.proto":
+	// 	p.setBuiltin("google.protobuf.FieldMask", "protobuf.Any", nil)
 
 	default:
 		if required {
