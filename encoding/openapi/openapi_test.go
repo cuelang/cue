@@ -39,6 +39,10 @@ func TestParseDefinitions(t *testing.T) {
 		in, out string
 		config  *Config
 	}{{
+		"structural.cue",
+		"structural.json",
+		resolveRefs,
+	}, {
 		"simple.cue",
 		"simple.json",
 		resolveRefs,
