@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fd67e52_b3cf763a",
+        "filename": "encoding/openapi/testdata/structural.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2019-08-13T05:06:51Z",
+      "side": 1,
+      "message": "why the \"required\" field is within oneOf instead of the stringMapValue property above?",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "718f7e5736f8f2bd5d0717ebc0933fcac882fc87",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
