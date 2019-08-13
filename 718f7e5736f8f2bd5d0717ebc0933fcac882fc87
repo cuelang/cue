@@ -22,6 +22,30 @@
       "revId": "718f7e5736f8f2bd5d0717ebc0933fcac882fc87",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28ee997_e523d790",
+        "filename": "encoding/openapi/testdata/structural.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-13T12:49:15Z",
+      "side": 1,
+      "message": "Quite harmless and correct (the constraint only applies in this case), but indeed annoying.\n\nI\u0027ve changed the code to recognize there are no ambiguities and pull up this data when possible.",
+      "parentUuid": "3fd67e52_b3cf763a",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "718f7e5736f8f2bd5d0717ebc0933fcac882fc87",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
