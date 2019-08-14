@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "53e095f3_b0e75e4a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-14T00:15:08Z",
+      "side": 1,
+      "message": "Best is to remove it altogether. Float remainder is weird anyway and lives better in a math package.",
+      "parentUuid": "74a24b89_bf6180e6",
+      "range": {
+        "startLine": 1816,
+        "startChar": 13,
+        "endLine": 1816,
+        "endChar": 43
+      },
+      "revId": "cab27f4d9c26675b084fc0d83e3fe526b9bc4ce3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41154f1b_ee722957",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Not sure I follow. `len` is used to \"read\" the current length (capacity) of a value, whereas `cap` is used to \"set\" a cap on some value.\n\nSo `cap(3) \u0026 [...int]` is like `make([]int, 0, 3)` in Go, whereas `len(a)` is like `len(a)` in Go.  `cap(\u003c\u003d10) \u0026 [...int]` represents a list of integers of at most size 10.",
       "parentUuid": "41154f1b_ee722957",
+      "range": {
+        "startLine": 2284,
+        "startChar": 3,
+        "endLine": 2284,
+        "endChar": 44
+      },
+      "revId": "cab27f4d9c26675b084fc0d83e3fe526b9bc4ce3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542df1ad_e9bbfbfe",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2284,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-14T00:15:08Z",
+      "side": 1,
+      "message": "len retrieves the capacity, whereas cap sets it.\n\nBut I\u0027m removing cap altogether. It is easier to have those as builtin packages: \nstruct.MinFields(4) etc. \n\nThis keeps it out of the language and encourages clarity when it comes to capping strings:\nstrings.MaxRunes(4), bytes.MaxLen(4), strings.MaxGraphemeClusters(4), etc.",
+      "parentUuid": "5fd072d0_defb2061",
       "range": {
         "startLine": 2284,
         "startChar": 3,
