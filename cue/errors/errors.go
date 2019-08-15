@@ -53,6 +53,10 @@ func NewMessage(format string, args []interface{}) Message {
 	return Message{format: format, args: args}
 }
 
+func (m *Message) message() *Message {
+	return m
+}
+
 // Msg returns a printf-style format string and its arguments for human
 // consumption.
 func (m *Message) Msg() (format string, args []interface{}) {
@@ -369,8 +373,7 @@ func (p list) Msg() (format string, args []interface{}) {
 	case 1:
 		return p[0].Msg()
 	}
-	format, args = p[0].Msg()
-	return "%s (and %d more errors)", append(args, len(p)-1)
+	return "%s (and %d more errors)", []interface{}{p[0], len(p) - 1}
 }
 
 // Position reports the primary position for the first error, if any.
