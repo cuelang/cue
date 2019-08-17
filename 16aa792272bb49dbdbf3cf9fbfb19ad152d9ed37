@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c99a648_9c0e477a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 2540,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-17T10:04:04Z",
+      "side": 1,
+      "message": "Oops, yes. Fixed",
+      "parentUuid": "32e21cc9_f633d416",
+      "range": {
+        "startLine": 2537,
+        "startChar": 0,
+        "endLine": 2540,
+        "endChar": 58
+      },
+      "revId": "16aa792272bb49dbdbf3cf9fbfb19ad152d9ed37",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbb1952c_e17dcd77",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-14T11:07:10Z",
       "side": 1,
       "message": "You might as well just make this a language requirement, since any portable package will have to conform. Why do you want to allow implementations the additional freedom?",
+      "range": {
+        "startLine": 2563,
+        "startChar": 1,
+        "endLine": 2567,
+        "endChar": 7
+      },
+      "revId": "16aa792272bb49dbdbf3cf9fbfb19ad152d9ed37",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51467fc9_11b48777",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-17T10:04:04Z",
+      "side": 1,
+      "message": "For the same reason Go does and because Go does.\n\nBut it can always be relaxed later if need be.\n\nDone.",
+      "parentUuid": "bbb1952c_e17dcd77",
       "range": {
         "startLine": 2563,
         "startChar": 1,
