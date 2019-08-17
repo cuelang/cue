@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0af3f533_54df9606",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-17T10:32:55Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 2567,
+        "startChar": 0,
+        "endLine": 2567,
+        "endChar": 3
+      },
+      "revId": "a59e5edd267882e9a66ef4ca091e5ff562daba55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
