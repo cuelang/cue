@@ -339,9 +339,6 @@ FileOptions: {
 	//  top-level extensions defined in the file.
 	javaMultipleFiles?: bool @protobuf(10,name=java_multiple_files,"default=false")
 
-	//  This option does nothing.
-	javaGenerateEqualsAndHash?: bool @protobuf(20,name=java_generate_equals_and_hash,deprecated)
-
 	//  If set true, then the Java2 code generator will generate code that
 	//  throws an exception whenever an attempt is made to assign a non-UTF-8
 	//  byte sequence to a string field.

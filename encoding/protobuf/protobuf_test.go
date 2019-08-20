@@ -86,6 +86,7 @@ func TestBuild(t *testing.T) {
 
 	b := NewExtractor(c)
 	_ = b.AddFile("networking/v1alpha3/gateway.proto", nil)
+	_ = b.AddFile("networking/v1alpha3/virtual_service.proto", nil)
 	_ = b.AddFile("mixer/v1/attributes.proto", nil)
 	_ = b.AddFile("mixer/v1/mixer.proto", nil)
 	_ = b.AddFile("mixer/v1/config/client/client_config.proto", nil)

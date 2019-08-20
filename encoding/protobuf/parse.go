@@ -509,6 +509,10 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 		s.Elts = append(s.Elts, comment(x, true))
 
 	case *proto.NormalField:
+		if isDeprecated(x.Field) {
+			break
+		}
+
 		f := p.parseField(s, i, x.Field)
 
 		if x.Repeated {
@@ -519,6 +523,10 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 		}
 
 	case *proto.MapField:
+		if isDeprecated(x.Field) {
+			break
+		}
+
 		defer func(saved []string) { p.path = saved }(p.path)
 		p.path = append(p.path, x.Name)
 
@@ -560,6 +568,15 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 	default:
 		failf(scanner.Position{}, "unsupported field type %T", v)
 	}
+}
+
+func isDeprecated(f *proto.Field) bool {
+	for _, o := range f.Options {
+		if o.Name == "deprecated" && o.Constant.Source == "true" {
+			return true
+		}
+	}
+	return false
 }
 
 // enum converts a proto enum definition to CUE.
