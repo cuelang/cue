@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a91dbedc_2493e606",
+        "filename": "encoding/openapi/testdata/simple.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-21T21:37:04Z",
+      "side": 1,
+      "message": "The first argument to @protobuf must be a tag. Using @protobuf(1,deprecated) here will do.",
+      "revId": "5a6849b98ded49ba274b746ed717b367ff3c29f0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f6d26f_ddf4af9f",
+        "filename": "encoding/openapi/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-08-21T21:37:04Z",
+      "side": 1,
+      "message": ".Flag(1, \"deprecated\")",
+      "revId": "5a6849b98ded49ba274b746ed717b367ff3c29f0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
