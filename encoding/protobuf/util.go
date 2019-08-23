@@ -66,7 +66,7 @@ func comment(c *proto.Comment, doc bool) *ast.CommentGroup {
 		cg.Position = 10
 	}
 	for _, s := range c.Lines {
-		cg.List = append(cg.List, &ast.Comment{Text: "// " + s})
+		cg.List = append(cg.List, &ast.Comment{Text: "//" + s})
 	}
 	return cg
 }
