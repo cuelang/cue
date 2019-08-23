@@ -44,13 +44,16 @@ func ExampleExtract() {
 	// Output:
 	// // Package basic is just that: basic.
 	// package basic
-	//
+
 	// // This is my type.
 	// MyType: {
 	// 	stringValue?: string @protobuf(1,name=string_value) // just any 'ole string
-	//
+
 	// 	// A method must start with a capital letter.
 	// 	method?: [...string] @protobuf(2)
 	// 	method?: [...=~"^[A-Z]"]
+	// 	exmapleMap?: {
+	// 		<_>: string
+	// 	} @protobuf(3,type=map<string,string>,exmaple_map)
 	// }
 }
