@@ -223,11 +223,12 @@ func (f *formatter) decl(decl ast.Decl) {
 			f.print(formfeed)
 		}
 
-	case *ast.ComprehensionDecl:
-		f.decl(n.Field)
+	case *ast.Comprehension:
+		field := n.Struct.Elts[0]
+		f.decl(field)
 		f.print(blank)
-		if n.Select != token.NoPos {
-			f.print(n.Select, token.ARROW, blank)
+		if n.Clauses[0].Pos().RelPos() >= token.Newline {
+			f.print(token.ARROW, blank)
 		}
 		f.print(indent)
 		f.walkClauseList(n.Clauses)

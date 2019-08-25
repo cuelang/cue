@@ -259,7 +259,7 @@ func (v *astVisitor) walk(astNode ast.Node) (ret value) {
 			case *ast.Field, *ast.Alias:
 				v1.walk(e)
 
-			case *ast.ComprehensionDecl:
+			case *ast.Comprehension:
 				v1.walk(x)
 			}
 		}
@@ -300,17 +300,17 @@ func (v *astVisitor) walk(astNode ast.Node) (ret value) {
 	case *ast.Ellipsis:
 		return v.errf(n, "ellipsis (...) only allowed at end of list or struct")
 
-	case *ast.ComprehensionDecl:
+	case *ast.Comprehension:
+		field := n.Struct.Elts[0].(*ast.Field)
 		yielder := &yield{
-			baseValue: newExpr(n.Field.Value),
-			opt:       n.Field.Optional != token.NoPos,
-			def:       n.Field.Token == token.ISA,
+			baseValue: newExpr(n.Struct),
+			opt:       field.Optional != token.NoPos,
+			def:       field.Token == token.ISA,
 		}
 		fc := &fieldComprehension{
 			baseValue: newDecl(n),
 			clauses:   wrapClauses(v, yielder, n.Clauses),
 		}
-		field := n.Field
 		switch x := field.Label.(type) {
 		case *ast.Interpolation:
 			v.sel = "?"

@@ -763,10 +763,9 @@ func (p *parser) parseField() (decl ast.Decl) {
 	p.closeList()
 
 	decl = this
-	var arrow token.Pos
 	switch p.tok {
 	case token.ARROW:
-		arrow = p.expect(token.ARROW)
+		p.expect(token.ARROW)
 		fallthrough
 
 	case token.FOR, token.IF:
@@ -774,10 +773,11 @@ func (p *parser) parseField() (decl ast.Decl) {
 			p.errf(p.pos, "comprehension not allowed for this field")
 		}
 		clauses := p.parseComprehensionClauses()
-		return &ast.ComprehensionDecl{
-			Field:   this,
-			Select:  arrow,
+		return &ast.Comprehension{
 			Clauses: clauses,
+			Struct: &ast.StructLit{
+				Elts: []ast.Decl{this},
+			},
 		}
 	}
 
