@@ -13,13 +13,13 @@ to define anything else than these two values.
 
 <!-- CUE editor -->
 ```
-conn: {
+_conn: {
     address:  string
     port:     int
     protocol: "tcp" | "udp"
 }
 
-lossy: conn & {
+lossy: _conn & {
     address:  "1.2.3.4"
     port:     8888
     protocol: "udp"
