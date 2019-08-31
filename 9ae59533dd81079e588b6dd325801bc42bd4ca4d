@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9cff5ec_84336bdd",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "This sentence implies the previous one, unless \"_\" is a letter, which is counterintuitive. (But maybe explains why the sentence before that doesn\u0027t mention \"_\".)\n\nDon\u0027t assume your readers think \"_\" is a letter, even if it is.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 54
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2054040f_f81948a1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "Or even otherwise. State the rule first (any chars enclosed in backticks made an ident), then say it\u0027s why it\u0027s useful.",
+      "range": {
+        "startLine": 186,
+        "startChar": 47,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca040a1_29f0b2f7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "What\u0027s the difference between \"letter\" and \"unicode_letter\"?\n\nWhy not allow more character classes here?",
+      "range": {
+        "startLine": 200,
+        "startChar": 26,
+        "endLine": 200,
+        "endChar": 40
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beaf6682_e1fd1de3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "grammar bug",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbd9b5e_23663322",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "latter",
+      "range": {
+        "startLine": 1019,
+        "startChar": 58,
+        "endLine": 1019,
+        "endChar": 63
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363507bb_26d5d524",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "Is it though? Doesn\u0027t `for k, v in struct` loop over all fields, regardless of value?",
+      "range": {
+        "startLine": 1149,
+        "startChar": 0,
+        "endLine": 1150,
+        "endChar": 25
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e75d892_45727219",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "Both A1 and A2 are also _|_, right? That seems more important.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1170,
+        "endChar": 1
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481027ae_51f64968",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand this. It seems that there is no closing until after the loop is done, so why isn\u0027t this OK?",
+      "range": {
+        "startLine": 1182,
+        "startChar": 1,
+        "endLine": 1186,
+        "endChar": 2
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca80dfa_194f2100",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "indentifier",
+      "range": {
+        "startLine": 1567,
+        "startChar": 29,
+        "endLine": 1567,
+        "endChar": 38
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38150c5a_fa882bb1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "What quotes?",
+      "range": {
+        "startLine": 1570,
+        "startChar": 12,
+        "endLine": 1570,
+        "endChar": 18
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e3fa3b_acaa2b88",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "These three sentences are awfully confusing. For the first two, I think you mean that:\n\n   a: 1\n\nThe field name is \"a\".\n\n   `b`: 2\n\nThe field name is \"b\". \n\nBut that doesn\u0027t require explanation: we already know from above that `b` denotes the identifier \"b\". \n\nThe sentence about string labels introduces the term \"data model,\" which I don\u0027t think has been defined before. IIUC, \n\n    \"c\": 3\n\nestablishes a field whose name is \"c\" (just the letter c). It is a field on par with \"a\" and \"b\", but you can\u0027t write `foo.c` to access it, only `foo[\"c\"]`. \n\nIf that is correct, then the story is simple: a field label can be an identifier or string. (You can then say that the name of the field is the identifier or string, but that is so uninformative as to be confusing; omit it.) The only differences are (IIUC): a string label can be dynamic, a string label can have any characters in it, and a string label can\u0027t be used with the \".\" operator.",
+      "range": {
+        "startLine": 1572,
+        "startChar": 40,
+        "endLine": 1572,
+        "endChar": 41
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768f16dc_4b94d02b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-08-31T22:10:50Z",
+      "side": 1,
+      "message": "What does the word \"complete\" do here? When is an iteration incomplete?",
+      "range": {
+        "startLine": 2416,
+        "startChar": 23,
+        "endLine": 2416,
+        "endChar": 31
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
