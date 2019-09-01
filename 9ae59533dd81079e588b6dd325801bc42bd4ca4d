@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "371b23e7_5b8c974f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Indeed, just like in the Go Spec, letter includes `_`. \n\nI added a parentheses around it. Changing the definition of letters at this point may be a bit error prone and there is something to say with keeping it the same as with Go.",
+      "parentUuid": "a9cff5ec_84336bdd",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 54
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2054040f_f81948a1",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d6fd2278_929245da",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2054040f_f81948a1",
+      "range": {
+        "startLine": 186,
+        "startChar": 47,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ca040a1_29f0b2f7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-31T22:10:50Z",
       "side": 1,
       "message": "What\u0027s the difference between \"letter\" and \"unicode_letter\"?\n\nWhy not allow more character classes here?",
+      "range": {
+        "startLine": 200,
+        "startChar": 26,
+        "endLine": 200,
+        "endChar": 40
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb21fe3_ddc925f9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "It should be letter, corrected.\n\nIt is not that easy to come up with a good set of characters to put in there. I need to give some serious thought regarding Unicode stability and security first. It is also the reason Go still doesn\u0027t allow more. It is not that trivial.",
+      "parentUuid": "9ca040a1_29f0b2f7",
       "range": {
         "startLine": 200,
         "startChar": 26,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3fffef9a_7063018c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beaf6682_e1fd1de3",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fbd9b5e_23663322",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "10e8c278_7ad8c1a4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fbd9b5e_23663322",
+      "range": {
+        "startLine": 1019,
+        "startChar": 58,
+        "endLine": 1019,
+        "endChar": 63
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "363507bb_26d5d524",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-08-31T22:10:50Z",
       "side": 1,
       "message": "Is it though? Doesn\u0027t `for k, v in struct` loop over all fields, regardless of value?",
+      "range": {
+        "startLine": 1149,
+        "startChar": 0,
+        "endLine": 1150,
+        "endChar": 25
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75904dbe_86562988",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "That is a great point. I qualified it with \"for the purpose of unification\". There are other cases where this is not the case, for instance, an struct that is embedded and \"opened\" again will not insert these fields.\n\nImportant to note here for the purpose of review: when constructing a new value, such as with comprehension, embedding or with any form of expression, the respective field does not have a place in the lattice yet. We therefore have a bit more choice as to what it means. Conversely, in the value lattice it is important that we do not have two representations of the same thing. In this case that it makes for a bit awkward, albeit very subtle, duality. I have not found a good solution for it, although I think it is okay if nothing better is found.\n\nImplementation-wise, a closed struct is a regular struct with a closed bit set on that struct. A litmus test I use in determining if the lattice is sound is whether I can represent each intermediate value in CUE itself without losing information, although that is not sufficient.",
+      "parentUuid": "363507bb_26d5d524",
       "range": {
         "startLine": 1149,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "32e1a6fe_7d189b20",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "You are right. I\u0027ve attached the comments to the structs.",
+      "parentUuid": "3e75d892_45727219",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1170,
+        "endChar": 1
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "481027ae_51f64968",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2019-08-31T22:10:50Z",
       "side": 1,
       "message": "Sorry, I don\u0027t understand this. It seems that there is no closing until after the loop is done, so why isn\u0027t this OK?",
+      "range": {
+        "startLine": 1182,
+        "startChar": 1,
+        "endLine": 1186,
+        "endChar": 2
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b123e4_b8ed0ea9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Good catch. This is a mindless syntax rewrite.\n\nWith the embedding interpretation of comprehensions, it is obvious this should be allowed and straightforward to figure out what it means.\n\nIn the old interpretation, I did not quite find this to be true, so I took the conservative stance of disallowing it before.",
+      "parentUuid": "481027ae_51f64968",
       "range": {
         "startLine": 1182,
         "startChar": 1,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "65e712f4_0f7f5c83",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "38150c5a_fa882bb1",
+      "range": {
+        "startLine": 1570,
+        "startChar": 12,
+        "endLine": 1570,
+        "endChar": 18
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1e3fa3b_acaa2b88",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "4f0aedb6_5ab05ae4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Actually, if they can be referenced with a `.`, they are just not in scope.\n\nI\u0027ve reworded it completely and added an example.",
+      "parentUuid": "a1e3fa3b_acaa2b88",
+      "range": {
+        "startLine": 1572,
+        "startChar": 40,
+        "endLine": 1572,
+        "endChar": 41
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "768f16dc_4b94d02b",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -266,6 +506,30 @@
       "writtenOn": "2019-08-31T22:10:50Z",
       "side": 1,
       "message": "What does the word \"complete\" do here? When is an iteration incomplete?",
+      "range": {
+        "startLine": 2416,
+        "startChar": 23,
+        "endLine": 2416,
+        "endChar": 31
+      },
+      "revId": "9ae59533dd81079e588b6dd325801bc42bd4ca4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48f3ad5_fc2ed792",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-01T12:54:36Z",
+      "side": 1,
+      "message": "Mentioned 2 paragraphs above:\n\"A current iteration is said to complete if the innermost block of the clause sequence is reached.\"",
+      "parentUuid": "768f16dc_4b94d02b",
       "range": {
         "startLine": 2416,
         "startChar": 23,
