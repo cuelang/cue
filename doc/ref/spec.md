@@ -714,10 +714,10 @@ M1: *v        => (v, v)
 M2: *(v1, d1) => (v1, d1)
 ```
 
-In general, any operation in CUE involving default values proceeds along the
+In general, any operation `f` in CUE involving default values proceeds along the
 following lines
 ```
-O1: f((v1, d1), ..., (vn, dn))  => (fn(v1, ..., vn), fn(d1, ..., dn))
+O1: f((v1, d1), ..., (vn, dn))  => (f(v1, ..., vn), f(d1, ..., dn))
 ```
 where, with the exception of disjunction, a value `v` without a default
 value is promoted to `(v, v)`.
@@ -885,7 +885,7 @@ with it in the language.
 A decimal floating-point literal always has type `float`;
 it is not an instance of `int` even if it is an integral number.
 
-Integer literals are always of type `int and don't match type `float`.
+Integer literals are always of type `int` and don't match type `float`.
 
 Numeric literals are exact values of arbitrary precision.
 If the operation permits it, numbers should be kept in arbitrary precision.
@@ -913,7 +913,7 @@ not allowing surrogates.
 The predeclared string type is `string`; it is a defined type.
 
 The length of a string `s` (its size in bytes) can be discovered using
-the built-in function len.
+the built-in function `len`.
 
 
 ### Bytes
@@ -927,7 +927,7 @@ The predeclared byte sequence type is `bytes`; it is a defined type.
 
 ### Bounds
 
-A _bound_, syntactically_ a [unary expression](#Operands), defines
+A _bound_, syntactically a [unary expression](#Operands), defines
 an infinite disjunction of concrete values than can be represented
 as a single comparison.
 
@@ -965,6 +965,17 @@ are not defined for `b`.
 The (unique) struct with no fields, written `{}`, has every struct as an
 instance. It can be considered the type of all structs.
 
+```
+{a: 1} ⊑ {}
+{a: 1, b: 1} ⊑ {a: 1}
+{a: 1} ⊑ {a: int}
+{a: 1, b: 1} ⊑ {a: int, b: float}
+
+{} ⋢ {a: 1}
+{a: 2} ⋢ {a: 1}
+{a: 1} ⋢ {b: 1}
+```
+
 A field may be required or optional.
 The successful unification of structs `a` and `b` is a new struct `c` which
 has all fields of both `a` and `b`, where
@@ -993,10 +1004,30 @@ It could be a role of vet checkers to identify such cases (and suggest users
 to explicitly use `_|_` to discard a field, for instance).
 -->
 
+Syntactically, a struct literal may contain multiple fields with
+the same label, the result of which is a single field with the same properties
+as defined as the unification of two fields resulting from unifying two structs.
+
+These examples illustrate required fields only. Examples with
+optional fields follow below.
+
+```
+Expression                             Result (without optional fields)
+{a: int, a: 1}                         {a: 1}
+{a: int} & {a: 1}                      {a: 1}
+{a: >=1 & <=7} & {a: >=5 & <=9}        {a: >=5 & <=7}
+{a: >=1 & <=7, a: >=5 & <=9}           {a: >=5 & <=7}
+
+{a: 1} & {b: 2}                        {a: 1, b: 2}
+{a: 1, b: int} & {b: 2}                {a: 1, b: 2}
+
+{a: 1} & {a: 2}                        _|_
+```
+
 Syntactically, the labels of optional fields are followed by a
 question mark `?`.
 The question mark is not part of the field name.
-Concrete field labels may be an identifier or string, the later of which may be
+Concrete field labels may be an identifier or string, the latter of which may be
 interpolated.
 References within such interpolated strings are resolved within
 the scope of the struct in which the label sequence is
@@ -1017,11 +1048,9 @@ A Bind label binds an identifier to the label name scoped to the field value.
 It also makes all possible labels an optional field set to the
 associated field value.
 The token `...` is a shorthand for `<_>: _`.
+<!-- (jba) I don't understand either of these two sentences. Can you provide a
+couple of examples here? -->
 <!-- NOTE: if we allow ...Expr, as in list, it would mean something different. -->
-
-Syntactically, a struct literal may contain multiple fields with
-the same label, the result of which is a single field with the same properties
-as defined as the unification of two fields resulting from unifying two structs.
 
 
 <!-- NOTE:
@@ -1082,33 +1111,12 @@ attr_string     = { attr_char } | string_lit .
 attr_char        = /* an arbitrary Unicode code point except newline, ',', '"', `'`, '#', '=', '(', and ')' */ .
 ```
 
-```
-{a: 1} ⊑ {}
-{a: 1, b: 1} ⊑ {a: 1}
-{a: 1} ⊑ {a: int}
-{a: 1, b: 1} ⊑ {a: int, b: float}
-
-{} ⋢ {a: 1}
-{a: 2} ⋢ {a: 1}
-{a: 1} ⋢ {b: 1}
-```
 
 ```
 Expression                             Result (without optional fields)
-{a: int, a: 1}                         {a: 1}
-{a: int} & {a: 1}                      {a: 1}
-{a: >=1 & <=7} & {a: >=5 & <=9}        {a: >=5 & <=7}
-{a: >=1 & <=7, a: >=5 & <=9}           {a: >=5 & <=7}
-
-{a: 1} & {b: 2}                        {a: 1, b: 2}
-{a: 1, b: int} & {b: 2}                {a: 1, b: 2}
-
-{a: 1} & {a: 2}                        _|_
-
 a: { foo?: string }                    {}
 b: { foo: "bar" }                      { foo: "bar" }
 c: { foo?: *"bar" | string }           {}
-d: { [string]?: string }
 
 d: a & b                               { foo: "bar" }
 e: b & c                               { foo: "bar" }
@@ -1116,14 +1124,54 @@ f: a & c                               {}
 g: a & { foo?: number }                {}
 h: b & { foo?: number }                _|_
 ```
+<!-- (jba) I removed the following from the above example section:
+
+d: { [string]?: string }
+
+I don't think the square brackets have been introduced yet, and you
+already had a "d" in the examples.
+
+Also, you don't have an example that illustrates optional fields + defaults,
+as in c above. Perhaps
+
+   i: c & { foo: string }  => { foo: "bar" }
+
+-->
 
 
 #### Closed structs
 
 By default, structs are open to adding fields.
 Instances of an open struct `p` may contain fields not defined in `p`.
-A _closed struct_ `c` is a struct whose instances may not have fields
-not defined in `c`.
+This is makes it easy to add fields, but can lead to bugs:
+
+```
+S: { 
+    field1: string
+}
+
+S1: S & { field2: "foo" }
+
+// S1 is { field1: string, field2: "foo" }
+
+
+A: {
+    field1: string
+    field2: string
+}
+
+A1: A & {
+    feild1: "foo"  // "field1" was accidentally misspelled
+}
+
+// A1 is 
+//    { field1: string, field2: string, feild1: "foo" }
+// not the intended
+//    { field1: "foo", field2: string }
+```
+
+A _closed struct_ `c` is a struct whose instances can have only those fields
+defined in `c`.
 Closing a struct is equivalent to adding an optional field with value `_|_`
 for all undefined fields.
 
@@ -1163,10 +1211,12 @@ D: close({
 })
 ```
 
-
+<!-- (jba) Somewhere it should be said that optional fields are only
+     interesting inside closed structs. -->
+     
 #### Embedding
 
-A struct may contain an _embedded value_, an Operand used
+A struct may contain an _embedded value_, an operand used
 as a declaration, which must evaluate to a struct.
 An embedded value of type struct is unified with the struct in which it is
 embedded, but disregarding the restrictions imposed by closed structs
@@ -1183,10 +1233,39 @@ This would not be the case with  per-field definition.
 A struct resulting from such a unification is closed if either of the involved
 structs were closed.
 
+```
+S1: {
+    a: 1
+    b: 2
+    {
+        c: 3
+    }
+}
+// S1 is { a: 1, b: 2, c: 3 }
+
+S2: close({
+    a: 1
+    b: 2
+    {
+        c: 3
+    }
+})
+// same as close(S1)
+
+S3: {
+    a: 1
+    b: 2
+    close({
+        c: 3
+    })
+}
+// same as S2
+```
+
 
 #### Definitions
 
-A fields of a struct may be declared as a regular field (using `:`)
+A field of a struct may be declared as a regular field (using `:`)
 or as a _definition_ (using `::`).
 Definitions are not emitted as part of the model and are never required
 to be concrete when emitting data.
@@ -1197,6 +1276,19 @@ An ellipsis `...` in such literal structs keeps them open,
 as it defines `_` for all labels.
 
 
+<!-- (jba) I'm confused by the first two examples below. I don't understand
+    why I need ... to unify, since "enabled" is a field defined in MyStruct
+    and the definition of closed says only that I can't add new fields, not
+    that I can't unify with existing ones.
+-->
+<!-- (jba) I'm also embarrassed to say that I don't understand the OneOf
+     example. I don't see anything that gives a meaning to
+     {
+        {a: int} | {b: int}
+     }
+     since structs should consist of fields and embedding requires the embedded
+     value to be a struct, not a disjunction.
+-->
 ```
 // MyStruct is closed and as there is no expression label or `...`, we know
 // this is the full definition.
@@ -1229,6 +1321,7 @@ D1: D & { a: 12, c: 22 }  // { a: 12, c: 22 }
 D2: D & { a: 12, b: 33 }  // _|_ // cannot define both `a` and `b`
 ```
 
+
 <!---
 JSON fields are usual camelCase. Clashes can be avoided by adopting the
 convention that definitions be TitleCase. Unexported definitions are still
@@ -1241,8 +1334,10 @@ package internal.
 
 Fields may be associated with attributes.
 Attributes define additional information about a field,
-such as a mapping to a protobuf tag or alternative
+such as a mapping to a protocol buffer <!-- TODO: add link --> tag or alternative
 name of the field when mapping to a different language.
+
+<!-- TODO define attribute syntax here, before getting into semantics. -->
 
 If a field has multiple attributes their identifiers must be unique.
 Attributes accumulate when unifying two fields, removing duplicate entries.
@@ -1277,6 +1372,8 @@ Combined: myStruct1 & myStruct2
 // attr:  int    @xml(,attr) @xml(a1,attr) @go(Attr)
 ```
 
+#### Aliases
+
 In addition to fields, a struct literal may also define aliases.
 Aliases name values that can be referred to
 within the [scope](#declarations-and-scopes) of their
@@ -1284,6 +1381,11 @@ definition, but are not part of the struct: aliases are irrelevant to
 the partial ordering of values and are not emitted as part of any
 generated data.
 The name of an alias must be unique within the struct literal.
+
+<!-- TODO: explain the difference between aliases and definitions.
+     Now that you have definitions, are aliases really necessary? 
+     Consider removing.
+-->
 
 ```
 // The empty struct.
@@ -1299,6 +1401,8 @@ The name of an alias must be unique within the struct literal.
     "not an ident": 4
 }
 ```
+
+#### Shorthand notation for nested structs
 
 A field whose value is a struct with a single field may be written as
 a sequence of the two field names,
