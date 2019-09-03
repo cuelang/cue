@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a059879_ffe83be3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-09-03T12:55:24Z",
+      "side": 1,
+      "message": "\", so the field\u0027s value can be referenced by writing the identifier.\"",
+      "range": {
+        "startLine": 1573,
+        "startChar": 69,
+        "endLine": 1573,
+        "endChar": 70
+      },
+      "revId": "4a1feedbf1646f816ca3dfd46c4672e155ba05be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
