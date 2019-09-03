@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b60503_32a8935a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "yes, examples are good here.\n\n```\n{\n  \u003cName\u003e: { name: Name, value: int }\n\n  bar value: 2 // foo bar: { name: \"bar\", value: 2 }\n}\n\n{\n  \u003c_\u003e: int\n\n  foo: 2\n  bar: \"string\" // _|_ // incompatible types int and string\n}\n```\n\nI earlier proposed the notation `[string]?: int` for the latter. But that would not obviate the need of this notation, or another, to bind the name of a label to an identifier.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591c2bba_66aa2cc2",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "makes sense.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8c1850_614cd2f0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "Yes, that is very useful to add. It is not intuitively obvious what defaults combined with optionals mean, even if it is logically.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f01bf00_00f53865",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "white space at end.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62b2a9b_23f52089",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "It does actually.\na: foo\na: bar\n\nis defined as\na: foo \u0026 bar\n\nClosing structs is now strictly defined as a syntactically determined. So\na :: foo\na :: bar\n\nrewrites to\na :: cr(foo) \u0026 cr(bar)\nwhere cr is a recursive close.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c356e9_56d8246e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "A disjunction of struct values is of type struct, so that doesn\u0027t violate it. A disjunction is not a type in and of itself, just as \u0026 is not.\n\nSo embedding a disjunction of structs is no different from unifying a closed struct with a disjunction. Unifying each of the disjuncts with the closed struct will, by definition of embedding, result in a new closed struct with the fields of the disjunct added. In other words, even though the embedding itself is not closed, the result here is that either field `a` or `b` may be added, but not both.\n\nA nice indication about these definitions is that the implementation of embedding consists of a simple variant of unification that temporarily turns of the closedness check (as worded in the definition for embedding). Everything else stays the same. There is no additional logic to handle embedding of disjunctions.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4c6996_1b08c250",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2019-09-03T16:52:47Z",
+      "side": 1,
+      "message": "The main purpose of aliases is to unshadow identifiers that are otherwise blocked. For identifiers that are necessary for the data model, there is no flexibility in naming. Using definitions there seems wrong, but could work by convention.\n\nThe may become really unnecessary, however, when we define string labels to be non-binding.\n\nAnother issue with string labels is that it effectively defines free-form Unicode identifiers (generally a very bad idea). So defining string labels to be non-binding is probably a good idea.",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
