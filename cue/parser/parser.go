@@ -730,7 +730,7 @@ func (p *parser) parseComprehension() (decl ast.Decl) {
 
 	return &ast.Comprehension{
 		Clauses: clauses,
-		Struct:  expr,
+		Value:   expr,
 	}
 }
 
