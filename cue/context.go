@@ -61,17 +61,17 @@ func (c *context) decEvalDepth() {
 	}
 }
 
-var baseContext apd.Context
+var BaseContext apd.Context
 
 func init() {
-	baseContext = apd.BaseContext
-	baseContext.Precision = 24
+	BaseContext = apd.BaseContext
+	BaseContext.Precision = 24
 }
 
 // newContext returns a new evaluation context.
 func (idx *index) newContext() *context {
 	c := &context{
-		Context: &baseContext,
+		Context: &BaseContext,
 		index:   idx,
 	}
 	return c
