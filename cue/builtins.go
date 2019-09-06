@@ -45,6 +45,8 @@ func init() {
 
 var _ io.Reader
 
+var listContext = apd.BaseContext.WithPrecision(24)
+
 var mulContext = apd.BaseContext.WithPrecision(1)
 
 var idnaProfile = idna.New(
@@ -716,6 +718,126 @@ var builtinPackages = map[string]*builtinPkg{
 					}
 					return false
 				}()
+			},
+		}, {
+			Name:   "Avg",
+			Params: []kind{listKind},
+			Result: numKind,
+			Func: func(c *callCtxt) {
+				xs := c.decimalList(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						if 0 == len(xs) {
+							return nil, fmt.Errorf("empty list provided")
+						}
+
+						s := apd.New(0, 0)
+						for _, x := range xs {
+							_, err := listContext.Add(s, x, s)
+							if err != nil {
+								return nil, err
+							}
+						}
+
+						var d apd.Decimal
+						l := apd.New(int64(len(xs)), 0)
+						_, err := listContext.Quo(&d, s, l)
+						if err != nil {
+							return nil, err
+						}
+						return &d, nil
+					}()
+				}
+			},
+		}, {
+			Name:   "Max",
+			Params: []kind{listKind},
+			Result: numKind,
+			Func: func(c *callCtxt) {
+				xs := c.decimalList(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						if 0 == len(xs) {
+							return nil, fmt.Errorf("empty list provided")
+						}
+
+						max := xs[0]
+						for _, x := range xs {
+							if -1 == max.Cmp(x) {
+								max = x
+							}
+						}
+						return max, nil
+					}()
+				}
+			},
+		}, {
+			Name:   "Min",
+			Params: []kind{listKind},
+			Result: numKind,
+			Func: func(c *callCtxt) {
+				xs := c.decimalList(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						if 0 == len(xs) {
+							return nil, fmt.Errorf("empty list provided")
+						}
+
+						min := xs[0]
+						for _, x := range xs {
+							if +1 == min.Cmp(x) {
+								min = x
+							}
+						}
+						return min, nil
+					}()
+				}
+			},
+		}, {
+			Name:   "Product",
+			Params: []kind{listKind},
+			Result: numKind,
+			Func: func(c *callCtxt) {
+				xs := c.decimalList(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						if 0 == len(xs) {
+							return nil, fmt.Errorf("empty list provided")
+						}
+
+						d := apd.New(1, 0)
+						for _, x := range xs {
+							_, err := listContext.Mul(d, x, d)
+							if err != nil {
+								return nil, err
+							}
+						}
+						return d, nil
+					}()
+				}
+			},
+		}, {
+			Name:   "Sum",
+			Params: []kind{listKind},
+			Result: numKind,
+			Func: func(c *callCtxt) {
+				xs := c.decimalList(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						if 0 == len(xs) {
+							return nil, fmt.Errorf("empty list provided")
+						}
+
+						d := apd.New(0, 0)
+						for _, x := range xs {
+							_, err := listContext.Add(d, x, d)
+							if err != nil {
+								return nil, err
+							}
+						}
+						return d, nil
+					}()
+				}
 			},
 		}},
 	},
