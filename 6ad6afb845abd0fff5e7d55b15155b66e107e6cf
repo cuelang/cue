@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a0c034b_7e6fea1c",
+        "filename": "cue/builtin_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-06T18:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cd6518_af078fdc",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "691e410b_4ed9d2e7",
         "filename": "cue/builtins.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-06T11:56:00Z",
       "side": 1,
       "message": "Unused. Also, I would just use one context with precision 24. I don\u0027t fully understand how or when it is used. I would expect it not to matter for multiplication.",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b11a7c_b7f64254",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-06T18:34:10Z",
+      "side": 1,
+      "message": "Yes I see what you mean, the only problem is that `listContext` gets generated from pkg/list/math.go while `baseContext` exists in cue/context.go line 64. the only possible solution I see without breaking working go code in `pkg/list` is to use the same context name for the variable and ensure go generate doesn\u0027t create it. We could also make baseContext a exported variable and import/use it in `pkg/list`",
+      "parentUuid": "691e410b_4ed9d2e7",
       "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81026e6_790988b4",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-06T18:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da3ad3a_de06d5a9",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
