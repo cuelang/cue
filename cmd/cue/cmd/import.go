@@ -251,7 +251,7 @@ func getExtInfo(ext string) *encodingInfo {
 }
 
 func runImport(cmd *Command, args []string) error {
-	log.SetOutput(cmd.OutOrStderr())
+	log.SetOutput(cmd.Stderr())
 
 	var group errgroup.Group
 
@@ -391,7 +391,7 @@ func combineExpressions(cmd *Command, pkg, cueFile string, objs ...ast.Expr) err
 		case os.IsNotExist(err):
 		case err == nil:
 			if !flagForce.Bool(cmd) {
-				log.Printf("skipping file %q: already exists", cueFile)
+				fmt.Fprintf(cmd.Stderr(), "skipping file %q: already exists", cueFile)
 				return nil
 			}
 		default:
