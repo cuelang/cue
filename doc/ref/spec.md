@@ -594,7 +594,7 @@ value `u` such that `u ⊑ a` and `u ⊑ b`,
 and for any other value `v` for which `v ⊑ a` and `v ⊑ b`
 it holds that `v ⊑ u`.)
 Since CUE values form a lattice, the unification of two CUE values is
-always unique. 
+always unique.
 
 These all follow from the definition of unification:
 - The unification of `a` with itself is always `a`.
@@ -1113,7 +1113,6 @@ Expression                             Result (without optional fields)
 a: { foo?: string }                    {}
 b: { foo: "bar" }                      { foo: "bar" }
 c: { foo?: *"bar" | string }           {}
-d: { [string]?: string }
 
 d: a & b                               { foo: "bar" }
 e: b & c                               { foo: "bar" }
@@ -2829,8 +2828,3 @@ exported identifiers.
 ### An example package
 
 TODO
-
-
-
-
-
