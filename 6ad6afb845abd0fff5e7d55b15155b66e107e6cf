@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a2e63612_5a02719d",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-06T19:12:27Z",
+      "side": 1,
+      "message": "I exported baseContext in the newest patch. Done",
+      "parentUuid": "10b11a7c_b7f64254",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5da3ad3a_de06d5a9",
         "filename": "cue/builtins.go",
         "patchSetId": 1
