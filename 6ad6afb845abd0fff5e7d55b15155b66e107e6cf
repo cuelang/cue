@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5cd6518_af078fdc",
+        "filename": "cue/builtin_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-06T11:56:00Z",
+      "side": 1,
+      "message": "I think for Sum it is fine to take 0. If you think about it, Sum would be reducing x+y with an initial value of 0. \n\nFor Min and Max one would have to return an infinite number, which seems base, and for Avg you get a div by 0. So an error is fine there.\n\nBut I think returning 0 for Sum is useful.\n\nProduct could be 1 for empty lists by the same reasoning, although that seems slightly stranger. I\u0027m ambivalent there.",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "691e410b_4ed9d2e7",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-06T11:56:00Z",
+      "side": 1,
+      "message": "Unused. Also, I would just use one context with precision 24. I don\u0027t fully understand how or when it is used. I would expect it not to matter for multiplication.",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da3ad3a_de06d5a9",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-06T11:56:00Z",
+      "side": 1,
+      "message": "Consider removing this check for sum and product.",
+      "revId": "6ad6afb845abd0fff5e7d55b15155b66e107e6cf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
