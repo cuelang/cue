@@ -304,6 +304,12 @@ func TestBuiltins(t *testing.T) {
 		test("strings", `strings.MinRunes(1) & "e"`),
 		`"e"`,
 	}, {
+		test("strings", `strings.MaxRunes(0) & "e"`),
+		`_|_(invalid value "e" (does not satisfy strings.MaxRunes(0)))`,
+	}, {
+		test("strings", `strings.MaxRunes(0) & ""`),
+		`""`,
+	}, {
 		test("strings", `strings.MinRunes(3) & "hello"`),
 		`"hello"`,
 	}, {
