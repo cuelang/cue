@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf28e8e_00470752",
+        "filename": "cue/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-07T22:14:10Z",
+      "side": 1,
+      "message": "BaseContext is an implementation detail of using apd, which we may not use in the future.\n\nSo this should not be exposed.\n\nIt would be find to put it in /internal/internal.go, though.",
+      "revId": "78fb3f44fd6dbb7fd3b245d8804579e51e83bdf2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
