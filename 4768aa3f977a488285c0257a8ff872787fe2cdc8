@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b209b2e5_2e1b7576",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-07T22:07:08Z",
+      "side": 1,
+      "message": "Ah, yes, that question mark should be removed. It is a left-over from temporarily stripping out the square bracket notation.",
+      "revId": "4768aa3f977a488285c0257a8ff872787fe2cdc8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}

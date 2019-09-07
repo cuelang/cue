@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "8669768c_957524a7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-07T22:07:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "507a7b05_c088ab5b",
+      "revId": "cd272652940f825905f726f4b4b64f6b3f10675a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94c356e9_56d8246e",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
