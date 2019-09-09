@@ -22,6 +22,30 @@ import (
 	"cuelang.org/go/cue"
 )
 
+// Slice extracts all consecutive elements from a list between start (inclusive)
+// and end (exclusive) index. This function returns an error if either start or
+// end index is outside the bounds of valid indices for the given list.
+func Slice(a []cue.Value, start int, end int) ([]cue.Value, error) {
+	if start < 0 {
+		return nil, fmt.Errorf("start index less than zero")
+	}
+
+	if start > end {
+		// this also catches end < 0
+		return nil, fmt.Errorf("start index greater than end index")
+	}
+
+	if start > len(a) {
+		return nil, fmt.Errorf("start index greater than length of list")
+	}
+
+	if end > len(a) {
+		return nil, fmt.Errorf("end index greater than length of list")
+	}
+
+	return a[start:end], nil
+}
+
 // MinItems reports whether a has at least n items.
 func MinItems(a []cue.Value, n int) bool {
 	return len(a) <= n
