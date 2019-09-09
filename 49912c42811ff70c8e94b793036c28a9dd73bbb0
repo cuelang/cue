@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "342102c6_02a1aa01",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "// Slice extracts the consecutive elements from a list starting from position i\n// up till, but not including, position j, where 0 \u003c\u003d i \u003c j \u003c\u003d len(a).\n//\n// For instance:\n//\n//    Slice([1, 2, 3, 4], 1, 3)\n//\n// results in\n//\n//    [2, 3]\n//",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b16c4642_af361bee",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "Slice(a []cue.Value, i, j int)\n\nto match comments",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c985ad_3fadaa5c",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "negative slice index",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ae1b85_17d9d911",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "invalid slice index: %v \u003e %v\", start, end",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27699f7_ed50ce8a",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "slice bounds out of range",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6592b2e6_57931c0f",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T19:27:03Z",
+      "side": 1,
+      "message": "slice bounds out of range",
+      "revId": "49912c42811ff70c8e94b793036c28a9dd73bbb0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
