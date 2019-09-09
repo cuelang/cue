@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e0c8d00_c9165b69",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T07:16:17Z",
+      "side": 1,
+      "message": "This message seems a bit unidiomatic compared to other CUE error messages. I think the messages should be either `empty list` or `list may not be empty`.\n\nI prefer `empty list`, but could go either way.",
+      "revId": "7d5c78c7b3a6c66723d889e98332c6903c547eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b15759d_0a1b99bd",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T07:16:17Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7d5c78c7b3a6c66723d889e98332c6903c547eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b025ae95_aebeaa14",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T07:16:17Z",
+      "side": 1,
+      "message": "could be `range xs[1:]`",
+      "revId": "7d5c78c7b3a6c66723d889e98332c6903c547eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041536d9_bede413d",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T07:16:17Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7d5c78c7b3a6c66723d889e98332c6903c547eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3fcbab_eaf14312",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-09T07:16:17Z",
+      "side": 1,
+      "message": "could be `range xs[1:]`",
+      "revId": "7d5c78c7b3a6c66723d889e98332c6903c547eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
