@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f9eb621_2f7e3162",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-10T12:16:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure if something like `return []cue.Value{}, nil` would be easier to understand. Go with what you think is better.",
+      "revId": "7a93799640b591afe5a40c53161f06f01a30765a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
