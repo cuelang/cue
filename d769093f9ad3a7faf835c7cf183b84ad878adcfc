@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5454d0f4_beddd1e8",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-10T17:03:21Z",
+      "side": 1,
+      "message": "For next time. best is to move things around in a separate CL. This clutters the diff.",
+      "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08eeeb22_bc48154a",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-10T17:03:21Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried about exposing this, equality of incomplete values is not well defined. For an API that is sort of okay, but in the language it can have adverse effects if not understood well.\n\nThis is already the case with UniqueItems, admittedly.\n\nFor instance, for non-concrete value Equals may return false when logically the values are equal (Prolog has the same issues with equality)\n\nUnless urgently needed, it probably pays of to come with a good definition of this function, for instance one that is only defined for concrete values and errors otherwise (I think that would work).",
+      "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
