@@ -22,6 +22,27 @@ import (
 	"cuelang.org/go/cue"
 )
 
+// Contains reports whether v is contained in a. The value must be a
+// comparable value.
+func Contains(a []cue.Value, v cue.Value) bool {
+	for _, w := range a {
+		if v.Equals(w) {
+			return true
+		}
+	}
+	return false
+}
+
+// MinItems reports whether a has at least n items.
+func MinItems(a []cue.Value, n int) bool {
+	return len(a) <= n
+}
+
+// MaxItems reports whether a has at most n items.
+func MaxItems(a []cue.Value, n int) bool {
+	return len(a) <= n
+}
+
 // Slice extracts the consecutive elements from a list starting from position i
 // up till, but not including, position j, where 0 <= i < j <= len(a).
 //
@@ -53,14 +74,23 @@ func Slice(a []cue.Value, i, j int) ([]cue.Value, error) {
 	return a[i:j], nil
 }
 
-// MinItems reports whether a has at least n items.
-func MinItems(a []cue.Value, n int) bool {
-	return len(a) <= n
-}
-
-// MaxItems reports whether a has at most n items.
-func MaxItems(a []cue.Value, n int) bool {
-	return len(a) <= n
+// Unique takes a list and returns a new list with any duplicate elements
+// removed, while preserving the relative order of elements.
+func Unique(a []cue.Value) []cue.Value {
+	uniq := []cue.Value{}
+	for _, v := range a {
+		missing := true
+		for _, w := range uniq {
+			if v.Equals(w) {
+				missing = false
+				break
+			}
+		}
+		if missing {
+			uniq = append(uniq, v)
+		}
+	}
+	return uniq
 }
 
 // UniqueItems reports whether all elements in the list are unique.
@@ -76,15 +106,4 @@ func UniqueItems(a []cue.Value) bool {
 		}
 	}
 	return true
-}
-
-// Contains reports whether v is contained in a. The value must be a
-// comparable value.
-func Contains(a []cue.Value, v cue.Value) bool {
-	for _, w := range a {
-		if v.Equals(w) {
-			return true
-		}
-	}
-	return false
 }

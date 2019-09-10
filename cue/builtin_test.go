@@ -195,6 +195,15 @@ func TestBuiltins(t *testing.T) {
 		test("list", `list.Sum("foo")`),
 		`_|_(cannot use "foo" (type string) as list in argument 1 to list.Sum)`,
 	}, {
+		test("list", `list.Unique([])`),
+		`[]`,
+	}, {
+		test("list", `list.Unique(["foo", "bar", "baz"])`),
+		`["foo","bar","baz"]`,
+	}, {
+		test("list", `list.Unique(["foo", "bar", "baz", "foo", "baz1", "bar"])`),
+		`["foo","bar","baz","baz1"]`,
+	}, {
 		// Panics
 		test("math", `math.Jacobi(1000, 2000)`),
 		`_|_(error in call to math.Jacobi: big: invalid 2nd argument to Int.Jacobi: need odd integer but got 2000)`,

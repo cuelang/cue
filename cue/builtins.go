@@ -663,29 +663,18 @@ var builtinPackages = map[string]*builtinPkg{
 	},
 	"list": &builtinPkg{
 		native: []*builtin{{
-			Name:   "Slice",
-			Params: []kind{listKind, intKind, intKind},
-			Result: listKind,
+			Name:   "Contains",
+			Params: []kind{listKind, topKind},
+			Result: boolKind,
 			Func: func(c *callCtxt) {
-				a, i, j := c.list(0), c.int(1), c.int(2)
-				c.ret, c.err = func() (interface{}, error) {
-					if i < 0 || j < 0 {
-						return nil, fmt.Errorf("negative slice index")
+				a, v := c.list(0), c.value(1)
+				c.ret = func() interface{} {
+					for _, w := range a {
+						if v.Equals(w) {
+							return true
+						}
 					}
-
-					if i > j {
-						return nil, fmt.Errorf("invalid slice index: %v > %v", i, j)
-					}
-
-					if i > len(a) {
-						return nil, fmt.Errorf("slice bounds out of range")
-					}
-
-					if j > len(a) {
-						return nil, fmt.Errorf("slice bounds out of range")
-					}
-
-					return a[i:j], nil
+					return false
 				}()
 			},
 		}, {
@@ -709,6 +698,55 @@ var builtinPackages = map[string]*builtinPkg{
 				}()
 			},
 		}, {
+			Name:   "Slice",
+			Params: []kind{listKind, intKind, intKind},
+			Result: listKind,
+			Func: func(c *callCtxt) {
+				a, i, j := c.list(0), c.int(1), c.int(2)
+				c.ret, c.err = func() (interface{}, error) {
+					if i < 0 {
+						return nil, fmt.Errorf("negative slice index")
+					}
+
+					if i > j {
+						return nil, fmt.Errorf("invalid slice index: %v > %v", i, j)
+					}
+
+					if i > len(a) {
+						return nil, fmt.Errorf("slice bounds out of range")
+					}
+
+					if j > len(a) {
+						return nil, fmt.Errorf("slice bounds out of range")
+					}
+
+					return a[i:j], nil
+				}()
+			},
+		}, {
+			Name:   "Unique",
+			Params: []kind{listKind},
+			Result: listKind,
+			Func: func(c *callCtxt) {
+				a := c.list(0)
+				c.ret = func() interface{} {
+					uniq := []Value{}
+					for _, v := range a {
+						missing := true
+						for _, w := range uniq {
+							if v.Equals(w) {
+								missing = false
+								break
+							}
+						}
+						if missing {
+							uniq = append(uniq, v)
+						}
+					}
+					return uniq
+				}()
+			},
+		}, {
 			Name:   "UniqueItems",
 			Params: []kind{listKind},
 			Result: boolKind,
@@ -726,21 +764,6 @@ var builtinPackages = map[string]*builtinPkg{
 						}
 					}
 					return true
-				}()
-			},
-		}, {
-			Name:   "Contains",
-			Params: []kind{listKind, topKind},
-			Result: boolKind,
-			Func: func(c *callCtxt) {
-				a, v := c.list(0), c.value(1)
-				c.ret = func() interface{} {
-					for _, w := range a {
-						if v.Equals(w) {
-							return true
-						}
-					}
-					return false
 				}()
 			},
 		}, {
