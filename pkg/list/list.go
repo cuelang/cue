@@ -98,6 +98,25 @@ func Slice(x []cue.Value, i, j int) ([]cue.Value, error) {
 	return x[i:j], nil
 }
 
+// Unique takes a list and returns a new list with any duplicate elements
+// removed, while preserving the relative order of elements.
+func Unique(a []cue.Value) []cue.Value {
+	uniq := []cue.Value{}
+	for _, v := range a {
+		missing := true
+		for _, w := range uniq {
+			if v.Equals(w) {
+				missing = false
+				break
+			}
+		}
+		if missing {
+			uniq = append(uniq, v)
+		}
+	}
+	return uniq
+}
+
 // MinItems reports whether a has at least n items.
 func MinItems(a []cue.Value, n int) bool {
 	return len(a) <= n

@@ -725,6 +725,29 @@ var builtinPackages = map[string]*builtinPkg{
 				}()
 			},
 		}, {
+			Name:   "Unique",
+			Params: []kind{listKind},
+			Result: listKind,
+			Func: func(c *callCtxt) {
+				a := c.list(0)
+				c.ret = func() interface{} {
+					uniq := []Value{}
+					for _, v := range a {
+						missing := true
+						for _, w := range uniq {
+							if v.Equals(w) {
+								missing = false
+								break
+							}
+						}
+						if missing {
+							uniq = append(uniq, v)
+						}
+					}
+					return uniq
+				}()
+			},
+		}, {
 			Name:   "MinItems",
 			Params: []kind{listKind, intKind},
 			Result: boolKind,

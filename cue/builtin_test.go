@@ -219,6 +219,15 @@ func TestBuiltins(t *testing.T) {
 		test("list", `list.Take([1, 2, 3, 4], -1)`),
 		`_|_(error in call to list.Take: negative index)`,
 	}, {
+		test("list", `list.Unique([])`),
+		`[]`,
+	}, {
+		test("list", `list.Unique(["foo", "bar", "baz"])`),
+		`["foo","bar","baz"]`,
+	}, {
+		test("list", `list.Unique(["foo", "bar", "baz", "foo", "baz1", "bar"])`),
+		`["foo","bar","baz","baz1"]`,
+	}, {
 		// Panics
 		test("math", `math.Jacobi(1000, 2000)`),
 		`_|_(error in call to math.Jacobi: big: invalid 2nd argument to Int.Jacobi: need odd integer but got 2000)`,
