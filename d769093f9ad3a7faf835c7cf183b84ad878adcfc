@@ -69,6 +69,24 @@
       "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae095bd_3e3ddd94",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-11T06:23:24Z",
+      "side": 1,
+      "message": "this problem arises for other functions like intersect, difference and union",
+      "parentUuid": "f3375652_d68ca331",
+      "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
