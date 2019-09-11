@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "78b67e9c_04197746",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-11T06:17:34Z",
+      "side": 1,
+      "message": "Reverted these changes. Going to make a seperate CL.",
+      "parentUuid": "5454d0f4_beddd1e8",
+      "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08eeeb22_bc48154a",
         "filename": "cue/builtins.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-10T17:03:21Z",
       "side": 1,
       "message": "I\u0027m a bit worried about exposing this, equality of incomplete values is not well defined. For an API that is sort of okay, but in the language it can have adverse effects if not understood well.\n\nThis is already the case with UniqueItems, admittedly.\n\nFor instance, for non-concrete value Equals may return false when logically the values are equal (Prolog has the same issues with equality)\n\nUnless urgently needed, it probably pays of to come with a good definition of this function, for instance one that is only defined for concrete values and errors otherwise (I think that would work).",
+      "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3375652_d68ca331",
+        "filename": "cue/builtins.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-09-11T06:17:34Z",
+      "side": 1,
+      "message": "Good point. As the function is not urgently needed, coming up with a good definition sounds like a plan. \nI guess by definition you mean adding this to the description and adding checks in the function.",
+      "parentUuid": "08eeeb22_bc48154a",
       "revId": "d769093f9ad3a7faf835c7cf183b84ad878adcfc",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
