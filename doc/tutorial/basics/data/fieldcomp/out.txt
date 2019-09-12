@@ -1,0 +1,15 @@
+barcelona: {
+    name:    "Barcelona"
+    pos:     1
+    nameLen: 9
+}
+shanghai: {
+    name:    "Shanghai"
+    pos:     2
+    nameLen: 8
+}
+munich: {
+    name:    "Munich"
+    pos:     3
+    nameLen: 6
+}
