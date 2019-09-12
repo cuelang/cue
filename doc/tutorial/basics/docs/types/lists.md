@@ -1,6 +1,6 @@
 +++
 title = "Lists"
-weight = 2000
+weight = 2280
 exec = "cue eval -i lists.cue"
 +++
 

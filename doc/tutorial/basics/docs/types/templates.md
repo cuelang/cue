@@ -1,6 +1,6 @@
 +++
 title = "Templates"
-weight = 2000
+weight = 2290
 exec = "cue eval templates.cue"
 +++
 

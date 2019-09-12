@@ -2,6 +2,7 @@
 title = "Hidden Fields"
 weight = 2000
 exec = "cue export hidden.cue"
+draft = true
 +++
 
 A non-quoted field name that starts with an underscore (`_`) is not

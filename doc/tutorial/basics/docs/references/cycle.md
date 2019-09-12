@@ -1,6 +1,6 @@
 +++
 title = "Reference Cycles"
-weight = 2000
+weight = 2480
 exec = "cue eval -i -c cycle.cue"
 +++
 

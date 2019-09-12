@@ -1,6 +1,6 @@
 +++
 title = "Predefined Ranges"
-weight = 2000
+weight = 2275
 inputs = ["range.cue"]
 exec = "cue eval -i range.cue"
 +++
