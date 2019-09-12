@@ -1,6 +1,6 @@
 +++
 title = "References and Scopes"
-weight = 2000
+weight = 2410
 exec = "cue eval scopes.cue"
 +++
 

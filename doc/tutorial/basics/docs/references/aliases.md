@@ -1,6 +1,6 @@
 +++
 title = "Aliases"
-weight = 2000
+weight = 2430
 inputs = ["alias.cue"]
 exec = "cue eval alias.cue"
 +++

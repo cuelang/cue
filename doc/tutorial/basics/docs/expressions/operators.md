@@ -1,6 +1,6 @@
 +++
 title = "Operators"
-weight = 2000
+weight = 2610
 inputs = ["op.cue"]
 exec = "cue eval -i op.cue"
 +++

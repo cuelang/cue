@@ -1,6 +1,6 @@
 +++
 title = "Numbers"
-weight = 2000
+weight = 2260
 exec = "cue eval -i numbers.cue"
 +++
 
