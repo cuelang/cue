@@ -1,0 +1,10 @@
+{
+    "outer": {
+        "middle1": {
+            "inner": 3
+        },
+        "middle2": {
+            "inner": 7
+        }
+    }
+}

@@ -1,0 +1,12 @@
+job: {
+    list: {
+        name:     "list"
+        replicas: 1
+        command:  "ls"
+    }
+    nginx: {
+        name:     "nginx"
+        replicas: 2
+        command:  "nginx"
+    }
+}
