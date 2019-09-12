@@ -1,6 +1,6 @@
 +++
 title = "Null Coalescing"
-weight = 2000
+weight = 2680
 exec = "cue eval coalesce.cue"
 +++
 

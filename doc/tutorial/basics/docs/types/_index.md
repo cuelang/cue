@@ -1,5 +1,5 @@
 +++
 title = "Types ~~and~~ are Values"
-weight = 2000
+weight = 2200
 description = ""
 +++

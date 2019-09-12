@@ -1,6 +1,6 @@
 +++
 title = "Default Values"
-weight = 2000
+weight = 2250
 exec = "cue eval defaults.cue"
 +++
 

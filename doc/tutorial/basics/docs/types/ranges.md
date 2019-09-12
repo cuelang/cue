@@ -1,6 +1,6 @@
 +++
 title = "Bounds"
-weight = 2000
+weight = 2270
 inputs = ["bounds.cue"]
 exec = "cue eval -i bounds.cue"
 +++

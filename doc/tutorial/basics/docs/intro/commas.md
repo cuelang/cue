@@ -1,6 +1,6 @@
 +++
 title = "Commas are Optional after Fields"
-weight = 2000
+weight = 2020
 exec = "cue export commas.cue"
 +++
 
