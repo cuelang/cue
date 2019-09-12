@@ -1,0 +1,2 @@
+replicas: 1
+protocol: "tcp" | "udp"
