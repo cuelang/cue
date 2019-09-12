@@ -1,6 +1,6 @@
 +++
 title = "List Comprehensions"
-weight = 2000
+weight = 2640
 exec = "cue eval listcomp.cue"
 +++
 

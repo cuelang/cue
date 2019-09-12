@@ -1,6 +1,6 @@
 +++
 title = "Interpolation"
-weight = 2000
+weight = 2620
 exec = "cue eval interpolation.cue"
 +++
 

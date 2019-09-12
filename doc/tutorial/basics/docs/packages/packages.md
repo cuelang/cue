@@ -1,6 +1,6 @@
 +++
 title = "Packages"
-weight = 2000
+weight = 2810
 inputs = ["a.cue","b.cue"]
 exec = "cue eval a.cue b.cue"
 +++

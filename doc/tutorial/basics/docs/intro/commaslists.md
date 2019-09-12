@@ -1,6 +1,6 @@
 +++
 title = "Commas are Still Required in Lists"
-weight = 2000
+weight = 2025
 inputs = ["commas2.cue"]
 exec = "cue export commas2.cue"
 +++
