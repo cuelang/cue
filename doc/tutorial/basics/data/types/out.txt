@@ -1,0 +1,16 @@
+point: {
+    x: number
+    y: number
+}
+xaxis: {
+    x: 0
+    y: number
+}
+yaxis: {
+    x: number
+    y: 0
+}
+origin: {
+    x: 0
+    y: 0
+}
