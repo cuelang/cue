@@ -1,0 +1,8 @@
+labels: {
+    name: "bar"
+    app:  "foo"
+}
+selectors: {
+    name: "bar"
+    app:  "foo"
+}
