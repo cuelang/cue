@@ -1,6 +1,6 @@
 +++
-title = "Field Comprehensions"
-weight = 2000
+title = "Struct Comprehensions"
+weight = 2650
 exec = "cue eval fieldcomp.cue"
 +++
 

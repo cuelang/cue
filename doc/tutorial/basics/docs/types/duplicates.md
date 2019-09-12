@@ -1,6 +1,6 @@
 +++
 title = "Duplicate Fields"
-weight = 2000
+weight = 2220
 inputs = ["dup.cue"]
 exec = "cue eval dup.cue"
 +++

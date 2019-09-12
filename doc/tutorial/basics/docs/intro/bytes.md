@@ -1,6 +1,6 @@
 +++
 title = "Bytes"
-weight = 2000
+weight = 2080
 exec = "cue export bytes.cue"
 +++
 

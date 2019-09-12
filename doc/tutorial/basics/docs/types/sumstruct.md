@@ -1,6 +1,6 @@
 +++
 title = "Disjunctions of Structs"
-weight = 2000
+weight = 2255
 +++
 
 Disjunctions work for any type.

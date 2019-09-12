@@ -1,6 +1,6 @@
 +++
 title = "Regular expressions"
-weight = 2000
+weight = 2670
 exec = "cue eval -i regexp.cue"
 +++
 

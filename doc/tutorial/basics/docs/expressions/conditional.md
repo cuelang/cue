@@ -1,6 +1,6 @@
 +++
 title = "Conditional Fields"
-weight = 2000
+weight = 2655
 exec = "cue eval conditional.cue"
 +++
 
