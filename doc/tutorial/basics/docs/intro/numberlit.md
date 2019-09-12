@@ -1,6 +1,6 @@
 +++
 title = "Number Literals"
-weight = 2000
+weight = 2060
 inputs = ["numlit.cue"]
 exec = "cue export numlit.cue"
 +++

@@ -1,6 +1,6 @@
 +++
 title = "Cycles in Fields"
-weight = 2000
+weight = 2485
 exec = "cue eval cycleref.cue"
 +++
 

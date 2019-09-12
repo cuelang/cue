@@ -1,6 +1,6 @@
 +++
 title = "Basic Types"
-weight = 2000
+weight = 2230
 exec = "cue eval types.cue"
 +++
 

@@ -1,6 +1,6 @@
 +++
 title = "Emit Values"
-weight = 2000
+weight = 2450
 exec = "cue eval emit.cue"
 +++
 

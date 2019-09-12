@@ -1,6 +1,6 @@
 +++
 title = "String Literals"
-weight = 2000
+weight = 2070
 exec = "cue export stringlit.cue"
 +++
 
@@ -12,5 +12,5 @@ The closing quote must also be on a newline.
 The whitespace directly preceding the closing quote must match the preceding
 whitespace on all other lines and is removed from these lines.
 
-Strings may also contain [interpolations](interpolation.md).
+Strings may also contain [interpolations](../../expressions/interpolation).
 
