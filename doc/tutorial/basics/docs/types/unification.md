@@ -1,6 +1,6 @@
 +++
 title = "Order is Irrelevant"
-weight = 2000
+weight = 2240
 exec = "cue eval -i unification.cue"
 +++
 

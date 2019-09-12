@@ -1,6 +1,6 @@
 +++
 title = "Curly Braces"
-weight = 2000
+weight = 2030
 exec = "cue export curly.cue"
 +++
 

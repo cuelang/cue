@@ -1,6 +1,6 @@
 +++
 title = "Folding all Fields"
-weight = 2000
+weight = 2045
 exec = "cue export foldany.cue"
 +++
 

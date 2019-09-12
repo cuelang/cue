@@ -1,6 +1,6 @@
 +++
 title = "Accessing Fields"
-weight = 2000
+weight = 2420
 exec = "cue eval selectors.cue"
 +++
 
