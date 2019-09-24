@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f944d55e_0b7b3c5b",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-24T16:43:38Z",
+      "side": 1,
+      "message": "Yes, that is exactly what this does now. p.Imports returns the packages.Package and Name is the package name. The old code indeed guesses, hence the TODO.\n\nThe confusing part is that this fixes more than one bug. CUE packages work slightly different from Go: CUE allows multiple packages per directory and uses a Bazel-like approach to disambiguate. So what this does here is adding the \u0027:\u0027 separator if needed. This code was written before that was the case.",
+      "parentUuid": "1c930efa_87754275",
+      "revId": "fb60b9bb83005e86f19e46927b9a606637a93b2b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaf24379_25b9798c",
         "filename": "cmd/cue/cmd/testdata/pkg/cuelang.org/go/cmd/cue/cmd/testdata/code/go/pkg1/file1_go_gen.cue",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-24T15:15:36Z",
       "side": 1,
       "message": "I\u0027m not sure that this is a sufficiently representative example. The case where this presented itself in a `gopkg.in` path, of the form `gopkg.in/foo.v1`. In that example, we want `foo` to be the package identifier, not `v1`, but here from the rest of the changes, it looks like it\u0027ll probably choose `v1`. FWIW gopkg.in paths are specifically recognised by the go tool, so it\u0027s probably worth getting this right (similar to `/vN` suffixes).",
+      "revId": "fb60b9bb83005e86f19e46927b9a606637a93b2b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77415bdd_61718cb9",
+        "filename": "cmd/cue/cmd/testdata/pkg/cuelang.org/go/cmd/cue/cmd/testdata/code/go/pkg1/file1_go_gen.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-24T16:43:38Z",
+      "side": 1,
+      "message": "It now picks the package name as defined in the package clause of the file. If this differs from the base name, it suffixes it with \":\" package name.",
+      "parentUuid": "eaf24379_25b9798c",
       "revId": "fb60b9bb83005e86f19e46927b9a606637a93b2b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
