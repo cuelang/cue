@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "353994eb_2c2ddb55",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-26T17:43:08Z",
+      "side": 1,
+      "message": "JSON, presumably.",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d95bf55_a402e88d",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-26T17:43:08Z",
+      "side": 1,
+      "message": "// Decode converts a JSON file to...",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9022d220_bc759d6b",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-26T17:43:08Z",
+      "side": 1,
+      "message": "In passing, I\u0027ll mention that I always disliked this aspect of the go/parser, and Robert agreed AFAIR, but it was too late to change... Perhaps we could change it to just use `[]byte` or `io.Reader` some time?",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d8a3e8_4bbd4167",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-26T17:43:08Z",
+      "side": 1,
+      "message": "but... ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 30,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed917d1_8b3cae80",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-26T17:43:08Z",
+      "side": 1,
+      "message": "use strings.Builder?",
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
