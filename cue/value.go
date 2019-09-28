@@ -966,7 +966,7 @@ func (x *structLit) insertValue(ctx *context, f label, optional, isDef bool, val
 type nodeRef struct {
 	baseValue
 	node  scope
-	short label // only for packages, otherwise 0
+	label label // for direct ancestor nodes
 }
 
 func (x *nodeRef) kind() kind {
