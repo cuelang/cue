@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "917289cb_1fe3a909",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "the instance",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4bd8d1_f868a24d",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "this code looks like it does the same thing as the old code, and the inner if condition looks redundant to me. why change it?",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb8de59_3c9cbe5d",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "if it can be implemented in those terms, why not just do that?",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc03de9_6494ee83",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "descend",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33051c5d_87ed07fe",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "return early?",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4395b30e_4b33b3f9",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-28T16:55:54Z",
+      "side": 1,
+      "message": "there\u0027s no slice to append to AFAICS",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
