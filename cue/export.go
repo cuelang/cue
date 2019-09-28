@@ -226,18 +226,35 @@ func (p *exporter) closeOrOpen(s *ast.StructLit, isClosed bool) ast.Expr {
 	return s
 }
 
+func (p *exporter) isComplete(v value, all bool) bool {
+	switch x := v.(type) {
+	case *numLit, *stringLit, *bytesLit, *nullLit, *boolLit:
+		return true
+	case *list:
+		return true
+	case *structLit:
+		return !all
+	case *bottom:
+		return !isIncomplete(x)
+	}
+	return false
+}
+
 func (p *exporter) expr(v value) ast.Expr {
 	// TODO: use the raw expression for convert incomplete errors downstream
 	// as well.
-	if doEval(p.mode) {
+	if doEval(p.mode) || p.mode.concrete {
 		e := v.evalPartial(p.ctx)
 		x := p.ctx.manifest(e)
-		if isIncomplete(x) {
+
+		if !p.isComplete(x, true) {
 			if isBottom(e) {
 				p = &exporter{p.ctx, options{raw: true}, p.stack, p.top, p.imports, p.inDef}
 				return p.expr(v)
 			}
-			v = e
+			if doEval(p.mode) {
+				v = e
+			}
 		} else {
 			v = x
 		}
@@ -258,15 +275,18 @@ func (p *exporter) expr(v value) ast.Expr {
 		return ast.NewSel(ast.NewIdent(short), x.Name)
 
 	case *nodeRef:
-		if x.short == 0 {
+		if x.label == 0 {
+			// NOTE: this nodeRef is used within a selector.
 			return nil
 		}
-		inst := p.ctx.getImportFromNode(x.node)
-		if inst == nil {
-			return nil // should not happen!
+		short := p.ctx.labelStr(x.label)
+
+		if inst := p.ctx.getImportFromNode(x.node); inst != nil {
+			return ast.NewIdent(p.shortName(inst, short, inst.ImportPath))
 		}
-		short := p.ctx.labelStr(x.short)
-		return ast.NewIdent(p.shortName(inst, short, inst.ImportPath))
+
+		// fix shadowed label.
+		return ast.NewIdent(short)
 
 	case *selectorExpr:
 		n := p.expr(x.x)
@@ -504,8 +524,26 @@ func (p *exporter) expr(v value) ast.Expr {
 	case *list:
 		list := &ast.ListLit{}
 		var expr ast.Expr = list
-		for _, e := range x.elem.arcs {
-			list.Elts = append(list.Elts, p.expr(e.v))
+		for i, a := range x.elem.arcs {
+			if !doEval(p.mode) {
+				list.Elts = append(list.Elts, p.expr(a.v))
+			} else {
+				e := x.elem.at(p.ctx, i)
+				v := p.ctx.manifest(e)
+				if !p.isComplete(v, false) && !p.mode.concrete {
+					// TODO: do something more principled than this hack.
+					// This likely requires disjunctions to keep track of original
+					// values (so using arcs instead of values).
+					p := &exporter{p.ctx, options{concrete: true, raw: true}, p.stack, p.top, p.imports, p.inDef}
+					if _, ok := a.v.(*disjunction); ok || isBottom(e) {
+						list.Elts = append(list.Elts, p.expr(a.v))
+					} else {
+						list.Elts = append(list.Elts, p.expr(e))
+					}
+				} else {
+					list.Elts = append(list.Elts, p.expr(e))
+				}
+			}
 		}
 		max := maxNum(x.len)
 		num, ok := max.(*numLit)
@@ -576,6 +614,7 @@ func (p *exporter) structure(x *structLit, addTempl bool) (ret *ast.StructLit, e
 			return nil, err
 		}
 	}
+
 	for _, a := range x.arcs {
 		p.stack = append(p.stack, remap{
 			key:  x,
@@ -633,9 +672,17 @@ func (p *exporter) structure(x *structLit, addTempl bool) (ret *ast.StructLit, e
 			f.Value = p.expr(a.v)
 		} else {
 			e := x.at(p.ctx, i)
-			if v := p.ctx.manifest(e); isIncomplete(v) && !p.mode.concrete && isBottom(e) {
-				p := &exporter{p.ctx, options{raw: true}, p.stack, p.top, p.imports, p.inDef}
-				f.Value = p.expr(a.v)
+			v := p.ctx.manifest(e)
+			if !p.isComplete(v, false) && !p.mode.concrete {
+				// TODO: do something more principled than this hack.
+				// This likely requires disjunctions to keep track of original
+				// values (so using arcs instead of values).
+				p := &exporter{p.ctx, options{concrete: true, raw: true}, p.stack, p.top, p.imports, p.inDef}
+				if _, ok := a.v.(*disjunction); ok || isBottom(e) {
+					f.Value = p.expr(a.v)
+				} else {
+					f.Value = p.expr(e)
+				}
 			} else {
 				f.Value = p.expr(e)
 			}
