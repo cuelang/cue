@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e081b01_2a68a1a6",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917289cb_1fe3a909",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b4bd8d1_f868a24d",
         "filename": "cue/types.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-28T16:55:54Z",
       "side": 1,
       "message": "this code looks like it does the same thing as the old code, and the inner if condition looks redundant to me. why change it?",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2a852d_7184cec3",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "Ah, I added more logic in the development that proved unnecessary. Changed back.",
+      "parentUuid": "7b4bd8d1_f868a24d",
       "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "97a425af_e0bfd924",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "I will, but in a different CL. It is quite a large change overall. The other methods allow for a better algorithm. I also tried and discovered I may need to normalize the SelectorOp representation to make this work well, which I would want to do in a separate CL.",
+      "parentUuid": "0fb8de59_3c9cbe5d",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dc03de9_6494ee83",
         "filename": "cue/types.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cd5602_a9b134f9",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dc03de9_6494ee83",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d0a7ba25_59de8367",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "like this?",
+      "parentUuid": "33051c5d_87ed07fe",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4395b30e_4b33b3f9",
         "filename": "cue/types.go",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1b7b3c_0b06dfce",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-28T20:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4395b30e_4b33b3f9",
+      "revId": "6b32410bc844393dd5bd6cdbc8633a739ecf293e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
