@@ -187,22 +187,23 @@ func executeTasks(typ, command string, root *cue.Instance) (err error) {
 				<-d.done
 			}
 			defer close(t.done)
+			// TODO: This can be done concurrently once looking up strings in
+			// the index is safe for concurrent access.
 			m.Lock()
 			obj := tasks.Lookup(t.name)
-			m.Unlock()
 			// NOTE: ignore the linter warning for the following line:
 			// itask.Context is an internal type and we want to break if any
 			// fields are added.
 			update, err := t.Run(&itask.Context{ctx, stdout, stderr}, obj)
 			if err == nil && update != nil {
-				m.Lock()
 				root, err = root.Fill(update, spec.taskPath(t.name)...)
 
 				if err == nil {
 					tasks = spec.lookupTasks(root)
 				}
-				m.Unlock()
 			}
+			m.Unlock()
+
 			if err != nil {
 				cancel()
 			}
