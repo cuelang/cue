@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "a4ca6463_6fea00c8",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-09-29T14:24:46Z",
+      "side": 1,
+      "message": "I quite like the idea of Source actually. How about:\n\n   package source\n   type Reader interface {\n       Name() string\n       Read([]byte) (int, error)\n   }\n\n    func Bytes(data []byte, name string) *ByteReader {\n       return \u0026ByteReader{name: name, data: data, r: bytes.NewReader(data)}\n    }\n\n    func Stdin() Reader\n\n    type BytesReader struct {\n        name string\n        data []byte\n        r *bytes.Reader\n    }\n    func (r *ByteReader) Name() string\n    func (r *ByteReader) Read([]byte) (int, error)\n    func (r *ByteReader) Data() []byte\n\n    type FileReader etc\n\nThen `*os.File` implements source.Reader, but we can still pass in a directly-accessible byte slice.",
+      "parentUuid": "ab173f48_2b44a1b0",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84d8a3e8_4bbd4167",
         "filename": "encoding/json/json.go",
         "patchSetId": 4
