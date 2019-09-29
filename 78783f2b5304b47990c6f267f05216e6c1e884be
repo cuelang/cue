@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04bfc645_0596370d",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-29T10:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353994eb_2c2ddb55",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d95bf55_a402e88d",
         "filename": "encoding/json/json.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1c6900ff_fad8aed9",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-29T10:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d95bf55_a402e88d",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9022d220_bc759d6b",
         "filename": "encoding/json/json.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-26T17:43:08Z",
       "side": 1,
       "message": "In passing, I\u0027ll mention that I always disliked this aspect of the go/parser, and Robert agreed AFAIR, but it was too late to change... Perhaps we could change it to just use `[]byte` or `io.Reader` some time?",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab173f48_2b44a1b0",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-29T10:06:04Z",
+      "side": 1,
+      "message": "It could be []byte, but I kind of like it myself. I just find myself repeating the same code and checks over and over again. Why do you think it is a mistake? It could be a Source interface such that one could write \n  Decode(r, path, source.Bytes(b))\n  Decode(r, path, source.Reader(r)), and\n  DecodeFile(r, path) or Decode(r, path, source.File(path))",
+      "parentUuid": "9022d220_bc759d6b",
       "range": {
         "startLine": 66,
         "startChar": 25,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ac9ece85_6f784a5a",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-29T10:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d8a3e8_4bbd4167",
+      "range": {
+        "startLine": 84,
+        "startChar": 30,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ed917d1_8b3cae80",
         "filename": "encoding/json/json.go",
         "patchSetId": 4
@@ -108,6 +204,24 @@
       "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7224c327_025b79ec",
+        "filename": "encoding/json/json.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-09-29T10:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed917d1_8b3cae80",
+      "revId": "78783f2b5304b47990c6f267f05216e6c1e884be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
