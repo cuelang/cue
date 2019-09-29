@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package yaml converts JSON to and from CUE.
+// Package json converts JSON to and from CUE.
 package json
 
 import (
-	"bytes"
 	gojson "encoding/json"
 	"io"
 	"strconv"
@@ -45,7 +44,7 @@ func Validate(b []byte, v cue.Value) error {
 	return err
 }
 
-// Extract parses the YAML to a CUE expression.
+// Extract parses the JSON to a CUE expression.
 //
 // If src != nil, Extract parses the source from src and the path is for
 // position information. The type of the argument for the src parameter must be
@@ -60,7 +59,7 @@ func Extract(path string, src interface{}) (ast.Expr, error) {
 	return expr, nil
 }
 
-// Decode converts JSON file to a CUE value.
+// Decode converts a JSON file to a CUE value.
 //
 // If src != nil, Extract parses the source from src and the path is for
 // position information. The type of the argument for the src parameter must be
@@ -81,7 +80,6 @@ func extract(path string, src interface{}) (ast.Expr, error) {
 	}
 	expr, err := parser.ParseExpr(path, b)
 	if err != nil || !gojson.Valid(b) {
-		// Get JSON-specific error, but
 		p := token.NoPos
 		if pos := errors.Positions(err); len(pos) > 0 {
 			p = pos[0]
@@ -264,7 +262,7 @@ func hasSpaces(n ast.Node) bool {
 }
 
 func quoteMulti(a []string, indent int) string {
-	b := bytes.Buffer{}
+	b := strings.Builder{}
 	prefix := "\n" + strings.Repeat("\t", indent)
 	b.WriteString(`"""`)
 	for _, s := range a {
