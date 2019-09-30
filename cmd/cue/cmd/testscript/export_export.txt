@@ -1,0 +1,30 @@
+cue export ./testdata/hello
+cmp stdout expect-stdout
+-- expect-stdout --
+{
+    "message": "Hello World!"
+}
+-- testdata/hello/data.cue --
+package hello
+
+who :: "World"
+-- testdata/hello/hello.cue --
+package hello
+
+message: "Hello \(who)!" // who declared in data.cue
+-- testdata/hello/hello_tool.cue --
+package hello
+
+command echo: {
+    task echo: {
+        kind:   "exec"
+        cmd:    "echo \(message)"
+        stdout: string
+    }
+
+    task display: {
+        kind: "print"
+        text: task.echo.stdout
+    }
+}
+-- testdata/cue.mod --

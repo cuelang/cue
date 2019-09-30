@@ -1,0 +1,6 @@
+! cue eval non-existing .
+stdout 'terminating because of errors'
+cmp stderr loaderr.out
+
+-- loaderr.out --
+cannot find package "non-existing"
