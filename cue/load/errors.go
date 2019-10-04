@@ -119,7 +119,7 @@ func (e *noCUEError) Error() string {
 	// Count files beginning with _ and ., which we will pretend don't exist at all.
 	dummy := 0
 	for _, name := range e.Package.IgnoredCUEFiles {
-		if strings.HasPrefix(name, "_") || strings.HasPrefix(name, ".") {
+		if strings.HasPrefix(name, "_") {
 			dummy++
 		}
 	}

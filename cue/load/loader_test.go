@@ -37,7 +37,10 @@ func TestLoad(t *testing.T) {
 		t.Fatal(err)
 	}
 	testdataDir := filepath.Join(cwd, testdata)
-	dirCfg := &Config{Dir: testdataDir}
+	dirCfg := &Config{
+		Dir:   testdataDir,
+		Tools: true,
+	}
 
 	args := str.StringList
 	testCases := []struct {
@@ -215,6 +218,15 @@ files:
 imports:
 	acme.com/catch: $CWD/testdata/pkg/acme.com/catch/catch.cue
 	acme.com/helper:helper1: $CWD/testdata/pkg/acme.com/helper/helper1.cue`,
+	}, {
+		cfg:  dirCfg,
+		args: args("./toolonly"),
+		want: `
+path:   example.org/test/toolonly:foo
+module: example.org/test
+root:   $CWD/testdata
+dir:    $CWD/testdata/toolonly
+display:./toolonly`,
 	}}
 	for i, tc := range testCases {
 		// if i != 5 {
