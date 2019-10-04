@@ -712,6 +712,30 @@ var builtinPackages = map[string]*builtinPkg{
 				}()
 			},
 		}, {
+			Name:   "Intersection",
+			Params: []kind{listKind, listKind},
+			Result: listKind,
+			Func: func(c *callCtxt) {
+				xs, ys := c.list(0), c.list(1)
+				c.ret = func() interface{} {
+					contains := func(xs []Value, y Value) bool {
+						for _, x := range xs {
+							if y.Equals(x) {
+								return true
+							}
+						}
+						return false
+					}
+					vals := []Value{}
+					for _, x := range xs {
+						if contains(ys, x) && !contains(vals, x) {
+							vals = append(vals, x)
+						}
+					}
+					return vals
+				}()
+			},
+		}, {
 			Name:   "Take",
 			Params: []kind{listKind, intKind},
 			Result: listKind,
