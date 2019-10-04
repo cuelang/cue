@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0cad7e34_225c2ddf",
+        "filename": "cmd/cue/cmd/testdata/script/toolonly.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-04T15:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9771fcc0_1c01496f",
+      "revId": "1028b904e5f74f9454614bb3fc9e8f45d6d1b56d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "189b61b9_45d08574",
         "filename": "cue/load/errors.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "305d05fa_4fd34f6a",
+        "filename": "cue/load/errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-04T15:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "189b61b9_45d08574",
+      "revId": "1028b904e5f74f9454614bb3fc9e8f45d6d1b56d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a244de_31ae790a",
         "filename": "cue/load/errors.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "1028b904e5f74f9454614bb3fc9e8f45d6d1b56d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea5d706_7e706fce",
+        "filename": "cue/load/errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-04T15:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a244de_31ae790a",
+      "revId": "1028b904e5f74f9454614bb3fc9e8f45d6d1b56d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
