@@ -873,6 +873,50 @@ var builtinPackages = map[string]*builtinPkg{
 				}
 			},
 		}, {
+			Name:   "Range",
+			Params: []kind{numKind, numKind, numKind},
+			Result: listKind,
+			Func: func(c *callCtxt) {
+				start, limit, step := c.decimal(0), c.decimal(1), c.decimal(2)
+				c.ret, c.err = func() (interface{}, error) {
+					if step.IsZero() {
+						return nil, fmt.Errorf("step must be non zero")
+					}
+
+					zero := apd.New(0, 0)
+
+					if +1 == step.Cmp(zero) && +1 == start.Cmp(limit) {
+						return nil, fmt.Errorf("end must be greater than start when step is positive")
+					}
+
+					if -1 == step.Cmp(zero) && -1 == start.Cmp(limit) {
+						return nil, fmt.Errorf("end must be less than start when step is negative")
+					}
+
+					var vals []*internal.Decimal
+					num := start
+					for {
+
+						if +1 == step.Cmp(zero) && -1 != num.Cmp(limit) {
+							break
+						}
+
+						if -1 == step.Cmp(zero) && +1 != num.Cmp(limit) {
+							break
+						}
+
+						vals = append(vals, num)
+						d := apd.New(0, 0)
+						_, err := internal.BaseContext.Add(d, step, num)
+						if err != nil {
+							return nil, err
+						}
+						num = d
+					}
+					return vals, nil
+				}()
+			},
+		}, {
 			Name:   "Sum",
 			Params: []kind{listKind},
 			Result: numKind,

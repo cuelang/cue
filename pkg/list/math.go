@@ -86,6 +86,58 @@ func Product(xs []*internal.Decimal) (*internal.Decimal, error) {
 	return d, nil
 }
 
+// Range generates a list of numbers using a start value, a limit value, and a
+// step value.
+//
+// For instance:
+//
+//    Range(0, 5, 2)
+//
+// results in
+//
+//    [0, 2, 4]
+//
+func Range(start, limit, step *internal.Decimal) ([]*internal.Decimal, error) {
+	if step.IsZero() {
+		return nil, fmt.Errorf("step must be non zero")
+	}
+
+	zero := apd.New(0, 0)
+
+	// step > 0 and start > limit
+	if +1 == step.Cmp(zero) && +1 == start.Cmp(limit) {
+		return nil, fmt.Errorf("end must be greater than start when step is positive")
+	}
+
+	// step < 0 and start < limit
+	if -1 == step.Cmp(zero) && -1 == start.Cmp(limit) {
+		return nil, fmt.Errorf("end must be less than start when step is negative")
+	}
+
+	var vals []*internal.Decimal
+	num := start
+	for {
+		// step > 0 and num >= limit
+		if +1 == step.Cmp(zero) && -1 != num.Cmp(limit) {
+			break
+		}
+
+		// step < 0 and num <= limit
+		if -1 == step.Cmp(zero) && +1 != num.Cmp(limit) {
+			break
+		}
+
+		vals = append(vals, num)
+		d := apd.New(0, 0)
+		_, err := internal.BaseContext.Add(d, step, num)
+		if err != nil {
+			return nil, err
+		}
+		num = d
+	}
+	return vals, nil
+}
+
 // Sum returns the sum of a list non empty xs.
 func Sum(xs []*internal.Decimal) (*internal.Decimal, error) {
 	d := apd.New(0, 0)
