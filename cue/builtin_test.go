@@ -162,6 +162,33 @@ func TestBuiltins(t *testing.T) {
 		test("list", `list.Flatten("foo")`),
 		`_|_(error in call to list.Flatten: cannot use value "foo" (type string) as list)`,
 	}, {
+		test("list", `list.Intersection([[1], 2, 3], [2, 3, 4])`),
+		`_|_(error in call to list.Intersection: arguments must be a list of scalar values)`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3], [[2], 3, 4])`),
+		`_|_(error in call to list.Intersection: arguments must be a list of scalar values)`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3], [2, 3, 4])`),
+		`[2,3]`,
+	}, {
+		test("list", `list.Intersection([], [2, 3, 4])`),
+		`[]`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3], [])`),
+		`[]`,
+	}, {
+		test("list", `list.Intersection([1, 2], [3, 4])`),
+		`[]`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3, 3], [2, 3, 4])`),
+		`[2,3]`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3], [2, 3, 3, 4])`),
+		`[2,3]`,
+	}, {
+		test("list", `list.Intersection([1, 2, 3, 3], [2, 3, 3, 4])`),
+		`[2,3]`,
+	}, {
 		test("list", `list.Max([1, 2, 3, 4])`),
 		`4`,
 	}, {

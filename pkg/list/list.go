@@ -81,6 +81,50 @@ func Flatten(xs cue.Value) ([]cue.Value, error) {
 	return flatten(xs)
 }
 
+// Intersection reports a list of values containing only the elements that are
+// present in list xs as well as in list ys. All elements in list xs and ys are
+// required to be scalar values (not of kind list or struct).
+//
+// For instance:
+//
+//    Intersection([1, 2, 3], [2, 3, 4]])
+//
+// results in
+//
+//    [2, 3]
+//
+func Intersection(xs, ys []cue.Value) ([]cue.Value, error) {
+	for _, x := range xs {
+		k := x.Kind()
+		if k == cue.ListKind || k == cue.StructKind {
+			return nil, fmt.Errorf("arguments must be a list of scalar values")
+		}
+	}
+
+	for _, y := range ys {
+		k := y.Kind()
+		if k == cue.ListKind || k == cue.StructKind {
+			return nil, fmt.Errorf("arguments must be a list of scalar values")
+		}
+	}
+
+	contains := func(xs []cue.Value, y cue.Value) bool {
+		for _, x := range xs {
+			if y.Equals(x) {
+				return true
+			}
+		}
+		return false
+	}
+	vals := []cue.Value{}
+	for _, x := range xs {
+		if contains(ys, x) && !contains(vals, x) {
+			vals = append(vals, x)
+		}
+	}
+	return vals, nil
+}
+
 // Take reports the prefix of length n of list x, or x itself if n > len(x).
 //
 // For instance:
