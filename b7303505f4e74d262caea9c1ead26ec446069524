@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f187a2_cd28e059",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-04T15:14:18Z",
+      "side": 1,
+      "message": "You can test whether a Decimal x is negative with `x.Negative`",
+      "revId": "b7303505f4e74d262caea9c1ead26ec446069524",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
