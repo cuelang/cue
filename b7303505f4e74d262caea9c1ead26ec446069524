@@ -34,6 +34,24 @@
       "revId": "b7303505f4e74d262caea9c1ead26ec446069524",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787719b1_9cd5c6a5",
+        "filename": "pkg/list/math.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-10-05T21:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5184118_986075ab",
+      "revId": "b7303505f4e74d262caea9c1ead26ec446069524",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
