@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aff1bccd_11be7aa9",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-05T14:10:18Z",
+      "side": 1,
+      "message": "Using equals is fine in an API, but not mid-evaluation in CUE. As I said, we probably want to limit this for scalar values, at least for now.\n\nEquals is a pretty intense operation. For non-concrete values it returns structural equivalence. I don\u0027t know what the implications are of doing this mid-evaluation. This is also there reason why \u003d\u003d is not defined on lists and structs. Maybe builtins could return an \"incomplete\" error, but also here I don\u0027t know what this means. TBH, I wouldn\u0027t even know what equality means if both structs are concrete at the moment! (considering openness, definitions, hidden fields, etc.) This should wait until the builtin error model has crystalized a bit and we have a better understanding of equality for structs and lists in general.\n\nFor now, though, we could say that it is an error to use these functions if a list uses structs or lists. We can then later make it more specific.",
+      "revId": "1a0e727d16c27a468a79d5787b9265b1593b5ce4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
