@@ -16,6 +16,24 @@
       "revId": "1a0e727d16c27a468a79d5787b9265b1593b5ce4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08a86bb_83870eb1",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-10-05T20:28:37Z",
+      "side": 1,
+      "message": "Thanks for the more elaborate input. I\u0027m going to change it so that the element is first checked if it\u0027s a scalar value and if not return an error. Also their are other functions like contains which also use this function. Maybe we need to implement checks for these as well.",
+      "parentUuid": "aff1bccd_11be7aa9",
+      "revId": "1a0e727d16c27a468a79d5787b9265b1593b5ce4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
