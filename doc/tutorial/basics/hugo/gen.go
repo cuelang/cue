@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// +build ignore
+//go:generate go run gen.go
 
 // gen generates Hugo files from the given current script files.
 package main
@@ -30,17 +30,25 @@ import (
 	"github.com/rogpeppe/testscript/txtar"
 )
 
+const hugoDir = "hugo"
+
 func main() {
 	log.SetFlags(log.Lshortfile)
 	index := ""
-	filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+	filepath.Walk("..", func(path string, info os.FileInfo, err error) error {
 		if x, ok := chapter[path]; ok {
 			index = x
 		}
+
+		if path == hugoDir {
+			return nil
+		}
+
 		if !strings.HasSuffix(path, ".txt") ||
 			filepath.Base(path) == "out.txt" {
 			return nil
 		}
+
 		generate(path, index)
 		return nil
 	})
@@ -118,7 +126,7 @@ func generate(filename, index string) {
 	}
 	filename = re.ReplaceAllLiteralString(filename, "")
 	filename = filename[:len(filename)-len(".txt")] + ".md"
-	filename = filepath.Join("tour", filename)
+	filename = filepath.Join("xxxx", filename)
 	fmt.Println(index, filename)
 
 	comments := strings.Split(string(a.Comment), "\n")[0]

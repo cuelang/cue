@@ -1,0 +1,56 @@
++++
+title = "Lists"
+description = ""
+weight = 2080
+layout = "tutorial"
++++
+Lists define arbitrary sequences of CUE values.
+A list can be closed or open ended.
+Open-ended lists may have some predefined elements, but may have
+additional, possibly typed elements.
+
+In the example we define `IP` to be a list of `4` elements of type `uint8`, which
+is a predeclared value of `>=0 & <=255`.
+`PrivateIP` defines the IP ranges defined for private use.
+Note that as it is already defined to be an `IP`, the length of the list
+is already fixed at `4` and we do not have to specify a value for all elements.
+Also note that instead of writing `...uint8`, we could have written `...`
+as the type constraint is already already implied by `IP`.
+
+The output contains a valid private IP address (`myIP`)
+and an invalid one (`yourIP`).
+
+
+<a id="td-block-padding" class="td-offset-anchor"></a>
+<section class="row td-box td-box--white td-box--gradient td-box--height-auto">
+<div class="col-lg-6 mr-0">
+<i>lists.cue</i>
+<p>
+{{< highlight go >}}
+IP: 4 * [ uint8 ]
+
+PrivateIP: IP
+PrivateIP: [10, ...uint8] |
+    [192, 168, ...] |
+    [172, >=16 & <=32, ...]
+
+myIP: PrivateIP
+myIP: [10, 2, 3, 4]
+
+yourIP: PrivateIP
+yourIP: [11, 1, 2, 3]
+
+{{< /highlight >}}
+<br>
+</div>
+
+<div class="col-lg-6 ml-0"><i>$ cue eval -i lists.cue</i>
+<p>
+{{< highlight go >}}
+IP: [uint8, uint8, uint8, uint8]
+PrivateIP: [10, uint8, uint8, uint8] | [192, 168, uint8, uint8] | [172, >=16 & <=32 & uint8, uint8, uint8]
+myIP: [10, 2, 3, 4]
+yourIP: _|_ // empty disjunction: [((10 & (int & >=0 & int & <=255)) & 11),((int & >=0 & int & <=255) & 1),((int & >=0 & int & <=255) & 2),((int & >=0 & int & <=255) & 3)]
+{{< /highlight >}}
+</div>
+</section>
