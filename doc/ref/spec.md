@@ -1167,10 +1167,10 @@ comprehensions and the ability to generate good error messages, so thread
 carefully.
 -->
 ```
-StructLit       = "{" { Declaration "," } [ "..." ] "}" .
-Declaration     = FieldDecl | DefinitionDecl | AliasDecl | Comprehension | Embedding .
-FieldDecl       = Label { Label } ":" Expression { attribute } .
-DefinitionDecl  = Label "::" Expression { attribute } .
+StructLit       = FieldDecl | "{" { Declaration "," } [ "..." ] "}" .
+Declaration     = Field | AliasDecl | Comprehension | Embedding .
+FieldDecl       = Field { attribute } .
+Field           = [ identifier "=" ] Label (":" | "::") Expression .
 Embedding       = Expression .
 
 AliasDecl       = Label "=" Expression .
@@ -1868,9 +1868,15 @@ PrimaryExpr =
 	PrimaryExpr Slice |
 	PrimaryExpr Arguments .
 
-Selector       = "." identifier .
+// & expression type
+// string_lit: same as label. Arguments is current node.
+// If selector is applied to list, it performs the operation for each
+// element.
+Selector       = "." (identifier | string_lit | decimal_lit | "*" | Query) .
+Query          = Filter { Filter } .
+Filter         = "[" [ "?" [ ":" ] Expression "]" .
 Index          = "[" Expression "]" .
-Slice          = "[" [ Expression ] ":" [ Expression ] "]"
+Slice          = "[" [ Expression ] ":" [ Expression ] [ ":" [Expression] ] "]" .
 Argument       = Expression .
 Arguments      = "(" [ ( Argument { "," Argument } ) [ "," ] ] ")" .
 ```
