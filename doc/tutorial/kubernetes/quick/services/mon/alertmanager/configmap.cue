@@ -2,7 +2,7 @@ package kube
 
 import "encoding/yaml"
 
-configMap alertmanager: {
+configMap: alertmanager: {
 	apiVersion: "v1"
 	kind:       "ConfigMap"
 	data: {

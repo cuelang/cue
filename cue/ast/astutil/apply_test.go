@@ -90,12 +90,12 @@ iam: new
 		name: "templates",
 		in: `
 				foo: {
-					a <b> c: 3
+					a: <b>: c: 3
 				}
 				`,
 		out: `
 foo: {
-	a <b>: {
+	a: <b>: {
 		c:   3
 		iam: new
 	}

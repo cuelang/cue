@@ -160,7 +160,7 @@ func TestExport(t *testing.T) {
 		in:  `{ a: { b: [] }, c: a.b, d: a["b"] }`,
 		out: unindent(`
 			{
-				a b: []
+				a: b: []
 				c: a.b
 				d: a["b"]
 			}`),
@@ -288,10 +288,10 @@ func TestExport(t *testing.T) {
 			A = a
 			b: {
 				idx: A[str]
-				a b: 4
+				a: b: 4
 				str: string
 			}
-			a b: 3
+			a: b: 3
 		}`),
 	}, {
 		raw:  true,
@@ -352,7 +352,7 @@ func TestExport(t *testing.T) {
 		{
 			emb :: {
 				a: 1
-				sub f: 3
+				sub: f: 3
 			}
 			f :: {
 				a: 10
@@ -386,20 +386,20 @@ func TestExport(t *testing.T) {
 		{
 			reg: {
 				foo: 1
-				bar baz: 3
+				bar: baz: 3
 			}
 			def :: {
 				a: 1
 				sub: {
 					foo: 1
-					bar baz: 3
+					bar: baz: 3
 				}
 			}
 			val: {
 				a: 1
 				sub: {
 					foo: 1
-					bar baz: 3
+					bar: baz: 3
 				}
 			}
 		}`),
@@ -492,7 +492,7 @@ func TestExport(t *testing.T) {
 				And :: {
 					"Fn::And": []
 				}
-				Ands "Fn::And": [3 | And]
+				Ands: "Fn::And": [3 | And]
 			}`),
 	}, {
 		raw:  true,
@@ -653,7 +653,7 @@ func TestExportFile(t *testing.T) {
 		import "strings"
 
 		STRINGS = strings
-		a strings: STRINGS.ContainsAny("c")`),
+		a: strings: STRINGS.ContainsAny("c")`),
 	}, {
 		in: `
 			a: b - 100
@@ -738,7 +738,7 @@ func TestExportFile(t *testing.T) {
 		{
 			reg: {
 				foo: 1
-				bar baz: 3
+				bar: baz: 3
 			}
 			def :: {
 				a: 1
@@ -755,7 +755,7 @@ func TestExportFile(t *testing.T) {
 				a: 1
 				sub: {
 					foo: 1
-					bar baz: 3
+					bar: baz: 3
 				}
 			})
 		}`),

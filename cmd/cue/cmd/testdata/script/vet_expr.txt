@@ -6,7 +6,7 @@ field "skip" not allowed in closed struct:
     ./vet.cue:4:9
 -- vet.cue --
 
-translations <_> lang: string
+translations: <_>: lang: string
 
 File :: {
 	translations: {...}
