@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ed3d7c4_4913d704",
+        "filename": "doc/tutorial/kubernetes/quick/services/kitchen/souschef/kube.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-07T12:01:55Z",
+      "side": 1,
+      "message": "If the spaces before the colons here are deliberate, perhaps add a comment?",
+      "revId": "ddef4015ff065f5f81c4f3847962d9faa6878100",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
