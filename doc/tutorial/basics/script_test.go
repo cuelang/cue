@@ -27,6 +27,6 @@ func TestScript(t *testing.T) {
 
 func TestMain(m *testing.M) {
 	os.Exit(testscript.RunMain(m, map[string]func() int{
-		"cue": cmd.Main,
+		"cue": cmd.MainTest,
 	}))
 }
