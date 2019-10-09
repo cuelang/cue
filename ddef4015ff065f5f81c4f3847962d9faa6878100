@@ -16,6 +16,24 @@
       "revId": "ddef4015ff065f5f81c4f3847962d9faa6878100",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b4346f_5bef1de5",
+        "filename": "doc/tutorial/kubernetes/quick/services/kitchen/souschef/kube.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-09T14:56:52Z",
+      "side": 1,
+      "message": "It is a bug, actually.\n\nI\u0027m redoing the formatter for colons in a later CL, which fixes this.",
+      "parentUuid": "7ed3d7c4_4913d704",
+      "revId": "ddef4015ff065f5f81c4f3847962d9faa6878100",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
