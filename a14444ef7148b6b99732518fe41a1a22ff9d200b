@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e367a7cc_0d73ab69",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2019-10-10T20:56:19Z",
+      "side": 1,
+      "message": "How can something embedded be at top level?",
+      "range": {
+        "startLine": 1281,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 51
+      },
+      "revId": "a14444ef7148b6b99732518fe41a1a22ff9d200b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
