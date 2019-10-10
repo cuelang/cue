@@ -296,7 +296,7 @@ func TestBuiltins(t *testing.T) {
 		`"foo"`,
 	}, {
 		testExpr(`and([])`),
-		`_`,
+		`{}`, // _ & top scope
 	}, {
 		testExpr(`or([1, 2, 3]) & 2`),
 		`2`,
