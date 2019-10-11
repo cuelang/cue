@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5df1ba_ca9142de",
+        "filename": "doc/tutorial/basics/hidden.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000044
+      },
+      "writtenOn": "2019-10-11T20:12:35Z",
+      "side": 0,
+      "message": "I don\u0027t see this file copied over to the new documentation, but as hidden fields are going to be removed anyway I\u0027m not sure if it\u0027s worth keeping it.",
+      "revId": "00eb9d2d7f479cd059d2a4be23fadef629782aea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
