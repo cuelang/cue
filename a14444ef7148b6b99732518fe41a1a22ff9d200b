@@ -22,6 +22,30 @@
       "revId": "a14444ef7148b6b99732518fe41a1a22ff9d200b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc70ca91_69fe7dec",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-11T10:45:46Z",
+      "side": 1,
+      "message": "Syntactically, from the spec:\n\nSourceFile      \u003d [ PackageClause \",\" ] { ImportDecl \",\" } { Declaration \",\" } .\nDeclaration     \u003d Field | Alias | Comprehension | Embedding .\nEmbedding       \u003d Expression .\n\nSemantically, the top level really is just a struct with a preamble with a package clause and import specs. When embedding for structs didn\u0027t exist, the current semantics (though not in the spec), was sort of justifiable. \n\nNow we have embedding, it is just very weird for the top-level to behave any different. I would expect:\n\n    // file.cue\n    { a: int }\n    b: int\n\nto behave the same as\n\n    A: {\n        { a: int }\n        b: int\n    }\n    A\n\nBut right now it doesn\u0027t (the second includes b, the first does not).",
+      "parentUuid": "e367a7cc_0d73ab69",
+      "range": {
+        "startLine": 1281,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 51
+      },
+      "revId": "a14444ef7148b6b99732518fe41a1a22ff9d200b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
