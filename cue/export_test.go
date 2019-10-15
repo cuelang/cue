@@ -358,13 +358,13 @@ func TestExport(t *testing.T) {
 				a: 10
 			}
 			def :: {
-				emb
 				b: 2
+				emb
 			}
 			e :: {
-				f
 				<_>: <100
 				b:   int
+				f
 			}
 		}`),
 	}, {
