@@ -2187,3 +2187,51 @@ func TestExpr(t *testing.T) {
 		})
 	}
 }
+
+func TestKindString(t *testing.T) {
+	testCases := []struct {
+		input Kind
+		want  string
+	}{{
+		input: BottomKind,
+		want:  "_|_",
+	}, {
+		input: IntKind | ListKind,
+		want:  `(int|[...])`,
+	}, {
+		input: NullKind,
+		want:  "null",
+	}, {
+		input: IntKind,
+		want:  "int",
+	}, {
+		input: FloatKind,
+		want:  "float",
+	}, {
+		input: StringKind,
+		want:  "string",
+	}, {
+		input: BytesKind,
+		want:  "bytes",
+	}, {
+		input: StructKind,
+		want:  "{...}",
+	}, {
+		input: ListKind,
+		want:  "[...]",
+	}, {
+		input: NumberKind,
+		want:  "(int|float)",
+	}, {
+		input: 1 << 20,
+		want:  "bad(20)",
+	}}
+	for _, tc := range testCases {
+		t.Run(tc.want, func(t *testing.T) {
+			got := tc.input.String()
+			if got != tc.want {
+				t.Errorf("\n got %v;\nwant %v", got, tc.want)
+			}
+		})
+	}
+}
