@@ -650,7 +650,7 @@ type structLit struct {
 }
 
 func (x *structLit) isClosed() bool {
-	return x.closeStatus != 0
+	return x.closeStatus == isClosed
 }
 
 const (
@@ -776,11 +776,7 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 		// it is safe to cache the result.
 		ctx.cycleErr = false
 
-		if s, ok := v.(*structLit); ok {
-			if s.closeStatus != 0 {
-				s.closeStatus = 2
-			}
-		}
+		updateCloseStatus(isClosed, v)
 		x.arcs[i].cache = v
 		if doc != nil {
 			x.arcs[i].docs = &docNode{n: doc, left: x.arcs[i].docs}
@@ -797,15 +793,28 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 	return x.arcs[i].cache
 }
 
+func updateCloseStatus(status byte, v value) {
+	if status != isClosed {
+		return
+	}
+	switch x := v.(type) {
+	case *structLit:
+		if x.closeStatus != 0 {
+			x.closeStatus = isClosed
+		}
+
+	case *disjunction:
+		for _, d := range x.values {
+			updateCloseStatus(status, d.val)
+		}
+	}
+}
+
 // expandFields merges in embedded and interpolated fields.
 // Such fields are semantically equivalent to child values, and thus
 // should not be evaluated until the other fields of a struct are
 // fully evaluated.
 func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
-	if x.closeStatus == toClose {
-		x.closeStatus = isClosed
-	}
-
 	switch v := x.expanded.(type) {
 	case nil:
 	case *structLit:
@@ -822,6 +831,8 @@ func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
 
 	comprehensions := x.comprehensions
 
+	var incomplete []value
+
 	var n evaluated = &top{x.baseValue}
 	if x.emit != nil {
 		n = x.emit.evalPartial(ctx)
@@ -829,6 +840,14 @@ func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
 
 	for _, x := range comprehensions {
 		v := x.evalPartial(ctx)
+		if v, ok := v.(*bottom); ok {
+			if isIncomplete(v) {
+				incomplete = append(incomplete, x)
+				continue
+			}
+
+			return nil, v
+		}
 		src := binSrc(x.Pos(), opUnify, x, v)
 		n = binOp(ctx, src, opUnifyUnchecked, n, v)
 	}
@@ -838,16 +857,19 @@ func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
 	case *bottom:
 	case *structLit:
 		orig := *x
-		orig.comprehensions = nil
+		orig.comprehensions = incomplete
 		orig.emit = nil
 		n = binOp(ctx, src, opUnifyUnchecked, &orig, n)
 
 	default:
+		if len(comprehensions) == len(incomplete) {
+			return x, nil
+		}
 		if x.emit != nil {
 			v := x.emit.evalPartial(ctx)
 			n = binOp(ctx, src, opUnifyUnchecked, v, n)
 		}
-		return nil, ctx.mkErr(x, "invalid embedding")
+		return nil, ctx.mkErr(x, n, "invalid embedding")
 	}
 
 	switch v := n.(type) {
@@ -866,7 +888,7 @@ func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
 
 func (x *structLit) applyTemplate(ctx *context, i int, v evaluated) (evaluated, *ast.Field) {
 	if x.template != nil {
-		fn, err := evalLambda(ctx, x.template)
+		fn, err := evalLambda(ctx, x)
 		if err != nil {
 			return err, nil
 		}
@@ -953,6 +975,10 @@ func (a *arc) val() evaluated {
 func (a *arc) setValue(v value) {
 	a.v = v
 	a.cache = nil
+}
+
+type closeIfStruct struct {
+	value
 }
 
 // insertValue is used during initialization but never during evaluation.
@@ -1510,6 +1536,6 @@ func (x *feed) yield(ctx *context, yfn yieldFunc) (result *bottom) {
 		if k := source.kind(); k&(structKind|listKind) == bottomKind {
 			return ctx.mkErr(x, x.source, "feed source must be list or struct, found %s", k)
 		}
-		return ctx.mkErr(x, "feed source not fully evaluated to struct or list")
+		return ctx.mkErr(x, x.source, codeIncomplete, "incomplete feed source")
 	}
 }

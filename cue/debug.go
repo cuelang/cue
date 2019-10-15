@@ -265,6 +265,11 @@ func (p *printer) str(v interface{}) {
 		write(")->")
 		p.str(x.value)
 
+	case *closeIfStruct:
+		write("close(")
+		p.str(x.value)
+		write(")")
+
 	case *structLit:
 		if x == nil {
 			write("*nil node*")

@@ -1228,14 +1228,14 @@ a: {
 					`,
 		out: `<0>{` +
 			`D1 :: <1>C{env: <2>C{a: "A", b: "B"}, def :: <3>C{a: "A", b: "B"}}, ` +
-			`d1: <4>C{env: <5>C{a: "A", b: "B", c: "C"}, def :: <6>C{a: "A", b: "B"}}, ` +
-			`D2 :: <7>C{a: int, b: int}, ` +
-			`D3 :: <8>C{env: <9>C{a: "A", b: "B"}}, ` +
-			`D4 :: <10>C{env: _|_(int:field "b" not allowed in closed struct)}, ` +
-			`DC :: <11>C{a: int}` +
+			`d1: <4>C{env: _|_("C":field "c" not allowed in closed struct), def :: <5>C{a: "A", b: "B"}}, ` +
+			`D2 :: <6>C{a: int, b: int}, ` +
+			`D3 :: <7>C{env: <8>C{a: "A", b: "B"}}, ` +
+			`D4 :: <9>C{env: _|_(int:field "b" not allowed in closed struct)}, ` +
+			`DC :: <10>C{a: int}` +
 			`}`,
 	}, {
-		desc: "definitions with oneofs",
+		desc: "definitions with disjunctions",
 		in: `
 			Foo :: {
 				field: int
@@ -1245,7 +1245,7 @@ a: {
 			}
 
 			foo: Foo
-			foo: { a: 2 }
+			foo: { a: 1 }
 
 			bar: Foo
 			bar: { c: 2 }
@@ -1255,9 +1255,25 @@ a: {
 			`,
 		out: `<0>{` +
 			`Foo :: (<1>C{field: int, a: 1} | <2>C{field: int, b: 2}), ` +
-			`foo: _|_((<3>.Foo & <4>{a: 2}):empty disjunction: C{field: int, a: (1 & 2)}), ` +
-			`bar: _|_((<3>.Foo & <5>{c: 2}):empty disjunction: field "c" not allowed in closed struct), ` +
+			`foo: <3>C{field: int, a: 1}, ` +
+			`bar: _|_((<4>.Foo & <5>{c: 2}):empty disjunction: field "c" not allowed in closed struct), ` +
 			`baz: <6>C{field: int, b: 2}}`,
+	}, {
+		desc: "definitions with disjunctions recurisive",
+		in: `
+			Foo :: {
+				x: {
+					field: int
+
+					{ a: 1 } |
+					{ b: 2 }
+				}
+				x c: 3
+			}
+					`,
+		out: `<0>{` +
+			`Foo :: <1>C{x: (<2>C{field: int, a: 1, c: 3} | <3>C{field: int, b: 2, c: 3})}` +
+			`}`,
 	}, {
 		desc: "definitions with embedding",
 		in: `
@@ -1281,6 +1297,26 @@ a: {
 			`S :: <3>C{a: <4>C{b: int, c: int}, b: 3}, ` +
 			`e1 :: <5>C{a: _|_(4:field "d" not allowed in closed struct), b: 3}, ` +
 			`v1 :: <6>C{a: <7>C{b: int, c: 4}, b: 3}}`,
+	}, {
+		desc: "top-level definition with struct and disjunction",
+		in: `
+		def :: {
+			Type: string
+			Text: string
+			Size: int
+		}
+
+		def :: {
+			Type: "B"
+			Size: 0
+		} | {
+			Type: "A"
+			Size: 1
+		}`,
+		out: `<0>{` +
+			`def :: (<1>C{Size: (0 & int), Type: ("B" & string), Text: string} | ` +
+			`<2>C{Size: (1 & int), Type: ("A" & string), Text: string})` +
+			`}`,
 	}, {
 		desc: "closing structs",
 		in: `
@@ -1376,7 +1412,6 @@ a: {
 		in: `
 		A :: {f1: int, f2: int}
 
-		// Comprehension fields cannot be added like any other.
 		for k, v in {f3 : int} {
 			a: A & { "\(k)": v }
 		}
@@ -1408,6 +1443,25 @@ a: {
 			`C :: <4>C{f1: int}, ` +
 			`D :: <5>{f1: int, ...}` +
 			`}`,
+	}, {
+		desc: "incomplete comprehensions",
+		in: `
+		A: {
+			for v in src {
+				"\(v)": v
+			}
+			src: _
+			if true {
+				baz: "baz"
+			}
+		}
+		B: A & {
+			src: ["foo", "bar"]
+		}
+		`,
+		out: `<0>{` +
+			`A: <1>{src: _, baz: "baz" <2>for _, v in <3>.src yield <4>{""+<2>.v+"": <2>.v}}, ` +
+			`B: <5>{src: ["foo","bar"], baz: "baz", foo: "foo", bar: "bar"}}`,
 	}, {
 		desc: "reference to root",
 		in: `
@@ -1996,7 +2050,9 @@ func TestFullEval(t *testing.T) {
 				}
 			}
 		`,
-		out: `<0>{b: true, a: "foo", c: <1>{a: 3}, d: <2>{a: int if (<2>.a > 1) yield <3>{a: 3}}}`,
+		// NOTE: the node numbers are not correct here, but this is an artifact
+		// of the testing code.
+		out: `<0>{b: true, a: "foo", c: <1>{a: 3}, d: <2>{a: int if (<3>.a > 1) yield <4>{a: 3}}}`,
 	}, {
 		desc: "referencing field in field comprehension",
 		in: `
@@ -2287,7 +2343,9 @@ func TestFullEval(t *testing.T) {
 			`fibRec: <1>{` +
 			`nn: int, ` +
 			`out: (<2>.fib & <3>{n: <4>.nn}).out}, ` +
-			`fib: <5>{n: int if (<5>.n >= 2) yield <6>{out: ((<2>.fibRec & <7>{nn: (<5>.n - 2)}).out + (<2>.fibRec & <8>{nn: (<5>.n - 1)}).out)},  if (<5>.n < 2) yield <9>{out: <5>.n}}, ` +
+			// NOTE: the node numbers are not correct here, but this is an artifact
+			// of the testing code.
+			`fib: <5>{n: int if (<6>.n >= 2) yield <7>{out: ((<2>.fibRec & <8>{nn: (<6>.n - 2)}).out + (<2>.fibRec & <9>{nn: (<6>.n - 1)}).out)},  if (<6>.n < 2) yield <10>{out: <6>.n}}, ` +
 			`fib2: 1, ` +
 			`fib7: 13, ` +
 			`fib12: 144}`,

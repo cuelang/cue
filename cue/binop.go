@@ -590,7 +590,8 @@ func (x *customValidator) check(ctx *context, v evaluated) evaluated {
 	return nil
 }
 
-func evalLambda(ctx *context, a value) (l *lambdaExpr, err evaluated) {
+func evalLambda(ctx *context, x *structLit) (l *lambdaExpr, err evaluated) {
+	a := x.template
 	if a == nil {
 		return nil, nil
 	}
@@ -603,7 +604,9 @@ func evalLambda(ctx *context, a value) (l *lambdaExpr, err evaluated) {
 	if !ok {
 		return nil, ctx.mkErr(a, "value must be lambda")
 	}
-	return ctx.deref(l).(*lambdaExpr), nil
+	lambda := ctx.deref(l).(*lambdaExpr)
+	updateCloseStatus(x.closeStatus, lambda.value)
+	return lambda, nil
 }
 
 func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) evaluated {
@@ -632,8 +635,8 @@ func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) eval
 	}
 	defer ctx.pushForwards(x, obj, y, obj).popForwards()
 
-	tx, ex := evalLambda(ctx, x.template)
-	ty, ey := evalLambda(ctx, y.template)
+	tx, ex := evalLambda(ctx, x)
+	ty, ey := evalLambda(ctx, y)
 
 	var t *lambdaExpr
 	switch {
@@ -699,7 +702,14 @@ outer:
 					return ctx.mkErr(src, "field %q declared as definition and regular field",
 						ctx.labelStr(a.feature))
 				}
-				v = mkBin(ctx, src.Pos(), op, b.v, v)
+				w := b.v
+				if x.closeStatus == isClosed && w.kind().isAnyOf(structKind) {
+					w = &closeIfStruct{w}
+				}
+				if y.closeStatus == isClosed && w.kind().isAnyOf(structKind) {
+					v = &closeIfStruct{v}
+				}
+				v = mkBin(ctx, src.Pos(), op, w, v)
 				obj.arcs[i].v = v
 				obj.arcs[i].cache = nil
 				obj.arcs[i].optional = a.optional && b.optional
