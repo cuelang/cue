@@ -22,6 +22,7 @@ import (
 	"io"
 	"math"
 	"math/big"
+	"math/bits"
 	"strconv"
 	"strings"
 	"unicode"
@@ -69,6 +70,68 @@ const (
 	// NumberKind represents any kind of number.
 	NumberKind = IntKind | FloatKind
 )
+
+// String returns the representation of the Kind as
+// a CUE expression. For example:
+//
+//	(IntKind|ListKind).String()
+//
+// will return:
+//
+//	(int|[...])
+func (k Kind) String() string {
+	if k == BottomKind {
+		return "_|_"
+	}
+	nelem := bits.OnesCount(uint(k))
+	if (k & NumberKind) == NumberKind {
+		// Number is two bits but only one element in the result.
+		nelem--
+	}
+	var buf strings.Builder
+	if nelem > 1 {
+		buf.WriteByte('(')
+	}
+	for count := 0; ; count++ {
+		n := bits.TrailingZeros(uint(k))
+		if n == bits.UintSize {
+			break
+		}
+		bit := Kind(1 << uint(n))
+		k &^= bit
+		var s string
+		if bit == IntKind && (k&FloatKind) != 0 {
+			// Special case for number.
+			s = "number"
+			k &^= FloatKind
+		} else {
+			var ok bool
+			s, ok = kindStrs[bit]
+			if !ok {
+				s = fmt.Sprintf("bad(%d)", n)
+			}
+		}
+		if count > 0 {
+			buf.WriteByte('|')
+		}
+		buf.WriteString(s)
+	}
+	if nelem > 1 {
+		buf.WriteByte(')')
+	}
+	return buf.String()
+}
+
+var kindStrs = map[Kind]string{
+	NullKind:   "null",
+	BoolKind:   "bool",
+	IntKind:    "int",
+	FloatKind:  "float",
+	StringKind: "string",
+	BytesKind:  "bytes",
+	StructKind: "{...}",
+	ListKind:   "[...]",
+}
 
 // An structValue represents a JSON object.
 //
