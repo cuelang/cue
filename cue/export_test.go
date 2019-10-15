@@ -294,8 +294,9 @@ func TestExport(t *testing.T) {
 			a b: 3
 		}`),
 	}, {
-		raw:  true,
-		eval: true,
+		raw:   true,
+		eval:  true,
+		noOpt: true,
 		in: `{
 			job <Name>: {
 				name:     Name
@@ -379,6 +380,10 @@ func TestExport(t *testing.T) {
 					sub: reg
 				}
 				val: def
+				def2 :: {
+					a: { b: int }
+				}
+				val2: def2
 			}`,
 		out: unindent(`
 		{
@@ -400,6 +405,10 @@ func TestExport(t *testing.T) {
 					bar baz: 3
 				}
 			}
+			def2 :: {
+				a b: int
+			}
+			val2 a b: int
 		}`),
 	}, {
 		raw:  true,
@@ -474,8 +483,9 @@ func TestExport(t *testing.T) {
 				}
 				a: []
 			}`)}, {
-		raw:  true,
-		eval: true,
+		raw:   true,
+		eval:  true,
+		noOpt: true,
 		in: `{
 				And :: {
 					"Fn::And": [...(3 | And)]
@@ -492,8 +502,9 @@ func TestExport(t *testing.T) {
 				Ands "Fn::And": [3 | And]
 			}`),
 	}, {
-		raw:  true,
-		eval: true,
+		raw:   true,
+		eval:  true,
+		noOpt: true,
 		in: `{
 			Foo :: {
 				sgl: Bar
@@ -555,7 +566,7 @@ func TestExport(t *testing.T) {
 			n := root.(*structLit).arcs[0].v
 			v := newValueRoot(ctx, n)
 
-			opts := options{raw: !tc.eval, omitOptional: true}
+			opts := options{raw: !tc.eval, omitOptional: tc.noOpt}
 			node, _ := export(ctx, v.eval(ctx), opts)
 			b, err := format.Node(node, format.Simplify())
 			if err != nil {
@@ -572,6 +583,7 @@ func TestExportFile(t *testing.T) {
 	testCases := []struct {
 		eval    bool // evaluate the full export
 		in, out string
+		opts    []Option
 	}{{
 		in: `
 		import "strings"
@@ -711,13 +723,9 @@ func TestExportFile(t *testing.T) {
 			}
 			a: close({
 				b: <10
-			}) & {
-				<_>: <10
-			}
+			})
 			B :: {
 				b: <10
-			} & {
-				<_>: <10
 			}
 		}`),
 	}, {
@@ -756,6 +764,98 @@ func TestExportFile(t *testing.T) {
 				}
 			})
 		}`),
+	}, {
+		eval: true,
+		in: `
+			T :: {
+				<_>: int64
+			}
+			X :: {
+				x: int
+			} & T
+			x: X
+			`,
+		out: unindent(`
+		{
+			T :: {
+				<_>: int64
+			}
+			X :: {
+				x: int64
+			}
+			x: close({
+				x: int64
+			})
+		}`),
+	}, {
+		eval: true,
+		opts: []Option{Optional(false)},
+		in: `
+		T :: {
+			<_>: int64
+		}
+		X :: {
+			x: int
+		} & T
+		x: X
+		`,
+		out: unindent(`
+		{
+			T :: {
+			}
+			X :: {
+				x: int64
+			}
+			x x: int64
+		}`),
+	}, {
+		eval: true,
+		in: `{
+				reg: { foo: 1, bar: { baz: 3 } }
+				def :: {
+					a: 1
+	
+					sub: reg
+				}
+				val: def
+				def2 :: {
+					a: { b: int }
+				}
+				val2: def2
+			}`,
+		out: unindent(`
+			{
+				reg: {
+					foo: 1
+					bar baz: 3
+				}
+				def :: {
+					a: 1
+					sub: {
+						foo: 1
+						bar: {
+							baz: 3
+							...
+						}
+						...
+					}
+				}
+				val: close({
+					a: 1
+					sub: {
+						foo: 1
+						bar baz: 3
+					}
+				})
+				def2 :: {
+					a b: int
+				}
+				val2: close({
+					a: close({
+						b: int
+					})
+				})
+			}`),
 	}}
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
@@ -764,7 +864,7 @@ func TestExportFile(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			opts := []Option{}
+			opts := tc.opts
 			if !tc.eval {
 				opts = []Option{Raw()}
 			}
