@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69426a89_293656a8",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "s/FindString/Find/",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "897a78d4_d78e3849",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "the successive matches.",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84e6776_7a17e1c0",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "It\u0027s a bit of a pity we have to copy Go\u0027s \"-1 means all\" semantics, but I guess there\u0027s no easy way to have an optional extra argument in Cue functions.",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac265c3_d4dae4d4",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "I guess it might be nice if the error said something about the string that was being matched, but hopefully the cue diagnostics will point to both the regexp and the thing being matched, making that unnecessary.",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c2db20_993d0c93",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "Cue doesn\u0027t really have slices.\ns/slice strings/list of strings/ ?",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08074a7_87862654",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "s/named/names/\n\nIt might be nice to have a brief example here for those of us that can\u0027t remember how to specify a named capture group...",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67151c7a_98fd460c",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "I\u0027m wondering if the name isn\u0027t slightly misleading here, as it sounds like it\u0027s actively mapping something. `FindSubmatchMap` is more wordy, but arguably clearer. Also, cue doesn\u0027t really have maps - it has structs - so maybe `FindSubmatchStruct` ?",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa418b7d_b36aa4ef",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T14:26:35Z",
+      "side": 1,
+      "message": "similar remarks to above",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
