@@ -640,7 +640,7 @@ type structLit struct {
 	// template must evaluated to a lambda and is applied to all concrete
 	// values in the struct, whether it be open or closed.
 	template    value
-	closeStatus byte
+	closeStatus closeMode
 
 	comprehensions []value
 
@@ -649,14 +649,33 @@ type structLit struct {
 	expanded evaluated
 }
 
-func (x *structLit) isClosed() bool {
-	return x.closeStatus == isClosed
-}
+type closeMode byte
 
 const (
-	toClose  = 1
-	isClosed = 2
+	shouldFinalize closeMode = 1 << iota
+	toClose
+	isClosed
 )
+
+func (m closeMode) shouldFinalize() bool {
+	return m&shouldFinalize != 0
+}
+
+func (m *closeMode) unclose() {
+	*m &^= (toClose | isClosed)
+}
+
+func (m closeMode) isClosed() bool {
+	return m&isClosed != 0
+}
+
+func (m closeMode) shouldClose() bool {
+	return m >= toClose
+}
+
+func (x *structLit) isClosed() bool {
+	return x.closeStatus.isClosed()
+}
 
 func (x *structLit) addTemplate(ctx *context, pos token.Pos, t value) {
 	if x.template == nil {
@@ -667,7 +686,7 @@ func (x *structLit) addTemplate(ctx *context, pos token.Pos, t value) {
 }
 
 func (x *structLit) allows(f label) bool {
-	return x.closeStatus&isClosed == 0 || f&hidden != 0
+	return !x.closeStatus.isClosed() || f&hidden != 0
 }
 
 func newStruct(src source) *structLit {
@@ -762,6 +781,7 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 
 		var doc *ast.Field
 		v, doc = x.applyTemplate(ctx, i, v)
+		// only place to apply template?
 
 		if (len(ctx.evalStack) > 0 && ctx.cycleErr) || cycleError(v) != nil {
 			// Don't cache while we're in a evaluation cycle as it will cache
@@ -776,7 +796,7 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 		// it is safe to cache the result.
 		ctx.cycleErr = false
 
-		updateCloseStatus(isClosed, v)
+		updateCloseStatus(v)
 		x.arcs[i].cache = v
 		if doc != nil {
 			x.arcs[i].docs = &docNode{n: doc, left: x.arcs[i].docs}
@@ -791,23 +811,6 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 		return &copy
 	}
 	return x.arcs[i].cache
-}
-
-func updateCloseStatus(status byte, v value) {
-	if status != isClosed {
-		return
-	}
-	switch x := v.(type) {
-	case *structLit:
-		if x.closeStatus != 0 {
-			x.closeStatus = isClosed
-		}
-
-	case *disjunction:
-		for _, d := range x.values {
-			updateCloseStatus(status, d.val)
-		}
-	}
 }
 
 // expandFields merges in embedded and interpolated fields.
@@ -888,7 +891,7 @@ func (x *structLit) expandFields(ctx *context) (st *structLit, err *bottom) {
 
 func (x *structLit) applyTemplate(ctx *context, i int, v evaluated) (evaluated, *ast.Field) {
 	if x.template != nil {
-		fn, err := evalLambda(ctx, x)
+		fn, err := evalLambda(ctx, x.template, x.closeStatus != 0)
 		if err != nil {
 			return err, nil
 		}
@@ -979,6 +982,42 @@ func (a *arc) setValue(v value) {
 
 type closeIfStruct struct {
 	value
+}
+
+func wrapFinalize(v value) value {
+	if v.kind().isAnyOf(structKind | listKind) {
+		switch x := v.(type) {
+		case *top:
+			return v
+		case *structLit, *list, *disjunction:
+			updateCloseStatus(v)
+		case *closeIfStruct:
+			return x
+		}
+		return &closeIfStruct{v}
+	}
+	return v
+}
+
+func updateCloseStatus(v value) {
+	switch x := v.(type) {
+	case *structLit:
+		if x.closeStatus.shouldClose() {
+			x.closeStatus = isClosed
+		}
+		x.closeStatus |= shouldFinalize
+
+	case *disjunction:
+		for _, d := range x.values {
+			d.val = wrapFinalize(d.val)
+		}
+
+	case *list:
+		wrapFinalize(x.elem)
+		if x.typ != nil {
+			wrapFinalize(x.typ)
+		}
+	}
 }
 
 // insertValue is used during initialization but never during evaluation.

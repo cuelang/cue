@@ -1235,6 +1235,47 @@ a: {
 			`DC :: <10>C{a: int}` +
 			`}`,
 	}, {
+		desc: "recursive closing starting at non-definition",
+		in: `
+			z a: {
+				B:: {
+					c d: 1
+					c f: 1
+				}
+			}
+			A: z & { a: { B :: { c e: 2 } } }
+			`,
+		out: `<0>{z: <1>{a: <2>{B :: <3>C{c: <4>C{d: 1, f: 1}}}}, A: <5>{a: <6>{B :: <7>C{c: _|_(2:field "e" not allowed in closed struct)}}}}`,
+	}, {
+		desc: "non-closed definition carries over closedness to enclosed template",
+		in: `
+		S :: {
+			<_>: { a: int }
+		}
+		a: S & {
+			v: { b: int }
+		}
+		Q :: {
+			<_>: { a: int } | { b: int }
+		}
+		b: Q & {
+			w: { c: int }
+		}
+		R :: {
+			<_>: [{ a: int }, { b: int }]
+		}
+		c: R & {
+			w: [{ d: int }, ...]
+		}
+		`,
+		out: `<0>{` +
+			`S :: <1>{<>: <2>(_: string)-><3>C{a: int}, }, ` +
+			`a: <4>{<>: <5>(_: string)-><6>C{a: int}, v: _|_(<7>{<>: <5>(_: string)-><6>C{a: int}, v: <8>{b: int}}:field "b" not allowed in closed struct)}, ` +
+			`b: <9>{<>: <10>(_: string)->(<11>C{a: int} | <12>C{b: int}), w: _|_(<13>{<>: <10>(_: string)->(<11>C{a: int} | <12>C{b: int}), w: <14>{c: int}}:empty disjunction: field "c" not allowed in closed struct)}, ` +
+			`Q :: <15>{<>: <16>(_: string)->(<17>C{a: int} | <18>C{b: int}), }, ` +
+			`c: <19>{<>: <20>(_: string)->[<21>C{a: int},<22>C{b: int}], w: [_|_((<23>{d: int} & close(<24>C{a: int})):field "d" not allowed in closed struct),<25>C{b: int}]}, ` +
+			`R :: <26>{<>: <27>(_: string)->[<28>C{a: int},<29>C{b: int}], }}`,
+	}, {
 		desc: "definitions with disjunctions",
 		in: `
 			Foo :: {

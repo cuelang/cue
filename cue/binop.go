@@ -590,8 +590,7 @@ func (x *customValidator) check(ctx *context, v evaluated) evaluated {
 	return nil
 }
 
-func evalLambda(ctx *context, x *structLit) (l *lambdaExpr, err evaluated) {
-	a := x.template
+func evalLambda(ctx *context, a value, finalize bool) (l *lambdaExpr, err evaluated) {
 	if a == nil {
 		return nil, nil
 	}
@@ -605,7 +604,9 @@ func evalLambda(ctx *context, x *structLit) (l *lambdaExpr, err evaluated) {
 		return nil, ctx.mkErr(a, "value must be lambda")
 	}
 	lambda := ctx.deref(l).(*lambdaExpr)
-	updateCloseStatus(x.closeStatus, lambda.value)
+	if finalize {
+		lambda.value = wrapFinalize(lambda.value)
+	}
 	return lambda, nil
 }
 
@@ -635,8 +636,8 @@ func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) eval
 	}
 	defer ctx.pushForwards(x, obj, y, obj).popForwards()
 
-	tx, ex := evalLambda(ctx, x)
-	ty, ey := evalLambda(ctx, y)
+	tx, ex := evalLambda(ctx, x.template, x.closeStatus.shouldFinalize())
+	ty, ey := evalLambda(ctx, y.template, y.closeStatus.shouldFinalize())
 
 	var t *lambdaExpr
 	switch {
@@ -703,11 +704,11 @@ outer:
 						ctx.labelStr(a.feature))
 				}
 				w := b.v
-				if x.closeStatus == isClosed && w.kind().isAnyOf(structKind) {
-					w = &closeIfStruct{w}
+				if x.closeStatus.shouldFinalize() {
+					w = wrapFinalize(w)
 				}
-				if y.closeStatus == isClosed && w.kind().isAnyOf(structKind) {
-					v = &closeIfStruct{v}
+				if y.closeStatus.shouldFinalize() {
+					v = wrapFinalize(v)
 				}
 				v = mkBin(ctx, src.Pos(), op, w, v)
 				obj.arcs[i].v = v
@@ -735,7 +736,7 @@ outer:
 	sort.Stable(obj)
 
 	if unchecked && obj.template != nil {
-		obj.closeStatus = 0
+		obj.closeStatus.unclose()
 	}
 
 	return obj

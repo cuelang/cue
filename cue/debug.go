@@ -263,7 +263,13 @@ func (p *printer) str(v interface{}) {
 		write("(")
 		p.str(x.params.arcs)
 		write(")->")
-		p.str(x.value)
+		v := x.value
+		// strip one layer of closeIf wrapper. Evaluation may cause one
+		// layer to have not yet been evaluated. This is fine.
+		if w, ok := v.(*closeIfStruct); ok {
+			v = w.value
+		}
+		p.str(v)
 
 	case *closeIfStruct:
 		write("close(")
@@ -278,7 +284,7 @@ func (p *printer) str(v interface{}) {
 		if p.showNodeRef {
 			p.writef("<%s>", p.ctx.ref(x))
 		}
-		if x.closeStatus != 0 {
+		if x.closeStatus.shouldClose() {
 			write("C")
 		}
 		write("{")
@@ -306,7 +312,7 @@ func (p *printer) str(v interface{}) {
 				p.write(", ")
 			}
 		}
-		if topDefault && x.closeStatus == 0 {
+		if topDefault && !x.closeStatus.shouldClose() {
 			if len(x.arcs) > 0 {
 				p.write(", ")
 			}

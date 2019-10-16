@@ -39,7 +39,7 @@ func (x *closeIfStruct) rewrite(ctx *context, fn rewriteFunc) value {
 	if v == x.value {
 		return x
 	}
-	return &closeIfStruct{v}
+	return wrapFinalize(v)
 }
 
 func (x *structLit) rewrite(ctx *context, fn rewriteFunc) value {
