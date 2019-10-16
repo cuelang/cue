@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae831f6_6e0aabfd",
+        "filename": "cue/export_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-16T20:28:48Z",
+      "side": 1,
+      "message": "maybe add a TODO comment here indicating that this could be better?",
+      "revId": "00efb8725a81172665800fe3de75ccd078feffb5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
