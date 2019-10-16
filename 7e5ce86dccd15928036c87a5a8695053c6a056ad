@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f11a7ba1_e8f88478",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2224,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T07:14:03Z",
+      "side": 1,
+      "message": "I would special-case this one to number. It is the only place where there is a this hierarchy and most people won\u0027t even know float exists (and don\u0027t necessarily have to). The cue libraries internally do the same.",
+      "revId": "7e5ce86dccd15928036c87a5a8695053c6a056ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
