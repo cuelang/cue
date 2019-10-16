@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4025b6cb_6ad1f4b4",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69426a89_293656a8",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "897a78d4_d78e3849",
         "filename": "pkg/regexp/manual.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "99ace0f5_74edc31f",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897a78d4_d78e3849",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a84e6776_7a17e1c0",
         "filename": "pkg/regexp/manual.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-10-16T14:26:35Z",
       "side": 1,
       "message": "It\u0027s a bit of a pity we have to copy Go\u0027s \"-1 means all\" semantics, but I guess there\u0027s no easy way to have an optional extra argument in Cue functions.",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3832392_90ee07a6",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "No, unfortunately.",
+      "parentUuid": "a84e6776_7a17e1c0",
       "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "6c59f906_d3fb4d5b",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "Yes, cue will add location and failing function and all. CUE has its own error types and the real info is one level up.",
+      "parentUuid": "9ac265c3_d4dae4d4",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c2db20_993d0c93",
         "filename": "pkg/regexp/manual.go",
         "patchSetId": 1
@@ -84,6 +156,24 @@
       "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4d3457_ecd4b811",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c2db20_993d0c93",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "81ee1b36_47df1b2c",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08074a7_87862654",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67151c7a_98fd460c",
         "filename": "pkg/regexp/manual.go",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2019-10-16T14:26:35Z",
       "side": 1,
       "message": "I\u0027m wondering if the name isn\u0027t slightly misleading here, as it sounds like it\u0027s actively mapping something. `FindSubmatchMap` is more wordy, but arguably clearer. Also, cue doesn\u0027t really have maps - it has structs - so maybe `FindSubmatchStruct` ?",
+      "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1000dbb9_ece3ff23",
+        "filename": "pkg/regexp/manual.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-16T15:25:24Z",
+      "side": 1,
+      "message": "The map was supposed to be a verb here, so I figured it would be okay. What about `FindNamedSubmatch`?",
+      "parentUuid": "67151c7a_98fd460c",
       "revId": "9feb6b87fae84a0ab760ed836bd83328bcb15e02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
