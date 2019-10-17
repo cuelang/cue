@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d55819e_16522556",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-17T07:21:45Z",
+      "side": 1,
+      "message": "I would also be fine with commenting it out and noting we need to figure out what the right default is.",
+      "parentUuid": "dc5c6aea_553f4bd5",
+      "revId": "89fe825628f327a8a0ab2ccf4d65e5ff94a8f059",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e812a7e9_364626f8",
         "filename": "pkg/list/list.go",
         "patchSetId": 1
