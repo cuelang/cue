@@ -16,6 +16,24 @@
       "revId": "00efb8725a81172665800fe3de75ccd078feffb5",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0d1e91_94c0ebae",
+        "filename": "cue/export_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-17T07:20:37Z",
+      "side": 1,
+      "message": "Done, although the comment already exists on the implementation side.",
+      "parentUuid": "2ae831f6_6e0aabfd",
+      "revId": "00efb8725a81172665800fe3de75ccd078feffb5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
