@@ -52,6 +52,24 @@
       "revId": "1a0e727d16c27a468a79d5787b9265b1593b5ce4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cddb7a5_23298759",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-19T12:47:07Z",
+      "side": 1,
+      "message": "Hmm, using Equal may still compare non-concrete values, I think. You can test this by including non-concrete values in the list. Equals is a bit of a tricky beast.",
+      "parentUuid": "cfe8d106_2a515e41",
+      "revId": "1a0e727d16c27a468a79d5787b9265b1593b5ce4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
