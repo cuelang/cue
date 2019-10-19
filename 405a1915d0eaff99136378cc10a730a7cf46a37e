@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac922b01_38aeabfe",
+        "filename": "cmd/cue/cmd/testdata/script/eval_expr.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-19T12:51:27Z",
+      "side": 1,
+      "message": "\"ground\" is a term I haven\u0027t come across. Perhaps use \"non-concrete\" or \"incomplete\" ?",
+      "revId": "405a1915d0eaff99136378cc10a730a7cf46a37e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3249cd_9e508f06",
+        "filename": "cmd/cue/cmd/testdata/script/vet_expr.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-19T12:51:27Z",
+      "side": 1,
+      "message": "interesting. I didn\u0027t know you could pass yaml files directly to vet without converting to cue first.",
+      "revId": "405a1915d0eaff99136378cc10a730a7cf46a37e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20218cf_89bd0c6d",
+        "filename": "cue/errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-19T12:51:27Z",
+      "side": 1,
+      "message": "probably don\u0027t need to name the return value here.",
+      "revId": "405a1915d0eaff99136378cc10a730a7cf46a37e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd68c992_7badd80c",
+        "filename": "cue/export.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-19T12:51:27Z",
+      "side": 1,
+      "message": "do you really want to miss out the message from x.sub[0] ?",
+      "revId": "405a1915d0eaff99136378cc10a730a7cf46a37e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7114b6_311cf445",
+        "filename": "cue/go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2019-10-19T12:51:27Z",
+      "side": 1,
+      "message": "or just omit.",
+      "revId": "405a1915d0eaff99136378cc10a730a7cf46a37e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
