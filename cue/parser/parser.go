@@ -788,25 +788,21 @@ func (p *parser) parseField() (decl ast.Decl) {
 			if expr == nil {
 				expr = p.parseRHS()
 			}
+			if a, ok := expr.(*ast.Alias); ok {
+				if i > 0 {
+					p.errorExpected(p.pos, "label or ':'")
+					return &ast.BadDecl{From: pos, To: p.pos}
+				}
+				if p.atComma("struct literal", token.RBRACE) {
+					p.next()
+				}
+				return a
+			}
 			e := &ast.EmbedDecl{Expr: expr}
 			if p.atComma("struct literal", token.RBRACE) {
 				p.next()
 			}
 			return e
-		}
-
-		if i == 0 && tok == token.IDENT {
-			ident := expr.(*ast.Ident)
-			switch p.tok {
-			case token.BIND:
-				pos := p.pos
-				p.expect(token.BIND)
-				ref := p.parseRHS()
-				if p.atComma("struct literal", token.RBRACE) { // TODO: may be EOF
-					p.next()
-				}
-				return &ast.Alias{Ident: ident, Equal: pos, Expr: ref}
-			}
 		}
 
 		if tok != token.LSS && p.tok == token.OPTION {
@@ -841,6 +837,9 @@ func (p *parser) parseField() (decl ast.Decl) {
 
 		case token.RBRACE:
 			if i == 0 {
+				if a, ok := expr.(*ast.Alias); ok {
+					return a
+				}
 				switch tok {
 				case token.IDENT, token.LBRACK, token.STRING, token.INTERPOLATION,
 					token.NULL, token.TRUE, token.FALSE:
@@ -972,12 +971,34 @@ func (p *parser) parseLabel(rhs bool) (label ast.Label, expr ast.Expr, ok bool) 
 			}
 
 		case *ast.Ident:
-			label, ok = x, true
 			if strings.HasPrefix(x.Name, "__") {
 				p.errf(x.NamePos, "identifiers starting with '__' are reserved")
 			}
 
+			expr = p.parseAlias(x)
+			if a, ok := expr.(*ast.Alias); ok {
+				if _, ok = a.Expr.(ast.Label); !ok {
+					break
+				}
+				label = a
+			} else {
+				label = x
+			}
+			ok = true
+
 		case ast.Label:
+			label, ok = x, true
+		}
+
+	case token.LBRACK:
+		expr = p.parseRHS()
+		switch x := expr.(type) {
+		case *ast.ListLit:
+			// TODO: XXX: ensure that the receiver generates proper error
+			// messages if this list is not of the correct length.
+			if len(x.Elts) != 1 {
+				break
+			}
 			label, ok = x, true
 		}
 
@@ -1049,6 +1070,7 @@ func (p *parser) parseLabel(rhs bool) (label ast.Label, expr ast.Expr, ok bool) 
 			p.next()
 		}
 
+		p.assertV0(0, 12, "template labels")
 		label = &ast.TemplateLabel{Langle: pos, Ident: ident, Rangle: gtr}
 		c.closeNode(p, label)
 		ok = true
@@ -1227,6 +1249,7 @@ func (p *parser) parseListElement() (expr ast.Expr, ok bool) {
 	defer func() { c.closeNode(p, expr) }()
 
 	expr = p.parseBinaryExprTail(false, token.LowestPrec+1, p.parseUnaryExpr())
+	expr = p.parseAlias(expr)
 
 	// Enforce there is an explicit comma. We could also allow the
 	// omission of commas in lists, but this gives rise to some ambiguities
@@ -1245,6 +1268,25 @@ func (p *parser) parseListElement() (expr ast.Expr, ok bool) {
 	p.next()
 
 	return expr, true
+}
+
+// parseAlias turns an expression into an alias.
+func (p *parser) parseAlias(lhs ast.Expr) (expr ast.Expr) {
+	if p.tok != token.BIND {
+		return lhs
+	}
+	pos := p.pos
+	p.next()
+	expr = p.parseRHS()
+	if expr == nil {
+		panic("empty return")
+	}
+	switch x := lhs.(type) {
+	case *ast.Ident:
+		return &ast.Alias{Ident: x, Equal: pos, Expr: expr}
+	}
+	p.errf(p.pos, "expected identifier for alias")
+	return expr
 }
 
 // checkExpr checks that x is an expression (and not a type).
