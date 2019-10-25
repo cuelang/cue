@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1e771d8_02b93c48",
+        "filename": "doc/tutorial/jsonnet/references.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-25T18:41:44Z",
+      "side": 1,
+      "message": "Aliases can now be written as:\n\n    X\u003d\"Gin Martini\": Martini\n\nafter which X can be used to reference the field.",
+      "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f65b59b_8996b5a1",
         "filename": "doc/tutorial/jsonnet/syntax.cue",
         "patchSetId": 1
@@ -30,6 +47,24 @@
       "writtenOn": "2019-01-27T18:16:09Z",
       "side": 1,
       "message": "I removed it (used to have Go style back-quoted raw strings), but intend to implement Swift-5-style raw strings, which is an overall better design.",
+      "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71bdf400_6c9580f7",
+        "filename": "doc/tutorial/jsonnet/syntax.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-10-25T18:41:44Z",
+      "side": 1,
+      "message": "Which are implemented, btw. :)",
+      "parentUuid": "b324bc57_748e4722",
       "revId": "d12206a372d193bc064c5fd5afbe005cfdb3e352",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
