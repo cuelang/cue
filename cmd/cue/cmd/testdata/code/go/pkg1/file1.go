@@ -58,7 +58,7 @@ type Foozer struct {
 	Intf4 interface{ Foo() }
 
 	// Even though this struct as a type implements MarshalJSON, it is known
-	// that it is really only implemented by the embedded field.
+	// that it is really only implemented by the emb edded field.
 	Embed struct{ CustomJSON }
 
 	Unsupported map[int]string
@@ -68,6 +68,9 @@ type Foozer struct {
 type Level int
 
 const (
+	/*
+		Block comment.
+	*/
 	Unknown Level = iota
 	Low
 	// Medium is neither High nor Low

@@ -40,7 +40,7 @@ Foozer :: {
 	Intf4: _ @go(,"interface{Foo()}")
 
 	// Even though this struct as a type implements MarshalJSON, it is known
-	// that it is really only implemented by the embedded field.
+	// that it is really only implemented by the emb edded field.
 	Embed: {
 		CustomJSON: CustomJSON
 	} @go(,struct{CustomJSON})
@@ -55,6 +55,7 @@ enumLevel ::
 	Medium |
 	High
 
+// Block comment.
 Unknown :: Level & 0
 Low ::     Level & 1
 
