@@ -636,30 +636,12 @@ func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) eval
 	}
 	defer ctx.pushForwards(x, obj, y, obj).popForwards()
 
-	tx, ex := evalLambda(ctx, x.template, x.closeStatus.shouldFinalize())
-	ty, ey := evalLambda(ctx, y.template, y.closeStatus.shouldFinalize())
+	optionals, err := unifyOptionals(ctx, src, op, x, y)
+	if err != nil {
+		return err
+	}
+	obj.optionals = optionals
 
-	var t *lambdaExpr
-	switch {
-	case ex != nil:
-		return ex
-	case ey != nil:
-		return ey
-	case tx != nil:
-		t = tx
-	case ty != nil:
-		t = ty
-	}
-	if tx != ty && tx != nil && ty != nil {
-		v := binOp(ctx, src, opUnify, tx, ty)
-		if isBottom(v) {
-			return v
-		}
-		t = v.(*lambdaExpr)
-	}
-	if t != nil {
-		obj.template = ctx.copy(t)
-	}
 	// If unifying with a closed struct that does not have a template,
 	// we need to apply the template to all elements.
 
@@ -681,11 +663,13 @@ func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) eval
 			}
 		}
 		if !unchecked && !found && !y.allows(a.feature) && !a.definition {
-			if a.optional {
-				continue
+			if !optionals.allows(ctx, a.feature) {
+				if a.optional {
+					continue
+				}
+				return ctx.mkErr(a.v, a.v, "field %q not allowed in closed struct",
+					ctx.labelStr(a.feature))
 			}
-			return ctx.mkErr(a.v, a.v, "field %q not allowed in closed struct",
-				ctx.labelStr(a.feature))
 		}
 		cp := ctx.copy(a.v)
 		obj.arcs = append(obj.arcs,
@@ -724,22 +708,78 @@ outer:
 			}
 		}
 		if !unchecked && !found && !x.allows(a.feature) && !a.definition {
-			if a.optional {
-				continue
+			if !optionals.allows(ctx, a.feature) {
+				if a.optional {
+					continue
+				}
+				return ctx.mkErr(a.v, x, "field %q not allowed in closed struct",
+					ctx.labelStr(a.feature))
 			}
-			return ctx.mkErr(a.v, x, "field %q not allowed in closed struct",
-				ctx.labelStr(a.feature))
 		}
 		a.setValue(v)
 		obj.arcs = append(obj.arcs, a)
 	}
 	sort.Stable(obj)
 
-	if unchecked && obj.template != nil {
+	if unchecked && obj.optionals.isFull() {
 		obj.closeStatus.unclose()
 	}
 
 	return obj
+}
+
+func (x *structLit) rewriteOpt(ctx *context) (*optionals, evaluated) {
+	fn := func(v value) value {
+		if l, ok := v.(*lambdaExpr); ok {
+			l, err := evalLambda(ctx, l, x.closeStatus.shouldFinalize())
+			if err != nil {
+				return err
+			}
+			v = l
+		}
+		return ctx.copy(v)
+	}
+	c, err := x.optionals.rewrite(fn)
+	if err != nil {
+		return c, err
+	}
+	return c, nil
+}
+
+func unifyOptionals(ctx *context, src source, op op, x, y *structLit) (o *optionals, err evaluated) {
+	if x.optionals == nil && y.optionals == nil {
+		return nil, nil
+	}
+	left, err := x.rewriteOpt(ctx)
+	if err != nil {
+		return left, err
+	}
+	right, err := y.rewriteOpt(ctx)
+	if err != nil {
+		return right, err
+	}
+
+	closeStatus := x.closeStatus | y.closeStatus
+	switch {
+	case left.isDotDotDot() && right.isDotDotDot():
+
+	case left == nil && (!x.closeStatus.isClosed() || op == opUnifyUnchecked):
+		return right, nil
+
+	case right == nil && (!y.closeStatus.isClosed() || op == opUnifyUnchecked):
+		return left, nil
+
+	case op == opUnify && closeStatus.isClosed(),
+		left != nil && (left.left != nil || left.right != nil),
+		right != nil && (right.left != nil || right.right != nil):
+		return &optionals{closeStatus, op, left, right, nil}, nil
+	}
+
+	// opUnify where both structs are open or opUnifyUnchecked
+	for _, f := range right.fields {
+		left.add(ctx, f.key, f.value)
+	}
+	return left, nil
 }
 
 func (x *nullLit) binOp(ctx *context, src source, op op, other evaluated) evaluated {
