@@ -5100,6 +5100,10 @@ NamespaceActive :: NamespacePhase & "Active"
 // NamespaceTerminating means the namespace is undergoing graceful termination
 NamespaceTerminating :: NamespacePhase & "Terminating"
 
+// NamespaceTerminatingCause is returned as a defaults.cause item when a change is
+// forbidden due to the namespace being terminated.
+NamespaceTerminatingCause :: metav1.CauseType & "NamespaceTerminating"
+
 NamespaceConditionType :: string // enumNamespaceConditionType
 
 enumNamespaceConditionType ::

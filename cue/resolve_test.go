@@ -1484,12 +1484,12 @@ a: {
 		}
 		`,
 		out: `<0>{` +
-			`E :: _|_(int:field "f3" not allowed in closed struct), ` +
-			`A :: <1>C{f1: int, f2: int}, ` +
-			`a: _|_(int:field "f3" not allowed in closed struct), ` +
-			`B :: <2>C{f1: int}, ` +
-			`C :: <3>C{f1: int}, ` +
-			`D :: <4>{f1: int, ...}` +
+			`E :: _|_(<1>.v:field "f3" not allowed in closed struct), ` +
+			`A :: <2>C{f1: int, f2: int}, ` +
+			`a: _|_(<3>.v:field "f3" not allowed in closed struct), ` +
+			`B :: <4>C{f1: int}, ` +
+			`C :: <5>C{f1: int}, ` +
+			`D :: <6>{f1: int, ...}` +
 			`}`,
 	}, {
 		desc: "incomplete comprehensions",
@@ -2603,7 +2603,7 @@ func TestFullEval(t *testing.T) {
 			 }]
 		}
 		`,
-		out: `<0>{<1>{listOfCloseds: [_|_(2:field "b" not allowed in closed struct)]}, Foo: <2>{listOfCloseds: []}, Closed :: <3>C{a: 0}, Junk: <4>{b: 2}}`,
+		out: `<0>{<1>{listOfCloseds: [_|_(<2>.v:field "b" not allowed in closed struct)]}, Foo: <3>{listOfCloseds: []}, Closed :: <4>C{a: 0}, Junk: <5>{b: 2}}`,
 	}, {
 		desc: "label and field aliases",
 		in: `

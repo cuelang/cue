@@ -306,7 +306,7 @@ func (x *yield) evalPartial(ctx *context) evaluated { return x }
 
 func (x *fieldComprehension) evalPartial(ctx *context) evaluated {
 	k := x.key.evalPartial(ctx)
-	v := x.val.evalPartial(ctx)
+	v := x.val
 	if err := firstBottom(k, v); err != nil {
 		return err
 	}
@@ -321,7 +321,7 @@ func (x *fieldComprehension) evalPartial(ctx *context) evaluated {
 
 func (x *closeIfStruct) evalPartial(ctx *context) evaluated {
 	v := x.value.evalPartial(ctx)
-	updateCloseStatus(ctx, v)
+	v = updateCloseStatus(ctx, v)
 	return v
 }
 

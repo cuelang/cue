@@ -4,12 +4,15 @@
 
 package v1
 
-LabelHostname ::          "kubernetes.io/hostname"
-LabelZoneFailureDomain :: "failure-domain.beta.kubernetes.io/zone"
-LabelZoneRegion ::        "failure-domain.beta.kubernetes.io/region"
-LabelInstanceType ::      "beta.kubernetes.io/instance-type"
-LabelOSStable ::          "kubernetes.io/os"
-LabelArchStable ::        "kubernetes.io/arch"
+LabelHostname ::                "kubernetes.io/hostname"
+LabelZoneFailureDomain ::       "failure-domain.beta.kubernetes.io/zone"
+LabelZoneRegion ::              "failure-domain.beta.kubernetes.io/region"
+LabelZoneFailureDomainStable :: "topology.kubernetes.io/zone"
+LabelZoneRegionStable ::        "topology.kubernetes.io/region"
+LabelInstanceType ::            "beta.kubernetes.io/instance-type"
+LabelInstanceTypeStable ::      "node.kubernetes.io/instance-type"
+LabelOSStable ::                "kubernetes.io/os"
+LabelArchStable ::              "kubernetes.io/arch"
 
 // LabelNamespaceSuffixKubelet is an allowed label namespace suffix kubelets can self-set ([*.]kubelet.kubernetes.io/*)
 LabelNamespaceSuffixKubelet :: "kubelet.kubernetes.io"

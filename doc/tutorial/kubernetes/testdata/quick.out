@@ -2458,12 +2458,32 @@ deployment: {
                     }
                 }
                 spec: {
+                    volumes: [{
+                        name: "souschef-disk"
+                        gcePersistentDisk: {
+                            fsType: "ext4"
+                            pdName: "souschef-disk"
+                        }
+                    }, {
+                        name: "secret-souschef"
+                        secret: {
+                            secretName: "souschef-secrets"
+                        }
+                    }]
                     containers: [{
                         name:  "souschef"
                         image: "gcr.io/myproj/souschef:v0.5.3"
                         ports: [{
                             containerPort: 8080
                             _export:       true
+                        }]
+                        volumeMounts: [{
+                            name:      "souschef-disk"
+                            mountPath: "/logs"
+                        }, {
+                            name:      "secret-souschef"
+                            readOnly:  true
+                            mountPath: "/etc/certs"
                         }]
                         livenessProbe: {
                             initialDelaySeconds: 40

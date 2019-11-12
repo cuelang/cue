@@ -666,6 +666,8 @@ func (x *structLit) binOp(ctx *context, src source, op op, other evaluated) eval
 			if a.optional {
 				continue
 			}
+			// TODO: pass position of key, not value. Currently does not have
+			// a position.
 			return ctx.mkErr(a.v, a.v, "field %q not allowed in closed struct",
 				ctx.labelStr(a.feature))
 		}
@@ -709,6 +711,8 @@ outer:
 			if a.optional {
 				continue
 			}
+			// TODO: pass position of key, not value. Currently does not have a
+			// position.
 			return ctx.mkErr(a.v, x, "field %q not allowed in closed struct",
 				ctx.labelStr(a.feature))
 		}
