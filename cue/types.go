@@ -1363,7 +1363,7 @@ func (v Value) Unify(w Value) Value {
 	return u
 }
 
-// Equals reports whether two values are equal.
+// Equals reports whether two values are equal, ignoring optional fields.
 // The result is undefined for incomplete values.
 func (v Value) Equals(other Value) bool {
 	if v.path == nil || other.path == nil {
@@ -1372,7 +1372,7 @@ func (v Value) Equals(other Value) bool {
 	x := v.path.val()
 	y := other.path.val()
 	// TODO: improve upon this highly inefficient implementation.
-	return subsumes(v.ctx(), x, y, 0) && subsumes(v.ctx(), y, x, 0)
+	return subsumes(v.ctx(), x, y, subNoOptional) && subsumes(v.ctx(), y, x, subNoOptional)
 }
 
 // Format prints a debug version of a value.
