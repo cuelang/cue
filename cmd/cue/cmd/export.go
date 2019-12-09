@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -25,7 +26,7 @@ import (
 )
 
 // newExportCmd creates and export command
-func newExportCmd(c *Command) *cobra.Command {
+func newExportCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "export",
 		Short: "output data in a standard format",
@@ -87,7 +88,7 @@ text    output as raw text
         The evaluated value must be of type string.
 `,
 
-		RunE: mkRunE(c, runExport),
+		RunE: mkRunE(ctx, c, runExport),
 	}
 	flagMedia.Add(cmd)
 	cmd.Flags().Bool(string(flagEscape), false, "use HTML escaping")
@@ -95,8 +96,8 @@ text    output as raw text
 	return cmd
 }
 
-func runExport(cmd *Command, args []string) error {
-	instances := buildFromArgs(cmd, args)
+func runExport(ctx context.Context, cmd *Command, args []string) error {
+	instances := buildFromArgs(ctx, cmd, args)
 	w := cmd.OutOrStdout()
 
 	for _, inst := range instances {
@@ -104,13 +105,13 @@ func runExport(cmd *Command, args []string) error {
 		switch media := flagMedia.String(cmd); media {
 		case "json":
 			err := outputJSON(cmd, w, root)
-			exitIfErr(cmd, inst, err, true)
+			exitIfErr(ctx, inst, err, true)
 		case "text":
 			err := outputText(w, root)
-			exitIfErr(cmd, inst, err, true)
+			exitIfErr(ctx, inst, err, true)
 		case "yaml":
 			err := outputYAML(w, root)
-			exitIfErr(cmd, inst, err, true)
+			exitIfErr(ctx, inst, err, true)
 		default:
 			return fmt.Errorf("export: unknown format %q", media)
 		}

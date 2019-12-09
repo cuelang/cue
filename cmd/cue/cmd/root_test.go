@@ -14,10 +14,13 @@
 
 package cmd
 
-import "testing"
+import (
+	"testing"
+	"context"
+)
 
 func TestHelp(t *testing.T) {
-	cmd, err := New([]string{"help", "cmd"})
+	cmd, err := New(context.Background(), []string{"help", "cmd"})
 	if err != nil || cmd == nil {
 		t.Error("help command failed unexpectedly")
 	}

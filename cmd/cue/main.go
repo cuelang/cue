@@ -15,11 +15,12 @@
 package main
 
 import (
+	"context"
 	"os"
 
 	"cuelang.org/go/cmd/cue/cmd"
 )
 
 func main() {
-	os.Exit(cmd.Main())
+	os.Exit(cmd.Main(context.Background()))
 }

@@ -25,6 +25,7 @@ import (
 	"testing"
 
 	"cuelang.org/go/cmd/cue/cmd"
+	"cuelang.org/go/internal/ctxio"
 	"github.com/kylelemons/godebug/diff"
 )
 
@@ -63,16 +64,23 @@ func Run(t *testing.T, dir, command string, cfg *Config) {
 		}
 		cfg.Stdout = buf
 	}
-	cmd, err := cmd.New(args)
+
+	ctx := context.Background()
 	if cfg.Stdout != nil {
-		cmd.SetOutput(cfg.Stdout)
+		ctx = ctxio.WithStdout(ctx, cfg.Stdout)
 	} else {
-		cmd.SetOutput(buf)
+		ctx = ctxio.WithStdout(ctx, buf)
 	}
 	if cfg.Stdin != nil {
-		cmd.SetInput(cfg.Stdin)
+		ctx = ctxio.WithStdin(ctx, cfg.Stdin)
 	}
-	if err = cmd.Run(context.Background()); err != nil {
+
+	cmd, err := cmd.New(ctx, args)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err = cmd.Run(ctx); err != nil {
 		if cfg.Stdout == nil {
 			logf(t, "Ouput:\n%s", buf.String())
 		}

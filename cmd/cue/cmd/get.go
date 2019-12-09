@@ -15,13 +15,15 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 )
 
-func newGetCmd(c *Command) *cobra.Command {
+func newGetCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "get <language> [packages]",
 		Short: "add dependencies to the current module",
@@ -35,8 +37,8 @@ the source of the respective language and stored.
 The specifics on how dependencies are fechted and converted vary
 per language and are documented in the respective subcommands.
 `,
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
-			stderr := cmd.Stderr()
+		RunE: mkRunE(ctx, c, func(ctx context.Context, cmd *Command, args []string) error {
+			stderr := ctxio.Stderr(ctx)
 			if len(args) == 0 {
 				fmt.Fprintln(stderr, "get must be run as one of its subcommands")
 			} else {
@@ -47,6 +49,6 @@ per language and are documented in the respective subcommands.
 			return nil
 		}),
 	}
-	cmd.AddCommand(newGoCmd(c))
+	cmd.AddCommand(newGoCmd(ctx, c))
 	return cmd
 }

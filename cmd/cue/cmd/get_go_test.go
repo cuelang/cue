@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -38,7 +39,8 @@ func TestGetGo(t *testing.T) {
 	cueTestRoot = tmp
 
 	// We don't use runCommand here, as we are interested in generated packages.
-	cmd := newGoCmd(newRootCmd())
+	ctx := context.Background()
+	cmd := newGoCmd(ctx, newRootCmd(ctx))
 	cmd.SetArgs([]string{"./testdata/code/go/..."})
 	err = cmd.Execute()
 	if err != nil {

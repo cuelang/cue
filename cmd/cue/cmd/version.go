@@ -15,18 +15,19 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	goruntime "runtime"
 
 	"github.com/spf13/cobra"
 )
 
-func newVersionCmd(c *Command) *cobra.Command {
+func newVersionCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "version",
 		Short: "print CUE version",
 		Long:  ``,
-		RunE:  mkRunE(c, runVersion),
+		RunE:  mkRunE(ctx, c, runVersion),
 	}
 	return cmd
 }
@@ -37,7 +38,7 @@ var (
 	version = "custom"
 )
 
-func runVersion(cmd *Command, args []string) error {
+func runVersion(ctx context.Context, cmd *Command, args []string) error {
 	w := cmd.OutOrStdout()
 	fmt.Fprintf(w, "cue version %v %s/%s\n",
 		version,

@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"net/url"
@@ -22,17 +23,18 @@ import (
 	"path/filepath"
 	"strings"
 
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 )
 
-func newModCmd(c *Command) *cobra.Command {
+func newModCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "mod <cmd> [arguments]",
 		Short: "module maintenace",
 		Long: `
 `,
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
-			stderr := cmd.Stderr()
+		RunE: mkRunE(ctx, c, func(ctx context.Context, cmd *Command, args []string) error {
+			stderr := ctxio.Stderr(ctx)
 			if len(args) == 0 {
 				fmt.Fprintln(stderr, "mod must be run as one of its subcommands")
 			} else {
@@ -44,11 +46,11 @@ func newModCmd(c *Command) *cobra.Command {
 		}),
 	}
 
-	cmd.AddCommand(newModInitCmd(c))
+	cmd.AddCommand(newModInitCmd(ctx, c))
 	return cmd
 }
 
-func newModInitCmd(c *Command) *cobra.Command {
+func newModInitCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "init [module]",
 		Short: "initialize new module in current director",
@@ -62,7 +64,7 @@ A module name is optional, but if it is not given a packages
 within the module cannot imported another package defined
 in the module.
 `,
-		RunE: mkRunE(c, runModInit),
+		RunE: mkRunE(ctx, c, runModInit),
 	}
 
 	cmd.Flags().BoolP(string(flagForce), "f", false, "force moving old-style cue.mod file")
@@ -70,7 +72,7 @@ in the module.
 	return cmd
 }
 
-func runModInit(cmd *Command, args []string) (err error) {
+func runModInit(ctx context.Context, cmd *Command, args []string) (err error) {
 	defer func() {
 		if err != nil {
 			// TODO: Refactor Cobra usage to do something more principled

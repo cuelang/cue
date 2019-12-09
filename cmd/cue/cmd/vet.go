@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
@@ -25,6 +26,7 @@ import (
 	"cuelang.org/go/cue/encoding"
 	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 	"golang.org/x/text/message"
 )
@@ -67,12 +69,12 @@ Examples:
 If more than one expression is given, all must match all values.
 `
 
-func newVetCmd(c *Command) *cobra.Command {
+func newVetCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "vet",
 		Short: "validate data",
 		Long:  vetDoc,
-		RunE:  mkRunE(c, doVet),
+		RunE:  mkRunE(ctx, c, doVet),
 	}
 
 	cmd.Flags().BoolP(string(flagConcrete), "c", false,
@@ -84,19 +86,19 @@ func newVetCmd(c *Command) *cobra.Command {
 	return cmd
 }
 
-func doVet(cmd *Command, args []string) error {
+func doVet(ctx context.Context, cmd *Command, args []string) error {
 	builds := loadFromArgs(cmd, args, defaultConfig)
 	if builds == nil {
 		return nil
 	}
-	instances := buildInstances(cmd, builds)
+	instances := buildInstances(ctx, cmd, builds)
 
 	// Go into a special vet mode if the user explicitly specified non-cue
 	// files on the command line.
 	for _, a := range args {
 		enc := encoding.MapExtension(filepath.Ext(a))
 		if enc != nil && enc.Name() != "cue" {
-			vetFiles(cmd, instances[0], builds[0].DataFiles)
+			vetFiles(ctx, cmd, instances[0], builds[0].DataFiles)
 			return nil
 		}
 	}
@@ -119,7 +121,7 @@ func doVet(cmd *Command, args []string) error {
 			cue.Definitions(true),
 			cue.Hidden(true),
 		}
-		w := cmd.Stderr()
+		w := ctxio.Stderr(ctx)
 		err := inst.Value().Validate(append(opt, cue.Concrete(concrete))...)
 		if err != nil && !hasFlag {
 			err = inst.Value().Validate(append(opt, cue.Concrete(false))...)
@@ -130,12 +132,12 @@ func doVet(cmd *Command, args []string) error {
 					"some instances are incomplete; use the -c flag to show errors or suppress this message")
 			}
 		}
-		exitIfErr(cmd, inst, err, false)
+		exitIfErr(ctx, inst, err, false)
 	}
 	return nil
 }
 
-func vetFiles(cmd *Command, inst *cue.Instance, files []string) {
+func vetFiles(ctx context.Context, cmd *Command, inst *cue.Instance, files []string) {
 	expressions := flagExpression.StringArray(cmd)
 
 	var check cue.Value
@@ -146,21 +148,21 @@ func vetFiles(cmd *Command, inst *cue.Instance, files []string) {
 
 	for _, e := range expressions {
 		expr, err := parser.ParseExpr("<expression flag>", e)
-		exitIfErr(cmd, inst, err, true)
+		exitIfErr(ctx, inst, err, true)
 
 		v := inst.Eval(expr)
-		exitIfErr(cmd, inst, v.Err(), true)
+		exitIfErr(ctx, inst, v.Err(), true)
 		check = check.Unify(v)
 	}
 
 	for _, f := range files {
 		b, err := ioutil.ReadFile(f)
-		exitIfErr(cmd, inst, err, true)
+		exitIfErr(ctx, inst, err, true)
 
 		ext := filepath.Ext(filepath.Ext(f))
 		enc := encoding.MapExtension(ext)
 		if enc == nil {
-			exitIfErr(cmd, inst, fmt.Errorf("unrecognized extension %q", ext), true)
+			exitIfErr(ctx, inst, fmt.Errorf("unrecognized extension %q", ext), true)
 		}
 
 		var exprs []ast.Expr
@@ -170,21 +172,21 @@ func vetFiles(cmd *Command, inst *cue.Instance, files []string) {
 		case "yaml":
 			exprs, err = handleYAML(f, bytes.NewReader(b))
 		default:
-			exitIfErr(cmd, inst, fmt.Errorf("vet does not support %q", enc.Name()), true)
+			exitIfErr(ctx, inst, fmt.Errorf("vet does not support %q", enc.Name()), true)
 		}
-		exitIfErr(cmd, inst, err, true)
+		exitIfErr(ctx, inst, err, true)
 
 		r := internal.GetRuntime(inst).(*cue.Runtime)
 		for _, expr := range exprs {
 			body, err := r.CompileExpr(expr)
-			exitIfErr(cmd, inst, err, false)
+			exitIfErr(ctx, inst, err, false)
 			v := body.Value().Unify(check)
 			if err := v.Err(); err != nil {
-				exitIfErr(cmd, inst, err, false)
+				exitIfErr(ctx, inst, err, false)
 			} else {
 				// Always concrete when checking against concrete files.
 				err = v.Validate(cue.Concrete(true))
-				exitIfErr(cmd, inst, err, false)
+				exitIfErr(ctx, inst, err, false)
 			}
 		}
 	}

@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"bytes"
+	"context"
 	"io"
 	"os"
 	"strings"
@@ -27,6 +28,7 @@ import (
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/load"
 	"cuelang.org/go/cue/parser"
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
@@ -57,8 +59,8 @@ func mustParseFlags(t *testing.T, cmd *cobra.Command, flags ...string) {
 	}
 }
 
-func exitIfErr(cmd *Command, inst *cue.Instance, err error, fatal bool) {
-	exitOnErr(cmd, err, fatal)
+func exitIfErr(ctx context.Context, inst *cue.Instance, err error, fatal bool) {
+	exitOnErr(ctx, err, fatal)
 }
 
 func getLang() language.Tag {
@@ -70,7 +72,7 @@ func getLang() language.Tag {
 	return language.Make(loc)
 }
 
-func exitOnErr(cmd *Command, err error, fatal bool) {
+func exitOnErr(ctx context.Context, err error, fatal bool) {
 	if err == nil {
 		return
 	}
@@ -91,18 +93,18 @@ func exitOnErr(cmd *Command, err error, fatal bool) {
 	})
 
 	b := w.Bytes()
-	_, _ = cmd.Stderr().Write(b)
+	_, _ = ctxio.Stderr(ctx).Write(b)
 	if fatal {
 		exit()
 	}
 }
 
-func buildFromArgs(cmd *Command, args []string) []*cue.Instance {
+func buildFromArgs(ctx context.Context, cmd *Command, args []string) []*cue.Instance {
 	binst := loadFromArgs(cmd, args, defaultConfig)
 	if binst == nil {
 		return nil
 	}
-	return buildInstances(cmd, binst)
+	return buildInstances(ctx, cmd, binst)
 }
 
 func loadFromArgs(cmd *Command, args []string, cfg *load.Config) []*build.Instance {
@@ -113,7 +115,7 @@ func loadFromArgs(cmd *Command, args []string, cfg *load.Config) []*build.Instan
 	return binst
 }
 
-func buildInstances(cmd *Command, binst []*build.Instance) []*cue.Instance {
+func buildInstances(ctx context.Context, cmd *Command, binst []*build.Instance) []*cue.Instance {
 	// TODO:
 	// If there are no files and User is true, then use those?
 	// Always use all files in user mode?
@@ -121,7 +123,7 @@ func buildInstances(cmd *Command, binst []*build.Instance) []*cue.Instance {
 	for _, inst := range instances {
 		// TODO: consider merging errors of multiple files, but ensure
 		// duplicates are removed.
-		exitIfErr(cmd, inst, inst.Err, true)
+		exitIfErr(ctx, inst, inst.Err, true)
 	}
 
 	if flagIgnore.Bool(cmd) {
@@ -132,7 +134,7 @@ func buildInstances(cmd *Command, binst []*build.Instance) []*cue.Instance {
 	for _, inst := range instances {
 		// TODO: consider merging errors of multiple files, but ensure
 		// duplicates are removed.
-		exitIfErr(cmd, inst, inst.Value().Validate(), !flagIgnore.Bool(cmd))
+		exitIfErr(ctx, inst, inst.Value().Validate(), !flagIgnore.Bool(cmd))
 	}
 	return instances
 }

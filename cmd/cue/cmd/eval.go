@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 
 	"cuelang.org/go/cue"
@@ -26,7 +27,7 @@ import (
 )
 
 // newEvalCmd creates a new eval command
-func newEvalCmd(c *Command) *cobra.Command {
+func newEvalCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "eval",
 		Short: "evaluate and print a configuration",
@@ -47,7 +48,7 @@ Examples:
   "a"
   "c"
 `,
-		RunE: mkRunE(c, runEval),
+		RunE: mkRunE(ctx, c, runEval),
 	}
 
 	cmd.Flags().StringArrayP(string(flagExpression), "e", nil, "evaluate this expression only")
@@ -78,8 +79,8 @@ const (
 	flagAttributes flagName = "attributes"
 )
 
-func runEval(cmd *Command, args []string) error {
-	instances := buildFromArgs(cmd, args)
+func runEval(ctx context.Context, cmd *Command, args []string) error {
+	instances := buildFromArgs(ctx, cmd, args)
 
 	var exprs []ast.Expr
 	for _, e := range flagExpression.StringArray(cmd) {
@@ -127,7 +128,7 @@ func runEval(cmd *Command, args []string) error {
 			v := inst.Value()
 			if flagConcrete.Bool(cmd) && !flagIgnore.Bool(cmd) {
 				if err := v.Validate(cue.Concrete(true)); err != nil {
-					exitIfErr(cmd, inst, err, false)
+					exitIfErr(ctx, inst, err, false)
 					continue
 				}
 			}
@@ -141,7 +142,7 @@ func runEval(cmd *Command, args []string) error {
 			v := inst.Eval(e)
 			if flagConcrete.Bool(cmd) && !flagIgnore.Bool(cmd) {
 				if err := v.Validate(cue.Concrete(true)); err != nil {
-					exitIfErr(cmd, inst, err, false)
+					exitIfErr(ctx, inst, err, false)
 					continue
 				}
 			}

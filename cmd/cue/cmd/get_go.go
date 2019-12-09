@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"go/ast"
 	"go/token"
@@ -37,6 +38,7 @@ import (
 	"cuelang.org/go/cue/parser"
 	cuetoken "cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 	"golang.org/x/tools/go/packages"
 )
@@ -52,7 +54,7 @@ import (
 //   package foo
 //   Type: enumType
 
-func newGoCmd(c *Command) *cobra.Command {
+func newGoCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "go [packages]",
 		Short: "add Go dependencies to the current module",
@@ -203,7 +205,7 @@ the more restrictive enum interpretation of Switch remains.
 `,
 		// - TODO: interpret cuego's struct tags and annotations.
 
-		RunE: mkRunE(c, extract),
+		RunE: mkRunE(ctx, c, extract),
 	}
 
 	cmd.Flags().StringP(string(flagExclude), "e", "",
@@ -318,7 +320,7 @@ var (
 // TODO:
 // - consider not including types with any dropped fields.
 
-func extract(cmd *Command, args []string) error {
+func extract(ctx context.Context, cmd *Command, args []string) error {
 	// determine module root:
 	binst := loadFromArgs(cmd, []string{"."}, nil)[0]
 
@@ -344,7 +346,7 @@ func extract(cmd *Command, args []string) error {
 
 	e := extractor{
 		cmd:    cmd,
-		stderr: cmd.Stderr(),
+		stderr: ctxio.Stderr(ctx),
 		pkgs:   pkgs,
 		orig:   map[types.Type]*ast.StructType{},
 	}
@@ -358,7 +360,7 @@ func extract(cmd *Command, args []string) error {
 	}
 
 	for _, p := range pkgs {
-		if err := e.extractPkg(root, p); err != nil {
+		if err := e.extractPkg(ctx, root, p); err != nil {
 			return err
 		}
 	}
@@ -377,7 +379,7 @@ func (e *extractor) recordTypeInfo(p *packages.Package) {
 	}
 }
 
-func (e *extractor) extractPkg(root string, p *packages.Package) error {
+func (e *extractor) extractPkg(ctx context.Context, root string, p *packages.Package) error {
 	e.pkg = p
 	e.logf("--- Package %s", p.PkgPath)
 
@@ -485,7 +487,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		b, err := format.Source(w.Bytes())
 		if err != nil {
 			_ = ioutil.WriteFile(filepath.Join(dir, file), w.Bytes(), 0644)
-			stderr := e.cmd.Stderr()
+			stderr := ctxio.Stderr(ctx)
 			fmt.Fprintln(stderr, w.String())
 			fmt.Fprintln(stderr, dir, file)
 			return err
@@ -543,7 +545,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		if !e.done[path] {
 			e.done[path] = true
 			p := p.Imports[path]
-			if err := e.extractPkg(root, p); err != nil {
+			if err := e.extractPkg(ctx, root, p); err != nil {
 				return err
 			}
 		}

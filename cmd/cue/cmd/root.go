@@ -23,6 +23,7 @@ import (
 
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/token"
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 )
 
@@ -38,17 +39,17 @@ import (
 // TODO: documentation of concepts
 //   tasks     the key element for cmd, serve, and fix
 
-type runFunction func(cmd *Command, args []string) error
+type runFunction func(ctx context.Context, cmd *Command, args []string) error
 
-func mkRunE(c *Command, f runFunction) func(*cobra.Command, []string) error {
+func mkRunE(ctx context.Context, c *Command, f runFunction) func(*cobra.Command, []string) error {
 	return func(cmd *cobra.Command, args []string) error {
 		c.Command = cmd
-		return f(c, args)
+		return f(ctx, c, args)
 	}
 }
 
 // newRootCmd creates the base command when called without any subcommands
-func newRootCmd() *Command {
+func newRootCmd(ctx context.Context) *Command {
 	cmd := &cobra.Command{
 		Use:   "cue",
 		Short: "cue emits configuration files to user-defined commands.",
@@ -74,26 +75,28 @@ For more information on writing CUE configuration files see cuelang.org.`,
 
 		SilenceUsage: true,
 	}
+	cmd.SetOutput(ctxio.Stdout(ctx))
 
 	c := &Command{Command: cmd, root: cmd}
+	ctx = ctxio.WithStderr(ctx, errWriter(c, ctxio.Stderr(ctx)))
 
-	cmdCmd := newCmdCmd(c)
+	cmdCmd := newCmdCmd(ctx, c)
 	c.cmd = cmdCmd
 
 	subCommands := []*cobra.Command{
 		cmdCmd,
-		newEvalCmd(c),
-		newExportCmd(c),
-		newFmtCmd(c),
-		newGetCmd(c),
-		newImportCmd(c),
-		newModCmd(c),
-		newTrimCmd(c),
-		newVersionCmd(c),
-		newVetCmd(c),
+		newEvalCmd(ctx, c),
+		newExportCmd(ctx, c),
+		newFmtCmd(ctx, c),
+		newGetCmd(ctx, c),
+		newImportCmd(ctx, c),
+		newModCmd(ctx, c),
+		newTrimCmd(ctx, c),
+		newVersionCmd(ctx, c),
+		newVetCmd(ctx, c),
 
 		// Hidden
-		newAddCmd(c),
+		newAddCmd(ctx, c),
 	}
 
 	addGlobalFlags(cmd.PersistentFlags())
@@ -108,12 +111,12 @@ For more information on writing CUE configuration files see cuelang.org.`,
 // MainTest is like Main, runs the cue tool and returns the code for passing to os.Exit.
 func MainTest() int {
 	inTest = true
-	return Main()
+	return Main(context.Background())
 }
 
 // Main runs the cue tool and returns the code for passing to os.Exit.
-func Main() int {
-	err := mainErr(context.Background(), os.Args[1:])
+func Main(ctx context.Context) int {
+	err := mainErr(ctx, os.Args[1:])
 	if err != nil {
 		if err != ErrPrintedError {
 			fmt.Fprintln(os.Stderr, err)
@@ -124,14 +127,12 @@ func Main() int {
 }
 
 func mainErr(ctx context.Context, args []string) error {
-	cmd, err := New(args)
+	cmd, err := New(ctx, args)
 	if err != nil {
 		return err
 	}
-	err = cmd.Run(ctx)
-	// TODO: remove this ugly hack. Either fix Cobra or use something else.
-	stdin = nil
-	return err
+	ctx = ctxio.WithStderr(ctx, errWriter(cmd, ctxio.Stderr(ctx)))
+	return cmd.Run(ctx)
 }
 
 type Command struct {
@@ -146,40 +147,18 @@ type Command struct {
 	hasErr bool
 }
 
-type errWriter Command
+type writer func(b []byte) (int, error)
 
-func (w *errWriter) Write(b []byte) (int, error) {
-	c := (*Command)(w)
-	c.hasErr = true
-	return c.Command.OutOrStderr().Write(b)
+func (w writer) Write(b []byte) (int, error) {
+	return w(b)
 }
 
-// Hint: search for uses of OutOrStderr other than the one here to see
-// which output does not trigger a non-zero exit code. os.Stderr may never
-// be used directly.
-
-// Stderr returns a writer that should be used for error messages.
-func (c *Command) Stderr() io.Writer {
-	return (*errWriter)(c)
-}
-
-// TODO: add something similar for Stdout. The output model of Cobra isn't
-// entirely clear, and such a change seems non-trivial.
-
-// Consider overriding these methods from Cobra using OutOrStdErr.
-// We don't use them currently, but may be safer to block. Having them
-// will encourage their usage, and the naming is inconsistent with other CUE APIs.
-// PrintErrf(format string, args ...interface{})
-// PrintErrln(args ...interface{})
-// PrintErr(args ...interface{})
-
-func (c *Command) SetOutput(w io.Writer) {
-	c.root.SetOutput(w)
-}
-
-func (c *Command) SetInput(r io.Reader) {
-	// TODO: ugly hack. Cobra does not have a way to pass the stdin.
-	stdin = r
+// errWriter wraps an io.Writer and set `cmd.hasErr` when written
+func errWriter(cmd *Command, w io.Writer) writer {
+	return func(b []byte) (int, error) {
+		cmd.hasErr = true
+		return w.Write(b)
+	}
 }
 
 // ErrPrintedError indicates error messages have been printed to stderr.
@@ -213,10 +192,10 @@ func recoverError(err *error) {
 	// We use panic to escape, instead of os.Exit
 }
 
-func New(args []string) (cmd *Command, err error) {
+func New(ctx context.Context, args []string) (cmd *Command, err error) {
 	defer recoverError(&err)
 
-	cmd = newRootCmd()
+	cmd = newRootCmd(ctx)
 	rootCmd := cmd.root
 	rootCmd.SetArgs(args)
 	if len(args) == 0 {
@@ -231,12 +210,12 @@ func New(args []string) (cmd *Command, err error) {
 
 	if args[0] == "help" {
 		// Allow errors.
-		_ = addSubcommands(cmd, sub, args[1:])
+		_ = addSubcommands(ctx, cmd, sub, args[1:])
 		return cmd, nil
 	}
 
 	if _, ok := sub[args[0]]; ok {
-		return cmd, addSubcommands(cmd, sub, args)
+		return cmd, addSubcommands(ctx, cmd, sub, args)
 	}
 
 	if c, _, err := rootCmd.Find(args); err == nil && c != nil {
@@ -251,7 +230,7 @@ func New(args []string) (cmd *Command, err error) {
 	if err != nil {
 		return cmd, err
 	}
-	_, err = addCustom(cmd, rootCmd, commandSection, args[0], tools)
+	_, err = addCustom(ctx, cmd, rootCmd, commandSection, args[0], tools)
 	if err != nil {
 		err = errors.Newf(token.NoPos,
 			`%s %q is not defined
@@ -269,7 +248,7 @@ type subSpec struct {
 	cmd  *cobra.Command
 }
 
-func addSubcommands(cmd *Command, sub map[string]*subSpec, args []string) error {
+func addSubcommands(ctx context.Context, cmd *Command, sub map[string]*subSpec, args []string) error {
 	if len(args) == 0 {
 		return nil
 	}
@@ -303,7 +282,7 @@ func addSubcommands(cmd *Command, sub map[string]*subSpec, args []string) error 
 			return errors.Newf(token.NoPos, "could not create command definitions: %v", err)
 		}
 		for i.Next() {
-			_, _ = addCustom(cmd, spec.cmd, spec.name, i.Label(), tools)
+			_, _ = addCustom(ctx, cmd, spec.cmd, spec.name, i.Label(), tools)
 		}
 	}
 	return nil

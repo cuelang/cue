@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -30,7 +31,7 @@ import (
 // - implement verification post-processing as extra safety
 
 // newTrimCmd creates a trim command
-func newTrimCmd(c *Command) *cobra.Command {
+func newTrimCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "trim",
 		Short: "remove superfluous fields",
@@ -81,14 +82,14 @@ Examples:
 It is guaranteed that the resulting files give the same output as before the
 removal.
 `,
-		RunE: mkRunE(c, runTrim),
+		RunE: mkRunE(ctx, c, runTrim),
 	}
 
 	flagOut.Add(cmd)
 	return cmd
 }
 
-func runTrim(cmd *Command, args []string) error {
+func runTrim(ctx context.Context, cmd *Command, args []string) error {
 	// TODO: Do something more fine-grained. Optional fields are mostly not
 	// useful to consider as an optional field will almost never subsume
 	// another value. However, an optional field may subsume and therefore
@@ -103,7 +104,7 @@ func runTrim(cmd *Command, args []string) error {
 	if binst == nil {
 		return nil
 	}
-	instances := buildInstances(cmd, binst)
+	instances := buildInstances(ctx, cmd, binst)
 
 	// dst := flagName("o").String(cmd)
 	dst := flagOut.String(cmd)

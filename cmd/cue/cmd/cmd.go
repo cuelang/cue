@@ -15,15 +15,17 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
+	"cuelang.org/go/internal/ctxio"
 	"github.com/spf13/cobra"
 )
 
 // TODO: generate long description from documentation.
 
-func newCmdCmd(c *Command) *cobra.Command {
+func newCmdCmd(ctx context.Context, c *Command) *cobra.Command {
 	return &cobra.Command{
 		Use:   "cmd <name> [-x] [instances]",
 		Short: "run a user-defined shell command",
@@ -216,8 +218,8 @@ An example using pipes:
 	}
 
 `,
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
-			w := cmd.Stderr()
+		RunE: mkRunE(ctx, c, func(ctx context.Context, cmd *Command, args []string) error {
+			w := ctxio.Stderr(ctx)
 			if len(args) == 0 {
 				fmt.Fprintln(w, "cmd must be run as one of its subcommands")
 			} else {

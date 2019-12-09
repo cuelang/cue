@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -43,7 +44,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-func newImportCmd(c *Command) *cobra.Command {
+func newImportCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "import",
 		Short: "convert other data formats to CUE files",
@@ -194,7 +195,7 @@ Example:
       }
   }
 `,
-		RunE: mkRunE(c, runImport),
+		RunE: mkRunE(ctx, c, runImport),
 	}
 
 	flagOut.Add(cmd)
@@ -251,7 +252,7 @@ func getExtInfo(ext string) *encodingInfo {
 	return nil
 }
 
-func runImport(cmd *Command, args []string) error {
+func runImport(ctx context.Context, cmd *Command, args []string) error {
 	var group errgroup.Group
 
 	pkgFlag := flagPackage.String(cmd)
@@ -302,7 +303,7 @@ func runImport(cmd *Command, args []string) error {
 	})
 
 	err := group.Wait()
-	exitOnErr(cmd, err, true)
+	exitOnErr(ctx, err, true)
 	return nil
 }
 

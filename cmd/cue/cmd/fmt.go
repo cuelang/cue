@@ -17,6 +17,7 @@ package cmd
 import (
 	"io/ioutil"
 	"os"
+	"context"
 
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/load"
@@ -24,16 +25,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func newFmtCmd(c *Command) *cobra.Command {
+func newFmtCmd(ctx context.Context, c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "fmt [-s] [packages]",
 		Short: "formats CUE configuration files",
 		Long: `Fmt formats the given files or the files for the given packages in place
 `,
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
+		RunE: mkRunE(ctx, c, func(ctx context.Context, cmd *Command, args []string) error {
 			for _, inst := range load.Instances(args, nil) {
 				if inst.Err != nil {
-					exitOnErr(cmd, inst.Err, false)
+					exitOnErr(ctx, inst.Err, false)
 					continue
 				}
 				all := []string{}

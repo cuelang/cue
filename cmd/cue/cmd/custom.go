@@ -21,15 +21,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"sync"
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/ctxio"
 	itask "cuelang.org/go/internal/task"
 	_ "cuelang.org/go/pkg/tool/cli" // Register tasks
 	_ "cuelang.org/go/pkg/tool/exec"
@@ -52,13 +51,7 @@ func lookupString(obj cue.Value, key string) string {
 	return str
 }
 
-// Variables used for testing.
-var (
-	stdout io.Writer = os.Stdout
-	stderr io.Writer = os.Stderr
-)
-
-func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.Instance) (*cobra.Command, error) {
+func addCustom(ctx context.Context, c *Command, parent *cobra.Command, typ, name string, tools *cue.Instance) (*cobra.Command, error) {
 	if tools == nil {
 		return nil, errors.New("no commands defined")
 	}
@@ -77,12 +70,12 @@ func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.I
 		Use:   usage,
 		Short: lookupString(o, "short"),
 		Long:  lookupString(o, "long"),
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
+		RunE: mkRunE(ctx, c, func(ctx context.Context, cmd *Command, args []string) error {
 			// TODO:
 			// - parse flags and env vars
 			// - constrain current config with config section
 
-			return doTasks(cmd, typ, name, tools)
+			return doTasks(ctx, typ, name, tools)
 		}),
 	}
 	parent.AddCommand(sub)
@@ -121,9 +114,9 @@ func (k *taskKey) lookupTasks(root *cue.Instance) cue.Value {
 	return root.Lookup(k.typ, k.name, taskSection)
 }
 
-func doTasks(cmd *Command, typ, command string, root *cue.Instance) error {
+func doTasks(ctx context.Context, typ, command string, root *cue.Instance) error {
 	err := executeTasks(typ, command, root)
-	exitIfErr(cmd, root, err, true)
+	exitIfErr(ctx, root, err, true)
 	return err
 }
 
@@ -243,7 +236,7 @@ func executeTasks(typ, command string, root *cue.Instance) (err error) {
 			// NOTE: ignore the linter warning for the following line:
 			// itask.Context is an internal type and we want to break if any
 			// fields are added.
-			update, err := t.Run(&itask.Context{ctx, stdout, stderr}, obj)
+			update, err := t.Run(&itask.Context{Context: ctx, Stdout: ctxio.Stdout(ctx), Stderr: ctxio.Stderr(ctx)}, obj)
 			if err == nil && update != nil {
 				root, err = root.Fill(update, spec.taskPath(t.name)...)
 
