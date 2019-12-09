@@ -17,12 +17,15 @@ package cue
 import (
 	"fmt"
 	"math/big"
+	"os"
 	"strconv"
 	"strings"
 	"testing"
 )
 
 func TestBuiltins(t *testing.T) {
+	os.Setenv("OS_GETENV_TEST", "os.Getenv.Testvalue")
+	defer os.Unsetenv("OS_GETENV_TEST")
 	test := func(pkg, expr string) []*bimport {
 		return []*bimport{&bimport{"",
 			[]string{fmt.Sprintf("import %q\n(%s)", pkg, expr)},
@@ -609,7 +612,12 @@ func TestBuiltins(t *testing.T) {
 	}, {
 		test("time", `time.Unix(1500000000, 123456)`),
 		`"2017-07-14T02:40:00.000123456Z"`,
+	}, {
+		test("os", `os.Getenv("OS_GETENV_TEST")`), `"os.Getenv.Testvalue"`,
+	}, {
+		test("os", `os.Getenv("OS_GETENV_NONEXISTING")`), `""`,
 	}}
+
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
 			insts := Build(makeInstances(tc.instances))
