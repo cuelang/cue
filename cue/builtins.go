@@ -20,6 +20,7 @@ import (
 	"math/big"
 	"math/bits"
 	"net"
+	"os"
 	"path"
 	"regexp"
 	"sort"
@@ -2219,6 +2220,21 @@ var builtinPackages = map[string]*builtinPkg{
 							return "", fmt.Errorf("invalid IP %q", ip)
 						}
 						return ipdata.String(), nil
+					}()
+				}
+			},
+		}},
+	},
+	"os": &builtinPkg{
+		native: []*builtin{{
+			Name:   "Getenv",
+			Params: []kind{stringKind},
+			Result: stringKind,
+			Func: func(c *callCtxt) {
+				key := c.string(0)
+				if c.do() {
+					c.ret = func() interface{} {
+						return os.Getenv(key)
 					}()
 				}
 			},
