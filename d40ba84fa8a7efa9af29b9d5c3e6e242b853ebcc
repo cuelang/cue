@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a046ffeb_a9726d71",
+        "filename": "cmd/cue/cmd/export.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2019-12-10T13:33:30Z",
+      "side": 1,
+      "message": "extra line?",
+      "revId": "d40ba84fa8a7efa9af29b9d5c3e6e242b853ebcc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
