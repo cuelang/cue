@@ -180,3 +180,19 @@ func buildTools(cmd *Command, args []string) (*cue.Instance, error) {
 	inst := cue.Merge(insts...).Build(ti)
 	return inst, inst.Err
 }
+
+func buildCUEFILE() (*cue.Instance, error) {
+	ti := build.NewContext().NewInstance("", nil)
+
+	if _, err := os.Stat("./CUEFILE"); os.IsNotExist(err) {
+		inst := cue.Build([]*build.Instance{ti})[0]
+		return inst, inst.Err
+	}
+
+	err := ti.AddFile("./CUEFILE", nil)
+	if err != nil {
+		return nil, err
+	}
+	inst := cue.Build([]*build.Instance{ti})[0]
+	return inst, inst.Err
+}

@@ -30,8 +30,16 @@ type Context struct {
 	Stderr  io.Writer
 }
 
-// A RunnerFunc creates a Runner.
-type RunnerFunc func(v cue.Value) (Runner, error)
+// A RunnerBuilder creates a Runner.
+type RunnerBuilder func(v cue.Value) (Runner, error)
+
+// RunnerFunc defines a function as Runner
+type RunnerFunc func(ctx *Context, v cue.Value) (results interface{}, err error)
+
+// Run implements the Runner interface
+func (r RunnerFunc) Run(ctx *Context, v cue.Value) (results interface{}, err error) {
+	return r(ctx, v)
+}
 
 // A Runner defines a command type.
 type Runner interface {
@@ -46,17 +54,17 @@ type Runner interface {
 }
 
 // Register registers a task for cue commands.
-func Register(key string, f RunnerFunc) {
+func Register(key string, f RunnerBuilder) {
 	runners.Store(key, f)
 }
 
-// Lookup returns the RunnerFunc for a key.
-func Lookup(key string) RunnerFunc {
+// Lookup returns the RunnerBuilder for a key.
+func Lookup(key string) RunnerBuilder {
 	v, ok := runners.Load(key)
 	if !ok {
 		return nil
 	}
-	return v.(RunnerFunc)
+	return v.(RunnerBuilder)
 }
 
 var runners sync.Map

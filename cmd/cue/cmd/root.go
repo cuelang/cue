@@ -21,8 +21,10 @@ import (
 	"os"
 	"strings"
 
+	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/token"
+	itask "cuelang.org/go/internal/task"
 	"github.com/spf13/cobra"
 )
 
@@ -247,11 +249,11 @@ func New(args []string) (cmd *Command, err error) {
 		return cmd, nil // Forces unknown command message from Cobra.
 	}
 
-	tools, err := buildTools(cmd, args[1:])
+	cuefile, err := buildCUEFILE()
 	if err != nil {
 		return cmd, err
 	}
-	_, err = addCustom(cmd, rootCmd, commandSection, args[0], tools)
+	_, err = addCustom(cmd, rootCmd, commandSection, args[0], cuefile)
 	if err != nil {
 		err = errors.Newf(token.NoPos,
 			`%s %q is not defined
@@ -259,6 +261,11 @@ Ensure commands are defined in a "_tool.cue" file.
 Run 'cue help' to show available commands.`,
 			commandSection, args[0],
 		)
+		return cmd, err
+	}
+
+	err = registerCustomTasks(cmd, cuefile)
+	if err != nil {
 		return cmd, err
 	}
 	return cmd, nil
@@ -321,4 +328,66 @@ type panicError struct {
 
 func exit() {
 	panic(panicError{ErrPrintedError})
+}
+
+func registerCustomTasks(cmd *Command, cuefile *cue.Instance) error {
+	tasks := cuefile.Lookup("task")
+	if !tasks.Exists() {
+		return nil
+	}
+	i, err := tasks.Fields()
+	if err != nil {
+		return errors.Newf(token.NoPos, "could not create command definitions: %v", err)
+	}
+	for i.Next() {
+		_ = addTask(cmd, i.Label(), cuefile)
+	}
+	return nil
+}
+
+func addTask(cmd *Command, name string, cuefile *cue.Instance) error {
+	o := cuefile.Lookup("task", name)
+	if !o.Exists() {
+		return o.Err()
+	}
+	kind := lookupString(o, "kind")
+	var bin string
+	var args []string
+	doc := ""
+	switch v := o.Lookup("cmd"); v.Kind() {
+	case cue.StringKind:
+		str, _ := v.String()
+		if str == "" {
+			return errors.New("empty command")
+		}
+		doc = str
+		list := strings.Fields(str)
+		bin = list[0]
+		args = append(args, list[1:]...)
+
+	case cue.ListKind:
+		var err error
+		list, _ := v.List()
+		if !list.Next() {
+			return errors.New("empty command list")
+		}
+		bin, err = list.Value().String()
+		if err != nil {
+			return err
+		}
+		doc += bin
+		for list.Next() {
+			str, err := list.Value().String()
+			if err != nil {
+				return err
+			}
+			args = append(args, str)
+			doc += " " + str
+		}
+	}
+	itask.Register(kind, func(cue.Value) (itask.Runner, error) {
+		return itask.NewCustomTask(bin, args, doc)
+
+	})
+	return nil
 }
