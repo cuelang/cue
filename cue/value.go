@@ -315,7 +315,7 @@ func newNumBin(k kind, a, b *numLit) *numLit {
 	n := &numLit{
 		numBase: numBase{
 			baseValue: a.baseValue,
-			numInfo:   unifyNuminfo(a.numInfo, b.numInfo),
+			numInfo:   numInfo{a.rep | b.rep, k},
 		},
 	}
 	return n

@@ -556,9 +556,14 @@ func (p *exporter) expr(v value) ast.Expr {
 				Value: x.v.Text('f'),
 			}
 		}
+		s := x.v.Text('g')
+		// add a dot (signifying a float with 1 significant digit)
+		if len(s) == 1 {
+			s += "."
+		}
 		return &ast.BasicLit{
 			Kind:  token.FLOAT,
-			Value: x.v.Text('g'),
+			Value: s,
 		}
 
 	case *durationLit:
