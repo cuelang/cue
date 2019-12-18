@@ -22,6 +22,7 @@ import (
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
@@ -83,7 +84,8 @@ type astState struct {
 	allowAuto   bool // allow builtin packages without import
 
 	// make unique per level to avoid reuse of structs being an issue.
-	astMap map[ast.Node]scope
+	astMap   map[ast.Node]scope
+	aliasMap map[ast.Node]value
 
 	errors errors.Error
 }
@@ -98,6 +100,8 @@ func (s *astState) mapScope(n ast.Node) (m scope) {
 
 func (s *astState) setScope(n ast.Node, v scope) {
 	if m, ok := s.astMap[n]; ok && m != v {
+		b, _ := format.Node(n)
+		fmt.Println("ddd", string(b))
 		panic("already defined")
 	}
 	s.astMap[n] = v
@@ -120,6 +124,7 @@ func newVisitorCtx(ctx *context, inst *build.Instance, obj, resolveRoot *structL
 		resolveRoot: resolveRoot,
 		allowAuto:   allowAuto,
 		astMap:      map[ast.Node]scope{},
+		aliasMap:    map[ast.Node]value{},
 	}
 	return v
 }
@@ -528,9 +533,15 @@ func (v *astVisitor) walk(astNode ast.Node) (ret value) {
 		// Pkg                    nil            ImportSpec
 
 		if x, ok := n.Node.(*ast.Alias); ok {
+			// TODO(lang): should we exempt definitions? The substitution
+			// principle says we should not.
+			if ret = v.aliasMap[x.Expr]; ret != nil {
+				break
+			}
 			old := v.ctx().inDefinition
 			v.ctx().inDefinition = 0
 			ret = v.walk(x.Expr)
+			v.aliasMap[x.Expr] = ret
 			v.ctx().inDefinition = old
 			break
 		}
