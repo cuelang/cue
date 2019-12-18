@@ -1024,7 +1024,15 @@ func (x *numLit) binOp(ctx *context, src source, op op, other evaluated) evaluat
 		}
 	case *numLit:
 		k, _, _ := matchBinOpKind(op, x.kind(), y.kind())
-		n := newNumBin(k, x, y)
+		if k == bottomKind {
+			break
+		}
+		switch op {
+		case opUnify, opUnifyUnchecked:
+		case opLss, opLeq, opEql, opNeq, opGeq, opGtr:
+			return cmpTonode(src, op, x.v.Cmp(&y.v))
+		}
+		n := newNum(src.base(), k, x.rep|y.rep)
 		switch op {
 		case opUnify, opUnifyUnchecked:
 			if x.v.Cmp(&y.v) != 0 {
@@ -1140,18 +1148,14 @@ func (x *durationLit) binOp(ctx *context, src source, op op, other evaluated) ev
 		case opSub:
 			return &durationLit{binSrc(src.Pos(), op, x, other), x.d - y.d}
 		case opQuo:
-			n := &numLit{
-				numBase: newNumBase(nil, newNumInfo(floatKind, 0, 10, false)),
-			}
+			n := newFloat(src.base(), 0)
 			n.v.SetInt64(int64(x.d))
 			d := apd.New(int64(y.d), 0)
 			// TODO: check result if this code becomes undead.
 			_, _ = ctx.Quo(&n.v, &n.v, d)
 			return n
 		case opIRem:
-			n := &numLit{
-				numBase: newNumBase(nil, newNumInfo(intKind, 0, 10, false)),
-			}
+			n := newInt(src.base(), base10)
 			n.v.SetInt64(int64(x.d % y.d))
 			n.v.Exponent = -9
 			return n
@@ -1254,9 +1258,7 @@ func (x *list) binOp(ctx *context, src source, op op, other evaluated) evaluated
 		switch v := y.len.(type) {
 		case *numLit:
 			// Closed list
-			ln := &numLit{numBase: v.numBase}
-			ln.v.SetInt64(int64(len(arcs)))
-			n.len = ln
+			n.len = newInt(v.base(), v.rep).setInt(len(arcs))
 		default:
 			// Open list
 			n.len = y.len // TODO: add length of x?
@@ -1290,9 +1292,7 @@ func (x *list) binOp(ctx *context, src source, op op, other evaluated) evaluated
 		switch v := x.len.(type) {
 		case *numLit:
 			// Closed list
-			ln := &numLit{numBase: v.numBase}
-			ln.v.SetInt64(int64(len(arcs)))
-			n.len = ln
+			n.len = newInt(v.base(), v.rep).setInt(len(arcs))
 		default:
 			// Open list
 			n.len = x.len // TODO: multiply length?
