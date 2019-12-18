@@ -200,7 +200,7 @@ func matchBinOpKind(op op, a, b kind) (k kind, swap bool, msg string) {
 			if a&nullKind != 0 {
 				return k, false, ""
 			}
-			if b&nullKind != 0 {
+			if b&nullKind != 0 { // huh?
 				return k, true, ""
 			}
 			switch {
@@ -264,7 +264,11 @@ func matchBinOpKind(op op, a, b kind) (k kind, swap bool, msg string) {
 		if u.isAnyOf(boolKind) {
 			return boolKind | catBits, swap, ""
 		}
-	case opEql, opNeq, opMat, opNMat:
+	case opMat, opNMat:
+		if u.isAnyOf(stringKind | bytesKind) {
+			return boolKind | catBits, false, ""
+		}
+	case opEql, opNeq:
 		if u.isAnyOf(fixedKinds) {
 			return boolKind | catBits, false, ""
 		}
