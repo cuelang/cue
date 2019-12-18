@@ -210,7 +210,7 @@ func convertRec(ctx *context, src source, allowDefault bool, x interface{}) eval
 		return ctx.manifest(x.walk(v))
 
 	case *big.Int:
-		n := newNum(src, intKind)
+		n := newInt(src.base(), 0)
 		n.v.Coeff.Set(v)
 		if v.Sign() < 0 {
 			n.v.Coeff.Neg(&n.v.Coeff)
@@ -220,7 +220,7 @@ func convertRec(ctx *context, src source, allowDefault bool, x interface{}) eval
 
 	case *big.Rat:
 		// should we represent this as a binary operation?
-		n := newNum(src, numKind)
+		n := newNum(src, numKind, 0)
 		_, err := ctx.Quo(&n.v, apd.NewWithBigInt(v.Num(), 0), apd.NewWithBigInt(v.Denom(), 0))
 		if err != nil {
 			return ctx.mkErr(src, err)
@@ -231,12 +231,12 @@ func convertRec(ctx *context, src source, allowDefault bool, x interface{}) eval
 		return n
 
 	case *big.Float:
-		n := newNum(src, floatKind)
+		n := newFloat(src, 0)
 		_, _, _ = n.v.SetString(v.String())
 		return n
 
 	case *apd.Decimal:
-		n := newNum(src, floatKind|intKind)
+		n := newNum(src, numKind, 0)
 		n.v.Set(v)
 		if !n.isInt(ctx) {
 			n.k = floatKind
@@ -293,11 +293,11 @@ func convertRec(ctx *context, src source, allowDefault bool, x interface{}) eval
 	case uintptr:
 		return toUint(ctx, src, uint64(v))
 	case float64:
-		r := newNum(src, floatKind)
+		r := newFloat(src, 0)
 		_, _, _ = r.v.SetString(fmt.Sprintf("%g", v))
 		return r
 	case float32:
-		r := newNum(src, floatKind)
+		r := newFloat(src, 0)
 		_, _, _ = r.v.SetString(fmt.Sprintf("%g", v))
 		return r
 
@@ -446,15 +446,11 @@ func convertRec(ctx *context, src source, allowDefault bool, x interface{}) eval
 }
 
 func toInt(ctx *context, src source, x int64) evaluated {
-	n := newNum(src, intKind)
-	n.v.SetInt64(x)
-	return n
+	return newInt(src, 0).setInt64(x)
 }
 
 func toUint(ctx *context, src source, x uint64) evaluated {
-	n := newNum(src, intKind)
-	n.v.Coeff.SetUint64(x)
-	return n
+	return newInt(src, 0).setUInt64(x)
 }
 
 func convertGoType(r *Runtime, t reflect.Type) value {
