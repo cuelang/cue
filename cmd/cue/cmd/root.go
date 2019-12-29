@@ -93,6 +93,7 @@ For more information on writing CUE configuration files see cuelang.org.`,
 		newTrimCmd(c),
 		newVersionCmd(c),
 		newVetCmd(c),
+		newGenCmd(c),
 
 		// Hidden
 		newAddCmd(c),
