@@ -15,6 +15,9 @@
 package cmd
 
 import (
+	"bytes"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -28,58 +31,78 @@ func newFmtCmd(c *Command) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "fmt [-s] [packages]",
 		Short: "formats CUE configuration files",
-		Long: `Fmt formats the given files or the files for the given packages in place
-`,
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
-			for _, inst := range load.Instances(args, &load.Config{
-				Tests: true,
-				Tools: true,
-			}) {
-				if inst.Err != nil {
-					exitOnErr(cmd, inst.Err, false)
+		Long:  `Fmt formats the given files or the files for the given packages in place`,
+		RunE:  mkRunE(c, doFmt),
+	}
+	cmd.Flags().BoolP("list", "l", false, "List, instead of fixing, files that are not formatted correctly")
+	return cmd
+}
+
+func doFmt(cmd *Command, args []string) error {
+	listMode, _ := cmd.Flags().GetBool("list")
+	errorCount := 0
+
+	for _, inst := range load.Instances(args, &load.Config{
+		Tests: true,
+		Tools: true,
+	}) {
+		if inst.Err != nil {
+			exitOnErr(cmd, inst.Err, false)
+			continue
+		}
+		all := []string{}
+		all = append(all, inst.CUEFiles...)
+		all = append(all, inst.ToolCUEFiles...)
+		all = append(all, inst.TestCUEFiles...)
+
+		for _, path := range all {
+			fullpath := inst.Abs(path)
+
+			stat, err := os.Stat(fullpath)
+			if err != nil {
+				return err
+			}
+
+			b, err := ioutil.ReadFile(fullpath)
+			if err != nil {
+				return err
+			}
+
+			opts := []format.Option{}
+			if flagSimplify.Bool(cmd) {
+				opts = append(opts, format.Simplify())
+			}
+
+			f, err := parser.ParseFile(fullpath, b, parser.ParseComments)
+			if err != nil {
+				return err
+			}
+			n := fix(f)
+
+			b2, err := format.Node(n, opts...)
+			if err != nil {
+				return err
+			}
+
+			if !bytes.Equal(b, b2) {
+				errorCount++
+
+				if listMode {
+					fmt.Println(path, ": Not formatted correctly")
 					continue
 				}
-				all := []string{}
-				all = append(all, inst.CUEFiles...)
-				all = append(all, inst.ToolCUEFiles...)
-				all = append(all, inst.TestCUEFiles...)
-				for _, path := range all {
-					fullpath := inst.Abs(path)
-
-					stat, err := os.Stat(fullpath)
-					if err != nil {
-						return err
-					}
-
-					b, err := ioutil.ReadFile(fullpath)
-					if err != nil {
-						return err
-					}
-
-					opts := []format.Option{}
-					if flagSimplify.Bool(cmd) {
-						opts = append(opts, format.Simplify())
-					}
-
-					f, err := parser.ParseFile(fullpath, b, parser.ParseComments)
-					if err != nil {
-						return err
-					}
-					n := fix(f)
-
-					b, err = format.Node(n, opts...)
-					if err != nil {
-						return err
-					}
-
-					err = ioutil.WriteFile(fullpath, b, stat.Mode())
-					if err != nil {
-						return err
-					}
-				}
 			}
-			return nil
-		}),
+
+			err = ioutil.WriteFile(fullpath, b2, stat.Mode())
+			if err != nil {
+				return err
+			}
+		}
 	}
-	return cmd
+
+	if listMode && errorCount > 0 {
+		return errors.New("Not all Cue files are formatted correctly (--list provided)")
+	}
+
+	return nil
 }

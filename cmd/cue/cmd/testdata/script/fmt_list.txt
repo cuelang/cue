@@ -1,0 +1,17 @@
+! cue fmt --list .
+cmp stdout expect-stdout
+cmp stderr expect-stderr
+
+-- expect-stdout --
+unformatted.cue : Not formatted correctly
+-- expect-stderr --
+Error: Not all Cue files are formatted correctly (--list provided)
+Not all Cue files are formatted correctly (--list provided)
+-- formatted.cue --
+package main
+
+min: 1
+-- unformatted.cue --
+package main
+
+ max: 2
