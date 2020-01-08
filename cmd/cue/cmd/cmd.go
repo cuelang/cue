@@ -226,7 +226,7 @@ Ensure commands are defined in a "_tool.cue" file.
 `
 				fmt.Fprintf(w, msg, args[0])
 			}
-			fmt.Fprintln(w, "Run 'cue help cmd' for known subcommands.")
+			fmt.Fprintln(w, "Run 'cue help cmd' to show available commands.")
 			os.Exit(1) // TODO: get rid of this
 			return nil
 		}),

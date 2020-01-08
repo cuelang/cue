@@ -23,10 +23,13 @@ command: hello: {
 Hello can be used to say hello to the world.
 
 Usage:
-  cue cmd hello [flags]
+  cue cmd home/hello [flags]
+
+Aliases:
+  home/hello, hello
 
 Flags:
-  -h, --help   help for hello
+  -h, --help   help for home/hello
 
 Global Flags:
   -i, --ignore     proceed in the presence of errors
