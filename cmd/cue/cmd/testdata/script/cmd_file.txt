@@ -1,0 +1,21 @@
+cue cmd echo
+stdout 'Hello World!'
+
+-- hello_tool.cue --
+
+message: "Hello \(who)!" // who declared in data.cue
+who :: "World"
+
+command: echo: {
+    echo: {
+        kind:   "exec"
+        cmd:    "echo \(message)"
+        stdout: string
+    }
+
+    task: display: {
+        kind: "print"
+        text: echo.stdout
+    }
+}
+-- cue.mod --

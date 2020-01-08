@@ -19,11 +19,16 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/spf13/cobra"
 
+	"cuelang.org/go/cue"
+	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/load"
+	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/cue/token"
 )
 
@@ -53,29 +58,33 @@ func newRootCmd() *Command {
 	cmd := &cobra.Command{
 		Use:   "cue",
 		Short: "cue emits configuration files to user-defined commands.",
-		Long: `cue evaluates CUE files, an extension of JSON, and sends them
-to user-defined commands for processing.
+		// 		Long: `cue evaluates CUE files, an extension of JSON, and sends them
+		// to user-defined commands for processing.
 
-Commands are defined in CUE as follows:
+		// Commands are defined in CUE as follows:
 
-	import "tool/exec"
-	command: deploy: {
-		exec.Run
-		cmd:   "kubectl"
-		args:  [ "-f", "deploy" ]
-		in:    json.Encode(userValue) // encode the emitted configuration.
-	}
+		// 	import "tool/exec"
+		// 	command: deploy: {
+		// 		exec.Run
+		// 		cmd:   "kubectl"
+		// 		args:  [ "-f", "deploy" ]
+		// 		in:    json.Encode(userValue) // encode the emitted configuration.
+		// 	}
 
-cue can also combine the results of http or grpc request with the input
-configuration for further processing. For more information on defining commands
-run 'cue help cmd' or go to cuelang.org/pkg/cmd.
+		// cue can also combine the results of http or grpc request with the input
+		// configuration for further processing. For more information on defining commands
+		// run 'cue help cmd' or go to cuelang.org/pkg/cmd.
 
-For more information on writing CUE configuration files see cuelang.org.`,
+		// For more information on writing CUE configuration files see cuelang.org.`,
 		// Uncomment the following line if your bare application
 		// has an action associated with it:
 		//	Run: func(cmd *cobra.Command, args []string) { },
 
 		SilenceUsage: true,
+
+		// FParseErrWhitelist: cobra.FParseErrWhitelist{
+		// 	// UnknownFlags: true,
+		// },
 	}
 
 	c := &Command{Command: cmd, root: cmd}
@@ -222,7 +231,7 @@ func New(args []string) (cmd *Command, err error) {
 	cmd = newRootCmd()
 	rootCmd := cmd.root
 	rootCmd.SetArgs(args)
-	if len(args) == 0 {
+	if len(args) == 0 { // || !isCommandName(args[0]) {
 		return cmd, nil
 	}
 
@@ -232,39 +241,106 @@ func New(args []string) (cmd *Command, err error) {
 		// "fix":   {"fix", nil},
 	}
 
-	if args[0] == "help" {
-		// Allow errors.
-		_ = addSubcommands(cmd, sub, args[1:])
+	name := args[0]
+	if name == "help" {
+		_, err := findCustomCommands(cmd, sub)
+		return cmd, err
+	}
+
+	if _, ok := sub[name]; ok {
+		if len(args) == 1 {
+			_, err := findCustomCommands(cmd, sub)
+			return cmd, err
+		}
+		name = args[1]
+	} else if c, _, err := rootCmd.Find(args); err == nil && c != nil {
 		return cmd, nil
 	}
 
-	if _, ok := sub[args[0]]; ok {
-		return cmd, addSubcommands(cmd, sub, args)
-	}
-
-	if c, _, err := rootCmd.Find(args); err == nil && c != nil {
-		return cmd, nil
-	}
-
-	if !isCommandName(args[0]) {
-		return cmd, nil // Forces unknown command message from Cobra.
-	}
-
-	tools, err := buildTools(cmd, args[1:])
+	cmds, err := findCustomCommands(cmd, sub)
 	if err != nil {
 		return cmd, err
 	}
-	_, err = addCustom(cmd, rootCmd, commandSection, args[0], tools)
-	if err != nil {
-		err = errors.Newf(token.NoPos,
-			`%s %q is not defined
+
+	if _, ok := cmds.index[name]; !ok {
+		switch a := cmds.shorthands[name]; len(a) {
+		case 0:
+			err = errors.Newf(token.NoPos,
+				`command %q is not defined
 Ensure commands are defined in a "_tool.cue" file.
-Run 'cue help' to show available commands.`,
-			commandSection, args[0],
-		)
-		return cmd, err
+Run 'cue help cmd' to show available commands.`,
+				name,
+			)
+			return cmd, err
+
+		case 1:
+			rootCmd.AddCommand(a[0].cmd)
+		default:
+			names := []string{}
+			for _, c := range a {
+				names = append(names, c.key)
+			}
+			return cmd, errors.Newf(token.NoPos,
+				`multiple commands with name %q (%s) defined, qualify with package name`,
+				name, strings.Join(names, ", "))
+		}
 	}
+
 	return cmd, nil
+}
+
+// findTools
+// - find root
+// - find all files ending with _tool, per package.
+// - detect duplicate definitions. If a command is only defined
+//   for a single package, it may be used as is.
+//   Otherwise command:pkg or the command is chosen per package.
+//   For safety allow only one package, unless explicitly specified.
+
+// - files (json: each top-level object is a separate config.)
+// - packages
+// - -m ./...
+func findCustomCommands(cmd *Command, sub map[string]*subSpec) (*commandIndex, error) {
+	// Get the root directory.
+	c := &load.Config{Tools: true}
+	err := c.Init()
+	if err != nil {
+		return nil, err
+	}
+
+	cf := &commandIndex{
+		cmd:        cmd,
+		dir:        c.Dir,
+		cwd:        c.Dir,
+		root:       c.ModuleRoot,
+		pkgDone:    map[string]bool{},
+		index:      map[string]*commandInfo{},
+		shorthands: map[string][]*commandInfo{},
+		specs:      sub,
+	}
+
+	cf.find()
+	errors.Print(os.Stderr, cf.errs, nil)
+	return cf, cf.errs
+}
+
+type commandIndex struct {
+	cmd   *Command
+	tools *build.Instance
+
+	root string
+	cwd  string
+	dir  string
+	file string
+
+	commands   []*commandInfo
+	pkgDone    map[string]bool
+	index      map[string]*commandInfo
+	shorthands map[string][]*commandInfo
+
+	specs map[string]*subSpec
+
+	errs errors.Error
 }
 
 type subSpec struct {
@@ -272,48 +348,231 @@ type subSpec struct {
 	cmd  *cobra.Command
 }
 
-func addSubcommands(cmd *Command, sub map[string]*subSpec, args []string) error {
-	if len(args) > 0 {
-		if _, ok := sub[args[0]]; ok {
-			args = args[1:]
-		}
-	}
+type commandInfo struct {
+	key     string
+	name    string
+	pkgName string
+	pos     token.Pos
+	cmd     *cobra.Command // the corresponding cobra command
+}
 
-	if len(args) > 0 {
-		if !isCommandName(args[0]) {
-			return nil // Forces unknown command message from Cobra.
-		}
-		args = args[1:]
-	}
+func (c *commandIndex) addAllToParent(cmd *Command) {
+}
 
-	tools, err := buildTools(cmd, args)
-	if err != nil {
-		return err
-	}
-
-	// TODO: for now we only allow one instance. Eventually, we can allow
-	// more if they all belong to the same package and we merge them
-	// before computing commands.
-	for _, spec := range sub {
-		commands := tools.Lookup(spec.name)
-		if !commands.Exists() {
-			return nil
-		}
-		i, err := commands.Fields()
-		if err != nil {
-			return errors.Newf(token.NoPos, "could not create command definitions: %v", err)
-		}
-		for i.Next() {
-			_, _ = addCustom(cmd, spec.cmd, spec.name, i.Label(), tools)
-		}
-	}
+func (c *commandIndex) addToCommand(cmd *Command, info *commandInfo, tools *build.Instance) error {
 	return nil
 }
 
+func (c *commandIndex) errf(pos token.Pos, format string, args ...interface{}) {
+	c.errs = errors.Append(c.errs, errors.Newf(pos, format, args...))
+}
+
+func (c *commandIndex) find() {
+	for {
+		c.searchDir()
+
+		parent := filepath.Dir(c.dir)
+		if len(parent) < len(c.root) || len(parent) >= len(c.dir) {
+			break
+		}
+		c.dir = parent
+	}
+}
+
+func (c *commandIndex) searchDir() {
+	typ := commandSection
+
+	m, err := filepath.Glob(filepath.Join(c.dir, "*_tool.cue"))
+	if err != nil {
+		c.errf(token.NoPos, "cannot read directory: %v", err)
+		return
+	}
+
+	for _, match := range m {
+		c.file = match
+		// Load AST only.
+		f, err := parser.ParseFile(match, nil, parser.PackageClauseOnly)
+		if err != nil {
+			c.errs = errors.Append(c.errs, errors.Promote(err, "parse error"))
+			return
+		}
+		pkg := f.PackageName()
+		var ti *build.Instance
+		if pkg == "" || pkg == "_" {
+			// TODO: Backwards compatibilty mode. Consider phasing out.
+			pkg = "_"
+		}
+		if pkg == "_" {
+			ti = load.Instances([]string{match}, &load.Config{
+				Dir:   c.dir,
+				Tools: true,
+			})[0]
+			_ = ti.AddFile(match, nil)
+		} else {
+			if c.pkgDone[pkg] {
+				continue
+			}
+			c.pkgDone[pkg] = true
+			// Load tool files only and allow dangling references.
+			bi := load.Instances(nil, &load.Config{
+				Dir:     c.dir,
+				Tools:   true,
+				Package: pkg,
+			})[0]
+			if bi.Err != nil {
+				c.errs = errors.Append(c.errs, bi.Err)
+				return
+			}
+			ti = bi.Context().NewInstance(bi.Root, nil)
+			for _, f := range bi.ToolCUEFiles {
+				_ = ti.AddFile(bi.Abs(f), nil)
+			}
+		}
+		if ti.Err != nil {
+			c.errs = errors.Append(c.errs, ti.Err)
+			return
+		}
+		c.tools = ti
+
+		// Ignore errors: likely resulting from unresolved errors.
+		// TODO: only skip unresolved errors.
+		inst := cue.Build([]*build.Instance{ti})[0]
+		// if inst.Err != nil {
+		// 	c.errs = errors.Append(c.errs, inst.Err)
+		// 	return
+		// }
+
+		if v := inst.Lookup(typ); v.Exists() {
+			c.parseSection(c.specs["cmd"], pkg, v)
+		}
+	}
+}
+
+func (c *commandIndex) parseSection(spec *subSpec, pkgName string, v cue.Value) {
+	iter, err := v.Fields()
+	if err != nil {
+		c.errf(v.Pos(), "%s section must be of type struct", spec.name)
+		return
+	}
+
+	for iter.Next() {
+		name := iter.Label()
+		v := iter.Value()
+		if name == "" || !isCommandName(name) {
+			c.errf(v.Pos(), "invalid command name %q", name)
+		}
+
+		c.parseCommand(spec, pkgName, name, v)
+	}
+}
+
+func (c *commandIndex) parseCommand(spec *subSpec, pkgName, name string, v cue.Value) {
+	if _, err := v.Fields(); err != nil {
+		c.errs = errors.Append(c.errs, errors.Promote(err, "command definition must be struct"))
+		return
+	}
+
+	path := ""
+	key := name
+	if pkgName == "_" {
+		rel, err := filepath.Rel(c.cwd, c.file)
+		if err != nil {
+			c.errf(token.NoPos, "%v", err.Error())
+		}
+		path = rel
+	} else {
+		rel, err := filepath.Rel(c.cwd, c.dir)
+		if err != nil {
+			c.errf(token.NoPos, "%v", err.Error())
+		}
+		path = fmt.Sprintf("%s:%s", rel, pkgName)
+		if !strings.HasPrefix(path, ".") {
+			path = "./" + path
+		}
+		key = fmt.Sprintf("%s/%s", pkgName, name)
+	}
+
+	if info, ok := c.index[key]; ok {
+		c.errf(v.Pos(), "command %q defined in multiple locations", name)
+		c.errf(info.pos, "previous definition here")
+	}
+
+	tools := load.Instances([]string{path}, &load.Config{Tools: true})[0]
+
+	// TODO: change the way packages are "hooked" in to tool packages:
+	//   Make the underlying packages implicitly available through one of the
+	//   following mechanisms:
+	//		1) a fixed top-level field
+	//		2) a top-level field referencing a specific builtin
+	//		3) (preferred) a special import statement: import input ".",
+	//		   signifying the "current" package under consideration.
+	for _, f := range tools.ToolCUEFiles {
+		_ = tools.AddFile(tools.Abs(f), nil)
+	}
+	sub := &cobra.Command{
+		RunE: mkRunE(c.cmd, func(cmd *Command, args []string) error {
+			inst, err := buildTools(cmd, pkgName, args, tools)
+
+			exitIfErr(cmd, inst, err, true)
+			if err != nil {
+				return err
+			}
+
+			// TODO: constrain current config with config section
+
+			return doTasks(cmd, commandSection, name, inst)
+		}),
+	}
+
+	info := &commandInfo{
+		key:     key,
+		name:    name,
+		pkgName: pkgName,
+		pos:     v.Pos(),
+		cmd:     sub,
+	}
+
+	c.commands = append(c.commands, info)
+	c.index[key] = info
+	c.shorthands[name] = append(c.shorthands[name], info)
+
+	docs := v.Doc()
+	if len(docs) > 0 {
+		sub.Long = docs[0].Text()
+		sub.Short, sub.Long = splitLine(sub.Long)
+		if strings.HasPrefix(sub.Long, "Usage:") {
+			sub.Use, sub.Long = splitLine(sub.Long[len("Usage:"):])
+		}
+	}
+	sub.Use = lookupString(v, "$usage", sub.Use)
+	sub.Long = lookupString(v, "$long", sub.Long)
+	sub.Short = lookupString(v, "short", sub.Short)
+	prefix := name + " "
+	if !strings.HasPrefix(sub.Use, prefix) {
+		sub.Use = name
+	}
+
+	// Note on Security: we add the alias so Cobra can find the command under
+	// this name. However, Cobra doesn't enforce that the alias is unique, so we
+	// will still have to verify down the line.
+	sub.Aliases = []string{name}
+
+	// TODO: piece out flag section from command definition
+	// c.addFlags(sub, v)
+
+	fullName := fmt.Sprintf("%s/%s", pkgName, name)
+	if !strings.HasPrefix(sub.Use, prefix) {
+		sub.Use = fullName
+	} else {
+		sub.Use = fullName + sub.Use[len(prefix):]
+	}
+
+	// add shorthand
+	spec.cmd.AddCommand(sub)
+}
+
 func isCommandName(s string) bool {
-	return !strings.Contains(s, `/\`) &&
-		!strings.HasPrefix(s, ".") &&
-		!strings.HasSuffix(s, ".cue")
+	return !strings.Contains(s, `/\`) && !strings.Contains(s, ".")
 }
 
 type panicError struct {
