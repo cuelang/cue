@@ -2,25 +2,28 @@ cue help cmd
 cmp stdout expect-stdout
 
 -- cue.mod --
--- task_tool.cue --
+-- home_tool.cue --
 package home
 
 import "tool/cli"
 
 // say hello to someone
 command: hello: {
-    task: say: {
-        cli.Print
-        text: "Hello world!"
-    }
+    task: say: cli.Print & { text: "Hello world!" }
 }
+
+-- out_tool.cue --
+package out
 
 // echo something back
 command: echo: {
-    task: echo: {
-        cli.Print
-        text: "ECHO Echo echo..."
-    }
+    task: echo: cli.Print & { text: "ECHO Echo echo..." }
+}
+
+-- file_tool.cue --
+// echo something back
+command: echo: {
+    task: echo: cli.Print & { text: "Bye" }
 }
 
 -- expect-stdout --
@@ -134,8 +137,9 @@ Usage:
   cue cmd [command]
 
 Available Commands:
-  echo        echo something back
-  hello       say hello to someone
+  _/echo      echo something back
+  home/hello  say hello to someone
+  out/echo    echo something back
 
 Flags:
   -h, --help                 help for cmd
