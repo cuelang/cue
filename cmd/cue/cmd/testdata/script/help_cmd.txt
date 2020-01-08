@@ -217,8 +217,8 @@ Usage:
   cue cmd [command]
 
 Available Commands:
-  echo        echo something back
-  hello       say hello to someone
+  home/echo   echo something back
+  home/hello  say hello to someone
 
 Flags:
   -h, --help   help for cmd

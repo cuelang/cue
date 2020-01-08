@@ -155,21 +155,24 @@ func buildToolInstances(cmd *Command, binst []*build.Instance) ([]*cue.Instance,
 	return instances, nil
 }
 
-func buildTools(cmd *Command, args []string) (*cue.Instance, error) {
-	binst := loadFromArgs(cmd, args, &load.Config{Tools: true})
+func buildTools(cmd *Command, pkg string, args []string, tools *build.Instance) (*cue.Instance, error) {
+	binst := loadFromArgs(cmd, args, &load.Config{
+		Tools:      true,
+		AllowEmpty: true, // Could be a single tool file.
+		Package:    pkg,
+	})
 	if len(binst) == 0 {
 		return nil, nil
 	}
 
 	included := map[string]bool{}
 
+	// TODO: remove this code.
 	ti := binst[0].Context().NewInstance(binst[0].Root, nil)
-	for _, inst := range binst {
-		for _, f := range inst.ToolCUEFiles {
-			if file := inst.Abs(f); !included[file] {
-				_ = ti.AddFile(file, nil)
-				included[file] = true
-			}
+	for _, f := range tools.ToolCUEFiles {
+		if file := tools.Abs(f); !included[file] {
+			_ = ti.AddFile(file, nil)
+			included[file] = true
 		}
 	}
 
