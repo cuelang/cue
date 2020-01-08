@@ -5,7 +5,7 @@ cmp stderr cmd_baddisplay.out
 -- cmd_baddisplay.out --
 command "notool" is not defined
 Ensure commands are defined in a "_tool.cue" file.
-Run 'cue help' to show available commands.
+Run 'cue help cmd' to show available commands.
 -- task.cue --
 package home
 message: "Hello world!"

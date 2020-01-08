@@ -127,7 +127,7 @@ func (l *loader) cueFilesPackage(files []string) *build.Instance {
 		fi, err := cfg.fileSystem.stat(path)
 		if err != nil {
 			return cfg.newErrInstance(pos, toImportPath(path),
-				errors.Wrapf(err, pos, "could not find dir %s", path))
+				errors.Wrapf(err, pos, "could not find dir"))
 		}
 		if fi.IsDir() {
 			return cfg.newErrInstance(pos, toImportPath(path),

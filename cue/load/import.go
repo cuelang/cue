@@ -299,7 +299,7 @@ func (fp *fileProcessor) finalize() errors.Error {
 	if fp.err != nil {
 		return fp.err
 	}
-	if countCUEFiles(fp.c, p) == 0 && !fp.c.DataFiles {
+	if !fp.c.AllowEmpty && countCUEFiles(fp.c, p) == 0 && !fp.c.DataFiles {
 		fp.err = errors.Append(fp.err, &NoFilesError{Package: p, ignored: len(p.IgnoredCUEFiles) > 0})
 		return fp.err
 	}

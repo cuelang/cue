@@ -15,6 +15,7 @@
 package cmd
 
 import (
+	"context"
 	"flag"
 	"os"
 	"testing"
@@ -39,5 +40,18 @@ func printConfig(t *testing.T) *errors.Config {
 	return &errors.Config{
 		Cwd:     cwd,
 		ToSlash: true,
+	}
+}
+
+// Don't remove, for debugging purposes.
+func TestX(t *testing.T) {
+	t.Skip()
+	cmd, err := New([]string{"cmd", "foo"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = cmd.Run(context.Background())
+	if err != nil {
+		t.Fatal(err)
 	}
 }

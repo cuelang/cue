@@ -123,6 +123,9 @@ type Config struct {
 	// a package.
 	Tools bool
 
+	// Allow a package to have no content.
+	AllowEmpty bool
+
 	// filesMode indicates that files are specified
 	// explicitly on the command line.
 	filesMode bool
@@ -335,6 +338,12 @@ func (c *Config) absDirFromImportPath(pos token.Pos, p importPath) (absDir, name
 	return absDir, name, nil
 }
 
+// Init completes the values in a configuration.
+func (c *Config) Init() error {
+	_, err := c.init()
+	return err
+}
+
 // Complete updates the configuration information. After calling complete,
 // the following invariants hold:
 //  - c.ModuleRoot != ""
@@ -343,6 +352,10 @@ func (c *Config) absDirFromImportPath(pos token.Pos, p importPath) (absDir, name
 //  - c.loader != nil
 //  - c.cache != ""
 func (c Config) complete() (cfg *Config, err error) {
+	return c.init()
+}
+
+func (c *Config) init() (cfg *Config, err error) {
 	// Each major CUE release should add a tag here.
 	// Old tags should not be removed. That is, the cue1.x tag is present
 	// in all releases >= CUE 1.x. Code that requires CUE 1.x or later should
@@ -361,7 +374,7 @@ func (c Config) complete() (cfg *Config, err error) {
 
 	// TODO: we could populate this already with absolute file paths,
 	// but relative paths cannot be added. Consider what is reasonable.
-	if err := c.fileSystem.init(&c); err != nil {
+	if err := c.fileSystem.init(c); err != nil {
 		return nil, err
 	}
 
@@ -376,7 +389,7 @@ func (c Config) complete() (cfg *Config, err error) {
 		}
 	}
 
-	c.loader = &loader{cfg: &c}
+	c.loader = &loader{cfg: c}
 
 	// TODO: also make this work if run from outside the module?
 	switch {
@@ -402,10 +415,10 @@ func (c Config) complete() (cfg *Config, err error) {
 		if prefix.Exists() {
 			name, err := prefix.String()
 			if err != nil {
-				return &c, err
+				return c, err
 			}
 			if c.Module != "" && c.Module != name {
-				return &c, errors.Newf(prefix.Pos(), "inconsistent modules: got %q, want %q", name, c.Module)
+				return c, errors.Newf(prefix.Pos(), "inconsistent modules: got %q, want %q", name, c.Module)
 			}
 			c.Module = name
 		}
@@ -417,7 +430,7 @@ func (c Config) complete() (cfg *Config, err error) {
 		c.Context = build.NewContext(build.Loader(c.loadFunc))
 	}
 
-	return &c, nil
+	return c, nil
 }
 
 func (c Config) isRoot(dir string) bool {
