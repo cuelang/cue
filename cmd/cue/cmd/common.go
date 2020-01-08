@@ -588,6 +588,35 @@ func buildTools(cmd *Command, tags, args []string) (*cue.Instance, error) {
 	return inst, inst.Err
 }
 
+func buildToolPkg(cmd *Command, pkg string, args []string, tools *build.Instance) (*cue.Instance, error) {
+	binst := loadFromArgs(cmd, args, &load.Config{
+		Tools:      true,
+		AllowEmpty: true, // Could be a single tool file.
+		Package:    pkg,
+	})
+	if len(binst) == 0 {
+		return nil, nil
+	}
+	included := map[string]bool{}
+
+	// TODO: remove this code.
+	ti := binst[0].Context().NewInstance(binst[0].Root, nil)
+	for _, f := range tools.ToolCUEFiles {
+		if file := tools.Abs(f); !included[file] {
+			_ = ti.AddFile(file, nil)
+			included[file] = true
+		}
+	}
+
+	insts, err := buildToolInstances(cmd, binst)
+	if err != nil {
+		return nil, err
+	}
+
+	inst := cue.Merge(insts...).Build(ti)
+	return inst, inst.Err
+}
+
 func shortFile(root string, f *build.File) string {
 	dir, _ := filepath.Rel(root, f.Filename)
 	if dir == "" {
