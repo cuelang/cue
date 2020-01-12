@@ -2,6 +2,7 @@ cue cmd env
 cmp stdout cmd_env.out
 -- cmd_env.out --
 Hello World!
+Hello World!
 Hello someone else!
 -- task_tool.cue --
 package home
@@ -9,6 +10,7 @@ package home
 import (
     "tool/os"
     "tool/cli"
+    "tool/exec"
 )
 
 command: env: {
@@ -36,4 +38,9 @@ command: env: {
 	print2: cli.Print & {
 		text: "Hello \(env2.MYTEXT)!"
 	}
+
+    echo: exec.Run & {
+        env: WHO: "World"
+        cmd: ["sh", "-c", "echo Hello $WHO!"]
+    }
 }

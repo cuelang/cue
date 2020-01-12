@@ -84,6 +84,30 @@ func (c *execCmd) Run(ctx *task.Context) (res interface{}, err error) {
 
 	cmd := exec.CommandContext(ctx.Context, bin, args...)
 
+	env := ctx.Obj.Lookup("env")
+
+	// List case.
+	for iter, _ := env.List(); iter.Next(); {
+		str, err := v.String()
+		if err != nil {
+			return cue.Value{}, errors.Wrapf(err, v.Pos(),
+				"invalid environment variable value %q", v)
+		}
+		cmd.Env = append(cmd.Env, str)
+	}
+
+	// Struct case.
+	for iter, _ := ctx.Obj.Lookup("env").Fields(); iter.Next(); {
+		label := iter.Label()
+		v := iter.Value()
+		str, err := v.String()
+		if err != nil {
+			return cue.Value{}, errors.Wrapf(err, v.Pos(),
+				"invalid environment variable value %q", v)
+		}
+		cmd.Env = append(cmd.Env, fmt.Sprintf("%s=%s", label, str))
+	}
+
 	stream := func(name string) (stream cue.Value, ok bool) {
 		c := ctx.Obj.Lookup(name)
 		// Although the schema defines a default versions, older implementations
