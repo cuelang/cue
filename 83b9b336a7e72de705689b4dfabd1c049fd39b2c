@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a618545_c5b1968d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "Are attributes really defined on files rather than packages?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c8add0_078499d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "s/precense/presence/",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b647260_aa9d18ea",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "s/sequence to/sequence of/",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd667b9_cd3222bc",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "I think it would be worth defining how attribute values are compared for equality. For example, the same string might be written two different ways - would @foo(\"A\") be considered the same as @foo(\"\\u0041\") ?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e40ec3_f78a8c6e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "It seems a bit odd to me that attributes can be associated with source files (as opposed to packages), as source files don\u0027t generally result in an externally visible entity. What\u0027s the reasoning for associating attributes with a source file rather than with a package?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e39cdeb_9eead18b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T09:30:34Z",
+      "side": 1,
+      "message": "Is that URL really a valid CUE token?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
