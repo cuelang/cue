@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec9ce684_1db45845",
+        "filename": "encoding/jsonschema/testdata/basic.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000074
+      },
+      "writtenOn": "2020-01-13T20:11:28Z",
+      "side": 1,
+      "message": "The way you translate these is great, are they bi-directional?",
+      "revId": "41598612d67333e5de59993550da61e4770a151d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48d1319_332c68c1",
+        "filename": "encoding/jsonschema/testdata/def.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000074
+      },
+      "writtenOn": "2020-01-13T20:11:28Z",
+      "side": 1,
+      "message": "I\u0027m assuming this ... is because it doesn\u0027t have `additionalProperties: false`",
+      "revId": "41598612d67333e5de59993550da61e4770a151d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
