@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0381dbd_0a59aec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "Good point. It really is package indeed, I was naming it after where they are declared syntactically (SourceFile), but a better name is maybe something like \"at the top-level\" or \"can be a Declaration or associated with fields\", or something like that.",
+      "parentUuid": "5a618545_c5b1968d",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4c8add0_078499d4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb246e93_38808dc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c8add0_078499d4",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e34850c6_a9eb64ae",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b647260_aa9d18ea",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dd667b9_cd3222bc",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2020-01-13T09:30:34Z",
       "side": 1,
       "message": "I think it would be worth defining how attribute values are compared for equality. For example, the same string might be written two different ways - would @foo(\"A\") be considered the same as @foo(\"\\u0041\") ?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8651837f_4ecd64b1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "Values are balanced token sequences, so the token sequences should be equal. Tokens are not interpreted, so `\"A\"` would be different from `\"\\u0041\"`. Whitespace between tokens would be ignored. So @foo(a b) would be the same as @foo(a  b).\n\nWould it help to add an example?",
+      "parentUuid": "6dd667b9_cd3222bc",
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "86ce0bb8_d51187ff",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "Source files get unified into a single package, so as such they will end up in a package.\n\nI\u0027ll try to rephrase.",
+      "parentUuid": "86e40ec3_f78a8c6e",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e39cdeb_9eead18b",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2020-01-13T09:30:34Z",
       "side": 1,
       "message": "Is that URL really a valid CUE token?",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f815093_78a7ba3c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-13T12:41:01Z",
+      "side": 1,
+      "message": "It is in a way, but it is not valid, indeed: the tokens are:\n\nIdentifier(https) Colon(:) Comment(//example.org/mystruct1.json)\n\nSo it should be quoted here. \n\nNote, though, that tokens are merely used to express valid values. This definition is taken almost literally from Swift. It is a quite effecitive solution for allowing almost free-form strings while still being compatible. Internally, attributes are just stored as their original string (notice the capitalization of the `attribute` production). \n\nDuplicates would only be filtered in the API. We could also say that \"implementations may drop tags with the same source representation.\" That also clarifies your above concern.\nThat way it is clear it is the API responsible for deduping based on whatever criteria.",
+      "parentUuid": "0e39cdeb_9eead18b",
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
