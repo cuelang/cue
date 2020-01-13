@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "83a56d8c_e6647e4d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T12:59:12Z",
+      "side": 1,
+      "message": "I think it would be worth adding those clarifications to the spec. I\u0027m not sure if it\u0027s a good idea to treat strings as different depending on the quoting style used or the way that the same character is expressed, but that can be changed later if it turns out to be a problem.",
+      "parentUuid": "8651837f_4ecd64b1",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86e40ec3_f78a8c6e",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -206,6 +224,24 @@
       "side": 1,
       "message": "It is in a way, but it is not valid, indeed: the tokens are:\n\nIdentifier(https) Colon(:) Comment(//example.org/mystruct1.json)\n\nSo it should be quoted here. \n\nNote, though, that tokens are merely used to express valid values. This definition is taken almost literally from Swift. It is a quite effecitive solution for allowing almost free-form strings while still being compatible. Internally, attributes are just stored as their original string (notice the capitalization of the `attribute` production). \n\nDuplicates would only be filtered in the API. We could also say that \"implementations may drop tags with the same source representation.\" That also clarifies your above concern.\nThat way it is clear it is the API responsible for deduping based on whatever criteria.",
       "parentUuid": "0e39cdeb_9eead18b",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4708b4c7_a832b49c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-13T12:59:12Z",
+      "side": 1,
+      "message": "Yeah, that seems reasonable.\nI wonder if it might be a good idea to exclude comments from the tokens under consideration. If attributes get complex, then it would be nice to be able to comment them without worrying about breaking things. Also, do comma-insertion rules apply inside attributes? Presumably they do, but it might be worth being explicit about that.",
+      "parentUuid": "8f815093_78a7ba3c",
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
