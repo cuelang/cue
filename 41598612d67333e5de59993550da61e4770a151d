@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dcf324f5_164385a9",
+        "filename": "encoding/jsonschema/testdata/basic.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-14T15:22:25Z",
+      "side": 1,
+      "message": "Not bidirectional. But I already have a CUE-to-OpenAPI converter. This is much more complex, btw. For instance, CRDs require structural schema, which require some normalization. The openapi package can handle that currently.\n\nMy intention is to factor out the schema part of the openapi package (almost everything) into this package, and then have the openapi package use the jsonschema package with the right settings (such as mapping schema and definitions to #/components/schema, instead of what you see here).",
+      "parentUuid": "ec9ce684_1db45845",
+      "revId": "41598612d67333e5de59993550da61e4770a151d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f48d1319_332c68c1",
         "filename": "encoding/jsonschema/testdata/def.txtar",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-13T20:11:28Z",
       "side": 1,
       "message": "I\u0027m assuming this ... is because it doesn\u0027t have `additionalProperties: false`",
+      "revId": "41598612d67333e5de59993550da61e4770a151d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831f3762_f5d2c8ff",
+        "filename": "encoding/jsonschema/testdata/def.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-14T15:22:25Z",
+      "side": 1,
+      "message": "That is correct. For CRDs we probably want an option to drop this, as suggests that unknown fields should be dropped (although it does not define what it means to be \"unknown\", I can think of several).",
+      "parentUuid": "f48d1319_332c68c1",
       "revId": "41598612d67333e5de59993550da61e4770a151d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
