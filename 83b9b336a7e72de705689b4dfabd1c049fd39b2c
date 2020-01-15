@@ -263,6 +263,24 @@
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd539132_9005ae05",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-01-15T15:36:52Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think comments count as tokens - they\u0027re not defined as tokens anywhere in the grammar AFAICS.",
+      "parentUuid": "c80d9f16_f64205c1",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
