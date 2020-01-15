@@ -245,6 +245,24 @@
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80d9f16_f64205c1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-15T14:43:10Z",
+      "side": 1,
+      "message": "Yes, it is just a normal token sequence, so comma rules apply. I would express equality either in terms of a token sequence or string, but not a combination. So that means that it would be up to the consumer to interpret the tokens, which would just notice it as comment tokens.\n\nBut it may make sense to tighten this down in the future if it is clearer what it means for two token sequences to be equal.",
+      "parentUuid": "4708b4c7_a832b49c",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }

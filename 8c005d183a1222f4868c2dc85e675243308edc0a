@@ -125,6 +125,30 @@
       "revId": "8c005d183a1222f4868c2dc85e675243308edc0a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13bcae72_660939b9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-15T14:43:10Z",
+      "side": 1,
+      "message": "What is stored is the string representation. The balanced token sequence is just used to detect the start and the end of the attribute itself. IOW, this describes how the information passes through the system, but the handling is up to the consume of the tag.",
+      "parentUuid": "307bb8ac_5b391bf6",
+      "range": {
+        "startLine": 1391,
+        "startChar": 30,
+        "endLine": 1391,
+        "endChar": 58
+      },
+      "revId": "8c005d183a1222f4868c2dc85e675243308edc0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
