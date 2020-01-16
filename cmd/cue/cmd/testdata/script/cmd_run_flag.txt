@@ -1,0 +1,24 @@
+cue cmd run --who Gophers
+stdout 'Hello Gophers!'
+
+-- task.cue --
+package home
+message: "Hello \()!"
+
+-- task_tool.cue --
+package home
+
+import (
+    "tool/cli"
+    "tool/flag"
+)
+
+command: run: task: {
+    flags: flag.Set & {
+        // whom to say hi to
+        who: string | *"World"
+    }
+    print: cli.Print & {
+        cmd: "echo \(task.flags)"
+    }
+}

@@ -15,8 +15,13 @@
 package cmd
 
 import (
+	"strings"
+	"unicode/utf8"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+
+	"cuelang.org/go/cue"
 )
 
 // Common flags
@@ -101,4 +106,106 @@ func (f *stringFlag) String(cmd *Command) string {
 		return f.def
 	}
 	return v
+}
+
+func (c *commandIndex) addFlags(sub *cobra.Command, v cue.Value) {
+	id := v.Lookup("$id")
+	if !id.Exists() {
+		for iter, _ := v.Fields(); iter.Next(); {
+			c.addFlags(sub, iter.Value())
+		}
+		return
+	}
+
+	if kind, _ := id.String(); kind != "tool/flag.Set" {
+		return
+	}
+
+	shorthands := map[string]string{}
+	for iter, _ := v.Fields(); iter.Next(); {
+		name := iter.Label()
+		if utf8.RuneCountInString(name) != 1 {
+			continue
+		}
+		v := iter.Value()
+		_, path := v.Reference()
+		if len(path) == 0 {
+			c.errf(v.Pos(), "shorthand %q must refer to other flag in same section")
+			continue
+		}
+		shorthands[path[len(path)-1]] = name
+	}
+
+	for iter, _ := v.Fields(); iter.Next(); {
+		name := iter.Label()
+		if utf8.RuneCountInString(name) == 1 {
+			continue
+		}
+
+		v := iter.Value()
+
+		doc := ""
+		for _, cg := range v.Doc() {
+			str := strings.TrimSpace(cg.Text())
+			if str == "" {
+				continue
+			}
+			if cg.Doc || doc == "" {
+				doc = str
+			}
+		}
+
+		def, hasDefault := v.Default()
+
+		parseDef := func(x interface{}) {
+			if !hasDefault {
+				return
+			}
+			err := def.Decode(x)
+			if err != nil {
+				c.errf(def.Pos(), "invalid %T default %q: %v", x, def, err)
+			}
+		}
+
+		short := shorthands[name]
+
+		switch k := v.IncompleteKind(); k {
+		case cue.StringKind:
+			var d string
+			parseDef(&d)
+			sub.Flags().StringP(name, short, d, doc)
+		case cue.IntKind:
+			var d int64
+			parseDef(&d)
+			sub.Flags().Int64P(name, short, d, doc)
+		case cue.FloatKind, cue.NumberKind:
+			var d float64
+			parseDef(&d)
+			sub.Flags().Float64P(name, short, d, doc)
+		case cue.BoolKind:
+			var d bool
+			parseDef(&d)
+			sub.Flags().BoolP(name, short, d, doc)
+		case cue.ListKind:
+			switch e, _ := v.Elem(); e.IncompleteKind() {
+			case cue.StringKind, cue.BytesKind:
+				var d []string
+				parseDef(&d)
+				sub.Flags().StringSliceP(name, short, d, doc)
+
+			case cue.IntKind:
+				var d []int
+				parseDef(&d)
+				sub.Flags().IntSliceP(name, short, d, doc)
+
+			case cue.BoolKind:
+				var d []bool
+				parseDef(&d)
+				sub.Flags().BoolSliceP(name, short, d, doc)
+
+			default:
+				c.errf(v.Pos(), "unsupported list type %s", k)
+			}
+		}
+	}
 }

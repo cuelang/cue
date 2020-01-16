@@ -8,6 +8,9 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+
+	// cuerrors is set to avoid including it in cue/builtins.go when generating.
+
 	"encoding/base64"
 	"encoding/csv"
 	"encoding/hex"
@@ -3657,6 +3660,20 @@ var builtinPackages = map[string]*builtinPkg{
 		glob: !=""
 		files: [...string]
 	}
+}`,
+	},
+	"tool/flag": &builtinPkg{
+		native: []*builtin{{}},
+		cue: `{
+	Set :: {
+		[Name]: Value
+		$id:    "tool/flag.Set"
+		[Name]: Value
+	}
+	Name ::   =~"[a-z]([_a-z1-9]*[a-z1-9])?"
+	Value ::  Scalar | Array
+	Scalar :: bool | number | string
+	Array :: [...Scalar]
 }`,
 	},
 	"tool/http": &builtinPkg{

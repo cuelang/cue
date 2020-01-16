@@ -547,8 +547,7 @@ func (c *commandIndex) parseCommand(spec *subSpec, pkgName, name string, v cue.V
 	// will still have to verify down the line.
 	sub.Aliases = []string{name}
 
-	// TODO: piece out flag section from command definition
-	// c.addFlags(sub, v)
+	c.addFlags(sub, v)
 
 	fullName := fmt.Sprintf("%s/%s", pkgName, name)
 	if !strings.HasPrefix(sub.Use, prefix) {

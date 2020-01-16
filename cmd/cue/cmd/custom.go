@@ -29,7 +29,6 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 
 	"cuelang.org/go/cue"
@@ -70,49 +69,55 @@ var (
 	stderr io.Writer = os.Stderr
 )
 
-func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.Instance) (*cobra.Command, error) {
-	if tools == nil {
-		return nil, errors.New("no commands defined")
-	}
+// func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.Instance) (*cobra.Command, error) {
+// 	if tools == nil {
+// 		return nil, errors.New("no commands defined")
+// 	}
 
-	// TODO: validate allowing incomplete.
-	o := tools.Lookup(typ, name)
-	if !o.Exists() {
-		return nil, o.Err()
-	}
-	docs := o.Doc()
-	var usage, short, long string
-	if len(docs) > 0 {
-		txt := docs[0].Text()
-		short, txt = splitLine(txt)
-		short = lookupString(o, "short", short)
-		if strings.HasPrefix(txt, "Usage:") {
-			usage, txt = splitLine(txt[len("Usage:"):])
-		}
-		usage = lookupString(o, "usage", usage)
-		usage = lookupString(o, "$usage", usage)
-		long = lookupString(o, "long", txt)
-	}
-	if !strings.HasPrefix(usage, name+" ") {
-		usage = name
-	}
-	sub := &cobra.Command{
-		Use:   usage,
-		Short: lookupString(o, "$short", short),
-		Long:  lookupString(o, "$long", long),
-		RunE: mkRunE(c, func(cmd *Command, args []string) error {
-			// TODO:
-			// - parse flags and env vars
-			// - constrain current config with config section
+// 	// TODO: validate allowing incomplete.
+// 	o := tools.Lookup(typ, name)
+// 	if !o.Exists() {
+// 		return nil, o.Err()
+// 	}
+// 	docs := o.Doc()
+// 	var usage, short, long string
+// 	if len(docs) > 0 {
+// 		txt := docs[0].Text()
+// 		short, txt = splitLine(txt)
+// 		short = lookupString(o, "short", short)
+// 		if strings.HasPrefix(txt, "Usage:") {
+// 			usage, txt = splitLine(txt[len("Usage:"):])
+// 		}
+// 		usage = lookupString(o, "usage", usage)
+// 		usage = lookupString(o, "$usage", usage)
+// 		long = lookupString(o, "long", txt)
+// 	}
+// 	if !strings.HasPrefix(usage, name+" ") {
+// 		usage = name
+// 	}
+// 	sub := &cobra.Command{
+// 		Use:   usage,
+// 		Short: lookupString(o, "$short", short),
+// 		Long:  lookupString(o, "$long", long),
+// 		RunE: mkRunE(c, func(cmd *Command, args []string) error {
+// 			// TODO:
+// 			// - parse flags and env vars
+// 			// - constrain current config with config section
 
-			return doTasks(cmd, typ, name, tools)
-		}),
-	}
-	parent.AddCommand(sub)
+// 			return doTasks(cmd, typ, name, tools)
+// 		}),
+// 	}
 
-	// TODO: implement var/flag handling.
-	return sub, nil
-}
+// 	// err := addCustomFlags(sub, o)
+// 	// if err != nil {
+// 	// 	return nil, err
+// 	// }
+
+// 	parent.AddCommand(sub)
+
+// 	// TODO: implement var/flag handling.
+// 	return sub, nil
+// }
 
 type customRunner struct {
 	name string
