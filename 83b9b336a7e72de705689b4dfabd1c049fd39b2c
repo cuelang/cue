@@ -281,6 +281,24 @@
       "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f410a4_e2f341fe",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-16T10:20:07Z",
+      "side": 1,
+      "message": "That is a good point. They are tokens from the perspective of the Scanner implementation, but not in the spec. So that means comments are allowed as long as an attribute consumer allows new lines, which is what the spec says a comment translates in to.",
+      "parentUuid": "dd539132_9005ae05",
+      "revId": "83b9b336a7e72de705689b4dfabd1c049fd39b2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }

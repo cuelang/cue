@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "370793bb_039e9cd3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-16T10:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e045fc5_a1a561c8",
+      "range": {
+        "startLine": 1380,
+        "startChar": 34,
+        "endLine": 1380,
+        "endChar": 38
+      },
+      "revId": "8c005d183a1222f4868c2dc85e675243308edc0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2a60b20_6932d422",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "9df45ad1_9e0560af",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-16T10:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a60b20_6932d422",
+      "range": {
+        "startLine": 1381,
+        "startChar": 22,
+        "endLine": 1381,
+        "endChar": 25
+      },
+      "revId": "8c005d183a1222f4868c2dc85e675243308edc0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b89120ca_5d05409a",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -93,6 +141,30 @@
       "writtenOn": "2020-01-13T22:20:21Z",
       "side": 1,
       "message": "???",
+      "range": {
+        "startLine": 1382,
+        "startChar": 45,
+        "endLine": 1382,
+        "endChar": 48
+      },
+      "revId": "8c005d183a1222f4868c2dc85e675243308edc0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab001dc1_86200eae",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-16T10:20:07Z",
+      "side": 1,
+      "message": "removed dangling subsentence.",
+      "parentUuid": "b89120ca_5d05409a",
       "range": {
         "startLine": 1382,
         "startChar": 45,
