@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69832af4_98fc8455",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000069
+      },
+      "writtenOn": "2020-01-17T06:04:52Z",
+      "side": 1,
+      "message": "Is it safe to ignore the error here? `if err \u003d\u003d nil` guarantees that `after` is a list.",
+      "revId": "de49c6db15f3d94dbb2ff166d8d5a84b49ee3ef3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
