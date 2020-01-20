@@ -80,8 +80,8 @@ func Validate(b []byte, v cue.Value) (bool, error) {
 			return false, err
 		}
 
-		if x := v.Unify(inst.Value()); x.Err() != nil {
-			return false, x.Err()
+		if err := v.Subsume(inst.Value(), cue.Final()); err != nil {
+			return false, err
 		}
 	}
 }

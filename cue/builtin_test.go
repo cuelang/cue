@@ -120,6 +120,9 @@ func TestBuiltins(t *testing.T) {
 		test("encoding/yaml", `yaml.Validate("a: 2\n---\na: 4", {a:<5})`),
 		`true`,
 	}, {
+		test("encoding/yaml", `yaml.Validate("a: 2\n", {a:<5, b:int})`),
+		`_|_(error in call to encoding/yaml.Validate: value not an instance)`,
+	}, {
 		test("strconv", `strconv.FormatUint(64, 16)`),
 		`"40"`,
 	}, {

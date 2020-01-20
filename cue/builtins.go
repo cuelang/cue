@@ -30,14 +30,15 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/cockroachdb/apd/v2"
+	goyaml "github.com/ghodss/yaml"
+	"golang.org/x/net/idna"
+
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/third_party/yaml"
-	"github.com/cockroachdb/apd/v2"
-	goyaml "github.com/ghodss/yaml"
-	"golang.org/x/net/idna"
 )
 
 func init() {
@@ -723,8 +724,8 @@ var builtinPackages = map[string]*builtinPkg{
 								return false, err
 							}
 
-							if x := v.Unify(inst.Value()); x.Err() != nil {
-								return false, x.Err()
+							if err := v.Subsume(inst.Value(), Final()); err != nil {
+								return false, err
 							}
 						}
 					}()
@@ -3591,18 +3592,19 @@ var builtinPackages = map[string]*builtinPkg{
 		native: []*builtin{{}},
 		cue: `{
 	Command: {
-		tasks: {
-			[name=string]: Task
-		}
-		$type:   "tool.Command"
-		$name:   !=""
-		$usage?: =~"^\($name) "
+		$usage?: string
 		$short?: string
 		$long?:  string
+		Tasks
 	}
 	Task: {
-		$type: "tool.Task"
-		$id:   =~"\\."
+		$type:   "tool.Task"
+		$id:     =~"\\."
+		$after?: Task | [...Task]
+	}
+	Name :: =~"^\\PL([-](\\PL|\\PN))*$"
+	Tasks:  Task | {
+		[name=string]: Tasks
 	}
 }`,
 	},
@@ -3619,11 +3621,10 @@ var builtinPackages = map[string]*builtinPkg{
 		native: []*builtin{{}},
 		cue: `{
 	Run: {
-		$id:      *"tool/exec.Run" | "exec"
-		cmd:      string | [string, ...string]
-		install?: string | [string, ...string]
+		$id: *"tool/exec.Run" | "exec"
+		cmd: string | [string, ...string]
 		env: {
-			[string]: string
+			[string]: string | [...=~"="]
 		}
 		stdout:  *null | string | bytes
 		stderr:  *null | string | bytes
