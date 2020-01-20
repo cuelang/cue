@@ -39,7 +39,7 @@ type value interface {
 
 	// subsumesImpl is only defined for non-reference types.
 	// It should only be called by the subsumes function.
-	subsumesImpl(*context, value, subsumeMode) bool
+	subsumesImpl(*subsumer, value) bool
 }
 
 type evaluated interface {
@@ -1695,7 +1695,8 @@ func (x *disjunction) normalize(ctx *context, src source) mVal {
 		if isBottom(lt.val) {
 			return true
 		}
-		return (!lt.marked || gt.marked) && subsumes(ctx, gt.val, lt.val, 0)
+		s := subsumer{ctx: ctx}
+		return (!lt.marked || gt.marked) && s.subsumes(gt.val, lt.val)
 	}
 	k := 0
 

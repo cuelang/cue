@@ -404,10 +404,11 @@ func TestSubsume(t *testing.T) {
 		607: {subsumes: false, in: `a: close({b: 1}), b: close({b?: 1})`},
 		608: {subsumes: true, in: `a: {}, b: close({})`},
 		609: {subsumes: true, in: `a: {}, b: close({foo?: 1})`},
+		610: {subsumes: true, in: `a: {foo?:1}, b: close({})`},
 
 		// Definitions are not regular fields.
-		610: {subsumes: false, in: `a: {a :: 1}, b: {a: 1}`},
-		611: {subsumes: false, in: `a: {a: 1}, b: {a :: 1}`},
+		630: {subsumes: false, in: `a: {a :: 1}, b: {a: 1}`},
+		631: {subsumes: false, in: `a: {a: 1}, b: {a :: 1}`},
 	}
 
 	re := regexp.MustCompile(`a: (.*).*b: ([^\n]*)`)
@@ -432,7 +433,8 @@ func TestSubsume(t *testing.T) {
 					b = arc.v
 				}
 			}
-			got := subsumes(ctx, a, b, tc.mode)
+			s := subsumer{ctx: ctx, mode: tc.mode}
+			got := s.subsumes(a, b)
 			if got != tc.subsumes {
 				t.Errorf("got %v; want %v (%v vs %v)", got, tc.subsumes, a.kind(), b.kind())
 			}
@@ -443,5 +445,5 @@ func TestSubsume(t *testing.T) {
 func TestTouchBottom(t *testing.T) {
 	// Just call this function to mark coverage. It is otherwise never called.
 	var x bottom
-	x.subsumesImpl(nil, &bottom{}, 0)
+	x.subsumesImpl(nil, &bottom{})
 }

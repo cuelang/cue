@@ -231,7 +231,7 @@ func (x *builtin) evalPartial(ctx *context) evaluated {
 	return x
 }
 
-func (x *builtin) subsumesImpl(ctx *context, v value, mode subsumeMode) bool {
+func (x *builtin) subsumesImpl(s *subsumer, v value) bool {
 	if y, ok := v.(*builtin); ok {
 		return x == y
 	}
