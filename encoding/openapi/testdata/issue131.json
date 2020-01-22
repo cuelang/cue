@@ -16,7 +16,8 @@
                "block1": {
                   "$ref": "#/components/schemas/Block"
                }
-            }
+            },
+            "additionalProperties": false
          },
          "Block": {
             "type": "object",
@@ -33,7 +34,8 @@
                   "type": "number",
                   "exclusiveMaximum": 10
                }
-            }
+            },
+            "additionalProperties": false
          }
       }
    }

@@ -1273,6 +1273,11 @@ func (v Value) Fields(opts ...Option) (Iterator, error) {
 	return Iterator{ctx: ctx, val: v, iter: n, len: len(n.arcs)}, nil
 }
 
+// IsClosed reports whether this struct is closed.
+func (s *Struct) IsClosed() bool {
+	return s.s.isClosed()
+}
+
 // Lookup reports the value at a path starting from v.
 // The empty path returns v itself.
 //

@@ -652,6 +652,15 @@ func (b *builder) object(v cue.Value) {
 		b.setSingle("properties", properties, false)
 	}
 
+	if st, err := v.Struct(); err == nil {
+		if st.IsClosed() {
+			// JSON schema allows additionalProperties by
+			// default, setting it to false if the struct
+			// is closed.
+			b.setSingle("additionalProperties", false, true)
+		}
+	}
+
 	if t, ok := v.Elem(); ok && (b.core == nil || b.core.items == nil) {
 		schema := b.schema(nil, "*", t)
 		if len(schema.kvs) > 0 {

@@ -21,7 +21,8 @@
                         "type": "string",
                         "format": "string"
                      }
-                  }
+                  },
+                  "additionalProperties": false
                },
                {
                   "required": [
@@ -33,7 +34,8 @@
                         "type": "string",
                         "format": "string"
                      }
-                  }
+                  },
+                  "additionalProperties": false
                }
             ]
          },

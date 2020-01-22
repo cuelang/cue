@@ -23,12 +23,14 @@
                {
                   "required": [
                      "exact"
-                  ]
+                  ],
+                  "additionalProperties": false
                },
                {
                   "required": [
                      "regex"
-                  ]
+                  ],
+                  "additionalProperties": false
                }
             ]
          },
@@ -59,12 +61,14 @@
                      {
                         "required": [
                            "exact"
-                        ]
+                        ],
+                        "additionalProperties": false
                      },
                      {
                         "required": [
                            "regex"
-                        ]
+                        ],
+                        "additionalProperties": false
                      }
                   ]
                },
@@ -86,12 +90,14 @@
                         {
                            "required": [
                               "exact"
-                           ]
+                           ],
+                           "additionalProperties": false
                         },
                         {
                            "required": [
                               "regex"
-                           ]
+                           ],
+                           "additionalProperties": false
                         }
                      ]
                   }
