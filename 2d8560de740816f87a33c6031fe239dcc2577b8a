@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d45cd1_c56945b8",
+        "filename": ".github/workflows/test.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-01-24T12:56:04Z",
+      "side": 0,
+      "message": "I prefer to keep both tests. The non-race tests run much faster and give feedback sooner on possible failure.\n\nThis may change with cache enabled, but I prefer to do this then in a separate step once confirmed.",
+      "revId": "2d8560de740816f87a33c6031fe239dcc2577b8a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
