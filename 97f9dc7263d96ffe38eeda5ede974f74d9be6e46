@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84280fbe_51bb55f0",
+        "filename": "cmd/cue/cmd/root.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-01-30T08:45:49Z",
+      "side": 1,
+      "message": "the `pkg \u003d\u003d \"_\"` case here is unnecessary, no?",
+      "revId": "97f9dc7263d96ffe38eeda5ede974f74d9be6e46",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b00727_17ba9dd0",
+        "filename": "cmd/cue/cmd/root.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-01-30T08:45:49Z",
+      "side": 1,
+      "message": "are we appeasing some tool with the `_ \u003d ` bits? if that happens to be errcheck, remember that it doesn\u0027t do well with false positives at all, so it might not be worth paying attention to.",
+      "revId": "97f9dc7263d96ffe38eeda5ede974f74d9be6e46",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe36fd2_3b6ef8d4",
+        "filename": "cmd/cue/cmd/root.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-01-30T08:45:49Z",
+      "side": 1,
+      "message": "are you sure you didn\u0027t mean !strings.ContainsAny(s, `/\\.`) here?",
+      "revId": "97f9dc7263d96ffe38eeda5ede974f74d9be6e46",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
