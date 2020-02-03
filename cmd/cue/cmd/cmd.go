@@ -24,7 +24,7 @@ import (
 // TODO: generate long description from documentation.
 
 func newCmdCmd(c *Command) *cobra.Command {
-	return &cobra.Command{
+	cmd := &cobra.Command{
 		Use:   "cmd <name> [-x] [instances]",
 		Short: "run a user-defined shell command",
 		Long: `cmd executes defined the named command for each of the named instances.
@@ -231,4 +231,9 @@ Ensure commands are defined in a "_tool.cue" file.
 			return nil
 		}),
 	}
+
+	cmd.Flags().StringArrayP(string(flagTags), "t", nil,
+		"set the value of a tagged field")
+
+	return cmd
 }
