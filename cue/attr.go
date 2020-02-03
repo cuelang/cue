@@ -117,8 +117,8 @@ notSame:
 	return &attributes{as[:k+1]}, nil
 }
 
-// parsedAttr holds positional information for a single parsedAttr.
-type parsedAttr struct {
+// Attr holds positional information for a single Attr.
+type Attr struct {
 	fields []keyValue
 }
 
@@ -131,7 +131,7 @@ func (kv *keyValue) text() string  { return kv.data }
 func (kv *keyValue) key() string   { return kv.data[:kv.equal] }
 func (kv *keyValue) value() string { return kv.data[kv.equal+1:] }
 
-func parseAttrBody(ctx *context, src source, s string, a *parsedAttr) (err *bottom) {
+func parseAttrBody(ctx *context, src source, s string, a *Attr) (err *bottom) {
 	i := 0
 	for {
 		// always scan at least one, possibly empty element.
@@ -150,7 +150,7 @@ func parseAttrBody(ctx *context, src source, s string, a *parsedAttr) (err *bott
 	return nil
 }
 
-func scanAttributeElem(ctx *context, src source, s string, a *parsedAttr) (n int, err *bottom) {
+func scanAttributeElem(ctx *context, src source, s string, a *Attr) (n int, err *bottom) {
 	// try CUE string
 	kv := keyValue{}
 	if n, kv.data, err = scanAttributeString(ctx, src, s); n == 0 {
