@@ -109,5 +109,4 @@ func (c *cmdGlob) Run(ctx *task.Context) (res interface{}, err error) {
 	}
 	files := map[string]interface{}{"files": m}
 	return files, err
-	// return m, err
 }
