@@ -437,6 +437,12 @@ func TestBuiltins(t *testing.T) {
 		test("encoding/csv", `csv.Encode([["a", "b"], ["c"]])`),
 		`"a,b\nc\n"`,
 	}, {
+		test("encoding/cue", `cue.Marshal([["a", "b"], ["c"]])`),
+		`"[[\"a\", \"b\"], [\"c\"]]"`,
+	}, {
+		test("encoding/cue", `cue.Marshal({c: {f: >0}, c: {f: <10, g: ["a", "b", "c"]}})`),
+		`"{\n\tc: {\n\t\tf: >0 & <10\n\t\tg: [\"a\", \"b\", \"c\"]\n\t}\n}"`,
+	}, {
 		test("encoding/json", `json.Valid("1")`),
 		`true`,
 	}, {
