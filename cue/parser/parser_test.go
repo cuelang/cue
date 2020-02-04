@@ -173,6 +173,12 @@ func TestParse(t *testing.T) {
 		`,
 		"a: {b: {c: d}}, c: a, d: a.b, e: a.b.c, \"f\": f, [X=_]: X",
 	}, {
+		"empty fields",
+		`
+		"": 3
+		`,
+		`"": 3`,
+	}, {
 		"expressions",
 		`	a: (2 + 3) * 5
 			b: (2 + 3) + 4
@@ -465,6 +471,24 @@ bar: 2
 		import . "foo"
 		`,
 		out: "import , \"foo\"\nexpected 'STRING', found '.'",
+	}, {
+		desc: "attributes",
+		in: `
+		package name
+
+		@t1(v1)
+
+		{
+			@t2(v2)
+		}
+		a: {
+			a: 1
+			@t3(v3)
+			@t4(v4)
+			c: 2
+		}
+		`,
+		out: "package name, @t1(v1), {@t2(v2)}, a: {a: 1, @t3(v3), @t4(v4), c: 2}",
 	}}
 	for _, tc := range testCases {
 		t.Run(tc.desc, func(t *testing.T) {

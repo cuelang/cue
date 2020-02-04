@@ -741,6 +741,40 @@ var builtinPackages = map[string]*builtinPkg{
 								return false, err
 							}
 
+							if err := v.Subsume(inst.Value(), Final()); err != nil {
+								return false, err
+							}
+						}
+					}()
+				}
+			},
+		}, {
+			Name:   "ValidatePartial",
+			Params: []kind{bytesKind | stringKind, topKind},
+			Result: boolKind,
+			Func: func(c *callCtxt) {
+				b, v := c.bytes(0), c.value(1)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						d, err := yaml.NewDecoder("yaml.ValidatePartial", b)
+						if err != nil {
+							return false, err
+						}
+						r := internal.GetRuntime(v).(*Runtime)
+						for {
+							expr, err := d.Decode()
+							if err != nil {
+								if err == io.EOF {
+									return true, nil
+								}
+								return false, err
+							}
+
+							inst, err := r.CompileExpr(expr)
+							if err != nil {
+								return false, err
+							}
+
 							if x := v.Unify(inst.Value()); x.Err() != nil {
 								return false, x.Err()
 							}
@@ -814,7 +848,7 @@ var builtinPackages = map[string]*builtinPkg{
 								return nil, err
 							}
 							for iter.Next() {
-								val := iter.Value()
+								val, _ := iter.Value().Default()
 								if val.Kind() == ListKind && depth != 0 {
 									d := depth - 1
 									values, err := flattenN(val, d)
@@ -2436,6 +2470,19 @@ var builtinPackages = map[string]*builtinPkg{
 	},
 	"regexp": &builtinPkg{
 		native: []*builtin{{
+			Name:   "Valid",
+			Params: []kind{stringKind},
+			Result: boolKind,
+			Func: func(c *callCtxt) {
+				pattern := c.string(0)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						_, err := regexp.Compile(pattern)
+						return err == nil, err
+					}()
+				}
+			},
+		}, {
 			Name:   "Find",
 			Params: []kind{stringKind, stringKind},
 			Result: stringKind,
@@ -3596,19 +3643,20 @@ var builtinPackages = map[string]*builtinPkg{
 		native: []*builtin{{}},
 		cue: `{
 	Command: {
-		tasks: {
-			[name=string]: Task
-		}
-		$type:   "tool.Command"
-		$name:   !=""
-		$usage?: =~"^\($name) "
+		$usage?: string
 		$short?: string
 		$long?:  string
+		Tasks
+	}
+	Tasks: Task | {
+		[name=string]: Tasks
 	}
 	Task: {
-		$type: "tool.Task"
-		$id:   =~"\\."
+		$type:   "tool.Task"
+		$id:     =~"\\."
+		$after?: Task | [...Task]
 	}
+	Name :: =~"^\\PL([-](\\PL|\\PN))*$"
 }`,
 	},
 	"tool/cli": &builtinPkg{
@@ -3624,11 +3672,10 @@ var builtinPackages = map[string]*builtinPkg{
 		native: []*builtin{{}},
 		cue: `{
 	Run: {
-		$id:      *"tool/exec.Run" | "exec"
-		cmd:      string | [string, ...string]
-		install?: string | [string, ...string]
+		$id: *"tool/exec.Run" | "exec"
+		cmd: string | [string, ...string]
 		env: {
-			[string]: string
+			[string]: string | [...=~"="]
 		}
 		stdout:  *null | string | bytes
 		stderr:  *null | string | bytes
@@ -3709,8 +3756,8 @@ var builtinPackages = map[string]*builtinPkg{
 	"tool/os": &builtinPkg{
 		native: []*builtin{{}},
 		cue: `{
-	Value :: bool | number | *string | null
 	Name ::  !="" & !~"^[$]"
+	Value :: bool | number | *string | null
 	Setenv: {
 		[Name]: Value
 		$id:    "tool/os.Setenv"

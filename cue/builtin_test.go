@@ -120,6 +120,18 @@ func TestBuiltins(t *testing.T) {
 		test("encoding/yaml", `yaml.Validate("a: 2\n---\na: 4", {a:<5})`),
 		`true`,
 	}, {
+		test("encoding/yaml", `yaml.Validate("a: 2\n", {a:<5, b:int})`),
+		`_|_(error in call to encoding/yaml.Validate: value not an instance)`,
+	}, {
+		test("encoding/yaml", `yaml.ValidatePartial("a: 2\n---\na: 4", {a:<3})`),
+		`_|_(error in call to encoding/yaml.ValidatePartial: invalid value 4 (out of bound <3))`,
+	}, {
+		test("encoding/yaml", `yaml.ValidatePartial("a: 2\n---\na: 4", {a:<5})`),
+		`true`,
+	}, {
+		test("encoding/yaml", `yaml.ValidatePartial("a: 2\n", {a:<5, b:int})`),
+		`true`,
+	}, {
 		test("strconv", `strconv.FormatUint(64, 16)`),
 		`"40"`,
 	}, {
@@ -167,6 +179,9 @@ func TestBuiltins(t *testing.T) {
 	}, {
 		test("list", `list.FlattenN([1, [[2, 3], []], [4]], 2)`),
 		`[1,2,3,4]`,
+	}, {
+		test("list", `list.FlattenN([[1, 2] | *[]], -1)`),
+		`[]`,
 	}, {
 		test("list", `list.FlattenN("foo", 1)`),
 		`_|_(error in call to list.FlattenN: cannot use value "foo" (type string) as list)`,
@@ -354,9 +369,16 @@ func TestBuiltins(t *testing.T) {
 		`[{A: "l", B: "o"},{A: "o", B: "o"},{A: "r", B: "o"}]`,
 	}, {
 		test("regexp", `regexp.FindAllNamedSubmatch(#"f(?P<A>optional)?"#, "fbla", -1)`),
-		`[{A: ""}]`}, {
+		`[{A: ""}]`,
+	}, {
 		test("regexp", `regexp.FindAllNamedSubmatch(#"f(?P<A>\w)(?P<B>\w)"#, "aglom", -1)`),
 		`_|_(error in call to regexp.FindAllNamedSubmatch: no match)`,
+	}, {
+		test("regexp", `regexp.Valid & "valid"`),
+		`"valid"`,
+	}, {
+		test("regexp", `regexp.Valid & "invalid)"`),
+		"_|_(error in call to regexp.Valid: error parsing regexp: unexpected ): `invalid)`)",
 	}, {
 		test("strconv", `strconv.FormatBool(true)`),
 		`"true"`,
