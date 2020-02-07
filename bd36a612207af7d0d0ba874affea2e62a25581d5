@@ -226,6 +226,24 @@
       "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743afa9b_e3d11264",
+        "filename": "cmd/cue/cmd/testdata/script/import_context.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdef477d_e8eb3a9d",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
