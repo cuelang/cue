@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2b12c3c_ce1b51fd",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "Maybe just include the schema for the data in Cue format, just to be precise?\n\n{\n\t// data holds the original source data\n\t// (perhaps one of several records in a file).\n\tdata: _\n\n\t// filename holds the full path to the file.\n\tfilename: string\n\n\t// index holds the 0-based index element of the\n\t// record within the file. For files containing only\n\t// one record, this will be 0.\n\tindex: int \u0026 \u003e\u003d0 \u0026 \u003crecordCount\n\n\t// recordCount holds the total number of records\n\t// within the file.\n\trecordCount: int \u0026 \u003e\u003d1\n}",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733fa5da_2773e770",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "s/th/the/",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d531aa9_bf657a18",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "what is the \"x\" doing here? and why don\u0027t we see the Deployment record?\nAlso, would the newer syntax with colons work instead of spaces?",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a45a8668_8d29844d",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure this would result in a valid output file because both elements in foo.cue have the same value for the name field, so unification would fail AFAICS. Maybe worth giving them different names?",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c8993e_1277b5fb",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be (assuming some other name than \"booster\" for the second record in foo.yaml):\n\n{\n    \"foo.yaml\": {\n        booster: {\n            kind: \"Service\"\n            name: \"booster\"\n        }\n        otherName: {\n            kind: \"Deployment\"\n            name: \"otherName\"\n        }\n     }\n}\n?",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a274590_70e77ef2",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T15:45:52Z",
+      "side": 1,
+      "message": "This could still use some explanation (e.g. is it always a space-separated set of strings that provides the path?)",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
