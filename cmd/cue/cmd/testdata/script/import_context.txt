@@ -1,0 +1,43 @@
+cue import -o - -f --with-context -l '"\(path.Ext(filename)):\(index)" "\(data["@name"])"' --recursive ./import
+cmp stdout expect-stdout
+-- expect-stdout --
+".jsonl:0": elem1: {
+	kind:    "Service"
+	"@name": "elem1"
+}
+".jsonl:1": elem2: {
+	kind:    "Deployment"
+	"@name": "elem2"
+}
+".jsonl:2": elem3: {
+	kind:    "Service"
+	"@name": "elem3"
+}
+-- import/services.cue --
+service: [{
+	kind: "Service"
+	name: "elem1"
+}, {
+	kind: "Service"
+	name: "elem2"
+	json: "[1, 2]"
+}]
+deployment: [{
+	kind:     "Deployment"
+	name:     "elem"
+	replicas: 1
+}]
+-- import/services.jsonl --
+{
+    "kind": "Service",
+    "@name": "elem1"
+}
+{
+    "kind": "Deployment",
+    "@name": "elem2"
+}
+{
+    "kind": "Service",
+    "@name": "elem3"
+}
+-- cue.mod --
