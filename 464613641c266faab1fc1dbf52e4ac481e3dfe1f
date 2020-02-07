@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b3d9fdf_21685a11",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T16:01:13Z",
+      "side": 1,
+      "message": "Perhaps mention explicitly here (or elsewhere) that multiple occurrences of the flag provide successively deeper values of the path, rather than just implying it from the examples.",
+      "revId": "464613641c266faab1fc1dbf52e4ac481e3dfe1f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa15e75_d8aac860",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-07T16:01:13Z",
+      "side": 1,
+      "message": "Maybe add a comment saying why it\u0027s necessary to deal with these different cases separately?\nI can\u0027t work out why you can\u0027t do them both with the code in the ast.Expr branch.",
+      "revId": "464613641c266faab1fc1dbf52e4ac481e3dfe1f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
