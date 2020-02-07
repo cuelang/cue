@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0918d09d_ab3d31a3",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b12c3c_ce1b51fd",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "733fa5da_2773e770",
         "filename": "cmd/cue/cmd/import.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-07T15:45:52Z",
       "side": 1,
       "message": "s/th/the/",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31deed0_653493da",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "I\u0027ve fixed this in the followup CL.",
+      "parentUuid": "733fa5da_2773e770",
       "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "56d72210_855f0c80",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "ditto.\n\nLeftover of even older syntax.",
+      "parentUuid": "0d531aa9_bf657a18",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a45a8668_8d29844d",
         "filename": "cmd/cue/cmd/import.go",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2020-02-07T15:45:52Z",
       "side": 1,
       "message": "I\u0027m not sure this would result in a valid output file because both elements in foo.cue have the same value for the name field, so unification would fail AFAICS. Maybe worth giving them different names?",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a316d93c_4cf307c3",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "Indeed. Just used kind instead.",
+      "parentUuid": "a45a8668_8d29844d",
       "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "219a12b2_278267ee",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c8993e_1277b5fb",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a274590_70e77ef2",
         "filename": "cmd/cue/cmd/import.go",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2020-02-07T15:45:52Z",
       "side": 1,
       "message": "This could still use some explanation (e.g. is it always a space-separated set of strings that provides the path?)",
+      "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07af6a17_d3b296cb",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-07T16:10:21Z",
+      "side": 1,
+      "message": "I\u0027ll updated in the next change, as the semantics is changing.",
+      "parentUuid": "3a274590_70e77ef2",
       "revId": "bd36a612207af7d0d0ba874affea2e62a25581d5",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
