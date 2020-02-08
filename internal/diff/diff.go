@@ -22,9 +22,31 @@ import (
 	"cuelang.org/go/cue/errors"
 )
 
-// Diff returns an edit script representing the difference between x and y.
+// Profile configures a diff operation.
+type Profile struct {
+	Concrete bool
+}
+
+var (
+	// Schema is the standard profile used for comparing schema.
+	Schema = schema
+	schema = &Profile{}
+
+	// Final is the standard profile for comparing data.
+	Final = data
+	data  = &Profile{
+		Concrete: true,
+	}
+)
+
+// Diff is a shorthand for Schema.Diff.
 func Diff(x, y cue.Value) (Kind, *EditScript) {
-	d := differ{}
+	return Schema.Diff(x, y)
+}
+
+// Diff returns an edit script representing the difference between x and y.
+func (p *Profile) Diff(x, y cue.Value) (Kind, *EditScript) {
+	d := differ{cfg: p}
 	return d.diffValue(x, y)
 }
 
@@ -137,11 +159,16 @@ func (e Edit) XPos() int  { return int(e.xPos - 1) }
 func (e Edit) YPos() int  { return int(e.yPos - 1) }
 
 type differ struct {
+	cfg     *Profile
 	options []cue.Option
 	errs    errors.Error
 }
 
 func (d *differ) diffValue(x, y cue.Value) (Kind, *EditScript) {
+	if d.cfg.Concrete {
+		x, _ = x.Default()
+		y, _ = y.Default()
+	}
 	if x.IncompleteKind() != y.IncompleteKind() {
 		return Modified, nil
 	}
