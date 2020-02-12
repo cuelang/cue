@@ -16,12 +16,12 @@ package cue
 
 import (
 	"cuelang.org/go/cue"
-	cueformat "cuelang.org/go/cue/format"
+	"cuelang.org/go/cue/format"
 )
 
 // Marshal returns the CUE encoding of v.
 func Marshal(v cue.Value) (string, error) {
 	n := v.Syntax()
-	b, err := cueformat.Node(n)
+	b, err := format.Node(n)
 	return string(b), err
 }

@@ -30,15 +30,16 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/cockroachdb/apd/v2"
+	goyaml "github.com/ghodss/yaml"
+	"golang.org/x/net/idna"
+
 	"cuelang.org/go/cue/errors"
-	cueformat "cuelang.org/go/cue/format"
+	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/third_party/yaml"
-	"github.com/cockroachdb/apd/v2"
-	goyaml "github.com/ghodss/yaml"
-	"golang.org/x/net/idna"
 )
 
 func init() {
@@ -145,21 +146,6 @@ func timeFormat(value, layout string) (bool, error) {
 		return false, fmt.Errorf("invalid time %q", value)
 	}
 	return true, nil
-}
-
-var boolValues = map[string]bool{
-	"1":     true,
-	"0":     false,
-	"t":     true,
-	"f":     false,
-	"T":     true,
-	"F":     false,
-	"true":  true,
-	"false": false,
-	"TRUE":  true,
-	"FALSE": false,
-	"True":  true,
-	"False": false,
 }
 
 var builtinPackages = map[string]*builtinPkg{
@@ -445,7 +431,7 @@ var builtinPackages = map[string]*builtinPkg{
 				if c.do() {
 					c.ret, c.err = func() (interface{}, error) {
 						n := v.Syntax()
-						b, err := cueformat.Node(n)
+						b, err := format.Node(n)
 						return string(b), err
 					}()
 				}
