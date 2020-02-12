@@ -116,12 +116,7 @@ everywhere: new
 				default:
 					c.InsertAfter(astutil.ApplyRecursively(&ast.Field{
 						Label: ast.NewIdent("iam"),
-						Value: &ast.StructLit{Elts: []ast.Decl{
-							&ast.Field{
-								Label: ast.NewIdent("here"),
-								Value: ast.NewIdent("new"),
-							},
-						}},
+						Value: ast.NewStruct(ast.NewIdent("here"), ast.NewIdent("new")),
 					}))
 				case "iam":
 					c.InsertAfter(&ast.Field{
@@ -189,7 +184,7 @@ d: "\(foo) is \(4)"
 						c.Replace(ast.NewIdent("s"))
 					}
 				case token.INT:
-					c.Replace(&ast.BasicLit{Kind: token.INT, Value: "4"})
+					c.Replace(ast.NewLit(token.INT, "4"))
 				}
 			}
 			return true

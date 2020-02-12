@@ -21,6 +21,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"sync"
 	"unicode"
@@ -28,11 +29,9 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 
-	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/ast/astutil"
 	"cuelang.org/go/cue/encoding"
-	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/load"
@@ -70,7 +69,7 @@ Examples:
   $ cue import ./... -type=json
 
 
-The -path flag
+The --path flag
 
 By default the parsed files are included as emit values. This default can be
 overridden by specifying a sequence of labels as you would in a CUE file.
@@ -78,15 +77,32 @@ An identifier or string label are interpreted as usual. A label expression is
 evaluated within the context of the imported file. label expressions may also
 refer to builtin packages, which will be implicitly imported.
 
+The --with-context flag can be used to evaluate the label expression within
+a struct with the following fields:
+
+{
+	// data holds the original source data
+	// (perhaps one of several records in a file).
+	data: _
+	// filename holds the full path to the file.
+	filename: string
+	// index holds the 0-based index element of the
+	// record within the file. For files containing only
+	// one record, this will be 0.
+	index: uint & <recordCount
+	// recordCount holds the total number of records
+	// within the file.
+	recordCount: int & >=1
+}
 
 Handling multiple documents or streams
 
 To handle Multi-document files, such as concatenated JSON objects or
 YAML files with document separators (---) the user must specify either the
--path, -list, or -files flag. The -path flag assign each element to a path
+--path, --list, or --files flag. The -path flag assign each element to a path
 (identical paths are treated as usual); -list concatenates the entries, and
--files causes each entry to be written to a different file. The -files flag
-may only be used if files are explicitly imported. The -list flag may be
+--files causes each entry to be written to a different file. The -files flag
+may only be used if files are explicitly imported. The --list flag may be
 used in combination with the -path flag, concatenating each entry to the
 mapped location.
 
@@ -107,13 +123,13 @@ Examples:
   }
 
   # include the parsed file at the root of the CUE file:
-  $ cue import -f -l "" foo.yaml
+  $ cue import -f foo.yaml
   $ cat foo.cue
   kind: Service
   name: booster
 
   # include the import config at the mystuff path
-  $ cue import -f -l mystuff foo.yaml
+  $ cue import -f -l '"mystuff"' foo.yaml
   $ cat foo.cue
   myStuff: {
       kind: Service
@@ -127,21 +143,29 @@ Examples:
   name: booster
   replicas: 1
 
-  # base the path values on th input
-  $ cue import -f -l '"\(strings.ToLower(kind))" "\(x.name)"' foo.yaml
+  # base the path values on the input
+  $ cue import -f -l 'strings.ToLower(kind)' -l name foo.yaml
   $ cat foo.cue
   service: booster: {
       kind: "Service"
       name: "booster"
   }
 
-  deployment: booster: {
+  # base the path values on the input and file name
+  $ cue import -f --with-context -l 'path.Base(filename)' -l data.kind foo.yaml
+  $ cat foo.cue
+  "foo.yaml": Service: {
+      kind: "Service"
+      name: "booster"
+  }
+
+  "foo.yaml": Deployment: {
       kind:     "Deployment"
       name:     "booster
       replicas: 1
   }
 
-  # base the path values on th input
+  # include all files as list elements
   $ cue import -f -list -foo.yaml
   $ cat foo.cue
   [{
@@ -153,8 +177,8 @@ Examples:
       replicas: 1
   }]
 
-  # base the path values on th input
-  $ cue import -f -list -l '"\(strings.ToLower(kind))"' foo.yaml
+  # collate files with the same path into a list
+  $ cue import -f -list -l 'strings.ToLower(kind)' foo.yaml
   $ cat foo.cue
   service: [{
       kind: "Service"
@@ -204,10 +228,11 @@ Example:
 	cmd.Flags().BoolP(string(flagForce), "f", false, "force overwriting existing files")
 	cmd.Flags().Bool(string(flagDryrun), false, "only run simulation")
 
-	cmd.Flags().StringP(string(flagPath), "l", "", "path to include root")
+	cmd.Flags().StringArrayP(string(flagPath), "l", nil, "CUE expression for single path component")
 	cmd.Flags().Bool(string(flagList), false, "concatenate multiple objects into a list")
 	cmd.Flags().Bool(string(flagFiles), false, "split multiple entries into different files")
 	cmd.Flags().BoolP(string(flagRecursive), "R", false, "recursively parse string values")
+	cmd.Flags().Bool(string(flagWithContext), false, "import as object with contextual data")
 
 	cmd.Flags().String("fix", "", "apply given fix")
 
@@ -217,8 +242,9 @@ Example:
 }
 
 const (
-	flagFiles     flagName = "files"
-	flagProtoPath flagName = "proto_path"
+	flagFiles       flagName = "files"
+	flagProtoPath   flagName = "proto_path"
+	flagWithContext flagName = "with-context"
 )
 
 type importStreamFunc func(path string, r io.Reader) ([]ast.Expr, error)
@@ -362,24 +388,26 @@ func processFile(cmd *Command, file *ast.File) (err error) {
 func processStream(cmd *Command, pkg, filename string, objs []ast.Expr) error {
 	if flagFiles.Bool(cmd) {
 		for i, f := range objs {
-			err := combineExpressions(cmd, pkg, newName(filename, i), f)
+			err := combineExpressions(cmd, pkg, filename, i, f)
 			if err != nil {
 				return err
 			}
 		}
 		return nil
 	} else if len(objs) > 1 {
-		if !flagList.Bool(cmd) && flagPath.String(cmd) == "" && !flagFiles.Bool(cmd) {
+		if !flagList.Bool(cmd) && len(flagPath.StringArray(cmd)) == 0 && !flagFiles.Bool(cmd) {
 			return fmt.Errorf("list, flag, or files flag needed to handle multiple objects in file %q", filename)
 		}
 	}
-	return combineExpressions(cmd, pkg, newName(filename, 0), objs...)
+	return combineExpressions(cmd, pkg, filename, 0, objs...)
 }
 
 // TODO: implement a more fine-grained approach.
 var mutex sync.Mutex
 
-func combineExpressions(cmd *Command, pkg, cueFile string, objs ...ast.Expr) error {
+func combineExpressions(cmd *Command, pkg, filename string, idx int, objs ...ast.Expr) error {
+	cueFile := newName(filename, idx)
+
 	mutex.Lock()
 	defer mutex.Unlock()
 
@@ -420,37 +448,38 @@ func combineExpressions(cmd *Command, pkg, cueFile string, objs ...ast.Expr) err
 	}
 
 	index := newIndex()
-	for _, expr := range objs {
+	for i, expr := range objs {
 
 		// Compute a path different from root.
 		var pathElems []ast.Label
 
 		switch {
-		case flagPath.String(cmd) != "":
+		case len(flagPath.StringArray(cmd)) > 0:
+			expr := expr
+			if flagWithContext.Bool(cmd) {
+				expr = ast.NewStruct(
+					"data", expr,
+					"filename", ast.NewString(filename),
+					"index", ast.NewLit(token.INT, strconv.Itoa(i)),
+					"recordCount", ast.NewLit(token.INT, strconv.Itoa(len(objs))),
+				)
+			}
 			inst, err := runtime.CompileExpr(expr)
 			if err != nil {
 				return err
 			}
 
-			labels, err := parsePath(flagPath.String(cmd))
-			if err != nil {
-				return err
-			}
-			for _, l := range labels {
-				switch x := l.(type) {
-				case *ast.Interpolation:
-					v := inst.Eval(x)
-					if v.Kind() == cue.BottomKind {
-						return v.Err()
-					}
-					pathElems = append(pathElems, v.Syntax().(ast.Label))
-
-				case *ast.Ident, *ast.BasicLit:
-					pathElems = append(pathElems, x)
-
-				case *ast.TemplateLabel:
-					return fmt.Errorf("template labels not supported in path flag")
+			for _, str := range flagPath.StringArray(cmd) {
+				l, err := parser.ParseExpr("<path flag>", str)
+				if err != nil {
+					return fmt.Errorf(`labels are of form "cue import -l foo -l 'strings.ToLower(bar)'": %v`, err)
 				}
+
+				str, err := inst.Eval(l).String()
+				if err != nil {
+					return fmt.Errorf("unsupported label path type: %v", err)
+				}
+				pathElems = append(pathElems, ast.NewString(str))
 			}
 		}
 
@@ -481,7 +510,7 @@ func combineExpressions(cmd *Command, pkg, cueFile string, objs ...ast.Expr) err
 			f.Decls = append(f.Decls, field)
 			for _, e := range pathElems[1:] {
 				newField := &ast.Field{Label: e}
-				newVal := &ast.StructLit{Elts: []ast.Decl{newField}}
+				newVal := ast.NewStruct(newField)
 				field.Value = newVal
 				field = newField
 			}
@@ -546,40 +575,6 @@ func (x *listIndex) label(label ast.Label) *listIndex {
 		x.index[key] = idx
 	}
 	return idx
-}
-
-func parsePath(exprs string) (p []ast.Label, err error) {
-	f, err := parser.ParseFile("<path flag>", exprs+": _")
-	if err != nil {
-		return nil, fmt.Errorf("parser error in path %q: %v", exprs, err)
-	}
-
-	if len(f.Decls) != 1 {
-		return nil, errors.New("path flag must be a space-separated sequence of labels")
-	}
-
-	for d := f.Decls[0]; ; {
-		field, ok := d.(*ast.Field)
-		if !ok {
-			// This should never happen
-			return nil, errors.New("%q not a sequence of labels")
-		}
-
-		p = append(p, field.Label)
-
-		v, ok := field.Value.(*ast.StructLit)
-		if !ok {
-			break
-		}
-
-		if len(v.Elts) != 1 {
-			// This should never happen
-			return nil, errors.New("path value may not contain a struct")
-		}
-
-		d = v.Elts[0]
-	}
-	return p, nil
 }
 
 func newName(filename string, i int) string {

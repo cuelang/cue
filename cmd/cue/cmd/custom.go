@@ -19,7 +19,6 @@ package cmd
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -33,6 +32,7 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"cuelang.org/go/cue"
+	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/internal"
 	itask "cuelang.org/go/internal/task"
 	"cuelang.org/go/internal/walk"
@@ -124,20 +124,11 @@ type customRunner struct {
 type taskKey string
 
 func (r *customRunner) keyForTask(t *task) taskKey {
-	a := []string{commandSection, r.name}
-	return keyForReference(append(a, t.path...)...)
+	return keyForReference(t.path...)
 }
 
 func keyForReference(ref ...string) (k taskKey) {
-	return taskKey(strings.Join(ref, "\000"))
-}
-
-func (r *customRunner) taskPath(t *task) []string {
-	return append([]string{commandSection, r.name}, t.path...)
-}
-
-func (r *customRunner) lookupTasks() cue.Value {
-	return r.root.Lookup(commandSection, r.name)
+	return taskKey(strings.Join(ref, "\000") + "\000")
 }
 
 func doTasks(cmd *Command, typ, command string, root *cue.Instance) error {
@@ -146,18 +137,42 @@ func doTasks(cmd *Command, typ, command string, root *cue.Instance) error {
 	return err
 }
 
-func (r *customRunner) referredTask(ref cue.Value) (t *task, ok bool) {
+func (r *customRunner) tagReference(t *task, ref cue.Value) error {
 	inst, path := ref.Reference()
-	if path != nil && inst == r.root {
-		if task := r.findTask(path); task != nil {
-			return task, true
+	if len(path) == 0 {
+		return errors.Newf(ref.Pos(),
+			"$after must be a reference or list of references, found %s", ref)
+	}
+	if inst != r.root {
+		return errors.Newf(ref.Pos(),
+			"reference in $after must refer to value in same package")
+	}
+	// TODO: allow referring to group of tasks.
+	if !r.tagDependencies(t, path) {
+		return errors.Newf(ref.Pos(),
+			"reference %s does not refer to task or task group",
+			strings.Join(path, "."), // TODO: more correct representation.
+		)
+
+	}
+	return nil
+}
+
+// tagDependencies marks dependencies in t correpsoning to ref
+func (r *customRunner) tagDependencies(t *task, ref []string) bool {
+	found := false
+	prefix := keyForReference(ref...)
+	for key, task := range r.index {
+		if strings.HasPrefix(string(key), string(prefix)) {
+			found = true
+			t.dep[task] = true
 		}
 	}
-	return nil, false
+	return found
 }
 
 func (r *customRunner) findTask(ref []string) *task {
-	for ; len(ref) > 2; ref = ref[:len(ref)-1] {
+	for ; len(ref) > 0; ref = ref[:len(ref)-1] {
 		if t := r.index[keyForReference(ref...)]; t != nil {
 			return t
 		}
@@ -183,8 +198,12 @@ func getTasks(q []*task, v cue.Value, stack []string) ([]*task, error) {
 	}
 
 	for iter, _ := v.Fields(); iter.Next(); {
+		l := iter.Label()
+		if strings.HasPrefix(l, "$") || l == "command" || l == "commands" {
+			continue
+		}
 		var err error
-		q, err = getTasks(q, iter.Value(), append(stack, iter.Label()))
+		q, err = getTasks(q, iter.Value(), append(stack, l))
 		if err != nil {
 			return nil, err
 		}
@@ -202,10 +221,10 @@ func executeTasks(cmd *Command, typ, command string, inst *cue.Instance) (err er
 		root:  inst,
 		index: map[taskKey]*task{},
 	}
-	tasks := cr.lookupTasks()
 
 	// Create task entries from spec.
-	queue, err := getTasks(nil, tasks, nil)
+	base := []string{commandSection, cr.name}
+	queue, err := getTasks(nil, cr.root.Lookup(base...), base)
 	if err != nil {
 		return err
 	}
@@ -216,19 +235,20 @@ func executeTasks(cmd *Command, typ, command string, inst *cue.Instance) (err er
 
 	// Mark dependencies for unresolved nodes.
 	for _, t := range queue {
-		task := tasks.Lookup(t.path...)
+		task := cr.root.Lookup(t.path...)
 
 		// Inject dependency in `$after` field
 		after := task.Lookup("$after")
 		if after.Err() == nil {
-			if dep, ok := cr.referredTask(after); ok {
-				t.dep[dep] = true
-			}
-			for iter, _ := after.List(); iter.Next(); {
-				if dep, ok := cr.referredTask(iter.Value()); ok {
-					t.dep[dep] = true
+			if after.Kind() != cue.ListKind {
+				err = cr.tagReference(t, after)
+			} else {
+				for iter, _ := after.List(); iter.Next(); {
+					err = cr.tagReference(t, iter.Value())
+					exitIfErr(cmd, inst, err, true)
 				}
 			}
+			exitIfErr(cmd, inst, err, true)
 		}
 
 		task.Walk(func(v cue.Value) bool {
@@ -275,7 +295,7 @@ func executeTasks(cmd *Command, typ, command string, inst *cue.Instance) (err er
 			// code does not look up new strings in the index and that the
 			// full configuration, as used by the tasks, is pre-evaluated.
 			m.Lock()
-			obj := tasks.Lookup(t.path...)
+			obj := cr.root.Lookup(t.path...)
 			// NOTE: ignore the linter warning for the following line:
 			// itask.Context is an internal type and we want to break if any
 			// fields are added.
@@ -285,11 +305,7 @@ func executeTasks(cmd *Command, typ, command string, inst *cue.Instance) (err er
 				err = c.Err
 			}
 			if err == nil && update != nil {
-				cr.root, err = cr.root.Fill(update, cr.taskPath(t)...)
-
-				if err == nil {
-					tasks = cr.lookupTasks()
-				}
+				cr.root, err = cr.root.Fill(update, t.path...)
 			}
 			m.Unlock()
 
@@ -410,7 +426,7 @@ func newTask(index int, path []string, v cue.Value) (*task, error) {
 	return &task{
 		Runner: runner,
 		index:  index,
-		path:   path,
+		path:   append([]string{}, path...), // make a copy.
 		done:   make(chan error),
 		dep:    make(map[*task]bool),
 	}, nil

@@ -528,7 +528,7 @@ func (p *protoConverter) messageField(s *ast.StructLit, i int, v proto.Visitee) 
 		name := p.ident(x.Position, x.Name)
 		f = &ast.Field{
 			Label: name,
-			Value: &ast.StructLit{Elts: []ast.Decl{f}},
+			Value: ast.NewStruct(f),
 		}
 		addComments(f, i, x.Comment, x.InlineComment)
 
@@ -630,7 +630,7 @@ func (p *protoConverter) enum(x *proto.Enum) {
 			// Add enum value to map
 			f := &ast.Field{
 				Label: p.stringLit(y.Position, y.Name),
-				Value: &ast.BasicLit{Value: strconv.Itoa(y.Integer)},
+				Value: ast.NewLit(token.INT, strconv.Itoa(y.Integer)),
 			}
 			valueMap.Elts = append(valueMap.Elts, f)
 

@@ -95,8 +95,8 @@ func TestGetenv(t *testing.T) {
 	}`
 
 	want := map[string]interface{}{
-		"CUEOSTESTMOOD": "yippie",
-		"CUEOSTESTTRUE": true,
+		"CUEOSTESTMOOD": ast.NewString("yippie"),
+		"CUEOSTESTTRUE": ast.NewBool(true),
 		"CUEOSTESTFALSE": &ast.BinaryExpr{
 			Op: token.OR,
 			X:  ast.NewBool(false),
@@ -104,14 +104,14 @@ func TestGetenv(t *testing.T) {
 		},
 		"CUEOSTESTBI": &ast.BinaryExpr{
 			Op: token.OR,
-			X:  &ast.BasicLit{Kind: token.INT, Value: "1"},
+			X:  ast.NewLit(token.INT, "1"),
 			Y:  ast.NewBool(true),
 		},
 		"CUEOSTESTNUM":  &ast.BasicLit{Kind: token.INT, Value: "34K"},
-		"CUEOSTESTNUMD": "not a num",
+		"CUEOSTESTNUMD": ast.NewString("not a num"),
 		"CUEOSTESTMULTI": &ast.BinaryExpr{
 			Op: token.OR,
-			X:  &ast.BasicLit{Kind: token.INT, Value: "10"},
+			X:  ast.NewLit(token.INT, "10"),
 			Y:  ast.NewString("10"),
 		},
 		"CUEOSTESTNULL": nil,
