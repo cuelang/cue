@@ -1,0 +1,298 @@
+// Copyright 2020 CUE Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package build
+
+import "path"
+
+File :: {
+	filename:        string
+	encoding:        Encoding
+	interpretation?: Interpretation
+	form?:           Form
+	tags?: {[string]: string}
+
+	if form == "schema" && encoding == "json" {
+		interpretation: *"jsonschema" | string
+	}
+
+	if filename != "" {
+		encoding: ext[path.Ext(filename)]
+	}
+}
+
+// Extension maps file extensions to default file properties.
+extensions: {
+	"":           _
+	".cue":       *encodings.cue | _
+	".json":      *encodings.json | _
+	".jsonl":     *encodings.jsonl | _
+	".ldjson":    *encodings.jsonl | _
+	".ndjson":    *encodings.jsonl | _
+	".yaml":      *encodings.yaml | _
+	".yml":       *encodings.yaml | _
+	".proto":     *encodings.proto | _
+	".textproto": *encodings.textpb | _
+	".pb":        *encodings.binpb | _
+	".txt":       *encodings.txt | _
+	".go":        encodings.go
+	// TODO: json-seq,
+}
+
+ext: ".json": *"json" | _
+
+file: File & {
+	form:     "schema"
+	filename: "foo.json"
+}
+
+fileInfo: {
+	file
+	form:     *"" | "schema"
+	encoding: _
+
+	// if form == "schema" && encoding == "json" {
+	//  interpretation: *"jsonschema" | string
+	// }
+}
+
+// A FileInfo defines how a file is encoded and interpreted.
+FileInfo :: {
+	file: File
+
+	// TODO: allow non-concrete embeddings.
+	// encodings[file.encoding]
+	*interpretations[file.interpretation] | {}
+	*forms[file.form] | {}
+
+	// Settings
+	data:       *true | false
+	references: *true | false
+	cycles:     *true | false
+	if !references {cycles: false}
+
+	definitions:  bool
+	optional:     bool
+	constraints:  bool
+	keepDefaults: bool
+	incomplete:   bool
+	imports:      bool
+	stream:       bool
+	docs:         bool
+	attributes:   true | *false
+}
+
+// A Encoding indicates a file format for representing a program.
+Encoding :: !=""
+
+// An Interpretation determines how a certain program should be interpreted.
+// For instance, data may be interpreted as describing a schema, which itself
+// can be converted to a CUE schema.
+Interpretation :: string
+
+Form :: string
+
+// Tags maps command line tags to file properties.
+Tags: {
+	"schema": forms.schema
+	"final":  forms.final
+	"graph":  forms.graph
+	"dag":    forms.dag
+	"data":   forms.data
+
+	"cue":   encodings.cue
+	"json":  encodings.json
+	"jsonl": encodings.jsonl
+	"yaml":  encodings.yaml
+	// "proto":  encodings.proto
+	// "textpb": encodings.textproto
+	// "binpb":  encodings.binproto
+	"txt": encodings.txt
+	"go":  encodings.go
+
+	"jsonschema": interpretations.jsonschema
+	"openapi":    interpretations.openapi
+}
+
+// forms defines schema for all forms. It does not include the form ID.
+forms: [Name=string]: FileInfo
+
+forms: "": _
+
+forms: Schema :: {
+
+	stream: true | *false
+
+	incomplete:   *true | false
+	definitions:  *true | false
+	optional:     *true | false
+	constraints:  *true | false
+	keepDefaults: *true | false
+	imports:      *true | false
+	optional:     *true | false
+}
+
+forms: schema: {
+	form: *"schema" | "final"
+
+	forms.Schema
+	docs: true | *false
+}
+
+forms: def : {
+	form: "def"
+
+	forms.Schema
+	docs: *true | false
+}
+
+forms: final: {
+	form: "final"
+	forms.Schema
+
+	keepDefaults: false
+	optional:     false
+}
+
+forms: graph: {
+	form: *"graph" | "dag" | "data"
+
+	docs: true | *false
+
+	data: true
+
+	incomplete:   false
+	definitions:  false
+	optional:     false
+	constraints:  false
+	keepDefaults: false
+	imports:      false
+}
+
+forms: GraphEncoding :: *forms.graph | {}
+
+forms: dag: {
+	form: *"dag" | "data"
+
+	forms.graph
+	cycles: false
+}
+
+forms: data: {
+	form: "data"
+
+	forms.dag
+	constraints: false
+	references:  false
+	cycles:      false
+	imports:     false
+	optional:    false
+}
+
+forms: DataEncoding :: *forms.data | {}
+
+encodings: [Name=(!="")]: {
+	FileInfo
+	encoding: *Name | string
+}
+
+encodings: "": error("no encoding specified")
+
+encodings: cue: {
+	*forms.schema | forms.def
+	stream: false
+}
+
+// encodings: json: {
+//  *forms.data | {
+//   // We have a schema. For JSON, JSON Schema is the default schema
+//   // interpretation.
+//   interpretation: {} | *interpretations.jsonschema.interpretation
+//  }
+
+//  stream: *false | true
+// }
+
+encodings: json: {
+	stream: *false | true
+}
+encodings: json: {
+	form: *"data" | "schema"
+	if form == "schema" {
+		form.schema
+	}
+	if form == "data" {
+		forms.data
+	}
+}
+// We have a schema. For JSON, JSON Schema is the default schema
+// interpretation.
+// interpretation: {} | *interpretations.jsonschema.interpretation
+// }
+
+encodings: yaml: {
+	forms.GraphEncoding
+	stream: false | *true
+}
+
+encodings: jsonl: {
+	forms.DataEncoding
+	stream: true
+}
+
+encodings: txt: {
+	forms.data
+	stream: false
+}
+
+encodings: toml: {
+	forms.DataEncoding
+	stream: false
+}
+
+// encodings: proto: {
+//  forms.Schema
+//  encoding: "proto"
+// }
+
+// encodings: textproto: {
+//  forms.DataEncoding
+//  encoding: "textproto"
+// }
+
+// encodings: binproto: {
+//  forms.DataEncoding
+//  encoding: "binproto"
+// }
+
+encodings: go: {
+	*forms.def | forms.graph
+	encoding: "code"
+	tags: lang: "go"
+	stream: false
+}
+
+interpretations: [Name=string]: FileInfo
+
+interpretations: "": _
+
+interpretations: jsonschema: {
+	*forms.def | forms.schema
+	interpretation: "jsonschema"
+}
+
+interpretations: openapi: {
+	*forms.def | forms.schema
+	interpretation: "openapi"
+}
