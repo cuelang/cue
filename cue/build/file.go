@@ -22,21 +22,24 @@ type File struct {
 	Interpretation Interpretation    `json:"interpretation,omitempty"`
 	Form           Form              `json:"form,omitempty"`
 	Tags           map[string]string `json:"tags,omitempty"` // code=go
+
+	// TODO: this will change.
+	Source interface{}
 }
 
 // A Encoding indicates a file format for representing a program.
 type Encoding string
 
 const (
-	CUE   Encoding = "cue"
-	JSON  Encoding = "json"
-	YAML  Encoding = "yaml"
-	JSONL Encoding = "jsonl"
-	TXT   Encoding = "txt"
+	CUE      Encoding = "cue"
+	JSON     Encoding = "json"
+	YAML     Encoding = "yaml"
+	JSONL    Encoding = "jsonl"
+	TXT      Encoding = "txt"
+	Protobuf Encoding = "protobuf"
 
 	// TODO:
 	// TOML
-	// Proto
 	// TextProto
 	// BinProto
 

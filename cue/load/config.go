@@ -179,7 +179,6 @@ func (c *Config) newRelInstance(pos token.Pos, path, pkgName string) *build.Inst
 	p.Module = c.Module
 
 	if isLocalImport(path) {
-		p.Local = true
 		if c.Dir == "" {
 			err = errors.Append(err, errors.Newf(pos, "cwd unknown"))
 		}

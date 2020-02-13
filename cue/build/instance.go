@@ -35,6 +35,11 @@ import (
 type Instance struct {
 	ctxt *Context
 
+	BuildFiles    []*File  // files to be inclduded in the build
+	OrphanedFiles []*File  // recognized file formats not part of any build
+	InvalidFiles  []*File  // could not parse these files
+	UnknownFiles  []string // unknown file types
+
 	// Files contains the AST for all files part of this instance.
 	Files []*ast.File
 
@@ -97,7 +102,7 @@ type Instance struct {
 	AllTags []string
 
 	Standard bool // Is a builtin package
-	Local    bool
+	User     bool // True if package was created from individual file.
 
 	// Relative to Dir
 	CUEFiles        []string // .cue source files
