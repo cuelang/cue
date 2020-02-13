@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7c4dea4_1e446d08",
+        "filename": "internal/filetypes/filetypes_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:09:08Z",
+      "side": 1,
+      "message": "given that this is not optional, I\u0027d remove the pointer for clarity",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc5de04_f38f55ef",
+        "filename": "internal/filetypes/filetypes_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:09:08Z",
+      "side": 1,
+      "message": "nit: you should use CamelCaseNames for these, like JSONSchemaDefault. These will be part of the test name, so\n\n    TestFromFile/JSONSchemaDefault\n\nis nicer and more consistent than\n\n    TestFromFile/json_schema_default\n\n(and you avoid the spaces-turned-into-underscores weirdness)",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37efbead_50b84251",
+        "filename": "internal/filetypes/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:09:08Z",
+      "side": 1,
+      "message": "nit: if you do `if err :\u003d f(); err !\u003d nil {`, it\u0027s more consistent, and you don\u0027t need to modify the parent scope",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
