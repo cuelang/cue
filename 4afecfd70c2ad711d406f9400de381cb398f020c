@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c726bd_538e3ded",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:20:51Z",
+      "side": 1,
+      "message": "I think this should have a better name - what error is this for? Given that we don\u0027t see where it\u0027s assigned, it\u0027s a bit ambiguous.\n\nIt appears to accumulate all errors from the runner\u0027s methods, so perhaps something like \u0027allErrors\u0027? Or if you want to keep the name short, I\u0027d document it.",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622cf78e_00c954f9",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:20:51Z",
+      "side": 1,
+      "message": "this can be left as a range, no? as far as I can tell, the explicit C-like loop is only useful for a normal loop if you need pointers to each element.",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd336098_cbd26549",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-13T10:20:51Z",
+      "side": 1,
+      "message": "I think this lacks one edge case - what if one top-level task references another top-level task?\n\nThat would be an explicit reference, so given your commit message, I\u0027d expect both to be run. But I assume that\u0027s not how the code currently works.",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
