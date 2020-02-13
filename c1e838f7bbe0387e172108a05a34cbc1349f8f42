@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a7638ca_f1d40a67",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-13T16:34:06Z",
+      "side": 1,
+      "message": "please use string(keyForReference(vPath))",
+      "revId": "c1e838f7bbe0387e172108a05a34cbc1349f8f42",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
