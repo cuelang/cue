@@ -1,0 +1,10 @@
+cue vet schema.cue json: foo.data
+cmp stderr expect-stderr
+
+-- schema.cue --
+[string]: string
+
+-- foo.data --
+{ "a": "b" }
+
+-- expect-stderr --
