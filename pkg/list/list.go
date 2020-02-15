@@ -201,13 +201,20 @@ func UniqueItems(a []cue.Value) bool {
 	return true
 }
 
-// Contains reports whether v is contained in a. The value must be a
-// comparable value.
-func Contains(a []cue.Value, v cue.Value) bool {
-	for _, w := range a {
+// Index reports the index of the first element in a which is equal to v.
+// The function returns -1 if v is not contained in a. The value must be
+// comparable.
+func Index(a []cue.Value, v cue.Value) int {
+	for i, w := range a {
 		if v.Equals(w) {
-			return true
+			return i
 		}
 	}
-	return false
+	return -1
+}
+
+// Contains reports whether v is contained in a. The value must be
+// comparable.
+func Contains(a []cue.Value, v cue.Value) bool {
+	return Index(a, v) >= 0
 }
