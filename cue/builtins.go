@@ -949,6 +949,23 @@ var builtinPackages = map[string]*builtinPkg{
 				}
 			},
 		}, {
+			Name:   "Index",
+			Params: []kind{listKind, topKind},
+			Result: intKind,
+			Func: func(c *callCtxt) {
+				a, v := c.list(0), c.value(1)
+				if c.do() {
+					c.ret = func() interface{} {
+						for i, w := range a {
+							if v.Equals(w) {
+								return i
+							}
+						}
+						return -1
+					}()
+				}
+			},
+		}, {
 			Name:   "Contains",
 			Params: []kind{listKind, topKind},
 			Result: boolKind,
@@ -956,6 +973,7 @@ var builtinPackages = map[string]*builtinPkg{
 				a, v := c.list(0), c.value(1)
 				if c.do() {
 					c.ret = func() interface{} {
+
 						for _, w := range a {
 							if v.Equals(w) {
 								return true
