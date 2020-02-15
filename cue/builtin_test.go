@@ -310,6 +310,18 @@ func TestBuiltins(t *testing.T) {
 		test("list", `list.MaxItems([1, 2, 3, 4], 2)`),
 		`false`,
 	}, {
+		test("list", `list.Contains([1, 2, 3, 4], 2)`),
+		`true`,
+	}, {
+		test("list", `list.Contains([1, 2, 3, 4], 10)`),
+		`false`,
+	}, {
+		test("list", `list.Index([1, 2, 3, 4], 2)`),
+		`1`,
+	}, {
+		test("list", `list.Index([1, 2, 3, 4], 10)`),
+		`-1`,
+	}, {
 		// Panics
 		test("math", `math.Jacobi(1000, 2000)`),
 		`_|_(error in call to math.Jacobi: big: invalid 2nd argument to Int.Jacobi: need odd integer but got 2000)`,
