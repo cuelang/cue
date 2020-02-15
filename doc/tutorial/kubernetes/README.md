@@ -109,7 +109,7 @@ To accomplish this, we tell `cue` to put each object in the configuration
 tree at the path with the "kind" as first element and "name" as second.
 
 ```
-$ cue import ./... -p kube -l 'strings.ToCamel(kind)' -l metadata.name -f
+$ cue import ./... -p kube '"\(strings.ToCamel(kind))" "\(metadata.name)"' -f
 ```
 
 The added `-l` flag defines the labels for each object, based on values from
@@ -162,10 +162,8 @@ the majority of it was a string containing, hopefully, valid YAML.
 The `-R` option attempts to detect structured YAML or JSON strings embedded
 in the configuration files and then converts these recursively.
 
-<-- TODO: update import label format -->
-
 ```
-$ cue import ./... -p kube -l 'strings.ToCamel(kind)' -l metadata.name -f -R
+$ cue import ./... -p kube -l '"\(strings.ToCamel(kind))" "\(metadata.name)"' -f -R
 ```
 
 Now the file looks like:
