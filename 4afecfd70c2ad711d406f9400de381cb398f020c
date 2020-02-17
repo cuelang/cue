@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "5c11dedd_88ff3af0",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:39:37Z",
+      "side": 1,
+      "message": "Yeah, tried to allude to that in the updated comment, but made it more explicit.",
+      "parentUuid": "8ba43c10_2e336ba3",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd336098_cbd26549",
         "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
         "patchSetId": 3
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Hm. What I meant is like:\n\ntop5: cli.Print \u0026 { text: \"run also\" }\ntop6: cli.Print \u0026 { text: \"run\", $after: top5 }\n\nAnd then nothing referencing either of them anywhere else.\n\nDo they both run, or neither run?\n\nYour top1/top2 above are a very similar scenario, but the main command references top2.",
       "parentUuid": "8bc72269_40cbd34d",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3a4fc6_f949203a",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:39:37Z",
+      "side": 1,
+      "message": "Added your case. They should both not run.",
+      "parentUuid": "d198ddb5_b06766a9",
       "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
