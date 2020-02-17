@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d693bc6_c9835804",
+        "filename": "internal/filetypes/filetypes_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c4dea4_1e446d08",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edc5de04_f38f55ef",
         "filename": "internal/filetypes/filetypes_test.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "28f3bec3_88092f11",
+        "filename": "internal/filetypes/filetypes_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edc5de04_f38f55ef",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37efbead_50b84251",
         "filename": "internal/filetypes/gen.go",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-02-13T10:09:08Z",
       "side": 1,
       "message": "nit: if you do `if err :\u003d f(); err !\u003d nil {`, it\u0027s more consistent, and you don\u0027t need to modify the parent scope",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b64524_9e27bc19",
+        "filename": "internal/filetypes/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:13:25Z",
+      "side": 1,
+      "message": "Funny, I always did that but stopped doing to get code more consistently aligned. Happy to change though",
+      "parentUuid": "37efbead_50b84251",
       "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
