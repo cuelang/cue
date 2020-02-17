@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93c8f1b6_38972e80",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T17:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c726bd_538e3ded",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "622cf78e_00c954f9",
         "filename": "cmd/cue/cmd/custom.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a4c43f18_b695195f",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T17:48:54Z",
+      "side": 1,
+      "message": "The reason is that tasks get added to the end. I\u0027m not sure what the semantics if of range in this respect off the top of my head, which is a good indication it is bad to use it.",
+      "parentUuid": "622cf78e_00c954f9",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd336098_cbd26549",
         "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-02-13T10:20:51Z",
       "side": 1,
       "message": "I think this lacks one edge case - what if one top-level task references another top-level task?\n\nThat would be an explicit reference, so given your commit message, I\u0027d expect both to be run. But I assume that\u0027s not how the code currently works.",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc72269_40cbd34d",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T17:48:54Z",
+      "side": 1,
+      "message": "I think that case is covered actually. I\u0027ve added a test case for it.",
+      "parentUuid": "fd336098_cbd26549",
       "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
