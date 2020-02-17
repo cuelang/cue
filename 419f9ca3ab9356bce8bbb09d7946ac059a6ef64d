@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "424781b1_8d2e9d6c",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T19:00:19Z",
+      "side": 1,
+      "message": "Maybe add this to the end of the file so that the diff in Gerrit looks nicer?",
+      "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
