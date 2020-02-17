@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8ba43c10_2e336ba3",
+        "filename": "cmd/cue/cmd/custom.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-17T17:54:33Z",
+      "side": 1,
+      "message": "Ah. Then I think you should clarify that in the comment above, like \"note that we\u0027re not using range because the slice can increase in length\"",
+      "parentUuid": "a4c43f18_b695195f",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd336098_cbd26549",
         "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
         "patchSetId": 3
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I think that case is covered actually. I\u0027ve added a test case for it.",
       "parentUuid": "fd336098_cbd26549",
+      "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d198ddb5_b06766a9",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_after.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-17T17:54:33Z",
+      "side": 1,
+      "message": "Hm. What I meant is like:\n\ntop5: cli.Print \u0026 { text: \"run also\" }\ntop6: cli.Print \u0026 { text: \"run\", $after: top5 }\n\nAnd then nothing referencing either of them anywhere else.\n\nDo they both run, or neither run?\n\nYour top1/top2 above are a very similar scenario, but the main command references top2.",
+      "parentUuid": "8bc72269_40cbd34d",
       "revId": "4afecfd70c2ad711d406f9400de381cb398f020c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
