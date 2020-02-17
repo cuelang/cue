@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8360247_10738e73",
+        "filename": "cmd/cue/cmd/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-17T18:15:08Z",
+      "side": 1,
+      "message": "If both the name and the type are mandatory, I think it should say:\n\n    A tag is of the form\n        @tag(name,type[,shorthand{\"|\"shorthand}]])",
+      "revId": "c91fef375a0791103e75ae5b02493879414c2292",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff9c3a1_7581f50e",
+        "filename": "cmd/cue/cmd/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-02-17T18:15:08Z",
+      "side": 1,
+      "message": "What\u0027s meant by \"alternative values\" here?",
+      "revId": "c91fef375a0791103e75ae5b02493879414c2292",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
