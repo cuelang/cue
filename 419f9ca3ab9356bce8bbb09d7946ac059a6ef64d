@@ -34,6 +34,24 @@
       "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae73d2e3_67fd6c29",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T19:11:01Z",
+      "side": 1,
+      "message": "Ah I see. I was wondering what the order was. You can leave it like this.",
+      "parentUuid": "15460463_c47fc5c0",
+      "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
