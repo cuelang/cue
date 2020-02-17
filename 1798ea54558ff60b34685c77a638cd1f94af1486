@@ -122,6 +122,24 @@
       "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8adf5d_22c9d441",
+        "filename": "internal/filetypes/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T18:40:56Z",
+      "side": 1,
+      "message": "I already changed it. :)",
+      "parentUuid": "2f0e4b64_580ad962",
+      "revId": "1798ea54558ff60b34685c77a638cd1f94af1486",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
