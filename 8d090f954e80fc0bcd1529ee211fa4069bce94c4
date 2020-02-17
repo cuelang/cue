@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d3cca576_2239340e",
+        "filename": "cmd/cue/cmd/trim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T17:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a82beea_281658f7",
+      "revId": "8d090f954e80fc0bcd1529ee211fa4069bce94c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5488c9dc_50456ae4",
         "filename": "internal/diff/diff.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-13T09:33:04Z",
       "side": 1,
       "message": "maybe add a comment as to why you need two separate vars. My instinct upon reading this would be to just do `Schema \u003d \u0026Profile{}`",
+      "revId": "8d090f954e80fc0bcd1529ee211fa4069bce94c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0fc016_a902cecf",
+        "filename": "internal/diff/diff.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-17T17:56:03Z",
+      "side": 1,
+      "message": "It exposes the internals in the documentation, which I tend to want to avoid. But changed it as I don\u0027t feel strongly about it.",
+      "parentUuid": "5488c9dc_50456ae4",
       "revId": "8d090f954e80fc0bcd1529ee211fa4069bce94c4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
