@@ -16,6 +16,24 @@
       "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15460463_c47fc5c0",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-17T19:03:33Z",
+      "side": 1,
+      "message": "I put them this way because longer-term, I think it\u0027s a bit easier to read in this order - with the lower-level Index at the top, and the Contains written with Index just below.\n\nBut I\u0027m happy to change it if you prefer :)",
+      "parentUuid": "424781b1_8d2e9d6c",
+      "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
