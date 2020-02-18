@@ -52,6 +52,24 @@
       "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f452ab_acd90f75",
+        "filename": "pkg/list/list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-18T22:17:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae73d2e3_67fd6c29",
+      "revId": "419f9ca3ab9356bce8bbb09d7946ac059a6ef64d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
