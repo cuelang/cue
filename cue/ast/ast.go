@@ -90,11 +90,18 @@ type Expr interface {
 	Node
 	declNode() // An expression can be used as a declaration.
 	exprNode()
+	// topExprNode()
 }
 
 type expr struct{ decl }
 
 func (expr) exprNode() {}
+
+// func (topExpr) topExprNode() {}
+
+// type topExpr struct{ decl }
+
+// func (topExpr) topExprNode() {}
 
 // A Decl node is implemented by all declarations.
 type Decl interface {
