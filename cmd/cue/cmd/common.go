@@ -32,6 +32,7 @@ import (
 	"cuelang.org/go/cue/load"
 	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/cue/token"
+	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/encoding"
 )
 
@@ -136,11 +137,147 @@ type buildPlan struct {
 	merge     []*build.Instance
 }
 
-func (b *buildPlan) instances() []*cue.Instance {
-	if len(b.insts) == 0 {
-		return nil
+// instances iterates either over a list of instances, or a list of
+// data files. In the latter case, there must be either 0 or 1 other
+// instance, with which the data instance may be merged.
+func (b *buildPlan) instances() iterator {
+	if len(b.orphanedData) == 0 && len(b.orphanedSchema) == 0 {
+		return &instanceIterator{a: buildInstances(b.cmd, b.insts), i: -1}
 	}
-	return buildInstances(b.cmd, b.insts)
+	return newStreamingIterator(b)
+}
+
+type iterator interface {
+	scan() bool
+	value() cue.Value
+	err() error
+	close()
+	id() string
+}
+
+type instanceIterator struct {
+	a []*cue.Instance
+	i int
+	e error
+}
+
+func (i *instanceIterator) scan() bool {
+	i.i++
+	return i.i < len(i.a) && i.e == nil
+}
+
+func (i *instanceIterator) close()           {}
+func (i *instanceIterator) err() error       { return i.e }
+func (i *instanceIterator) value() cue.Value { return i.a[i.i].Value() }
+func (i *instanceIterator) id() string       { return i.a[i.i].Dir }
+
+type streamingIterator struct {
+	r    *cue.Runtime
+	inst *cue.Instance
+	base cue.Value
+	cfg  *encoding.Config
+	a    []*build.File
+	dec  *encoding.Decoder
+	v    cue.Value
+	e    error
+}
+
+func newStreamingIterator(b *buildPlan) *streamingIterator {
+	i := &streamingIterator{
+		cfg: b.encConfig,
+		a:   b.orphanedData,
+	}
+
+	// TODO: use orphanedSchema
+	switch len(b.insts) {
+	case 0:
+		i.r = &cue.Runtime{}
+	case 1:
+		p := b.insts[0]
+		inst := buildInstances(b.cmd, []*build.Instance{p})[0]
+		if inst.Err != nil {
+			return &streamingIterator{e: inst.Err}
+		}
+		i.r = internal.GetRuntime(inst).(*cue.Runtime)
+		if b.schema == nil {
+			i.base = inst.Value()
+		} else {
+			i.base = inst.Eval(b.schema)
+			if err := i.base.Err(); err != nil {
+				return &streamingIterator{e: err}
+			}
+		}
+	default:
+		return &streamingIterator{e: errors.Newf(token.NoPos,
+			"cannot combine data streaming with multiple instances")}
+	}
+
+	return i
+}
+
+func (i *streamingIterator) value() cue.Value { return i.v }
+
+func (i *streamingIterator) id() string {
+	if i.inst != nil {
+		return i.inst.Dir
+	}
+	return ""
+}
+
+func (i *streamingIterator) scan() bool {
+	if i.e != nil {
+		return false
+	}
+
+	// advance to next value
+	if i.dec != nil && !i.dec.Done() {
+		i.dec.Next()
+	}
+
+	// advance to next stream if necessary
+	for i.dec == nil || i.dec.Done() {
+		if i.dec != nil {
+			i.dec.Close()
+			i.dec = nil
+		}
+		if len(i.a) == 0 {
+			return false
+		}
+
+		i.dec = encoding.NewDecoder(i.a[0], i.cfg)
+		i.a = i.a[1:]
+	}
+
+	if i.e = i.dec.Err(); i.e != nil {
+		return false
+	}
+
+	// compose value
+	inst, err := i.r.CompileExpr(i.dec.Expr())
+	if err != nil {
+		i.e = err
+		return false
+	}
+	i.v = inst.Value().Unify(i.base)
+	i.e = i.base.Err()
+
+	return i.e == nil
+}
+
+func (i *streamingIterator) close() {
+	if i.dec != nil {
+		i.dec.Close()
+		i.dec = nil
+	}
+}
+
+func (i *streamingIterator) err() error {
+	if i.dec != nil {
+		if err := i.dec.Err(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func parseArgs(cmd *Command, args []string, cfg *load.Config) (p *buildPlan, err error) {
@@ -227,21 +364,6 @@ func (b *buildPlan) parseFlags() (err error) {
 		ProtoPath: flagProtoPath.StringArray(b.cmd),
 	}
 	return nil
-}
-
-func (b *buildPlan) singleInstance() *cue.Instance {
-	var p *build.Instance
-	switch len(b.insts) {
-	case 0:
-		return nil
-	case 1:
-		p = b.insts[0]
-	default:
-		exitOnErr(b.cmd, errors.Newf(token.NoPos,
-			"cannot combine data streaming with multiple instances"), true)
-		return nil
-	}
-	return buildInstances(b.cmd, []*build.Instance{p})[0]
 }
 
 func buildInstances(cmd *Command, binst []*build.Instance) []*cue.Instance {
