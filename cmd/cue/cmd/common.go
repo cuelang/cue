@@ -141,10 +141,20 @@ type buildPlan struct {
 // data files. In the latter case, there must be either 0 or 1 other
 // instance, with which the data instance may be merged.
 func (b *buildPlan) instances() iterator {
+	var i iterator
 	if len(b.orphanedData) == 0 && len(b.orphanedSchema) == 0 {
-		return &instanceIterator{a: buildInstances(b.cmd, b.insts), i: -1}
+		i = &instanceIterator{a: buildInstances(b.cmd, b.insts), i: -1}
+	} else {
+		i = newStreamingIterator(b)
 	}
-	return newStreamingIterator(b)
+	if len(b.expressions) > 0 {
+		return &expressionIter{
+			iter: i,
+			expr: b.expressions,
+			i:    len(b.expressions),
+		}
+	}
+	return i
 }
 
 type iterator interface {
@@ -278,6 +288,35 @@ func (i *streamingIterator) err() error {
 		}
 	}
 	return nil
+}
+
+type expressionIter struct {
+	iter iterator
+	expr []ast.Expr
+	i    int
+}
+
+func (i *expressionIter) err() error { return i.iter.err() }
+func (i *expressionIter) close()     { i.iter.close() }
+func (i *expressionIter) id() string { return i.iter.id() }
+
+func (i *expressionIter) scan() bool {
+	i.i++
+	if i.i < len(i.expr) {
+		return true
+	}
+	if !i.iter.scan() {
+		return false
+	}
+	i.i = 0
+	return true
+}
+
+func (i *expressionIter) value() cue.Value {
+	if len(i.expr) == 0 {
+		return i.iter.value()
+	}
+	return i.iter.value().EvalExpr(i.expr[i.i])
 }
 
 func parseArgs(cmd *Command, args []string, cfg *load.Config) (p *buildPlan, err error) {
