@@ -119,18 +119,8 @@ func runExport(cmd *Command, args []string) error {
 	defer iter.close()
 	for iter.scan() {
 		inst := iter.value()
-
-		if b.expressions == nil {
-			err = enc.Encode(inst)
-			exitOnErr(cmd, err, true)
-			continue
-		}
-		for _, e := range b.expressions {
-			v := inst.EvalExpr(e)
-			exitOnErr(cmd, v.Err(), true)
-			err = enc.Encode(v)
-			exitOnErr(cmd, err, true)
-		}
+		err = enc.Encode(inst)
+		exitOnErr(cmd, err, true)
 	}
 	exitOnErr(cmd, iter.err(), true)
 	return nil

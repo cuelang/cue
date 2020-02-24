@@ -99,9 +99,7 @@ func runEval(cmd *Command, args []string) error {
 
 	iter := b.instances()
 	defer iter.close()
-	for iter.scan() {
-		inst := iter.value()
-
+	for i := 0; iter.scan(); i++ {
 		// TODO: use ImportPath or some other sanitized path.
 		if len(b.insts) > 1 {
 			fmt.Fprintf(w, "\n// %s\n", iter.id())
@@ -128,33 +126,20 @@ func runEval(cmd *Command, args []string) error {
 			opts = append(opts, format.Simplify())
 		}
 
-		if b.expressions == nil {
-			v := v
-			if flagConcrete.Bool(cmd) && !flagIgnore.Bool(cmd) {
-				if err := v.Validate(cue.Concrete(true)); err != nil {
-					exitOnErr(cmd, err, false)
-					continue
-				}
-			}
-			writeNode(format.Node(getSyntax(v, syn), opts...))
+		if len(b.expressions) > 1 {
+			fmt.Fprint(w, "// ")
+			writeNode(format.Node(b.expressions[i%len(b.expressions)]))
 		}
-		for _, e := range b.expressions {
-			if len(b.expressions) > 1 {
-				fmt.Fprint(w, "// ")
-				writeNode(format.Node(e))
-			}
-			v := inst.EvalExpr(e)
-			if err := v.Err(); err != nil {
-				return err
-			}
-			if flagConcrete.Bool(cmd) && !flagIgnore.Bool(cmd) {
-				if err := v.Validate(cue.Concrete(true)); err != nil {
-					exitOnErr(cmd, err, false)
-					continue
-				}
-			}
-			writeNode(format.Node(getSyntax(v, syn), opts...))
+		if err := v.Err(); err != nil {
+			return err
 		}
+		if flagConcrete.Bool(cmd) && !flagIgnore.Bool(cmd) {
+			if err := v.Validate(cue.Concrete(true)); err != nil {
+				exitOnErr(cmd, err, false)
+				continue
+			}
+		}
+		writeNode(format.Node(getSyntax(v, syn), opts...))
 	}
 	exitOnErr(cmd, iter.err(), true)
 	return nil
