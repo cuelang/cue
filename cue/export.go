@@ -299,8 +299,14 @@ func isDisjunction(v value) bool {
 }
 
 func (p *exporter) recExpr(v value, e evaluated, optional bool) ast.Expr {
-	m := p.ctx.manifest(e)
-	if optional || (!p.isComplete(m, false) && (!p.mode.concrete)) {
+	var m evaluated
+	if !p.mode.final {
+		m = e.evalPartial(p.ctx)
+	} else {
+		m = p.ctx.manifest(e)
+	}
+	isComplete := p.isComplete(m, false)
+	if optional || (!isComplete && (!p.mode.concrete)) {
 		// TODO: do something more principled than this hack.
 		// This likely requires disjunctions to keep track of original
 		// values (so using arcs instead of values).
@@ -332,14 +338,19 @@ func (p *exporter) expr(v value) ast.Expr {
 	// as well.
 	if doEval(p.mode) || p.mode.concrete {
 		e := v.evalPartial(p.ctx)
-		x := p.ctx.manifest(e)
+		x := e
+		if p.mode.final {
+			x = p.ctx.manifest(e)
+		}
 
 		if !p.isComplete(x, true) {
 			if isBottom(e) {
 				p = &exporter{p.ctx, options{raw: true}, p.stack, p.top, p.imports, p.inDef}
 				return p.expr(v)
 			}
-			if doEval(p.mode) {
+			switch {
+			case !p.mode.final && v.kind().hasReferences():
+			case doEval(p.mode):
 				v = e
 			}
 		} else {

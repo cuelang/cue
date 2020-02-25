@@ -112,6 +112,7 @@ func runEval(cmd *Command, args []string) error {
 		syn := []cue.Option{
 			cue.Attributes(flagAttributes.Bool(cmd)),
 			cue.Optional(flagAll.Bool(cmd) || flagOptional.Bool(cmd)),
+			cue.Final(), // for backwards compatibility
 		}
 		if flagConcrete.Bool(cmd) {
 			syn = append(syn, cue.Concrete(true))

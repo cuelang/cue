@@ -306,9 +306,9 @@ func TestExport(t *testing.T) {
 				command:  string
 			}
 
-			job list command: "ls"
-			
-			job nginx: {
+			job: list: command: "ls"
+
+			job: nginx: {
 				command:  "nginx"
 				replicas: 2
 			}
@@ -318,7 +318,7 @@ func TestExport(t *testing.T) {
 			job: {
 				list: {
 					name:     "list"
-					replicas: 1 @protobuf(10)
+					replicas: >=0 | *1 @protobuf(10)
 					command:  "ls"
 				}
 				nginx: {
@@ -437,7 +437,7 @@ func TestExport(t *testing.T) {
 				}
 			}][a]
 			a: int
-			c: 1
+			c: *1 | 2
 		}`),
 	}, {
 		raw: true,
@@ -485,7 +485,7 @@ func TestExport(t *testing.T) {
 				FindInMap :: {
 					"Fn::FindInMap" :: [string | FindInMap]
 				}
-				a: []
+				a: [...string]
 			}`)}, {
 		raw:   true,
 		eval:  true,
@@ -501,7 +501,7 @@ func TestExport(t *testing.T) {
 		out: unindent(`
 			{
 				And :: {
-					"Fn::And": []
+					"Fn::And": [...3 | And]
 				}
 				Ands: "Fn::And": [3 | And]
 			}`),
@@ -940,6 +940,31 @@ func TestExportFile(t *testing.T) {
 				c: string
 				e: len(P)
 			}
+		}`),
+	}, {
+		eval: true,
+		in: `
+		list: [...string]
+		foo: 1 | 2 | *3
+		foo: int
+		`,
+		out: unindent(`
+		{
+			list: [...string]
+			foo: 1 | 2 | *3
+		}`),
+	}, {
+		eval: true,
+		opts: []Option{Final()},
+		in: `
+		list: [...string]
+		foo: 1 | 2 | *3
+		foo: int
+		`,
+		out: unindent(`
+		{
+			list: []
+			foo: 3
 		}`),
 	}}
 	for _, tc := range testCases {

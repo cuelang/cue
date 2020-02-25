@@ -1666,6 +1666,7 @@ func Concrete(concrete bool) Option {
 	return func(p *options) {
 		if concrete {
 			p.concrete = true
+			p.final = true
 			if !p.hasHidden {
 				p.omitHidden = true
 				p.omitDefinitions = true
