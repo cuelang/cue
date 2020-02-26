@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cddef578_2560b59a",
+        "filename": "cmd/cue/cmd/testdata/script/vet_altdata.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "isn\u0027t `! stderr .` simpler? that\u0027s what I\u0027ve seen many cmd/go tests do.",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1332dc9_0e474322",
+        "filename": "cmd/cue/cmd/vet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "Where is this format defined? I don\u0027t quite get how the data would be interpreted. As a single string value? I think this should be explicit in the help text",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954d6523_15919da8",
+        "filename": "cue/load/loader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 93,
+        "startChar": 72,
+        "endLine": 93,
+        "endChar": 75
+      },
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dda5ead_d562e53b",
+        "filename": "cue/load/loader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "I\u0027d replace this with just\n\nfor _, file :\u003d range files {\n\nand then use \u0027path\u0027 when you want the absolute path, or file.Filename when you just want its original filename.\n\nOtherwise, you\u0027re mixing f/file/path and I find it pretty confusing :)",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b9a7d2_af6342e5",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "s/need/needs/\n\nAlso, this is nitpicking, but you could replace the case with: interface{Bytes() []byte}",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6e299c_647f98e3",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-26T13:31:25Z",
+      "side": 1,
+      "message": "I can\u0027t see where this is used. Maybe add a short comment explaining why it\u0027s useful.",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
