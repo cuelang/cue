@@ -274,6 +274,7 @@ func (x *builtin) call(ctx *context, src source, args ...evaluated) (ret value) 
 		return ctx.mkErr(src, x, "not enough arguments in call to %s (have %d, want %d)",
 			x.name(ctx), len(args), len(x.Params))
 	}
+	// TODO: only call for complete args.
 	for i, a := range args {
 		if x.Params[i] != bottomKind {
 			if unifyType(x.Params[i], a.kind()) == bottomKind {
@@ -300,11 +301,20 @@ func (x *builtin) call(ctx *context, src source, args ...evaluated) (ret value) 
 			ret = err.err
 			ret = ctx.mkErr(src, x, ret, "error in call to %s: %v", x.name(ctx), err)
 		default:
-			// TODO: store the underlying error explicitly
-			ret = ctx.mkErr(src, x, "error in call to %s: %v", x.name(ctx), err)
+			if call.err == internal.ErrIncomplete {
+				ret = ctx.mkErr(src, codeIncomplete, "incomplete value")
+			} else {
+				// TODO: store the underlying error explicitly
+				ret = ctx.mkErr(src, x, "error in call to %s: %v", x.name(ctx), err)
+			}
 		}
 	}()
 	x.Func(&call)
+	// TODO(eval): remove this mechanism once we can determine whether the input
+	// values are concrete. Considering this during the evaluation rewrite.
+	if call.ret == internal.ErrIncomplete {
+		return ctx.mkErr(src, codeIncomplete, "incomplete value")
+	}
 	switch v := call.ret.(type) {
 	case value:
 		return v

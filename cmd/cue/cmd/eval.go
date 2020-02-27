@@ -110,9 +110,10 @@ func runEval(cmd *Command, args []string) error {
 			fmt.Fprintf(w, "\n// %s\n", inst.Dir)
 		}
 		syn := []cue.Option{
+			cue.Final(), // for backwards compatibility
+			cue.Definitions(true),
 			cue.Attributes(flagAttributes.Bool(cmd)),
 			cue.Optional(flagAll.Bool(cmd) || flagOptional.Bool(cmd)),
-			cue.Final(), // for backwards compatibility
 		}
 		if flagConcrete.Bool(cmd) {
 			syn = append(syn, cue.Concrete(true))
