@@ -87,7 +87,9 @@ json    output as JSON
 		Outputs any CUE value.
 
 text    output as raw text
-        The evaluated value must be of type string.
+				The evaluated value must be of type string.
+				
+yaml    output as YAML
 `,
 
 		RunE: mkRunE(c, runExport),
