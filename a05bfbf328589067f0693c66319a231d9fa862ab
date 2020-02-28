@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "91a39fc1_fd3725af",
+        "filename": "doc/tutorial/kubernetes/testdata/manual.out",
+        "patchSetId": 4
+      },
+      "lineNbr": 5510,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T11:22:04Z",
+      "side": 1,
+      "message": "Just going with the yaml.v3 default.\n\nWe can fix by writing our won yaml renderer down the road, I reckon.",
+      "parentUuid": "0615ff3e_5b9936f0",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e512327e_ba9046cf",
         "filename": "doc/tutorial/kubernetes/testdata/manual.out",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-28T11:04:39Z",
       "side": 1,
       "message": "why did the order here change? did the old encoder sort the keys, and now we don\u0027t? if so, that sounds like something we should keep.",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b581c009_9485479f",
+        "filename": "doc/tutorial/kubernetes/testdata/manual.out",
+        "patchSetId": 4
+      },
+      "lineNbr": 6370,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T11:22:04Z",
+      "side": 1,
+      "message": "Yes, we now don\u0027t sort keys anymore. The sorting we do now has actually been a complaint.\n\nCUE now sorts in order of appearance of field name. This is close to what we want: order of appearance in struct, or more correctly, the topological sort sets of fields.",
+      "parentUuid": "e512327e_ba9046cf",
       "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf67029e_9d78005b",
+        "filename": "internal/encoding/yaml/encode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T11:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e44f9f11_03c1a5ec",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
