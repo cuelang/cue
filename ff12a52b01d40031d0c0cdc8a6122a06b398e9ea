@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b82050d6_38dc67d7",
+        "filename": "cmd/cue/cmd/testdata/script/vet_altdata.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-28T10:52:00Z",
+      "side": 1,
+      "message": "well, it\u0027s not more stuff to learn per se - the argument is a regex, so \u0027stderr .\u0027 requires at least one byte of stderr, while \u0027! stderr .\u0027 requires no stderr output at all.\n\nI agree it\u0027s a trick that might not be obvious. Though I find it pretty useful :)",
+      "parentUuid": "06fddc22_1adb396f",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1332dc9_0e474322",
         "filename": "cmd/cue/cmd/vet.go",
         "patchSetId": 3
