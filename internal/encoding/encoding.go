@@ -102,6 +102,7 @@ type Config struct {
 	Stdout io.Writer
 
 	Force bool // overwrite existing files.
+	Multi bool // will potentially write more than one file
 
 	EscapeHTML bool
 	ProtoPath  []string

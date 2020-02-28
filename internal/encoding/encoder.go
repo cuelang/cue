@@ -24,9 +24,13 @@ import (
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/token"
+	"cuelang.org/go/internal/filetypes"
 	"cuelang.org/go/pkg/encoding/yaml"
 )
+
+var ErrMultipleFiles = errors.New("multiple entries in single-entry format")
 
 // file.Format
 // file.Info
@@ -39,7 +43,6 @@ type Encoder struct {
 	interpret func(cue.Value) (*ast.File, error)
 	encFile   func(*ast.File) error
 	encValue  func(cue.Value) error
-	encInst   func(*cue.Instance) error
 }
 
 func (e Encoder) Close() error {
@@ -79,6 +82,53 @@ func NewEncoder(f *build.File, cfg *Config) (*Encoder, error) {
 	}
 
 	switch f.Encoding {
+	case build.CUE:
+		fi, err := filetypes.FromFile(f, cfg.Mode)
+		if err != nil {
+			return nil, err
+		}
+
+		synOpts := []cue.Option{}
+		if !fi.KeepDefaults || !fi.Incomplete {
+			synOpts = append(synOpts, cue.Final())
+		}
+
+		synOpts = append(synOpts,
+			cue.Docs(fi.Docs),
+			cue.Attributes(fi.Attributes),
+			cue.Optional(fi.Optional),
+			cue.Concrete(!fi.Incomplete),
+			cue.Definitions(fi.Definitions),
+			cue.ResolveReferences(!fi.References),
+			cue.DisallowCycles(!fi.Cycles),
+		)
+
+		opts := []format.Option{
+			format.UseSpaces(4),
+			format.TabIndent(false),
+		}
+
+		useSep := false
+		format := func(name string, n ast.Node) error {
+			if name != "" && cfg.Multi {
+				fmt.Fprintf(w, "-- %s --\n", name)
+			} else if useSep {
+				fmt.Println("---")
+			}
+			useSep = true
+
+			b, err := format.Node(n, opts...)
+			if err != nil {
+				return err
+			}
+			_, err = w.Write(b)
+			return err
+		}
+		e.encValue = func(v cue.Value) error {
+			return format("", v.Syntax(synOpts...))
+		}
+		e.encFile = func(f *ast.File) error { return format(f.Filename, f) }
+
 	case build.JSON, build.JSONL:
 		// SetEscapeHTML
 		d := json.NewEncoder(w)
