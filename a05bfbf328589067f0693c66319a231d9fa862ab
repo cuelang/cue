@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0615ff3e_5b9936f0",
+        "filename": "doc/tutorial/kubernetes/testdata/manual.out",
+        "patchSetId": 4
+      },
+      "lineNbr": 5510,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-28T11:04:39Z",
+      "side": 1,
+      "message": "any particular reason you chose to indent lists? it doesn\u0027t seem necessary, so I\u0027m curious: https://stackoverflow.com/questions/17014460/yaml-indentation-for-array-in-hash",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e512327e_ba9046cf",
+        "filename": "doc/tutorial/kubernetes/testdata/manual.out",
+        "patchSetId": 4
+      },
+      "lineNbr": 6370,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-28T11:04:39Z",
+      "side": 1,
+      "message": "why did the order here change? did the old encoder sort the keys, and now we don\u0027t? if so, that sounds like something we should keep.",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44f9f11_03c1a5ec",
+        "filename": "internal/encoding/yaml/encode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-02-28T11:04:39Z",
+      "side": 1,
+      "message": "strings.Builder, perhaps? appending to a string in a loop via +\u003d is a bit wasteful",
+      "revId": "a05bfbf328589067f0693c66319a231d9fa862ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
