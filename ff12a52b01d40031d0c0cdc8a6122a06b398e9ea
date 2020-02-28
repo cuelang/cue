@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06fddc22_1adb396f",
+        "filename": "cmd/cue/cmd/testdata/script/vet_altdata.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "Sure. It seems like more stuff to learn (I didn\u0027t know about it), but if it is idiomatic, I guess it is okay.\n\nChanged.",
+      "parentUuid": "cddef578_2560b59a",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1332dc9_0e474322",
         "filename": "cmd/cue/cmd/vet.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-26T13:31:25Z",
       "side": 1,
       "message": "Where is this format defined? I don\u0027t quite get how the data would be interpreted. As a single string value? I think this should be explicit in the help text",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db919b82_2c25de5d",
+        "filename": "cmd/cue/cmd/vet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "Added a short explanation inline.\n\nThis whole thing is about to change, btw. All the modes are being harmonized across all commands, so it makes more sense to introduce a go command-style help topics explaining all the formats.",
+      "parentUuid": "f1332dc9_0e474322",
       "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9fee2b49_36181de0",
+        "filename": "cue/load/loader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954d6523_15919da8",
+      "range": {
+        "startLine": 93,
+        "startChar": 72,
+        "endLine": 93,
+        "endChar": 75
+      },
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dda5ead_d562e53b",
         "filename": "cue/load/loader.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d200961_c11e7655",
+        "filename": "cue/load/loader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dda5ead_d562e53b",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "ed6e5e0d_39ba1c6a",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b9a7d2_af6342e5",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d6e299c_647f98e3",
         "filename": "internal/encoding/encoding.go",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73fb0682_4f694918",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-02-28T10:44:37Z",
+      "side": 1,
+      "message": "I forgot what this was for. I removed it for now.",
+      "parentUuid": "3d6e299c_647f98e3",
+      "revId": "ff12a52b01d40031d0c0cdc8a6122a06b398e9ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
