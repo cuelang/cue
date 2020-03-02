@@ -67,3 +67,25 @@ brews:
   description: "CUE is an open source data constraint language which aims to simplify tasks involving defining and using data."
   test: |
     system "#{bin}/cue version"
+
+dockers:
+  - goos: linux
+    goarch: amd64
+    image_templates:
+      - "cuelang/cue:{{ .Version }}"
+      - "cuelang/cue:latest"
+    skip_push: false
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--pull"
+      - "--build-arg=GOLANG_VERSION='1.14'"
+      - "--build-arg=CUE_VERSION='{{ .Version }}'"
+      # http://label-schema.org/rc1/
+      - "--label=org.label-schema.schema-version='1.0'"
+      - "--label=org.label-schema.name='CUE'"
+      - "--label=org.label-schema.description='the data constraint language'"
+      - "--label=org.label-schema.url='https://cuelang.org'"
+      - "--label=org.label-schema.vcs-url='https://github.com/cuelang/cue'"
+      - "--label=org.label-schema.vcs-ref='{{ .ShortCommit }}'"
+      - "--label=org.label-schema.vendor='The CUE Authors'"
+      - "--label=org.label-schema.version='{{ .Version }}'"
