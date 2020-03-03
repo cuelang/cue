@@ -87,9 +87,11 @@ For more information on writing CUE configuration files see cuelang.org.`,
 	cmdCmd := newCmdCmd(c)
 	c.cmd = cmdCmd
 
+	eval := newEvalCmd(c)
+
 	subCommands := []*cobra.Command{
 		cmdCmd,
-		newEvalCmd(c),
+		eval,
 		newDefCmd(c),
 		newExportCmd(c),
 		newFmtCmd(c),
@@ -103,6 +105,7 @@ For more information on writing CUE configuration files see cuelang.org.`,
 		// Hidden
 		newAddCmd(c),
 	}
+	subCommands = append(subCommands, newHelpTopics(c)...)
 
 	addGlobalFlags(cmd.PersistentFlags())
 
