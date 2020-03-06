@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab252e00_b608fee7",
+        "filename": "cmd/cue/cmd/testdata/script/issue174.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-06T21:53:01Z",
+      "side": 1,
+      "message": "FTW I still think this is a sub-optimal message - there are no obvious build constraints in sight here. Something for a future CL.",
+      "revId": "6cb05353af661ae07c85108d5965379deda6c515",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153f16b9_35241220",
+        "filename": "cue/load/import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-06T21:53:01Z",
+      "side": 1,
+      "message": "As a casual reader of this code, I\u0027d find it helpful if this mentioned what kind of normalization is going on here and maybe why.",
+      "revId": "6cb05353af661ae07c85108d5965379deda6c515",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd606ffe_54226aa6",
+        "filename": "cue/load/loader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-06T21:53:01Z",
+      "side": 1,
+      "message": "if f \u003d\u003d \"-\" {\n    continue\n}\n\n?\n(looks like you don\u0027t need path)",
+      "revId": "6cb05353af661ae07c85108d5965379deda6c515",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
