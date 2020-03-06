@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/build"
@@ -132,6 +133,7 @@ func placeOrphans(cmd *Command, filename, pkg string, objs ...ast.Expr) (*ast.Fi
 
 		// Compute a path different from root.
 		var pathElems []ast.Label
+		var pathTokens []token.Token
 
 		switch {
 		case len(flagPath.StringArray(cmd)) > 0:
@@ -150,6 +152,14 @@ func placeOrphans(cmd *Command, filename, pkg string, objs ...ast.Expr) (*ast.Fi
 			}
 
 			for _, str := range flagPath.StringArray(cmd) {
+				var tok token.Token
+				switch {
+				case strings.HasSuffix(str, "::"):
+					tok = token.ISA
+					str = str[:len(str)-2]
+				case strings.HasSuffix(str, ":"):
+					str = str[:len(str)-1]
+				}
 				l, err := parser.ParseExpr("--path", str)
 				if err != nil {
 					return nil, fmt.Errorf(`labels are of form "cue import -l foo -l 'strings.ToLower(bar)'": %v`, err)
@@ -160,6 +170,7 @@ func placeOrphans(cmd *Command, filename, pkg string, objs ...ast.Expr) (*ast.Fi
 					return nil, fmt.Errorf("unsupported label path type: %v", err)
 				}
 				pathElems = append(pathElems, ast.NewString(str))
+				pathTokens = append(pathTokens, tok)
 			}
 		}
 
@@ -187,10 +198,12 @@ func placeOrphans(cmd *Command, filename, pkg string, objs ...ast.Expr) (*ast.Fi
 			f.Decls = append(f.Decls, obj.Elts...)
 		} else {
 			field := &ast.Field{Label: pathElems[0]}
+			field.Token = pathTokens[0]
 			f.Decls = append(f.Decls, field)
-			for _, e := range pathElems[1:] {
+			for i, e := range pathElems[1:] {
 				newField := &ast.Field{Label: e}
 				newVal := ast.NewStruct(newField)
+				newField.Token = pathTokens[i+1]
 				field.Value = newVal
 				field = newField
 			}
