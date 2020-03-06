@@ -154,7 +154,7 @@ imports:
 		cfg:  dirCfg,
 		args: args("example.org/test/hello:nonexist"),
 		want: `
-err:    build constraints exclude all CUE files in example.org/test/hello:nonexist (ignored: hello/test.cue, anon.cue, test.cue)
+err:    build constraints exclude all CUE files in example.org/test/hello:nonexist (ignored: anon.cue, test.cue, hello/test.cue)
 path:   example.org/test/hello:nonexist
 module: example.org/test
 root:   $CWD/testdata
