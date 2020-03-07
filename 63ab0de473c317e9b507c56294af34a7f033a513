@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e07fc48_4a469cca",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Either set the clause starting with \"one\" and ending with \"element\" between em dashes:\ns/, one/--one/\ns/element,/element--/\n\nor add the word \"being\" before \"one:\n\"path, being one that\"\n\nConsider wrapping the \".\" and \"..\" elements in quotation marks to make their presence as tokens other than punctuation marks more obvious.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d101c9_b5e57f20",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "This sentence lost its period.\ns/\\.)/)./\n\nThat is, move the period outside of the closing parenthesis.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2b3918_2a0d6436",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "For consistency with line 83 above, punctuate this sentence.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5a196d_517e5edd",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "For consistency with line 83 above, punctuate this sentence.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a37c45c_285c63df",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Should \"cue\" be capitalized here as \"Non-CUE?\"",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cdb6792_3f780dfc",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Elsewhere you used capitalized and punctuated sentences in command comments like these. Consider doing so here and in the two examples that follow at lines 154 and 157.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacf9c54_a124fe07",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "For consistency, add a period at the end of the description.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f50332_d42424b8",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "For consistency, add a period at the end of the description.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5489d576_368f9dc6",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Consider \"Protocol Buffer\" instead of \"protobuf,\" if it will fit.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c533b38_cac4fa18",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Should that be \"an\" instead of \"and?\"",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c157d8eb_4d6e6f91",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "s/, for/. For/\nThat is, start a new sentence.\n\nAlternately,\n/, for/; for/",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a66843_f6652629",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "There\u0027s a leading tab character here, but not on the three prior lines.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f037be_8a1af1a2",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "For consistency with line 228 and later, capitalize and punctuate this sentence.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fafdfd35_934cb1e6",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "s/openapi/OpenAPI/\ns/yaml/YAML/\n\nFor consistency with line 228 and later, capitalize and punctuate this sentence.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680c7be4_c4c5611c",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "s/yaml/YAML/",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6caf5fc9_6b4839fa",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Consider wrapping the word \"name\" in quotation marks (\"name\" field).\n\ns/txt/text/",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae93d91_a27226f3",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "Consider wrapping the word \"name\" in quotation marks (\"name\" field).",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757d33f5_3309de90",
+        "filename": "cmd/cue/cmd/import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-03-07T18:01:30Z",
+      "side": 1,
+      "message": "It looks like we lost the rest of this sentence.",
+      "revId": "63ab0de473c317e9b507c56294af34a7f033a513",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
