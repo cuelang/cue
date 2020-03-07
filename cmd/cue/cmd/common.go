@@ -347,7 +347,7 @@ func parseArgs(cmd *Command, args []string, cfg *load.Config) (p *buildPlan, err
 	if cfg == nil {
 		cfg = defaultConfig
 	}
-	cfg.Stdin = stdin
+	cfg.Stdin = cmd.InOrStdin()
 
 	builds := loadFromArgs(cmd, args, cfg)
 	if builds == nil {
@@ -460,7 +460,7 @@ func (b *buildPlan) parseFlags() (err error) {
 		}
 	}
 	b.encConfig = &encoding.Config{
-		Stdin:     stdin,
+		Stdin:     b.cmd.InOrStdin(),
 		Stdout:    b.cmd.OutOrStdout(),
 		ProtoPath: flagProtoPath.StringArray(b.cmd),
 		AllErrors: flagAllErrors.Bool(b.cmd),
