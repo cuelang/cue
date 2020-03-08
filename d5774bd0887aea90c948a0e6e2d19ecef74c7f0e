@@ -155,6 +155,23 @@
     },
     {
       "key": {
+        "uuid": "9e02c6d8_aa68e74f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "concrete data?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00c97151_368fd16f",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -172,6 +189,142 @@
     },
     {
       "key": {
+        "uuid": "944016d5_fa331788",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "As a general remark, I wonder if these wall-of-text descriptions (which are great BTW) might become a little more accessible if they were punctuated by relevant examples to concretely illustrate the feature that\u0027s being described.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463c615e_d53b4ec5",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "Perhaps start with a simpler example that doesn\u0027t involve the need to explicitly name the package identifier?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f10ddc_7013df02",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "What does \"without the final value\" mean here?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f621fb10_2e35d77c",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "thought for the future: it might be nice to allow a single element to represent multiple levels of nesting. Perhaps you could do that by allowing the result to be an array of string, allowing `strings.Split`, for example.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede5fd09_02fafefc",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "This sentence doesn\u0027t parse. Perhaps you mean \"the path notation can be used to indicate *that* a field must be a definition\", but in that case I\u0027m still not clear on how it would do so.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c35347_73324a75",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "Perhaps explicitly tag each format as schema or data (or use two tables)? It might seem obvious to us, but may not be to everyone.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31475be1_22156c44",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "It would be great if the mapping between openapi and cue could be documented somewhere, unless I\u0027ve missed it.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425327fc_1db0114a",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "It would be great if the mapping between openapi and cue could be documented somewhere, unless I\u0027ve missed it.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b60345d0_294b757c",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -183,6 +336,74 @@
       "writtenOn": "2020-03-08T09:33:29Z",
       "side": 1,
       "message": "Alignment broken here",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e64911_d53626a3",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "Maybe use an example here with more than one tag so it\u0027s clear what the {} notation means for those that might have forgotten? Also, elsewhere you seem to use `cue def` instead of `cue eval` - I\u0027m not sure what that\u0027s meant to do, but would it be appropriate to use it here too?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74bad667_7e28c226",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "It would be good to explain this a bit more. I\u0027m not sure exactly what an \"anchor\" means. Also, it would be good to properly define \"concrete input and output\" - does it allow function calls with concrete arguments and concrete results, for example? (I think not, but it would be good to be clear)",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66264a31_bdeb19a9",
+        "filename": "cmd/cue/cmd/testdata/script/help_doc.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "as yaml",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8def5ce4_458743e1",
+        "filename": "internal/encoding/encoder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-08T10:05:04Z",
+      "side": 1,
+      "message": "This seems like an unrelated change.",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
