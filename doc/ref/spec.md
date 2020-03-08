@@ -275,11 +275,11 @@ The following character sequences represent operators and punctuation:
 ```
 +     div   &&    ==    <     =     (     )
 -     mod   ||    !=    >     :     {     }
-*     quo   &     =~    <=    ?     [     ]     ,
+*     quo   &     ~     <=    ?     [     ]     ,
 /     rem   |     !~    >=    !     _|_   ...   .
 ```
 <!--
-Free tokens: ; ~ ^
+Free tokens: ; ^
 
 // To be used:
   @   at: associative lists.
@@ -1407,25 +1407,25 @@ name of the field when mapping to a different language.
 
 ```
 // Package attribute
-@protobuf(proto3)
+#protobuf(proto3)
 
 myStruct1: {
     // Struct attribute:
-    @jsonschema(id="https://example.org/mystruct1.json")
+    #jsonschema(id="https://example.org/mystruct1.json")
 
     // Field attributes
-    field: string @go(Field)
-    attr:  int    @xml(,attr) @go(Attr)
+    field: string #go(Field)
+    attr:  int    #xml(,attr) #go(Attr)
 }
 
 myStruct2: {
-    field: string @go(Field)
-    attr:  int    @xml(a1,attr) @go(Attr)
+    field: string #go(Field)
+    attr:  int    #xml(a1,attr) #go(Attr)
 }
 
 Combined: myStruct1 & myStruct2
-// field: string @go(Field)
-// attr:  int    @xml(,attr) @xml(a1,attr) @go(Attr)
+// field: string #go(Field)
+// attr:  int    #xml(,attr) #xml(a1,attr) #go(Attr)
 ```
 
 
@@ -2050,7 +2050,7 @@ Expression = UnaryExpr | Expression binary_op Expression .
 UnaryExpr  = PrimaryExpr | unary_op UnaryExpr .
 
 binary_op  = "|" | "&" | "||" | "&&" | "==" | rel_op | add_op | mul_op  .
-rel_op     = "!=" | "<" | "<=" | ">" | ">=" | "=~" | "!~" .
+rel_op     = "!=" | "<" | "<=" | ">" | ">=" | "~" | "!~" .
 add_op     = "+" | "-" .
 mul_op     = "*" | "/" | "div" | "mod" | "quo" | "rem" .
 unary_op   = "+" | "-" | "!" | "*" | rel_op .
@@ -2104,7 +2104,7 @@ and finally `|` (disjunction):
 Precedence    Operator
     7             *  / div mod quo rem
     6             +  -
-    5             ==  !=  <  <=  >  >= =~ !~
+    5             ==  !=  <  <=  >  >= ~ !~
     4             &&
     3             ||
     2             &
@@ -2273,7 +2273,7 @@ Comparison operators compare two operands and yield an untyped boolean value.
 <=    less or equal
 >     greater
 >=    greater or equal
-=~    matches regular expression
+~     matches regular expression
 !~    does not match regular expression
 ```
 
@@ -2284,7 +2284,7 @@ operands must be null.
 
 The equality operators `==` and `!=` apply to operands that are comparable.
 The ordering operators `<`, `<=`, `>`, and `>=` apply to operands that are ordered.
-The matching operators `=~` and `!~` apply to a string and regular
+The matching operators `~` and `!~` apply to a string and regular
 expression operand.
 These terms and the result of the comparisons are defined as follows:
 
@@ -2302,7 +2302,7 @@ These terms and the result of the comparisons are defined as follows:
 - The regular expression syntax is the one accepted by RE2,
   described in https://github.com/google/re2/wiki/Syntax,
   except for `\C`.
-- `s =~ r` is true if `s` matches the regular expression `r`.
+- `s ~ r` is true if `s` matches the regular expression `r`.
 - `s !~ r` is true if `s` does not match regular expression `r`.
 
 <!--- TODO: consider the following
@@ -2319,11 +2319,11 @@ null == 2   // false
 null != {}  // true
 {} == {}    // _|_: structs are not comparable against structs
 
-"Wild cats" =~ "cat"   // true
+"Wild cats" ~ "cat"   // true
 "Wild cats" !~ "dog"   // true
 
-"foo" =~ "^[a-z]{3}$"  // true
-"foo" =~ "^[a-z]{4}$"  // false
+"foo" ~ "^[a-z]{3}$"  // true
+"foo" ~ "^[a-z]{4}$"  // false
 ```
 
 <!-- jba
