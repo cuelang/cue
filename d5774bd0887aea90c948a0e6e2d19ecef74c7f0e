@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8a2da38_4b2be3b6",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "Consider maybe dropping \"of\" - reads slightly better to me at least",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2ceda3_e7b0dd28",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t feel quite right to be referring to a non-CUE file as a package. Is the term \"input\" too generic? That could then be made specific in the context of CUE, to describe packages and CUE files.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01025e6f_3e16eea0",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "s/--/-/?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af241ee5_b257e5be",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8052a4c3_fe11483f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "Could be a bit more specific here: \"Otherwise, the import path P denotes and external package found in cue.mod/pkg/P\"",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9250e4c9_80fbc44d",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "\"...\" for consistency with \".\" and \"..\" above?\n\nAlso, can\u0027t the \"...\" wildcard appear multiple times? Like go help packages, might be worth making that explicit",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c353473d_82accc05",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "\"cue.mod directories are excluded from the result\", or \"directories containing cue.mod directories are excluded from the result\"? I thought it should be the latter, given cue.mod ~\u003d go.mod in defining modules? cmd/go prunes directories that contain go.mod therefore",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05bd5ec_704e95bb",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "I think all of the .cue files need to belong to the same package? Might be worth making that explicit assuming my understanding is correct",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3765a3_141ee6ef",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "This seems to contradict a sentence from above?\n\n\u003e The list of [packages] may specify CUE packages, CUE files, non-CUE files or a combination of those.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c97151_368fd16f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "This is the first time \"target package\" has been used here - worth clarifying what it means?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60345d0_294b757c",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-08T09:33:29Z",
+      "side": 1,
+      "message": "Alignment broken here",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
