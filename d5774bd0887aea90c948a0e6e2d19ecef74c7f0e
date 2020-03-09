@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "652fb525_e3538ea8",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a2da38_4b2be3b6",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f2ceda3_e7b0dd28",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "48ade879_ac27dad7",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "I\u0027m fine with inputs, but I wonder what others think.\n\nMind you, the non-CUE files get translated into packages.\n\nI kind of like inputs, though, as it better describes what it is about so I changed it.",
+      "parentUuid": "6f2ceda3_e7b0dd28",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01025e6f_3e16eea0",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2020-03-08T09:33:29Z",
       "side": 1,
       "message": "s/--/-/?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2dfc0e_1e1edb1f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "This is supposed to mean a em dash. It\u0027s usage was suggested by Steven Harris.",
+      "parentUuid": "01025e6f_3e16eea0",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "650bb61b_1e2e164a",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "af241ee5_b257e5be",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8052a4c3_fe11483f",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -84,6 +156,24 @@
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a21f4d_6afdd5cc",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Although it is not just `pkg`. But updated accordingly.",
+      "parentUuid": "8052a4c3_fe11483f",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "9ac59f60_637bc288",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9250e4c9_80fbc44d",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c353473d_82accc05",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -115,6 +223,24 @@
       "writtenOn": "2020-03-08T09:33:29Z",
       "side": 1,
       "message": "\"cue.mod directories are excluded from the result\", or \"directories containing cue.mod directories are excluded from the result\"? I thought it should be the latter, given cue.mod ~\u003d go.mod in defining modules? cmd/go prunes directories that contain go.mod therefore",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97f6c50_112718ed",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Yes, you\u0027re fully right. Fixed.",
+      "parentUuid": "c353473d_82accc05",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "073c6dca_003b3a8b",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "There may be some combinations that work. Changed it to \"some combinations\" above.",
+      "parentUuid": "cb3765a3_141ee6ef",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e02c6d8_aa68e74f",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "ac05dee0_c3cdab30",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e02c6d8_aa68e74f",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00c97151_368fd16f",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -183,6 +345,24 @@
       "writtenOn": "2020-03-08T09:33:29Z",
       "side": 1,
       "message": "This is the first time \"target package\" has been used here - worth clarifying what it means?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ccd0c7_803547f1",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "I just changed it to \"this single\".",
+      "parentUuid": "00c97151_368fd16f",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -223,6 +403,24 @@
     },
     {
       "key": {
+        "uuid": "b114580b_41ef5b9f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Yeah, possibly. But it is a lot of work to make it flow nicely, which is why I put the examples at the end.\n\nAnother reason I did this, is that when the examples are at the end, it is the first thing users see when printing the text. Then when users don\u0027t get it they can scroll up and read the text.\n\nBut added a TODO.",
+      "parentUuid": "463c615e_d53b4ec5",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65f10ddc_7013df02",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -234,6 +432,24 @@
       "writtenOn": "2020-03-08T10:05:04Z",
       "side": 1,
       "message": "What does \"without the final value\" mean here?",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7eed24d_a149b2af",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "the \"value following the colon\". Done.",
+      "parentUuid": "65f10ddc_7013df02",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -257,6 +473,24 @@
     },
     {
       "key": {
+        "uuid": "a15222ff_fe32d8bb",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "The `path` mode flag actually does support multiple levels of nesting. I just didn\u0027t know how to word that without getting too verbose.",
+      "parentUuid": "f621fb10_2e35d77c",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ede5fd09_02fafefc",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -274,6 +508,24 @@
     },
     {
       "key": {
+        "uuid": "9e0d84fe_f2923941",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "updated.",
+      "parentUuid": "ede5fd09_02fafefc",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46c35347_73324a75",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -285,6 +537,24 @@
       "writtenOn": "2020-03-08T10:05:04Z",
       "side": 1,
       "message": "Perhaps explicitly tag each format as schema or data (or use two tables)? It might seem obvious to us, but may not be to everyone.",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e6c8bd_af7a3468",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "I\u0027ve clarified it by including another paragraph. The Go and CUE modes can be both.",
+      "parentUuid": "46c35347_73324a75",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -325,6 +595,24 @@
     },
     {
       "key": {
+        "uuid": "dcf371a2_92a0c8ce",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Good point, it should be in the encoding/openapi package.",
+      "parentUuid": "31475be1_22156c44",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b60345d0_294b757c",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -339,6 +627,24 @@
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a621dcb9_bebb841e",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60345d0_294b757c",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -359,6 +665,24 @@
     },
     {
       "key": {
+        "uuid": "bef0c9d9_a012eb22",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "I tend to use eval for data and def for schema, as that makes the most sense.\n\nAdded the example, which required some rewriting.",
+      "parentUuid": "a2e64911_d53626a3",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74bad667_7e28c226",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 7
@@ -370,6 +694,24 @@
       "writtenOn": "2020-03-08T10:05:04Z",
       "side": 1,
       "message": "It would be good to explain this a bit more. I\u0027m not sure exactly what an \"anchor\" means. Also, it would be good to properly define \"concrete input and output\" - does it allow function calls with concrete arguments and concrete results, for example? (I think not, but it would be good to be clear)",
+      "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450b2ee2_adae2f46",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T14:32:10Z",
+      "side": 1,
+      "message": "Clarified.\n\nThe anchors apply to YAML. But as this is not yet implemented, I\u0027ve removed the term altogether. Allowing Anchors in YAML has the advantage that CUE and YAML can be converted to each other without exposing the exponential blowup issue when this is otherwise not an issue (e.g. the server only reads a few values).",
+      "parentUuid": "74bad667_7e28c226",
       "revId": "d5774bd0887aea90c948a0e6e2d19ecef74c7f0e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
