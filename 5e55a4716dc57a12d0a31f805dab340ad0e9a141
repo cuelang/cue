@@ -16,6 +16,24 @@
       "revId": "5e55a4716dc57a12d0a31f805dab340ad0e9a141",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b1c538c_fa45b36e",
+        "filename": "cue/export.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-09T12:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286222b5_d0d2d118",
+      "revId": "5e55a4716dc57a12d0a31f805dab340ad0e9a141",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
