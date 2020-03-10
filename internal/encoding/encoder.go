@@ -201,6 +201,7 @@ func (e *Encoder) Encode(inst *cue.Instance) error {
 }
 
 func (e *Encoder) encodeFile(f *ast.File, interpret func(*cue.Instance) (*ast.File, error)) error {
+	e.autoSimplify = true
 	if interpret == nil && e.encFile != nil {
 		return e.encFile(f)
 	}
