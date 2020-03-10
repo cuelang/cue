@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5032e7c0_daae35b1",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-10T12:51:08Z",
+      "side": 1,
+      "message": "What\u0027s the corresponding option on the Go compiler?",
+      "parentUuid": "fb39d892_5c3f6230",
+      "revId": "f881d237beddffc757a61693c78b73de0344ce36",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "929fe8b4_b1a13de9",
         "filename": "internal/encoding/encoding_test.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-10T12:37:56Z",
       "side": 1,
       "message": "Fairly minor, but I quite like to see the actual error messages in failure tests. I\u0027ve come across too many occasions where either the error message is awkwardly worded, or else the failure isn\u0027t actually the expected one at all.",
+      "revId": "f881d237beddffc757a61693c78b73de0344ce36",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5616ec56_a38fe111",
+        "filename": "internal/encoding/encoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-10T12:51:08Z",
+      "side": 1,
+      "message": "I normally do that, but all error messages are of the same form here, so it seems overkill.",
+      "parentUuid": "929fe8b4_b1a13de9",
       "revId": "f881d237beddffc757a61693c78b73de0344ce36",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
