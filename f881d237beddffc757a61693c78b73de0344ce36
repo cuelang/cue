@@ -69,6 +69,24 @@
       "revId": "f881d237beddffc757a61693c78b73de0344ce36",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfa873a_39e48949",
+        "filename": "internal/encoding/encoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-10T13:00:15Z",
+      "side": 1,
+      "message": "In which case, maybe just include the piece that varies in the test data, and assert for the whole error message in the body of the test by composing it with that piece?",
+      "parentUuid": "5616ec56_a38fe111",
+      "revId": "f881d237beddffc757a61693c78b73de0344ce36",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
