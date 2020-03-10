@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb39d892_5c3f6230",
+        "filename": "internal/encoding/encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-10T12:37:56Z",
+      "side": 1,
+      "message": "This seems very arbitrary. Shouldn\u0027t it be controlled by some top level option to make it possible to see all validation errors, for example?",
+      "revId": "f881d237beddffc757a61693c78b73de0344ce36",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "929fe8b4_b1a13de9",
+        "filename": "internal/encoding/encoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-10T12:37:56Z",
+      "side": 1,
+      "message": "Fairly minor, but I quite like to see the actual error messages in failure tests. I\u0027ve come across too many occasions where either the error message is awkwardly worded, or else the failure isn\u0027t actually the expected one at all.",
+      "revId": "f881d237beddffc757a61693c78b73de0344ce36",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
