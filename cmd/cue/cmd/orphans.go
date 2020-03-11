@@ -41,7 +41,7 @@ func (b *buildPlan) placeOrphans(i *build.Instance) (ok bool, err error) {
 		useContext = flagWithContext.Bool(b.cmd)
 		match      = flagGlob.String(b.cmd)
 	)
-	if !b.forceOrphanProcessing && !perFile && !useList && len(path) == 0 {
+	if !b.importing && !perFile && !useList && len(path) == 0 {
 		if useContext {
 			return false, fmt.Errorf(
 				"flag %q must be used with at least one of flag %q, %q, or %q",
@@ -69,7 +69,7 @@ func (b *buildPlan) placeOrphans(i *build.Instance) (ok bool, err error) {
 	}
 
 	for _, f := range i.OrphanedFiles {
-		if !re.MatchString(filepath.Base(f.Filename)) {
+		if !i.User && !re.MatchString(filepath.Base(f.Filename)) {
 			return false, nil
 		}
 
@@ -78,6 +78,7 @@ func (b *buildPlan) placeOrphans(i *build.Instance) (ok bool, err error) {
 
 		var objs []*ast.File
 
+		// Filter only need to filter files that can stream:
 		for ; !d.Done(); d.Next() {
 			if expr := d.File(); expr != nil {
 				objs = append(objs, expr)
