@@ -322,22 +322,30 @@ func (b *Extractor) getInst(p *protoConverter) *build.Instance {
 
 	dir := b.root
 	path := importPath
-	if !strings.HasPrefix(path, b.module) {
+	file := p.file.Filename
+	if !filepath.IsAbs(file) {
+		file = filepath.Join(b.root, p.file.Filename)
+	}
+	if !strings.HasPrefix(file, b.root) {
 		dir = filepath.Join(internal.GenPath(dir), path)
 	} else {
-		dir = filepath.Join(dir, path[len(b.module)+1:])
-		want := filepath.Dir(p.file.Filename)
-		if !filepath.IsAbs(want) {
-			want = filepath.Join(b.root, want)
-		}
-		if dir != want {
-			err := errors.Newf(token.NoPos,
-				"file %s mapped to inconsistent path %s; module name %q may be inconsistent with root dir %s",
-				want, dir, b.module, b.root,
-			)
-			b.errs = errors.Append(b.errs, err)
-		}
+		dir = filepath.Dir(p.file.Filename)
 	}
+
+	// TODO: verify module name from go_package option against that of actual
+	// CUE module. Maybe keep this old code for some strict mode?
+	// want := filepath.Dir(p.file.Filename)
+	// dir = filepath.Join(dir, path[len(b.module)+1:])
+	// if !filepath.IsAbs(want) {
+	// 	want = filepath.Join(b.root, want)
+	// }
+	// if dir != want {
+	// 	err := errors.Newf(token.NoPos,
+	// 		"file %s mapped to inconsistent path %s; module name %q may be inconsistent with root dir %s",
+	// 		want, dir, b.module, b.root,
+	// 	)
+	// 	b.errs = errors.Append(b.errs, err)
+	// }
 
 	inst := b.imports[importPath]
 	if inst == nil {
