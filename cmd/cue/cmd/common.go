@@ -124,10 +124,10 @@ type buildPlan struct {
 
 	// If orphanFiles are mixed with CUE files and/or if placement flags are used,
 	// the instance is also included in insts.
-	forceOrphanProcessing bool
-	orphanedData          []*build.File
-	orphanedSchema        []*build.File
-	orphanInstance        *build.Instance
+	importing      bool
+	orphanedData   []*build.File
+	orphanedSchema []*build.File
+	orphanInstance *build.Instance
 	// imported files are files that were orphaned in the build instance, but
 	// were placed in the instance by using one the --files, --list or --path
 	// flags.
@@ -355,7 +355,7 @@ func parseArgs(cmd *Command, args []string, cfg *load.Config) (p *buildPlan, err
 	}
 	decorateInstances(cmd, flagTags.StringArray(cmd), builds)
 
-	p = &buildPlan{cmd: cmd, forceOrphanProcessing: cfg.DataFiles}
+	p = &buildPlan{cmd: cmd, importing: cfg.DataFiles}
 
 	if err := p.parseFlags(); err != nil {
 		return nil, err
@@ -363,7 +363,7 @@ func parseArgs(cmd *Command, args []string, cfg *load.Config) (p *buildPlan, err
 
 	for _, b := range builds {
 		var ok bool
-		if b.User || p.forceOrphanProcessing {
+		if b.User || p.importing {
 			ok, err = p.placeOrphans(b)
 			if err != nil {
 				return nil, err
