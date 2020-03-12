@@ -69,6 +69,24 @@
       "revId": "086abe6fc9f1dc6076407a1029822aaefc852fd4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a8795a_4798fb82",
+        "filename": "encoding/openapi/testdata/script/basics.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-12T16:22:03Z",
+      "side": 1,
+      "message": "Yup, data was what I had in mind.",
+      "parentUuid": "fdbf94c9_2b36668c",
+      "revId": "086abe6fc9f1dc6076407a1029822aaefc852fd4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
