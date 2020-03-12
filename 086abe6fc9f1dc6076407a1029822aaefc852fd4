@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97cc6782_4701d753",
+        "filename": "encoding/openapi/decode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-12T16:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4601d2_44dce03d",
+      "revId": "086abe6fc9f1dc6076407a1029822aaefc852fd4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49e1c11b_b7ca7947",
         "filename": "encoding/openapi/testdata/script/basics.txtar",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-12T12:28:50Z",
       "side": 1,
       "message": "I know this is metadata, but it\u0027s a bit of a shame it ends up quite inaccessible. Unless there\u0027s an easy way to extract `@` attributes with the cue tool, I guess.\nWhen definitions are in a different namespace than data, it might work to just put this data in top level fields, maybe?",
+      "revId": "086abe6fc9f1dc6076407a1029822aaefc852fd4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbf94c9_2b36668c",
+        "filename": "encoding/openapi/testdata/script/basics.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-12T16:04:41Z",
+      "side": 1,
+      "message": "Interesting thought. That may still be hard as the Schema translate to top-level definitions themselves. But it could perhaps translate to actual data.\n\nI have given nearly zero thought on how to represent other OpenAPI elements in CUE (except for rpc interfaces a bit).",
+      "parentUuid": "49e1c11b_b7ca7947",
       "revId": "086abe6fc9f1dc6076407a1029822aaefc852fd4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
