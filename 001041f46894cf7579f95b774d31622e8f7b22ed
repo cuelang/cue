@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ce7c8bf_0e0493cc",
+        "filename": "encoding/jsonschema/jsonschema.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-12T12:21:39Z",
+      "side": 1,
+      "message": "top level",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "001041f46894cf7579f95b774d31622e8f7b22ed",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d77498_f5b26272",
+        "filename": "encoding/jsonschema/testdata/openapi.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-12T12:21:39Z",
+      "side": 1,
+      "message": "This is so great!",
+      "revId": "001041f46894cf7579f95b774d31622e8f7b22ed",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
