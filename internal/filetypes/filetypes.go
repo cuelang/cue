@@ -193,7 +193,12 @@ func toFile(i, v cue.Value, filename string) (*build.File, error) {
 	v = v.Fill(filename, "filename")
 	if s, _ := v.Lookup("encoding").String(); s == "" {
 		if len(filename) > 1 { // omit "" and -
-			v = v.Unify(i.Lookup("extensions", filepath.Ext(filename)))
+			ext := filepath.Ext(filename)
+			if ext == "" {
+				return nil, errors.Newf(token.NoPos,
+					"no encoding specified for file %q", filename)
+			}
+			v = v.Unify(i.Lookup("extensions", ext))
 		} else {
 			v = v.Unify(i.LookupDef("Default"))
 		}
