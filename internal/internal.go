@@ -175,9 +175,19 @@ func IsEllipsis(x ast.Decl) bool {
 // GenPath reports the directory in which to store generated files.
 func GenPath(root string) string {
 	info, err := os.Stat(filepath.Join(root, "cue.mod"))
-	if err == nil && info.IsDir() {
-		// TODO(legacy): support legacy cue.mod file.
+	pkgDir := filepath.Join(root, "pkg")
+	switch {
+	case os.IsNotExist(err):
+		// Try legacy pkgDir mode
+		if info, err := os.Stat(pkgDir); err == nil && info.IsDir() {
+			break
+		}
+
+		// Use cue.mod dir in all other cases.
+		fallthrough
+
+	case err == nil && info.IsDir():
 		return filepath.Join(root, "cue.mod", "gen")
 	}
-	return filepath.Join(root, "pkg")
+	return pkgDir
 }
