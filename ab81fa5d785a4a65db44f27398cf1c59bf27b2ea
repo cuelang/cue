@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8943a565_1fb1dcbd",
+        "filename": "internal/filetypes/filetypes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-03-17T15:22:43Z",
+      "side": 1,
+      "message": "surely better as:\n\n    if filename !\u003d \"\" \u0026\u0026 filename !\u003d \"-\" {\n    }\n\nbut why the special case for the empty string?",
+      "revId": "ab81fa5d785a4a65db44f27398cf1c59bf27b2ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
