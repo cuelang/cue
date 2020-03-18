@@ -16,6 +16,24 @@
       "revId": "ab81fa5d785a4a65db44f27398cf1c59bf27b2ea",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8964399_afe6ba9e",
+        "filename": "internal/filetypes/filetypes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-18T08:14:12Z",
+      "side": 1,
+      "message": "Good question. I think it was to allow \"\" to be the default for \"-\". But it seems to never be used in that capacity. Droped it.",
+      "parentUuid": "8943a565_1fb1dcbd",
+      "revId": "ab81fa5d785a4a65db44f27398cf1c59bf27b2ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
