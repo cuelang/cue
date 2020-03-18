@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "925df06a_3e9f3ccd",
+        "filename": "cue/resolve_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2966,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-03-18T12:11:32Z",
+      "side": 1,
+      "message": "Also add a test for 315? Because the output from Roger\u0027s example in that issue is probably worth locking in (and I\u0027m assuming no other test covers that because this is the only test change?)",
+      "revId": "68890d5492a76ab2796e018f730eca7589228d1a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
