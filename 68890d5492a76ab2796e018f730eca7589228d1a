@@ -16,6 +16,24 @@
       "revId": "68890d5492a76ab2796e018f730eca7589228d1a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac7b70b_65a802a1",
+        "filename": "cue/resolve_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2966,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-03-18T12:48:23Z",
+      "side": 1,
+      "message": "Indirectly it is covered, but not with a specific message, indeed. Can add.",
+      "parentUuid": "925df06a_3e9f3ccd",
+      "revId": "68890d5492a76ab2796e018f730eca7589228d1a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
