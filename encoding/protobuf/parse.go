@@ -681,7 +681,7 @@ func (p *protoConverter) oneOf(x *proto.Oneof) {
 		// disjunction of empty structs and closed structs with required fields.
 		// For now we just specify the required fields. This is not correct
 		// but more practical.
-		// Value: &ast.StructLit{}, // Remove to make at least one required.
+		Value: &ast.StructLit{}, // Remove to make at least one required.
 		Token: token.ISA,
 	}
 	f.AddComment(comment(x.Comment, true))
