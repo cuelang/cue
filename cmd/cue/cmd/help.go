@@ -30,6 +30,7 @@ func newHelpTopics(c *Command) []*cobra.Command {
 		inputsHelp,
 		flagsHelp,
 		filetypeHelp,
+		tagsHelp,
 	}
 }
 
@@ -254,6 +255,49 @@ $ cue export -e name -o=text:foo
 `,
 }
 
+var tagsHelp = &cobra.Command{
+	Use:   "tags",
+	Short: "set values from the command line",
+	Long: `Many of the cue commands allow setting configuration values
+from the command line using the --tags/-t flag.
+
+User-defined tag values can be of the form key=value or just a
+key. The key-value form is used to update any field in a CUE
+configurations of the form
+
+   field: x @tag(key)
+
+where key matches the user-defined key. An update is done at the
+AST level, where the field value x is replaced with the
+expression x & y, where y is the value supplied on the command
+line.
+
+By default the value is interpreted as a string. The type option
+allows values to be parsed as an integer, number or boolean. For
+instance
+
+   field: x @tag(key,type=int)
+
+interprets the user-defined value as an integer. Valid values
+for type are "number", "int", "bool", and "string".
+
+User-defined tag values that are just a key (a valid identifier),
+are used to select shorthands. For instance, given the flag
+"-t prod" and field
+
+   environment: string @tag(env,short=prod|staging)
+
+the field will be set to the value "prod". It is still possible
+to specify "-t env=prod" in this case. Use the usual CUE
+constraints to limit the possible values of a field. For
+instance,
+
+   environment: "prod" | "staging" @tag(env,short=prod|staging)
+
+ensures the user may only specify "prod" or "staging".
+`,
+}
+
 // TODO: tags
 // - doc/nodoc
 // - attr/noattr
@@ -262,8 +306,5 @@ $ cue export -e name -o=text:foo
 // TODO: filetypes:
 // - textpb
 // - binpb
-
-// TODO: document
-// <tag>['='<value>]{'+'<tag>['='<value>]}':'
 
 // TODO: cue.mod help topic
