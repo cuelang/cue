@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051fed22_08751f86",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "Perhaps end this sentence with \"and user-defined tags\" to tie it to the start of the next paragraph.",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6425a6e9_6695f717",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "This paragraph confuses me somewhat: are you looking to introduce how tags are declared or indicate how values should be passed to the --tags/-t flag? Feels like an explanation of how to declare simple tags comes first, followed by an example usage with --tags/-t, followed by extensions to specify type and shorthand (with corresponding example usage with --tags/-t)?",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80419a96_e84ef0e0",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "\"... or just a key\" - is this strictly correct? Because the use of \"-t prod\" below is using a shorthand, not the key (which would be \"env\" in that example).",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0b4e29_199a9e34",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "See comment above about use of the word \"key\" here. I personally found it confusing.",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba55f8d0_d88dd51f",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "\"the environment field...\" perhaps to be more precise?",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2188e558_f0ede055",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "New paragraph for the sentence that starts \"Use the usual...\"?",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8a6c36_e7f9033e",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-01T16:58:30Z",
+      "side": 1,
+      "message": "Typo: extra comma",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
