@@ -16,6 +16,7 @@ package openapi
 
 import (
 	"encoding/json"
+	"strings"
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/ast"
@@ -87,7 +88,7 @@ func Generate(inst *cue.Instance, c *Config) (*ast.File, error) {
 	if err != nil {
 		return nil, err
 	}
-	top, err := c.compose(all)
+	top, err := c.compose(inst, all)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +104,7 @@ func (g *Generator) All(inst *cue.Instance) (*OrderedMap, error) {
 	if err != nil {
 		return nil, err
 	}
-	top, err := g.compose(all)
+	top, err := g.compose(inst, all)
 	return (*OrderedMap)(top), err
 }
 
@@ -120,12 +121,35 @@ func toCUE(name string, x interface{}) (v ast.Expr, err error) {
 
 }
 
-func (c *Config) compose(schemas *ast.StructLit) (x *ast.StructLit, err error) {
+func (c *Config) compose(inst *cue.Instance, schemas *ast.StructLit) (x *ast.StructLit, err error) {
 	// Support of OrderedMap is mostly for backwards compatibility.
 	var info ast.Expr
 	switch x := c.Info.(type) {
 	case nil:
-		info = ast.NewStruct()
+		title, _ := inst.Lookup("$title").String()
+		if title == "" {
+			for _, d := range inst.Doc() {
+				title = strings.TrimSpace(d.Text())
+				break
+			}
+		}
+
+		version, _ := inst.Lookup("$version").String()
+
+		a := []interface{}{
+			"title", ast.NewString(title),
+			"version", ast.NewString(version),
+		}
+
+		if v := inst.Lookup("$contact"); v.Exists() {
+			x, ok := v.Syntax(cue.Concrete(true)).(ast.Expr)
+			if !ok {
+				return nil, errors.Newf(v.Pos(), "invalid contact section")
+			}
+			a = append(a, "contact", x)
+		}
+
+		info = ast.NewStruct(a...)
 	case ast.Expr:
 		info = x
 	case *OrderedMap:

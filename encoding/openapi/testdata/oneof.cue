@@ -1,3 +1,6 @@
+$version: "v1alpha1"
+$title:   "OpenAPI title."
+
 T :: {
 	shared: int
 }
@@ -17,7 +20,7 @@ T :: {
 
 MyInt :: int
 
-Foo: {
+Foo :: {
 	include: T
 	exclude: [...T]
 	count: MyInt

@@ -1,6 +1,13 @@
 {
    "openapi": "3.0.0",
-   "info": {},
+   "info": {
+      "title": "An OpenAPI testing package.",
+      "version": "v1beta2",
+      "contact": {
+         "name": "John Doe",
+         "url": "https://cuelang.org"
+      }
+   },
    "paths": {},
    "components": {
       "schemas": {
