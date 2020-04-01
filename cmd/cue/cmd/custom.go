@@ -28,6 +28,7 @@ import (
 	"sync"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/pflag"
 	"golang.org/x/sync/errgroup"
 
 	"cuelang.org/go/cue"
@@ -103,9 +104,15 @@ func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.I
 			// TODO:
 			// - parse flags and env vars
 			// - constrain current config with config section
-
-			return doTasks(cmd, typ, name, tools)
+			ltools,err:=fillToolsByFlags(cmd.Flags(),tools,typ,name)
+			if err!=nil{
+				return err
+			}
+			return doTasks(cmd, typ, name, ltools)
 		}),
+	}
+	if err:=addCustomFlags(sub.Flags(),o.Lookup("var"));err!=nil{
+		return sub,err
 	}
 	parent.AddCommand(sub)
 
@@ -113,6 +120,68 @@ func addCustom(c *Command, parent *cobra.Command, typ, name string, tools *cue.I
 	return sub, nil
 }
 
+func addCustomFlags(f *pflag.FlagSet, value cue.Value)error {
+	if !value.Exists(){
+		return nil
+	}
+	iter,err:=value.Fields()
+	if err!=nil{
+		return err
+	}
+	for iter.Next(){
+		key:=iter.Label()
+		v:=iter.Value()
+		if !v.IsConcrete(){
+			switch v.IncompleteKind() {
+			case cue.StringKind:
+				f.String(key,"","custom")
+			case cue.IntKind:
+				f.Int(key,0,"custom")
+			default:
+				f.String(key,"","custom")
+			}
+		}
+	}
+	return nil
+}
+
+
+
+func fillToolsByFlags(f *pflag.FlagSet,inst *cue.Instance,prefix ...string)(*cue.Instance,error){
+	prefix=append(prefix,"var")
+	value:=inst.Lookup(prefix...)
+	if !value.Exists(){
+		return inst,nil
+	}
+	iter,err:=value.Fields()
+	if err!=nil{
+		return inst,err
+	}
+
+	for iter.Next(){
+		path:=append(prefix,iter.Label())
+		v:=iter.Value()
+		if !v.IsConcrete(){
+			switch v.IncompleteKind() {
+			case cue.StringKind:
+				v,_:=f.GetString(iter.Label())
+				if len(v)>0{
+					inst,_=inst.Fill(v,path...)
+				}
+			case cue.IntKind:
+				v,_:=f.GetInt(iter.Label())
+				inst,_=inst.Fill(v,path...)
+			default:
+				v,_:=f.GetString(iter.Label())
+				if len(v)>0{
+					inst,_=inst.Fill(v,path...)
+				}
+			}
+		}
+
+	}
+	return inst,nil
+}
 type customRunner struct {
 	name string
 	root *cue.Instance

@@ -510,7 +510,24 @@ func buildToolInstances(cmd *Command, binst []*build.Instance) ([]*cue.Instance,
 	return instances, nil
 }
 
-func buildTools(cmd *Command, tags, args []string) (*cue.Instance, error) {
+func buildTools(cmd *Command, tags, largs []string) (*cue.Instance, error) {
+	var (
+		args []string
+		skip bool
+	)
+	for _, arg := range largs {
+		if skip {
+			skip = false
+			continue
+		}
+		if strings.HasPrefix(arg, "-") {
+			if !strings.Contains(arg, "=") {
+				skip = true
+			}
+			continue
+		}
+		args = append(args, arg)
+	}
 	binst := loadFromArgs(cmd, args, &load.Config{Tools: true})
 	if len(binst) == 0 {
 		return nil, nil
