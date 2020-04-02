@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4151a2fa_939106cd",
+        "filename": "encoding/openapi/testdata/builtins.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-02T14:38:44Z",
+      "side": 1,
+      "message": "Do we really want to output empty title and version, or should these be omitted when empty?",
+      "revId": "f8ba8da64569b649a847aa9d3e6dd32026189755",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31aa63aa_1f3f7d2b",
+        "filename": "encoding/openapi/testdata/nested.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-02T14:38:44Z",
+      "side": 1,
+      "message": "did you intend to remove the package directive?",
+      "revId": "f8ba8da64569b649a847aa9d3e6dd32026189755",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
