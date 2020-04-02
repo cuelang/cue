@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2612a785_eb97c0cd",
+        "filename": "encoding/openapi/testdata/builtins.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-02T14:57:05Z",
+      "side": 1,
+      "message": "The main reason for this is that the file is not a valid OpenAPI file if it doesn\u0027t contain these fields. This also means that the auto-detector will not recognize it as such.\n\nPerhaps we can add some default values then, like \"Generated from CUE at \u003cimportpath\u003e\" and \"undefined version\".",
+      "parentUuid": "4151a2fa_939106cd",
+      "revId": "f8ba8da64569b649a847aa9d3e6dd32026189755",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31aa63aa_1f3f7d2b",
         "filename": "encoding/openapi/testdata/nested.cue",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-02T14:38:44Z",
       "side": 1,
       "message": "did you intend to remove the package directive?",
+      "revId": "f8ba8da64569b649a847aa9d3e6dd32026189755",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a501a10a_32eba17c",
+        "filename": "encoding/openapi/testdata/nested.cue",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-02T14:57:05Z",
+      "side": 1,
+      "message": "Yes, I wanted to have a test case where it picked up the file comment in the absence of a package clause.",
+      "parentUuid": "31aa63aa_1f3f7d2b",
       "revId": "f8ba8da64569b649a847aa9d3e6dd32026189755",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
