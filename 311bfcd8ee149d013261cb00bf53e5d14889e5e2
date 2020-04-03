@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "152fe130_dd6a39e9",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-03T14:28:12Z",
+      "side": 1,
+      "message": "Ah, here I meant the command line, actually, but I see how this is confusing.",
+      "parentUuid": "6425a6e9_6695f717",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80419a96_e84ef0e0",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 4
@@ -118,6 +136,24 @@
       "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a94623b_1366aae3",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-03T14:28:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8a6c36_e7f9033e",
+      "revId": "311bfcd8ee149d013261cb00bf53e5d14889e5e2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
