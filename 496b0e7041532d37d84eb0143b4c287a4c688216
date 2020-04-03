@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ff803e2_31f4aa63",
+        "filename": "cmd/cue/cmd/eval.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-03T14:54:35Z",
+      "side": 1,
+      "message": "We\u0027d almost be better not having short flags (in this case)... but that\u0027s for another day",
+      "revId": "496b0e7041532d37d84eb0143b4c287a4c688216",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
