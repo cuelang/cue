@@ -47,102 +47,39 @@ fully specified. Upon completion of each task, cue rewrites the instance,
 filling in the completed task, and reevaluates which other tasks can
 now start, and so on until all tasks have completed.
 
-Commands are defined at the top-level of the configuration:
+Commands are defined at the top-level of the configuration
+(from cuelang.org/go/pkg/tool/tool.cue):
 
-	command: [Name=string]: { // from tool.Command
-		// usage gives a short usage pattern of the command.
-		// Example:
-		//    fmt [-s] [inputs]
-		usage?: Name | string
-
-		// short gives a brief on-line description of the command.
-		// Example:
-		//    reformat package sources
-		short?: string
-
-		// long gives a detailed description of the command, including a
-		// description of flags usage and examples.
-		long?: string
-
-		// A task defines a single action to be run as part of this command.
-		// Each task can have inputs and outputs, depending on the type
-		// task. The outputs are initially unspecified, but are filled out
-		// by the tooling
-		task: [string]: { // from "tool".Task
-			// supported fields depend on type
-		}
-
-		VarValue = string | bool | int | float | [...string|int|float]
-
-		// var declares values that can be set by command line flags or
-		// environment variables.
+	command: [Name=string]: Command
+	
+	Command :: {
+		// Tasks specifies the things to run to complete a command. Tasks are
+		// typically underspecified and completed by the particular internal
+		// handler that is running them. Tasks can be a single task, or a full
+		// hierarchy of tasks.
+		//
+		// Tasks that depend on the output of other tasks are run after such tasks.
+		// Use $after if a task needs to run after another task but does not
+		// otherwise depend on its output.
+		Tasks
+	
 		//
 		// Example:
-		//   // environment to run in
-		//   var env: "test" | "prod"
-		// The tool would print documentation of this flag as:
-		//   Flags:
-		//      --env string    environment to run in: test(default) or prod
-		var: [string]: VarValue
+		//     mycmd [-n] names
+		$usage?: string
+	
+		// short is short description of what the command does.
+		$short?: string
+	
+		// long is a longer description that spans multiple lines and
+		// likely contain examples of usage of the command.
+		$long?: string
+	}
 
-		// flag defines a command line flag.
-		//
-		// Example:
-		//   var env: "test" | "prod"
-		//
-		//   // augment the flag information for var
-		//   flag env: {
-		//       shortFlag:   "e"
-		//       description: "environment to run in"
-		//   }
-		//
-		// The tool would print documentation of this flag as:
-		//   Flags:
-		//     -e, --env string    environment to run in: test(default), staging, or prod
-		//
-		flag [Name=_]: { // from "tool".Flag
-			// value defines the possible values for this flag.
-			// The default is string. Users can define default values by
-			// using disjunctions.
-			value: *env[Name].value | VarValue
-
-			// name, if set, allows var to be set with the command-line flag
-			// of the given name. null disables the command line flag.
-			name?: *Name | string
-
-			// short defines an abbreviated version of the flag.
-			// Disabled by default.
-			short?: string
-		}
-
-		// populate flag with the default values for
-		for k, v in var {
-			flag: { "\(k)": { value: v } | null  }
-		}
-
-		// env defines environment variables. It is populated with values
-		// for var.
-		//
-		// To specify a var without an equivalent environment variable,
-		// either specify it as a flag directly or disable the equally
-		// named env entry explicitly:
-		//
-		//     var foo: string
-		//     env foo: null  // don't use environment variables for foo
-		//
-		env: [Name=_]: {
-			// name defines the environment variable that sets this flag.
-			name?: *"CUE_VAR_" + strings.Upper(Name) | string
-
-			// The value retrieved from the environment variable or null
-			// if not set.
-			value?: string | bytes
-		}
-		env: {
-			for k, v in var {
-				"\(k)": { value: v } | null
-			}
-		}
+	// Tasks defines a hierarchy of tasks. A command completes if all
+	// tasks have run to completion.
+	Tasks: Task | {
+		[name=Name]: Tasks
 	}
 
 Available tasks can be found in the package documentation at
@@ -161,14 +98,12 @@ A simple file using command line execution:
 	import "tool/exec"
 
 	city: "Amsterdam"
+	who: *"World" | string @tag(who)
 
 	// Say hello!
 	command: hello: {
-		// whom to say hello to
-		var: who: *"World" | string
-
-		task: print: exec.Run & {
-			cmd: "echo Hello \(var.who)! Welcome to \(city)."
+		print: exec.Run & {
+			cmd: "echo Hello \(who)! Welcome to \(city)."
 		}
 	}
 	EOF
@@ -176,42 +111,47 @@ A simple file using command line execution:
 	$ cue cmd hello
 	Hello World! Welcome to Amsterdam.
 
-	$ cue cmd hello -who you  # Setting arguments is not supported yet by cue
-	Hello you! Welcome to Amsterdam.
+	$ cue cmd -t who=Jan hello
+	Hello Jan! Welcome to Amsterdam.
 
 
 An example using pipes:
 
 	package foo
 
-	import "tool/exec"
+	import (
+		"tool/cli"
+		"tool/exec"
+		"tool/file"
+	)
 
 	city: "Amsterdam"
 
 	// Say hello!
 	command: hello: {
-		var: file: "out.txt" | string // save transcript to this file
+		// save transcript to this file
+		var: file: *"out.txt" | string @tag(file)
 
-		task: ask: cli.Ask & {
+		ask: cli.Ask & {
 			prompt:   "What is your name?"
 			response: string
 		}
 
 		// starts after ask
-		task: echo: exec.Run & {
-			cmd:    ["echo", "Hello", task.ask.response + "!"]
+		echo: exec.Run & {
+			cmd:    ["echo", "Hello", ask.response + "!"]
 			stdout: string // capture stdout
 		}
 
 		// starts after echo
-		task: write: file.Append & {
+		file.Append & {
 			filename: var.file
-			contents: task.echo.stdout
+			contents: echo.stdout
 		}
 
 		// also starts after echo
-		task: print: cli.Print & {
-			contents: task.echo.stdout
+		print: cli.Print & {
+			contents: echo.stdout
 		}
 	}
 
