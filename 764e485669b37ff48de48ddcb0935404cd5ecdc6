@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82409386_1d76e1cb",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "\"Outputs are typically filled out... \"\n\nSuperfluous \"are\"",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4288a86_8a3d7e32",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "This reads slightly strangely because what follows is the schema of Commands themselves. Might it be easier to start with the examples, and then finish up with the \"formal\" definition of commands?\n\nIn that vein, I\u0027ve made a couple of suggestions below on how to make clear how commands are declared, specifically that the `command:` top-level field is the \"key\" here. I missed that first time looking at these docs some time ago",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28185a11_21b8a24a",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "(I\u0027ll assume the code that follows is a copy-paste)",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1061407_96f923e2",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Consider replacing with https://pkg.go.dev/cuelang.org/go/pkg/tool?tab\u003dsubdirectories? That shows the sub-packages that contain the tasks themselves as opposed to the schema for Commands.",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd8592bf_43d38eac",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Perhaps:\n\n\"In this simple example, we declare a command called `hello` which declares a single task called `print` which uses `tool/exec.Run` to execute a shell command that echos output to the terminal.\"\n\n(Not sure whether declare/define is more correct here.)\n\nJust to make clear which is the command and which the task.",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061fbd42_f4d23a08",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Drive-by question: how common will it be for a tag name be the same as the corresponding field name?",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd11b0f7_3e494573",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "\"We run the `hello` command like this:\"",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb50e65_5db00ad8",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "\"As you can see the default value of `who` is used. To pass in an alternative value we can use the --inject flag, using the tag key `who`, like this:\"",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f41e34ae_f1ffc64e",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Possibly worth using the long-form --inject here? \n\nOn that note, I wonder when we look to bite the bullet on a Cobra alternative. We already have lots of flags, with long and short forms.... Doing that sooner rather than later feels like it will be better for users, especially early adopters. Because it\u0027s impossible for us to `cue fmt` their usage.",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49dd256a_9790bafd",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Perhaps:\n\n\"In this example we declare the `prompter` command which has four tasks....\"",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53aed485_8debcefe",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "I\u0027d called this something other than `hello` for clarity\u0027s sake: `prompter`?",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a357be_3660b9aa",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T09:44:02Z",
+      "side": 1,
+      "message": "Per my comment about about the \"formal\" spec for commands I\u0027d probably have that follow here: having the examples first eases people into it a bit better perhaps?",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
