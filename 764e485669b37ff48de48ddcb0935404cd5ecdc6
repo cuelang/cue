@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f47fccc0_4576bb02",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4288a86_8a3d7e32",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28185a11_21b8a24a",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -68,6 +86,24 @@
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada50f6e_4e02c096",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28185a11_21b8a24a",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "8fbcdb7d_0118b072",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f81ac1c_0a1dac94",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061fbd42_f4d23a08",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -176,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "8c10cd28_0f33bdaa",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85b40bd_a3d4742f",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd11b0f7_3e494573",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -193,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "aa863f1b_867b68e7",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd11b0f7_3e494573",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb50e65_5db00ad8",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -207,6 +297,24 @@
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77dca801_63684a63",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb50e65_5db00ad8",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -239,6 +347,24 @@
       "side": 1,
       "message": "Yeah, although I kind of like the short form versions myself. Maybe disallow using single dash to allow multiple short forms per dash, though.\n\nIs there a reason to dislike the short forms?",
       "parentUuid": "f41e34ae_f1ffc64e",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bfd536_19d1d776",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "The main thing I dislike is the fact there are two flags, a short form and a long form. I don\u0027t have anything against short flags per say where they are \"obvious\", e.g. go build -o XYZ",
+      "parentUuid": "97b027d4_0c8f5321",
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -347,6 +473,24 @@
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf3a4cc4_8ff95885",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2df2360_685b052b",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }

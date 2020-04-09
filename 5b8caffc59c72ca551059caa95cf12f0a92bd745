@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ee4d78b_4ae6ac9e",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Great idea.",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62efdf8f_e0b942f9",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "\"top of the\" superfluous here?",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b1f8c3_aa266f2b",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Minor question: if someone asked us to define \"instances\" here, where would we point them?",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ffcb7d_06a673f7",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "\"A task may, for example, load or...\"\n\nOtherwise sounds like we are exhaustively listing the things tasks can do.",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6729eaec_036320d9",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-04-09T12:26:30Z",
+      "side": 1,
+      "message": "Ha sorry, the \"...\" there was me being lazy in not fully suggesting an alternative. How about something like:\n\n\"In this example we declare the \"prompted\" command which has four tasks. The first task prompts the user for a string input. The second task depends on the first, and echos the response back to the user with a friendly message. The third task pipes the output from the second to a file. The fourth task pipes the output from the second to standard output (i.e. it echos it again).\"",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
