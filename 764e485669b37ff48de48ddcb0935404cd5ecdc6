@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4bab32aa_37fa17b6",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82409386_1d76e1cb",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4288a86_8a3d7e32",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "c4380755_a95819d5",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1061407_96f923e2",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd8592bf_43d38eac",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "5f81ac1c_0a1dac94",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Done, just can\u0027t use backticks here. :/ using double quotes.",
+      "parentUuid": "dd8592bf_43d38eac",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "061fbd42_f4d23a08",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -98,6 +152,24 @@
       "writtenOn": "2020-04-09T09:44:02Z",
       "side": 1,
       "message": "Drive-by question: how common will it be for a tag name be the same as the corresponding field name?",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85b40bd_a3d4742f",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "50/50 I think.",
+      "parentUuid": "061fbd42_f4d23a08",
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -155,6 +227,24 @@
     },
     {
       "key": {
+        "uuid": "97b027d4_0c8f5321",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Yeah, although I kind of like the short form versions myself. Maybe disallow using single dash to allow multiple short forms per dash, though.\n\nIs there a reason to dislike the short forms?",
+      "parentUuid": "f41e34ae_f1ffc64e",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49dd256a_9790bafd",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -169,6 +259,24 @@
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c1fdcc_e035710a",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49dd256a_9790bafd",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +297,24 @@
     },
     {
       "key": {
+        "uuid": "9442b173_bdc0437f",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53aed485_8debcefe",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89a357be_3660b9aa",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
@@ -200,6 +326,24 @@
       "writtenOn": "2020-04-09T09:44:02Z",
       "side": 1,
       "message": "Per my comment about about the \"formal\" spec for commands I\u0027d probably have that follow here: having the examples first eases people into it a bit better perhaps?",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2df2360_685b052b",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T11:06:57Z",
+      "side": 1,
+      "message": "I like the examples to come last, so that they are immediately visible when running `cue help cmd`.\n\nWhat I\u0027ve done is to add a \"commands\" help topic and refer to it to include these details.",
+      "parentUuid": "89a357be_3660b9aa",
       "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
