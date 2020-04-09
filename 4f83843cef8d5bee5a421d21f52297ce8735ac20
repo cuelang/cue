@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fbf3d2c_3f95014a",
+        "filename": "cue/ast/ast.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T14:59:06Z",
+      "side": 1,
+      "message": "A CommentGroup is a \"dangling\" comment. Comments for a specific field are annotated on the field.",
+      "revId": "4f83843cef8d5bee5a421d21f52297ce8735ac20",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
