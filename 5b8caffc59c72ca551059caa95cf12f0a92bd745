@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "368c5a76_c946d332",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee4d78b_4ae6ac9e",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62efdf8f_e0b942f9",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3ea76e10_edbb3ca2",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62efdf8f_e0b942f9",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b1f8c3_aa266f2b",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2020-04-09T12:26:30Z",
       "side": 1,
       "message": "Minor question: if someone asked us to define \"instances\" here, where would we point them?",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60cfd1c_932934ac",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "https://cuelang.org/docs/concepts/packages/, but should probably be a help topic in its own right.",
+      "parentUuid": "29b1f8c3_aa266f2b",
       "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "b92184cd_36dfa9cc",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ffcb7d_06a673f7",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6729eaec_036320d9",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 4
@@ -84,6 +156,24 @@
       "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a391f9e_567935e1",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6729eaec_036320d9",
+      "revId": "5b8caffc59c72ca551059caa95cf12f0a92bd745",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }

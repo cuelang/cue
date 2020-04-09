@@ -371,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "b5fc875e_86b33c73",
+        "filename": "cmd/cue/cmd/cmd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-04-09T13:56:40Z",
+      "side": 1,
+      "message": "I see. We can always \"deprecate\" a flag. My main problem with `--inject` is that it is a lot to type for something relatively common.",
+      "parentUuid": "c1bfd536_19d1d776",
+      "revId": "764e485669b37ff48de48ddcb0935404cd5ecdc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49dd256a_9790bafd",
         "filename": "cmd/cue/cmd/cmd.go",
         "patchSetId": 2
