@@ -234,7 +234,7 @@ func New(args []string) (cmd *Command, err error) {
 		// "fix":   {"fix", nil},
 	}
 
-	if args[0] == "help" {
+	if args[0] == "help" || args[0] == "--help" {
 		// Allow errors.
 		_ = addSubcommands(cmd, sub, args[1:], true)
 		return cmd, nil
@@ -250,6 +250,7 @@ func New(args []string) (cmd *Command, err error) {
 	if err != nil {
 		return nil, err
 	}
+
 	tags, err := cmd.cmd.Flags().GetStringArray(string(flagInject))
 	if err != nil {
 		return nil, err
@@ -293,6 +294,13 @@ func addSubcommands(cmd *Command, sub map[string]*subSpec, args []string, isHelp
 		if _, ok := sub[args[0]]; ok {
 			oldargs := []string{args[0]}
 			args = args[1:]
+
+			// Check for 'cue cmd --help'
+			// it is behaving differently for this one command, cobra does not seem to pick it up
+			// See issue #340 and PR #341
+			if len(args) == 1 && args[0] == "--help" {
+				return cmd.Usage()
+			}
 
 			if !isHelp {
 				err := cmd.cmd.ParseFlags(args)
