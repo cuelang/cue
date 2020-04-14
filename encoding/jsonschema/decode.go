@@ -380,7 +380,7 @@ func (s *state) schemaState(n cue.Value, types cue.Kind, isLogical bool) (ast.Ex
 			// Convert each constraint into a either a value or a functor.
 			c := constraintMap[key]
 			if c == nil {
-				if pass == 0 {
+				if pass == 0 && s.cfg.Strict {
 					s.warnf(n.Pos(), "unsupported constraint %q", key)
 				}
 				return

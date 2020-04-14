@@ -5,6 +5,10 @@ cmp stdout expect-stdout
 cue def schema.json -p schema -l 'Person::'
 cmp stdout expect-stdout
 
+cue def jsonschema: bad.json
+
+! cue def jsonschema: bad.json --strict
+
 -- expect-stdout --
 package schema
 
@@ -43,6 +47,12 @@ Person :: {
       "minimum": 0
     }
   }
+}
+
+-- bad.json --
+{
+  "type": "number",
+  "foo": "bar"
 }
 
 -- cue.mod --
