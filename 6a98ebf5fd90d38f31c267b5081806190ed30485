@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "867925c1_61c63f96",
+        "filename": "cmd/cue/cmd/testdata/script/def_jsonschema.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-14T23:43:27Z",
+      "side": 1,
+      "message": "Perhaps test the error that\u0027s printed in this case too, as that can be important?",
+      "revId": "6a98ebf5fd90d38f31c267b5081806190ed30485",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ceb168_794694bb",
+        "filename": "encoding/jsonschema/jsonschema.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-14T23:43:27Z",
+      "side": 1,
+      "message": "s/th eURL/the URL/",
+      "revId": "6a98ebf5fd90d38f31c267b5081806190ed30485",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
