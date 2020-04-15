@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4e56e67_2ea68ede",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-15T12:53:47Z",
+      "side": 1,
+      "message": "Good catch. Should be both.",
+      "parentUuid": "b173ab5c_326e8041",
+      "range": {
+        "startLine": 1304,
+        "startChar": 60,
+        "endLine": 1304,
+        "endChar": 66
+      },
+      "revId": "2837cc1c18e1386a75ca8e8e71fbaa7244085a3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326fab83_36fa1418",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2837cc1c18e1386a75ca8e8e71fbaa7244085a3f",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b0b0bc_a9615468",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-15T12:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326fab83_36fa1418",
+      "range": {
+        "startLine": 1307,
+        "startChar": 4,
+        "endLine": 1307,
+        "endChar": 14
+      },
+      "revId": "2837cc1c18e1386a75ca8e8e71fbaa7244085a3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
