@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2306eb0b_da57502a",
+        "filename": "cmd/cue/cmd/testdata/script/def_jsonschema.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-15T08:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "867925c1_61c63f96",
+      "revId": "6a98ebf5fd90d38f31c267b5081806190ed30485",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ceb168_794694bb",
         "filename": "encoding/jsonschema/jsonschema.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "6a98ebf5fd90d38f31c267b5081806190ed30485",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83acca7_36d3f690",
+        "filename": "encoding/jsonschema/jsonschema.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-15T08:18:25Z",
+      "side": 1,
+      "message": "Done. Although eURL sounds kinda trendy.",
+      "parentUuid": "53ceb168_794694bb",
+      "revId": "6a98ebf5fd90d38f31c267b5081806190ed30485",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
