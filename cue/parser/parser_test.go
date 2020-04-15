@@ -447,7 +447,7 @@ bar: 2
 		in: `
 		foo: in & 2
 		`,
-		out: "foo: <*ast.BadExpr>&2\nexpected operand, found 'in'",
+		out: "foo: in&2",
 	}, {
 		desc: "dot import",
 		in: `

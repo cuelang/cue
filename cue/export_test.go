@@ -255,7 +255,7 @@ func TestExport(t *testing.T) {
 		out: unindent(`
 			{
 				a: [1, 2]
-				b: [ v for k, v in a ]
+				b: [ for k, v in a { v } ]
 			}`),
 	}, {
 		raw: true,
