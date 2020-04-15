@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "1ada8fba_81f4a625",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "binds the identifier `X` to... ?",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ffb4e2d_1433e6c6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -42,6 +59,40 @@
         "endLine": 1483,
         "endChar": 20
       },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "348d87aa_c3dea0ef",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "This is the first time you\u0027re mentioning the word alias. perhaps it would be good to mention that it makes an alias within the first sentence?",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00547c17_44e7e409",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "if we\u0027re not going to call them aliases, then maybe avoid the term earlier?",
       "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -71,6 +122,23 @@
     },
     {
       "key": {
+        "uuid": "223ec1ea_2cbbcc01",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "need a comma after \"struct\". also, it might be good to be very clear about the exact scope of the identifier",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a5b7e89_f1319df3",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -88,6 +156,40 @@
         "endLine": 1771,
         "endChar": 60
       },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba526f5_af1b2964",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "is it worth mentioning that a let clause can\u0027t be the first item in the comprehension?",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6dca46a_65fa21ac",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-15T21:24:23Z",
+      "side": 1,
+      "message": "really happy to see this simplification",
       "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
