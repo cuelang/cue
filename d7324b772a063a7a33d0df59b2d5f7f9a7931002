@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecf2c426_7b1f05c7",
+        "filename": "doc/tutorial/kubernetes/manual/services/k8s.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-16T12:06:12Z",
+      "side": 1,
+      "message": "this isn\u0027t quite the same thing, but i guess it doesn\u0027t matter.",
+      "revId": "d7324b772a063a7a33d0df59b2d5f7f9a7931002",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712849dc_4018da28",
+        "filename": "doc/tutorial/kubernetes/manual/services/k8s.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-16T12:06:12Z",
+      "side": 1,
+      "message": "definitely more readable",
+      "revId": "d7324b772a063a7a33d0df59b2d5f7f9a7931002",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
