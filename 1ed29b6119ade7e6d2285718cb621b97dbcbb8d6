@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef391ebe_aff4dfc3",
+        "filename": "cue/parser/parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-04-16T11:54:39Z",
+      "side": 0,
+      "message": "yay for red!",
+      "revId": "1ed29b6119ade7e6d2285718cb621b97dbcbb8d6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
