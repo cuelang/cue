@@ -2125,6 +2125,23 @@ func (v Value) Attribute(key string) Attribute {
 	return Attribute{internal.NewNonExisting(key)}
 }
 
+func (v Value) Attributes() map[string]Attribute {
+	attrs := map[string]Attribute{}
+
+	// return empty
+	if v.path == nil || v.path.attrs == nil {
+		return attrs
+	}
+
+	// collect attribues
+	for _, a := range v.path.attrs.attr {
+		A := Attribute{internal.ParseAttrBody(token.NoPos, a.body())}
+		attrs[a.key()] = A
+	}
+
+	return attrs
+}
+
 // An Attribute contains meta data about a field.
 type Attribute struct {
 	attr internal.Attr
