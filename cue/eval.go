@@ -16,6 +16,7 @@ package cue
 
 import (
 	"bytes"
+	"fmt"
 )
 
 type resolver interface {
@@ -327,6 +328,13 @@ func (x *callExpr) evalPartial(ctx *context) (result evaluated) {
 		}()
 	}
 
+	/*
+	fmt.Println("callExpr.evalPartial - begin")
+	defer func() {
+		fmt.Println("callExpr.evalPartial - return")
+	}()
+	*/
+
 	e := newEval(ctx, true)
 
 	fn := e.eval(x.x, lambdaKind, "cannot call non-function %[2]s (type %[3]s)")
@@ -491,6 +499,12 @@ func (x *structLit) evalPartial(ctx *context) (result evaluated) {
 		defer uni(indent(ctx, "struct eval", x))
 		defer func() { ctx.debugPrint("result:", result) }()
 	}
+
+	fmt.Println("structLit.evalPartial")
+	defer func() {
+		fmt.Println("structLit.evalPartial - return")
+	}()
+
 	x = ctx.deref(x).(*structLit)
 
 	// TODO: Handle cycle?

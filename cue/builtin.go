@@ -226,9 +226,24 @@ var attrsBuiltin = &builtin{
 	Func: func(c *callCtxt) {
 
 		fmt.Println("======  ATTRS  ======")
-
 		// Vet first value - attrs(V)
+		if sl, ok := c.args[0].(*structLit); ok {
+			fmt.Println("SL", len(sl.arcs))
+			if len(sl.arcs) > 0 {
+				fmt.Println("  A1:", sl.arcs[0].attrs)
+			}
+		}
+
 		V := c.value(0)
+
+		if sl, ok := c.args[0].(*structLit); ok {
+			if len(sl.arcs) > 0 {
+				fmt.Println("  A2:", V.Attributes())
+			}
+		}
+
+
+		fmt.Println("======  Value  ======")
 
 		// Print Syntax
 		s := V.Syntax()

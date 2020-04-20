@@ -15,6 +15,7 @@
 package cue
 
 import (
+	"fmt"
 	"math/big"
 	"regexp"
 	"sort"
@@ -586,6 +587,8 @@ func (x *list) iterAt(ctx *context, i int) arc {
 			return arc{}
 		}
 	}
+
+	// XXX need to return attrs here?
 	return arc{cache: x.typ.evalPartial(ctx), v: x.typ}
 }
 
@@ -1024,16 +1027,22 @@ func (x *structLit) lookup(ctx *context, f label) arc {
 }
 
 func (x *structLit) iterAt(ctx *context, i int) arc {
+	fmt.Println("structLit.iterAt - x.attrs", x.arcs[i].attrs)
 	x, err := x.expandFields(ctx)
 	if err != nil || i >= len(x.arcs) {
 		return arc{}
 	}
 	a := x.arcs[i]
 	a.cache = x.at(ctx, i) // TODO: return template & v for original?
+	fmt.Println("structLit.iterAt - a.attrs", a.attrs)
+	a.attrs = x.arcs[i].attrs
 	return a
 }
 
 func (x *structLit) at(ctx *context, i int) evaluated {
+	// if x.arcs[i].attrs != nil {
+		fmt.Println("structLit.at", i, x.arcs[i].attrs, x.emit != nil)
+	// }
 	// TODO: limit visibility of definitions:
 	// Approach:
 	// - add package identifier to arc (label)
@@ -1052,6 +1061,7 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 	// literal nodes or nodes obtained from references. In the later case,
 	// noderef will have ensured that the ancestors were evaluated.
 	if v := x.arcs[i].cache; v == nil {
+		// fmt.Println("  V is NIL")
 
 		// cycle detection
 
@@ -1093,6 +1103,8 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 			}
 		}
 		x.arcs[i].cache = v
+
+
 		if doc != nil {
 			x.arcs[i].docs = &docNode{left: doc, right: x.arcs[i].docs}
 		}
@@ -1101,10 +1113,14 @@ func (x *structLit) at(ctx *context, i int) evaluated {
 				x.arcs[i].cache = err
 			}
 		}
+
 	} else if b := cycleError(v); b != nil {
 		copy := *b
 		return &copy
 	}
+
+	// fmt.Println("structLit.at - return")
+	fmt.Printf("structLit.at %d - return %+v\n", i, x.arcs[i].cache)
 	return x.arcs[i].cache
 }
 
