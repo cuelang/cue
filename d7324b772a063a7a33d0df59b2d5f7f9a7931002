@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e7c4396e_4bdb73f2",
+        "filename": "doc/tutorial/kubernetes/manual/services/k8s.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-20T08:29:47Z",
+      "side": 1,
+      "message": "correct.",
+      "parentUuid": "ecf2c426_7b1f05c7",
+      "revId": "d7324b772a063a7a33d0df59b2d5f7f9a7931002",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "712849dc_4018da28",
         "filename": "doc/tutorial/kubernetes/manual/services/k8s.cue",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "d7324b772a063a7a33d0df59b2d5f7f9a7931002",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c45afb_6cc3dfbe",
+        "filename": "doc/tutorial/kubernetes/manual/services/k8s.cue",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-20T08:29:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "712849dc_4018da28",
+      "revId": "d7324b772a063a7a33d0df59b2d5f7f9a7931002",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
