@@ -1,3 +1,5 @@
+package reprodata
+
 A: {
   foo: "goo" @hof()
 } @myattr()

@@ -224,48 +224,61 @@ var attrsBuiltin = &builtin{
 	Params: []kind{topKind},
 	Result: topKind,
 	Func: func(c *callCtxt) {
+
 		fmt.Println("======  ATTRS  ======")
+
+		// Vet first value - attrs(V)
 		V := c.value(0)
 
+		// Print Syntax
 		s := V.Syntax()
 		ss, err := format.Node(s)
 		fmt.Println("V.Syntax", string(ss))
 
+
+		// Print Label and Attributes
+		// XXX these will always be an empty list
+		label, found := V.Label()
+		fmt.Printf("V.label: '%v' %v\n", label, found)
 		fmt.Println("V.attrs:", V.Attributes())
 
-		S, _ := V.Struct()
-
-
-
-		iter := S.Fields()
+		// Get struct frmo Value
+		S, err := V.Struct()
 		if err != nil {
+			/*
 			es := errors.Errors(err)
 			for _, e := range es {
 				fmt.Println(e)
 			}
 			c.err = err
 			return
-		}
+			*/
+		} else {
+			// If it is a struct, print the annotations on the fields
+			if S != nil {
+				iter := S.Fields()
+				for iter.Next() {
 
-		for iter.Next() {
-
-			label := iter.Label()
-			value := iter.Value()
-			fmt.Println("  -", label, value)
-			for attrKey, attrVal := range value.Attributes() {
-				fmt.Println("  --", attrKey)
-				for i := 0; i < 5; i++ {
-					str, err := attrVal.String(i)
-					if err != nil {
-						break
+					label := iter.Label()
+					value := iter.Value()
+					fmt.Println("  -", label, value)
+					for attrKey, attrVal := range value.Attributes() {
+						fmt.Println("  --", attrKey)
+						for i := 0; i < 5; i++ {
+							str, err := attrVal.String(i)
+							if err != nil {
+								break
+							}
+							if str == "" {
+								continue
+							}
+							fmt.Println("  ---", str)
+						}
 					}
-					if str == "" {
-						continue
-					}
-					fmt.Println("  ---", str)
 				}
 			}
 		}
+
 		fmt.Println("======   END   ======")
 
 		/*
