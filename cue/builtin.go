@@ -30,6 +30,7 @@ import (
 	"github.com/cockroachdb/apd/v2"
 
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/parser"
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
@@ -93,6 +94,7 @@ func mustCompileBuiltins(ctx *context, p *builtinPkg, pkgName string) *structLit
 		}
 		pkg := evalExpr(ctx, obj, expr).(*structLit)
 		for _, a := range pkg.arcs {
+			// XXX - maybe related to this comment?
 			// Discard option status and attributes at top level.
 			// TODO: filter on capitalized fields?
 			obj.insertValue(ctx, a.feature, false, false, a.v, nil, a.docs)
@@ -217,6 +219,72 @@ var orBuiltin = &builtin{
 	},
 }
 
+var attrsBuiltin = &builtin{
+	Name:   "attrs",
+	Params: []kind{topKind},
+	Result: topKind,
+	Func: func(c *callCtxt) {
+		fmt.Println("======  ATTRS  ======")
+		V := c.value(0)
+
+		s := V.Syntax()
+		ss, err := format.Node(s)
+		fmt.Println("V.Syntax", string(ss))
+
+		fmt.Println("V.attrs:", V.Attributes())
+
+		S, _ := V.Struct()
+
+
+
+		iter := S.Fields()
+		if err != nil {
+			es := errors.Errors(err)
+			for _, e := range es {
+				fmt.Println(e)
+			}
+			c.err = err
+			return
+		}
+
+		for iter.Next() {
+
+			label := iter.Label()
+			value := iter.Value()
+			fmt.Println("  -", label, value)
+			for attrKey, attrVal := range value.Attributes() {
+				fmt.Println("  --", attrKey)
+				for i := 0; i < 5; i++ {
+					str, err := attrVal.String(i)
+					if err != nil {
+						break
+					}
+					if str == "" {
+						continue
+					}
+					fmt.Println("  ---", str)
+				}
+			}
+		}
+		fmt.Println("======   END   ======")
+
+		/*
+		r := internal.GetRuntime(x).(*Runtime)
+		v := internal.FromGoValue(r, a, false).(Value)
+		if err := v.Err(); err != nil {
+			c.err = err
+		}
+		c.ret = v
+		*/
+
+		c.ret = V.Attributes()
+		c.err = nil
+
+		return
+
+	},
+}
+
 func (x *builtin) representedKind() kind {
 	if x.isValidator() {
 		return x.Params[0]
@@ -259,6 +327,7 @@ func convertBuiltin(v evaluated) evaluated {
 }
 
 func (x *builtin) call(ctx *context, src source, args ...evaluated) (ret value) {
+	// fmt.Printf("CALL\n%# v\n", pretty.Formatter(args[0]))
 	if x.Func == nil {
 		return ctx.mkErr(x, "builtin %s is not a function", x.name(ctx))
 	}
