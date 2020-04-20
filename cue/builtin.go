@@ -240,7 +240,8 @@ var attrsBuiltin = &builtin{
 		// XXX these will always be an empty list
 		label, found := V.Label()
 		fmt.Printf("V.label: '%v' %v\n", label, found)
-		fmt.Println("V.attrs:", V.Attributes())
+		fmt.Println("V.attrs:", V.path.attrs)
+		fmt.Println("V.Attrs:", V.Attributes())
 
 		// Get struct frmo Value
 		S, err := V.Struct()
