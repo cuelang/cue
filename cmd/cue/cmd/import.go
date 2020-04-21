@@ -440,6 +440,7 @@ func getFilename(b *buildPlan, f *ast.File, root string, force bool) (filename s
 func handleFile(b *buildPlan, f *ast.File) (err error) {
 	// TODO: fill out root.
 	cueFile, err := getFilename(b, f, "", flagForce.Bool(b.cmd))
+
 	if cueFile == "" {
 		return err
 	}
