@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7504a494_d7890111",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "One of the main reasons for this change is that we now also have label and field aliases. Here the aliases bind to something that is not ephemeral. The old aliases, however, are completely local and do not bind to a value that is part of the output.\n\nThis distinction was confusing to users. Moreover, it turns out this inconsistency made the implementation more difficult as well and prevents certain extensions down the road.\n\nIOW, aliases will keep existing, just the ephemeral form will be called differently.\n\nThat said, I\u0027ll remove the new interpretation of X\u003dvalue (an alias to an embedded value). I\u0027m not entirely convinced we need it and also, at the very least, we need a long period where this is illegal before we can reintroduce it to mean something different.",
+      "parentUuid": "099d0d99_552047ff",
+      "range": {
+        "startLine": 1423,
+        "startChar": 5,
+        "endLine": 1423,
+        "endChar": 12
+      },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ada8fba_81f4a625",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81414f0_f7479095",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1ada8fba_81f4a625",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "3304c3ce_10b867a6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffb4e2d_1433e6c6",
+      "range": {
+        "startLine": 1483,
+        "startChar": 15,
+        "endLine": 1483,
+        "endChar": 20
+      },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f624020b_bbba391e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "It is probably too confusing to use alias in this context. I removed the word. Old habits...",
+      "parentUuid": "348d87aa_c3dea0ef",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00547c17_44e7e409",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6439f1e_7cad8200",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00547c17_44e7e409",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +241,48 @@
     },
     {
       "key": {
+        "uuid": "e96fc96a_fd8dc4d0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68602b64_15399bc4",
+      "range": {
+        "startLine": 1769,
+        "startChar": 22,
+        "endLine": 1769,
+        "endChar": 28
+      },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efadf8f6_09e918b8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "I\u0027ve clarified this better within the section discussion scope.",
+      "parentUuid": "223ec1ea_2cbbcc01",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a5b7e89_f1319df3",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "63ffe61e_1bc2bf1a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a5b7e89_f1319df3",
+      "range": {
+        "startLine": 1771,
+        "startChar": 58,
+        "endLine": 1771,
+        "endChar": 60
+      },
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ba526f5_af1b2964",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -179,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "5767f058_8ef0afe1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2532,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba526f5_af1b2964",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6dca46a_65fa21ac",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -193,6 +379,24 @@
       "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ffac38_5fc00ba2",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-04-22T10:19:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6dca46a_65fa21ac",
+      "revId": "197f63ca10051e5a408bd5c6eec8778e20ce6e86",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
