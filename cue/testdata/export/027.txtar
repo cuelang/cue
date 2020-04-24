@@ -1,0 +1,18 @@
+raw: true
+eval: true
+-- in.cue --
+{
+	Foo :: {
+		Bar :: Foo | string
+	}
+}
+-- out/def --
+Foo :: {
+	Bar :: Foo | string
+}
+-- out/export --
+
+-- out/yaml --
+{}
+-- out/json --
+{}

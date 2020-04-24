@@ -1,0 +1,15 @@
+#name: booleans
+#evalPartial
+-- in.cue --
+t: true
+t: !false
+f: false
+f: !t
+e: true
+e: !true
+-- out/def --
+t: true
+f: false
+e: _|_ // conflicting values true and false
+-- out/legacy-debug --
+<0>{t: true, f: false, e: _|_(true:conflicting values true and false)}
