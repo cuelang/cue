@@ -1,0 +1,19 @@
+raw: true
+eval: true
+noOpt: true
+-- in.cue --
+{
+	And :: {
+		"Fn::And": [...(3 | And)]
+	}
+	Ands: And & {
+		"Fn::And": [_]
+	}
+}
+-- out/def --
+And :: {
+	"Fn::And": [...3 | And]
+}
+Ands: And & {
+	"Fn::And": [_]
+}
