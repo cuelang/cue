@@ -1,0 +1,56 @@
+name: Test
+
+on: [repository_dispatch]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        go-version: [1.13.x, 1.14.x]
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go-version }}
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Update Gerrit CL message with starting message
+      uses: cue-sh/trybot@latest
+      if: always()
+      with:
+        mode: start
+        runID: ${{ github.run_id }}
+        ref: ${{ github.event.client_payload.ref }}
+        changeID: ${{ github.event.client_payload.changeID }}
+        jobStatus: ${{ job.status }}
+        repo: ${{ github.event.repository.html_url }}
+        gerritCookie: ${{ secrets.gerritCookie }}
+
+    - name: Cache Go modules
+      uses: actions/cache@v1
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ matrix.go-version }}-go-
+
+    - name: Test
+      run: go test ./...
+    - name: Test with -race
+      run: go test -race ./...
+
+    - name: Update Gerrit CL message with end message
+      if: always()
+      uses: cue-sh/trybot@latest
+      with:
+        mode: end
+        runID: ${{ github.run_id }}
+        ref: ${{ github.event.client_payload.ref }}
+        changeID: ${{ github.event.client_payload.changeID }}
+        jobStatus: ${{ job.status }}
+        repo: ${{ github.event.repository.html_url }}
+        gerritCookie: ${{ secrets.gerritCookie }}
