@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5195b064_44fc31ad",
+        "filename": ".github/workflows/test_dispatch.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-05-01T14:32:04Z",
+      "side": 1,
+      "message": "comment this? I don\u0027t follow why it\u0027s necessary.\n\nalso, the \"starting\" would be nicer if it was at the very beginning, so that we notify the developer as early as possible.\n\nalso, would we notify the developer 6 times, given that we have a matrix with 6 combinations?",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2ed986_ae651b83",
+        "filename": ".github/workflows/test_dispatch.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-05-01T14:32:04Z",
+      "side": 1,
+      "message": "nit: you can add -vet\u003doff to prevent duplicating a bit of cpu work here",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9ed64d_ac3c8939",
+        "filename": "codereview.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-05-01T14:32:04Z",
+      "side": 1,
+      "message": "do we want a TODO here for an official fork in the future?",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
