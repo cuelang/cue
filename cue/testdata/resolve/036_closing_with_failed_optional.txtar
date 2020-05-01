@@ -61,3 +61,39 @@ v1:
 {"o1":{},"v1":{"b":4}}
 -- out/legacy-debug --
 <0>{k1 :: <1>C{a: int}, A :: <2>C{a: int}, k2 :: <3>C{a: int}, o1: <4>{a?: _|_((3 & 4):conflicting values 3 and 4)}, o2 :: <5>C{a?: _|_((3 & 4):conflicting values 3 and 4)}, d1 :: (<6>C{a?: 2, b: 4} | <7>C{a?: 3, c: 5}), v1: <8>C{a?: _|_((2 & 3):conflicting values 2 and 3), b: 4}}
+-- out/compile --
+--- in.cue
+{
+  k1:: ({
+    a: int
+    b?: int
+  } & 〈0;A〉)
+  k2:: (〈0;A〉 & {
+    a: int
+    b?: int
+  })
+  o1: ({
+    a?: 3
+  } & {
+    a?: 4
+  })
+  o2:: ({
+    a?: 3
+  } & {
+    a?: 4
+  })
+  d1:: ({
+    a?: 2
+    b: 4
+  }|{
+    a?: 3
+    c: 5
+  })
+  v1: (〈0;d1〉 & {
+    a?: 3
+    b: 4
+  })
+  A:: {
+    a: int
+  }
+}
