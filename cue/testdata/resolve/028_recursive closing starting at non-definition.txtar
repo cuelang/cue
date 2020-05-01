@@ -46,3 +46,28 @@ A:
 {"z":{"a":{}},"A":{"a":{}}}
 -- out/legacy-debug --
 <0>{z: <1>{a: <2>{B :: <3>C{c: <4>C{d: 1, f: 1}}}}, A: <5>{a: <6>{B :: <7>C{c: _|_(2:field "e" not allowed in closed struct)}}}}
+-- out/compile --
+--- in.cue
+{
+  z: {
+    a: {
+      B:: {
+        c: {
+          d: 1
+        }
+        c: {
+          f: 1
+        }
+      }
+    }
+  }
+  A: (〈0;z〉 & {
+    a: {
+      B:: {
+        c: {
+          e: 2
+        }
+      }
+    }
+  })
+}
