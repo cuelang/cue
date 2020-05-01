@@ -50,3 +50,28 @@ a:
 {"a":{"d":{"Y":"foo"}}}
 -- out/legacy-debug --
 <0>{a: <1>{[]: <2>(Name: string)-><3>{info :: <4>C{X: "foo"}}, d: <5>C{info :: <6>C{X: "foo"}, Y: "foo"}}, base :: <7>C{info :: <8>{...}}}
+-- out/compile --
+--- in.cue
+{
+  a: {
+    d: {
+      〈2;base〉
+      info:: {
+        ...
+      }
+      Y: 〈0;info〉.X
+    }
+  }
+  base:: {
+    info:: {
+      ...
+    }
+  }
+  a: {
+    [string]: {
+      info:: {
+        X: "foo"
+      }
+    }
+  }
+}
