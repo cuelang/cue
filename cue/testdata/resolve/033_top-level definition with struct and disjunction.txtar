@@ -34,3 +34,19 @@ def :: {
 {}
 -- out/legacy-debug --
 <0>{def :: (<1>C{Size: (0 & int), Type: ("B" & string), Text: string} | <2>C{Size: (1 & int), Type: ("A" & string), Text: string})}
+-- out/compile --
+--- in.cue
+{
+  def:: {
+    Type: string
+    Text: string
+    Size: int
+  }
+  def:: ({
+    Type: "B"
+    Size: 0
+  }|{
+    Type: "A"
+    Size: 1
+  })
+}

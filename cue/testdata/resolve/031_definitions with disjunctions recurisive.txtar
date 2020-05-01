@@ -32,3 +32,20 @@ Foo :: {
 {}
 -- out/legacy-debug --
 <0>{Foo :: <1>C{x: (<2>C{field: int, a: 1, c: 3} | <3>C{field: int, b: 2, c: 3})}}
+-- out/compile --
+--- in.cue
+{
+  Foo:: {
+    x: {
+      field: int
+      ({
+        a: 1
+      }|{
+        b: 2
+      })
+    }
+    x: {
+      c: 3
+    }
+  }
+}
