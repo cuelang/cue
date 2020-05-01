@@ -11,3 +11,17 @@ b: 2.0
 c: _|_ // undefined field "c"
 d: _|_ // undefined field "d"
 e: _|_ // undefined field "t"
+-- out/compile --
+--- in.cue
+{
+  {
+    a:: {
+      b: 2.0
+      s: "abc"
+    }
+    b: 〈0;a〉.b
+    c: 〈0;a〉.c
+    d: 〈0;a〉["d"]
+    e: 〈0;a〉.t[2:3]
+  }
+}
