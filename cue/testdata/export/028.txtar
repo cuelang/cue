@@ -20,3 +20,17 @@ a: []
 a: []
 -- out/json --
 {"a":[]}
+-- out/compile --
+--- in.cue
+{
+  {
+    FindInMap:: {
+      "Fn::FindInMap": [
+        (string|〈1;FindInMap〉),
+      ]
+    }
+    a: [
+      ...string,
+    ]
+  }
+}
