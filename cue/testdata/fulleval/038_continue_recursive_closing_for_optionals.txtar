@@ -22,3 +22,17 @@ a: S & {
 }
 -- out/legacy-debug --
 <0>{S :: <1>{[]: <2>(_: string)-><3>C{a: int}, }, a: <4>{[]: <5>(_: string)-><6>C{a: int}, v: _|_(int:field "b" not allowed in closed struct)}}
+-- out/compile --
+--- in.cue
+{
+  S:: {
+    [string]: {
+      a: int
+    }
+  }
+  a: (〈0;S〉 & {
+    v: {
+      b: int
+    }
+  })
+}
