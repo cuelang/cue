@@ -35,3 +35,27 @@ baz: Foo & {
 }
 -- out/legacy-debug --
 <0>{Foo :: (<1>C{field: int, a: 1} | <2>C{field: int, b: 2}), foo: <3>C{field: int, a: 1}, bar: _|_(2:empty disjunction: field "c" not allowed in closed struct), baz: <4>C{field: int, b: 2}}
+-- out/compile --
+--- in.cue
+{
+  Foo:: {
+    field: int
+    ({
+      a: 1
+    }|{
+      b: 2
+    })
+  }
+  foo: 〈0;Foo〉
+  foo: {
+    a: 1
+  }
+  bar: 〈0;Foo〉
+  bar: {
+    c: 2
+  }
+  baz: 〈0;Foo〉
+  baz: {
+    b: 2
+  }
+}

@@ -28,3 +28,16 @@ T :: {
 {}
 -- out/legacy-debug --
 <0>{T :: <1>C{arg: <2>C{x: string}, out1: _|_(<3>.arg.y:undefined field "y"), out2: _|_(<3>.arg.y:undefined field "y"), vx: string, vy: _|_(<3>.arg.y:undefined field "y")}}
+-- out/compile --
+--- in.cue
+{
+  T:: {
+    arg: {
+      x: string
+    }
+    out1: "\(〈0;arg〉.x) \(〈0;arg〉.y)"
+    out2: "\(〈0;arg〉.y)"
+    vx: 〈0;arg〉.x
+    vy: 〈0;arg〉.y
+  }
+}
