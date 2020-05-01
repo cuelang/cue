@@ -57,3 +57,48 @@ D :: {
 }
 -- out/legacy-debug --
 <0>{E :: _|_(<1>.v:field "f3" not allowed in closed struct), A :: <2>C{f1: int, f2: int}, a: _|_(<3>.v:field "f3" not allowed in closed struct), B :: <4>C{f1: int}, C :: <5>C{f1: int}, D :: <6>{f1: int, ...}}
+-- out/compile --
+--- in.cue
+{
+  A:: {
+    f1: int
+    f2: int
+  }
+  for k, v in {
+    f3: int
+  } {
+    a: (〈2;A〉 & {
+      "\(〈2;k〉)": 〈2;v〉
+    })
+  }
+  B:: {
+    for k, v in {
+      f1: int
+    } {
+      "\(〈1;k〉)": 〈1;v〉
+    }
+  }
+  C:: {
+    f1: _
+    for k, v in {
+      f1: int
+    } {
+      "\(〈1;k〉)": 〈1;v〉
+    }
+  }
+  D:: {
+    for k, v in {
+      f1: int
+    } {
+      "\(〈1;k〉)": 〈1;v〉
+    }
+    ...
+  }
+  E:: (〈0;A〉 & {
+    for k, v in {
+      f3: int
+    } {
+      "\(〈1;k〉)": 〈1;v〉
+    }
+  })
+}
