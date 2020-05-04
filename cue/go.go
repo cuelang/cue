@@ -261,6 +261,14 @@ func convertRec(ctx *context, src source, nilIsTop bool, x interface{}) evaluate
 
 		return parseJSON(ctx, b)
 
+	case json.Number:
+		b, err := json.Marshal(v)
+		if err != nil {
+			return ctx.mkErr(src, err)
+		}
+
+		return parseJSON(ctx, b)
+
 	case encoding.TextMarshaler:
 		b, err := v.MarshalText()
 		if err != nil {

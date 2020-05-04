@@ -989,7 +989,9 @@ func (v Value) Decode(x interface{}) error {
 	if err != nil {
 		return err
 	}
-	return json.Unmarshal(b, x)
+	dec := json.NewDecoder(bytes.NewReader(b))
+	dec.UseNumber()
+	return dec.Decode(x)
 }
 
 // // EncodeJSON generates JSON for the given value.

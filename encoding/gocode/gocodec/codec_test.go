@@ -15,6 +15,7 @@
 package gocodec
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 	"testing"
@@ -23,6 +24,7 @@ import (
 	"github.com/kr/pretty"
 
 	"cuelang.org/go/cue"
+	"cuelang.org/go/cue/format"
 )
 
 type Sum struct {
@@ -235,6 +237,10 @@ func TestEncode(t *testing.T) {
 		in:   "4",
 		dst:  new(int),
 		want: 4,
+	}, {
+		in:   "4",
+		dst:  new(interface{}),
+		want: json.Number("4"),
 	}}
 	r := &cue.Runtime{}
 	c := New(r, nil)
@@ -279,6 +285,48 @@ func TestDecode(t *testing.T) {
 			got := fmt.Sprint(v)
 			if got != tc.want {
 				t.Errorf("got %v; want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestEncodeDecodeRoundtrip(t *testing.T) {
+	testCases := []struct {
+		in   string
+		want string
+	}{{
+		in:   "4",
+		want: "4",
+	}}
+
+	r := &cue.Runtime{}
+	c := New(r, nil)
+
+	for i, tc := range testCases {
+		t.Run(fmt.Sprintf("%v:%v", i, tc.in), func(t *testing.T) {
+			inst, err := r.Compile("test", tc.in)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			var i interface{}
+			err = c.Encode(inst.Value(), &i)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			v, err := c.Decode(i)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			b, err := format.Node(v.Syntax())
+			if err != nil {
+				t.Fatal(err)
+			}
+			got := string(b)
+			if !cmp.Equal(got, tc.want) {
+				t.Error(cmp.Diff(got, tc.want))
 			}
 		})
 	}

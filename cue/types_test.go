@@ -16,6 +16,7 @@ package cue
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"math"
@@ -1225,6 +1226,10 @@ func TestDecode(t *testing.T) {
 		value: `[1,2,3]`,
 		dst:   intList(),
 		want:  *intList(1, 2, 3),
+	}, {
+		value: `4`,
+		dst:   new(interface{}),
+		want:  json.Number("4"),
 	}, {
 		value: `[for x in y if x > 1 { x }]
 				y :: [1,2,3]`,
