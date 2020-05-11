@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16887bc9_7ce54ea7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-05-11T13:35:19Z",
+      "side": 1,
+      "message": "The order constraint is perhaps a bit restrictive here. We\u0027re used to the requirement to put the package clause and import declarations at the start, but I\u0027m not sure I\u0027m keen about this new restriction. The last declaration in the file is the least visible. Certainly with structs, I\u0027ve sometimes wanted to put the `...` at the start of the struct so it\u0027s obvious. How about allowing any number of `...` directives at any position in a source file and within a struct?",
+      "revId": "73ccd71f70da634cb80fb36fbeb0f53f5ab5c35a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
