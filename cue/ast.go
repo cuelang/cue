@@ -199,15 +199,7 @@ func isDef(f *ast.Field) bool {
 	if f.Token == token.ISA {
 		return true
 	}
-	switch x := f.Label.(type) {
-	case *ast.Alias:
-		if ident, ok := x.Expr.(*ast.Ident); ok {
-			return strings.HasPrefix(ident.Name, "#")
-		}
-	case *ast.Ident:
-		return strings.HasPrefix(x.Name, "#")
-	}
-	return false
+	return internal.IsDefinition(f.Label)
 }
 
 // We probably don't need to call Walk.s
