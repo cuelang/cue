@@ -16,6 +16,24 @@
       "revId": "73ccd71f70da634cb80fb36fbeb0f53f5ab5c35a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8891ea0_008ae5e1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2020-05-12T13:44:34Z",
+      "side": 1,
+      "message": "Yes, I was thinking to do the same ultimately. This can even help as hints to the topological sort where items should be added. This change would be quite substantial, though. To be consistent, that change would also have to be be applied to structs.\n\nSo this is a temporary measure to improve consistency. This in turn, allows JSON Schema generation to be the same at the file and struct level and allows moving things around without breaking things.",
+      "parentUuid": "16887bc9_7ce54ea7",
+      "revId": "73ccd71f70da634cb80fb36fbeb0f53f5ab5c35a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
