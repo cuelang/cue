@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0da2aa_2e7d4831",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2020-05-12T11:28:05Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 1299,
+        "startChar": 44,
+        "endLine": 1299,
+        "endChar": 53
+      },
+      "revId": "76d357fa6ad394aaf1903fe652832be4246b303c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
