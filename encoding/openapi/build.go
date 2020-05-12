@@ -1199,6 +1199,11 @@ func (b *builder) addRef(v cue.Value, inst *cue.Instance, ref []string) {
 
 func (b *buildContext) makeRef(inst *cue.Instance, ref []string) string {
 	a := make([]string, 0, len(ref)+3)
+	for i, s := range ref {
+		if strings.HasPrefix(s, "#") {
+			ref[i] = s[1:]
+		}
+	}
 	if b.nameFunc != nil {
 		a = append(a, b.nameFunc(inst, ref))
 	} else {
