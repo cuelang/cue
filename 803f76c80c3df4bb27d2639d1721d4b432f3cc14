@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2dd26cdc_acfbb5e6",
+        "filename": ".github/workflows/test_dispatch.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-12T10:21:20Z",
+      "side": 1,
+      "message": "Addressing these points in a slightly different order:\n\n\u003e also, would we notify the developer 6 times, given that we have a matrix with 6 combinations?\n\nGood catch. My test was with a matrix with a single entry. We will have to define three jobs: start, test and end. That way, as you point out the start notification will be once, at the start, any failures will notify from each test that fails, and the end once at the end if all tests pass.\n\nThe if always() is required to always run this step regardless of job state.",
+      "parentUuid": "5195b064_44fc31ad",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e2ed986_ae651b83",
         "filename": ".github/workflows/test_dispatch.yml",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "98af1285_f37371bb",
+        "filename": ".github/workflows/test_dispatch.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-12T10:21:20Z",
+      "side": 1,
+      "message": "We can do anything we like 😊\n\nI was simply copying the existing test workflow",
+      "parentUuid": "5e2ed986_ae651b83",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c9ed64d_ac3c8939",
         "filename": "codereview.cfg",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-05-01T14:32:04Z",
       "side": 1,
       "message": "do we want a TODO here for an official fork in the future?",
+      "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9355be9c_00224c5e",
+        "filename": "codereview.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-12T10:21:20Z",
+      "side": 1,
+      "message": "Thanks - good catch. This is a typo following my testing.",
+      "parentUuid": "1c9ed64d_ac3c8939",
       "revId": "803f76c80c3df4bb27d2639d1721d4b432f3cc14",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
