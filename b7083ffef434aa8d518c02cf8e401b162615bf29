@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e79bac27_d679854b",
+        "filename": "cue/ast/ident_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-13T21:50:43Z",
+      "side": 1,
+      "message": "Is it the case that this definition is no longer hidden?",
+      "revId": "b7083ffef434aa8d518c02cf8e401b162615bf29",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea08c59_75f29304",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-13T21:50:43Z",
+      "side": 1,
+      "message": "s/its starts/its identifier starts/",
+      "revId": "b7083ffef434aa8d518c02cf8e401b162615bf29",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63641bde_1bd01a60",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-13T21:50:43Z",
+      "side": 1,
+      "message": "Nice. This would resolve https://github.com/cuelang/cue/issues/371.",
+      "revId": "b7083ffef434aa8d518c02cf8e401b162615bf29",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fce9530_79f8f47c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-13T21:50:43Z",
+      "side": 1,
+      "message": "To clarify, it might be helpful to show that \"#_E\" would be visible outside the package.",
+      "revId": "b7083ffef434aa8d518c02cf8e401b162615bf29",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
