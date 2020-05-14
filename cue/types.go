@@ -2251,6 +2251,16 @@ func (v Value) Expr() (Op, []Value) {
 			a = append(a, remakeValue(v, p))
 		}
 		op = InterpolationOp
+	case *nodeRef:
+		a = append(a, remakeValue(v, x.node))
+		if x.label > 0 {
+			a = append(a, remakeValue(v, &stringLit{
+				x.baseValue,
+				v.ctx().labelStr(x.label),
+				nil,
+			}))
+			op = SelectorOp
+		}
 	case *selectorExpr:
 		a = append(a, remakeValue(v, x.x))
 		a = append(a, remakeValue(v, &stringLit{
