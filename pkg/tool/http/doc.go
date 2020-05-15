@@ -3,18 +3,18 @@
 // Package http provides tasks related to the HTTP protocol.
 //
 // These are the supported tasks:
-//
+//     
 //     Get:    Do & {method: "GET"}
 //     Post:   Do & {method: "POST"}
 //     Put:    Do & {method: "PUT"}
 //     Delete: Do & {method: "DELETE"}
-//
+//     
 //     Do: {
 //     	$id: *"tool/http.Do" | "http" // http for backwards compatibility
-//
+//     
 //     	method: string
 //     	url:    string // TODO: make url.URL type
-//
+//     
 //     	request: {
 //     		body: *bytes | string
 //     		header: [string]:  string | [...string]
@@ -23,13 +23,13 @@
 //     	response: {
 //     		status:     string
 //     		statusCode: int
-//
+//     
 //     		body: *bytes | string
 //     		header: [string]:  string | [...string]
 //     		trailer: [string]: string | [...string]
 //     	}
 //     }
-//
+//     
 //     //  TODO: support serving once we have the cue serve command.
 //     // Serve: {
 //     //  port: int
@@ -41,5 +41,5 @@
 //     //   pattern: Pattern
 //     //  }
 //     // }
-//
+//     
 package http
