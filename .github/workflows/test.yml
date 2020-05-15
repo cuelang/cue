@@ -43,7 +43,7 @@ jobs:
       run: go test -race ./...
 
     - name: gorelease check
-      run: go run -modfile=./.tools/go.mod golang.org/x/exp/cmd/gorelease
+      run: go run golang.org/x/exp/cmd/gorelease
 
     - name: Pull this commit through the proxy on master
       if: github.ref == 'refs/heads/master'
