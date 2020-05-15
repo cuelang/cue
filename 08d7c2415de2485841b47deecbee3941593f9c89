@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee38b102_d536274c",
+        "filename": "pkg/text/template/template.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-15T09:38:14Z",
+      "side": 1,
+      "message": "Per our exchange offline, this is simply the result of a code gen diff.",
+      "parentUuid": "96bc14cf_b90f1dc0",
+      "revId": "08d7c2415de2485841b47deecbee3941593f9c89",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe5f74e_647a65dc",
         "filename": "pkg/tool/cli/doc.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-15T09:32:07Z",
       "side": 1,
       "message": "I think goreleaser does a subsequent gofmt run",
+      "revId": "08d7c2415de2485841b47deecbee3941593f9c89",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3709982_2533e0fe",
+        "filename": "pkg/tool/cli/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-15T09:38:14Z",
+      "side": 1,
+      "message": "Per our exchange offline, I will add a gofmt step post qgo.",
+      "parentUuid": "afe5f74e_647a65dc",
       "revId": "08d7c2415de2485841b47deecbee3941593f9c89",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
