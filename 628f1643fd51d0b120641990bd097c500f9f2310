@@ -22,6 +22,30 @@
       "revId": "628f1643fd51d0b120641990bd097c500f9f2310",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53aacc4_c3fc3c8d",
+        "filename": ".tools/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-15T06:27:35Z",
+      "side": 1,
+      "message": "This is the .tools directory though?\n\nThe technique of putting tool dependencies in a separate go.mod file is an alternative to cluttering the main go.mod file.\n\nI\u0027m happy either way, this just felt like the least invasive approach to adding a dependency on x/exp",
+      "parentUuid": "2162c8d8_d8e5dac1",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "628f1643fd51d0b120641990bd097c500f9f2310",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
