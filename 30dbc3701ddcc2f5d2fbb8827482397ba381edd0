@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f9ccabb_d6ddefce",
+        "filename": "cmd/cue/cmd/fixall_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-05-15T14:45:02Z",
+      "side": 1,
+      "message": "if you want to avoid this syntax on top of txtar, perhaps try:\n\n-- input.cue --\nxxx\n-- _golden/input.cue --\nxxx\n\nor input.cue.golden instead. either way, can be automated as well, and IMO would be a bit nicer as you wouldn\u0027t have two \"layers\" of file separators",
+      "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
