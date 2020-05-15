@@ -16,6 +16,24 @@
       "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e9d2b18_3a035c3c",
+        "filename": "cmd/cue/cmd/fixall_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-05-15T17:10:56Z",
+      "side": 1,
+      "message": "That would be possible, I think. For the shared tests it would be\n\n_golden/testname/path\n\nbut the same technique applies I reckon. As this automatically validates golden, though, I probably need to be more explicit by writing a new file. Or I have to parse the result from the write back to figure out which files in the archive I have to compare (note there is also a preamble with errors). So it does require a bit more work.",
+      "parentUuid": "3f9ccabb_d6ddefce",
+      "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
