@@ -69,6 +69,24 @@
       "revId": "08d7c2415de2485841b47deecbee3941593f9c89",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc52fcb7_cdde75c8",
+        "filename": "pkg/tool/cli/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-15T09:45:22Z",
+      "side": 1,
+      "message": "Ah it wasn\u0027t actually qgo (it automatically formats its output) - it was the gen.go step. Added a gofmt step for the gen.go go:generate directives.",
+      "parentUuid": "c3709982_2533e0fe",
+      "revId": "08d7c2415de2485841b47deecbee3941593f9c89",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
