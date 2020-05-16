@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c10da879_8fe15f34",
+        "filename": ".github/workflows/release.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-16T12:54:44Z",
+      "side": 1,
+      "message": "FYI Marcel: the exported version puts the }} on a newline... intentional?",
+      "revId": "c9965c2d44f0f1ba5c39c3fb7ad6214722dcf3a2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
