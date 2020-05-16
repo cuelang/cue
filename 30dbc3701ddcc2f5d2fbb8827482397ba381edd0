@@ -34,6 +34,24 @@
       "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa3e767_e5957db3",
+        "filename": "cmd/cue/cmd/fixall_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-05-16T12:28:30Z",
+      "side": 1,
+      "message": "Up to you - I agree golden files are a bit more work, but I\u0027ve found that they\u0027re nicer to work with in the long run. You can also keep multiple files closer together, like:\n\n-- f1.cue --\nxxx\n-- f1.cue.golden --\nxxx\n-- f2.cue --\nyyy\n-- f2.cue.golden --\nyyy\n\n\nYou could also have a special file for the preamble with errors, like preamble.golden, or errors.golden, or stderr.golden.\n\nIf you don\u0027t feel like doing this refactor here, perhaps we can file a wishlist-like issue on github.",
+      "parentUuid": "6e9d2b18_3a035c3c",
+      "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
