@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f9f2586_ff73d44c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-18T00:27:12Z",
+      "side": 1,
+      "message": "Consider instead:\n\nThe first character in an identifier must be a letter, unless the identifier starts with `#`, in which case the next character after the `#` must be a letter.",
+      "revId": "dd0cf7a0e51b393acd1d3e88882745196f794fa8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
