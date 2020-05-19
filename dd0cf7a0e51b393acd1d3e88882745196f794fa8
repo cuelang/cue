@@ -16,6 +16,24 @@
       "revId": "dd0cf7a0e51b393acd1d3e88882745196f794fa8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2adfb1_b0774089",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-05-19T14:27:42Z",
+      "side": 1,
+      "message": "This is not strictly correct. I rephrased it a bit though.",
+      "parentUuid": "9f9f2586_ff73d44c",
+      "revId": "dd0cf7a0e51b393acd1d3e88882745196f794fa8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
