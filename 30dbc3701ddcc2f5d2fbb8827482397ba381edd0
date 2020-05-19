@@ -52,6 +52,24 @@
       "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64bbbfd_c4c324ea",
+        "filename": "cmd/cue/cmd/fixall_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-05-19T14:14:00Z",
+      "side": 1,
+      "message": "Yeah, I think this would indeed be nicer. But I prefer to have some nice reusable infrastructure for this as to not clutter the tests itself.",
+      "parentUuid": "cfa3e767_e5957db3",
+      "revId": "30dbc3701ddcc2f5d2fbb8827482397ba381edd0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
