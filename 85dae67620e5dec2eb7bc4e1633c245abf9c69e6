@@ -16,6 +16,24 @@
       "revId": "85dae67620e5dec2eb7bc4e1633c245abf9c69e6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb25428_8b9e9957",
+        "filename": "go.mod",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-05-20T17:18:52Z",
+      "side": 1,
+      "message": "that\u0027s fine with me.",
+      "parentUuid": "3791339a_bf392c5d",
+      "revId": "85dae67620e5dec2eb7bc4e1633c245abf9c69e6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
