@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3791339a_bf392c5d",
+        "filename": "go.mod",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-05-20T15:10:37Z",
+      "side": 1,
+      "message": "The fact this dependency remains after a go mod tidy seems to suggest to me we still have a dependency on this module?\n\nIndeed it appears to be within cuelang.org/go/internal/cuetxtar, which has a dependency on github.com/rogpeppe/testscript/txtar. We can change that to github.com/rogpeppe/go-internal/txtar to drop this requirement entirely.",
+      "revId": "85dae67620e5dec2eb7bc4e1633c245abf9c69e6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
