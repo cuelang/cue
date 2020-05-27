@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9a16b8a_bf542606",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "s/up\\. /up /\n\nI had a hard time figuring out how a sentence would start with \"in\" there.",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe732bf_d5523216",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "Yay!",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3749011f_ebd33c35",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "Should the be \"invalid expression\" instead?",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81c8b91_fe2d18b5",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "Consider elaborating what\u0027s wrong here.",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b363d57b_62f60638",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "Consider elaborating what\u0027s wrong here.",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb49a69_be6d3d23",
+        "filename": "cue/internal/compile/compile.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-05-27T18:17:02Z",
+      "side": 1,
+      "message": "Consider elaborating what\u0027s wrong here.",
+      "revId": "31ef46e30d640c10cd15033e9435eb36931dbfb8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
