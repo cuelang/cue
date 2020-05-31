@@ -53,8 +53,6 @@ func (kv *KeyValue) Value() string {
 	if kv.equal == 0 {
 		return ""
 	}
-	return strings.TrimSpace(kv.data[kv.equal+1:])
-}
 
 func (a *Attr) hasPos(p int) error {
 	if a.Err != nil {
