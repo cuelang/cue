@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84872e4a_3bff3f3b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T13:27:27Z",
+      "side": 1,
+      "message": "s/which/whose/\nor\n/which name/with a name that/",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0066bc8_757891e6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T13:27:27Z",
+      "side": 1,
+      "message": "/declares/declare/\n\nThat is, assuming you mean to describe the pluralized \"constraints\", meaning several of them.\n\nIt\u0027s hard to tell whether there are several constraints involved here, or just one. If it\u0027s just one, then\n\ns/default constraints/a default constraint/",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a35bd50_908c01df",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T13:27:27Z",
+      "side": 1,
+      "message": "s/which/whose/\nor\n/which name/with a name that/",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
