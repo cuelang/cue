@@ -1018,7 +1018,9 @@ It could be a role of vet checkers to identify such cases (and suggest users
 to explicitly use `_|_` to discard a field, for instance).
 -->
 
-Syntactically, a struct literal may contain multiple fields with
+Syntactically, a field is marked as optional by following its label with a `?`.
+The question mark is not part of the field name.
+A struct literal may contain multiple fields with
 the same label, the result of which is a single field with the same properties
 as defined as the unification of two fields resulting from unifying two structs.
 
@@ -1038,28 +1040,41 @@ Expression                             Result (without optional fields)
 {a: 1} & {a: 2}                        _|_
 ```
 
-Optional labels are defined in sets with an expression to select all
-labels to which to apply a given constraint.
-Syntactically, the label of an optional field set is an expression in square
-brackets indicating the matching labels.
-The value `string` matches all fields, while a concrete string matches a
-single field.
-As the latter case is common, a concrete label followed by
-a question mark `?` may be used as a shorthand.
-So
-```
-foo?: bar
-```
-is a shorthand for
-```
-["foo"]: bar
-```
-The question mark is not part of the field name.
-The token `...` may be used as the last declaration in a struct
-and is a shorthand for
-```
-[_]: _
-```
+A struct may define constraints to apply to fields that are added when unified
+with another struct.
+
+When unifying a struct `a` and `b`,
+a _pattern constraint_ of `a` with pattern `p` and value `v`
+(both an Expression), denoted `[p]: v`,
+defines that value `v` should unify with any field in the resulting struct `c`
+with a label that unifies with pattern `p` and for which there exists no
+field in `a` with the same label.
+A pattern expression must be of type string.
+
+Additionally, when unifying a struct `a` and `b`,
+a _default constraint_ with value `v`, denoted `...value`,
+defines that `v` should unify with any field in the resulting struct `c`
+with a label that does not unify with any of the patterns of the pattern
+constraints defined for `a` _and_ for which there exists no field in `a`
+with that label.
+The token `...` is a shorthand for `..._`.
+
+
+
+<!-- NOTE: pattern and default constraints can be made to apply to all
+fields by embedding them as a struct:
+    x: {
+        a: 2
+        b: 3
+        {[string]: int}
+    }
+or by writing
+    x: [string]: int
+    x: {
+        a: 2
+        b: 3
+    }
+-->
 
 Concrete field labels may be an identifier or string, the latter of which may be
 interpolated.
@@ -1117,8 +1132,9 @@ future extensions and relaxations:
 -->
 
 ```
-StructLit       = "{" { Declaration "," } [ "..." ] "}" .
-Declaration     = Field | Embedding | LetClause | attribute .
+StructLit       = "{" { Declaration "," } "}" .
+Declaration     = Field | Ellipsis | Embedding | LetClause | attribute .
+Ellipsis        = "..." [ Expression ] .
 Embedding       = Comprehension | AliasExpr .
 Field           = Label ":" { Label ":" } Expression { attribute } .
 Label           = [ identifier "=" ] LabelExpr .
@@ -1202,9 +1218,11 @@ A1: A & {
 ```
 
 A _closed struct_ `c` is a struct whose instances may not have regular fields
-not defined in `c`.
-Closing a struct is equivalent to adding an optional field with value `_|_`
-for all undefined fields.
+for which have a name that matches the name of a regular or optional field
+or the pattern of a pattern constraint defined in `c`, recursively.
+A struct with a `...` remains defined for all fields.
+Closing a struct is equivalent to adding `..._|_` if there is not already
+a `...` declaration, recursively.
 
 Syntactically, closed structs can be explicitly created with the `close` builtin
 or implicitly by [definitions](#Definitions).
@@ -1247,6 +1265,8 @@ D: close({
 <!-- (jba) Somewhere it should be said that optional fields are only
      interesting inside closed structs. -->
 
+<!-- TODO: move embedding section to above the previous one -->
+
 #### Embedding
 
 A struct may contain an _embedded value_, an operand used
@@ -1261,8 +1281,7 @@ In this case, a CUE program will evaluate to the embedded value
 and the CUE program may not have top-level regular or optional
 fields (definitions and aliases are allowed).
 
-Syntactically, embeddings may be any expression, except that `<`
-is eagerly interpreted as a bind label.
+Syntactically, embeddings may be any expression.
 
 ```
 S1: {
@@ -1300,46 +1319,15 @@ A field is a _definition_ if its identifier starts with `#` or `_#`.
 A field is _hidden_ if its starts with a `_`.
 Definitions and hidden fields are not emitted when converting a CUE program
 to data and are never required to be concrete.
-For definitions
-literal structs that are part of a definition's value are implicitly closed,
-but may unify unrestricted with other structs within the field's declaration.
-This excludes literals structs in embeddings and aliases.
 
-<!--
-This may be a more intuitive definition:
-    Literal structs that are part of a definition's value are implicitly closed.
-    Implicitly closed literal structs that are unified within
-    a single field declaration are considered to be a single literal struct.
-However, this would make unification non-commutative, unless one imposes an
-ordering where literal structs are unified before unifying them with others.
-Imposing such an ordering is complex and error prone.
--->
-An ellipsis `...` in such literal structs keeps them open,
-as it defines `_` for all labels.
+Referencing a definition will implicitely [close](#ClosedStructs) it.
+A struct that embeds a referenced definition will itself be closed, but
+may add additional fields not part of the embedding or any other embedded
+struct.
+The result of `{ #A }` is `#A` for any `#A`.
 
-<!--
-Excluding embeddings from recursive closing allows comprehensions to be
-interpreted as embeddings without some exception. For instance,
-    if x > 2 {
-        foo: string
-    }
-should not cause any failure. It is also consistent with embeddings being
-opened when included in a closed struct.
-
-Finally, excluding embeddings from recursive closing allows for
-a mechanism to not recursively close, without needing an additional language
-construct, such as a triple colon or something else:
-#foo: {
-    {
-        // not recursively closed
-    }
-    ... // include this to not close outer struct
-}
-
-Including aliases from this exclusion, which are more a separate definition
-than embedding seems sensible, and allows for an easy mechanism to avoid
-closing, aside from embedding.
--->
+If referencing a definition would always result in an error, implementations
+may report this inconsistency at the point of its declaration.
 
 ```
 #MyStruct: {
@@ -1570,7 +1558,7 @@ The length of an open list is the its number of elements as a lower bound
 and an unlimited number of elements as its upper bound.
 
 ```
-ListLit       = "[" [ ElementList [ "," [ "..." [ Expression ] ] ] [ "," ] "]" .
+ListLit       = "[" [ ElementList [ "," [ Ellipsis ] ] [ "," ] "]" .
 ElementList   = Embedding { "," Embedding } .
 ```
 
@@ -2861,9 +2849,8 @@ If the result of the unification of all embedded values is not a struct,
 it will be output instead of its enclosing file when exporting CUE
 to a data format
 
-<!-- TODO: allow ... anywhere in SourceFile and struct. -->
 ```
-SourceFile = [ PackageClause "," ] { ImportDecl "," } { Declaration "," }  [ "..." ] .
+SourceFile = [ PackageClause "," ] { ImportDecl "," } { Declaration "," } .
 ```
 
 ```
