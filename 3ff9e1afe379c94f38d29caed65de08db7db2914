@@ -50,6 +50,57 @@
       "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1aaffa_e3b9c4de",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T14:08:18Z",
+      "side": 1,
+      "message": "\"no regular field, no optional field, nor additional field\"\n\nWhat\u0027s an \"additional field\" there?",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1efbb493_d931339d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T14:08:18Z",
+      "side": 1,
+      "message": "Does \"..._|_\" mean something like, \"and every other field must not exist\"?",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4807d1_90941589",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-04T14:08:18Z",
+      "side": 1,
+      "message": "s/implicitely/implicitly/",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
