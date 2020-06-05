@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78cf443e_5e4c16b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9283df89_4d6871f5",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc5be2db_8b02bb0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8d74f5_664a176f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5be2db_8b02bb0b",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d771913f_c21c6b9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57d6f2a_b2fffd9d",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f713e9b_b52fbe5c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "048a053b_89f3ac64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f713e9b_b52fbe5c",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e010428b_8eb65773",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-05T11:02:28Z",
       "side": 1,
       "message": "Not sure what you mean. Rephrase?",
+      "range": {
+        "startLine": 1045,
+        "startChar": 38,
+        "endLine": 1045,
+        "endChar": 46
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e573ad31_c9f9d818",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Mostly removed now. I looked at the old definition, as it used to be like this actually, and changed the text more to how it used to be. To some extent, optional fields were already explained below, and the pattern constraints now don\u0027t have the direct relation to optional fields any longer.",
+      "parentUuid": "e010428b_8eb65773",
       "range": {
         "startLine": 1045,
         "startChar": 38,
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "61086c45_076b7469",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "It was already explained more accurately above, actually, so removed this sentence.",
+      "parentUuid": "c02362a3_c0a0a1a9",
+      "range": {
+        "startLine": 1048,
+        "startChar": 24,
+        "endLine": 1048,
+        "endChar": 39
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcce56a_44310cec",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a4f4e6_b4b7aaa0",
+      "range": {
+        "startLine": 1048,
+        "startChar": 16,
+        "endLine": 1048,
+        "endChar": 23
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38a5acd8_49e7c640",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2020-06-05T11:02:28Z",
       "side": 1,
       "message": "Somewhere near here, link to definition of pattern.",
+      "range": {
+        "startLine": 1050,
+        "startChar": 47,
+        "endLine": 1050,
+        "endChar": 54
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdf8cf7_33412547",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "A pattern is just any value of type string, so `\u003d~\"foo.*\"`, `string`, `\"foo\"` or `\u003c\"foo\"`. Changed wording a little bit.",
+      "parentUuid": "38a5acd8_49e7c640",
       "range": {
         "startLine": 1050,
         "startChar": 47,
@@ -255,6 +447,30 @@
       "writtenOn": "2020-06-05T11:02:28Z",
       "side": 1,
       "message": "So if I write\n   [foo]: constraint\nand foo is not currently defined, the constraint applies; but if foo _is_ currently defined, it\u0027s a no-op?",
+      "range": {
+        "startLine": 1052,
+        "startChar": 20,
+        "endLine": 1052,
+        "endChar": 31
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f24a81f_2455da64",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "Yes. This coincides with the definition of pattern properties in JSON Schema.\n\nIt is a more general construct, to get the original behavior, one can write `{[foo]: constraint}` which would embed a struct where this field matches all fields, as per the definition of embedding.\n\nCurrently, in order to mimic the JSON Schema behavior, the pattern `foo` in the above must explicitly excluded the labels of already-defined fields. In other words, the two approaches are more or less equivalent. It is just that using JSON Schema semantics both behaviors can be encoded succinctly, whereas with the current CUE semantics its gets awkward fast.\n\nI\u0027ve reworded this section entirely to describe pattern constraints and default constraints.",
+      "parentUuid": "82c2be38_b1009c23",
       "range": {
         "startLine": 1052,
         "startChar": 20,
@@ -357,6 +573,30 @@
       "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed34e2f6_b2a94ab6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T14:54:46Z",
+      "side": 1,
+      "message": "already changed it to the \"with a name that\" fix Steven suggested, if that works for you.",
+      "parentUuid": "eaa176f6_da4b2bed",
+      "range": {
+        "startLine": 1056,
+        "startChar": 30,
+        "endLine": 1056,
+        "endChar": 35
+      },
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     },
     {
       "key": {
