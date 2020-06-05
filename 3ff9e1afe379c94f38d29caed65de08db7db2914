@@ -226,6 +226,24 @@
     },
     {
       "key": {
+        "uuid": "0924afd7_ad39e623",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T13:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84872e4a_3bff3f3b",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c2be38_b1009c23",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -263,6 +281,24 @@
       "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7bcc71_98aa3944",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T13:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0066bc8_757891e6",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "921e3274_ea8cefcb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T13:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a35bd50_908c01df",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb1aaffa_e3b9c4de",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -323,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "15df4253_c9307d60",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T13:16:48Z",
+      "side": 1,
+      "message": "reworded.",
+      "parentUuid": "fb1aaffa_e3b9c4de",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1efbb493_d931339d",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -334,6 +406,24 @@
       "writtenOn": "2020-06-04T14:08:18Z",
       "side": 1,
       "message": "Does \"..._|_\" mean something like, \"and every other field must not exist\"?",
+      "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da98e75d_bbef1f88",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-05T13:16:48Z",
+      "side": 1,
+      "message": "Indeed.",
+      "parentUuid": "1efbb493_d931339d",
       "revId": "3ff9e1afe379c94f38d29caed65de08db7db2914",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
