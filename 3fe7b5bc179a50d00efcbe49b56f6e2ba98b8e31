@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bce0b1d1_b728aee8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "\"When unifying structs `a` and `b`...\"\n\nAlso, would it be slightly clearer to say:\n\n\"... a pattern constraint `[p]: v` declared in `a`...\"\n\n?",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee589ec_a4182dfb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "\"defines that the value `v`...\"\n\nAdding \"the\" makes this read a bit better perhaps?",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff99b0bd_0f33d4e4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "\"When unifying structs `a` and `b`...\" - on the basis we\u0027re talking about two structs here, no?\n\nSame question here about whether \"declared in\" is clearer than \"of\"\n\nFeels slightly easier to parse/understand.",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687b5922_a0c403a4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "Same again on adding \"the\"?",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3033f2_81ac28f1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "... all other fields must be a string",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77453d0b_fda12def",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "... all other fields must be a string",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518eaa7d_97ebda20",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "I\u0027ve re-read this sentence a few times. Aren\u0027t we missing an additional negation?\n\n\"A _closed struct_ `c` is a struct whose instances may not have regular fields\nwith a name that does not match the name of a regular or optional field....\"\n\n??\n\ni.e. we\u0027re trying to say we can\u0027t add additional fields not covered by the closed struct.",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9ed345_44d304d0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "Superfluous second mention of \"structs\"?",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4b78d6a_c5922ea6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-06T20:50:25Z",
+      "side": 1,
+      "message": "I find the use of \"but\" here a bit confusing/misleading. Might it be clearer to put the caveat in parentheses?\n\n\"A struct that embeds a referenced definition will itself be closed (including any additional fields not part of the embedding or any other embedded struct.)\"\n\n\"Including\" might not be the right word... but hopefully you get what I mean about \"but\" reading a bit oddly.",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
