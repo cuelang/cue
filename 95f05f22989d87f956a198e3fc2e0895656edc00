@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b7a2721_acdc1699",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Broke it up in two sentences.",
+      "parentUuid": "0b1ef98f_b0f4ae94",
+      "revId": "95f05f22989d87f956a198e3fc2e0895656edc00",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "785cc318_b1b929b1",
         "filename": "doc/ref/spec.md",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "95f05f22989d87f956a198e3fc2e0895656edc00",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5740adc_d1dc885f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "785cc318_b1b929b1",
+      "revId": "95f05f22989d87f956a198e3fc2e0895656edc00",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }

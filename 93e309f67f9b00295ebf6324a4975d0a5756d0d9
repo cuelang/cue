@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "74e692af_7fd6a411",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32169903_30228843",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c8b12c0_afef98d3",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2020-06-05T15:41:28Z",
       "side": 1,
       "message": "It might be worth saying _how_ these contraints can be defined at this point.",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b16fc1f_fdf3c5a0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "like this?",
+      "parentUuid": "2c8b12c0_afef98d3",
       "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "6aa9d7ef_6e8015a1",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "I already sent an update where I merged this with the description of optional fields above. This section was both imprecise and redundant.",
+      "parentUuid": "e6151669_ec858c17",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a269298_29dbdb4a",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "dc57619f_bb4269b7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a269298_29dbdb4a",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2186319b_05a353b0",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -98,6 +170,24 @@
       "writtenOn": "2020-06-05T15:41:28Z",
       "side": 1,
       "message": "this reads as a bit of a mouthful. How about something like:\n\nAdditionally, a _pattern constraint_, denoted `[pattern]: constraint`, declares\na constraint that applies to any field with a name that unifies with the expression\n`pattern` unless that name has been explicitly defined in the same struct as a regular or optional\nfield.\n\n?\n\nI think an example would go down well at this point too. And perhaps also point out somehow that this only applies to the exact lexical struct and not to other structs that it\u0027s unified with, as I think would be easy to make that mistake when reading this.",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9547fb0f_be140ec9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "It actually applies to all structs. Well, depends how you see it. I\u0027ve completely reworded it. It is more precise now.",
+      "parentUuid": "2186319b_05a353b0",
       "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "7ab83d8b_3c2368f9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Added example.",
+      "parentUuid": "fa4b1898_0d0c6c3c",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60e66be9_1738579e",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -132,6 +240,24 @@
       "writtenOn": "2020-06-05T15:41:28Z",
       "side": 1,
       "message": "Maybe reference here the section that defines the semantics of `...` ?",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf84fbfc_4fedc854",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "60e66be9_1738579e",
       "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "a552c26f_7910d555",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "It is good point. The definition of ... even is not as trivial anymore as it was.\n\nNot that the definition of unification with pattern constraints does not explain a result that contains pattern constraints itself. This is possible, but hard and results potentially in a polynomial-space node. Luckily, it is not really necessary to represent it, as the information is only necessary in computing the node locally. But it makes it harder to express the meaning of `...` exactly in a recursive setting. I took a slightly different take on describing this.",
+      "parentUuid": "a3527537_5cc0cb0d",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "180d1b11_aabbc1c7",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -169,6 +313,24 @@
       "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab417ee_35c6b18d",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-06T16:10:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "180d1b11_aabbc1c7",
+      "revId": "93e309f67f9b00295ebf6324a4975d0a5756d0d9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
