@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f945b480_d33022d3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce0b1d1_b728aee8",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee589ec_a4182dfb",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc7961b_88f0b0ba",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee589ec_a4182dfb",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bcd700a0_3e6f843b",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff99b0bd_0f33d4e4",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "687b5922_a0c403a4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd475cda_d9493217",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "687b5922_a0c403a4",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,42 @@
     },
     {
       "key": {
+        "uuid": "94b7d869_d26f5bf8",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77453d0b_fda12def",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "979a0b44_fde9be68",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3033f2_81ac28f1",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "518eaa7d_97ebda20",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -118,6 +226,24 @@
       "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44ff9ae_e3d6f30c",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Good catch. Indeed.",
+      "parentUuid": "518eaa7d_97ebda20",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "47ef6154_453235ea",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9ed345_44d304d0",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4b78d6a_c5922ea6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -149,6 +293,24 @@
       "writtenOn": "2020-06-06T20:50:25Z",
       "side": 1,
       "message": "I find the use of \"but\" here a bit confusing/misleading. Might it be clearer to put the caveat in parentheses?\n\n\"A struct that embeds a referenced definition will itself be closed (including any additional fields not part of the embedding or any other embedded struct.)\"\n\n\"Including\" might not be the right word... but hopefully you get what I mean about \"but\" reading a bit oddly.",
+      "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60394143_99c84f24",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-07T10:51:21Z",
+      "side": 1,
+      "message": "Reworded it.",
+      "parentUuid": "d4b78d6a_c5922ea6",
       "revId": "3fe7b5bc179a50d00efcbe49b56f6e2ba98b8e31",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
