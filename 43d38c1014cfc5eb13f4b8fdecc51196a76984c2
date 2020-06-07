@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "4a0e603d_dea343fb",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-07T13:59:06Z",
+      "side": 1,
+      "message": "Just one comment from before that you may or may not want to address. \n\n\"When unifying a struct `a` and `b`....\"\n\ndoesn\u0027t read quite right to me because we use struct singular and then list two structs.\n\nPerhaps:\n\n\"When unifying structs `a` and `b`...\"",
+      "revId": "43d38c1014cfc5eb13f4b8fdecc51196a76984c2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5423c80d_ed8d7d10",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-06-07T13:59:06Z",
+      "side": 1,
+      "message": "Ditto here.",
+      "revId": "43d38c1014cfc5eb13f4b8fdecc51196a76984c2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae627e01_152f3f30",
         "filename": "doc/ref/spec.md",
         "patchSetId": 5
