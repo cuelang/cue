@@ -2203,7 +2203,6 @@ func (v Value) Attributes() []Attribute {
 	// collect attribues
 	for _, a := range v.path.attrs.attr {
 		A := Attribute{internal.ParseAttrBody(token.NoPos, a.body())}
-		// attrs[a.key()] = A
 		A.SetName(a.key())
 		attrs = append(attrs, A)
 	}
@@ -2228,7 +2227,7 @@ func (a *Attribute) SetName(name string) {
 
 func (a *Attribute) Vals() map[string]string {
 	ret := map[string]string{}
-	for _, F := range a.attr.Fields{
+	for _, F := range a.attr.Fields {
 		ret[F.Key()] = F.Value()
 	}
 	return ret

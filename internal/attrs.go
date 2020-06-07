@@ -43,8 +43,16 @@ type KeyValue struct {
 }
 
 func (kv *KeyValue) Text() string { return kv.data }
-func (kv *KeyValue) Key() string  { return kv.data[:kv.equal] }
+func (kv *KeyValue) Key() string  {
+	if kv.equal == 0 {
+		return kv.data
+	}
+	return kv.data[:kv.equal]
+}
 func (kv *KeyValue) Value() string {
+	if kv.equal == 0 {
+		return ""
+	}
 	return strings.TrimSpace(kv.data[kv.equal+1:])
 }
 
