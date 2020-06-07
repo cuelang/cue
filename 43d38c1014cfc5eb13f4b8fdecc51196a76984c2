@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae627e01_152f3f30",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-06-07T12:38:28Z",
+      "side": 1,
+      "message": "What does \"is\" in \"is defined for all fields\" mean here? To what does \"is\" refer? Does this mean that the resulting struct (\"[the] struct that is the result\") is defined?",
+      "revId": "43d38c1014cfc5eb13f4b8fdecc51196a76984c2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
