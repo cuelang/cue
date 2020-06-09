@@ -32,3 +32,18 @@ l2: ["c", "d"]
     "d",
   ])
 }
+-- out/eval --
+(struct){
+  l: (list){
+    0: (int){ int }
+    1: (int){ int }
+  }
+  l1: (list){
+    0: (string){ "a" }
+    1: (string){ "b" }
+  }
+  l2: (list){
+    0: (string){ "c" }
+    1: (string){ "d" }
+  }
+}

@@ -49,3 +49,21 @@ noOpt: true
     })
   }
 }
+-- out/eval --
+(struct){
+  #And: (struct){
+    #: (struct){
+      "Fn::And": (list){
+      }
+    }
+  }
+  #Ands: (struct){
+    #: (struct){
+      "Fn::And": (list){
+        0: (_|_){
+          // [incomplete] ambiguous disjunction
+        }
+      }
+    }
+  }
+}

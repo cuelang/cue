@@ -45,3 +45,12 @@ b: {
     })
   }
 }
+-- out/eval --
+(struct){
+  a: (int){ 5 }
+  b: (struct){
+    c: (struct){
+      a: (int){ 2 }
+    }
+  }
+}

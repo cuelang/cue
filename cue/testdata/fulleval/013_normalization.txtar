@@ -19,3 +19,13 @@ c: float
   b: (*1|*int)
   c: (*1.0|*float)
 }
+-- out/eval --
+(struct){
+  a: (string){ string }
+  b: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  c: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+}

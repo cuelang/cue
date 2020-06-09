@@ -24,3 +24,12 @@ B: A & ([10] | [192])
     ]))
   }
 }
+-- out/eval --
+(struct){
+  A: (list){
+    0: (number){ >=0 }
+  }
+  B: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+}

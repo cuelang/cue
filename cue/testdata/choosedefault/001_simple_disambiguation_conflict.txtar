@@ -19,3 +19,11 @@ c: a & b
   b: (*"b"|"a")
   c: (〈0;a〉 & 〈0;b〉)
 }
+-- out/eval --
+(struct){
+  a: (string){ "a" }
+  b: (string){ "b" }
+  c: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+}
