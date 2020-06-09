@@ -79,3 +79,34 @@ i1: "c"
     2,
   ][3]|"c")
 }
+-- out/eval --
+(struct){
+  o1: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o2: (int){ 1 }
+  o3: (int){ 2 }
+  o4: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o5: (int){ 2 }
+  o6: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o7: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o8: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o9: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  o10: (int){ 2 }
+  m1: (int){ 2 }
+  m2: (int){ 2 }
+  m3: (int){ 2 }
+  m4: (int){ 2 }
+  m5: (int){ 2 }
+  i1: (string){ "c" }
+}

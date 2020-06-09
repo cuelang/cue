@@ -27,3 +27,12 @@ e1: _|_ // invalid value 100000 (out of bound int & <=32767)
   e1: (>=-32768 & <=32767)
   e1: 100000
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  k1: (int){ 44 }
+  k2: (int){ -8000000000 }
+  e1: (_|_){
+    // [eval] bound check failed
+  }
+}

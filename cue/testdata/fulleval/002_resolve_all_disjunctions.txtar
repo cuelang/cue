@@ -81,3 +81,20 @@ service:
     }
   }
 }
+-- out/eval --
+(struct){
+  service: (struct){
+    foo: (struct){
+      name: (string){ "foo" }
+      port: (int){ 7080 }
+    }
+    bar: (struct){
+      port: (int){ 8000 }
+      name: (string){ "bar" }
+    }
+    baz: (struct){
+      name: (string){ "foobar" }
+      port: (int){ 7080 }
+    }
+  }
+}

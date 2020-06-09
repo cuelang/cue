@@ -14,3 +14,10 @@ b: "Count: \(a) times"
     b: "Count: \(〈0;a〉) times"
   }
 }
+-- out/eval --
+(struct){
+  a: (_){ &(>=0, <=10) }
+  b: (_|_){
+    // [incomplete] incomplete
+  }
+}

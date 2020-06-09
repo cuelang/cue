@@ -25,3 +25,16 @@ e: true
   d: (_|_ != 〈0;b〉.a)
   e: (_|_ == _|_)
 }
+-- out/eval --
+(_|_){
+  // [user] 
+  a: (_|_){
+    // [user] 
+  }
+  b: (_|_){
+    // [user] 
+  }
+  c: (bool){ true }
+  d: (bool){ false }
+  e: (bool){ true }
+}

@@ -26,3 +26,15 @@ e: 1
   d: (〈0;b〉 & 〈0;a〉)
   e: (*1|*1)
 }
+-- out/eval --
+(struct){
+  a: (int){ 1 }
+  b: (int){ 3 }
+  c: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  d: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  e: (int){ 1 }
+}

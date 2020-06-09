@@ -103,6 +103,7 @@ func (w *printer) node(n adt.Node) {
 			saved := w.indent
 			w.indent += "// "
 			w.string("\n")
+			fmt.Fprintf(w, "[%v] ", b.Code)
 			w.string(strings.TrimSpace(errors.Details(b.Err, &errors.Config{
 				Cwd:     w.cfg.Cwd,
 				ToSlash: true,

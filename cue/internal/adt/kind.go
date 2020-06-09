@@ -82,6 +82,13 @@ const (
 	stringableKind = ScalarKinds | StringKind
 )
 
+func kind(v Value) Kind {
+	if v == nil {
+		return BottomKind
+	}
+	return v.Kind()
+}
+
 func isTop(v Value) bool {
 	_, ok := v.(*Top)
 	return ok

@@ -20,3 +20,14 @@ b: [1 | 2 | *_|_]
     ]
   }
 }
+-- out/eval --
+(struct){
+  a: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  b: (list){
+    0: (_|_){
+      // [incomplete] ambiguous disjunction
+    }
+  }
+}

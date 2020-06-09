@@ -135,3 +135,40 @@ service:
     }
   }
 }
+-- out/eval --
+(struct){
+  result: (list){
+    0: (struct){
+      name: (int){ 0 }
+      type: (string){ "service" }
+      port: (int){ 7080 }
+    }
+    1: (struct){
+      port: (int){ 8000 }
+      name: (int){ 1 }
+      type: (string){ "service" }
+    }
+    2: (struct){
+      name: (string){ "foobar" }
+      type: (string){ "service" }
+      port: (int){ 7080 }
+    }
+  }
+  service: (struct){
+    foo: (struct){
+      name: (string){ "foo" }
+      type: (string){ "service" }
+      port: (int){ 7080 }
+    }
+    bar: (struct){
+      port: (int){ 8000 }
+      name: (string){ "bar" }
+      type: (string){ "service" }
+    }
+    baz: (struct){
+      name: (string){ "foobar" }
+      type: (string){ "service" }
+      port: (int){ 7080 }
+    }
+  }
+}

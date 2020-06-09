@@ -26,3 +26,16 @@ c2: _|_ // conflicting values {bar: 1} and 1 (mismatched types struct and int)
     bar: 1
   } & 〈0;c2〉.bar)
 }
+-- out/eval --
+(struct){
+  c1: (_|_){
+    // [incomplete] incomplete
+    bar: (struct){
+      baz: (int){ 2 }
+    }
+  }
+  c2: (_|_){
+    // [incomplete] incomplete
+    bar: (int){ 1 }
+  }
+}

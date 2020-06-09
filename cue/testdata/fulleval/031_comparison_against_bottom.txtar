@@ -59,3 +59,25 @@ i: false
   }))
   err: (1 & 2)
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  a: (bool){ true }
+  b: (_|_){
+    // [eval] incompatible values *adt.Num and *adt.Num:
+    //     ./in.cue:2:4
+  }
+  c: (bool){ true }
+  d: (bool){ false }
+  e: (_|_){
+    // [eval] incompatible values *adt.Num and *adt.Num:
+    //     ./in.cue:5:4
+  }
+  f: (bool){ true }
+  g: (bool){ false }
+  h: (bool){ true }
+  i: (bool){ false }
+  err: (_|_){
+    // [eval] incompatible values *adt.Num and *adt.Num
+  }
+}

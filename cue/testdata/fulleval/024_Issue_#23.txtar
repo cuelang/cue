@@ -26,3 +26,16 @@ y: _|_ // ; empty disjunction: conflicting values 2 and 3
     a: 3
   })
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  x: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  y: (_|_){
+    // [eval] all disjunctions failed error
+    a: (_|_){
+      // [eval] incompatible values *adt.Num and *adt.Num
+    }
+  }
+}

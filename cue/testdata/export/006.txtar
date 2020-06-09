@@ -25,3 +25,20 @@ e: a.t[2:3]
     e: 〈0;a〉.t[2:3]
   }
 }
+-- out/eval --
+(struct){
+  a: (struct){
+    b: (float){ 2.0 }
+    s: (string){ "abc" }
+  }
+  b: (float){ 2.0 }
+  c: (_|_){
+    // [incomplete] incomplete
+  }
+  d: (_|_){
+    // [incomplete] incomplete
+  }
+  e: (_|_){
+    // [incomplete] incomplete
+  }
+}

@@ -136,3 +136,64 @@ e9:   _|_ // conflicting values >"a" and <1 (mismatched types string and number)
   e8: (>11 & <=11)
   e9: (>"a" & <1)
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  i1: (int){ 5 }
+  i2: (int){ 5 }
+  i3: (list){
+  }
+  i4: (_){ &(!=2, !=4) }
+  s1: (_){ &(>=0, <=10, !=1) }
+  s2: (_){ &(>=0, <=10) }
+  s3: (number){ >5 }
+  s4: (number){ <10 }
+  s5: (_){ &(!=2, !=2) }
+  s6: (_){ &(>=2, !=2) }
+  s7: (_){ &(>=2, !=2) }
+  s8: (number){ >5 }
+  s10: (_){ &(>1, <=10) }
+  s11: (_){ &(>0, <12) }
+  s20: (number){ 10 }
+  s22: (_){ &(>5, <=6) }
+  s22a: (int){ 6 }
+  s22b: (int){ 6 }
+  s22c: (int){ 5 }
+  s22d: (int){ 5 }
+  s22e: (int){ 5 }
+  s22f: (int){ 5 }
+  s23: (_){ &(>0, <2) }
+  s23a: (int){ 1 }
+  s23b: (int){ 1 }
+  s23c: (int){ 1 }
+  s23d: (int){ 1 }
+  s23e: (_){ &(>0.0, <2.0) }
+  s30: (_){ &(>0, int) }
+  e1: (_|_){
+    // [eval] incompatible values v
+  }
+  e2: (_|_){
+    // [eval] incompatible values v
+  }
+  e3: (_|_){
+    // [eval] bound check failed
+  }
+  e4: (_|_){
+    // [eval] bound check failed
+  }
+  e5: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  e6: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  e7: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  e8: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  e9: (_|_){
+    // [eval] incompatible values v
+  }
+}

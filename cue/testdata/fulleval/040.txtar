@@ -65,3 +65,16 @@ foo:
     op: "pull"
   })
 }
+-- out/eval --
+(struct){
+  #Task: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  foo: (struct){
+    op: (string){ "pull" }
+    tag: (string){ "latest" }
+    refToTag: (string){ "latest" }
+    tagExpr: (string){ "latestdd" }
+    tagInString: (string){ "latest" }
+  }
+}

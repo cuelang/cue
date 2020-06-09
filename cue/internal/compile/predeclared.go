@@ -58,6 +58,12 @@ func predeclared(n *ast.Ident) adt.Expr {
 	return nil
 }
 
+// LookupRange returns a CUE expressions for the given predeclared identifier
+// representing a range, such as uint8, int128, and float64.
+func LookupRange(name string) adt.Expr {
+	return predefinedRanges[name]
+}
+
 var predefinedRanges = map[string]adt.Expr{
 	"rune":  mkIntRange("0", strconv.Itoa(0x10FFFF)),
 	"int8":  mkIntRange("-128", "127"),
@@ -89,7 +95,7 @@ var predefinedRanges = map[string]adt.Expr{
 	),
 }
 
-// TODO: use an adt.BoundValue here.
+// TODO: use an adt.BoundValue here. and conjunctions here.
 
 func mkIntRange(a, b string) adt.Expr {
 	from := newBound(adt.GreaterEqualOp, adt.IntKind, parseInt(a))

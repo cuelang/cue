@@ -40,3 +40,13 @@ c: *1 | 2
     c: (*1|2)
   }
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  b: (_|_){
+    // [eval] invalid label type int:
+    //     ./in.cue:2:5
+  }
+  a: (int){ int }
+  c: (int){ 1 }
+}

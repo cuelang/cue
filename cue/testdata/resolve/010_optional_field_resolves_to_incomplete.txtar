@@ -25,3 +25,14 @@ r: {
     c: 〈1;r〉["a"]
   }
 }
+-- out/eval --
+(struct){
+  r: (struct){
+    b: (_|_){
+      // [incomplete] incomplete
+    }
+    c: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+}

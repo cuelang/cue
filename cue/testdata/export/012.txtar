@@ -14,3 +14,12 @@ b: _|_ // cannot slice a (type string)
     b: 〈0;a〉[2:3]
   }
 }
+-- out/eval --
+(struct){
+  a: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  b: (_|_){
+    // [incomplete] incomplete
+  }
+}

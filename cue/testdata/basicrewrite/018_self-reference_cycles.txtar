@@ -23,3 +23,16 @@ c: [c[1], c[0]]
     〈0;c〉[0],
   ]
 }
+-- out/eval --
+(struct){
+  a: (_|_){
+    // [incomplete] incomplete
+  }
+  b: (_|_){
+    // [incomplete] incomplete
+  }
+  c: (list){
+    0: (_){ _ }
+    1: (_){ _ }
+  }
+}

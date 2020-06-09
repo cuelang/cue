@@ -59,3 +59,22 @@ a: {
     }
   }
 }
+-- out/eval --
+(struct){
+  res: (list){
+    0: (struct){
+      d: (string){ "b" }
+      s: (string){ "ab" }
+    }
+  }
+  a: (struct){
+    b: (struct){
+      c: (struct){
+        d: (_|_){// string & string
+        }
+        s: (_|_){// ("a" + 〈0;d〉)
+        }
+      }
+    }
+  }
+}

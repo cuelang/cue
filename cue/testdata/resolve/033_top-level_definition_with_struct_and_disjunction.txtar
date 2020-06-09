@@ -50,3 +50,9 @@
     Size: 1
   })
 }
+-- out/eval --
+(struct){
+  #def: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+}

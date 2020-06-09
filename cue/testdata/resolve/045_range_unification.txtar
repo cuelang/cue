@@ -132,3 +132,60 @@ n5: 2.5
   n4: ((>=0.0 & <=0.1) & 0.09999)
   n5: ((>=1 & <=5) & 2.5)
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  a1: (int){ 3 }
+  a2: (int){ 1 }
+  a3: (int){ 5 }
+  a4: (_|_){
+    // [eval] bound check failed
+  }
+  a5: (_|_){
+    // [eval] bound check failed
+  }
+  a6: (int){ 3 }
+  a7: (int){ 1 }
+  a8: (int){ 5 }
+  a9: (_|_){
+    // [eval] bound check failed
+  }
+  a10: (_|_){
+    // [eval] bound check failed
+  }
+  b1: (_){ &(>=1, <=5) }
+  b2: (number){ 1 }
+  b3: (number){ 5 }
+  b4: (_){ &(>=2, <=3) }
+  b5: (_){ &(>=3, <=5) }
+  b6: (number){ 5 }
+  b7: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  b8: (_){ &(>=1, <=5) }
+  b9: (number){ 1 }
+  b10: (number){ 5 }
+  b11: (_){ &(>=2, <=3) }
+  b12: (_){ &(>=3, <=5) }
+  b13: (number){ 5 }
+  b14: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  c1: (_){ &(>=1, <=5, int) }
+  c2: (_){ &(>=1, <=5, int) }
+  c3: (_|_){
+    // [eval] incompatible values v
+  }
+  c4: (_|_){
+    // [eval] incompatible values v
+  }
+  s1: (string){ "e" }
+  s2: (string){ "ee" }
+  n1: (_){ &(>=1, <=2) }
+  n2: (_|_){
+    // [eval] bounds *adt.BoundValue *adt.BoundValue
+  }
+  n3: (int){ 2 }
+  n4: (float){ 0.09999 }
+  n5: (float){ 2.5 }
+}

@@ -16,6 +16,8 @@ package adt
 
 import (
 	"cuelang.org/go/cue/ast"
+	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/token"
 )
 
 // An Environment links the parent scopes for identifier lookup to a composite
@@ -24,7 +26,26 @@ import (
 type Environment struct {
 	Up     *Environment
 	Vertex *Vertex
-	cache  map[Expr]Value
+
+	// CloseID is a unique number that tracks a group of conjuncts that need
+	// belong to a single originating definition.
+	CloseID uint32
+
+	cache map[Expr]Value
+}
+
+// evalCached is used to look up let expressions. Caching let expressions
+// prevents a possible combinatorial explosion.
+func (e *Environment) evalCached(c *OpContext, x Expr) Value {
+	v, ok := e.cache[x]
+	if !ok {
+		if e.cache == nil {
+			e.cache = map[Expr]Value{}
+		}
+		v = c.eval(x)
+		e.cache[x] = v
+	}
+	return v
 }
 
 // A Vertex is a node in the value tree. It may be a leaf or internal node.
@@ -58,8 +79,23 @@ type Vertex struct {
 	// Structs is a slice of struct literals that contributed to this value.
 	Structs []*StructLit
 
+	// Closed contains information about how to interpret field labels for the
+	// various conjuncts with respect to which fields are allowed in this
+	// Vertex. If allows all fields if it is nil.
+	// The evaluator will first check existing fields before using this. So for
+	// simple cases, an Acceptor can always return false to close the Vertex.
+	Closed Acceptor
+
 	// arcLookup may be provided as a map if arcs is larger than a certain size.
 	// arcLookup map[feature]int
+}
+
+// Acceptor is a single interface that reports whether feature f is a valid
+// field label for this vertex.
+//
+// TODO(perf): combine this with the StructMarker functionality?
+type Acceptor interface {
+	Accept(ctx *OpContext, f Feature) bool
 }
 
 func (v *Vertex) Kind() Kind {
@@ -87,9 +123,6 @@ func (v *Vertex) lookup(f Feature) *Vertex {
 }
 
 func (v *Vertex) GetArc(f Feature) (arc *Vertex, isNew bool) {
-	// if v != parent {
-	// 	panic("")
-	// }
 	arc = v.lookup(f)
 	if arc == nil {
 		arc = &Vertex{Parent: v, Label: f}
@@ -100,16 +133,32 @@ func (v *Vertex) GetArc(f Feature) (arc *Vertex, isNew bool) {
 }
 
 func (v *Vertex) Source() ast.Node { return nil }
+
 func (v *Vertex) AddConjunct(c Conjunct) *Bottom {
+	if v.Value != nil {
+		return &Bottom{Err: errors.Newf(token.NoPos, "cannot add conjunct")}
+	}
 	for _, x := range v.Conjuncts {
 		if x == c {
 			return nil
 		}
 	}
-	if v.Value != nil {
-		return &Bottom{} // Connot add conjunct.
-	}
 	v.Conjuncts = append(v.Conjuncts, c)
+	return nil
+}
+
+func (v *Vertex) appendListArcs(arcs []*Vertex) (err *Bottom) {
+	for _, a := range arcs {
+		label, err := MakeLabel(a.Source(), int64(len(v.Arcs)), IntLabel)
+		if err != nil {
+			return &Bottom{Src: a.Source(), Err: err}
+		}
+		v.Arcs = append(v.Arcs, &Vertex{
+			Parent:    v,
+			Label:     label,
+			Conjuncts: a.Conjuncts,
+		})
+	}
 	return nil
 }
 

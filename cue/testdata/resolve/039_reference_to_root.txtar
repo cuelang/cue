@@ -77,3 +77,43 @@ wp: v & {
     b: 100
   })
 }
+-- out/eval --
+(struct){
+  a: (struct){
+    b: (int){ int }
+  }
+  c: (struct){
+    b: (int){ 100 }
+    d: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+  x: (struct){
+    b: (int){ int }
+    c: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+  y: (struct){
+    b: (int){ 100 }
+    c: (int){ 105 }
+  }
+  v: (struct){
+    b: (int){ int }
+    c: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+  w: (struct){
+    b: (int){ 100 }
+    c: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+  wp: (struct){
+    b: (int){ 100 }
+    c: (_|_){
+      // [incomplete] incomplete
+    }
+  }
+}

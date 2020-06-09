@@ -16,6 +16,7 @@ package adt
 
 import (
 	"strconv"
+	"strings"
 
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/errors"
@@ -26,6 +27,8 @@ import (
 // A Feature is an encoded form of a label which comprises a compact
 // representation of an integer or string label as well as a label type.
 type Feature uint32
+
+// TODO: create labels such that list are sorted first (or last with index.)
 
 // InvalidLabel is an encoding of an erroneous label.
 const InvalidLabel Feature = 0x7 // 0xb111
@@ -66,9 +69,89 @@ func (f Feature) ToString(index StringIndexer) string {
 	}
 }
 
+func (f Feature) ToValue(ctx *OpContext) Value {
+	if f.IsInt() {
+		return ctx.newInt64(int64(f.Index()))
+	}
+	return ctx.newString(f.ToString(ctx))
+}
+
+func (c *OpContext) StringLabel(s string) Feature {
+	return labelFromValue(c, &String{Str: s})
+}
+
+// MakeStringLabel creates a label for the given string.
+func MakeStringLabel(r StringIndexer, s string) Feature {
+	i := r.StringToIndex(s)
+
+	// TODO: set position if it exists.
+	f, err := MakeLabel(nil, i, StringLabel)
+	if err != nil {
+		panic("out of free string slots")
+	}
+	return f
+}
+
+// MakeIdentLabel creates a label for the given identifier.
+func MakeIdentLabel(r StringIndexer, s string) Feature {
+	i := r.StringToIndex(s)
+	t := StringLabel
+	switch {
+	case strings.HasPrefix(s, "#_"):
+		t = HiddenDefinitionLabel
+	case strings.HasPrefix(s, "#"):
+		t = DefinitionLabel
+	case strings.HasPrefix(s, "_"):
+		t = HiddenLabel
+	}
+	f, err := MakeLabel(nil, i, t)
+	if err != nil {
+		panic("out of free string slots")
+	}
+	return f
+}
+
+func labelFromValue(ctx *OpContext, v Value) Feature {
+	var i int64
+	var t FeatureType
+	switch x := v.(type) {
+	case *Num:
+		t = IntLabel
+		var err error
+		i, err = x.X.Int64()
+		if err != nil || x.K != IntKind {
+			ctx.errf("invalid label %v: %v", v, err)
+			return InvalidLabel
+		}
+		if i < 0 {
+			ctx.errf("invalid negative label", err)
+			return InvalidLabel
+		}
+
+	case *String:
+		t = StringLabel
+		i = ctx.StringToIndex(x.Str)
+
+	default:
+		ctx.errf("invalid label type %v", v.Kind())
+		return InvalidLabel
+	}
+
+	// TODO: set position if it exists.
+	f, err := MakeLabel(nil, i, t)
+	if err != nil {
+		ctx.AddErr(err)
+	}
+	return f
+}
+
 // MakeLabel creates a label. It reports an error if the index is out of range.
-func MakeLabel(p token.Pos, index int64, f FeatureType) (Feature, errors.Error) {
+func MakeLabel(src ast.Node, index int64, f FeatureType) (Feature, errors.Error) {
 	if 0 > index || index > MaxIndex {
+		p := token.NoPos
+		if src != nil {
+			p = src.Pos()
+		}
 		return InvalidLabel,
 			errors.Newf(p, "int label out of range (%d not >=0 and <= %d)",
 				index, MaxIndex)

@@ -36,3 +36,18 @@ err: _|_ // invalid operation 2 == "s" (mismatched types int and string)
   seq: (("a" + "b") == "ab")
   err: (2 == "s")
 }
+-- out/eval --
+(_|_){
+  // [eval] 
+  lss: (bool){ true }
+  leq: (bool){ true }
+  eql: (bool){ true }
+  neq: (bool){ true }
+  gtr: (bool){ true }
+  geq: (bool){ true }
+  seq: (bool){ true }
+  err: (_|_){
+    // [eval] invalid operation kind vs value bla bal TODO:
+    //     ./in.cue:9:6
+  }
+}

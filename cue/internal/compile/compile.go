@@ -21,7 +21,6 @@ import (
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/internal/adt"
-	"cuelang.org/go/cue/internal/runtime"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
@@ -37,7 +36,7 @@ type Config struct {
 // the packages names are consistent.
 //
 // Files may return a completed parse even if it has errors.
-func Files(cfg *Config, r *runtime.Runtime, files ...*ast.File) (*adt.Vertex, errors.Error) {
+func Files(cfg *Config, r adt.Runtime, files ...*ast.File) (*adt.Vertex, errors.Error) {
 	c := &compiler{index: r}
 
 	v := c.compileFiles(files)
@@ -80,7 +79,7 @@ func (c *compiler) errf(n ast.Node, format string, args ...interface{}) *adt.Bot
 		Message: errors.NewMessage(format, args),
 	}
 	c.errs = errors.Append(c.errs, err)
-	return &adt.Bottom{}
+	return &adt.Bottom{Err: err}
 }
 
 func (c *compiler) path() []string {
@@ -393,7 +392,7 @@ func (c *compiler) decl(d ast.Decl) adt.Decl {
 				name, isIdent, err := ast.LabelName(lab)
 				if err == nil && isIdent {
 					idx := c.index.StringToIndex(name)
-					label, _ = adt.MakeLabel(x.Pos(), idx, adt.DefinitionLabel)
+					label, _ = adt.MakeLabel(x, idx, adt.DefinitionLabel)
 				}
 			}
 
@@ -673,7 +672,7 @@ func (c *compiler) expr(expr ast.Expr) adt.Expr {
 		return slice
 
 	case *ast.BottomLit:
-		return &adt.Bottom{Src: n}
+		return &adt.Bottom{Src: n, Code: adt.UserError}
 
 	case *ast.BadExpr:
 		return c.errf(n, "invalidExpression")
@@ -777,21 +776,73 @@ func (c *compiler) expr(expr ast.Expr) adt.Expr {
 
 func (c *compiler) addDisjunctionElem(d *adt.Disjunction, n ast.Expr, mark bool) {
 	switch x := n.(type) {
+	case *ast.UnaryExpr:
+		if x.Op == token.MUL {
+			mark = true
+		}
+		d.HasDefaults = true
+		c.addDisjunctionElem(d, x.X, mark)
+		return
+
 	case *ast.BinaryExpr:
 		if x.Op == token.OR {
 			c.addDisjunctionElem(d, x.X, mark)
 			c.addDisjunctionElem(d, x.Y, mark)
 			return
 		}
-	case *ast.UnaryExpr:
-		if x.Op == token.MUL {
-			mark = true
-			n = x.X
-		}
-		d.HasDefaults = true
 	}
 	d.Values = append(d.Values, adt.Disjunct{Val: c.expr(n), Default: mark})
 }
+
+// func updateBin(c *compiler, bin *BinaryExpr) value {
+// 	switch bin.op {
+// 	case opMat, opNMat:
+// 		bin.right = compileRegexp(c, bin.right)
+// 		if isBottom(bin.right) {
+// 			return bin.right
+// 		}
+// 	}
+// 	return bin
+// }
+
+// func newBound(c *compiler, n ast.Node, op adt.Op, v adt.Expr) *adt.BoundExpr {
+// 	kv := v.kind()
+// 	if kv.isAnyOf(numKind) {
+// 		kv |= numKind
+// 	} else if op == opNeq && kv&atomKind == nullKind {
+// 		kv = typeKinds &^ nullKind
+// 	}
+// 	if op == opMat || op == opNMat {
+// 		v = compileRegexp(c, v)
+// 		if isBottom(v) {
+// 			return v.(*Bottom)
+// 		}
+// 	}
+// 	return &Bound{sourceExpr{n}, op, k & kv, v}
+// }
+
+// func compileRegexp(c *compiler, v adt.Expr) adt.Expr {
+// 	var err error
+// 	switch x := v.(type) {
+// 	case *StringLit:
+// 		if x.re == nil {
+// 			x.re, err = regexp.Compile(x.str)
+// 			if err != nil {
+// 				return c.errf(v, "could not compile regular expression %q: %v", x.str, err)
+// 			}
+// 		}
+// 	case *BytesLit:
+// 		if x.re == nil {
+// 			x.re, err = regexp.Compile(string(x.b))
+// 			if err != nil {
+// 				return c.errf(v, "could not compile regular expression %q: %v", x.b, err)
+// 			}
+// 		}
+// 	}
+// 	return v
+// }
+
+// const base10 literal.Multiplier = 100
 
 func (c *compiler) parse(l *ast.BasicLit) (n adt.Expr) {
 	s := l.Value
