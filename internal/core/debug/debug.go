@@ -109,8 +109,6 @@ func (w *printer) node(n adt.Node) {
 		}
 
 		kindStr := kind.String()
-		kindStr = strings.ReplaceAll(kindStr, "{...}", "struct")
-		kindStr = strings.ReplaceAll(kindStr, "[...]", "list")
 
 		fmt.Fprintf(w, "(%s){", kindStr)
 
@@ -128,10 +126,18 @@ func (w *printer) node(n adt.Node) {
 			saved := w.indent
 			w.indent += "// "
 			w.string("\n")
-			w.string(strings.TrimSpace(errors.Details(b.Err, &errors.Config{
-				Cwd:     w.cfg.Cwd,
-				ToSlash: true,
-			})))
+			fmt.Fprintf(w, "[%v]", b.Code)
+			if !b.ChildError {
+				msg := errors.Details(b.Err, &errors.Config{
+					Cwd:     w.cfg.Cwd,
+					ToSlash: true,
+				})
+				msg = strings.TrimSpace(msg)
+				if msg != "" {
+					w.string(" ")
+					w.string(msg)
+				}
+			}
 			w.indent = saved
 		}
 

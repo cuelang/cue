@@ -49,3 +49,11 @@
     }
   }
 }
+-- out/eval --
+(struct){
+  #Foo: (struct){
+    x: (_|_){
+      // [incomplete] ambiguous disjunction
+    }
+  }
+}

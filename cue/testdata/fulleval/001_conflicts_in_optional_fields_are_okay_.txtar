@@ -34,3 +34,12 @@ c: d & {
     b?: 4
   })
 }
+-- out/eval --
+(struct){
+  d: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  c: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+}

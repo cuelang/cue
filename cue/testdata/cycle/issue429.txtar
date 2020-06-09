@@ -1,0 +1,74 @@
+-- in.cue --
+range1: {
+	min: *1 | int
+	range: >min
+	range: 8
+}
+range2: {
+	min: *1 | int
+	max: int & >min
+}
+rg: range2 & {
+//	min: 1
+	max: 8
+}
+#Size : {
+  res: uint | * 0
+  num: > res | *(1 + res)
+  max: > num | *num
+}
+
+a: #Size & {
+  num: 5
+}
+-- out/eval --
+(struct){
+  range1: (struct){
+    min: (int){ 1 }
+    range: (int){ 8 }
+  }
+  range2: (struct){
+    min: (int){ 1 }
+    max: (int){ &(>1, int) }
+  }
+  rg: (struct){
+    min: (int){ 1 }
+    max: (int){ 8 }
+  }
+  #Size: (struct){
+    res: (int){ 0 }
+    num: (int){ 1 }
+    max: (_|_){
+      // [incomplete] ambiguous disjunction
+    }
+  }
+  a: (struct){
+    res: (int){ 0 }
+    num: (int){ 5 }
+    max: (int){ 5 }
+  }
+}
+-- out/compile --
+--- in.cue
+{
+  range1: {
+    min: (*1|int)
+    range: >〈0;min〉
+    range: 8
+  }
+  range2: {
+    min: (*1|int)
+    max: (int & >〈0;min〉)
+  }
+  rg: (〈0;range2〉 & {
+    max: 8
+  })
+  #Size: {
+    res: (>=0|*0)
+    num: (>〈0;res〉|*(1 + 〈0;res〉))
+    max: (>〈0;num〉|*〈0;num〉)
+  }
+  a: (〈0;#Size〉 & {
+    num: 5
+  })
+}

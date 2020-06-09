@@ -25,3 +25,13 @@ c: *"a" | *"b" | "c"
   x: (〈0;a〉 & 〈0;b〉)
   y: (〈0;b〉 & 〈0;c〉)
 }
+-- out/eval --
+(struct){
+  a: (string){ "a" }
+  b: (string){ "a" }
+  c: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  x: (string){ "a" }
+  y: (string){ "a" }
+}

@@ -83,3 +83,18 @@ job:
     }
   }
 }
+-- out/eval --
+(struct){
+  job: (struct){
+    list: (struct){
+      command: (string){ "ls" }
+      name: (string){ "list" }
+      replicas: (int){ 1 }
+    }
+    nginx: (struct){
+      command: (string){ "nginx" }
+      replicas: (int){ 2 }
+      name: (string){ "nginx" }
+    }
+  }
+}
