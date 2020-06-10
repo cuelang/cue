@@ -29,6 +29,12 @@ import (
 
 // Config configures a compilation.
 type Config struct {
+	// Scope specifies a node in which to look up unresolved references. This
+	// is useful for evaluating expressions within an already evaluated
+	// configuration.
+	//
+	// TODO
+	Scope *adt.Vertex
 }
 
 // Files compiles the given files as a single instance. It disregards
@@ -40,6 +46,22 @@ func Files(cfg *Config, r adt.Runtime, files ...*ast.File) (*adt.Vertex, errors.
 	c := newCompiler(cfg, r)
 
 	v := c.compileFiles(files)
+
+	if c.errs != nil {
+		return v, c.errs
+	}
+	return v, nil
+}
+
+func Expr(cfg *Config, r adt.Runtime, x ast.Expr) (adt.Expr, errors.Error) {
+	if cfg == nil {
+		cfg = &Config{}
+	}
+	c := &compiler{
+		index: r,
+	}
+
+	v := c.compileExpr(x)
 
 	if c.errs != nil {
 		return v, c.errs
