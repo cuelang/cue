@@ -13,7 +13,7 @@
         "maximum": 3
     },
     "exclusive": {
-        "type": "number",
+        "type": "integer",
         "exclusiveMinimum": 2,
         "exclusiveMaximum": 3
     },
@@ -31,5 +31,5 @@ import "math"
 constant?:  2
 several?:   1 | 2 | 3 | 4
 inclusive?: >=2 & <=3
-exclusive?: >2 & <3
+exclusive?: int & >2 & <3
 cents?:     math.MultipleOf(0.05)

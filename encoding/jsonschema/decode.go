@@ -241,6 +241,8 @@ type state struct {
 	pos cue.Value
 
 	typeOptional bool
+	nullable     *ast.BasicLit
+	isInt        *ast.Ident
 	usedTypes    cue.Kind
 	allowedTypes cue.Kind
 
@@ -307,6 +309,13 @@ func (s *state) finalize() (e ast.Expr) {
 	if types&cue.FloatKind != 0 {
 		add(ast.NewIdent("number"))
 		types &^= cue.IntKind
+	}
+	if s.isInt != nil && types&cue.IntKind == 0 {
+		conjuncts = append(conjuncts, s.isInt)
+		types &^= cue.IntKind
+	}
+	if s.nullable != nil {
+		add(s.nullable)
 	}
 	for types != 0 {
 		k := cue.Kind(1 << uint(bits.TrailingZeros(uint(types))))
