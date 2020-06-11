@@ -49,6 +49,6 @@
 intOrString1?: int | string
 intOrString2?: int | string
 intOrString3?: int | string
-disjunction?:  int | string | >=3
+disjunction?:  int | string | int & >=3
 empty?:        _|_
 ...

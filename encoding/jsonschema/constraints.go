@@ -174,6 +174,8 @@ var constraints = []*constraint{
 				types |= cue.NumberKind
 			case "integer":
 				types |= cue.IntKind
+				s.isInt = ast.NewIdent("int")
+				setPos(s.isInt, n)
 			case "array":
 				types |= cue.ListKind
 			case "object":
@@ -205,6 +207,13 @@ var constraints = []*constraint{
 		}
 		s.addConjunct(n, ast.NewBinExpr(token.OR, a...))
 		s.typeOptional = true
+	}),
+
+	// TODO: only allow for OpenAPI.
+	p1("nullable", func(n cue.Value, s *state) {
+		s.usedTypes |= cue.NullKind
+		s.nullable = ast.NewLit(token.NULL, "null")
+		setPos(s.nullable, n)
 	}),
 
 	p1d("const", 6, func(n cue.Value, s *state) {
