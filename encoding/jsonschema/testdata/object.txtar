@@ -53,6 +53,15 @@
         "^\\P{Lo}": { "type": "integer" }
       },
       "additionalProperties": { "type": "string" }
+    },
+    "multi": {
+      "type": [ "object", "number" ],
+      "properties": {
+        "foo": { "type": "number" },
+        "bar": { "type": "number" }
+      },
+      "maxProperties": 5,
+      "minimum": 7
     }
   },
   "additionalProperties": false
@@ -96,4 +105,9 @@ complex?: {
 	{[=~"^\\P{Lo}" & !~"^(foo|bar)$"]: int}
 
 	{[!~"^\\P{Lu}" & !~"^\\P{Lo}" & !~"^(foo|bar)$"]: string}
+}
+multi?: >=7 | struct.MaxFields(5) & {
+	foo?: number
+	bar?: number
+	...
 }
