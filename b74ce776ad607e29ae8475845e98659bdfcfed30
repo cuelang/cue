@@ -22,6 +22,30 @@
       "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9aba00_61a156ef",
+        "filename": "cmd/cue/cmd/testdata/script/def_jsonschema.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-13T07:19:37Z",
+      "side": 0,
+      "message": "Ah, I see I inadvertently swapped the order of the CLs, which caused the merging to be somewhat weird. If you look now, you see this first disappears and then comes back as schema.json.",
+      "parentUuid": "f75f923d_c13d853d",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
