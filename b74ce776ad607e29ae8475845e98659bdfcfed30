@@ -22,6 +22,30 @@
       "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a361c5bb_c495e797",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-13T07:09:53Z",
+      "side": 1,
+      "message": "The position also sets the RelPos. Maybe that\u0027s not a great API in the end, but it evolved that way.",
+      "parentUuid": "8c67a293_0f69bb19",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
