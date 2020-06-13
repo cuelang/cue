@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f75f923d_c13d853d",
+        "filename": "cmd/cue/cmd/testdata/script/def_jsonschema.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T03:27:16Z",
+      "side": 0,
+      "message": "q: curious why this is going away (since the fix is supposed to restore file info)",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
