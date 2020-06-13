@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8645419c_36408ddc",
+        "filename": "cmd/cue/cmd/testdata/script/def_jsonschema.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: curious why uint doesn\u0027t show up here.",
+      "range": {
+        "startLine": 71,
+        "startChar": 78,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b964f293_cfb078c6",
+        "filename": "cmd/cue/cmd/testdata/script/import_auto.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: shouldn\u0027t that be uint?",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf70b07_2737c81e",
+        "filename": "encoding/jsonschema/constraints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: curious why we don\u0027t have this for the other types?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 22
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40598b98_aad9558f",
+        "filename": "encoding/jsonschema/constraints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: should we test for \"type\" here and change to uint if that\u0027s \u003e\u003d 0?",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 4
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b480aede_c6f88238",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: curious why we need a dedicated flag? isn\u0027t this already covered by \"types\" mask?",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 24
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6683e8_c3bc05c7",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T02:54:29Z",
+      "side": 1,
+      "message": "q: do we still need this? or is that already handled by \"s.isInt !\u003d nil \u0026\u0026 types\u0026cue.IntKind \u003d\u003d 0\" check ahead?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 27
+      },
+      "revId": "2a66f408750d35870441cff4ca97a9f1ae6fb9af",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
