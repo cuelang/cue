@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c67a293_0f69bb19",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-13T03:32:23Z",
+      "side": 1,
+      "message": "q: do we need to SetRelPos here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "b74ce776ad607e29ae8475845e98659bdfcfed30",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
