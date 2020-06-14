@@ -23,7 +23,7 @@ components:
 #User: {
 	name?:    string
 	id?:      int
-	address?: #PhoneNumber
+	address?: null | #PhoneNumber
 	...
 }
 
