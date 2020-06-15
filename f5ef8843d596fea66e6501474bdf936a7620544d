@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab045c07_520a7ad2",
+        "filename": "encoding/jsonschema/constraints.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Nope. The top-level schema can be any type.",
+      "parentUuid": "5b5f8181_f8d5b12e",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "665fa428_286d158f",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8dec4b87_e089756f",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665fa428_286d158f",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 11
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b295eccf_1bc5b3ad",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-15T09:41:05Z",
       "side": 1,
       "message": "q: curious if we need to store `typ` as something separate as it could simply be considered as additional (and stronger) constraint of the list (and will always be the corresponding cue type for the index value).",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 21
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb65774c_b362fcee",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "The main reason to do this is to be able to elide it when there are other constraints. And this is the easiest way to do it without running a CUE evaluation.\n\nWe could arguably leave this up to CUE, but right now simplification is done in a later state, so this eliminates quite a bit of redundancy.\n\nOther than that, we could rely on the bitmask, but the disadvantage there is that we\u0027ll lose some line information.",
+      "parentUuid": "b295eccf_1bc5b3ad",
       "range": {
         "startLine": 281,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f6f21c06_97b93cb8",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "This changes the semantics, though, as this method is called directly when adding to \"all\".",
+      "parentUuid": "9badf41b_0ee0f270",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 15
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e94b7d0_b64da380",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-15T09:41:05Z",
       "side": 1,
       "message": "q: should there be something to enforce that only one entry is set? or do we want to record everything and leave that job to finalize()?",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 35
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1aae066_7b1116d3",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "It is perfectly fine to set more than one entry. Allowing this is actually the main purpose of this change. Welcome to JSON schema semantics. 😊\n\nSee some of the tests.",
+      "parentUuid": "0e94b7d0_b64da380",
       "range": {
         "startLine": 323,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d97d4b53_aaf543bc",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Yep,much nicer. Changed.",
+      "parentUuid": "8644bc5d_fe364b67",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 2
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6664e01_d756928f",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -151,6 +295,30 @@
       "writtenOn": "2020-06-15T09:41:05Z",
       "side": 1,
       "message": "q: should that be moved a separate change (or documented in the commit message) ?",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3089bad_1a4550d7",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "I\u0027ll keep it here. This actually minimizes the changes in this CL a bit as the new algorithm changed things. I\u0027ll update the comment.",
+      "parentUuid": "f6664e01_d756928f",
       "range": {
         "startLine": 397,
         "startChar": 0,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "88653662_41847644",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Good question. I\u0027ve been pondering that too. The general feedback is that CUE should report all errors. So that is what I\u0027m going with here. We can change that if it turns out to be excessive.",
+      "parentUuid": "226ea128_219d6157",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 34
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5361ff40_dff6a1e3",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -197,6 +389,30 @@
       "writtenOn": "2020-06-15T09:41:05Z",
       "side": 1,
       "message": "q: shouldn\u0027t that be \u003d\u003d 0: ignore the constraint if the type is not used.",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 32
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed439ee_5099765b",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Nope. If the type is used, it means the remaining constraints are implied, so we can drop them.",
+      "parentUuid": "5361ff40_dff6a1e3",
       "range": {
         "startLine": 422,
         "startChar": 0,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "6cef1f26_34b302b3",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Not sure what \"this\" refers to here. But yes, this is deliberately ignored if the used mask checks triggers. It is also deliberately ignored if there are any constraints, as the types are implied from the constraints in CUE (unlike in JSON schema).",
+      "parentUuid": "3428471a_6c039746",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4cf31c7_b9adc98d",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -243,6 +483,30 @@
       "writtenOn": "2020-06-15T09:41:05Z",
       "side": 1,
       "message": "q: shouldn\u0027t we also consider the objectType.constraints here? (not clear what the local obj is for, as it doesn\u0027t seems to be used later in the function)",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 51
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4bc2f5c_9adb539a",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T10:09:39Z",
+      "side": 1,
+      "message": "Nope. The constraints are either not structs (e.g. calls like struct.MinProperties) or structs that _have to be_ by themselves.\n\nTheoretically, we could introduce a new struct here. But using the one of s.typ results in nicer output.",
+      "parentUuid": "e4cf31c7_b9adc98d",
       "range": {
         "startLine": 445,
         "startChar": 0,
