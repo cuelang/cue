@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b5d0384e_3582855d",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T17:54:38Z",
+      "side": 1,
+      "message": "Very good question. My first impression was no, and I tried to get rid of it. However, there are subtle difference. Most importantly, removing the bitmask made this change too big and there were too many moving parts to get this right.\n\nSeemed more important to fix these blatant conversion bugs in a sane manner.",
+      "parentUuid": "756b87dc_00ab6b44",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 21
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9badf41b_0ee0f270",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -616,6 +640,30 @@
     },
     {
       "key": {
+        "uuid": "2d062cee_acbac20a",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T17:54:38Z",
+      "side": 1,
+      "message": "No, that\u0027s why the constraints and types are grouped by type (note the array). \n\nSo type:string here is collated in the string bucket, while \"maximum:5\" is collated in the number bucket.",
+      "parentUuid": "b56b07fc_18a4509c",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c97826db_6645ea1e",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -627,6 +675,30 @@
       "writtenOn": "2020-06-15T13:08:54Z",
       "side": 1,
       "message": "q: what is the difference with the earlier `s.usedTypes` check?",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568bcb3c_acff4812",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T17:54:38Z",
+      "side": 1,
+      "message": "Used means that the type implied somewhere (e.g. by a constraint or in the \"all\" bucket). \"types\" means that this type should be represented (and if it hasn\u0027t yet up till now, it needs an explicit type).\n\nPart of the complication comes from having a duplicate system now. But the main benefit is that it keep the diff understandable and smallish. Ideally the use of \"used\" should go in follow-up CLs.",
+      "parentUuid": "c97826db_6645ea1e",
       "range": {
         "startLine": 433,
         "startChar": 0,
@@ -710,6 +782,30 @@
     },
     {
       "key": {
+        "uuid": "4ddefa11_78151380",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T17:54:38Z",
+      "side": 1,
+      "message": "There is one case where this is possible, yes.",
+      "parentUuid": "9644dd4c_55e0ed3f",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 51
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79900100_ab4b04b9",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -721,6 +817,30 @@
       "writtenOn": "2020-06-15T13:08:54Z",
       "side": 1,
       "message": "offtopic q: wouldn\u0027t that effectively skip definitions/linkReferences?",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 12
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403553db_6c999d3a",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-06-15T17:54:38Z",
+      "side": 1,
+      "message": "This is the case `[...X] | *[]`, which is redundant in CUE as the latter is implied by the former.\n\nWe should probably remove this and let CUE deal with it, but probably not in this CL.",
+      "parentUuid": "79900100_ab4b04b9",
       "range": {
         "startLine": 469,
         "startChar": 0,
