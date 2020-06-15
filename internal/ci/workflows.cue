@@ -166,6 +166,12 @@ test: json.#Workflow & {
 			strategy:  #testStrategy
 			"runs-on": "${{ matrix.os }}"
 			steps: [
+				#step & {
+					name: "Fail fast"
+					run: #"""
+					false
+					"""#
+				},
 				#setCUEEnv,
 				#writeCookiesFile,
 				#installGo,
@@ -210,6 +216,21 @@ test: json.#Workflow & {
 				},
 			]
 			needs: "test"
+		}
+		tidyup: {
+			"runs-on": "ubuntu-latest"
+			steps: [
+				#setCUEEnv,
+				#step & {
+					if:   "${{ env.CUE_IS_BUILD_BRANCH == 'true' }}"
+					name: "Delete build branch"
+					run: #"""
+					env
+					"""#
+				},
+			]
+			needs: "test"
+			if:    "always()"
 		}
 	}
 }

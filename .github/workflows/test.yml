@@ -17,6 +17,8 @@ jobs:
     needs: start
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Fail fast
+      run: "false"
     - name: Set build branch env vars
       run: |-
         echo "::set-env name=CUE_IS_BUILD_BRANCH::$(echo $GITHUB_REF | grep -q '^refs\/heads\/[[:digit:]]\{14\}-I[0-9a-f]\+-[0-9a-f]\+-refs_changes_[[:digit:]]\{2\}_[[:digit:]]\+_[[:digit:]]\+$' && echo true || echo false)"
@@ -107,3 +109,17 @@ jobs:
       run: 'curl -f -s -H "Content-Type: application/json" --request POST --data ''{"message":"Build
         succeeded for ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id
         }}","labels":{"Code-Review":1}}'' -b ~/.gitcookies https://cue-review.googlesource.com/a/changes/$CUE_CHANGE_ID/revisions/$CUE_COMMIT/review'
+  tidyup:
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+    - name: Set build branch env vars
+      run: |-
+        echo "::set-env name=CUE_IS_BUILD_BRANCH::$(echo $GITHUB_REF | grep -q '^refs\/heads\/[[:digit:]]\{14\}-I[0-9a-f]\+-[0-9a-f]\+-refs_changes_[[:digit:]]\{2\}_[[:digit:]]\+_[[:digit:]]\+$' && echo true || echo false)"
+        echo "::set-env name=CUE_CHANGE_ID::$(echo $GITHUB_REF | cut -d '-' -f 2)"
+        echo "::set-env name=CUE_COMMIT::$(echo $GITHUB_REF | cut -d '-' -f 3)"
+        echo "::set-env name=CUE_REF::$(echo $GITHUB_REF | cut -d '-' -f 4 | sed 's/_/\//g')"
+    - name: Delete build branch
+      if: ${{ env.CUE_IS_BUILD_BRANCH == 'true' }}
+      run: env
