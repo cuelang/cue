@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f37577b_c9db0966",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "q: should that also update `usedTypes`? (it currently only seems to be used on `(*state) value()`",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 29
+      },
+      "revId": "d4f61cf2c3a0d1359d302ab0c002e84ea5821373",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671970be_3e2aaa59",
+        "filename": "encoding/jsonschema/testdata/emptyanyof.txtar",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "q: does that comes from the empty anyOf[0] ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "d4f61cf2c3a0d1359d302ab0c002e84ea5821373",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}

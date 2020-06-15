@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "756b87dc_00ab6b44",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "q: do we still need the `usedTypes` bitmask then?",
+      "parentUuid": "eb65774c_b362fcee",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 21
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9badf41b_0ee0f270",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "836257c6_c88f17d7",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6f21c06_97b93cb8",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 15
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e94b7d0_b64da380",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -234,6 +282,30 @@
       "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c050ee_1905424d",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1aae066_7b1116d3",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 35
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -331,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "b208364e_835785d3",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3089bad_1a4550d7",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "226ea128_219d6157",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -375,6 +471,30 @@
       "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1c788a_e7e9c80b",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88653662_41847644",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 34
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -472,6 +592,53 @@
     },
     {
       "key": {
+        "uuid": "b56b07fc_18a4509c",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "yes, but wouldn\u0027t that effectively means that any constraints implicitly wins over typ?\n\ni.e: if I have:\n```\n{\n   \"type\": \"string\",\n   \"maximum\": 5\n}\n```\nwouldn\u0027t that currently resolve to int?",
+      "parentUuid": "6cef1f26_34b302b3",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97826db_6645ea1e",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "q: what is the difference with the earlier `s.usedTypes` check?",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4cf31c7_b9adc98d",
         "filename": "encoding/jsonschema/decode.go",
         "patchSetId": 10
@@ -512,6 +679,53 @@
         "startChar": 0,
         "endLine": 445,
         "endChar": 51
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9644dd4c_55e0ed3f",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "I simply wasn\u0027t clear how obj (or s.obj) was getting used after finalize().\n\nAdditional since `(*state) object()` nows initialize both `s.obj` and `s.types[objectType].typ`  (thru `(*state) add()`) would there a case when `s.obj \u003d\u003d null` and `s.types[objectType].type` isn\u0027t ?",
+      "parentUuid": "d4bc2f5c_9adb539a",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 51
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79900100_ab4b04b9",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T13:08:54Z",
+      "side": 1,
+      "message": "offtopic q: wouldn\u0027t that effectively skip definitions/linkReferences?",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 12
       },
       "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
