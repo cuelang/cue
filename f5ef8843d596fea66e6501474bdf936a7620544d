@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "585981af_3b0064b7",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T08:38:21Z",
+      "side": 0,
+      "message": "q: wasn\u0027t that skipping \"definitions\" and \"linkReferences\" before?, if yes maybe the change should be documented in the commit message.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 12
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}

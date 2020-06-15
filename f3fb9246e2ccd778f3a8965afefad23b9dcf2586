@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8477f9ad_0479eb30",
+        "filename": "encoding/jsonschema/constraints.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T08:38:21Z",
+      "side": 1,
+      "message": "q: curious why this is not being called for the other state?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "f3fb9246e2ccd778f3a8965afefad23b9dcf2586",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27921166_3f789a00",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T08:38:21Z",
+      "side": 1,
+      "message": "nit: what about doing e \u003d ast.NewBinExpr(token.OR, e, s.nullable) instead, so that the nullable case is standalone (and easier to read).",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f3fb9246e2ccd778f3a8965afefad23b9dcf2586",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04038fe_782b162e",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T08:38:21Z",
+      "side": 1,
+      "message": "nit: what about keeping that inside the loop (so that the default case is standalone and easier to read)",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 35
+      },
+      "revId": "f3fb9246e2ccd778f3a8965afefad23b9dcf2586",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
