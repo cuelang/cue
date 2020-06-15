@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b5f8181_f8d5b12e",
+        "filename": "encoding/jsonschema/constraints.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: does $id implies object type?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665fa428_286d158f",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "nit: consider using consistent ordering for the primitive type across all the file",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 11
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b295eccf_1bc5b3ad",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: curious if we need to store `typ` as something separate as it could simply be considered as additional (and stronger) constraint of the list (and will always be the corresponding cue type for the index value).",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 21
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9badf41b_0ee0f270",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "nit: maybe moving this to the caller: `(*state) add()` would make that clearer: we\u0027re only adding a constraint if it\u0027s not empty.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 15
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e94b7d0_b64da380",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: should there be something to enforce that only one entry is set? or do we want to record everything and leave that job to finalize()?",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 35
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8644bc5d_fe364b67",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "nit: what about using early return here, so that\u0027s easier to read:\n\n```\nif len(s.all.constraints) \u003e 0 {\n  return true\n}\n\nfor _, t : \u003d range s.types {\n  if len(t.constraints) \u003e 0 {\n     return true\n  }\n}\n\nreturn len(s.patterns) ...\n```",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 2
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6664e01_d756928f",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: should that be moved a separate change (or documented in the commit message) ?",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226ea128_219d6157",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: do we need to add one error per constraints?",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 34
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5361ff40_dff6a1e3",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: shouldn\u0027t that be \u003d\u003d 0: ignore the constraint if the type is not used.",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 32
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3428471a_6c039746",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: wouldn\u0027t this effectively ignore the t.typ dijunction because of the else?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 26
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4cf31c7_b9adc98d",
+        "filename": "encoding/jsonschema/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000077
+      },
+      "writtenOn": "2020-06-15T09:41:05Z",
+      "side": 1,
+      "message": "q: shouldn\u0027t we also consider the objectType.constraints here? (not clear what the local obj is for, as it doesn\u0027t seems to be used later in the function)",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 51
+      },
+      "revId": "f5ef8843d596fea66e6501474bdf936a7620544d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
