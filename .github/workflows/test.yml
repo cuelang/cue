@@ -3,6 +3,7 @@
 name: Test
 env:
   GERRIT_COOKIE: ${{ secrets.gerritCookie }}
+  CUECKOO_PAT: ${{ secrets.cueckooPAT }}
 defaults:
   run:
     shell: bash
@@ -31,6 +32,19 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Create build branch
+      run: |-
+        git remote -v
+        git config user.email cueckoo@cuelang.org
+        git config user.name cueckoo
+        git config http.https://github.com/.extraheader "AUTHORIZATION basic $(echo -n cueckoo:$CUECKOO_PAT | base64)"
+        git config -l
+        ref=$(echo $CUE_REF | sed -e 's/\//_/g')
+        branch="$(date -u +%Y%m%d%H%M%S)-$CUE_CHANGE_ID-$CUE_COMMIT-$ref"
+        git checkout -b $branch
+        git push origin $branch
+    - name: Fail fast
+      run: false
     - name: Cache Go modules
       uses: actions/cache@v1
       with:
