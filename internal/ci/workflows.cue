@@ -168,6 +168,10 @@ test: json.#Workflow & {
 			steps: [
 				#setCUEEnv,
 				#writeCookiesFile,
+				#step & {
+					name: "Hard fail"
+					run:  "false"
+				},
 				#installGo,
 				#checkoutCode,
 				#cacheGoModules,
