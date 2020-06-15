@@ -88,9 +88,8 @@ workflows: [
 #goReleaseCheck: #step & {
 	name: "gorelease check"
 	run:  "go run golang.org/x/exp/cmd/gorelease"
-	// Only run on 1.13.x and latest Go for now. Bug with Go 1.12.x means
-	// this check fails
-	if: "matrix.go-version == '\(#latestGo)' || matrix.go-version == '1.13.x'"
+	// Bug with Go 1.12.x means this check fails
+	if: "matrix.go-version != '1.12.x'"
 }
 
 #checkGitClean: #step & {
@@ -106,7 +105,7 @@ workflows: [
 				go mod init mod.com
 				GOPROXY=https://proxy.golang.org go get -d cuelang.org/go@$v
 				"""
-	if: "github.ref == 'refs/heads/master'"
+	if: "github.ref == 'refs/heads/master' && matrix.go-version != '1.12.x'"
 }
 
 test: json.#Workflow & {
