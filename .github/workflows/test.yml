@@ -25,6 +25,8 @@ jobs:
         echo "::set-env name=CUE_REF::$(echo $GITHUB_REF | cut -d '-' -f 4 | sed 's/_/\//g')"
     - name: Write the gitcookies file
       run: echo "$GERRIT_COOKIE" > ~/.gitcookies
+    - name: Hard fail
+      run: "false"
     - name: Install Go
       uses: actions/setup-go@v2
       with:
