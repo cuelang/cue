@@ -1,5 +1,5 @@
 {
-   "openapi": "3.0.0",
+   "openapi": "v3.0.0",
    "info": {
       "title": "OpenAPI title.",
       "version": "v1alpha1"

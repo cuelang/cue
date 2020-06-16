@@ -1,5 +1,5 @@
 {
-   "openapi": "3.0.0",
+   "openapi": "v3.0.0",
    "info": {
       "contact": {
          "name": "John Doe",
@@ -103,8 +103,10 @@
                         "$ref": "#/components/schemas/Int32"
                      },
                      {
-                        "exclusiveMinimum": 10,
-                        "exclusiveMaximum": 1000
+                        "exclusiveMinimum": true,
+                        "minimum": 10,
+                        "exclusiveMaximum": true,
+                        "maximum": 1000
                      }
                   ]
                },
