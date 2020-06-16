@@ -35,15 +35,15 @@ var cueToOpenAPI = map[string]string{
 	"float64": "double",
 	"float32": "float",
 
-	"string": "string",
-	"bytes":  "binary",
+	//"string": "string",
+	"bytes": "binary",
 
-	"time.Time":                  "dateTime",
+	"time.Time":                  "date-time",
 	`time.Format ("2006-01-02")`: "date",
 
 	// TODO: if a format is more strict (e.g. using zeros instead of nines
 	// for fractional seconds), we could still use this as an approximation.
-	`time.Format ("2006-01-02T15:04:05.999999999Z07:00")`: "dateTime",
+	`time.Format ("2006-01-02T15:04:05.999999999Z07:00")`: "date-time",
 
 	// TODO:  password.
 }
