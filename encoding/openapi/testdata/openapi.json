@@ -1,5 +1,5 @@
 {
-   "openapi": "3.0.0",
+   "openapi": "v3.1.0",
    "info": {
       "contact": {
          "name": "John Doe",
