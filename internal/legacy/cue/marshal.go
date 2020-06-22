@@ -28,6 +28,7 @@ import (
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/core/export"
 )
 
 // root.
@@ -141,7 +142,7 @@ func (r *Runtime) Marshal(instances ...*Instance) (b []byte, err error) {
 			return p
 		}
 		// TODO: support exporting instance
-		file, _ := exportFile(ctx, nil, i.rootValue, options{raw: true})
+		file, _ := export.Def(r.idx.Runtime, i.root)
 		imports := []string{}
 		for _, i := range internal.Imports(file) {
 			for _, spec := range i.(*ast.ImportDecl).Specs {
