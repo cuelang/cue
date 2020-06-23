@@ -724,9 +724,14 @@ var builtinPackages = map[string]*builtinPkg{
 								return false, err
 							}
 
-							if err := v.Subsume(inst.Value(), Final()); err != nil {
+							x := v.Unify(inst.Value())
+							if x.Err() != nil {
+								return false, x.Err()
+							}
+							if err := x.Validate(Concrete(true)); err != nil {
 								return false, err
 							}
+
 						}
 					}()
 				}
