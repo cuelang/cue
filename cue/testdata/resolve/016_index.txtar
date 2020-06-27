@@ -82,12 +82,12 @@ e7: def["b"]
   a: (int){ 2 }
   b: (string){ "bar" }
   c: (_|_){
-    // [eval] unexpected Expr type *adt.DisjunctionExpr:
-    //     ./in.cue:3:5
+    // [eval] invalid list index "3" (type string):
+    //     ./in.cue:3:20
   }
   d: (_|_){
-    // [eval] unexpected Expr type *adt.DisjunctionExpr:
-    //     ./in.cue:4:5
+    // [eval] undefined field 0:
+    //     ./in.cue:4:16
   }
   l: (#list){
   }
@@ -112,8 +112,8 @@ e7: def["b"]
     //     ./in.cue:10:5
   }
   e6: (_|_){
-    // [eval] unexpected Expr type *adt.DisjunctionExpr:
-    //     ./in.cue:11:6
+    // [eval] invalid list index 1 (out of bounds):
+    //     ./in.cue:11:16
   }
   def: (struct){
     a: (int){ 1 }
