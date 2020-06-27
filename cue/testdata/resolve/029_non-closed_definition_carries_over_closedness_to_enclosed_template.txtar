@@ -103,6 +103,13 @@ c: #R & {
   })
 }
 -- out/eval --
+Errors:
+empty disjunction
+field `b` not allowed
+field `c` not allowed
+field `d` not allowed
+
+Result:
 (_|_){
   // [eval]
   #S: (struct){

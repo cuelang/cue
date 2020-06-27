@@ -60,6 +60,11 @@ baz: #Foo & {
   }
 }
 -- out/eval --
+Errors:
+empty disjunction
+field `c` not allowed
+
+Result:
 (_|_){
   // [eval]
   #Foo: (_|_){

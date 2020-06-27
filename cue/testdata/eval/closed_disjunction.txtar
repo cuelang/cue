@@ -14,6 +14,11 @@ b: #A & {
     d: 4
 }
 -- out/eval --
+Errors:
+empty disjunction
+field `d` not allowed
+
+Result:
 (_|_){
   // [eval]
   #A: (struct){
