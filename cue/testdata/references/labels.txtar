@@ -1,0 +1,90 @@
+-- in.cue --
+// direct
+a: [X=string]: X
+a: bar: {}
+
+// in struct
+b: [X=string]: {X}
+b: bar: {}
+
+// in structs
+c: [X=string]: {{{X}}}
+c: bar: {}
+
+// in sub field
+d: [X=string]: name: X
+d: bar: {}
+
+// nested
+e: [X=string]: [Y=string]: X + Y
+e: foo: bar: {}
+-- out/eval --
+(struct){
+  a: (struct){
+    bar: (string){ "bar" }
+  }
+  b: (struct){
+    bar: (string){ "bar" }
+  }
+  c: (struct){
+    bar: (string){ "bar" }
+  }
+  d: (struct){
+    bar: (struct){
+      name: (string){ "bar" }
+    }
+  }
+  e: (struct){
+    foo: (struct){
+      bar: (string){ "foobar" }
+    }
+  }
+}
+-- out/compile --
+--- in.cue
+{
+  a: {
+    [string]: 〈0;-〉
+  }
+  a: {
+    bar: {}
+  }
+  b: {
+    [string]: {
+      〈1;-〉
+    }
+  }
+  b: {
+    bar: {}
+  }
+  c: {
+    [string]: {
+      {
+        {
+          〈3;-〉
+        }
+      }
+    }
+  }
+  c: {
+    bar: {}
+  }
+  d: {
+    [string]: {
+      name: 〈1;-〉
+    }
+  }
+  d: {
+    bar: {}
+  }
+  e: {
+    [string]: {
+      [string]: (〈1;-〉 + 〈0;-〉)
+    }
+  }
+  e: {
+    foo: {
+      bar: {}
+    }
+  }
+}
