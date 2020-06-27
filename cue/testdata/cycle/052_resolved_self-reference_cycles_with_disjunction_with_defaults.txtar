@@ -128,6 +128,10 @@ z3:  8
   z3: 8
 }
 -- out/eval --
+Errors:
+incompatible values *adt.Num and *adt.Num
+
+Result:
 (_|_){
   // [eval]
   xa1: (int){ 8 }

@@ -36,6 +36,11 @@ call: _|_ // cannot call non-function null (type null)
   call: null()
 }
 -- out/eval --
+Errors:
+cannot call non-function *adt.Null (type null):
+    ./in.cue:9:7
+
+Result:
 (_|_){
   // [eval]
   eql: (bool){ true }
@@ -45,7 +50,7 @@ call: _|_ // cannot call non-function null (type null)
   eq2: (bool){ false }
   ne1: (bool){ true }
   call: (_|_){
-    // [eval] cannot call non-function *adt.Null (type nil):
+    // [eval] cannot call non-function *adt.Null (type null):
     //     ./in.cue:9:7
   }
 }

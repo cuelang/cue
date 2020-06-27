@@ -27,6 +27,11 @@ y: _|_ // ; empty disjunction: conflicting values 2 and 3
   })
 }
 -- out/eval --
+Errors:
+empty disjunction
+incompatible values *adt.Num and *adt.Num
+
+Result:
 (_|_){
   // [eval]
   x: (_|_){

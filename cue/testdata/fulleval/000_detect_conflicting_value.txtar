@@ -16,6 +16,10 @@ a: _|_ // conflicting values 8000.9 and int (mismatched types float and int)
   a: (7080|int)
 }
 -- out/eval --
+Errors:
+empty disjunction
+
+Result:
 (_|_){
   // [eval]
   a: (_|_){
