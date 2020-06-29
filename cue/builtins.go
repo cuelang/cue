@@ -2927,6 +2927,22 @@ var builtinPackages = map[string]*builtinPkg{
 				}
 			},
 		}, {
+			Name:   "SliceRunes",
+			Params: []kind{stringKind, intKind, intKind},
+			Result: stringKind,
+			Func: func(c *callCtxt) {
+				b, start, end := c.string(0), c.int(1), c.int(2)
+				if c.do() {
+					c.ret, c.err = func() (interface{}, error) {
+						runes := []rune(b)
+						if start < 0 || start > end || end > len(runes) {
+							return nil, fmt.Errorf("index out of range")
+						}
+						return string(runes[start:end]), nil
+					}()
+				}
+			},
+		}, {
 			Name:   "ToTitle",
 			Params: []kind{stringKind},
 			Result: stringKind,
