@@ -22,8 +22,8 @@ import (
 	"cuelang.org/go/cue/ast/astutil"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
-	"cuelang.org/go/internal/core/adt"
-	"cuelang.org/go/internal/core/compile"
+	"cuelang.org/go/cue/internal/adt"
+	"cuelang.org/go/cue/internal/compile"
 )
 
 // A Runtime maintains data structures for indexing and resuse for evaluation.
