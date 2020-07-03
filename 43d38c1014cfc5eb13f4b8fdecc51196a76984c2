@@ -50,6 +50,24 @@
       "revId": "43d38c1014cfc5eb13f4b8fdecc51196a76984c2",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4caf33_d263ee84",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-03T12:23:33Z",
+      "side": 1,
+      "message": "Sorry, missed this comment before.\n\nThe resulting struct defines a value for all fields. Another way to say it is that closing the resulting struct is a no-op.",
+      "parentUuid": "ae627e01_152f3f30",
+      "revId": "43d38c1014cfc5eb13f4b8fdecc51196a76984c2",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
