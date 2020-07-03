@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e34840b_130bb3c1",
+        "filename": "cmd/cue/cmd/completion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-03T11:40:04Z",
+      "side": 1,
+      "message": "2020",
+      "revId": "ef9475863596e090948ab667229a5d1d18760c78",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
