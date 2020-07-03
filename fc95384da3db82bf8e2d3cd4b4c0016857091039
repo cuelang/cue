@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2e41d91_680db598",
+        "filename": "pkg/encoding/yaml/manual.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-03T11:59:56Z",
+      "side": 1,
+      "message": "nit: I would probably use `if err :\u003d x.Err(); err !\u003d nil` for consistency",
+      "revId": "fc95384da3db82bf8e2d3cd4b4c0016857091039",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
