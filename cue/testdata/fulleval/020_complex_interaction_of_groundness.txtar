@@ -72,7 +72,7 @@ a: {
       c: (struct){
         d: (string){ string }
         s: (_|_){
-          // [incomplete] non-concrete value '*adt.BasicType' to operation '+':
+          // [incomplete] non-concrete value 'string' to operation '+':
           //     ./in.cue:4:34
         }
       }

@@ -61,20 +61,20 @@ i: false
 }
 -- out/eval --
 Errors:
-incompatible values *adt.Num and *adt.Num
+incompatible values 2 and 1
 
 Result:
 (_|_){
   // [eval]
   a: (bool){ true }
   b: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num:
+    // [eval] incompatible values 2 and 1:
     //     ./in.cue:2:4
   }
   c: (bool){ true }
   d: (bool){ false }
   e: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num:
+    // [eval] incompatible values 2 and 1:
     //     ./in.cue:5:4
   }
   f: (bool){ true }
@@ -82,6 +82,6 @@ Result:
   h: (bool){ true }
   i: (bool){ false }
   err: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num
+    // [eval] incompatible values 2 and 1
   }
 }

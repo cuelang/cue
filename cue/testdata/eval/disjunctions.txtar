@@ -18,7 +18,7 @@ f: b & { name: "str", val: 3 }
 -- out/eval --
 Errors:
 empty disjunction
-invalid value *adt.BasicType (mismatched types string and int)
+invalid value string (mismatched types string and int)
 
 Result:
 (_|_){
@@ -44,10 +44,10 @@ Result:
   }
   f: (_|_){
     // [eval] empty disjunction
-    // invalid value *adt.BasicType (mismatched types string and int)
+    // invalid value string (mismatched types string and int)
     name: (string){ "str" }
     val: (_|_){
-      // [eval] invalid value *adt.BasicType (mismatched types string and int)
+      // [eval] invalid value string (mismatched types string and int)
     }
   }
 }
