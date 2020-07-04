@@ -106,7 +106,7 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 	if v.Value == nil {
 		save := *v
 		// Use node itself to allow for cycle detection.
-		s := e.evalVertex(c, v, true)
+		s := e.evalVertex(c, v, adt.Partial)
 		result = v.Value
 		*v = save
 		if s.result.Value != nil {
@@ -179,7 +179,7 @@ func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex) {
 		return
 	}
 
-	n := e.evalVertex(c, v, false)
+	n := e.evalVertex(c, v, adt.Finalized)
 	if n.result.Value != nil {
 		*v = n.result
 	}
@@ -188,7 +188,10 @@ func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex) {
 	// Check whether result is done.
 }
 
-func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, partial bool) *nodeShared {
+// evalVertex computes the vertex results. The state indicates the minimum
+// status to which this vertex should be evaluated. It should be either
+// adt.Finalized or adt.Partial.
+func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) *nodeShared {
 	// fmt.Println(debug.NodeString(c.StringIndexer, v, nil))
 	shared := &nodeShared{
 		ctx:   c,
@@ -207,6 +210,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, partial bool) *n
 		// validation has taken place.
 		*v = saved
 		v.Value = cycle
+		v.UpdateStatus(adt.Evaluating)
 
 		// If the result is a struct, it needs to be closed if:
 		//   1) this node introduces a definition
@@ -241,18 +245,20 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, partial bool) *n
 			// Use maybeSetCache for cycle breaking
 			for n.maybeSetCache(); n.expandOne(); n.maybeSetCache() {
 			}
-			if v.Value != cycle && partial {
+			if v.Status() > adt.Evaluating && state <= adt.Partial {
 				// We have found a partial result. There may still be errors
 				// down the line which may result from further evaluating this
 				// field, but that will be caught when evaluating this field
 				// for real.
+				v.UpdateStatus(adt.Partial)
 				shared.result = *v
 				shared.hasResult_ = true
 				return shared
 			}
-			if !n.done() && len(n.disjunctions) > 0 && v.Value == cycle {
+			if !n.done() && len(n.disjunctions) > 0 && isEvaluating(v) {
 				// We disallow entering computations of disjunctions with
 				// incomplete data.
+				v.UpdateStatus(adt.Finalized)
 				v.Value = &adt.Bottom{Code: adt.IncompleteError}
 				shared.result = *v
 				shared.hasResult_ = true
@@ -297,7 +303,7 @@ func (n *nodeContext) postDisjunct() {
 		n.errs = nil
 
 	default:
-		if n.node.Value == cycle {
+		if isEvaluating(n.node) {
 			// TODO: this does not yet validate all values.
 
 			if !n.done() { // && !ctx.IsTentative() {
@@ -329,6 +335,9 @@ func (n *nodeContext) postDisjunct() {
 				n.node.Value = nil
 			}
 		}
+
+		// We are no longer evaluating.
+		n.node.UpdateStatus(adt.Partial)
 
 		// Either set to Conjunction or error.
 		v := n.node.Value
@@ -454,11 +463,16 @@ func (n *nodeContext) postDisjunct() {
 			// or at least don't record recursive error.
 			// continue
 		}
+		// Call UpdateStatus here to be absolutely sure the status is set
+		// correctly and that we are not regressing.
+		n.node.UpdateStatus(adt.EvaluatingArcs)
 		n.eval.Unify(ctx, a)
 		if err, _ := a.Value.(*adt.Bottom); err != nil {
 			n.node.AddChildError(err)
 		}
 	}
+
+	n.node.UpdateStatus(adt.Finalized)
 }
 
 // TODO: this is now a sentinel. Use a user-facing error that traces where
@@ -466,6 +480,14 @@ func (n *nodeContext) postDisjunct() {
 var cycle = &adt.Bottom{
 	Err:  errors.Newf(token.NoPos, "cycle error"),
 	Code: adt.CycleError,
+}
+
+func isEvaluating(v *adt.Vertex) bool {
+	isCycle := v.Status() == adt.Evaluating
+	if isCycle != (v.Value == cycle) {
+		panic(fmt.Sprintf("cycle data of sync %d vs %#v", v.Status(), v.Value))
+	}
+	return isCycle
 }
 
 type nodeShared struct {
@@ -572,7 +594,7 @@ func (n *nodeContext) hasErr() bool {
 	if n.node.ChildErrors != nil {
 		return true
 	}
-	if n.node.Value != cycle {
+	if n.node.Status() > adt.Evaluating {
 		if _, ok := n.node.Value.(*adt.Bottom); ok {
 			return true
 		}
@@ -645,13 +667,15 @@ func (n *nodeContext) getValidators() adt.Value {
 }
 
 func (n *nodeContext) maybeSetCache() {
-	if n.node.Value != cycle {
+	if n.node.Status() > adt.Evaluating { // n.node.Value != nil
 		return
 	}
 	if n.scalar != nil {
+		n.node.UpdateStatus(adt.Partial)
 		n.node.Value = n.scalar
 	}
 	if n.errs != nil {
+		n.node.UpdateStatus(adt.Partial)
 		n.node.Value = n.errs
 	}
 }
@@ -762,7 +786,7 @@ func (n *nodeContext) evalExpr(v adt.Conjunct, closeID uint32, top bool) {
 		//
 		// TODO: add a mechanism so that the computation will only have to be
 		// one once?
-		if arc.Value == cycle {
+		if isEvaluating(arc) {
 			break
 		}
 
@@ -1322,6 +1346,7 @@ func (n *nodeContext) addLists(c *adt.OpContext) {
 
 	n.openList = max.isOpen
 
+	n.node.UpdateStatus(adt.Partial)
 	n.node.Value = &adt.ListMarker{
 		Src:    ast.NewBinExpr(token.AND, sources...),
 		IsOpen: max.isOpen,

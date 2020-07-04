@@ -181,6 +181,7 @@ func (n *nodeContext) updateResult() (isFinal bool) {
 
 		// TODO: Compute fancy error message.
 		n.nodeShared.resultNode = n
+		n.nodeShared.result.UpdateStatus(adt.Finalized)
 		n.nodeShared.result.Value = &adt.Bottom{
 			Code: adt.IncompleteError,
 			Err:  errors.Newf(n.ctx.Pos(), "ambiguous disjunction"),

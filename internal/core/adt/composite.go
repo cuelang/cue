@@ -71,6 +71,9 @@ type Vertex struct {
 	// Label is the feature leading to this vertex.
 	Label Feature
 
+	// status indicates the evaluation progress of this vertex.
+	status VertexStatus
+
 	// Value is the value associated with this vertex. For lists and structs
 	// this is a sentinel value indicating its kind.
 	Value Value
@@ -100,6 +103,46 @@ type Vertex struct {
 	// The evaluator will first check existing fields before using this. So for
 	// simple cases, an Acceptor can always return false to close the Vertex.
 	Closed Acceptor
+}
+
+// VertexStatus indicates the evaluation progress of a Vertex.
+type VertexStatus int8
+
+const (
+	// Unprocessed indicates a Vertex has not been processed before.
+	// Value must be nil.
+	Unprocessed VertexStatus = iota
+
+	// Evaluating means that the current Vertex is being evaluated. If this is
+	// encountered it indicates a reference cycle. Value must be nil.
+	Evaluating
+
+	// Partial indicates that the result was only partially evaluated. It will
+	// need to be fully evaluated to get a complete results.
+	//
+	// TODO: this currently requires a renewed computation. Cache the
+	// nodeContext to allow reusing the computations done so far.
+	Partial
+
+	// EvaluatingArcs indicates that the arcs of the Vertex are currently being
+	// evaluated. If this is encountered it indicates a structural cycle.
+	// Value does not have to be nil
+	EvaluatingArcs
+
+	// Finalized means that this node is fully evaluated and that the results
+	// are save to use without further consideration.
+	Finalized
+)
+
+func (v *Vertex) Status() VertexStatus {
+	return v.status
+}
+
+func (v *Vertex) UpdateStatus(s VertexStatus) {
+	if v.status > s {
+		panic(fmt.Sprintf("attempt to regress status from %d to %d", v.Status(), s))
+	}
+	v.status = s
 }
 
 // ToVertex wraps v in a new Vertex, if necessary.
