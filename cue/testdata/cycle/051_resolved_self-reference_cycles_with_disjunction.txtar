@@ -159,7 +159,7 @@ z3:  z1-3 & 8
 }
 -- out/eval --
 Errors:
-incompatible values *adt.Num and *adt.Num
+incompatible values 7 and 6
 
 Result:
 (_|_){
@@ -186,18 +186,18 @@ Result:
   xd5: (int){ 10 }
   xe1: (int){ 9 }
   xe2: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num:
+    // [eval] incompatible values 7 and 6:
     //     ./in.cue:44:6
   }
   xe3: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num
+    // [eval] incompatible values 7 and 6
   }
   xe4: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num:
+    // [eval] incompatible values 7 and 6:
     //     ./in.cue:44:6
   }
   xe5: (_|_){
-    // [eval] incompatible values *adt.Num and *adt.Num:
+    // [eval] incompatible values 7 and 6:
     //     ./in.cue:44:6
   }
   xf1: (int){ 8 }

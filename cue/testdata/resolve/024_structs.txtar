@@ -53,14 +53,14 @@ ti: t & {
   t: (struct){
     c: (number){ number }
     d: (_|_){
-      // [incomplete] non-concrete value '*adt.BasicType' to operation '*':
+      // [incomplete] non-concrete value 'number' to operation '*':
       //     ./in.cue:3:19
     }
   }
   ti: (struct){
     c: (int){ int }
     d: (_|_){
-      // [incomplete] non-concrete value '*adt.BasicType' to operation '*':
+      // [incomplete] non-concrete value 'int' to operation '*':
       //     ./in.cue:3:19
     }
   }

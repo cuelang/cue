@@ -47,7 +47,8 @@ o3: o1 & {
 -- out/eval --
 Errors:
 empty disjunction
-invalid value *adt.Vertex (out of bound *adt.BoundValue)
+invalid value "bar" (out of bound =~"fo")
+invalid value "bar" (out of bound =~"oo")
 
 Result:
 (_|_){
@@ -65,7 +66,8 @@ Result:
   a3: (_|_){
     // [eval]
     a: (_|_){
-      // [eval] invalid value *adt.Vertex (out of bound *adt.BoundValue)
+      // [eval] invalid value "bar" (out of bound =~"fo")
+      // invalid value "bar" (out of bound =~"oo")
     }
     b: (string){ =~"oo" }
     c: (string){ =~"fo" }
