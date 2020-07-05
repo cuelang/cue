@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "2ea28ed3_6f3d00e7",
+        "filename": "cue/testdata/resolve/048_builtins.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-05T20:41:12Z",
+      "side": 1,
+      "message": "To clarify, I do find the \"out of bound\" messages appropriate when e.g. 4 conflicts with \u003c2. But some of these errors don\u0027t seem to be about bounds, at least at the level that one reasons about them.",
+      "parentUuid": "1a937cee_f0cefee4",
+      "revId": "9c1244f0222a387a7f4962c82a246ee3cd0d0f88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4aa136a_1b35e139",
         "filename": "internal/core/eval/eval_test.go",
         "patchSetId": 1
