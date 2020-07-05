@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7da25ad0_f7625f6b",
+        "filename": "cue/testdata/fulleval/020_complex_interaction_of_groundness.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-05T20:39:19Z",
+      "side": 1,
+      "message": "how come some error messages use \u0027foo\u0027 in single quotes, while others don\u0027t use single quotes?",
+      "revId": "9c1244f0222a387a7f4962c82a246ee3cd0d0f88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d4d064_cecd2cfd",
+        "filename": "cue/testdata/fulleval/050_json_Marshaling_detects_incomplete.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-05T20:39:19Z",
+      "side": 1,
+      "message": "similar to my other quote comment - now this is double quotes :)",
+      "revId": "9c1244f0222a387a7f4962c82a246ee3cd0d0f88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a937cee_f0cefee4",
+        "filename": "cue/testdata/resolve/048_builtins.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-05T20:39:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure I get these \"out of bound\" error messages. Shouldn\u0027t it be \"does not match regular expression\" in this case, for example?",
+      "revId": "9c1244f0222a387a7f4962c82a246ee3cd0d0f88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4aa136a_1b35e139",
+        "filename": "internal/core/eval/eval_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-05T20:39:19Z",
+      "side": 1,
+      "message": "nit: split this as a third party import",
+      "revId": "9c1244f0222a387a7f4962c82a246ee3cd0d0f88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
