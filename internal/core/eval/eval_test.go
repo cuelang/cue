@@ -17,6 +17,7 @@ package eval_test
 import (
 	"flag"
 	"fmt"
+	"strings"
 	"testing"
 
 	"cuelang.org/go/internal/core/debug"
@@ -24,7 +25,6 @@ import (
 	"cuelang.org/go/internal/core/validate"
 	"cuelang.org/go/internal/cuetxtar"
 	"cuelang.org/go/internal/legacy/cue"
-	"cuelang.org/go/pkg/strings"
 	"github.com/rogpeppe/go-internal/txtar"
 )
 
@@ -82,10 +82,6 @@ var alwaysSkip = map[string]string{
 }
 
 var needFix = map[string]string{
-	"export/027": "cycle",
-	"export/028": "cycle",
-	"export/030": "cycle",
-
 	"resolve/034_closing_structs": "close()",
 	"fulleval/053_issue312":       "close()",
 }
