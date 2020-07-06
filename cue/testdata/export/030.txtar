@@ -53,3 +53,18 @@ eval: true
     #Bar: string
   }
 }
+-- out/eval --
+(struct){
+  #Foo: (struct){
+    sgl: (string){ string }
+    ref: (null){ null }
+    ext: (_|_){
+      // [incomplete] ambiguous disjunction
+    }
+    ref2: (_|_){
+      // [incomplete] ambiguous disjunction
+    }
+    "#Foo": (int){ 2 }
+  }
+  #Bar: (string){ string }
+}

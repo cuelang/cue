@@ -129,7 +129,9 @@ z3:  8
 }
 -- out/eval --
 Errors:
-incompatible values 7 and 6
+empty disjunction
+incompatible values 7 and 6:
+    ./in.cue:37:6
 
 Result:
 (_|_){
@@ -139,9 +141,13 @@ Result:
   xa3: (int){ 6 }
   xa4: (int){ 10 }
   xb1: (int){ 8 }
-  xb2: (int){ 8 }
+  xb2: (_|_){
+    // [incomplete]
+  }
   xb3: (int){ 6 }
-  xb4: (int){ 10 }
+  xb4: (_|_){
+    // [cycle] cycle error
+  }
   xc1: (int){ 8 }
   xc2: (int){ 8 }
   xc3: (int){ 6 }
@@ -152,13 +158,15 @@ Result:
   xd3: (int){ 6 }
   xd4: (int){ 9 }
   xd5: (int){ 10 }
-  xe1: (int){ 9 }
+  xe1: (_|_){
+    // [eval] empty disjunction
+  }
   xe2: (_|_){
     // [eval] incompatible values 7 and 6:
     //     ./in.cue:37:6
   }
   xe3: (_|_){
-    // [eval] incompatible values 7 and 6
+    // [eval] empty disjunction
   }
   xe4: (_|_){
     // [eval] incompatible values 7 and 6:

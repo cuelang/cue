@@ -93,6 +93,12 @@ fib12: 144
     n: (int){ int }
   }
   fib2: (int){ 1 }
-  fib7: (int){ 13 }
-  fib12: (int){ 144 }
+  fib7: (_|_){
+    // [incomplete] incomplete feed source value fib & {n: 7} (type struct):
+    //     ./in.cue:15:9
+  }
+  fib12: (_|_){
+    // [incomplete] incomplete feed source value fib & {n: 12} (type struct):
+    //     ./in.cue:16:9
+  }
 }

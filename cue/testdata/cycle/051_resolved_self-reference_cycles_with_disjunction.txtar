@@ -159,7 +159,9 @@ z3:  z1-3 & 8
 }
 -- out/eval --
 Errors:
-incompatible values 7 and 6
+empty disjunction
+incompatible values 7 and 6:
+    ./in.cue:44:6
 
 Result:
 (_|_){
@@ -168,10 +170,18 @@ Result:
   xa2: (int){ 8 }
   xa3: (int){ 6 }
   xa4: (int){ 10 }
-  xb1: (int){ 8 }
-  xb2: (int){ 8 }
-  xb3: (int){ 6 }
-  xb4: (int){ 10 }
+  xb1: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  xb2: (_|_){
+    // [incomplete]
+  }
+  xb3: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  xb4: (_|_){
+    // [cycle] cycle error
+  }
   xc1: (_|_){
     // [incomplete] ambiguous disjunction
   }
@@ -184,13 +194,15 @@ Result:
   xd3: (int){ 6 }
   xd4: (int){ 9 }
   xd5: (int){ 10 }
-  xe1: (int){ 9 }
+  xe1: (_|_){
+    // [eval] empty disjunction
+  }
   xe2: (_|_){
     // [eval] incompatible values 7 and 6:
     //     ./in.cue:44:6
   }
   xe3: (_|_){
-    // [eval] incompatible values 7 and 6
+    // [eval] empty disjunction
   }
   xe4: (_|_){
     // [eval] incompatible values 7 and 6:
@@ -200,10 +212,18 @@ Result:
     // [eval] incompatible values 7 and 6:
     //     ./in.cue:44:6
   }
-  xf1: (int){ 8 }
-  xf2: (int){ 8 }
-  xf3: (int){ 6 }
-  xf4: (int){ 10 }
+  xf1: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  xf2: (_|_){
+    // [incomplete]
+  }
+  xf3: (_|_){
+    // [incomplete] ambiguous disjunction
+  }
+  xf4: (_|_){
+    // [cycle] cycle error
+  }
   z1: (_|_){
     // [incomplete] ambiguous disjunction
   }
