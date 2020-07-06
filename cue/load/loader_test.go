@@ -251,6 +251,21 @@ module: example.org/test
 root:   $CWD/testdata
 dir:    $CWD/testdata/toolonly
 display:./toolonly`,
+	}, {
+		cfg: &Config{
+			Dir: testdataDir,
+		},
+		args: args("./jsonschema"),
+		want: `
+path:   example.org/test/jsonschema
+module: example.org/test
+root:   $CWD/testdata
+dir:    $CWD/testdata/jsonschema
+display:./jsonschema
+files:
+    $CWD/testdata/jsonschema/jsonschema.cue
+imports:
+    example.org/test/jsonschema/foo/foo.schema.json:`,
 	}}
 	for i, tc := range testCases {
 		t.Run(strconv.Itoa(i)+"/"+strings.Join(tc.args, ":"), func(t *testing.T) {

@@ -21,6 +21,7 @@ import (
 
 	"golang.org/x/xerrors"
 
+	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/token"
 )
@@ -96,5 +97,26 @@ func TestLocalDirectory(t *testing.T) {
 
 	if p.DisplayPath != "." {
 		t.Fatalf("DisplayPath=%q, want %q", p.DisplayPath, ".")
+	}
+}
+
+func TestImportFile(t *testing.T) {
+	c, _ := (&Config{Dir: testdata}).complete()
+	l := loader{cfg: c}
+	inst := c.newInstance(token.NoPos, "example.org/test/jsonschema/foo/foo.schema.json")
+	p := l.importFile(token.NoPos, inst)
+	if p.Err != nil {
+		t.Fatal(p.Err)
+	}
+}
+
+func TestJsonSchema(t *testing.T) {
+	p, err := getInst(".", testdata+"jsonschema")
+	if err != nil {
+		t.Fatal(err)
+	}
+	inst := cue.Build([]*build.Instance{p})
+	if val, err := inst[0].Value().String(); val != "foo" {
+		t.Fatal(`Import("testdata/jsonschema") did not return a string.`, err)
 	}
 }

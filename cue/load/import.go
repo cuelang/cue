@@ -197,6 +197,46 @@ func (l *loader) importPkg(pos token.Pos, p *build.Instance) *build.Instance {
 	return p
 }
 
+// importFile returns details about the CUE package reporesented by an external file.
+func (l *loader) importFile(pos token.Pos, p *build.Instance) *build.Instance {
+	l.stk.Push(p.ImportPath)
+	defer l.stk.Pop()
+
+	cfg := l.cfg
+	if p.Err != nil {
+		return p
+	}
+
+	if !strings.HasPrefix(p.Dir, cfg.ModuleRoot) {
+		p.Err = errors.Newf(token.NoPos, "module root not defined", p.DisplayPath)
+		return p
+	}
+
+	fp := newFileProcessor(cfg, p)
+	if !strings.HasPrefix(p.Dir, cfg.ModuleRoot) {
+		panic("")
+	}
+
+	filename := filepath.Clean(p.Dir)
+	impPath, err := addImportQualifier(importPath(p.ImportPath), p.PkgName)
+	p.ImportPath = string(impPath)
+	if err != nil {
+		p.ReportError(err)
+	}
+
+	rewriteFiles(p, cfg.ModuleRoot, false)
+	if errs := fp.finalize(); errs != nil {
+		for _, e := range errors.Errors(errs) {
+			p.ReportError(e)
+		}
+		return p
+	}
+
+	l.addFiles(cfg.ModuleRoot, p)
+	p.Complete()
+	return p
+}
+
 // loadFunc creates a LoadFunc that can be used to create new build.Instances.
 func (l *loader) loadFunc() build.LoadFunc {
 
@@ -219,7 +259,13 @@ func (l *loader) loadFunc() build.LoadFunc {
 		}
 
 		p := cfg.newInstance(pos, impPath)
-		return l.importPkg(pos, p)
+		// Import as a package if path has an extension.
+		if filepath.Ext(path) == "" {
+			return l.importPkg(pos, p)
+		}
+		// Import as a file if path has an extension.
+		p.PkgName = filepath.Base(filepath.Dir(path))
+		return l.importFile(pos, p)
 	}
 }
 

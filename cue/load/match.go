@@ -59,7 +59,7 @@ func matchFile(cfg *Config, file *build.File, returnImports, allFiles bool, allT
 		}
 	}
 
-	if file.Encoding != build.CUE {
+	if file.Encoding != build.CUE && file.Encoding != build.JSON {
 		return
 	}
 
