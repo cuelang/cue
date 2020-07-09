@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "effaf036_050cb1aa",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/and evaluation/an evaluation/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a0d041_8d14e1f8",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/probably will evaluation/will probably preclude evaluation/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9226ad2a_ad6f6b9c",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/the detecting structural cycle/detecting structural cycles/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb153190_1b02d5d8",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/To/The/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdeadf7c_927016f1",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/mimic/copy/\non\ns/mimic/transcribe/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08939e8a_48aa9e6d",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "s/within a/within/\nor\ns/cycles/cycle/",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0dc106c_a513a904",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000080
+      },
+      "writtenOn": "2020-07-09T01:23:23Z",
+      "side": 1,
+      "message": "The word \"persist\" is hard to understand in this context here.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
