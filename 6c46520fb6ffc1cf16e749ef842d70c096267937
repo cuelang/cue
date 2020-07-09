@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "cd0a3d4e_41d4f3a9",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "is this error meant to not say anything else?",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd96da2_d1fcb7ed",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "the message following \"[cycle]\" here seems to be adding nothing to me; \"cycle\" is repeated, and we are already erroring, so \"error\" is also redundant.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3bc9d97_c6fcfa27",
+        "filename": "cue/testdata/cycle/structural.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "I\u0027m not too familiar with this out/eval format - shouldn\u0027t these errors refer to a position or value?",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "effaf036_050cb1aa",
         "filename": "internal/core/adt/composite.go",
         "patchSetId": 2
@@ -115,6 +166,57 @@
       "writtenOn": "2020-07-09T01:23:23Z",
       "side": 1,
       "message": "The word \"persist\" is hard to understand in this context here.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5add3ac_6016a172",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "the way these fields are defined, it seems like you could do with a single bool, since these two are defined as opposites. If you do need two booleans, perhaps clarify why there are three or four possible combinations instead of two.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff6f8ac_8ef1fa26",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "nit: use a switch?",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af665e8a_6cfd9472",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-09T09:38:55Z",
+      "side": 1,
+      "message": "I would document why a shallow copy is necessary",
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
