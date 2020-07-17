@@ -2,9 +2,7 @@
 cmp stderr expect-stderr
 
 -- expect-stderr --
-phrases: error in call to encoding/yaml.Validate: phrases.quote1.text: incomplete value (!=""):
-    ./yaml.cue:19:10
-    ./yaml.cue:11:17
+#Phrases.phrases.quote1.text: error in call to encoding/yaml.Validate: incomplete value !=""
 -- yaml.cue --
 import "encoding/yaml"
 
