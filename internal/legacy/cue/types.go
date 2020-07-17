@@ -1334,9 +1334,7 @@ func (v Value) Struct() (*Struct, error) {
 func (v Value) getStruct() (*structLit, *bottom) {
 	ctx := v.ctx()
 	if err := v.checkKind(ctx, structKind); err != nil {
-		if !err.HasRecursive ||
-			err.Value == nil ||
-			err.Value.Kind() != StructKind {
+		if !err.ChildError {
 			return nil, err
 		}
 	}
@@ -1397,7 +1395,11 @@ func (s *Struct) Fields(opts ...Option) *Iterator {
 // Fields creates an iterator over v's fields if v is a struct or an error
 // otherwise.
 func (v Value) Fields(opts ...Option) (*Iterator, error) {
-	o := options{omitDefinitions: true, omitHidden: true, omitOptional: true}
+	o := options{
+		omitDefinitions: true,
+		omitHidden:      true,
+		omitOptional:    true,
+	}
 	o.updateOptions(opts)
 	ctx := v.ctx()
 	obj, err := v.structValOpts(ctx, o)
@@ -1763,18 +1765,19 @@ func mkPath(ctx *context, a []string, v *adt.Vertex) (inst *Instance, path []str
 // }
 
 type options struct {
-	concrete          bool // enforce that values are concrete
-	raw               bool // show original values
-	hasHidden         bool
-	omitHidden        bool
-	omitDefinitions   bool
-	omitOptional      bool
-	omitAttrs         bool
-	resolveReferences bool
-	final             bool
-	ignoreClosedness  bool // used for comparing APIs
-	docs              bool
-	disallowCycles    bool // implied by concrete
+	concrete            bool // enforce that values are concrete
+	raw                 bool // show original values
+	hasHidden           bool
+	omitHidden          bool
+	omitDefinitions     bool
+	omitOptional        bool
+	omitAttrs           bool
+	resolveReferences   bool
+	final               bool
+	ignoreClosedness    bool // used for comparing APIs
+	docs                bool
+	disallowCycles      bool // implied by concrete
+	disallowChildErrors bool
 }
 
 // An Option defines modes of evaluation.
