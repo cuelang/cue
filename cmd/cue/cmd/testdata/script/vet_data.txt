@@ -21,16 +21,10 @@ languages:
     name: Norwegian
 
 -- vet-stderr --
-languages.2.tag: conflicting values string and false (mismatched types string and bool):
-    ./data.yaml:6:11
-    ./schema.cue:2:8
-languages.1.name: invalid value "dutch" (does not match =~"^\\p{Lu}"):
+languages.2.tag: invalid value string (mismatched types string and bool)
+languages.1.name: invalid value "dutch" (out of bound =~"^\\p{Lu}"):
     ./schema.cue:3:8
-    ./data.yaml:5:12
 -- export-stderr --
-languages.2.tag: conflicting values string and false (mismatched types string and bool):
-    ./data.yaml:6:11
-    ./schema.cue:2:8
-languages.1.name: invalid value "dutch" (does not match =~"^\\p{Lu}"):
+languages.2.tag: invalid value string (mismatched types string and bool)
+languages.1.name: invalid value "dutch" (out of bound =~"^\\p{Lu}"):
     ./schema.cue:3:8
-    ./data.yaml:5:12
