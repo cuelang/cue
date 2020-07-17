@@ -10,4 +10,4 @@ spec:
   type: NodePort
 ---
 -- expect-stderr --
-unsupported label path type: instance is not a struct, found null
+unsupported label path type: reference "kind" not found
