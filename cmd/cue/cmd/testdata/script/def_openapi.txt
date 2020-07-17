@@ -253,11 +253,13 @@ info: {
 }
 -- expect-cue3 --
 // My OpenAPI
+
+// My OpenAPI2
 package foo
 
 info: {
-	title:   string | *_|_
-	version: *"v1alpha1" | string
+	title:   (*"My OpenAPI" | string) & (*"My OpenAPI2" | string)
+	version: (*"v1alpha1" | string) & (*"v1alpha1" | string)
 }
 #Bar: {
 	foo: #Foo
