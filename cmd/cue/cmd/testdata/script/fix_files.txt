@@ -1,9 +1,11 @@
-cue fix ./foo/foo.cue ./bar/bar.cue
+# DISABLED
 
-cmp foo/foo.cue expect/foo/foo_cue
-cmp bar/bar.cue expect/bar/bar_cue
-cmp cue.mod/pkg/foobar.org/notimported/notimported.cue expect/cue.mod/pkg/foobar.org/notimported/notimported.cue
-cmp cue.mod/gen/foobar.org/imported/imported.cue expect/cue.mod/gen/foobar.org/imported/imported.cue
+# cue fix ./foo/foo.cue ./bar/bar.cue
+
+# cmp foo/foo.cue expect/foo/foo_cue
+# cmp bar/bar.cue expect/bar/bar_cue
+# cmp cue.mod/pkg/foobar.org/notimported/notimported.cue expect/cue.mod/pkg/foobar.org/notimported/notimported.cue
+# cmp cue.mod/gen/foobar.org/imported/imported.cue expect/cue.mod/gen/foobar.org/imported/imported.cue
 
 -- cue.mod/module.cue --
 module: "acme.com"
