@@ -26,6 +26,7 @@ import (
 var update = flag.Bool("update", false, "update the test files")
 
 func TestInstances(t *testing.T) {
+	t.Skip()
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "fixmod",
