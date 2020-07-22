@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1694ac2_8f8c0faa",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "No, but for now I\u0027m holding off on error messages until later. Some of the errors will get filled in anyway along the lines.",
+      "parentUuid": "cd0a3d4e_41d4f3a9",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dd96da2_d1fcb7ed",
         "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-09T09:38:55Z",
       "side": 1,
       "message": "the message following \"[cycle]\" here seems to be adding nothing to me; \"cycle\" is repeated, and we are already erroring, so \"error\" is also redundant.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935b7041_df21f5ce",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "This representation is for debugging. The name between square brackets is the error code, which is not shown to the user.",
+      "parentUuid": "9dd96da2_d1fcb7ed",
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fcbf3fcb_a62f4a61",
+        "filename": "cue/testdata/cycle/structural.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Yes, the general mechanism to associate positions has not been implemented.\n\nThe new evaluator allows for some niftier way of collecting positions, tailored to the use case. This requires a bit more work to figure out, though. I just submitted a CL that started doing this for closedness errors.",
+      "parentUuid": "b3bc9d97_c6fcfa27",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "effaf036_050cb1aa",
         "filename": "internal/core/adt/composite.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe489dff_ee397b67",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "effaf036_050cb1aa",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3cc664bd_41ed4454",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a0d041_8d14e1f8",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9226ad2a_ad6f6b9c",
         "filename": "internal/core/adt/composite.go",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda610bf_46815a6a",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9226ad2a_ad6f6b9c",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "90a652cb_2ce4c529",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb153190_1b02d5d8",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdeadf7c_927016f1",
         "filename": "internal/core/adt/composite.go",
         "patchSetId": 2
@@ -135,6 +261,24 @@
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42505791_51003554",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdeadf7c_927016f1",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "faa849d2_0768369d",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08939e8a_48aa9e6d",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0dc106c_a513a904",
         "filename": "internal/core/adt/composite.go",
         "patchSetId": 2
@@ -166,6 +328,24 @@
       "writtenOn": "2020-07-09T01:23:23Z",
       "side": 1,
       "message": "The word \"persist\" is hard to understand in this context here.",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdaac98_76806d91",
+        "filename": "internal/core/adt/composite.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "changed to incremented",
+      "parentUuid": "a0dc106c_a513a904",
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "f9918c9d_8307ed36",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Doesn\u0027t the comments already say that? I guess it assumes having the knowledge that a field can have multiple conjunctions. Given that, it can have both conjuncts with and without a cycle, or just one type. IOW, there are three possibilities, assuming there is at least one conjunct.",
+      "parentUuid": "f5add3ac_6016a172",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ff6f8ac_8ef1fa26",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 2
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "1f7df675_9dc0e2bf",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ff6f8ac_8ef1fa26",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af665e8a_6cfd9472",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 2
@@ -220,6 +436,24 @@
       "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d49aad_2c4dadb1",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-07-22T21:54:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "af665e8a_6cfd9472",
+      "revId": "6c46520fb6ffc1cf16e749ef842d70c096267937",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
