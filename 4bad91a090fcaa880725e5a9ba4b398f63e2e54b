@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb77488_8d4aac8f",
+        "filename": "tools/trim/trim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-23T07:54:32Z",
+      "side": 1,
+      "message": "I assume you can\u0027t easily invert this and unindent, since the fallthrough has to be at the base scope.",
+      "revId": "4bad91a090fcaa880725e5a9ba4b398f63e2e54b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20d2faf_01ac287d",
+        "filename": "tools/trim/trim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-23T07:54:32Z",
+      "side": 1,
+      "message": "you could invert this, though, to at least trade an indentation level.",
+      "revId": "4bad91a090fcaa880725e5a9ba4b398f63e2e54b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}

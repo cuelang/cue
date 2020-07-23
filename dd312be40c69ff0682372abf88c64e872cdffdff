@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f421a17a_445f448b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-23T07:54:32Z",
+      "side": 1,
+      "message": "I had two comments here which I drafted yesterday, and forgot to send :) ",
+      "revId": "dd312be40c69ff0682372abf88c64e872cdffdff",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
