@@ -16,7 +16,11 @@ package eval
 
 // TODO: rename this file to fieldset.go
 
-import "cuelang.org/go/internal/core/adt"
+import (
+	"fmt"
+
+	"cuelang.org/go/internal/core/adt"
+)
 
 // fieldSet represents the fields for a single struct literal, along
 // the constraints of fields that may be added.
@@ -169,33 +173,43 @@ func (o *fieldSet) AddBulk(c *adt.OpContext, x *adt.BulkOptionalField) {
 		// TODO: handle dynamically
 		return
 	}
+
+	if m := o.getMatcher(c, v); m != nil {
+		o.bulk = append(o.bulk, bulkField{m, x})
+	}
+}
+
+func (o *fieldSet) getMatcher(c *adt.OpContext, v adt.Value) fieldMatcher {
 	switch f := v.(type) {
 	case *adt.Num:
 		// Just assert an error. Lists have not been expanded yet at
 		// this point, so there is no need to check for existing
 		//fields.
-		l, err := adt.MakeLabel(x.Src, c.Int64(f), adt.IntLabel)
+		l, err := adt.MakeLabel(v.Source(), c.Int64(f), adt.IntLabel)
 		if err != nil {
 			c.AddErr(err)
-			return
+			return nil
 		}
-		o.bulk = append(o.bulk, bulkField{labelMatcher(l), x})
+		return labelMatcher(l)
 
 	case *adt.Top:
-		o.bulk = append(o.bulk, bulkField{typeMatcher(adt.TopKind), x})
+		return typeMatcher(adt.TopKind)
 
 	case *adt.BasicType:
-		o.bulk = append(o.bulk, bulkField{typeMatcher(f.K), x})
+		return typeMatcher(f.K)
 
 	case *adt.String:
 		l := c.Label(f)
-		o.bulk = append(o.bulk, bulkField{labelMatcher(l), x})
+		return labelMatcher(l)
 
 	case adt.Validator:
-		o.bulk = append(o.bulk, bulkField{validateMatcher{f}, x})
+		return validateMatcher{f}
+
+	case *adt.Conjunction:
+		return o.newMultiMatcher(c, f)
 
 	default:
-		// TODO(err): not allowed type
+		panic(fmt.Sprintf("unrecognized value of type %T", f))
 	}
 }
 
@@ -258,4 +272,21 @@ func (m dynamicMatcher) Match(c *adt.OpContext, f adt.Feature) bool {
 		return false
 	}
 	return f.SelectorString(c) == s.Str
+}
+
+type genericMatcher adt.Conjunct
+
+func (m genericMatcher) Match(c *adt.OpContext, f adt.Feature) bool {
+	v := adt.Vertex{}
+	v.AddConjunct(adt.Conjunct(m))
+	label := f.ToValue(c)
+	v.AddConjunct(adt.MakeConjunct(m.Env, label))
+	v.Finalize(c)
+	b, _ := v.Value.(*adt.Bottom)
+	return b == nil
+}
+
+func (o *fieldSet) newMultiMatcher(ctx *adt.OpContext, x *adt.Conjunction) fieldMatcher {
+	c := adt.MakeConjunct(o.env, x)
+	return genericMatcher(c)
 }
