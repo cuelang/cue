@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78010fb5_cb4d704d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-23T10:23:06Z",
+      "side": 1,
+      "message": "I think this should be deleting a lot of code instead :) otherwise LGTM",
+      "revId": "f9ad6ec713db5f8edf18557d5b92e80c93b54e16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77132200_38a712d9",
+        "filename": "tools/fix/fixall.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-07-23T10:23:06Z",
+      "side": 1,
+      "message": "I personally disagree; it\u0027s always easy to grab code from the git history, so I would just delete it straight away.",
+      "revId": "f9ad6ec713db5f8edf18557d5b92e80c93b54e16",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
