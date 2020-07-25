@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21dded8b_150aa6d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "Minor nit, but just for clarity: \"Definitions are currently\" as opposed to \"Definitions were\"? Given you go on to say \"With this change\" below. \n\nAlso s/excempted/exempted/",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beadbd16_41c96c7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "\"the changes cannot break a user.\"\n\nSlightly hard to parse whose changes we are referring to here. I think the intent is:\n\n\"changes made by the template author cannot break a user\"\n\n?",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c58ece4f_200cba73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "Isn\u0027t this paragraph a reference to the existing (i.e. pre this change) behaviour? i.e. because we _can currently_ add definitions when unifying with a template, it is possible for the template author to add a definition that conflicts with the definition we have added. \n\nIf so, then I think it belongs before the previous paragraph (which starts \"With this change\"). It follows more naturally after the statement of the current behaviour.\n\nAssuming my understanding is correct, I think the paragraph could be simplified a bit (currently a bit hard to parse).\n\n\"However this means that a template author can change their template in such a way that may conflict with a user-added definition.\n\nWith this change we include definitions in this definition of closedness and prevent users from adding definitions.\n\nIt can therefore guarantee that if a template writer...\"\n\nIf I\u0027ve misunderstood please ignore all the above and help me understand where I\u0027ve gone wrong 😊",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15d4a97c_c29fb604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "I\u0027ve given this a quick skim... can look more closely later.\n\nMight it be worth including a couple of simple examples in the commit message to make it easier to review?",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95fae782_a38274c7",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "\"may not have any field\" reads more naturally - I think that retains the correct semantics?\n\nPerhaps \"may not declare a field\" would read even better, assuming \"declare\" is the right verb here?",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9d1f75_809f1f91",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "\"regular or optional field,\" \n\nSuggest adding a comma here for readability.",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19c3e4c_030a129f",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-07-25T15:15:56Z",
+      "side": 1,
+      "message": "s/limitations/limitation/",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
