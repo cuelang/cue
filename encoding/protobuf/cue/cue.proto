@@ -4,7 +4,7 @@ package cue;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "cuelang.org/cueproto";
+option go_package = "cuelang.org/go/encoding/protobuf/cue;cue";
 option java_package = "org.cuelang.cueproto";
 
 message FieldOptions {
