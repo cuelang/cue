@@ -1,0 +1,8 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: struct.MinFields(0) & ""
+t2: struct.MinFields(0) & {a: 1}
+t3: struct.MinFields(2) & {a: 1}
+t4: struct.MaxFields(0) & {a: 1}
+t5: struct.MaxFields(2) & {a: 1}

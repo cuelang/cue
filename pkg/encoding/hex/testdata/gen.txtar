@@ -1,0 +1,7 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: hex.Encode("foo")
+t2: hex.Decode(hex.Encode("foo"))
+t3: hex.Decode("foo")
+t4: hex.Dump('foo')

@@ -1,0 +1,14 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: json.Validate("{\"a\":10}", {b:string})
+t2: json.Validate("{\"a\":10}", {a:<3})
+t3: json.Valid("1")
+t4: json.Compact("[1, 2]")
+t5: json.Indent(#"{"a": 1, "b": 2}"#, "", "  ")
+t6: json.Unmarshal("1")
+t7: json.MarshalStream([{a: 1}, {b: 2}])
+t8: {
+			x: int
+			y: json.Marshal({a: x})
+		}

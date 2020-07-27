@@ -1,0 +1,4 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: len(sha1.Sum("hash me"))

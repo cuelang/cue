@@ -1,0 +1,17 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: regexp.Find(#"f\w\w"#, "afoot")
+t2: regexp.Find(#"f\w\w"#, "bar")
+t3: regexp.FindAll(#"f\w\w"#, "afoot afloat from", 2)
+t4: regexp.FindAll(#"f\w\w"#, "afoot afloat from", 2)
+t5: regexp.FindAll(#"f\w\w"#, "bla bla", -1)
+t6: regexp.FindSubmatch(#"f(\w)(\w)"#, "afloat afoot from")
+t7: regexp.FindAllSubmatch(#"f(\w)(\w)"#, "afloat afoot from", -1)
+t8: regexp.FindAllSubmatch(#"f(\w)(\w)"#, "aglom", -1)
+t9: regexp.FindNamedSubmatch(#"f(?P<A>\w)(?P<B>\w)"#, "afloat afoot from")
+t10: regexp.FindAllNamedSubmatch(#"f(?P<A>\w)(?P<B>\w)"#, "afloat afoot from", -1)
+t11: regexp.FindAllNamedSubmatch(#"f(?P<A>optional)?"#, "fbla", -1)
+t12: regexp.FindAllNamedSubmatch(#"f(?P<A>\w)(?P<B>\w)"#, "aglom", -1)
+t13: regexp.Valid & "valid"
+t14: regexp.Valid & "invalid)"

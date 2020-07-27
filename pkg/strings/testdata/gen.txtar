@@ -1,0 +1,20 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: strings.Join(["Hello", "World!"], " ")
+t2: strings.Join([1, 2], " ")
+t3: strings.ByteAt("a", 0)
+t4: strings.ByteSlice("Hello", 2, 5)
+t5: strings.SliceRunes("✓ Hello", 0, 3)
+t6: strings.Runes("Café")
+t7: strings.ToCamel("AlphaBeta")
+t8: strings.ToTitle("alpha")
+t9: strings.MaxRunes(3) & "foo"
+t10: strings.MaxRunes(3) & "quux"
+t11: strings.MinRunes(1) & "e"
+t12: strings.MaxRunes(0) & "e"
+t13: strings.MaxRunes(0) & ""
+t14: strings.MinRunes(3) & "hello"
+t15: strings.MaxRunes(10) & "hello"
+t16: strings.MaxRunes(3) & "hello"
+t17: strings.MinRunes(10) & "hello"

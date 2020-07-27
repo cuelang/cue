@@ -1,0 +1,7 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: base64.Encode(null, "foo")
+t2: base64.Decode(null, base64.Encode(null, "foo"))
+t3: base64.Decode(null, "foo")
+t4: base64.Decode({}, "foo")

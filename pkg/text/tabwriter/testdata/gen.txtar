@@ -1,0 +1,10 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: tabwriter.Write("""
+			a\tb\tc
+			aaa\tbb\tvv
+			""")
+t2: tabwriter.Write([
+				"a\tb\tc",
+				"aaa\tbb\tvv"])

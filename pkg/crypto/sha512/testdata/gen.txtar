@@ -1,0 +1,7 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: len(sha512.Sum512("hash me"))
+t2: len(sha512.Sum384("hash me"))
+t3: len(sha512.Sum512_224("hash me"))
+t4: len(sha512.Sum512_256("hash me"))

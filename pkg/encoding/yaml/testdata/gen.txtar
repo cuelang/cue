@@ -1,0 +1,10 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: yaml.Validate("a: 2\n---\na: 4", {a:<3})
+t2: yaml.Validate("a: 2\n---\na: 4", {a:<5})
+t3: yaml.Validate("a: 2\n", {a:<5, b:int})
+t4: yaml.ValidatePartial("a: 2\n---\na: 4", {a:<3})
+t5: yaml.ValidatePartial("a: 2\n---\na: 4", {a:<5})
+t6: yaml.ValidatePartial("a: 2\n", {a:<5, b:int})
+t7: yaml.MarshalStream([{a: 1}, {b: 2}])

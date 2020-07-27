@@ -1,0 +1,6 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: time.Time & "1937-01-01T12:00:27.87+00:20"
+t2: time.Time & "no time"
+t3: time.Unix(1500000000, 123456)

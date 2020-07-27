@@ -1,0 +1,6 @@
+# generated from the original tests.
+# Henceforth it may be nicer to group tests into separate files.
+-- in.cue --
+t1: sha256.Sum256("hash me")
+t2: len(sha256.Sum256("hash me"))
+t3: len(sha256.Sum224("hash me"))
