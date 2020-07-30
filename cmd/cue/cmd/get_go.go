@@ -688,6 +688,9 @@ func (e *extractor) reportDecl(x *ast.GenDecl) (a []cueast.Decl) {
 			}
 
 			for i, name := range v.Names {
+				if !ok || e.filter(name.Name) {
+					continue
+				}
 				if name.Name == "_" {
 					continue
 				}
