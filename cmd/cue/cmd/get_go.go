@@ -681,6 +681,9 @@ func (e *extractor) reportDecl(x *ast.GenDecl) (a []cueast.Decl) {
 			}
 
 			for i, name := range v.Names {
+				if !ok || e.filter(name.Name) {
+					continue
+				}
 				if name.Name == "_" {
 					continue
 				}
@@ -695,9 +698,10 @@ func (e *extractor) reportDecl(x *ast.GenDecl) (a []cueast.Decl) {
 				}
 
 				c := e.pkg.TypesInfo.Defs[v.Names[i]].(*types.Const)
-				cv, err := parser.ParseExpr("", c.Val().String())
+				sv := c.Val().ExactString()
+				cv, err := parser.ParseExpr("", sv)
 				if err != nil {
-					panic(err)
+					panic(fmt.Errorf("failed to parse %v: %v", sv, err))
 				}
 
 				// Use orignal Go value if compatible with CUE (octal is okay)
