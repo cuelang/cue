@@ -3672,6 +3672,11 @@ var builtinPackages = map[string]*builtinPkg{
 		$id:  *"tool/cli.Print" | "print"
 		text: string
 	}
+	Ask: {
+		kind: "tool/cli.Ask"
+		prompt: string
+		response: string | bool
+	}
 }`,
 	},
 	"tool/exec": {
