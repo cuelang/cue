@@ -400,7 +400,7 @@ the second to standard output (i.e. it echos it again).
 		}
 
 		// starts after echo
-		file.Append & {
+		append: file.Append & {
 			filename: var.file
 			contents: echo.stdout
 		}
