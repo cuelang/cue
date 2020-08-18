@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8782cc00_1d5468f4",
+        "filename": "cmd/cue/cmd/testdata/pkg/cuelang.org/go/cmd/cue/cmd/testdata/code/go/pkg1/file1_go_gen.cue",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-08-18T18:16:15Z",
+      "side": 0,
+      "message": "This should not be filtered without also eliminating its usage, as in above.\n\nThe new evaluator is more accurate in catching such errors and code with dangling references will not be allowed.",
+      "revId": "29dd2503beccb47cdc070c20a4599f5f59446d26",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
