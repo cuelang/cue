@@ -1768,7 +1768,7 @@ var builtinPackages = map[string]*builtinPkg{
 							return &d, err
 						}
 						_, err = apdContext.Quo(&d, &d, &ln2)
-						return &d, nil
+						return &d, err
 					}()
 				}
 			},
