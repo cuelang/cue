@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3498780_7da3c0e4",
+        "filename": ".github/workflows/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-08-19T10:44:49Z",
+      "side": 1,
+      "message": "Just flagging that I\u0027ve made this change, mpvl.",
+      "revId": "da55485e4b16f1586fbb7fa720c2b291cc404a1e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0662007_c358a02e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-08-19T10:44:49Z",
+      "side": 1,
+      "message": "PTAL - please note that I\u0027ve re-enabled the go:generate directive for the workflow definitions now. Assume that\u0027s ok given the bulk of the evaluator rewrite is done?",
+      "revId": "da55485e4b16f1586fbb7fa720c2b291cc404a1e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
