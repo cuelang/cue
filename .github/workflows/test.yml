@@ -29,6 +29,8 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ${{ matrix.go-version }}
+    - name: Fail the build
+      run: false
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Cache Go modules
