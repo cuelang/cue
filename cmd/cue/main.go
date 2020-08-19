@@ -18,7 +18,6 @@ import (
 	"os"
 
 	"cuelang.org/go/cmd/cue/cmd"
-)
 
 func main() {
 	os.Exit(cmd.Main())
