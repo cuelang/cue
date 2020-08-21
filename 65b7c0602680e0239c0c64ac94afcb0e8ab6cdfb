@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c1b7b15_18fffa9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-08-21T11:47:36Z",
+      "side": 1,
+      "message": "You\u0027ll probably need to rebase and rerun the tests.\n\nNote that after the rebase it is no longer to run go generate in cue/ for packages. One only needs to run go generate in the respective builtin directory if a function was added.\n\nSo cue/builtins needs to be removed.",
+      "revId": "65b7c0602680e0239c0c64ac94afcb0e8ab6cdfb",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
