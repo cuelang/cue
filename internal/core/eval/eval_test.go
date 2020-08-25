@@ -97,6 +97,20 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+a: or([])
+a: "t"
+
+// #Artifact: {
+// 	body: _
+// 	other: [string]: int
+//   }
+
+//   #App:  #Artifact
+//   #Atom: #Artifact
+
+//   #Both: #App | #Atom
+
+//   t1: #Both  & {body: 3}
 	`
 
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
