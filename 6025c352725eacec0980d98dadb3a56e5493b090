@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "488e0ea9_f635327a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2020-09-02T16:01:29Z",
+      "side": 1,
+      "message": "Sorry for the delay. Only four error fixes remain, and I\u0027ve undone the builtin stuff, as you correctly pointed out. Do you want to re-review or run CI?",
+      "revId": "6025c352725eacec0980d98dadb3a56e5493b090",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
