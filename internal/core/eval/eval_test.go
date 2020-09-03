@@ -97,11 +97,38 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+c: #C & {
+	Name: "Hello"
+}
+
+#A: Name: string
+#B: Age: int
+
+#C: #A | #B
+
+// a: 8 & b-3 | 9 & b-3
+// b: 11 & a+3
+
+
+// a: or([])
+// a: "t"
+
+// #Artifact: {
+// 	body: _
+// 	other: [string]: int
+//   }
+
+//   #App:  #Artifact
+//   #Atom: #Artifact
+
+//   #Both: #App | #Atom
+
+//   t1: #Both  & {body: 3}
 	`
 
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
-		t.Skip()
 	}
+	t.Skip()
 
 	a := txtar.Parse([]byte(in))
 	instance := cuetxtar.Load(a, "/tmp/test")[0]
