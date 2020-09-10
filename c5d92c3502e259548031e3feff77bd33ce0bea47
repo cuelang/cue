@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3710c91a_9a44e213",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T12:58:00Z",
+      "side": 1,
+      "message": "Nope, because the issue is defined within the same repo (after syncing). This only applies to cross-repo references.",
+      "parentUuid": "31665952_f1ec6b7a",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11b7f02_ee59a6b6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ad678e_f2bce0b5",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2613,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T12:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11b7f02_ee59a6b6",
+      "range": {
+        "startLine": 2613,
+        "startChar": 28,
+        "endLine": 2613,
+        "endChar": 34
+      },
+      "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8dccd262_25db3207",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T12:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9fa387_825e184f",
+      "range": {
+        "startLine": 2620,
+        "startChar": 12,
+        "endLine": 2620,
+        "endChar": 14
+      },
+      "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96874849_4e3f56d2",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "026c200f_fbdddbd3",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2622,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T12:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96874849_4e3f56d2",
+      "range": {
+        "startLine": 2622,
+        "startChar": 19,
+        "endLine": 2622,
+        "endChar": 21
+      },
+      "revId": "c5d92c3502e259548031e3feff77bd33ce0bea47",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
