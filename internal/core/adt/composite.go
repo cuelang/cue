@@ -590,6 +590,10 @@ func (c *Conjunct) Source() ast.Node {
 	return c.x.Source()
 }
 
+func (c *Conjunct) Field() Node {
+	return c.x
+}
+
 func (c *Conjunct) Expr() Expr {
 	switch x := c.x.(type) {
 	case Expr:
