@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8ec419c2_05b48ba3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21dded8b_150aa6d6",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beadbd16_41c96c7a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e441cfc9_1211f118",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beadbd16_41c96c7a",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c58ece4f_200cba73",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-07-25T15:15:56Z",
       "side": 1,
       "message": "Isn\u0027t this paragraph a reference to the existing (i.e. pre this change) behaviour? i.e. because we _can currently_ add definitions when unifying with a template, it is possible for the template author to add a definition that conflicts with the definition we have added. \n\nIf so, then I think it belongs before the previous paragraph (which starts \"With this change\"). It follows more naturally after the statement of the current behaviour.\n\nAssuming my understanding is correct, I think the paragraph could be simplified a bit (currently a bit hard to parse).\n\n\"However this means that a template author can change their template in such a way that may conflict with a user-added definition.\n\nWith this change we include definitions in this definition of closedness and prevent users from adding definitions.\n\nIt can therefore guarantee that if a template writer...\"\n\nIf I\u0027ve misunderstood please ignore all the above and help me understand where I\u0027ve gone wrong 😊",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef62c97_1b4069cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "I\u0027ve reworded it around an example.",
+      "parentUuid": "c58ece4f_200cba73",
       "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "d437f796_e8ee20a9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fae782_a38274c7",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e9d1f75_809f1f91",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "f69aac69_1bd8453e",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9d1f75_809f1f91",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a19c3e4c_030a129f",
         "filename": "doc/ref/spec.md",
         "patchSetId": 1
@@ -118,6 +208,24 @@
       "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876f5841_44631327",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-10T15:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a19c3e4c_030a129f",
+      "revId": "74b5c234c034bc05db118fd9a26b3d71639f0a0a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
