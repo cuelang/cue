@@ -154,7 +154,7 @@ Result:
         bar: (int){ 2 }
       }) }
     j: (_|_){
-      // [incomplete] d100.j: incomplete feed source value i (type (null|struct)):
+      // [incomplete] d100.j: unresolved disjunction null | {bar:2} (type (null|struct)):
       //     ./in.cue:59:6
     }
   }
