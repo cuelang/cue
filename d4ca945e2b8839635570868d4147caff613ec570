@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4883eaaf_c066476a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-10T10:57:08Z",
+      "side": 1,
+      "message": "PTAL. The build will fail because it happens against the _current_ master, which includes go1.12",
+      "revId": "d4ca945e2b8839635570868d4147caff613ec570",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
