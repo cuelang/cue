@@ -16,6 +16,24 @@
       "revId": "6025c352725eacec0980d98dadb3a56e5493b090",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8564ca80_e2a4825c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-11T11:48:04Z",
+      "side": 1,
+      "message": "running CI now.",
+      "parentUuid": "488e0ea9_f635327a",
+      "revId": "6025c352725eacec0980d98dadb3a56e5493b090",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
