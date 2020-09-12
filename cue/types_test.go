@@ -269,8 +269,8 @@ func TestInt(t *testing.T) {
 		notInt: true,
 	}, {
 		value:  "_|_",
-		err:    "from source",
-		errU:   "from source",
+		err:    "user-defined error",
+		errU:   "user-defined error",
 		notInt: true,
 	}}
 	for _, tc := range testCases {
@@ -485,7 +485,7 @@ func TestError(t *testing.T) {
 		err   string
 	}{{
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `"Hello world!"`,
 	}, {
@@ -506,7 +506,7 @@ func TestNull(t *testing.T) {
 		err   string
 	}{{
 		value: `v: _|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `v: "str"`,
 		err:   "cannot use value \"str\" (type string) as null",
@@ -531,7 +531,7 @@ func TestBool(t *testing.T) {
 		err   string
 	}{{
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `"str"`,
 		err:   "cannot use value \"str\" (type string) as bool",
@@ -563,7 +563,7 @@ func TestList(t *testing.T) {
 		err   string
 	}{{
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `"str"`,
 		err:   "cannot use value \"str\" (type string) as list",
@@ -614,7 +614,7 @@ func TestFields(t *testing.T) {
 		res:   "{reg:4,}",
 	}, {
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `"str"`,
 		err:   "cannot use value \"str\" (type string) as struct",
@@ -1324,7 +1324,7 @@ func TestDecode(t *testing.T) {
 		err   string
 	}{{
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `"str"`,
 		dst:   new(string),
@@ -1607,11 +1607,11 @@ func TestValueLookup(t *testing.T) {
 	}{{
 		config: "_|_",
 		path:   strList(""),
-		str:    "from source",
+		str:    "user-defined error",
 	}, {
 		config: "_|_",
 		path:   strList("a"),
-		str:    "from source",
+		str:    "user-defined error",
 	}, {
 		config: config,
 		path:   strList(),
@@ -2107,7 +2107,7 @@ func TestMarshalJSON(t *testing.T) {
 		json:  `null`,
 	}, {
 		value: `_|_`,
-		err:   "from source",
+		err:   "user-defined error",
 	}, {
 		value: `(a.b)
 		a: {}`,
@@ -2272,7 +2272,7 @@ func TestWalk(t *testing.T) {
 		out:   `null`,
 	}, {
 		value: `_|_`,
-		out:   "_|_(from source)",
+		out:   "_|_(user-defined error)",
 	}, {
 		value: `(a.b)
 			a: {}`,
