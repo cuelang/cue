@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b8998f_affd5d51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2020-09-14T21:16:32Z",
+      "side": 1,
+      "message": "+1 for spec...assuming in a later CL you\u0027ll explain why those attributes can be there.",
+      "revId": "83c5da8eb1d6154b0db233138dec364b5adbf794",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
