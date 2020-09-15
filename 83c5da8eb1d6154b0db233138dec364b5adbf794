@@ -16,6 +16,24 @@
       "revId": "83c5da8eb1d6154b0db233138dec364b5adbf794",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b3babd_238704ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-15T15:18:46Z",
+      "side": 1,
+      "message": "For the record: sometimes one want to allow tags that apply to the file and not a specific context. The equivalent in Go would be build tags. It would be weird and confusing to have these after the package clause.\n\nThe other benefit is that this is more orthogonal and consistent.",
+      "parentUuid": "24b8998f_affd5d51",
+      "revId": "83c5da8eb1d6154b0db233138dec364b5adbf794",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
