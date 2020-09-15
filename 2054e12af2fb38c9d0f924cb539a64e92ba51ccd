@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4265443e_e6ad0623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:25:14Z",
+      "side": 1,
+      "message": "Minor nits and one general question on naming. Otherwise LGTM",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db092216_3da10fdb",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:25:14Z",
+      "side": 1,
+      "message": "Think this needs to be reordered a bit because the \"key value pairs\" appears to correspond to \"select files to build\" as opposed to \"injected as values in fields\". So at the moment we have A or B then D or C, and we should have A or B then C or D.",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b0ba09_0f8374ce",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:25:14Z",
+      "side": 1,
+      "message": "BuildEnv values are used to both select ... ?\n\nSeems to read a bit more easily to me.",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41caf515_a9030d49",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:25:14Z",
+      "side": 1,
+      "message": "I like this concept of BuildEnv... but the name bothers me because of the \"Env\" bit. It feels too close to Env as in env var. \n\nInteraction with env vars belongs in the tooling layer. \n\nWhereas this concept rightly belongs in the CUE layer (or whatever we are calling it). \n\nI am, however, a little short on better ideas 😊",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4251e2d_c619caf3",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:25:14Z",
+      "side": 1,
+      "message": "Very minor nit: but doesn\u0027t this actually get deprecated in the next CL?",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
