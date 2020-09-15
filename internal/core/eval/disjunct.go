@@ -129,6 +129,11 @@ func (n *nodeContext) addDisjunctionValue(env *adt.Environment, x *adt.Disjuncti
 func (n *nodeContext) updateResult() (isFinal bool) {
 	n.postDisjunct()
 
+	if b, _ := n.node.Value.(*adt.Bottom); b != nil {
+		n.nodeShared.failedDisjuncts = append(n.nodeShared.failedDisjuncts, b)
+		return n.isFinal
+	}
+
 	if n.hasErr() {
 		return n.isFinal
 	}
@@ -210,10 +215,13 @@ func (n *nodeContext) tryDisjuncts() (finished bool) {
 			// the type or error. Using IncompleteError is a compromise. But
 			// really we should keep track of the errors and return a more
 			// accurate result here.
-			Code: adt.IncompleteError,
-			Err:  n.ctx.Newf("empty disjunction"),
+			// Code: adt.IncompleteError, // TODO MREMOVE XXX
+			Err: n.ctx.Newf("empty disjunction"),
 		}
 		n.node.AddErr(n.ctx, b)
+		for _, e := range n.failedDisjuncts {
+			n.node.AddErr(n.ctx, e)
+		}
 	}
 	return true
 }

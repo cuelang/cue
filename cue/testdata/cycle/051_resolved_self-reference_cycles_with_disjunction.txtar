@@ -43,7 +43,7 @@ xd4: xd2 + 1
 xd5: xd2 + 2
 xd1: 8
 
-// The below is resolved by setting xd1 explicitly to the wrong
+// The below is resolved by setting xe1 explicitly to the wrong
 // value, resulting in an error.
 xe1: xe2 & 8 | xe4 & 9 | xe5 & 9
 xe2: xe3 + 2
@@ -159,6 +159,7 @@ z3:  z1-3 & 8
 }
 -- out/eval --
 Errors:
+xe1: empty disjunction
 xe3: incompatible values 7 and 6:
     ./in.cue:44:6
 
@@ -188,7 +189,7 @@ Result:
   xd4: (int){ 9 }
   xd5: (int){ 10 }
   xe1: (_|_){
-    // [incomplete] xe1: empty disjunction
+    // [eval] xe1: empty disjunction
   }
   xe2: (_|_){
     // [eval] xe3: incompatible values 7 and 6:

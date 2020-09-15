@@ -658,10 +658,11 @@ type nodeShared struct {
 	node *adt.Vertex
 
 	// Disjunction handling
-	disjunct   *adt.Disjunction
-	resultNode *nodeContext
-	result_    adt.Vertex
-	stack      []int
+	disjunct        *adt.Disjunction
+	failedDisjuncts []*adt.Bottom
+	resultNode      *nodeContext
+	result_         adt.Vertex
+	stack           []int
 
 	// Closedness override.
 	accept adt.Acceptor
