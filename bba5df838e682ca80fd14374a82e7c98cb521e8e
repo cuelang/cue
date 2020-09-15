@@ -50,6 +50,24 @@
       "revId": "bba5df838e682ca80fd14374a82e7c98cb521e8e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6841bf3d_1250b1a1",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-15T15:24:34Z",
+      "side": 1,
+      "message": "Yes, you are correct in that assessment. There is no namespace of tags. I\u0027m not clear as to what exactly you would like to clarify.",
+      "parentUuid": "9408f795_18a927a0",
+      "revId": "bba5df838e682ca80fd14374a82e7c98cb521e8e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
