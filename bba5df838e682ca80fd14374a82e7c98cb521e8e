@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ce51ca5_6b91ed3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:43:07Z",
+      "side": 1,
+      "message": "I\u0027ve mainly focussed on the wording/concept rather than the actual code.\n\nModulo my question about how we refer to attributes, LGTM. That could of course be addressed in a later CL.\n\nOne related question: do you plan to drop support for Go-style build constraints that are currently supported? I\u0027m guessing/hoping the answer is yes 😊",
+      "revId": "bba5df838e682ca80fd14374a82e7c98cb521e8e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9408f795_18a927a0",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:43:07Z",
+      "side": 1,
+      "message": "When I first saw injection, one thing that initially \"bit\" me was the I didn\u0027t need to address the \"tag\" namespace when providing a value via injection. That is to say, I declare a tag vi:\n\n    @tag(blah)\n\nand provide a value via -t blah\u003dhello. i.e. I don\u0027t use the word \"tag\" anywhere in setting the value of the blah tag.\n\nFor some reason my brain was expecting to have to do so, especially because the wording:\n\n    \"The injection mechanism allows values to be injected into fields that are marked with a \"tag\" attribute\"\n\nseems to suggest that \"tag\" is a particular type of attribute.\n\nHowever, there is no \"tag namespace\" or type of attribute at all, just a global set of attributes.\n\nI mention that now because we now have the \"build\" attribute. So again my brain thought that there would be a separate \"namespace\"/type for the build attributes.\n\nHowever, as I understand it, that\u0027s not the case, indeed the following should be possible:\n\n\n    @build(prod)\n\n    @tag(prod,type\u003dbool)\n\nI think we should clarify this somewhere/somehow. Thoughts?",
+      "revId": "bba5df838e682ca80fd14374a82e7c98cb521e8e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
