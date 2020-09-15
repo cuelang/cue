@@ -28,6 +28,8 @@ y: _|_ // ; empty disjunction: conflicting values 2 and 3
 }
 -- out/eval --
 Errors:
+y: empty disjunction
+y.a: incompatible values 1 and 3
 y.a: incompatible values 2 and 3
 
 Result:
@@ -39,7 +41,9 @@ Result:
       a: (int){ 2 }
     }) }
   y: (_|_){
-    // [eval]
+    // [eval] y: empty disjunction
+    // y.a: incompatible values 1 and 3
+    // y.a: incompatible values 2 and 3
     a: (_|_){
       // [eval] y.a: incompatible values 2 and 3
     }

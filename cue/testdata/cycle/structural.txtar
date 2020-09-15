@@ -244,7 +244,15 @@ e3.b.0: structural cycle
 e3.b.c: conflicting values [b] and {c:b} (mismatched types list and struct)
 e3.b.c: structural cycle
 e4.a.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+e4.a.0: empty disjunction
+e4.a.0.0: conflicting values [{c:1}] and {c:1} (mismatched types list and struct)
+e4.a.0.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+e4.a.0.0: empty disjunction
 e4.b.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+e4.b.0: empty disjunction
+e4.b.0.0: conflicting values [{c:1}] and {c:1} (mismatched types list and struct)
+e4.b.0.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+e4.b.0.0: empty disjunction
 z1.z.f.h.h: structural cycle
 z1.z.g.h: structural cycle
 b4.x.y.0: structural cycle:
@@ -624,6 +632,10 @@ Result:
       // [eval]
       0: (_|_){
         // [eval] e4.a.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+        // e4.a.0: empty disjunction
+        // e4.a.0.0: conflicting values [{c:1}] and {c:1} (mismatched types list and struct)
+        // e4.a.0.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+        // e4.a.0.0: empty disjunction
         0: (struct){
           c: (int){ 1 }
         }
@@ -633,6 +645,10 @@ Result:
       // [eval]
       0: (_|_){
         // [eval] e4.b.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+        // e4.b.0: empty disjunction
+        // e4.b.0.0: conflicting values [{c:1}] and {c:1} (mismatched types list and struct)
+        // e4.b.0.0: conflicting values [{c:1}] and {} (mismatched types list and struct)
+        // e4.b.0.0: empty disjunction
         0: (struct){
           c: (int){ 1 }
         }

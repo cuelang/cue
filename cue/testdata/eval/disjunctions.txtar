@@ -61,6 +61,8 @@ d100: {
 
 -- out/eval --
 Errors:
+f: empty disjunction
+f.name: incompatible values "int" and "str"
 f.val: conflicting values 3 and string (mismatched types int and string)
 
 Result:
@@ -88,7 +90,9 @@ Result:
     name: (string){ "str" }
   }
   f: (_|_){
-    // [eval]
+    // [eval] f: empty disjunction
+    // f.name: incompatible values "int" and "str"
+    // f.val: conflicting values 3 and string (mismatched types int and string)
     name: (string){ "str" }
     val: (_|_){
       // [eval] f.val: conflicting values 3 and string (mismatched types int and string)

@@ -129,6 +129,7 @@ z3:  8
 }
 -- out/eval --
 Errors:
+xe1: empty disjunction
 xe3: incompatible values 7 and 6:
     ./in.cue:37:6
 
@@ -158,7 +159,7 @@ Result:
   xd4: (int){ 9 }
   xd5: (int){ 10 }
   xe1: (_|_){
-    // [incomplete] xe1: empty disjunction
+    // [eval] xe1: empty disjunction
   }
   xe2: (_|_){
     // [eval] xe3: incompatible values 7 and 6:

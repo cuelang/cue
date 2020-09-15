@@ -1,0 +1,67 @@
+In this test case, both disjuncts will fail. The confusing part comes in when
+only one of the errors is reported. The second disjunct fails because `match`
+is not allowed. But this is confusing as the only error, because match is
+allowed in the first disjunct.
+
+-- in.cue --
+#Def: {
+	match: string: {}
+} | {}
+
+x: #Def
+x: match: "foo": {}
+-- out/eval --
+Errors:
+x: empty disjunction
+x: field `match` not allowed:
+    ./in.cue:3:5
+    ./in.cue:5:4
+    ./in.cue:6:4
+x.match: field `foo` not allowed:
+    ./in.cue:2:9
+    ./in.cue:5:4
+    ./in.cue:6:11
+
+Result:
+(_|_){
+  // [eval]
+  #Def: (struct){ |((#struct){
+      match: (#struct){
+        string: (#struct){
+        }
+      }
+    }, (#struct){
+    }) }
+  x: (_|_){
+    // [eval] x: empty disjunction
+    // x: field `match` not allowed:
+    //     ./in.cue:3:5
+    //     ./in.cue:5:4
+    //     ./in.cue:6:4
+    // x.match: field `foo` not allowed:
+    //     ./in.cue:2:9
+    //     ./in.cue:5:4
+    //     ./in.cue:6:11
+    match: (_|_){
+      // [eval] x: field `match` not allowed:
+      //     ./in.cue:3:5
+      //     ./in.cue:5:4
+      //     ./in.cue:6:4
+    }
+  }
+}
+-- out/compile --
+--- in.cue
+{
+  #Def: ({
+    match: {
+      string: {}
+    }
+  }|{})
+  x: 〈0;#Def〉
+  x: {
+    match: {
+      foo: {}
+    }
+  }
+}
