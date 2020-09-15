@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04d8c9a0_c7d03d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-09-15T14:44:20Z",
+      "side": 1,
+      "message": "Seems better, with a suggestion for an alternative wording.",
+      "revId": "0e9c84e741358f6ab4ba32169db5fd2efdf6188a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a60c575c_78af2210",
+        "filename": "internal/core/compile/compile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-09-15T14:44:20Z",
+      "side": 1,
+      "message": "\"user-defined error\" makes it sound a bit like there is some way for the user to define errors, which there isn\u0027t really. How about \"explicit error (_|_ literal) in source\" or something?",
+      "revId": "0e9c84e741358f6ab4ba32169db5fd2efdf6188a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
