@@ -29,7 +29,7 @@ baz: {b: 2}
 foo: #Foo & {
 	a: 1
 }
-bar: _|_ // 
+bar: _|_ //
 baz: #Foo & {
 	b: 2
 }
@@ -61,6 +61,7 @@ baz: #Foo & {
 }
 -- out/eval --
 Errors:
+bar: empty disjunction
 bar: field `c` not allowed:
     ./in.cue:1:7
     ./in.cue:4:2
@@ -83,7 +84,13 @@ Result:
     a: (int){ 1 }
   }
   bar: (_|_){
-    // [eval]
+    // [eval] bar: empty disjunction
+    // bar: field `c` not allowed:
+    //     ./in.cue:1:7
+    //     ./in.cue:4:2
+    //     ./in.cue:5:2
+    //     ./in.cue:11:6
+    //     ./in.cue:12:7
     field: (int){ int }
     c: (_|_){
       // [eval] bar: field `c` not allowed:
