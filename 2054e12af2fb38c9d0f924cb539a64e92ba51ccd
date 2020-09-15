@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "f2a30740_9ccd4c88",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-15T15:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93b0ba09_0f8374ce",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41caf515_a9030d49",
         "filename": "cue/load/config.go",
         "patchSetId": 1
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "de5ee6aa_3669f202",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-15T15:47:30Z",
+      "side": 1,
+      "message": "I\u0027m fine to just reappropriate BuildTags.",
+      "parentUuid": "41caf515_a9030d49",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4251e2d_c619caf3",
         "filename": "cue/load/config.go",
         "patchSetId": 1
@@ -81,6 +117,24 @@
       "writtenOn": "2020-09-15T09:25:14Z",
       "side": 1,
       "message": "Very minor nit: but doesn\u0027t this actually get deprecated in the next CL?",
+      "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d311453a_b1b8d771",
+        "filename": "cue/load/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-15T15:47:30Z",
+      "side": 1,
+      "message": "There may be overlap. But the question is whether people are actually using this.",
+      "parentUuid": "f4251e2d_c619caf3",
       "revId": "2054e12af2fb38c9d0f924cb539a64e92ba51ccd",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
