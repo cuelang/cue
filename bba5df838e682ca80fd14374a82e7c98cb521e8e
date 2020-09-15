@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "a6f9febf_f9bbf384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-15T09:43:09Z",
+      "side": 1,
+      "message": "I\u0027ve mainly focussed on the wording/concept rather than the actual code.\n\nModulo my question about how we refer to attributes, LGTM. That could of course be addressed in a later CL.\n\nOne related question: do you plan to drop support for Go-style build constraints that are currently supported? I\u0027m guessing/hoping the answer is yes 😊",
+      "revId": "bba5df838e682ca80fd14374a82e7c98cb521e8e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9408f795_18a927a0",
         "filename": "cmd/cue/cmd/help.go",
         "patchSetId": 1
