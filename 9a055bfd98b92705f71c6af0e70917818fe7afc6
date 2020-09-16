@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64307c74_6c70c299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-16T11:52:16Z",
+      "side": 1,
+      "message": "Let\u0027s see how the new \"lazy loading\" in go 1.16 will pan out first.",
+      "revId": "9a055bfd98b92705f71c6af0e70917818fe7afc6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
