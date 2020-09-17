@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4ba498b_82969e16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-17T12:48:01Z",
+      "side": 1,
+      "message": "LGTM from the perspective of fixing the issue (I\u0027m not that close to the code changes)",
+      "revId": "afee862e7f9bd058804a0a177728070925e34580",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
