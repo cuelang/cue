@@ -2151,9 +2151,46 @@ func (v Value) Attribute(key string) Attribute {
 	return Attribute{internal.NewNonExisting(key)}
 }
 
+// Attributes returne all attributes for the Value.
+func (v Value) Attributes() []Attribute {
+	// attrs := map[string]Attribute{}
+	attrs := []Attribute{}
+
+	// return empty
+	if v.v == nil {
+		return attrs
+	}
+
+	// collect attribues
+	for _, a := range export.ExtractFieldAttrs(v.v.Conjuncts) {
+		key, body := a.Split()
+		A := Attribute{internal.ParseAttrBody(token.NoPos, body)}
+		A.SetName(key)
+		attrs = append(attrs, A)
+	}
+
+	return attrs
+}
+
 // An Attribute contains meta data about a field.
 type Attribute struct {
 	attr internal.Attr
+}
+
+func (a *Attribute) Name() string {
+	return a.attr.Name
+}
+
+func (a *Attribute) SetName(name string) {
+	a.attr.SetName(name)
+}
+
+func (a *Attribute) Vals() map[string]string {
+	ret := map[string]string{}
+	for _, F := range a.attr.Fields {
+		ret[F.Key()] = F.Value()
+	}
+	return ret
 }
 
 // Err returns the error associated with this Attribute or nil if this

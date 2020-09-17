@@ -26,6 +26,7 @@ import (
 
 // Attr holds positional information for a single Attr.
 type Attr struct {
+	Name   string
 	Fields []keyValue
 	Err    error
 }
@@ -42,9 +43,21 @@ type keyValue struct {
 }
 
 func (kv *keyValue) Text() string { return kv.data }
-func (kv *keyValue) Key() string  { return kv.data[:kv.equal] }
+func (kv *keyValue) Key() string  {
+	if kv.equal == 0 {
+		return kv.data
+	}
+	return kv.data[:kv.equal]
+}
 func (kv *keyValue) Value() string {
+	if kv.equal == 0 {
+		return ""
+	}
 	return strings.TrimSpace(kv.data[kv.equal+1:])
+}
+
+func (a *Attr) SetName(name string) {
+	a.Name = name
 }
 
 func (a *Attr) hasPos(p int) error {
