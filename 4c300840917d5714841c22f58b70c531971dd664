@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "677ff344_d6fe7d87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-18T16:09:39Z",
+      "side": 1,
+      "message": "I was interested to try this out to see what speed improvement it brought my rather trivial use case and it cause code that previously compiled to not compile. \n\nI\u0027m reducing down the case in question.",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
