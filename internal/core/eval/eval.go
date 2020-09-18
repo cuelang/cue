@@ -388,6 +388,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		// }
 
 		n := &nodeContext{
+			arcMap:     map[*adt.Vertex]bool{},
 			kind:       adt.TopKind,
 			nodeShared: shared,
 			needClose:  needClose,
@@ -718,6 +719,8 @@ type nodeContext struct {
 	// should already ensure a quick-fail for struct disjunctions with
 	// discriminators.
 
+	arcMap map[*adt.Vertex]bool
+
 	// Current value (may be under construction)
 	scalar adt.Value // TODO: use Value in node.
 
@@ -989,6 +992,11 @@ outer:
 			n.exprs = append(n.exprs, v)
 			break
 		}
+
+		if n.arcMap[arc] {
+			return
+		}
+		n.arcMap[arc] = true
 
 		// Pass detection of structural cycles from parent to children.
 		cyclic := false
