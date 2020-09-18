@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "9fae6c97_e79ebea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-18T16:22:43Z",
+      "side": 1,
+      "message": "Reduced example of what previously \"worked\". If you run cue def on:\n\n    package x\n\n    #Step: (#A | #B) \u0026 {\n     #Common\n     ...\n    }\n\n    #Common: {\n     Name: string\n    }\n\n    #A: {\n     #Common\n     Something: int\n    }\n\n    #B: {\n     #Common\n     Else: int\n    }\n\n    x: #Step\n    x: #A \u0026 {\n     Name:      \"a\"\n     Something: 4\n    }\n\nwith v0.3.0-alpha3 there is no error. \n\nWith this CL there is an error. But it is actually correct to be an error because there should be a open default constraint in the { #Common } conjunction, i.e.\n\n    package x\n\n    #Step: (#A | #B) \u0026 {\n      #Common\n      ...\n    }\n\n    #Common: {\n      Name: string\n    }\n\n    #A: {\n      #Common\n      Something: int\n    }\n\n    #B: {\n      #Common\n      Else: int\n    }\n\n    x: #Step\n    x: #A \u0026 {\n      Name:      \"a\"\n      Something: 4\n    }\n\nEven this \"fix\" is not totally correct because we don\u0027t currently allow embedding and default constraints, but it the previous version is definitely an error because the result { #Common } is itself closed, if I understand it correctly.",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97cb208b_6f295426",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 1
