@@ -17,7 +17,10 @@ package cmd
 import (
 	"context"
 	"io"
+	"log"
 	"os"
+	"os/signal"
+	"runtime/pprof"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -123,9 +126,25 @@ func MainTest() int {
 
 // Main runs the cue tool and returns the code for passing to os.Exit.
 func Main() int {
-	cwd, _ := os.Getwd()
-	err := mainErr(context.Background(), os.Args[1:])
+	f, err := os.Create("/home/rogpeppe/tmp/cue-cpu-profile-2020-09-15.pprof")
 	if err != nil {
+		log.Fatal("could not create CPU profile: ", err)
+	}
+	defer f.Close()
+	if err := pprof.StartCPUProfile(f); err != nil {
+		log.Fatal("could not start CPU profile: ", err)
+	}
+	c := make(chan os.Signal, 2)
+	signal.Notify(c, os.Interrupt)
+	go func() {
+		<-c
+		pprof.StopCPUProfile()
+		os.Exit(3)
+	}()
+	defer pprof.StopCPUProfile()
+	cwd, _ := os.Getwd()
+
+	if err := mainErr(context.Background(), os.Args[1:]); err != nil {
 		if err != ErrPrintedError {
 			errors.Print(os.Stderr, err, &errors.Config{
 				Cwd:     cwd,
