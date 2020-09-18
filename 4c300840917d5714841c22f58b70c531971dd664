@@ -16,6 +16,40 @@
       "revId": "4c300840917d5714841c22f58b70c531971dd664",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "189cfe75_1a6509f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-09-18T16:14:10Z",
+      "side": 1,
+      "message": "Thanks very much for addressing this so quickly! LGTM with one minor suggestion.",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97cb208b_6f295426",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-09-18T16:14:10Z",
+      "side": 1,
+      "message": "ISTM that this is important enough to deserve a comment.",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
