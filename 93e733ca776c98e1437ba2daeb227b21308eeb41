@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1899f580_c7b80b67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-18T16:04:58Z",
+      "side": 1,
+      "message": "LGTM with one fix.",
+      "revId": "93e733ca776c98e1437ba2daeb227b21308eeb41",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f8ce5cc_74ccbfd2",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-18T16:04:58Z",
+      "side": 1,
+      "message": "s/#Definitions-and-hidden-fields/#definitions-and-hidden-fields/\n\nCase matters here.",
+      "revId": "93e733ca776c98e1437ba2daeb227b21308eeb41",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
