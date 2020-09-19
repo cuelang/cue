@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "b308c628_82d166f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-19T05:01:38Z",
+      "side": 1,
+      "message": "For future reference, the first example in that previous comment should have read:\n\n    package x\n    #Step: (#A | #B) \u0026 {\n     #Common\n    }\n    #Common: {\n     Name: string\n    }\n    #A: {\n     #Common\n     Something: int\n    }\n    #B: {\n     #Common\n     Else: int\n    }\n    x: #Step\n    x: #A \u0026 {\n     Name:      \"a\"\n     Something: 4\n    }",
+      "parentUuid": "9fae6c97_e79ebea9",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97cb208b_6f295426",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 1
