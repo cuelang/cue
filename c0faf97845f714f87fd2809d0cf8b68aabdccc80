@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e97b8fc_7ff1ce11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-21T15:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a6808c_9dff9706",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb5f9626_ea7a6fa4",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-09-21T10:48:02Z",
       "side": 1,
       "message": "I wonder whether we can include a code example or two here; what we are trying to convey is hard. Thoughts? Much like the annotated examples we\u0027ve been exchanging.",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5e62fa_b0fbf32a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-21T15:10:05Z",
+      "side": 1,
+      "message": "added them below. It is really the interaction of embedding and definitions that needs explaining.",
+      "parentUuid": "cb5f9626_ea7a6fa4",
       "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4a739ea8_0c027785",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-21T15:10:05Z",
+      "side": 1,
+      "message": "Hadn\u0027t even thought of disjunctions here. Implementation-wise disjuncts are expanded there really isn\u0027t a special code path for disjunctions here (directly). Also, in case of a disjunction of strutcs, btw, there may be such fields. Just if the embedding is not of type struct.\n\nAn example like that is already included with definitions. I think it should be there, as it needs an explanation of definitions as well. \n\nI\u0027ve added the examples from the unit test though.",
+      "parentUuid": "db02fe61_46b25fee",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b071d29b_3d141286",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2020-09-21T11:02:58Z",
       "side": 1,
       "message": "I was going to ask the same question as the comment 😊",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b9a4e6_cd7da3e6",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-21T15:10:05Z",
+      "side": 1,
+      "message": "I\u0027m not certain yet. Closedness per se is local and does not need to have the special mechanism of being \"sticky\". This is really a special case for enabling closedness when a definition is referred. Local closedness is handled in closed.go. That said, it may be useful to know whether a struct is closed ahead of time.",
+      "parentUuid": "b071d29b_3d141286",
       "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
