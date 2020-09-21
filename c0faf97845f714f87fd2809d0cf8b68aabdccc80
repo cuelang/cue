@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a6808c_9dff9706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-21T10:48:02Z",
+      "side": 1,
+      "message": "Tiny nit: s/regardnig/regarding/",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb5f9626_ea7a6fa4",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-21T10:48:02Z",
+      "side": 1,
+      "message": "I wonder whether we can include a code example or two here; what we are trying to convey is hard. Thoughts? Much like the annotated examples we\u0027ve been exchanging.",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
