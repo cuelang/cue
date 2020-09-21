@@ -33,6 +33,23 @@
       "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b071d29b_3d141286",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-21T11:02:58Z",
+      "side": 1,
+      "message": "I was going to ask the same question as the comment 😊",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
     }
   ]
 }
