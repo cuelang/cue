@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a27d50_7a5efab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-21T08:07:26Z",
+      "side": 1,
+      "message": "Thanks, the rebase has fixed the previously reported issue. Now I\u0027m seeing a slight different in terms of Value.Syntax() output. Run the following pre and post this CL:\n\n    package main\n\n    import (\n    \t\"fmt\"\n\n    \t\"cuelang.org/go/cue\"\n    \t\"cuelang.org/go/cue/format\"\n    \t\"cuelang.org/go/encoding/gocode/gocodec\"\n    )\n\n    type GuideStructure struct {\n    \tA string\n    \tB string\n    }\n\n    func main() {\n    \tm :\u003d make(map[string]GuideStructure)\n    \tm[\"hello\"] \u003d GuideStructure{\n    \t\tA: \"a\",\n    \t\tB: \"b\",\n    \t}\n\n    \tvar r cue.Runtime\n\n    \tcodec :\u003d gocodec.New(\u0026r, nil)\n\n    \tv, err :\u003d codec.Decode(m)\n    \tif err !\u003d nil {\n    \t\tpanic(err)\n    \t}\n    \tsyn, err :\u003d format.Node(v.Syntax())\n    \tif err !\u003d nil {\n    \t\tpanic(err)\n    \t}\n\n    \tfmt.Printf(\"\u003e\u003e %s\\n\", syn)\n    }\n\nPre:\n\n    \u003e\u003e {\n            hello: {\n                    A: \"a\"\n                    B: \"b\"\n            }\n    }\n\nPost:\n\n    \u003e\u003e {\n            hello: {\n                    B: \"b\"\n                    A: \"a\"\n            }\n    }\n\nNote the difference in ordering.",
+      "revId": "83a083d33f7b17e3b94cbe1f2b05ac497172b6ef",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
