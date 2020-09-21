@@ -85,6 +85,24 @@
       "revId": "4c300840917d5714841c22f58b70c531971dd664",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9567f9_488507aa",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-09-21T16:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cb208b_6f295426",
+      "revId": "4c300840917d5714841c22f58b70c531971dd664",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
