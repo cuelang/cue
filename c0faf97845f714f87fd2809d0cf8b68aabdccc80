@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "db02fe61_46b25fee",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-21T11:38:14Z",
+      "side": 1,
+      "message": "Just noting out loud, this appears to cover the case of a disjunction of structs being embedded (per the example we shared offline). That might actually be a good example to include int he code examples mentioned above?",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b071d29b_3d141286",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 2
