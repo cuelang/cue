@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b425f00_9ee5b331",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "Is it worth including a sentence like:\n\n\u003e If an embedded value is a closed struct, then the struct that results from the embedding will also be closed.\n\nI think that\u0027s implied by the sentence \"The result of...\" but given that above we go to the effort of precisely describing the case of contained closed values, it might be worth being explicit?",
+      "revId": "4b90e34ae32583056f125f924e992ad5fd50c3ac",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e92a768_266712bc",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "Missing something here.",
+      "revId": "4b90e34ae32583056f125f924e992ad5fd50c3ac",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f884cbfb_f96a4015",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "Just to confirm, b is intentionally overlapping with the #A definition (thereby eliminating the second part of the #A disjunct)?",
+      "revId": "4b90e34ae32583056f125f924e992ad5fd50c3ac",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}

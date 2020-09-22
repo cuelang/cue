@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "132d9228_1d4eeff9",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "Yep, agreed. Just the \"visuals\" of an example helps explain this stuff.",
+      "parentUuid": "ac5e62fa_b0fbf32a",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db02fe61_46b25fee",
         "filename": "doc/ref/spec.md",
         "patchSetId": 2
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "ec9664ce_2ecf6670",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "\u003e Also, in case of a disjunction of strutcs, btw, there may be such fields\n\nThat was exactly what I was looking to point out. I guess it\u0027s fairly well understood that a disjunction of structs is a struct.",
+      "parentUuid": "4a739ea8_0c027785",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b071d29b_3d141286",
         "filename": "internal/core/eval/eval.go",
         "patchSetId": 2
@@ -139,6 +175,24 @@
       "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ed40d4_71635833",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-22T05:59:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5b9a4e6_cd7da3e6",
+      "revId": "c0faf97845f714f87fd2809d0cf8b68aabdccc80",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
