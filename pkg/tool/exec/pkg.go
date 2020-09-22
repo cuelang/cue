@@ -22,6 +22,7 @@ var pkg = &internal.Package{
 	Run: {
 		$id: *"tool/exec.Run" | "exec"
 		cmd: string | [string, ...string]
+		dir: *null | string
 		env: {
 			[string]: string | [...=~"="]
 		}
