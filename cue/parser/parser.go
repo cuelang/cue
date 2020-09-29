@@ -25,6 +25,7 @@ import (
 	"cuelang.org/go/cue/scanner"
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/experiment"
 )
 
 // The parser structure holds the parser's internal state.
@@ -732,7 +733,7 @@ func (p *parser) parseFieldList() (list []ast.Decl) {
 
 	if len(list) > 1 {
 		for _, d := range list {
-			if internal.IsBulkField(d) {
+			if internal.IsBulkField(d) && !experiment.FlexibleConstraints {
 				p.assertV0(p.pos, 2, 0, `combining bulk optional fields with other fields`)
 				break
 			}

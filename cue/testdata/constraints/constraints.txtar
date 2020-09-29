@@ -1,0 +1,92 @@
+-- in.cue --
+t0: {
+    x: {
+        a: int
+        b: int
+        [>"m"]: string
+        ...int
+    }
+    z1: x & { a: 1, b: 1 }
+    z2: x & { a: 1, c: 2 }
+    z2: x & { a: 1, x: "foo" }
+    z2: x & { a: 1, c: 2, x: "foo" }
+    e: x & { a: 1, c: int }
+}
+t1: {
+    x: {
+        a: int
+        b: int
+        [string]: string
+    }
+    y: {
+        a: int
+        [string]: int
+    }
+    z1: x & y & { a: 1, b: 1 }
+    z2: y & { a: 1, b: 1 }
+    e: x & y & { c: int }
+}
+-- out/eval --
+Errors:
+t0.e: conflicting values int and {a:1,c:int} (mismatched types int and struct)
+t0.x: conflicting values int and {a:int,b:int,[>"m"]:string,...,int} (mismatched types int and struct)
+t0.z1: conflicting values int and {a:1,b:1} (mismatched types int and struct)
+t0.z2: conflicting values int and {a:1,c:2,x:"foo"} (mismatched types int and struct)
+t1.e.c: conflicting values int and string (mismatched types int and string)
+
+Result:
+(_|_){
+  // [eval]
+  t0: (_|_){
+    // [eval]
+    x: (_|_){
+      // [eval] t0.x: conflicting values int and {a:int,b:int,[>"m"]:string,...,int} (mismatched types int and struct)
+      a: (int){ int }
+      b: (int){ int }
+    }
+    z1: (_|_){
+      // [eval] t0.z1: conflicting values int and {a:1,b:1} (mismatched types int and struct)
+      a: (int){ 1 }
+      b: (int){ 1 }
+    }
+    z2: (_|_){
+      // [eval] t0.z2: conflicting values int and {a:1,c:2,x:"foo"} (mismatched types int and struct)
+      a: (int){ 1 }
+      b: (int){ int }
+      c: (int){ 2 }
+      x: (string){ "foo" }
+    }
+    e: (_|_){
+      // [eval] t0.e: conflicting values int and {a:1,c:int} (mismatched types int and struct)
+      a: (int){ 1 }
+      b: (int){ int }
+      c: (int){ int }
+    }
+  }
+  t1: (_|_){
+    // [eval]
+    x: (struct){
+      a: (int){ int }
+      b: (int){ int }
+    }
+    y: (struct){
+      a: (int){ int }
+    }
+    z1: (struct){
+      a: (int){ 1 }
+      b: (int){ 1 }
+    }
+    z2: (struct){
+      a: (int){ 1 }
+      b: (int){ 1 }
+    }
+    e: (_|_){
+      // [eval]
+      a: (int){ int }
+      b: (int){ int }
+      c: (_|_){
+        // [eval] t1.e.c: conflicting values int and string (mismatched types int and string)
+      }
+    }
+  }
+}

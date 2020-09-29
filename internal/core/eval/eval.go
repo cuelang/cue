@@ -34,6 +34,7 @@ import (
 	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal/core/adt"
 	"cuelang.org/go/internal/core/debug"
+	"cuelang.org/go/internal/experiment"
 )
 
 var Debug = false
@@ -1451,7 +1452,7 @@ func (n *nodeContext) addStruct(
 		}
 	}
 
-	if hasBulk != nil && hasOther != nil {
+	if hasBulk != nil && hasOther != nil && !experiment.FlexibleConstraints {
 		n.addErr(ctx.Newf("cannot mix bulk optional fields with dynamic fields, embeddings, or comprehensions within the same struct"))
 	}
 

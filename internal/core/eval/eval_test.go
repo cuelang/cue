@@ -27,6 +27,7 @@ import (
 	"cuelang.org/go/internal/core/eval"
 	"cuelang.org/go/internal/core/validate"
 	"cuelang.org/go/internal/cuetxtar"
+	"cuelang.org/go/internal/experiment"
 	_ "cuelang.org/go/pkg"
 )
 
@@ -43,6 +44,8 @@ func TestEval(t *testing.T) {
 		Skip:   alwaysSkip,
 		ToDo:   needFix,
 	}
+
+	experiment.EnableAll()
 
 	if *todo {
 		test.ToDo = nil
