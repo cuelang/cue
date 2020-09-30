@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0957cd6c_9f9b97ad",
+        "filename": "internal/experiment/experiment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-09-30T15:40:11Z",
+      "side": 1,
+      "message": "Is it worth \"documenting\" these by linking to the related GitHub issue/discussion?",
+      "revId": "742d5d94284ab9502487449d10595911e6a45b34",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
