@@ -1,0 +1,6 @@
+! cue eval
+stdin -
+cmp stderr expect-stderr
+-- - --
+-- expect-stderr --
+no CUE files in .
