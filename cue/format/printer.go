@@ -22,6 +22,7 @@ import (
 
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/token"
 )
 
@@ -116,6 +117,11 @@ func (p *printer) Print(v interface{}) {
 	case *ast.BasicLit:
 		data = x.Value
 		switch x.Kind {
+		case token.STRING:
+			if p.indent < 6 {
+				data = literal.IndentTabs(data, p.indent+1)
+			}
+
 		case token.INT:
 			if len(data) > 1 &&
 				data[0] == '0' &&
