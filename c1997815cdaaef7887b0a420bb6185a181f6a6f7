@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4c42379_3df4af03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-01T12:47:10Z",
+      "side": 1,
+      "message": "This is a followup CL 7282 to also carry over better indentation when formatting (which has more context)\u003e",
+      "revId": "c1997815cdaaef7887b0a420bb6185a181f6a6f7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    }
+  ]
+}
