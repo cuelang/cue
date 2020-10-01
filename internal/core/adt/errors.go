@@ -285,7 +285,10 @@ func (e *ValueError) InputPositions() (a []token.Pos) {
 	return e.auxpos
 }
 
-func (e *ValueError) Path() (a []string) {
+func (e *valueError) Path() (a []string) {
+	if e.v == nil {
+		return nil
+	}
 	for _, f := range appendPath(nil, e.v) {
 		a = append(a, f.SelectorString(e.r))
 	}
