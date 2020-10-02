@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2fd55512_0bd3303b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-02T16:22:41Z",
+      "side": 1,
+      "message": "One difference with the strconv API is that there is really only one kind of string in Go.\n\nIn CUE we have\n- bytes versus strings\n- multiline vs single line\n- escape-sequence modifiers (#\"foo\\n\\#nbar\"#)\n\nThen for each of these we need\n- Quote\n- Append\n- Escape\n- Full vs ASCII vs Graphic (like strconv)\n\nThe issue is that given these dimensions, creating an API along the strconv lines will blow things up. While strconv only has 3 dimensions, roughly, to care about, we have 3 * 2 * 2 * 2 \u003d 24. This may get even worse if we also want to allow specific optimizations for labels or \"auto\" strings that pick single or multiline based on the content.\n\nThis is why I had to go for a different approach.",
+      "parentUuid": "615f4d63_8ac1392c",
+      "revId": "ac1384881c8cdaab3527714dbe0eeb62cf569ab6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7525670_a0109591",
         "filename": "cue/literal/quote.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7c407fcf_392f65c5",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-02T16:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7525670_a0109591",
+      "revId": "ac1384881c8cdaab3527714dbe0eeb62cf569ab6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bc88e88_b395dd4e",
         "filename": "cue/literal/quote.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "ac1384881c8cdaab3527714dbe0eeb62cf569ab6",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2e8aba_8d05f950",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-02T16:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bc88e88_b395dd4e",
+      "revId": "ac1384881c8cdaab3527714dbe0eeb62cf569ab6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
