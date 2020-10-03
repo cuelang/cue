@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b7857bb5_78f8fdd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-03T11:19:34Z",
+      "side": 1,
+      "message": "Thanks for the thorough explanation, makes total sense.",
+      "parentUuid": "2fd55512_0bd3303b",
+      "revId": "ac1384881c8cdaab3527714dbe0eeb62cf569ab6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7525670_a0109591",
         "filename": "cue/literal/quote.go",
         "patchSetId": 2
