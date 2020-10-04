@@ -1,0 +1,51 @@
+-- in.cue --
+package foo
+
+import "acme.com/pkg"
+
+a: pkg.#A
+a: _val: 3
+
+
+-- cue.mod/module.cue --
+module: "acme.com"
+
+-- pkg/pkg.cue --
+package pkg
+
+#A: {
+    _val: 4
+}
+
+-- out/definition --
+import "acme.com/pkg"
+
+a: {
+	pkg.#A
+	_val: 3
+}
+-- out/doc --
+[]
+[a]
+[a _val]
+-- out/value --
+== Simplified
+{
+	a: {}
+}
+== Raw
+{
+	a: {
+		_val: 3
+	}
+}
+== Final
+{
+	a: {}
+}
+== All
+{
+	a: {
+		_val: 3
+	}
+}
