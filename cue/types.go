@@ -2151,7 +2151,7 @@ func (v Value) Attribute(key string) Attribute {
 	return Attribute{internal.NewNonExisting(key)}
 }
 
-// Attributes reports all attributes for the Value.
+// Attributes reports all field attributes for the Value.
 func (v Value) Attributes() []Attribute {
 	attrs := []Attribute{}
 
