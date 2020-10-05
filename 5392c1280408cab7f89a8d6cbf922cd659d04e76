@@ -33,6 +33,24 @@
       "revId": "5392c1280408cab7f89a8d6cbf922cd659d04e76",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c905379_4499a8fe",
+        "filename": "internal/core/export/testdata/hidden.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-05T07:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "882e2486_95e54d04",
+      "revId": "5392c1280408cab7f89a8d6cbf922cd659d04e76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
     }
   ]
 }
