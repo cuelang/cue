@@ -163,7 +163,8 @@ func placeOrphans(cmd *Command, filename, pkg string, objs ...*ast.File) (*ast.F
 		if i == 0 {
 			astutil.CopyMeta(f, file)
 		}
-		expr, p := toExpr(file)
+		expr := internal.ToExpr(file)
+		p, _, _ := internal.PackageInfo(file)
 
 		var pathElems []ast.Label
 		var pathTokens []token.Token
