@@ -56,10 +56,6 @@ func (kv *keyValue) Value() string {
 	return strings.TrimSpace(kv.data[kv.equal+1:])
 }
 
-func (a *Attr) SetName(name string) {
-	a.Name = name
-}
-
 func (a *Attr) hasPos(p int) error {
 	if a.Err != nil {
 		return a.Err
