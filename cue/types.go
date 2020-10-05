@@ -2164,7 +2164,7 @@ func (v Value) Attributes() []Attribute {
 	for _, a := range export.ExtractFieldAttrs(v.v.Conjuncts) {
 		key, body := a.Split()
 		A := Attribute{internal.ParseAttrBody(token.NoPos, body)}
-		A.SetName(key)
+		A.attr.Name = key
 		attrs = append(attrs, A)
 	}
 
