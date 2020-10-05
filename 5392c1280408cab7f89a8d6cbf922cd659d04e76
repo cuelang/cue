@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2935deed_2c532179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-05T06:02:06Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "5392c1280408cab7f89a8d6cbf922cd659d04e76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "882e2486_95e54d04",
+        "filename": "internal/core/export/testdata/hidden.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-05T06:02:06Z",
+      "side": 1,
+      "message": "Is it worth also having a hidden definition test?",
+      "revId": "5392c1280408cab7f89a8d6cbf922cd659d04e76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7",
+      "unresolved": true
+    }
+  ]
+}
