@@ -57,9 +57,7 @@ type index struct {
 	importsByBuild map[*build.Instance]*adt.Vertex
 	builtins       map[string]PackageFunc
 
-	// mutex     sync.Mutex
 	typeCache sync.Map // map[reflect.Type]evaluated
-
 }
 
 func newIndex() *index {
