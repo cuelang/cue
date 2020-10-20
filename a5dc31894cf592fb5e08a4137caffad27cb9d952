@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40702393_74080fa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-20T05:33:48Z",
+      "side": 1,
+      "message": "I like the look and feel of this. Having Path as an opaque type also seems to work well. \n\nCopying Roger and Daniel in case they have any thoughts too.",
+      "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b42286_78904715",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-20T05:33:48Z",
+      "side": 1,
+      "message": "Where do we define what precisely we mean by \"configuration\"? I couldn\u0027t find a reference for that.",
+      "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
