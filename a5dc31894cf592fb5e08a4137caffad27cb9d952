@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3316fe_39347ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-21T14:55:25Z",
+      "side": 1,
+      "message": "Well, right now it is defined as type Path []Selector. I was wondering whether it should be type Path struct { ... }",
+      "parentUuid": "40702393_74080fa9",
+      "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b42286_78904715",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-20T05:33:48Z",
       "side": 1,
       "message": "Where do we define what precisely we mean by \"configuration\"? I couldn\u0027t find a reference for that.",
+      "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a867f080_0535076f",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-21T14:55:25Z",
+      "side": 1,
+      "message": "Good point. Could make it Instance.",
+      "parentUuid": "72b42286_78904715",
       "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
