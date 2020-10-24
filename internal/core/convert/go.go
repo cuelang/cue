@@ -405,18 +405,18 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 
 			t := value.Type()
 			for i := 0; i < value.NumField(); i++ {
-				t := t.Field(i)
-				if t.PkgPath != "" {
+				sf := t.Field(i)
+				if sf.PkgPath != "" {
 					continue
 				}
 				val := value.Field(i)
 				if !nilIsTop && isNil(val) {
 					continue
 				}
-				if tag, _ := t.Tag.Lookup("json"); tag == "-" {
+				if tag, _ := sf.Tag.Lookup("json"); tag == "-" {
 					continue
 				}
-				if isOmitEmpty(&t) && isZero(val) {
+				if isOmitEmpty(&sf) && isZero(val) {
 					continue
 				}
 				sub := convertRec(ctx, nilIsTop, val.Interface())
@@ -430,7 +430,7 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 
 				// leave errors like we do during normal evaluation or do we
 				// want to return the error?
-				name := getName(&t)
+				name := getName(&sf)
 				if name == "-" {
 					continue
 				}
