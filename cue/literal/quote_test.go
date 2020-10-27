@@ -15,6 +15,7 @@
 package literal
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -80,9 +81,21 @@ func TestQuote(t *testing.T) {
 			foo
 			"bar"
 			"""`},
+		{form: String.WithTabIndent(3), in: "foo\n\"\"\"bar\"", out: `#"""
+			foo
+			"""bar"
+			"""#`},
+		{form: String.WithTabIndent(3), in: "foo\n\"\"\"\"\"###bar\"", out: `####"""
+			foo
+			"""""###bar"
+			"""####`},
+		{form: String.WithTabIndent(3), in: "foo\n\"\"\"\r\f\\", out: `#"""
+			foo
+			"""\#r\#f\#\
+			"""#`},
 	}
 	for _, tc := range testCases {
-		t.Run(tc.in, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%q", tc.in), func(t *testing.T) {
 			got := tc.form.Quote(tc.in)
 			if got != tc.out {
 				t.Errorf("Quote: %s", cmp.Diff(tc.out, got))
