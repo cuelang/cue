@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b188f586_708701c9",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "We could also apply hashes to single-line strings.\n\nWe should _not_ use quotes for Labels. See Label Form above.",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cae4fb_1effa6ce",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "could move above if f.multiline.",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7440c4_04774232",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "could be moved to after if block",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f6cf44_c28a4b5b",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "This could actually also apply to single-line strings, like when quoting foo\"bar, could perhaps been done by having the search string as an argument.",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7874515_fd14f49b",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "The same applies to multi-line bytes (\u0027\u0027\u0027).",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7bb5e9_938578b4",
+        "filename": "cue/literal/quote_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T19:42:43Z",
+      "side": 1,
+      "message": "Tests with Label, Bytes, single-line with \".",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
