@@ -36,6 +36,23 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4cef0d_207aaedf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-27T09:23:11Z",
+      "side": 1,
+      "message": "Ping on the opaque vs []Selector type for Path?",
+      "revId": "a5dc31894cf592fb5e08a4137caffad27cb9d952",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b42286_78904715",
