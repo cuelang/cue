@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980e36da_9025d4f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "Think we resolved this now?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910dfa9d_92319fd6",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "Perhaps:\n\nA Selector is a component of a path.\n\n?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e4125e_697cba04",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "It seems weird for this comment to refer to a hidden field, rather than a hidden definition. Even if the logic is shared, perhaps say:\n\n\u003e ... not prefixed with a # or _# ...\n\n?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc05925_a44c9ee7",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "This case should presumably never happen - panic instead?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bd9159_763f61aa",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "Given the comment above, does it make sense to panic here in case someone passes a (hidden) definition?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa30a7a2_8ac42412",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:05:45Z",
+      "side": 1,
+      "message": "Similar to above comment: do we even want the user using Str if they are passing in a (hiddne) definition?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
