@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3570ac43_199c6997",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:44:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "980e36da_9025d4f0",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910dfa9d_92319fd6",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-28T09:05:45Z",
       "side": 1,
       "message": "Perhaps:\n\nA Selector is a component of a path.\n\n?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8061737_8ab0235b",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910dfa9d_92319fd6",
       "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
