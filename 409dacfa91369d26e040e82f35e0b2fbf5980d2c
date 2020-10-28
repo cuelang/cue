@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf0935ca_d6802173",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:42:51Z",
+      "side": 1,
+      "message": "That may be clearer. Even though _foo works now too with Def. It\u0027s poor naming, but I\u0027m not even sure if hidden fields should be supported.",
+      "parentUuid": "e7e4125e_697cba04",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdc05925_a44c9ee7",
         "filename": "cue/path.go",
         "patchSetId": 3
@@ -65,6 +83,24 @@
       "writtenOn": "2020-10-28T09:05:45Z",
       "side": 1,
       "message": "This case should presumably never happen - panic instead?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c83c6d6_cbd81139",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:42:51Z",
+      "side": 1,
+      "message": "Good point. Changing to panic.",
+      "parentUuid": "fdc05925_a44c9ee7",
       "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0298b1c1_ff945214",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:42:51Z",
+      "side": 1,
+      "message": "No, because `\"#Foo\"` is valid string label. Just `#Foo` isn\u0027t.",
+      "parentUuid": "78bd9159_763f61aa",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa30a7a2_8ac42412",
         "filename": "cue/path.go",
         "patchSetId": 3
@@ -99,6 +153,24 @@
       "writtenOn": "2020-10-28T09:05:45Z",
       "side": 1,
       "message": "Similar to above comment: do we even want the user using Str if they are passing in a (hiddne) definition?",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885333e2_e12beb05",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T09:42:51Z",
+      "side": 1,
+      "message": "Nope. What is happening here is that we need double quotes if a string is not a valid identifier or would otherwise be interpreted as a definition, but can be an identifier otherwise.",
+      "parentUuid": "fa30a7a2_8ac42412",
       "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
