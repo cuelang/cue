@@ -176,6 +176,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c23a34_e5a59c8b",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:47:15Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "0298b1c1_ff945214",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa30a7a2_8ac42412",
@@ -207,6 +225,24 @@
       "side": 1,
       "message": "Nope. What is happening here is that we need double quotes if a string is not a valid identifier or would otherwise be interpreted as a definition, but can be an identifier otherwise.",
       "parentUuid": "fa30a7a2_8ac42412",
+      "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d389ff1f_b1dc2836",
+        "filename": "cue/path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-10-28T09:47:15Z",
+      "side": 1,
+      "message": "Ah yes. That makes sense.",
+      "parentUuid": "885333e2_e12beb05",
       "revId": "409dacfa91369d26e040e82f35e0b2fbf5980d2c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
