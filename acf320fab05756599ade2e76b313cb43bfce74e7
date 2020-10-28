@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "820047f6_c9220121",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-28T08:48:25Z",
+      "side": 1,
+      "message": "Changed Path and Selector to be opaque types as discussed offline.",
+      "revId": "acf320fab05756599ade2e76b313cb43bfce74e7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
