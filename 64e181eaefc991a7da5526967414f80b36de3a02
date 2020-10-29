@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9120f05c_2e628dec",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Yes, but let\u0027s add that later, as I think the heuristics could get complex and the most important thing right now is just to fix the bug.\n\nLabelForm is indistinguishable from StringForm AFAICS, so I\u0027m not sure how that should happen, or what you mean there. The code is already handling multiline strings for Label, so any change to that feels like it\u0027s appropriate for another PR.",
+      "parentUuid": "b188f586_708701c9",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4cae4fb_1effa6ce",
         "filename": "cue/literal/quote.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-27T19:42:43Z",
       "side": 1,
       "message": "could move above if f.multiline.",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "334d07d5_8f851091",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4cae4fb_1effa6ce",
       "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2020-10-27T19:42:43Z",
       "side": 1,
       "message": "could be moved to after if block",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b5fe8b_d709b45b",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7440c4_04774232",
       "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c2ee583_604ee04d",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Yes, but let\u0027s add that later, as I think the heuristics could get complex and the most important thing right now is just to fix the bug.",
+      "parentUuid": "57f6cf44_c28a4b5b",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7874515_fd14f49b",
         "filename": "cue/literal/quote.go",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2020-10-27T19:42:43Z",
       "side": 1,
       "message": "The same applies to multi-line bytes (\u0027\u0027\u0027).",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22eb75c_a307e5af",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7874515_fd14f49b",
       "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -99,6 +189,24 @@
       "writtenOn": "2020-10-27T19:42:43Z",
       "side": 1,
       "message": "Tests with Label, Bytes, single-line with \".",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac9dd5a_688ca2f9",
+        "filename": "cue/literal/quote_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-10-29T12:55:56Z",
+      "side": 1,
+      "message": "Label is currently defined to be exactly the same as String, so I don\u0027t see that there\u0027s much value in adding an explicit test for it.\n\nTests for Bytes done, and a single line with `\"`.",
+      "parentUuid": "bb7bb5e9_938578b4",
       "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
