@@ -263,22 +263,21 @@ func TestDecode(t *testing.T) {
 	testCases := []struct {
 		in   interface{}
 		want string
-	}{
-		{
-			in:   "str",
-			want: `"str"`,
-		}, {
-			in: func() interface{} {
-				type T struct {
-					B int
-				}
-				type S struct {
-					A string
-					T
-				}
-				return S{}
-			}(),
-			want: `{
+	}{{
+		in:   "str",
+		want: `"str"`,
+	}, {
+		in: func() interface{} {
+			type T struct {
+				B int
+			}
+			type S struct {
+				A string
+				T
+			}
+			return S{}
+		}(),
+		want: `{
 	A: ""
 	B: 0
 }`,
