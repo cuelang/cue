@@ -99,6 +99,9 @@ var tagsWithNames = []string{"json", "yaml", "protobuf"}
 
 func getName(f *reflect.StructField) string {
 	name := f.Name
+	if f.Anonymous {
+		name = ""
+	}
 	for _, s := range tagsWithNames {
 		if tag, ok := f.Tag.Lookup(s); ok {
 			if p := strings.Index(tag, ","); p >= 0 {
@@ -434,7 +437,7 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 				if name == "-" {
 					continue
 				}
-				if sf.Anonymous {
+				if sf.Anonymous && name == "" {
 					obj.Decls = append(obj.Decls, sub)
 					arc, ok := sub.(*adt.Vertex)
 					if ok {
