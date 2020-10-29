@@ -281,7 +281,24 @@ func TestDecode(t *testing.T) {
 	A: ""
 	B: 0
 }`,
-		},
+	}, {
+		in: func() interface{} {
+			type T struct {
+				B int
+			}
+			type S struct {
+				A string
+				T `json:"t"`
+			}
+			return S{}
+		}(),
+		want: `{
+	A: ""
+	t: {
+		B: 0
+	}
+}`,
+	},
 	}
 	c := New(&cue.Runtime{}, nil)
 
