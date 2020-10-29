@@ -36,6 +36,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "854c89b5_bcadf57e",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-29T14:46:53Z",
+      "side": 1,
+      "message": "I guess that as long as # is only introduced for multiline strings, it will not change any valid label into an invalid one (# and multiline are not allowed for labels according to the spec).",
+      "parentUuid": "9120f05c_2e628dec",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4cae4fb_1effa6ce",
@@ -141,6 +159,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc55fb0a_1dec1221",
+        "filename": "cue/literal/quote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-29T14:46:53Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "9c2ee583_604ee04d",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7874515_fd14f49b",
@@ -207,6 +243,24 @@
       "side": 1,
       "message": "Label is currently defined to be exactly the same as String, so I don\u0027t see that there\u0027s much value in adding an explicit test for it.\n\nTests for Bytes done, and a single line with `\"`.",
       "parentUuid": "bb7bb5e9_938578b4",
+      "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac571e0_a689959a",
+        "filename": "cue/literal/quote_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-10-29T14:46:53Z",
+      "side": 1,
+      "message": "That suggestion was based on the assumption there would be a different behavior for labels implemented as part of this change.",
+      "parentUuid": "7ac9dd5a_688ca2f9",
       "revId": "64e181eaefc991a7da5526967414f80b36de3a02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
