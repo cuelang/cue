@@ -1,0 +1,36 @@
+Available tasks:
+
+Config:
+root:
+
+// Any task
+#task: {
+  $after: #task | [...#task]
+}
+
+// Example:
+$id:  "print"
+body: string
+
+// Example: in: "foo", out: "oof"
+$id: "rotateLeft"
+n:   int | *1
+in:  string
+out: string
+
+// Example: in: "foobar", out: "raboof"
+$id: "reverse"
+in:  string
+out: string
+
+// Example: in: "This is a cat.", out: ["This", "is", "a", "cat."]
+$id: "split"
+in:  string
+sep: string
+out: [...]
+
+
+TODO: cases
+- generate new tests based on result of another
+- depend on a group of tests
+- implementability of after
