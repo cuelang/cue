@@ -445,18 +445,19 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 							v.Arcs = append(v.Arcs, a)
 						}
 					}
-				} else {
-					f := ctx.StringLabel(name)
-					obj.Decls = append(obj.Decls, &adt.Field{Label: f, Value: sub})
-					arc, ok := sub.(*adt.Vertex)
-					if ok {
-						arc.Label = f
-					} else {
-						arc = &adt.Vertex{Label: f, Value: sub}
-						arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
-					}
-					v.Arcs = append(v.Arcs, arc)
+					continue
 				}
+
+				f := ctx.StringLabel(name)
+				obj.Decls = append(obj.Decls, &adt.Field{Label: f, Value: sub})
+				arc, ok := sub.(*adt.Vertex)
+				if ok {
+					arc.Label = f
+				} else {
+					arc = &adt.Vertex{Label: f, Value: sub}
+					arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
+				}
+				v.Arcs = append(v.Arcs, arc)
 			}
 
 			return v
