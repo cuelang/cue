@@ -298,8 +298,7 @@ func TestDecode(t *testing.T) {
 		B: 0
 	}
 }`,
-	},
-	}
+	}}
 	c := New(&cue.Runtime{}, nil)
 
 	for _, tc := range testCases {
