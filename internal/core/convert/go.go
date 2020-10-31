@@ -438,10 +438,10 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 					continue
 				}
 				if sf.Anonymous && name == "" {
-					obj.Decls = append(obj.Decls, sub)
 					arc, ok := sub.(*adt.Vertex)
 					if ok {
 						for _, a := range arc.Arcs {
+							obj.Decls = append(obj.Decls, &adt.Field{Label: a.Label, Value: a.Value})
 							v.Arcs = append(v.Arcs, a)
 						}
 					}
