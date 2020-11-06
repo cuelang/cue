@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5bac95_e4a73d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-11-06T07:29:28Z",
+      "side": 1,
+      "message": "The trybot run will be misleading because it\u0027s running the workflow definition from current tip, not the effective \"tip\" that is this CL.",
+      "revId": "f6300ac9d3a996b9345eaa1d63efa9ab0eeb672f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
