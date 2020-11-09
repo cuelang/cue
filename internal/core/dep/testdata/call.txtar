@@ -1,0 +1,19 @@
+-- in.cue --
+import "strings"
+
+a: b: strings.Join(strings.Split(str, sep), sep)
+
+str: "x:y:z"
+sep: ":"
+-- out/dependencies/field --
+"strings".Join
+"strings".Split
+str
+sep
+sep
+-- out/dependencies/all --
+"strings".Join
+"strings".Split
+str
+sep
+sep
