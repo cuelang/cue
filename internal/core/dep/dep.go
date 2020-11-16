@@ -85,6 +85,19 @@ func VisitAll(c *adt.OpContext, n *adt.Vertex, f VisitFunc) error {
 	return nil
 }
 
+// VisitFields calls f for n and all its descendent arcs that have a conjunct
+// that originates from a conjunct in n. Only the conjuncts of n that ended up
+// as a conjunct in an actual field are visited and they are visited for each
+// field in which the occurs.
+func VisitFields(c *adt.OpContext, n *adt.Vertex, f VisitFunc) error {
+	m := marked{}
+
+	m.markExpr(n)
+
+	dynamic(c, n, f, m)
+	return nil
+}
+
 var empty *adt.Vertex
 
 func init() {
