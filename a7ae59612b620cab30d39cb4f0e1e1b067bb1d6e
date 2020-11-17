@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9bd828_518b442f",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_embed.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-11-17T11:37:22Z",
+      "side": 1,
+      "message": "Do you mean \"fails\" here? Because the following command appears to succeed.",
+      "revId": "a7ae59612b620cab30d39cb4f0e1e1b067bb1d6e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
