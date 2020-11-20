@@ -698,9 +698,13 @@ type nodeShared struct {
 	// Disjunction handling
 	touched  bool
 	disjunct adt.Disjunction
-	result_  adt.Vertex
-	isDone   bool
-	stack    []int
+	// keep all errors, then compact at end.
+	// softError adt.ErrorCode // error should be lowest.
+	// map of all positions
+
+	result_ adt.Vertex
+	isDone  bool
+	stack   []int
 
 	// Closedness override.
 	accept adt.Acceptor
@@ -909,6 +913,9 @@ func (n *nodeContext) addConflict(
 
 	var err *adt.ValueError
 	if k1 == k2 {
+		if Debug {
+			fmt.Println("DALKJ")
+		}
 		err = ctx.NewPosf(token.NoPos,
 			"conflicting values %s and %s", ctx.Str(v1), ctx.Str(v2))
 	} else {
