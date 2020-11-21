@@ -162,9 +162,9 @@ CUE programs may omit most of these commas using the following two rules:
 When the input is broken into tokens, a comma is automatically inserted into
 the token stream immediately after a line's final token if that token is
 
-- an identifier
-- null, true, false, bottom, or an integer, floating-point, or string literal
-- one of the characters ), ], or }
+- an identifier, keyword, or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, `}`, or `?`
 
 
 Although commas are automatically inserted, the parser will require
@@ -257,23 +257,15 @@ TODO:
 -->
 
 
-#### Arithmetic
-
-The following pseudo keywords can be used as operators in expressions.
-
-```
-div          mod          quo          rem
-```
-
 ### Operators and punctuation
 
 The following character sequences represent operators and punctuation:
 
 ```
-+     div   &&    ==    <     =     (     )
--     mod   ||    !=    >     :     {     }
-*     quo   &     =~    <=    ?     [     ]     ,
-/     rem   |     !~    >=    !     _|_   ...   .
++     &&    ==    <     =     (     )
+-     ||    !=    >     :     {     }
+*     &     =~    <=    ?     [     ]     ,
+/     |     !~    >=    !     _|_   ...   .
 ```
 <!--
 Free tokens:  ; ~ ^
@@ -330,6 +322,21 @@ or number. Alternatively one could only allow Ei, Yi, and Zi.
 0b0101_0001
 ```
 
+An `si_lit` may not appear after a token that is:
+
+- an identifier, keyword, or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, `}`, `.` or `?`
+
+After any of these tokens, the parts of an `si_lit` are
+broken up into separate tokens.
+
+<--
+So `a + 3.2Ti` gets tokenized as `a` and `3.2Ti`, but
+`a 3.2Ti` gets tokenized as a `a`, `3`, `.`, `2`, and `Ti`.
+-->
+
+
 ### Decimal floating-point literals
 
 A decimal floating-point literal is a representation of
@@ -360,6 +367,19 @@ exponent  = ( "e" | "E" ) [ "+" | "-" ] decimals .
 .12345E+5
 ```
 
+A floating may not appear after a token that is:
+
+- an identifier, keyword, or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, `}`, `.` or `?`
+
+After any of these tokens, the parts of a floating point number are
+broken up into separate tokens.
+
+<--
+So `a + .5e3` gets tokenized `a` and `.5e3`, but
+`a .5e3` gets tokenized as a `a`, `.`, `5`, `e3`.
+-->
 
 ### String and byte sequence literals
 
@@ -2103,7 +2123,7 @@ UnaryExpr  = PrimaryExpr | unary_op UnaryExpr .
 binary_op  = "|" | "&" | "||" | "&&" | "==" | rel_op | add_op | mul_op  .
 rel_op     = "!=" | "<" | "<=" | ">" | ">=" | "=~" | "!~" .
 add_op     = "+" | "-" .
-mul_op     = "*" | "/" | "div" | "mod" | "quo" | "rem" .
+mul_op     = "*" | "/" .
 unary_op   = "+" | "-" | "!" | "*" | rel_op .
 ```
 
@@ -2153,7 +2173,7 @@ and finally `|` (disjunction):
 
 ```
 Precedence    Operator
-    7             *  / div mod quo rem
+    7             *  /
     6             +  -
     5             ==  !=  <  <=  >  >= =~ !~
     4             &&
@@ -2178,76 +2198,24 @@ x == y+1 && y == z-1
 #### Arithmetic operators
 
 Arithmetic operators apply to numeric values and yield a result of the same type
-as the first operand. The three of the four standard arithmetic operators
-`(+, -, *)` apply to integer and decimal floating-point types;
+as the first operand. The four standard arithmetic operators
+`(+, -, *, /)` apply to integer and decimal floating-point types;
 `+` and `*` also apply to lists and strings.
-`/` only applies to decimal floating-point types and
-`div`, `mod`, `quo`, and `rem` only apply to integer types.
 
 ```
 +    sum                    integers, floats, lists, strings, bytes
 -    difference             integers, floats
 *    product                integers, floats, lists, strings, bytes
-/    quotient               floats
-div  division               integers
-mod  modulo                 integers
-quo  quotient               integers
-rem  remainder              integers
+/    quotient               integers, floats
 ```
 
 For any operator that accepts operands of type `float`, any operand may be
-of type `int` or `float`, in which case the result will be `float` if any
-of the operands is `float` or `int` otherwise.
-For `/` the result is always `float`.
+of type `int` or `float`, in which case the result will be `float`
+if it cannot be represented as an `int` or if any of the operands are `float`
+or `int` otherwise.
 
-
-#### Integer operators
-
-For two integer values `x` and `y`,
-the integer quotient `q = x div y` and remainder `r = x mod y `
-implement Euclidean division and
-satisfy the following relationship:
-
-```
-r = x - y*q  with 0 <= r < |y|
-```
-where `|y|` denotes the absolute value of `y`.
-
-```
- x     y    x div y   x mod y
- 5     3       1         2
--5     3      -2         1
- 5    -3      -1         2
--5    -3       2         1
-```
-
-For two integer values `x` and `y`,
-the integer quotient `q = x quo y` and remainder `r = x rem y `
-implement truncated division and
-satisfy the following relationship:
-
-```
-x = q*y + r  and  |r| < |y|
-```
-
-with `x quo y` truncated towards zero.
-
-```
- x     y    x quo y   x rem y
- 5     3       1         2
--5     3      -1        -2
- 5    -3      -1         2
--5    -3       1        -2
-```
-
-A zero divisor in either case results in bottom (an error).
-
-For integer operands, the unary operators `+` and `-` are defined as follows:
-
-```
-+x                          is 0 + x
--x    negation              is 0 - x
-```
+Integer division is implemented through the builtin functions
+`quo`, `rem`, `div` and `mod`.
 
 
 #### Decimal floating-point operators
@@ -2723,6 +2691,57 @@ or([a, b])           a | b
 or([a])              a
 or([])               _|_
 ```
+
+#### `div` and `mod`
+
+For two integer values `x` and `y`,
+the integer quotient `q = x div y` and remainder `r = x mod y `
+implement Euclidean division and
+satisfy the following relationship:
+
+```
+r = x - y*q  with 0 <= r < |y|
+```
+where `|y|` denotes the absolute value of `y`.
+
+```
+ x     y    x div y   x mod y
+ 5     3       1         2
+-5     3      -2         1
+ 5    -3      -1         2
+-5    -3       2         1
+```
+
+### `quo` and `rem`
+
+For two integer values `x` and `y`,
+the integer quotient `q = x quo y` and remainder `r = x rem y `
+implement truncated division and
+satisfy the following relationship:
+
+```
+x = q*y + r  and  |r| < |y|
+```
+
+with `x quo y` truncated towards zero.
+
+```
+ x     y    x quo y   x rem y
+ 5     3       1         2
+-5     3      -1        -2
+ 5    -3      -1         2
+-5    -3       1        -2
+```
+
+A zero divisor in either case results in bottom (an error).
+
+For integer operands, the unary operators `+` and `-` are defined as follows:
+
+```
++x                          is 0 + x
+-x    negation              is 0 - x
+```
+
 
 
 ## Cycles
