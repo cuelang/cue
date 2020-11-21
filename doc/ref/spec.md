@@ -162,9 +162,9 @@ CUE programs may omit most of these commas using the following two rules:
 When the input is broken into tokens, a comma is automatically inserted into
 the token stream immediately after a line's final token if that token is
 
-- an identifier
-- null, true, false, bottom, or an integer, floating-point, or string literal
-- one of the characters ), ], or }
+- an identifier, keyword or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, or `}`
 
 
 Although commas are automatically inserted, the parser will require
@@ -330,6 +330,21 @@ or number. Alternatively one could only allow Ei, Yi, and Zi.
 0b0101_0001
 ```
 
+An `si_lit` may not appear after a token that is:
+
+- an identifier, keyword, or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, `}`, `.` or `?`
+
+After any of these tokens, the parts of an `si_lit` are
+broken up into separate tokens.
+
+<--
+So `a + 3.2Ti` gets tokenized as `a` and `3.2Ti`, but
+`a 3.2Ti` gets tokenized as a `a`, `3`, `.`, `2`, and `Ti`.
+-->
+
+
 ### Decimal floating-point literals
 
 A decimal floating-point literal is a representation of
@@ -360,6 +375,19 @@ exponent  = ( "e" | "E" ) [ "+" | "-" ] decimals .
 .12345E+5
 ```
 
+A floating may not appear after a token that is:
+
+- an identifier, keyword, or bottom
+- a number or string literal, including an interpolation
+- one of the characters `)`, `]`, `}`, `.` or `?`
+
+After any of these tokens, the parts of a floating point number are
+broken up into separate tokens.
+
+<--
+So `a + .5e3` gets tokenized `a` and `.5e3`, but
+`a .5e3` gets tokenized as a `a`, `.`, `5`, `e3`.
+-->
 
 ### String and byte sequence literals
 
