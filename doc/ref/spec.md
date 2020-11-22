@@ -570,14 +570,14 @@ A value is _concrete_ if it is either an atom, or a struct all of whose
 field values are themselves concrete, recursively.
 
 CUE's values also include what we normally think of as types, like `string` and
-`float`.
+`number`.
 But CUE does not distinguish between types and values; only the
 relationship of values in the lattice is important.
 Each CUE "type" subsumes the concrete values that one would normally think
 of as part of that type.
-For example, "hello" is an instance of `string`, and `42.0` is an instance of
-`float`.
-In addition to `string` and `float`, CUE has `null`, `int`, `bool` and `bytes`.
+For example, `"hello"` is an instance of `string`, and `42.0` is an instance of
+`number`.
+In addition to `string` and `number`, CUE has `null`, `int`, `bool` and `bytes`.
 We informally call these CUE's "basic types".
 
 
@@ -585,7 +585,7 @@ We informally call these CUE's "basic types".
 false ⊑ bool
 true  ⊑ bool
 true  ⊑ true
-5.0   ⊑ float
+5     ⊑ int
 bool  ⊑ _
 _|_   ⊑ _
 _|_   ⊑ _|_
@@ -596,7 +596,7 @@ int   ⋢ bool
 bool  ⋢ int
 false ⋢ true
 true  ⋢ false
-float ⋢ 5.0
+int   ⋢ 5
 5     ⋢ 6
 ```
 
@@ -802,7 +802,7 @@ disjunction literals be normalized).
 Expression                       Resolves to
 "tcp" | "udp"                    "tcp" | "udp"
 *"tcp" | "udp"                   "tcp"
-float | *1                       1
+number | *1                      1
 *string | 1.0                    string
 (*1|2) + (2|*3)                  4
 
@@ -895,32 +895,17 @@ bool & (true|false)  true | false
 
 ### Numeric values
 
-The _integer type_ represents the set of all integral numbers.
-The _decimal floating-point type_ represents the set of all decimal floating-point
-numbers.
-They are two distinct types.
-Both are instances instances of a generic `number` type.
+The _numeric type_ defines the set of all numbers.
+The predeclared numeric type is `number`; it is a defined type.
+The _integer type_ defines the set of all integral numbers.
+The predeclared integer type is `int`; it is a defined type
+that is an instance of `number`.
 
-<!--
-                    number
-                   /      \
-                int      float
--->
+A decimal floating point literal is of type `int` if it is an exact
+representation of an integer.
+Integer literals are always of type `int`.
 
-The predeclared number, integer, decimal floating-point types are
-`number`, `int` and `float`; they are defined types.
-<!--
-TODO: should we drop float? It is somewhat preciser and probably a good idea
-to have it in the programmatic API, but it may be confusing to have to deal
-with it in the language.
--->
-
-A decimal floating-point literal always has type `float`;
-it is not an instance of `int` even if it is an integral number.
-
-Integer literals are always of type `int` and don't match type `float`.
-
-Numeric literals are exact values of arbitrary precision.
+Numeric literals are values of arbitrary precision.
 If the operation permits it, numbers should be kept in arbitrary precision.
 
 Implementation restriction: although numeric values have arbitrary precision
@@ -968,17 +953,17 @@ For any [comparison operator](#Comparison-operators) `op` except `==`,
 `op a` is the disjunction of every `x` such that `x op a`.
 
 ```
-2 & >=2 & <=5           // 2, where 2 is either an int or float.
-2.5 & >=1 & <=5         // 2.5
-2 & >=1.0 & <3.0        // 2.0
-2 & >1 & <3.0           // 2.0
-2.5 & int & >1 & <5     // _|_
-2.5 & float & >1 & <5   // 2.5
-int & 2 & >1.0 & <3.0   // _|_
-2.5 & >=(int & 1) & <5  // _|_
->=0 & <=7 & >=3 & <=10  // >=3 & <=7
-!=null & 1              // 1
->=5 & <=5               // 5
+2 & >=2 & <=5            // 2
+2.5 & >=1 & <=5          // 2.5
+2 & >=1.0 & <3.0         // 2.0
+2 & >1 & <3.0            // 2.0
+2.5 & int & >1 & <5      // _|_
+2.5 & number & >1 & <5   // 2.5
+int & 2 & >1.0 & <3.0    // _|_
+2.5 & >=(int & 1) & <5   // _|_
+>=0 & <=7 & >=3 & <=10   // >=3 & <=7
+!=null & 1               // 1
+>=5 & <=5                // 5
 ```
 
 
@@ -1002,7 +987,7 @@ instance. It can be considered the type of all structs.
 {a: 1} ⊑ {}
 {a: 1, b: 1} ⊑ {a: 1}
 {a: 1} ⊑ {a: int}
-{a: 1, b: 1} ⊑ {a: int, b: float}
+{a: 1, b: 1} ⊑ {a: int, b: number}
 
 {} ⋢ {a: 1}
 {a: 2} ⋢ {a: 1}
@@ -1711,13 +1696,13 @@ len       close and or
 Types
 null      The null type and value
 bool      All boolean values
+number    All numbers
 int       All integral numbers
-float     All decimal floating-point numbers
 string    Any valid UTF-8 sequence
 bytes     Any valid byte sequence
 
 Derived   Value
-number    int | float
+float     number (a legacy alias)
 uint      >=0
 uint8     >=0 & <=255
 int8      >=-128 & <=127
@@ -2187,25 +2172,24 @@ x == y+1 && y == z-1
 
 #### Arithmetic operators
 
-Arithmetic operators apply to numeric values and yield a result of the same type
-as the first operand. The four standard arithmetic operators
-`(+, -, *, /)` apply to integer and decimal floating-point types;
-`+` and `*` also apply to strings and bytes.
+Arithmetic operators apply to numeric values and yield numeric value.
+The four standard arithmetic operators
+`(+, -, *, /)` apply to integer and decimal floating-point types.
+`+` also applies to strings and bytes.
 
 ```
-+    sum                    integers, floats, strings, bytes
--    difference             integers, floats
-*    product                integers, floats, strings, bytes
-/    quotient               integers, floats
++    sum
+-    difference
+*    product
+/    floating point quotient
 ```
 
-For any operator that accepts operands of type `float`, any operand may be
-of type `int` or `float`, in which case the result will be `float`
-if it cannot be represented as an `int` or if any of the operands are `float`,
-or `int` otherwise.
+The result of an arithmetic operator is of type `int` if both its operands
+are of type `int` and the result is an exact integral value.
 So the result of `1 / 2` is `0.5` and is of type `float`.
 
 The result of division by zero is bottom (an error).
+
 <!-- TODO: consider making it +/- Inf -->
 Integer division is implemented through the builtin functions
 `quo`, `rem`, `div`, and `mod`.
