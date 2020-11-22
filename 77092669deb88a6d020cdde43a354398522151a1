@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcee8f2_75afea72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-22T14:23:24Z",
+      "side": 1,
+      "message": "Note that it is not sure yet whether we will actually allow `a.4.f`. This is part of the effort to prepare CUE for full backwards compatibility. It makes it possible and it allows to introduce it later in a backwards compatible way.\n\nThis also addresses the outstanding issue on what to do with quo/mod/rem/div. These work fine, but introduce more syntactic complexity than they are worth now.\n\n",
+      "revId": "77092669deb88a6d020cdde43a354398522151a1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
