@@ -53,9 +53,16 @@ func Runes(s string) []rune {
 	return []rune(s)
 }
 
+// ExactRunes reports whether the number of runes (Unicode codepoints) in a
+// string is equal to the provided number. ExactRunes can be used as a field
+// constraint to accept all strings for which this property holds.
+func ExactRunes(s string, num int) bool {
+	return len([]rune(s)) == num
+}
+
 // MinRunes reports whether the number of runes (Unicode codepoints) in a string
 // is at least a certain minimum. MinRunes can be used a a field constraint to
-// except all strings for which this property holds.
+// accept all strings for which this property holds.
 func MinRunes(s string, min int) bool {
 	// TODO: CUE strings cannot be invalid UTF-8. In case this changes, we need
 	// to use the following conversion to count properly:
@@ -65,7 +72,7 @@ func MinRunes(s string, min int) bool {
 
 // MaxRunes reports whether the number of runes (Unicode codepoints) in a string
 // exceeds a certain maximum. MaxRunes can be used a a field constraint to
-// except all strings for which this property holds
+// accept all strings for which this property holds
 func MaxRunes(s string, max int) bool {
 	// See comment in MinRunes implementation.
 	return len([]rune(s)) <= max

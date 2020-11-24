@@ -38,6 +38,16 @@ var pkg = &internal.Package{
 			}
 		},
 	}, {
+		Name:   "ExactRunes",
+		Params: []adt.Kind{adt.StringKind},
+		Result: adt.BoolKind,
+		Func: func(c *internal.CallCtxt) {
+			s, num := c.String(0), c.Int(1)
+			if c.Do() {
+				c.Ret = ExactRunes(s, num)
+			}
+		},
+	}, {
 		Name:   "Runes",
 		Params: []adt.Kind{adt.StringKind},
 		Result: adt.ListKind,
