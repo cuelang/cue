@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2239122d_94c06a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-11-25T16:30:32Z",
+      "side": 1,
+      "message": "I\u0027m nowhere near close enough to the detail to review the code changes... but per our offline chat I verified the behaviour of https://cue-review.googlesource.com/c/cue/+/7742/2; this change is in that relation chain. ",
+      "revId": "6ba4aa0ed14486fb09685859a4291ab3623a0dd7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
