@@ -20,6 +20,9 @@ import (
 	"sort"
 
 	"cuelang.org/go/cue"
+	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/core/adt"
 )
 
 // Drop reports the suffix of list x after the first n elements,
@@ -97,30 +100,30 @@ func Drop(x []cue.Value, n int) ([]cue.Value, error) {
 //
 //    [1, [2, 3], [], 4]
 //
-func FlattenN(xs cue.Value, depth int) ([]cue.Value, error) {
-	var flattenN func(cue.Value, int) ([]cue.Value, error)
-	flattenN = func(xs cue.Value, depth int) ([]cue.Value, error) {
-		var res []cue.Value
-		iter, err := xs.List()
-		if err != nil {
-			return nil, err
-		}
-		for iter.Next() {
-			val, _ := iter.Value().Default()
-			if val.Kind() == cue.ListKind && depth != 0 {
-				d := depth - 1
-				values, err := flattenN(val, d)
-				if err != nil {
-					return nil, err
-				}
-				res = append(res, values...)
-			} else {
-				res = append(res, val)
-			}
-		}
-		return res, nil
+func FlattenN(xs cue.Value, depth int) (adt.Expr, error) {
+	_, nx := internal.CoreValue(xs)
+	n := nx.(*adt.Vertex).Default()
+
+	if !n.IsList() {
+		return nil, errors.Newf(adt.Pos(n),
+			"cannot use value %s (type %s) as list", xs, n.Kind())
 	}
-	return flattenN(xs, depth)
+
+	result := &adt.ListLit{}
+	flattenN(result, n, depth)
+	return result, nil
+}
+
+func flattenN(result *adt.ListLit, n *adt.Vertex, depth int) {
+	for _, x := range n.Elems() {
+		x = x.Default()
+
+		if x.IsList() && depth != 0 {
+			flattenN(result, x, depth-1)
+		} else {
+			result.Elems = append(result.Elems, x)
+		}
+	}
 }
 
 // Take reports the prefix of length n of list x, or x itself if n > len(x).
