@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2dbc988_6f1a3bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-25T15:47:12Z",
+      "side": 1,
+      "message": "See https://cue-review.googlesource.com/c/cue/+/7643 for the old implementation, most notably isTask().",
+      "revId": "3a3dfee31ef8da268f8623bb96f5c8aa50743e61",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
