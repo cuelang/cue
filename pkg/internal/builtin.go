@@ -127,7 +127,7 @@ func toBuiltin(ctx *adt.OpContext, b *Builtin) *adt.Builtin {
 		}()
 		b.Func(c)
 		switch v := c.Ret.(type) {
-		case adt.Value:
+		case adt.Expr:
 			return v
 		case bottomer:
 			return v.Bottom()

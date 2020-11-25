@@ -30,7 +30,7 @@ var pkg = &internal.Package{
 	}, {
 		Name:   "FlattenN",
 		Params: []adt.Kind{adt.TopKind, adt.IntKind},
-		Result: adt.ListKind,
+		Result: adt.TopKind,
 		Func: func(c *internal.CallCtxt) {
 			xs, depth := c.Value(0), c.Int(1)
 			if c.Do() {
