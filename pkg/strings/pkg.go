@@ -39,7 +39,7 @@ var pkg = &internal.Package{
 		},
 	}, {
 		Name:   "ExactRunes",
-		Params: []adt.Kind{adt.StringKind},
+		Params: []adt.Kind{adt.StringKind, adt.IntKind},
 		Result: adt.BoolKind,
 		Func: func(c *internal.CallCtxt) {
 			s, num := c.String(0), c.Int(1)
