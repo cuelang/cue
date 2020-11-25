@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fa94fb_aae897e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-11-25T16:36:12Z",
+      "side": 1,
+      "message": "Again, I look forward to getting closer to the code... but for now my +1 amounts to having confirmed that linked issue is fixed 😊",
+      "revId": "345d1aee5a9552a83b724088813de2f004706fb4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
