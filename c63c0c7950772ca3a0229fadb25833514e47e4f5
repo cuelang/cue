@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fe22c1_1f03d8da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-11-25T16:32:21Z",
+      "side": 1,
+      "message": "Full disclosure: I don\u0027t use Subsume, so my +1 here is along the same lines as my approval for 7746; I verified these changes don\u0027t break any of my code 😊",
+      "revId": "c63c0c7950772ca3a0229fadb25833514e47e4f5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
