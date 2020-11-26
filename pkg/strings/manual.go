@@ -53,10 +53,10 @@ func Runes(s string) []rune {
 	return []rune(s)
 }
 
-// ExactRunes reports whether the number of runes (Unicode codepoints) in a
-// string is equal to the provided number. ExactRunes can be used as a field
+// NumRunes reports whether the number of runes (Unicode codepoints) in a
+// string is equal to the provided number. NumRunes can be used as a field
 // constraint to accept all strings for which this property holds.
-func ExactRunes(s string, num int) bool {
+func RunRunes(s string, num int) bool {
 	return len([]rune(s)) == num
 }
 

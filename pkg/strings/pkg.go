@@ -38,13 +38,13 @@ var pkg = &internal.Package{
 			}
 		},
 	}, {
-		Name:   "ExactRunes",
+		Name:   "NumRunes",
 		Params: []adt.Kind{adt.StringKind, adt.IntKind},
 		Result: adt.BoolKind,
 		Func: func(c *internal.CallCtxt) {
 			s, num := c.String(0), c.Int(1)
 			if c.Do() {
-				c.Ret = ExactRunes(s, num)
+				c.Ret = NumRunes(s, num)
 			}
 		},
 	}, {
