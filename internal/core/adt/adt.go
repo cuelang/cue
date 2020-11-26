@@ -87,6 +87,11 @@ type Expr interface {
 	expr()
 }
 
+// A BaseValue is any Value or a *Marker. It indicates the type of a Vertex.
+type BaseValue interface {
+	Kind() Kind
+}
+
 // A Value represents a node in the evaluated data graph.
 //
 // All Values values can also be used as a Expr.
@@ -148,9 +153,7 @@ func (x *Vertex) Concreteness() Concreteness {
 	}
 }
 
-func (x *NodeLink) Concreteness() Concreteness     { return Concrete }
-func (x *ListMarker) Concreteness() Concreteness   { return Concrete }
-func (x *StructMarker) Concreteness() Concreteness { return Concrete }
+func (x *NodeLink) Concreteness() Concreteness { return Concrete }
 
 func (*Conjunction) Concreteness() Concreteness { return Constraint }
 func (*Disjunction) Concreteness() Concreteness { return Constraint }
