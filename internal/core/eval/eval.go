@@ -345,6 +345,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		closedInfo, _ = v.Parent.Closed.(*acceptor)
 	}
 
+	isHidden := false
 	if !v.Label.IsInt() && closedInfo != nil && !closedInfo.ignore {
 		ci := closedInfo
 		// Visit arcs recursively to validate and compute error.
@@ -358,11 +359,13 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 			v.SetValue(c, adt.Finalized, err)
 			return shared
 
-		case !ok: // hidden field
+		case !ok:
+			isHidden = true
 			// A hidden field is exempt from checking. Ensure that the
 			// closedness doesn't carry over into children.
 			// TODO: make this more fine-grained per package, allowing
 			// checked restrictions to be defined within the package.
+
 			closedInfo = closedInfo.clone()
 			for i := range closedInfo.Canopy {
 				closedInfo.Canopy[i].IsDef = false
@@ -389,12 +392,24 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		*v = saved
 		v.BaseValue = cycle
 
-		if closedInfo != nil {
-			ci := closedInfo.clone()
-			v.Closed = ci
-			// TODO(performance): use closedInfo.Compact.
-			// TODO: should be clear the list flag here?
-		}
+		// _ = isHidden
+		// if closedInfo != nil {
+		// 	ci := closedInfo.clone()
+		// 	v.Closed = ci
+		// 	// TODO(performance): use closedInfo.Compact.
+		// 	// TODO: should be clear the list flag here?
+		// }
+		Compact(v, isHidden)
+
+		// if Debug {
+		// 	fmt.Println(count, "----------------------")
+		// 	fmt.Println("PAR")
+		// 	fmt.Println(closedInfo)
+		// 	ci, _ := v.Closed.(*acceptor)
+		// 	fmt.Println("SLF")
+		// 	fmt.Println(ci)
+		// 	count++
+		// }
 
 		v.UpdateStatus(adt.Evaluating)
 
@@ -451,6 +466,8 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 
 	return shared
 }
+
+var count int
 
 func isStruct(v *adt.Vertex) bool {
 	_, ok := v.BaseValue.(*adt.StructMarker)
@@ -646,6 +663,7 @@ func (n *nodeContext) updateClosedInfo() {
 		// later. Logically we're done.
 	}
 
+	// TODO: remove this
 	if n.node.IsList() {
 		return
 	}
