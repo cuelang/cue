@@ -16,6 +16,23 @@
       "message": "Getting a different panic on this (change-7766) commit (3a0d28b)\n\n```\npanic: runtime error: invalid memory address or nil pointer dereference [recovered]\n        panic: runtime error: invalid memory address or nil pointer dereference\n[signal SIGSEGV: segmentation violation code\u003d0x1 addr\u003d0x18 pc\u003d0x6d53c6]\n\ngoroutine 1 [running]:\ncuelang.org/go/cmd/cue/cmd.recoverError(0xc000bcfec0)\n        /home/tony/cue/gerrit/cmd/cue/cmd/root.go:221 +0x95\npanic(0xbd1940, 0x11a8f20)\n        /usr/local/go/src/runtime/panic.go:969 +0x1b9\ncuelang.org/go/internal/core/adt.pos(0x0, 0x0, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/adt/context.go:639 +0x26\ncuelang.org/go/internal/core/adt.(*Builtin).call(0xc00061c230, 0xc000638f50, 0xc0002a1aa0, 0xc00052b040, 0x2, 0x2, 0x1, 0x2)\n        /home/tony/cue/gerrit/internal/core/adt/expr.go:1006 +0x237\ncuelang.org/go/internal/core/adt.(*CallExpr).evaluate(0xc000395350, 0xc000638f50, 0xc000395350, 0x7b77b55e1cb0)\n        /home/tony/cue/gerrit/internal/core/adt/expr.go:926 +0x1db\ncuelang.org/go/internal/core/adt.(*OpContext).evalState(0xc000638f50, 0xd9b900, 0xc000395350, 0xd9b902, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/adt/context.go:520 +0x4f8\ncuelang.org/go/internal/core/adt.(*OpContext).eval(...)\n        /home/tony/cue/gerrit/internal/core/adt/context.go:495\ncuelang.org/go/internal/core/adt.(*OpContext).Evaluate(0xc000638f50, 0xc000406b90, 0xd9b900, 0xc000395350, 0xc000395350, 0x40bc01, 0xc000020000)\n        /home/tony/cue/gerrit/internal/core/adt/context.go:458 +0xf4\ncuelang.org/go/internal/core/eval.(*nodeContext).evalExpr(0xc000360f00, 0xc000406b90, 0xd8dfa0, 0xc000395350, 0x0)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:1194 +0x194\ncuelang.org/go/internal/core/eval.(*nodeContext).addExprConjunct(0xc000360f00, 0xc000406b90, 0xd8dfa0, 0xc000395350, 0xc000000000)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:1146 +0x1f1\ncuelang.org/go/internal/core/eval.(*nodeContext).addExprConjunct(0xc000360f00, 0xc000406b90, 0xd8e160, 0xc0005da4e0, 0x7b7700000000)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:1127 +0x32e\ncuelang.org/go/internal/core/eval.(*Evaluator).evalVertex(0xc0001dd8c0, 0xc000638f50, 0xc000d34000, 0xc0002ce704, 0x0, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:428 +0x2d9\ncuelang.org/go/internal/core/eval.(*Evaluator).UnifyAccept(0xc0001dd8c0, 0xc000638f50, 0xc000d34000, 0xda0204, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:288 +0xa7\ncuelang.org/go/internal/core/eval.(*Evaluator).Unify(0xc0001dd8c0, 0xc000638f50, 0xc000d34000, 0xc000346d04)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:262 +0x50\ncuelang.org/go/internal/core/eval.(*nodeContext).completeArcs(0xc000360600, 0xc000480004)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:644 +0xe6\ncuelang.org/go/internal/core/eval.(*nodeContext).postDisjunct(0xc000360600, 0xbdcf04)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:621 +0x490\ncuelang.org/go/internal/core/eval.(*nodeContext).updateResult(0xc000360600, 0x4, 0x7287e0)\n        /home/tony/cue/gerrit/internal/core/eval/disjunct.go:132 +0x4c\ncuelang.org/go/internal/core/eval.(*nodeContext).tryDisjuncts(0xc000360600, 0xc0001a9404, 0xd8e160)\n        /home/tony/cue/gerrit/internal/core/eval/disjunct.go:203 +0x1a7\ncuelang.org/go/internal/core/eval.(*Evaluator).evalVertex(0xc0001dd8c0, 0xc000638f50, 0xc00048db90, 0xc000bcd504, 0x0, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:458 +0x3b5\ncuelang.org/go/internal/core/eval.(*Evaluator).UnifyAccept(0xc0001dd8c0, 0xc000638f50, 0xc00048db90, 0xc0f704, 0x0, 0x0)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:288 +0xa7\ncuelang.org/go/internal/core/eval.(*Evaluator).Unify(0xc0001dd8c0, 0xc000638f50, 0xc00048db90, 0xc0003e6c04)\n        /home/tony/cue/gerrit/internal/core/eval/eval.go:262 +0x50\n```",
       "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14393847_5fe2241d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-11-26T20:23:09Z",
+      "side": 1,
+      "message": "I\u0027m also using list.FlattenN in my test config. Maybe the error is in there? Seem to be getting some nil values when adding an error about that list function (which I didn\u0027t expect)",
+      "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
