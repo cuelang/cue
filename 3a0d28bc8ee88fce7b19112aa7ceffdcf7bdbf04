@@ -69,6 +69,24 @@
       "parentUuid": "30767ab8_672eef77",
       "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc2c893_27f900ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-11-26T22:07:07Z",
+      "side": 1,
+      "message": "This looks to be the line in my config where the error is happening: https://github.com/hofstadter-io/hofmod-server/blob/master/gen/server.cue#L47",
+      "parentUuid": "656688c4_c3dcf7d8",
+      "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
