@@ -969,7 +969,7 @@ func (x *Builtin) validate(c *OpContext, v Value) *Bottom {
 
 func bottom(v Value) *Bottom {
 	if x, ok := v.(*Vertex); ok {
-		v = x.Value
+		v = x.ActualValue()
 	}
 	b, _ := v.(*Bottom)
 	return b
