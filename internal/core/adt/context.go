@@ -351,7 +351,7 @@ func (c *OpContext) Resolve(env *Environment, r Resolver) (*Vertex, *Bottom) {
 	}
 
 	for {
-		x, ok := arc.Value.(*Vertex)
+		x, ok := arc.BaseValue.(*Vertex)
 		if !ok {
 			break
 		}
@@ -424,7 +424,7 @@ func (c *OpContext) getDefault(v Value, scalar bool) (result Value, ok bool) {
 
 	case *Vertex:
 		// TODO: return vertex if not disjunction.
-		switch t := x.Value.(type) {
+		switch t := x.BaseValue.(type) {
 		case *Disjunction:
 			d = t
 
@@ -435,7 +435,7 @@ func (c *OpContext) getDefault(v Value, scalar bool) (result Value, ok bool) {
 			if !scalar {
 				return x, true
 			}
-			return x.ActualValue(), true
+			return x.Value(), true
 		}
 
 	case *Disjunction:
@@ -527,7 +527,7 @@ func (c *OpContext) evalState(v Expr, state VertexStatus) (result Value) {
 		}
 		if isIncomplete(arc) {
 			if arc != nil {
-				return arc.ActualValue() // *Bottom
+				return arc.Value() // *Bottom
 			}
 			return nil
 		}
@@ -550,8 +550,8 @@ func (c *OpContext) lookup(x *Vertex, pos token.Pos, l Feature) *Vertex {
 	}
 
 	var kind Kind
-	if x.Value != nil {
-		kind = x.Value.Kind()
+	if x.BaseValue != nil {
+		kind = x.BaseValue.Kind()
 	}
 
 	switch kind {
@@ -653,7 +653,7 @@ func (c *OpContext) node(x Expr, scalar bool) *Vertex {
 
 	node, ok := v.(*Vertex)
 	if ok {
-		v = node.ActualValue()
+		v = node.Value()
 	}
 	switch nv := v.(type) {
 	case nil:
@@ -940,7 +940,7 @@ func (c *OpContext) newBool(b bool) Value {
 }
 
 func (c *OpContext) newList(src ast.Node, parent *Vertex) *Vertex {
-	return &Vertex{Parent: parent, Value: &ListMarker{}}
+	return &Vertex{Parent: parent, BaseValue: &ListMarker{}}
 }
 
 // Str reports a debug string of x.
