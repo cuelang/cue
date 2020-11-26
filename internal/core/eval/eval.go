@@ -241,6 +241,10 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 	// gets the concrete value.
 	//
 	if v.Value == nil {
+		switch resultValue.(type) {
+		case *adt.StructMarker, *adt.ListMarker:
+			adt.Assert("unreachable", false)
+		}
 		return resultValue
 	}
 	return v
