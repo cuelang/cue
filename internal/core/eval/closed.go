@@ -42,6 +42,7 @@ package eval
 
 import (
 	"fmt"
+	"strings"
 
 	"cuelang.org/go/internal/core/adt"
 )
@@ -748,44 +749,90 @@ type info struct {
 	reverse  adt.ID
 }
 
-func (c *acceptor) Compact(all []adt.Conjunct) (compacted []CloseDef) {
-	a := c.Canopy
-	if len(a) == 0 {
-		return nil
+// Compact updates closedness info by cloning and compacting this info from
+// the parent.
+//
+// A node is used if it itself or any of its descendant nodes are used.
+//
+// A CloseDef node can be removed from the list if it:
+//   - is not in use by any of the conjuncts
+//   - has no descendants that are marked
+//   - is a top-level "and" node that is required
+//
+func Compact(v *adt.Vertex, allowAll bool) {
+	if v.Parent == nil {
+		return
 	}
 
-	marked := make([]info, len(a))
+	c := closedInfo(v.Parent)
+	if len(c.Canopy) == 0 {
+		return
+	}
+
+	marked := make([]info, len(c.Canopy))
 
 	c.markParents(0, marked)
 
+	// Mark top-level required ands.
+	c.visitAnd(0, func(id adt.ID, n CloseDef) bool {
+		// TODO: Ideally we should only marked required nodes, but that
+		// seems to lead to an error in one of the tests. Investigate.
+		// if n.isRequired() {
+		marked[id].referred = true
+		// }
+		return true
+	})
+
+	// // Mark first
+	// marked[0].referred = true
+
 	// Mark all entries that cannot be dropped.
-	for _, x := range all {
+	marked[0].referred = true
+	for _, x := range v.Conjuncts {
 		c.markUsed(x.CloseID, marked)
 	}
 
 	// Compute compact numbers and reverse.
+	closed := false
 	k := adt.ID(0)
 	for i, x := range marked {
 		if x.referred {
 			marked[i].replace = k
 			marked[k].reverse = adt.ID(i)
 			k++
+			closed = closed || c.Canopy[i].IsClosed
 		}
 	}
 
-	compacted = make([]CloseDef, k)
+	// if int(k) == len(c.Canopy) && !closed && !allowAll &&
+	// 	v.Parent.Status() == adt.Finalized {
+	// 	v.Closed = &acceptor{
+	// 		Canopy:   c.Canopy,
+	// 		isClosed: c.isClosed,
+	// 	}
+	// 	return
+	// }
+
+	compacted := make([]CloseDef, k)
+	v.Closed = &acceptor{
+		Canopy:   compacted,
+		isClosed: c.isClosed,
+	}
 
 	for i := range compacted {
 		orig := c.Canopy[marked[i].reverse]
 
 		and := orig.And
 		if and != embedRoot {
-			and = marked[orig.And].replace
+			for !marked[and].referred {
+				and = c.Canopy[and].And
+			}
+			and = marked[and].replace
 		}
 		compacted[i] = CloseDef{
 			Src:   orig.Src,
 			And:   and,
-			IsDef: orig.IsDef,
+			IsDef: orig.IsDef && !allowAll,
 		}
 
 		last := adt.ID(i)
@@ -798,20 +845,19 @@ func (c *acceptor) Compact(all []adt.Conjunct) (compacted []CloseDef) {
 	}
 
 	// Update conjuncts
-	for i, x := range all {
-		all[i].CloseID = marked[x.ID()].replace
+	for i, x := range v.Conjuncts {
+		v.Conjuncts[i].CloseID = marked[x.ID()].replace
 	}
-
-	return compacted
 }
 
 func (c *acceptor) markParents(parent adt.ID, info []info) {
 	// Ands are arranged in a ring, so check for parent, not 0.
 	c.visitAnd(parent, func(i adt.ID, x CloseDef) bool {
+		info[i].up = parent
 		c.visitEmbed(i, func(j adt.ID, x CloseDef) bool {
-			info[j-1].up = i
-			info[j].up = i
 			c.markParents(j, info)
+			info[j-1].up = i // embedRoot
+			info[j].up = j - 1
 			return true
 		})
 		return true
@@ -823,13 +869,37 @@ func (c *acceptor) markUsed(id adt.ID, marked []info) {
 		return
 	}
 
-	if id > 0 && c.Canopy[id-1].And == embedRoot {
-		marked[id-1].referred = true
-	}
+	c.markUsed(marked[id].up, marked)
 
-	for i := id; !marked[i].referred; i = c.Canopy[i].And {
+	// TODO: mark only first and required.
+	for i := id; i != -1 && !marked[i].referred; i = c.Canopy[i].And {
 		marked[i].referred = true
 	}
+}
 
-	c.markUsed(marked[id].up, marked)
+func acceptorString(c *acceptor) string {
+	if c == nil {
+		return "null"
+	}
+	if c == nil || len(c.Canopy) == 0 {
+		return "nil"
+	}
+
+	w := &strings.Builder{}
+	idStr := func(d adt.ID) interface{} {
+		if d < 0 {
+			return "-"
+		}
+		return d
+	}
+
+	for i, c := range c.Canopy {
+		fmt.Fprintf(w, "%d:{", i)
+		fmt.Fprintf(w, "and: %v, ", idStr(c.And))
+		fmt.Fprintf(w, "embed: %d, ", c.NextEmbed)
+		fmt.Fprintf(w, "def: %v, ", c.IsDef)
+		fmt.Fprintf(w, "close: %v", c.IsClosed)
+		w.WriteString("}\n")
+	}
+	return w.String()
 }
