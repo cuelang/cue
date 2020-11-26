@@ -653,7 +653,7 @@ func (c *OpContext) node(x Expr, scalar bool) *Vertex {
 
 	node, ok := v.(*Vertex)
 	if ok {
-		v = node.Value
+		v = node.ActualValue()
 	}
 	switch nv := v.(type) {
 	case nil:
@@ -664,10 +664,9 @@ func (c *OpContext) node(x Expr, scalar bool) *Vertex {
 		c.AddBottom(nv)
 		return emptyNode
 
-	case *StructMarker, *ListMarker:
+	case *Vertex:
 		if node == nil {
-			Assert("unexpected markers with nil node", false)
-			return emptyNode
+			panic("unexpected markers with nil node")
 		}
 
 	default:
