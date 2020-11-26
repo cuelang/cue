@@ -33,6 +33,24 @@
       "message": "I\u0027m also using list.FlattenN in my test config. Maybe the error is in there? Seem to be getting some nil values when adding an error about that list function (which I didn\u0027t expect)",
       "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30767ab8_672eef77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-26T21:41:41Z",
+      "side": 1,
+      "message": "I\u0027ve rebassed the new FlattenN to move after this change.\n\nCould you try again?\n\nIt would also be good to know what the value and type is of n before the call to Source in context.go:639.\n\nThis seems like a much easier problem to fix at least.",
+      "parentUuid": "14393847_5fe2241d",
+      "revId": "3a0d28bc8ee88fce7b19112aa7ceffdcf7bdbf04",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
