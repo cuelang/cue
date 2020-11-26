@@ -34,25 +34,35 @@ func TestInsert(t *testing.T) {
 		at:     0,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 1,
-		out:    "&( 0[] *1[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}`,
 	}, {
 		tree:   []CloseDef{{}},
 		at:     0,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 1,
-		out:    "&( 0[] *1[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}`,
 	}, {
 		tree:   []CloseDef{0: {And: 1}, {And: 0, IsDef: true}},
 		at:     0,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 2,
-		out:    "&( 0[] *2[] *1[])",
+		out: `
+		0:{and: 2, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}
+		2:{and: 1, embed: 0, def: true, close: false}`,
 	}, {
 		tree:   []CloseDef{0: {And: 1}, 1: {And: 0, IsDef: true}},
 		at:     1,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 2,
-		out:    "&( 0[] 1[] *2[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 2, embed: 0, def: false, close: false}
+		2:{and: 0, embed: 0, def: true, close: false}`,
 	}, {
 		tree: []CloseDef{
 			0: {And: 1},
@@ -62,7 +72,11 @@ func TestInsert(t *testing.T) {
 		at:     1,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 3,
-		out:    "&( 0[] 1[] *3[] *2[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 3, embed: 0, def: false, close: false}
+		2:{and: 0, embed: 0, def: true, close: false}
+		3:{and: 2, embed: 0, def: true, close: false}`,
 	}, {
 		tree: []CloseDef{
 			0: {And: 1},
@@ -73,7 +87,12 @@ func TestInsert(t *testing.T) {
 		at:     1,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 4,
-		out:    "&( 0[] 1[&( 3[])] *4[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 4, embed: 2, def: false, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 3, embed: 0, def: false, close: false}
+		4:{and: 0, embed: 0, def: true, close: false}`,
 	}, {
 		tree: []CloseDef{
 			0: {And: 1},
@@ -84,37 +103,62 @@ func TestInsert(t *testing.T) {
 		at:     3,
 		typ:    (*acceptor).InsertDefinition,
 		wantID: 4,
-		out:    "&( 0[] *1[&( 3[] *4[])])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 2, def: true, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 4, embed: 0, def: false, close: false}
+		4:{and: 3, embed: 0, def: true, close: false}`,
 	}, {
 		tree:   nil,
 		at:     0,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 2,
-		out:    "&( 0[&( 2[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}`,
 	}, {
 		tree:   []CloseDef{{}},
 		at:     0,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 2,
-		out:    "&( 0[&( 2[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}`,
 	}, {
 		tree:   []CloseDef{0: {And: 1}, 1: {And: 0, IsDef: true}},
 		at:     1,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 3,
-		out:    "&( 0[] *1[&( 3[])])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 2, def: true, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 3, embed: 0, def: false, close: false}`,
 	}, {
 		tree:   []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
 		at:     0,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 4,
-		out:    "&( 0[&( 4[])&( 2[])])",
+		out: `
+		0:{and: 0, embed: 3, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}
+		3:{and: -, embed: 1, def: false, close: false}
+		4:{and: 4, embed: 0, def: false, close: false}`,
 	}, {
 		tree:   []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
 		at:     1,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 4,
-		out:    "&( 0[&( 2[])&( 4[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 3, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}
+		3:{and: -, embed: 0, def: false, close: false}
+		4:{and: 4, embed: 0, def: false, close: false}`,
 	}, {
 		tree: []CloseDef{
 			0: {And: 1},
@@ -124,22 +168,33 @@ func TestInsert(t *testing.T) {
 		at:     2,
 		typ:    (*acceptor).InsertEmbed,
 		wantID: 4,
-		out:    "&( 0[] 1[] 2[&( 4[])])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 2, embed: 0, def: false, close: false}
+		2:{and: 0, embed: 3, def: false, close: false}
+		3:{and: -, embed: 0, def: false, close: false}
+		4:{and: 4, embed: 0, def: false, close: false}`,
 	}}
 	for i, tc := range testCases {
 		t.Run(fmt.Sprint(i), func(t *testing.T) {
 			c := &acceptor{Canopy: tc.tree}
-			got := tc.typ(c, tc.at, nil)
+			gotID := tc.typ(c, tc.at, nil)
 
-			if got != tc.wantID {
-				t.Errorf("id: got %d; want %d", got, tc.wantID)
+			if gotID != tc.wantID {
+				t.Errorf("id: got %d; want %d", gotID, tc.wantID)
 			}
 
 			w := &strings.Builder{}
 			// fmt.Fprintf(w, "%#v", c.Canopy)
 			writeConjuncts(w, c)
-			if got := w.String(); got != tc.out {
-				t.Errorf("id: got %s; want %s", got, tc.out)
+
+			got := strings.TrimSpace(w.String())
+			got = strings.ReplaceAll(got, "\t", "")
+			want := strings.TrimSpace(tc.out)
+			want = strings.ReplaceAll(want, "\t", "")
+
+			if got != want {
+				t.Errorf("id: got:\n%s\nwant:\n%s", got, want)
 			}
 		})
 	}
@@ -155,32 +210,61 @@ func TestInsertSubtree(t *testing.T) {
 		tree: nil,
 		at:   0,
 		sub:  nil,
-		out:  "&( 0[&( 2[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}`,
 	}, {
 		tree: []CloseDef{{}},
 		at:   0,
 		sub:  nil,
-		out:  "&( 0[&( 2[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}`,
 	}, {
 		tree: []CloseDef{0: {And: 1}, {And: 0, IsDef: true}},
 		at:   0,
 		sub:  []CloseDef{{}},
-		out:  "&( 0[&( 3[])] *1[])",
+		out: `
+		0:{and: 1, embed: 2, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 3, embed: 0, def: false, close: false}`,
 	}, {
 		tree: []CloseDef{0: {And: 1}, {And: 0, IsDef: true}},
 		at:   0,
 		sub:  []CloseDef{{And: 1}, {And: 0, IsDef: true}},
-		out:  "&( 0[&( 3[] *4[])] *1[])",
+		out: `
+		0:{and: 1, embed: 2, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 4, embed: 0, def: false, close: false}
+		4:{and: 3, embed: 0, def: true, close: false}`,
 	}, {
 		tree: []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
 		at:   0,
 		sub:  []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
-		out:  "&( 0[&( 4[&( 6[])])&( 2[])])",
+		out: `
+		0:{and: 0, embed: 3, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}
+		3:{and: -, embed: 1, def: false, close: false}
+		4:{and: 4, embed: 5, def: false, close: false}
+		5:{and: -, embed: 0, def: false, close: false}
+		6:{and: 6, embed: 0, def: false, close: false}`,
 	}, {
 		tree: []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
 		at:   2,
 		sub:  []CloseDef{0: {NextEmbed: 1}, 1: {And: embedRoot}, 2: {And: 2}},
-		out:  "&( 0[&( 2[&( 4[&( 6[])])])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 3, def: false, close: false}
+		3:{and: -, embed: 0, def: false, close: false}
+		4:{and: 4, embed: 5, def: false, close: false}
+		5:{and: -, embed: 0, def: false, close: false}
+		6:{and: 6, embed: 0, def: false, close: false}`,
 	}}
 	for i, tc := range testCases {
 		t.Run(fmt.Sprint(i), func(t *testing.T) {
@@ -192,8 +276,14 @@ func TestInsertSubtree(t *testing.T) {
 			w := &strings.Builder{}
 			// fmt.Fprintf(w, "%#v", c.Canopy)
 			writeConjuncts(w, c)
-			if got := w.String(); got != tc.out {
-				t.Errorf("id: got %s; want %s", got, tc.out)
+
+			got := strings.TrimSpace(w.String())
+			got = strings.ReplaceAll(got, "\t", "")
+			want := strings.TrimSpace(tc.out)
+			want = strings.ReplaceAll(want, "\t", "")
+
+			if got != want {
+				t.Errorf("id: got:\n%s\nwant:\n%s", got, want)
 			}
 		})
 	}
@@ -382,6 +472,7 @@ func TestCompact(t *testing.T) {
 		desc      string
 		tree      []CloseDef
 		conjuncts []adt.ID
+		allowAll  bool
 		out       string
 	}{{
 		desc:      "leave nil as is",
@@ -392,44 +483,168 @@ func TestCompact(t *testing.T) {
 		desc:      "simplest case",
 		tree:      []CloseDef{{}},
 		conjuncts: []adt.ID{0, 0},
-		out:       "&( 0[])",
+		out:       "0:{and: 0, embed: 0, def: false, close: false}",
 	}, {
 		desc:      "required ands should not be removed",
 		tree:      []CloseDef{{And: 1}, {And: 0, IsDef: true}},
 		conjuncts: []adt.ID{0, 0},
-		out:       "&( 0[] *1[])",
-		// }, {
-		// 	// TODO:
-		// 	desc:      "required ands should not be removed",
-		// 	tree:      []Node{{And: 1}, {And: 0, Required: false}},
-		// 	conjuncts: []adt.ID{1},
-		// 	out:       "&( 0[] 1[])",
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: true, close: false}`,
+	}, {
+		desc:      "clear def flag for hidden fields",
+		tree:      []CloseDef{{And: 1}, {And: 0, IsDef: true}},
+		conjuncts: []adt.ID{0, 0},
+		allowAll:  true,
+		out: `
+			0:{and: 1, embed: 0, def: false, close: false}
+			1:{and: 0, embed: 0, def: false, close: false}`,
+	}, {
+		desc:      "required ands should not be removed",
+		tree:      []CloseDef{{And: 1}, {And: 0, IsClosed: true}},
+		conjuncts: []adt.ID{0},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: false, close: false}`,
+	}, {
+		// TODO: used ands that are not required could be collapsed.
+		desc:      "remove secondary unused and",
+		tree:      []CloseDef{{And: 1}, {And: 0}},
+		conjuncts: []adt.ID{},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: false, close: false}`,
+		// TODO: should be
+		// out: `
+		// 0:{and: 0, embed: 0, def: false, close: false}`,
+	}, {
+		// TODO: used ands that are not required could be collapsed.
+		desc:      "don't remove used and",
+		tree:      []CloseDef{{And: 1}, {And: 0}},
+		conjuncts: []adt.ID{1},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 0, def: false, close: false}`,
+	}, {
+		// TODO: redundant ands are not removed for the moment.
+		desc: "remove redundant top-level and",
+		tree: []CloseDef{{And: 1}, {And: 2}, {And: 0, IsDef: true}},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 2, embed: 0, def: false, close: false}
+		2:{and: 0, embed: 0, def: true, close: false}`,
+		// TODO: should be
+		// out: `
+		// 0:{and: 1, embed: 0, def: false, close: false}
+		// 1:{and: 0, embed: 0, def: true, close: false}`,
+	}, {
+		desc: "remove redundant top-level closed and",
+		tree: []CloseDef{{And: 1}, {And: 2}, {And: 0, IsClosed: true}},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 2, embed: 0, def: false, close: false}
+		2:{and: 0, embed: 0, def: false, close: false}`,
+		// TODO: should be
+		// out: `
+		// 0:{and: 1, embed: 0, def: false, close: false}
+		// 1:{and: 0, embed: 0, def: false, close: false}`,
 	}, {
 		desc:      "remove embedding",
 		tree:      []CloseDef{{NextEmbed: 1}, {And: embedRoot}, {And: 2}},
 		conjuncts: []adt.ID{0},
-		out:       "&( 0[])",
+		out:       "0:{and: 0, embed: 0, def: false, close: false}",
 	}, {
 		desc:      "keep embedding if used",
 		tree:      []CloseDef{{NextEmbed: 1}, {And: embedRoot}, {And: 2}},
 		conjuncts: []adt.ID{0, 2},
-		out:       "&( 0[&( 2[])])",
+		out: `
+		0:{and: 0, embed: 1, def: false, close: false}
+		1:{and: -, embed: 0, def: false, close: false}
+		2:{and: 2, embed: 0, def: false, close: false}`,
+	}, {
+		desc: "keep nested and",
+		tree: []CloseDef{
+			0: {And: 1},
+			1: {And: 0, NextEmbed: 2},
+			2: {And: embedRoot, NextEmbed: 6},
+			3: {And: 4},
+			4: {And: 5},
+			5: {And: 3},
+			6: {And: embedRoot},
+			7: {And: 7},
+		},
+		conjuncts: []adt.ID{5},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 2, def: false, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 4, embed: 0, def: false, close: false}
+		4:{and: 5, embed: 0, def: false, close: false}
+		5:{and: 3, embed: 0, def: false, close: false}`,
+	}, {
+		desc: "keep nested and",
+		tree: []CloseDef{
+			0: {And: 1},
+			1: {And: 0, NextEmbed: 2},
+			2: {And: embedRoot, NextEmbed: 6},
+			3: {And: 4},
+			4: {And: 5},
+			5: {And: 3},
+			6: {And: embedRoot},
+			7: {And: 7},
+		},
+		conjuncts: []adt.ID{7},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 2, def: false, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 3, embed: 0, def: false, close: false}`,
+	}, {
+		desc: "keep nested and",
+		tree: []CloseDef{
+			0: {And: 1},
+			1: {And: 0, NextEmbed: 2},
+			2: {And: embedRoot, NextEmbed: 6},
+			3: {And: 4},
+			4: {And: 5},
+			5: {And: 3},
+			6: {And: embedRoot},
+			7: {And: 9},
+			8: {And: 7},
+			9: {And: 8},
+		},
+		conjuncts: []adt.ID{8},
+		out: `
+		0:{and: 1, embed: 0, def: false, close: false}
+		1:{and: 0, embed: 2, def: false, close: false}
+		2:{and: -, embed: 0, def: false, close: false}
+		3:{and: 5, embed: 0, def: false, close: false}
+		4:{and: 3, embed: 0, def: false, close: false}
+		5:{and: 4, embed: 0, def: false, close: false}`,
 	}}
 	for _, tc := range testCases {
 		t.Run(tc.desc, func(t *testing.T) {
-			c := &acceptor{Canopy: tc.tree}
-			all := []adt.Conjunct{}
+			v := &adt.Vertex{
+				Parent: &adt.Vertex{
+					Closed: &acceptor{Canopy: tc.tree},
+				},
+			}
 			for _, id := range tc.conjuncts {
-				all = append(all, adt.Conjunct{CloseID: id})
+				v.Conjuncts = append(v.Conjuncts, adt.Conjunct{CloseID: id})
 			}
 
-			c.Canopy = c.Compact(all)
+			Compact(v, tc.allowAll)
+			c := closedInfo(v)
 
 			w := &strings.Builder{}
 			// fmt.Fprintf(w, "%#v", c.Canopy)
 			writeConjuncts(w, c)
-			if got := w.String(); got != tc.out {
-				t.Errorf("id: got %s; want %s", got, tc.out)
+			got := strings.TrimSpace(w.String())
+			got = strings.ReplaceAll(got, "\t", "")
+			want := strings.TrimSpace(tc.out)
+			want = strings.ReplaceAll(want, "\t", "")
+			if got != want {
+				t.Errorf("id: got:\n%s\nwant:%s", got, want)
 			}
 		})
 	}
@@ -440,7 +655,23 @@ func writeConjuncts(w *strings.Builder, c *acceptor) {
 		w.WriteString("nil")
 		return
 	}
-	writeAnd(w, c, 0)
+
+	idStr := func(d adt.ID) interface{} {
+		if d < 0 {
+			return "-"
+		}
+		return d
+	}
+
+	for i, c := range c.Canopy {
+		fmt.Fprintf(w, "%d:{", i)
+		fmt.Fprintf(w, "and: %v, ", idStr(c.And))
+		fmt.Fprintf(w, "embed: %d, ", c.NextEmbed)
+		fmt.Fprintf(w, "def: %v, ", c.IsDef)
+		fmt.Fprintf(w, "close: %v", c.IsClosed)
+		w.WriteString("}\n")
+	}
+	// writeAnd(w, c, 0)
 }
 
 func writeAnd(w *strings.Builder, c *acceptor, id adt.ID) {
