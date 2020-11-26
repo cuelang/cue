@@ -16,6 +16,7 @@ package adt
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 	"regexp"
 
@@ -27,6 +28,15 @@ import (
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/token"
 )
+
+// Debug sets whether extra aggressive checking should be done.
+var Debug bool = os.Getenv("CUE_DEBUG") == "1"
+
+func Assert(name string, b bool) {
+	if Debug && !b {
+		panic("assertion failed: " + name)
+	}
+}
 
 // A Unifier implements a strategy for CUE's unification operation. It must
 // handle the following aspects of CUE evaluation:
@@ -658,6 +668,10 @@ func (c *OpContext) node(x Expr, scalar bool) *Vertex {
 		return emptyNode
 
 	case *StructMarker, *ListMarker:
+		if node == nil {
+			Assert("unexpected markers with nil node", false)
+			return emptyNode
+		}
 
 	default:
 		if v.Kind()&StructKind != 0 {
