@@ -16,6 +16,24 @@
       "message": "Yes, that helps. So I was able to reproduce the problem locally. Will be an easy fix.\n\nNote, btw, that multiple comprehensions in a list are now supported, so you could write\n\n  _All: [\n   [ for _, F in _OnceFiles { F } ],\n\n   [ for _, F in _BuiltinModelFiles { F } ],\n  ]\n\nas:\n  _All: [\n   for _, F in _OnceFiles { F },\n   for _, F in _BuiltinModelFiles { F },\n  ]\n\nThis can also be intermingled with normal elements, if, and ...\n\nThe idea is also to disallow using + for list concatenation as it is rather confusing (will the result be closed or not, etc.)",
       "revId": "ad50fd1bd08e618a9de8b8e7369edd3c129eb9eb",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020b6098_d1510c4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-11-27T18:34:31Z",
+      "side": 1,
+      "message": "I was only writing it that way because it wasn\u0027t working with the original lists, was getting fed an incomplete value (server) where the original lists are constructed.\n\nI\u0027m using the multi-comp for conditionally including files for generation now",
+      "parentUuid": "48b59fab_2d370794",
+      "revId": "ad50fd1bd08e618a9de8b8e7369edd3c129eb9eb",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }

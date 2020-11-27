@@ -16,6 +16,24 @@
       "message": "PTAL, I think this fixes it now.",
       "revId": "5da57017eeb7aac298de11524b93ea9b8dfae501",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78992658_f9640253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-11-27T18:34:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "aa3b0db4_20e63cf7",
+      "revId": "5da57017eeb7aac298de11524b93ea9b8dfae501",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
