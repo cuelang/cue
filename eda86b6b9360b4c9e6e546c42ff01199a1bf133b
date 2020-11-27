@@ -16,6 +16,24 @@
       "message": "s/not/nor/",
       "revId": "eda86b6b9360b4c9e6e546c42ff01199a1bf133b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "979d87f2_c861bdf6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-27T13:13:00Z",
+      "side": 1,
+      "message": "doh.\n\nDone.",
+      "parentUuid": "edb4cc84_346b4e8d",
+      "revId": "eda86b6b9360b4c9e6e546c42ff01199a1bf133b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
