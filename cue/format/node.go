@@ -386,7 +386,7 @@ func (f *formatter) decl(decl ast.Decl) {
 		f.print(n.At, n)
 
 	case *ast.CommentGroup:
-		f.print(newsection)
+		// f.print(newsection)
 		f.printComment(n)
 		f.print(newsection)
 
