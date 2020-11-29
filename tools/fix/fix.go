@@ -31,6 +31,22 @@ import (
 
 // File applies fixes to f and returns it. It alters the original f.
 func File(f *ast.File) *ast.File {
+	// Rewrite integer division operations to use builtins.
+	f = astutil.Apply(f, func(c astutil.Cursor) bool {
+		n := c.Node()
+		switch x := n.(type) {
+		case *ast.BinaryExpr:
+			switch x.Op {
+			case token.IDIV, token.IMOD, token.IQUO, token.IREM:
+				c.Replace(&ast.CallExpr{
+					Fun:  ast.NewIdent("__" + x.Op.String()),
+					Args: []ast.Expr{x.X, x.Y},
+				})
+			}
+		}
+		return true
+	}, nil).(*ast.File)
+
 	// Isolate bulk optional fields into a single struct.
 	ast.Walk(f, func(n ast.Node) bool {
 		var decls []ast.Decl
