@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4508426e_dce8e931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-11-29T15:49:01Z",
+      "side": 1,
+      "message": "fixed it differently by just picking the extension.",
+      "revId": "c1f4a4f48f9a920b007e26ec4d50f27d0a473577",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
