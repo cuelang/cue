@@ -97,6 +97,9 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+import "path"
+
+x: path.IsAbs("/a")
 	`
 
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
