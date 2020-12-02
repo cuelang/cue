@@ -947,15 +947,25 @@ type Builtin struct {
 	Const string
 }
 
+// IsValidator reports whether b should be interpreted as a Validator for the
+// given number of arguments.
+func (b *Builtin) IsValidator(n int) bool {
+	return b.Result == BoolKind &&
+		n+1 == len(b.Params) &&
+		b.Params[n].Default() == nil
+}
+
 type Param struct {
 	Name  Feature // name of the argument; mostly for documentation
 	Value Value   // Could become Value later, using disjunctions for defaults.
 }
 
+// Kind returns the kind mask of this parameter.
 func (p Param) Kind() Kind {
 	return p.Value.Kind()
 }
 
+// Default reports the default value for this Param or nil if there is none.
 func (p Param) Default() Value {
 	d, ok := p.Value.(*Disjunction)
 	if !ok || d.NumDefaults != 1 {
@@ -997,7 +1007,7 @@ func bottom(v Value) *Bottom {
 }
 
 func (x *Builtin) call(c *OpContext, call *ast.CallExpr, args []Value) Expr {
-	if len(x.Params)-1 == len(args) && x.Result == BoolKind {
+	if x.IsValidator(len(args)) {
 		// We have a custom builtin
 		return &BuiltinValidator{call, x, args}
 	}
