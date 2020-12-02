@@ -1,0 +1,396 @@
+// Copyright 2020 CUE Authors
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+-- in.cue --
+import "path"
+
+joinSingle: path.Join(["a", "b"])
+joinSingle: "a/b"
+
+join: "unix": _
+join: "windows": _
+
+join: [OS=string]: [...{
+    arg: [...string]
+
+    out: path.Join(arg, OS)
+}]
+
+join: [_]: [
+    {arg: ["a", "b"]},
+    {arg: ["a/b", "c/d"]},
+
+    {arg: ["/"]},
+    {arg: ["a"]},
+
+    {arg: ["a", "b"]},
+    {arg: ["a", ""]},
+    {arg: ["", "b"]},
+    {arg: ["/", "a"]},
+    {arg: ["/", "a/b"]},
+    {arg: ["/", ""]},
+    {arg: ["//", "a"]},
+
+    {arg: ["directory", "file"]},
+
+    {arg: [#"C:\Windows\"#, #"System32"#]},
+    {arg: [#"C:\Windows\"#, #""#]},
+    {arg: [#"C:\"#, #"Windows"#]},
+    {arg: [#"C:"#, #"a\b"#]},
+    {arg: [#"C:"#, #"a"#, #"b"#]},
+    {arg: [#"C:"#, #""#, #""#, #"b"#]},
+    {arg: [#"C:"#, #""#]},
+    {arg: [#"C:"#, #""#, #""#]},
+    {arg: [#"C:."#, #"a"#]},
+    {arg: [#"C:a"#, #"b"#]},
+    {arg: [#"\\host\share"#, #"foo"#]},
+]
+
+-- out/path --
+(struct){
+  joinSingle: (string){ "a/b" }
+  join: (struct){
+    unix: (#list){
+      0: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "a/b" }
+      }
+      1: (struct){
+        arg: (#list){
+          0: (string){ "a/b" }
+          1: (string){ "c/d" }
+        }
+        out: (string){ "a/b/c/d" }
+      }
+      2: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+        }
+        out: (string){ "/" }
+      }
+      3: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+        }
+        out: (string){ "a" }
+      }
+      4: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "a/b" }
+      }
+      5: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "" }
+        }
+        out: (string){ "a" }
+      }
+      6: (struct){
+        arg: (#list){
+          0: (string){ "" }
+          1: (string){ "b" }
+        }
+        out: (string){ "b" }
+      }
+      7: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "a" }
+        }
+        out: (string){ "/a" }
+      }
+      8: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "a/b" }
+        }
+        out: (string){ "/a/b" }
+      }
+      9: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "" }
+        }
+        out: (string){ "/" }
+      }
+      10: (struct){
+        arg: (#list){
+          0: (string){ "//" }
+          1: (string){ "a" }
+        }
+        out: (string){ "/a" }
+      }
+      11: (struct){
+        arg: (#list){
+          0: (string){ "directory" }
+          1: (string){ "file" }
+        }
+        out: (string){ "directory/file" }
+      }
+      12: (struct){
+        arg: (#list){
+          0: (string){ "C:\\Windows\\" }
+          1: (string){ "System32" }
+        }
+        out: (string){ "C:\\Windows\\/System32" }
+      }
+      13: (struct){
+        arg: (#list){
+          0: (string){ "C:\\Windows\\" }
+          1: (string){ "" }
+        }
+        out: (string){ "C:\\Windows\\" }
+      }
+      14: (struct){
+        arg: (#list){
+          0: (string){ "C:\\" }
+          1: (string){ "Windows" }
+        }
+        out: (string){ "C:\\/Windows" }
+      }
+      15: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "a\\b" }
+        }
+        out: (string){ "C:/a\\b" }
+      }
+      16: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "a" }
+          2: (string){ "b" }
+        }
+        out: (string){ "C:/a/b" }
+      }
+      17: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+          2: (string){ "" }
+          3: (string){ "b" }
+        }
+        out: (string){ "C:/b" }
+      }
+      18: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+        }
+        out: (string){ "C:" }
+      }
+      19: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+          2: (string){ "" }
+        }
+        out: (string){ "C:" }
+      }
+      20: (struct){
+        arg: (#list){
+          0: (string){ "C:." }
+          1: (string){ "a" }
+        }
+        out: (string){ "C:./a" }
+      }
+      21: (struct){
+        arg: (#list){
+          0: (string){ "C:a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "C:a/b" }
+      }
+      22: (struct){
+        arg: (#list){
+          0: (string){ "\\\\host\\share" }
+          1: (string){ "foo" }
+        }
+        out: (string){ "\\\\host\\share/foo" }
+      }
+    }
+    windows: (#list){
+      0: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "a\\b" }
+      }
+      1: (struct){
+        arg: (#list){
+          0: (string){ "a/b" }
+          1: (string){ "c/d" }
+        }
+        out: (string){ "a\\b\\c\\d" }
+      }
+      2: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+        }
+        out: (string){ "\\" }
+      }
+      3: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+        }
+        out: (string){ "a" }
+      }
+      4: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "a\\b" }
+      }
+      5: (struct){
+        arg: (#list){
+          0: (string){ "a" }
+          1: (string){ "" }
+        }
+        out: (string){ "a" }
+      }
+      6: (struct){
+        arg: (#list){
+          0: (string){ "" }
+          1: (string){ "b" }
+        }
+        out: (string){ "b" }
+      }
+      7: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "a" }
+        }
+        out: (string){ "\\a" }
+      }
+      8: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "a/b" }
+        }
+        out: (string){ "\\a\\b" }
+      }
+      9: (struct){
+        arg: (#list){
+          0: (string){ "/" }
+          1: (string){ "" }
+        }
+        out: (string){ "\\" }
+      }
+      10: (struct){
+        arg: (#list){
+          0: (string){ "//" }
+          1: (string){ "a" }
+        }
+        out: (string){ "\\a" }
+      }
+      11: (struct){
+        arg: (#list){
+          0: (string){ "directory" }
+          1: (string){ "file" }
+        }
+        out: (string){ "directory\\file" }
+      }
+      12: (struct){
+        arg: (#list){
+          0: (string){ "C:\\Windows\\" }
+          1: (string){ "System32" }
+        }
+        out: (string){ "C:\\Windows\\System32" }
+      }
+      13: (struct){
+        arg: (#list){
+          0: (string){ "C:\\Windows\\" }
+          1: (string){ "" }
+        }
+        out: (string){ "C:\\Windows" }
+      }
+      14: (struct){
+        arg: (#list){
+          0: (string){ "C:\\" }
+          1: (string){ "Windows" }
+        }
+        out: (string){ "C:\\Windows" }
+      }
+      15: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "a\\b" }
+        }
+        out: (string){ "C:a\\b" }
+      }
+      16: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "a" }
+          2: (string){ "b" }
+        }
+        out: (string){ "C:a\\b" }
+      }
+      17: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+          2: (string){ "" }
+          3: (string){ "b" }
+        }
+        out: (string){ "C:b" }
+      }
+      18: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+        }
+        out: (string){ "C:." }
+      }
+      19: (struct){
+        arg: (#list){
+          0: (string){ "C:" }
+          1: (string){ "" }
+          2: (string){ "" }
+        }
+        out: (string){ "C:." }
+      }
+      20: (struct){
+        arg: (#list){
+          0: (string){ "C:." }
+          1: (string){ "a" }
+        }
+        out: (string){ "C:a" }
+      }
+      21: (struct){
+        arg: (#list){
+          0: (string){ "C:a" }
+          1: (string){ "b" }
+        }
+        out: (string){ "C:a\\b" }
+      }
+      22: (struct){
+        arg: (#list){
+          0: (string){ "\\\\host\\share" }
+          1: (string){ "foo" }
+        }
+        out: (string){ "\\\\host\\share\\foo" }
+      }
+    }
+  }
+}
