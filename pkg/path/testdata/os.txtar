@@ -1,0 +1,578 @@
+// Copyright 2020 CUE Authors
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+-- in.cue --
+import "path"
+
+#OSes: ["unix", "windows", "plan9"]
+#AnyOS: or(#OSes)
+
+{[string]: {
+    // Test these OSes for all tests below.
+    "unix":    _
+    "plan9":   _
+    "windows": _
+}}
+
+
+split: [OS=#AnyOS]: [ARG=string]: path.Split(ARG, OS)
+split: default:     [ARG=string]: path.Split(ARG)
+split: default:     split.unix
+split: [_]: {
+    "/foo/bar/baz":       _
+    "a/b":                _
+    "//host/share/foo":   _
+    #"\\host\share\foo"#: _
+    "c:/foo/bar":         _
+    #"c:\foo\bar"#:       _
+}
+
+splitList: [OS=string]: [ARG=string]: path.SplitList(ARG, OS)
+splitList: [_]: {
+    "a:b":      _
+    "a\u0000b": _
+    "a;b":      _
+}
+
+clean: [OS=#AnyOS]: [ARG=string]: path.Clean(ARG, OS)
+clean: default:     [ARG=string]: path.Clean(ARG)
+clean: default:     clean.unix
+clean: [_]: {
+    "abc//def//ghi":      _
+    #"c:\abc\def\..\.."#: _
+}
+
+slash: [OS=string]: [ARG=string]: {
+    to:   path.ToSlash(ARG, OS)
+    from: path.FromSlash(ARG, OS)
+
+    // should roundtrip
+    to:   path.ToSlash(from, OS)
+    from: path.FromSlash(to, OS)
+}
+slash: [_]: {
+    "":      _
+    "/":     _
+    "/a/b":  _
+    "/a//b": _
+}
+
+ext: [OS=#AnyOS]: [ARG=string]: path.Ext(ARG, OS)
+ext: default:     [ARG=string]: path.Ext(ARG)
+ext: default:     ext.unix
+ext: [_]: {
+    // Same for all OS-es
+    "path.go":    ".go"
+    "path.pb.go": ".go"
+    "a.dir/b":    ""
+    "a.dir/b.go": ".go"
+    "a.dir/":     ""
+
+    // Differs on Windows.
+    "a.dir\\foo": _
+}
+
+resolve: [OS=#AnyOS]: [A1=_]: [A2=_]: path.Resolve(A1, A2, OS)
+resolve: default:     [A1=_]: [A2=_]: path.Resolve(A1, A2)
+resolve: default:     resolve.unix
+resolve: [_]: {
+    "a/b/c": "d/e":   _
+    "/a/b":  "/c/d":  _
+    "c:/a":  #"d:\"#: _
+
+    "//home/user/foo": "bar":             _
+    "//home/user/foo": "//other/abs/foo": _
+}
+
+isAbs: [OS=#AnyOS]: [ARG=string]: path.IsAbs(ARG, OS)
+isAbs: default:     [ARG=string]: path.IsAbs(ARG)
+// isAbs: default: isAbs.unix
+isAbs: [_]: {
+    "":     _
+    "/a":   _
+    "a":    _
+    "c:":   _
+    "c:/":  _
+    "c:\\": _
+
+    "//home/user/foo": _
+}
+
+
+volume: [OS=string]:   [ARG=string]: path.VolumeName(ARG, OS)
+volume: [!="windows"]: [string]:     "" // non-windows is always ""
+
+volume: [_]: {
+    "c:/foo/bar": _
+    "c:":         _
+    "2:":         _
+    "":           _
+
+    #"\\\host"#:          _
+    #"\\\host\"#:         _
+    #"\\\host\share"#:    _
+    #"\\\host\\share"#:   _
+    #"\\host"#:           _
+    #"//host"#:           _
+    #"\\host\"#:          _
+    #"//host/"#:          _
+    #"\\host\share"#:     _
+    #"//host/share"#:     _
+    #"\\host\share\"#:    _
+    #"//host/share/"#:    _
+    #"\\host\share\foo"#: _
+    #"//host/share/foo"#: _
+
+    #"\\host\share\\foo\\\bar\\\\baz"#: _
+    #"//host/share//foo///bar////baz"#: _
+    #"\\host\share\foo\..\bar"#:        _
+    #"//host/share/foo/../bar"#:        _
+}
+
+-- out/path --
+(struct){
+  #OSes: (#list){
+    0: (string){ "unix" }
+    1: (string){ "windows" }
+    2: (string){ "plan9" }
+  }
+  #AnyOS: (string){ |((string){ "unix" }, (string){ "windows" }, (string){ "plan9" }) }
+  split: (struct){
+    unix: (struct){
+      "/foo/bar/baz": (#list){
+        0: (string){ "/foo/bar/" }
+        1: (string){ "baz" }
+      }
+      "a/b": (#list){
+        0: (string){ "a/" }
+        1: (string){ "b" }
+      }
+      "//host/share/foo": (#list){
+        0: (string){ "//host/share/" }
+        1: (string){ "foo" }
+      }
+      "\\\\host\\share\\foo": (#list){
+        0: (string){ "" }
+        1: (string){ "\\\\host\\share\\foo" }
+      }
+      "c:/foo/bar": (#list){
+        0: (string){ "c:/foo/" }
+        1: (string){ "bar" }
+      }
+      "c:\\foo\\bar": (#list){
+        0: (string){ "" }
+        1: (string){ "c:\\foo\\bar" }
+      }
+    }
+    plan9: (struct){
+      "/foo/bar/baz": (#list){
+        0: (string){ "/foo/bar/" }
+        1: (string){ "baz" }
+      }
+      "a/b": (#list){
+        0: (string){ "a/" }
+        1: (string){ "b" }
+      }
+      "//host/share/foo": (#list){
+        0: (string){ "//host/share/" }
+        1: (string){ "foo" }
+      }
+      "\\\\host\\share\\foo": (#list){
+        0: (string){ "" }
+        1: (string){ "\\\\host\\share\\foo" }
+      }
+      "c:/foo/bar": (#list){
+        0: (string){ "c:/foo/" }
+        1: (string){ "bar" }
+      }
+      "c:\\foo\\bar": (#list){
+        0: (string){ "" }
+        1: (string){ "c:\\foo\\bar" }
+      }
+    }
+    windows: (struct){
+      "/foo/bar/baz": (#list){
+        0: (string){ "/foo/bar/" }
+        1: (string){ "baz" }
+      }
+      "a/b": (#list){
+        0: (string){ "a/" }
+        1: (string){ "b" }
+      }
+      "//host/share/foo": (#list){
+        0: (string){ "//host/share/" }
+        1: (string){ "foo" }
+      }
+      "\\\\host\\share\\foo": (#list){
+        0: (string){ "\\\\host\\share\\" }
+        1: (string){ "foo" }
+      }
+      "c:/foo/bar": (#list){
+        0: (string){ "c:/foo/" }
+        1: (string){ "bar" }
+      }
+      "c:\\foo\\bar": (#list){
+        0: (string){ "c:\\foo\\" }
+        1: (string){ "bar" }
+      }
+    }
+    default: (struct){
+      "/foo/bar/baz": (#list){
+        0: (string){ "/foo/bar/" }
+        1: (string){ "baz" }
+      }
+      "a/b": (#list){
+        0: (string){ "a/" }
+        1: (string){ "b" }
+      }
+      "//host/share/foo": (#list){
+        0: (string){ "//host/share/" }
+        1: (string){ "foo" }
+      }
+      "\\\\host\\share\\foo": (#list){
+        0: (string){ "" }
+        1: (string){ "\\\\host\\share\\foo" }
+      }
+      "c:/foo/bar": (#list){
+        0: (string){ "c:/foo/" }
+        1: (string){ "bar" }
+      }
+      "c:\\foo\\bar": (#list){
+        0: (string){ "" }
+        1: (string){ "c:\\foo\\bar" }
+      }
+    }
+  }
+  splitList: (struct){
+    unix: (struct){
+      "a:b": (#list){
+        0: (string){ "a" }
+        1: (string){ "b" }
+      }
+      "a\u0000b": (#list){
+        0: (string){ "a\u0000b" }
+      }
+      "a;b": (#list){
+        0: (string){ "a;b" }
+      }
+    }
+    plan9: (struct){
+      "a:b": (#list){
+        0: (string){ "a:b" }
+      }
+      "a\u0000b": (#list){
+        0: (string){ "a" }
+        1: (string){ "b" }
+      }
+      "a;b": (#list){
+        0: (string){ "a;b" }
+      }
+    }
+    windows: (struct){
+      "a:b": (#list){
+        0: (string){ "a:b" }
+      }
+      "a\u0000b": (#list){
+        0: (string){ "a\u0000b" }
+      }
+      "a;b": (#list){
+        0: (string){ "a" }
+        1: (string){ "b" }
+      }
+    }
+  }
+  clean: (struct){
+    unix: (struct){
+      "abc//def//ghi": (string){ "abc/def/ghi" }
+      "c:\\abc\\def\\..\\..": (string){ "c:\\abc\\def\\..\\.." }
+    }
+    plan9: (struct){
+      "abc//def//ghi": (string){ "abc/def/ghi" }
+      "c:\\abc\\def\\..\\..": (string){ "c:\\abc\\def\\..\\.." }
+    }
+    windows: (struct){
+      "abc//def//ghi": (string){ "abc\\def\\ghi" }
+      "c:\\abc\\def\\..\\..": (string){ "c:\\" }
+    }
+    default: (struct){
+      "abc//def//ghi": (string){ "abc/def/ghi" }
+      "c:\\abc\\def\\..\\..": (string){ "c:\\abc\\def\\..\\.." }
+    }
+  }
+  slash: (struct){
+    unix: (struct){
+      "": (struct){
+        to: (string){ "" }
+        from: (string){ "" }
+      }
+      "/": (struct){
+        to: (string){ "/" }
+        from: (string){ "/" }
+      }
+      "/a/b": (struct){
+        to: (string){ "/a/b" }
+        from: (string){ "/a/b" }
+      }
+      "/a//b": (struct){
+        to: (string){ "/a//b" }
+        from: (string){ "/a//b" }
+      }
+    }
+    plan9: (struct){
+      "": (struct){
+        to: (string){ "" }
+        from: (string){ "" }
+      }
+      "/": (struct){
+        to: (string){ "/" }
+        from: (string){ "/" }
+      }
+      "/a/b": (struct){
+        to: (string){ "/a/b" }
+        from: (string){ "/a/b" }
+      }
+      "/a//b": (struct){
+        to: (string){ "/a//b" }
+        from: (string){ "/a//b" }
+      }
+    }
+    windows: (struct){
+      "": (struct){
+        to: (string){ "" }
+        from: (string){ "" }
+      }
+      "/": (struct){
+        to: (string){ "/" }
+        from: (string){ "\\" }
+      }
+      "/a/b": (struct){
+        to: (string){ "/a/b" }
+        from: (string){ "\\a\\b" }
+      }
+      "/a//b": (struct){
+        to: (string){ "/a//b" }
+        from: (string){ "\\a\\\\b" }
+      }
+    }
+  }
+  ext: (struct){
+    unix: (struct){
+      "path.go": (string){ ".go" }
+      "path.pb.go": (string){ ".go" }
+      "a.dir/b": (string){ "" }
+      "a.dir/b.go": (string){ ".go" }
+      "a.dir/": (string){ "" }
+      "a.dir\\foo": (string){ ".dir\\foo" }
+    }
+    plan9: (struct){
+      "path.go": (string){ ".go" }
+      "path.pb.go": (string){ ".go" }
+      "a.dir/b": (string){ "" }
+      "a.dir/b.go": (string){ ".go" }
+      "a.dir/": (string){ "" }
+      "a.dir\\foo": (string){ ".dir\\foo" }
+    }
+    windows: (struct){
+      "path.go": (string){ ".go" }
+      "path.pb.go": (string){ ".go" }
+      "a.dir/b": (string){ "" }
+      "a.dir/b.go": (string){ ".go" }
+      "a.dir/": (string){ "" }
+      "a.dir\\foo": (string){ "" }
+    }
+    default: (struct){
+      "path.go": (string){ ".go" }
+      "path.pb.go": (string){ ".go" }
+      "a.dir/b": (string){ "" }
+      "a.dir/b.go": (string){ ".go" }
+      "a.dir/": (string){ "" }
+      "a.dir\\foo": (string){ ".dir\\foo" }
+    }
+  }
+  resolve: (struct){
+    unix: (struct){
+      "a/b/c": (struct){
+        "d/e": (string){ "a/b/c/d/e" }
+      }
+      "/a/b": (struct){
+        "/c/d": (string){ "/c/d" }
+      }
+      "c:/a": (struct){
+        "d:\\": (string){ "c:/a/d:\\" }
+      }
+      "//home/user/foo": (struct){
+        bar: (string){ "/home/user/foo/bar" }
+        "//other/abs/foo": (string){ "/other/abs/foo" }
+      }
+    }
+    plan9: (struct){
+      "a/b/c": (struct){
+        "d/e": (string){ "a/b/c/d/e" }
+      }
+      "/a/b": (struct){
+        "/c/d": (string){ "/c/d" }
+      }
+      "c:/a": (struct){
+        "d:\\": (string){ "c:/a/d:\\" }
+      }
+      "//home/user/foo": (struct){
+        bar: (string){ "/home/user/foo/bar" }
+        "//other/abs/foo": (string){ "/other/abs/foo" }
+      }
+    }
+    windows: (struct){
+      "a/b/c": (struct){
+        "d/e": (string){ "a\\b\\c\\d\\e" }
+      }
+      "/a/b": (struct){
+        "/c/d": (string){ "\\a\\b\\c\\d" }
+      }
+      "c:/a": (struct){
+        "d:\\": (string){ "d:\\" }
+      }
+      "//home/user/foo": (struct){
+        bar: (string){ "\\\\home\\user\\foo\\bar" }
+        "//other/abs/foo": (string){ "\\\\other\\abs\\foo" }
+      }
+    }
+    default: (struct){
+      "a/b/c": (struct){
+        "d/e": (string){ "a/b/c/d/e" }
+      }
+      "/a/b": (struct){
+        "/c/d": (string){ "/c/d" }
+      }
+      "c:/a": (struct){
+        "d:\\": (string){ "c:/a/d:\\" }
+      }
+      "//home/user/foo": (struct){
+        bar: (string){ "/home/user/foo/bar" }
+        "//other/abs/foo": (string){ "/other/abs/foo" }
+      }
+    }
+  }
+  isAbs: (struct){
+    unix: (struct){
+      "": (bool){ false }
+      "/a": (bool){ true }
+      a: (bool){ false }
+      "c:": (bool){ false }
+      "c:/": (bool){ false }
+      "c:\\": (bool){ false }
+      "//home/user/foo": (bool){ true }
+    }
+    plan9: (struct){
+      "": (bool){ false }
+      "/a": (bool){ true }
+      a: (bool){ false }
+      "c:": (bool){ false }
+      "c:/": (bool){ false }
+      "c:\\": (bool){ false }
+      "//home/user/foo": (bool){ true }
+    }
+    windows: (struct){
+      "": (bool){ false }
+      "/a": (bool){ false }
+      a: (bool){ false }
+      "c:": (bool){ false }
+      "c:/": (bool){ true }
+      "c:\\": (bool){ true }
+      "//home/user/foo": (bool){ true }
+    }
+    default: (struct){
+      "": (bool){ false }
+      "/a": (bool){ true }
+      a: (bool){ false }
+      "c:": (bool){ false }
+      "c:/": (bool){ false }
+      "c:\\": (bool){ false }
+      "//home/user/foo": (bool){ true }
+    }
+  }
+  volume: (struct){
+    unix: (struct){
+      "c:/foo/bar": (string){ "" }
+      "c:": (string){ "" }
+      "2:": (string){ "" }
+      "": (string){ "" }
+      "\\\\\\host": (string){ "" }
+      "\\\\\\host\\": (string){ "" }
+      "\\\\\\host\\share": (string){ "" }
+      "\\\\\\host\\\\share": (string){ "" }
+      "\\\\host": (string){ "" }
+      "//host": (string){ "" }
+      "\\\\host\\": (string){ "" }
+      "//host/": (string){ "" }
+      "\\\\host\\share": (string){ "" }
+      "//host/share": (string){ "" }
+      "\\\\host\\share\\": (string){ "" }
+      "//host/share/": (string){ "" }
+      "\\\\host\\share\\foo": (string){ "" }
+      "//host/share/foo": (string){ "" }
+      "\\\\host\\share\\\\foo\\\\\\bar\\\\\\\\baz": (string){ "" }
+      "//host/share//foo///bar////baz": (string){ "" }
+      "\\\\host\\share\\foo\\..\\bar": (string){ "" }
+      "//host/share/foo/../bar": (string){ "" }
+    }
+    plan9: (struct){
+      "c:/foo/bar": (string){ "" }
+      "c:": (string){ "" }
+      "2:": (string){ "" }
+      "": (string){ "" }
+      "\\\\\\host": (string){ "" }
+      "\\\\\\host\\": (string){ "" }
+      "\\\\\\host\\share": (string){ "" }
+      "\\\\\\host\\\\share": (string){ "" }
+      "\\\\host": (string){ "" }
+      "//host": (string){ "" }
+      "\\\\host\\": (string){ "" }
+      "//host/": (string){ "" }
+      "\\\\host\\share": (string){ "" }
+      "//host/share": (string){ "" }
+      "\\\\host\\share\\": (string){ "" }
+      "//host/share/": (string){ "" }
+      "\\\\host\\share\\foo": (string){ "" }
+      "//host/share/foo": (string){ "" }
+      "\\\\host\\share\\\\foo\\\\\\bar\\\\\\\\baz": (string){ "" }
+      "//host/share//foo///bar////baz": (string){ "" }
+      "\\\\host\\share\\foo\\..\\bar": (string){ "" }
+      "//host/share/foo/../bar": (string){ "" }
+    }
+    windows: (struct){
+      "c:/foo/bar": (string){ "c:" }
+      "c:": (string){ "c:" }
+      "2:": (string){ "" }
+      "": (string){ "" }
+      "\\\\\\host": (string){ "" }
+      "\\\\\\host\\": (string){ "" }
+      "\\\\\\host\\share": (string){ "" }
+      "\\\\\\host\\\\share": (string){ "" }
+      "\\\\host": (string){ "" }
+      "//host": (string){ "" }
+      "\\\\host\\": (string){ "" }
+      "//host/": (string){ "" }
+      "\\\\host\\share": (string){ "\\\\host\\share" }
+      "//host/share": (string){ "//host/share" }
+      "\\\\host\\share\\": (string){ "\\\\host\\share" }
+      "//host/share/": (string){ "//host/share" }
+      "\\\\host\\share\\foo": (string){ "\\\\host\\share" }
+      "//host/share/foo": (string){ "//host/share" }
+      "\\\\host\\share\\\\foo\\\\\\bar\\\\\\\\baz": (string){ "\\\\host\\share" }
+      "//host/share//foo///bar////baz": (string){ "//host/share" }
+      "\\\\host\\share\\foo\\..\\bar": (string){ "\\\\host\\share" }
+      "//host/share/foo/../bar": (string){ "//host/share" }
+    }
+  }
+}
