@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bed1608_6c550219",
+        "filename": "pkg/path/path.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "\"s\"?",
+      "revId": "a947c820f9b527e678c3f1a79c9134929f092c55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4fde29_b27ea8de",
+        "filename": "pkg/path/path.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "s/s/path/?\n\nSuspect this is a hangover from the code having been refactored (from elsewhere)",
+      "revId": "a947c820f9b527e678c3f1a79c9134929f092c55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81376f90_5d2aa2d4",
+        "filename": "pkg/path/path.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "Hangover from a refactor, can delete?",
+      "revId": "a947c820f9b527e678c3f1a79c9134929f092c55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b7028a_b15d737e",
+        "filename": "pkg/path/testdata/os.txtar",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "For the sake of others perhaps looking at these tests for examples of best practice, feels like we should use path.Unix, path.Windows and path.Plan9 here. Thoughts?",
+      "revId": "a947c820f9b527e678c3f1a79c9134929f092c55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e19cba_35f9301c",
+        "filename": "pkg/path/testdata/os.txtar",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "This style of test is _incredibly_ cool.",
+      "revId": "a947c820f9b527e678c3f1a79c9134929f092c55",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}

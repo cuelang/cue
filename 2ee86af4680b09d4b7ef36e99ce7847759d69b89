@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ba2500_f164d630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:23:23Z",
+      "side": 1,
+      "message": "EPIC tests in pkg/path/testdata. Thank goodness for the txtar update facility in testscript!",
+      "revId": "2ee86af4680b09d4b7ef36e99ce7847759d69b89",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
