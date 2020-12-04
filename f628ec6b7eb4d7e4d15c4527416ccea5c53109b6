@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccc59fc_7f0916a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:14:14Z",
+      "side": 1,
+      "message": "LGTM with the one thought we discussed offline about an error in the case a \"bad\" OS is specified. Because defaulting to Unix in that case doesn\u0027t feel right.",
+      "revId": "f628ec6b7eb4d7e4d15c4527416ccea5c53109b6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cd221b_ccca3a9b",
+        "filename": "pkg/path/testdata/match.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:14:14Z",
+      "side": 1,
+      "message": "No longer necessary? Could go?",
+      "revId": "f628ec6b7eb4d7e4d15c4527416ccea5c53109b6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc2f16c_0165738c",
+        "filename": "pkg/path/testdata/os.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:14:14Z",
+      "side": 1,
+      "message": "I haven\u0027t enumerated all the error situations in my head, but would it make more sense to panic/error in this case? That still allows the default to be Unix, but in the case a \"bad\" value is supplied, we at least let the user know.",
+      "revId": "f628ec6b7eb4d7e4d15c4527416ccea5c53109b6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29194143_02211d01",
+        "filename": "pkg/path/testdata/path.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2020-12-04T09:14:14Z",
+      "side": 1,
+      "message": "No longer required?",
+      "revId": "f628ec6b7eb4d7e4d15c4527416ccea5c53109b6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
