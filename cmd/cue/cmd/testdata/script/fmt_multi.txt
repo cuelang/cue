@@ -1,0 +1,24 @@
+cue fmt ./...
+cmp x.cue out-x-cue
+cmp y.cue out-y-cue
+-- x.cue --
+package x
+
+a:    1
+bb:  2
+
+-- y.cue --
+package y
+
+a:    1
+bb:  2
+-- out-x-cue --
+package x
+
+a:  1
+bb: 2
+-- out-y-cue --
+package y
+
+a:  1
+bb: 2

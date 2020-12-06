@@ -33,8 +33,9 @@ func newFmtCmd(c *Command) *cobra.Command {
 `,
 		RunE: mkRunE(c, func(cmd *Command, args []string) error {
 			plan, err := parseArgs(cmd, args, &config{loadCfg: &load.Config{
-				Tests: true,
-				Tools: true,
+				Tests:   true,
+				Tools:   true,
+				Package: "*",
 			}})
 			exitOnErr(cmd, err, true)
 
