@@ -473,7 +473,20 @@ func (n *nodeContext) postDisjunct(state adt.VertexStatus) {
 	}
 
 	if n.aStruct != nil {
+		// isStruct := n.isStruct
+
+		// // TODO(perf): keep stats to check this.
+		// if !isStruct && !n.node.IsList() {
+		// 	for _, a := range n.node.Arcs {
+		// 		if a.Label.IsRegular() {
+		// 			isStruct = true
+		// 			break
+		// 		}
+		// 	}
+		// }
+		// if isStruct {
 		n.updateNodeType(adt.StructKind, n.aStruct, n.aStructID)
+		// }
 	}
 
 	switch err := n.getErr(); {
@@ -815,6 +828,7 @@ type nodeContext struct {
 	aStruct   adt.Expr
 	aStructID adt.ID
 	hasTop    bool
+	isStruct  bool
 
 	// Expression conjuncts
 	lists  []envList
@@ -1650,6 +1664,7 @@ func (n *nodeContext) addStruct(
 
 	var hasOther, hasBulk adt.Node
 	hasEmbed := false
+	// hasRegular := false
 
 	opt := fieldSet{pos: s, env: childEnv, id: closeID}
 
@@ -1657,6 +1672,9 @@ func (n *nodeContext) addStruct(
 		switch x := d.(type) {
 		case *adt.Field:
 			opt.MarkField(ctx, x.Label)
+			// if x.Label.IsRegular() {
+			// 	hasRegular = true
+			// }
 			// handle in next iteration.
 
 		case *adt.OptionalField:
@@ -1718,6 +1736,15 @@ func (n *nodeContext) addStruct(
 		n.aStruct = s
 		n.aStructID = closeID
 	}
+	// The literal {} is always of type struct.
+	// if !hasEmbed && (opt.fields == nil) ||
+	// 	hasRegular ||
+	// 	opt.additional != nil ||
+	// 	opt.bulk != nil {
+	// 	// limit to struct type later. Delaying this leads to better error
+	// 	// messages.
+	// 	n.isStruct = true
+	// }
 
 	// Apply existing fields
 	for _, arc := range n.node.Arcs {
