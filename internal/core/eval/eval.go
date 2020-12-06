@@ -1657,7 +1657,6 @@ func (n *nodeContext) addStruct(
 		switch x := d.(type) {
 		case *adt.Field:
 			opt.MarkField(ctx, x.Label)
-			// handle in next iteration.
 
 		case *adt.OptionalField:
 			if x.Label.IsString() {
