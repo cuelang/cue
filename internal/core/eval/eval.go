@@ -1648,7 +1648,6 @@ func (n *nodeContext) addStruct(
 		childEnv.Deref = env.Deref
 	}
 
-	var hasOther, hasBulk adt.Node
 	hasEmbed := false
 
 	opt := fieldSet{pos: s, env: childEnv, id: closeID}
@@ -1668,21 +1667,17 @@ func (n *nodeContext) addStruct(
 		case *adt.DynamicField:
 			n.aStruct = s
 			n.aStructID = closeID
-			hasOther = x
 			n.dynamicFields = append(n.dynamicFields, envDynamic{childEnv, x, closeID, nil})
 			opt.AddDynamic(ctx, childEnv, x)
 
 		case *adt.ForClause:
-			hasOther = x
 			n.forClauses = append(n.forClauses, envYield{childEnv, x, closeID, nil})
 
 		case adt.Yielder:
-			hasOther = x
 			n.ifClauses = append(n.ifClauses, envYield{childEnv, x, closeID, nil})
 
 		case adt.Expr:
 			hasEmbed = true
-			hasOther = x
 
 			// add embedding to optional
 
@@ -1696,7 +1691,6 @@ func (n *nodeContext) addStruct(
 		case *adt.BulkOptionalField:
 			n.aStruct = s
 			n.aStructID = closeID
-			hasBulk = x
 			opt.AddBulk(ctx, x)
 
 		case *adt.Ellipsis:
@@ -1707,10 +1701,6 @@ func (n *nodeContext) addStruct(
 		default:
 			panic("unreachable")
 		}
-	}
-
-	if hasBulk != nil && hasOther != nil {
-		n.addErr(ctx.Newf("cannot mix bulk optional fields with dynamic fields, embeddings, or comprehensions within the same struct"))
 	}
 
 	if !hasEmbed {
