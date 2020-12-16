@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac1be71_ac2366c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-16T12:02:16Z",
+      "side": 1,
+      "message": "Is there a reason for the updates?\n\nFor some packages it is important to read the release notes. For instance, upgrading the proto package may result in a crash if it introduces new types that are then subsequently not handled in the CUE code.",
+      "revId": "27368364eaf25dec36fd72983535b81e25baff3b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
