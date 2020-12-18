@@ -16,37 +16,70 @@ d: pkg.#D & { _name: d: int, _val: 4 }
 
 // TODO: this should fail, as the _name restricting it is in this
 // package.
-e: pkg.#D & #def & { _name: e: int, _val: int }
+e: pkg.#D & #def & {
+  // This should fail as c is disallowed by the _name defined
+  // in this package
+  _name: c: int
+
+  // This should not fail, as this is a different _val
+  _val: f: int
+}
 f: e._val
 
 -- pkg/bar.cue --
 package pkg
 
-#D: { _val: 3 }
+#D: { _val: f: int }
 
 -- out/eval --
-(struct){
+Errors:
+e._name: field `c` not allowed:
+    ./in.cue:6:10
+    ./in.cue:13:13
+    ./in.cue:16:10
+
+Result:
+(_|_){
+  // [eval]
   #def: (#struct){
     _name(:foo): (#struct){
       d: (int){ int }
     }
   }
   d: (#struct){
-    _val(example.com:pkg): (int){ 3 }
-    _name(:foo): (#struct){
+    _val(example.com:pkg): (#struct){
+      f: (int){ int }
+    }
+    _name(:foo): (struct){
       d: (int){ int }
     }
     _val(:foo): (int){ 4 }
   }
-  e: (#struct){
-    _val(example.com:pkg): (int){ 3 }
-    _name(:foo): (#struct){
-      d: (int){ int }
-      e: (int){ int }
+  e: (_|_){
+    // [eval]
+    _val(example.com:pkg): (#struct){
+      f: (int){ int }
     }
-    _val(:foo): (int){ int }
+    _name(:foo): (_|_){
+      // [eval]
+      d: (int){ int }
+      c: (_|_){
+        // [eval] e._name: field `c` not allowed:
+        //     ./in.cue:6:10
+        //     ./in.cue:13:13
+        //     ./in.cue:16:10
+      }
+    }
+    _val(:foo): (struct){
+      f: (int){ int }
+    }
   }
-  f: (int){ int }
+  f: (_|_){
+    // [eval] e._name: field `c` not allowed:
+    //     ./in.cue:6:10
+    //     ./in.cue:13:13
+    //     ./in.cue:16:10
+  }
 }
 -- out/compile --
 --- in.cue
@@ -64,9 +97,11 @@ package pkg
   })
   e: ((〈import;"example.com/pkg"〉.#D & 〈0;#def〉) & {
     _name: {
-      e: int
+      c: int
     }
-    _val: int
+    _val: {
+      f: int
+    }
   })
   f: 〈0;e〉._val
 }
