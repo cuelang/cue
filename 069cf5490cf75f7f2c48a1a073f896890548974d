@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99386238_b034fd9d",
+        "filename": "internal/core/eval/optionals.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-23T23:03:00Z",
+      "side": 1,
+      "message": "Are Dynamic fields from comprehensions?",
+      "revId": "069cf5490cf75f7f2c48a1a073f896890548974d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
