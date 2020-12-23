@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289f73a8_a2afc6d9",
+        "filename": "tools/flow/flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-23T22:34:59Z",
+      "side": 1,
+      "message": "reusing \"t\" here is a bit confusing for me",
+      "revId": "4dca3a9a382b81610da185effb48bf06276a0bdf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
