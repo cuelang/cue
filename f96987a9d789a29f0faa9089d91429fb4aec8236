@@ -33,6 +33,23 @@
       "message": "Ran this version with pprof and loaded into https://www.speedscope.app/ (https://github.com/jlfwong/speedscope) to see some interesting results.\n\nHappy to share the profile output files.\n\none interesting result is that calls to pkg/strings are taking \u003e25% of the ~13s runtime (which used to take 3.5s)",
       "revId": "f96987a9d789a29f0faa9089d91429fb4aec8236",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bf3a59_0e5488f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-24T03:25:02Z",
+      "side": 1,
+      "message": "Some minor perf gains where slices are same size",
+      "revId": "f96987a9d789a29f0faa9089d91429fb4aec8236",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }

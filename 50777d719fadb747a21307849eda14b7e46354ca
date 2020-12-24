@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8893e8_ccb7c8f5",
+        "filename": "internal/core/eval/disjunct.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-24T03:25:02Z",
+      "side": 0,
+      "message": "I replaced this with `a :\u003d make([]disjunct, 0, len(x.Values))` and saved ~15% in my perf tests",
+      "revId": "50777d719fadb747a21307849eda14b7e46354ca",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd096009_e0c9bcff",
+        "filename": "internal/core/eval/disjunct.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-24T03:25:02Z",
+      "side": 0,
+      "message": "same here",
+      "revId": "50777d719fadb747a21307849eda14b7e46354ca",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
