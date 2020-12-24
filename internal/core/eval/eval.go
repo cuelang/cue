@@ -335,7 +335,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 			v.Closed = true
 		}
 	}
-	saved := *v
+	// saved := *v
 
 	if !v.Label.IsInt() && v.Parent != nil && !ignore {
 		// Visit arcs recursively to validate and compute error.
@@ -353,74 +353,69 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 	defer c.PopArc(c.PushArc(v))
 
 	e.stats.UnifyCount++
-	for i := 0; ; i++ {
-		e.stats.DisjunctCount++
 
-		// Clear any remaining error.
-		if err := c.Err(); err != nil {
-			panic("uncaught error")
-		}
+	// START OLD LOOP
 
-		// Set the cache to a cycle error to ensure a cyclic reference will result
-		// in an error if applicable. A cyclic error may be ignored for
-		// non-expression references. The cycle error may also be removed as soon
-		// as there is evidence what a correct value must be, but before all
-		// validation has taken place.
-		*v = saved
-		v.BaseValue = cycle
-
-		v.UpdateStatus(adt.Evaluating)
-
-		// If the result is a struct, it needs to be closed if:
-		//   1) this node introduces a definition
-		//   2) this node is a child of a node that introduces a definition,
-		//      recursively.
-		//   3) this node embeds a closed struct.
-		n := e.newNodeContext(shared)
-
-		for _, x := range v.Conjuncts {
-			// TODO: needed for reentrancy. Investigate usefulness for cycle
-			// detection.
-			n.addExprConjunct(x)
-		}
-
-		if i == 0 {
-			// Use maybeSetCache for cycle breaking
-			for n.maybeSetCache(); n.expandOne(); n.maybeSetCache() {
-			}
-			if v.Status() > adt.Evaluating && state <= adt.Partial {
-				// We have found a partial result. There may still be errors
-				// down the line which may result from further evaluating this
-				// field, but that will be caught when evaluating this field
-				// for real.
-				shared.setResult(v)
-				e.freeNodeContext(n)
-				return shared
-			}
-			if !n.done() && len(n.disjunctions) > 0 && isEvaluating(v) {
-				// We disallow entering computations of disjunctions with
-				// incomplete data.
-				b := c.NewErrf("incomplete cause disjunction")
-				b.Code = adt.IncompleteError
-				v.SetValue(n.ctx, adt.Finalized, b)
-				shared.setResult(v)
-				e.freeNodeContext(n)
-				return shared
-			}
-		}
-
-		// Handle disjunctions. If there are no disjunctions, this call is
-		// equivalent to calling n.postDisjunct.
-		if n.tryDisjuncts(state) {
-			if v.BaseValue == nil {
-				v.BaseValue = n.getValidators()
-			}
-
-			e.freeNodeContext(n)
-			break
-		}
+	// Clear any remaining error.
+	if err := c.Err(); err != nil {
+		panic("uncaught error")
 	}
 
+	// Set the cache to a cycle error to ensure a cyclic reference will result
+	// in an error if applicable. A cyclic error may be ignored for
+	// non-expression references. The cycle error may also be removed as soon
+	// as there is evidence what a correct value must be, but before all
+	// validation has taken place.
+	// *v = saved
+	v.BaseValue = cycle
+
+	v.UpdateStatus(adt.Evaluating)
+
+	// If the result is a struct, it needs to be closed if:
+	//   1) this node introduces a definition
+	//   2) this node is a child of a node that introduces a definition,
+	//      recursively.
+	//   3) this node embeds a closed struct.
+	n := e.newNodeContext(shared)
+
+	for _, x := range v.Conjuncts {
+		// TODO: needed for reentrancy. Investigate usefulness for cycle
+		// detection.
+		n.addExprConjunct(x)
+	}
+
+	// Use maybeSetCache for cycle breaking
+	for n.maybeSetCache(); n.expandOne(); n.maybeSetCache() {
+	}
+	if v.Status() > adt.Evaluating && state <= adt.Partial {
+		// We have found a partial result. There may still be errors
+		// down the line which may result from further evaluating this
+		// field, but that will be caught when evaluating this field
+		// for real.
+		shared.setResult(v)
+		e.freeNodeContext(n)
+		return shared
+	}
+	if !n.done() && len(n.disjunctions) > 0 && isEvaluating(v) {
+		// We disallow entering computations of disjunctions with
+		// incomplete data.
+		b := c.NewErrf("incomplete cause disjunction")
+		b.Code = adt.IncompleteError
+		v.SetValue(n.ctx, adt.Finalized, b)
+		shared.setResult(v)
+		e.freeNodeContext(n)
+		return shared
+	}
+
+	n.processDisjuncts(state)
+
+	// Handle disjunctions. If there are no disjunctions, this call is
+	// equivalent to calling n.postDisjunct.
+	if v.BaseValue == nil {
+		v.BaseValue = n.getValidators()
+	}
+
+	e.freeNodeContext(n)
 	return shared
 }
 
@@ -639,7 +634,7 @@ type nodeShared struct {
 
 	result_ adt.Vertex
 	isDone  bool
-	stack   []int
+	// stack   []int
 }
 
 func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeShared {
@@ -652,7 +647,7 @@ func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeSha
 			ctx:  ctx,
 			node: node,
 
-			stack:        n.stack[:0],
+			// stack:        n.stack[:0],
 			disjunct:     adt.Disjunction{Values: n.disjunct.Values[:0]},
 			disjunctErrs: n.disjunctErrs[:0],
 		}
@@ -757,10 +752,11 @@ type nodeContext struct {
 	hasNonCycle bool // has conjunct without structural cycle
 
 	// Disjunction handling
-	disjunctions    []envDisjunct
-	subDisjunctions []envDisjunct
-	defaultMode     defaultMode
-	isFinal         bool
+	disjunctions []envDisjunct
+	// subDisjunctions []envDisjunct
+	defaultMode defaultMode
+	subMode     defaultMode
+	// isFinal     bool
 }
 
 func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
@@ -771,18 +767,18 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 		*n = nodeContext{
 			kind:       adt.TopKind,
 			nodeShared: shared,
-			isFinal:    true,
+			// isFinal:    true,
 
-			arcMap:          n.arcMap[:0],
-			checks:          n.checks[:0],
-			dynamicFields:   n.dynamicFields[:0],
-			ifClauses:       n.ifClauses[:0],
-			forClauses:      n.forClauses[:0],
-			lists:           n.lists[:0],
-			vLists:          n.vLists[:0],
-			exprs:           n.exprs[:0],
-			disjunctions:    n.disjunctions[:0],
-			subDisjunctions: n.subDisjunctions[:0],
+			arcMap:        n.arcMap[:0],
+			checks:        n.checks[:0],
+			dynamicFields: n.dynamicFields[:0],
+			ifClauses:     n.ifClauses[:0],
+			forClauses:    n.forClauses[:0],
+			lists:         n.lists[:0],
+			vLists:        n.vLists[:0],
+			exprs:         n.exprs[:0],
+			disjunctions:  n.disjunctions[:0],
+			// subDisjunctions: n.subDisjunctions[:0],
 		}
 
 		return n
@@ -794,7 +790,7 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 		nodeShared: shared,
 
 		// These get cleared upon proof to the contrary.
-		isFinal: true,
+		// isFinal: true,
 	}
 }
 
