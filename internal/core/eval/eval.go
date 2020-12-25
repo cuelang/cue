@@ -724,7 +724,7 @@ type nodeContext struct {
 	// should already ensure a quick-fail for struct disjunctions with
 	// discriminators.
 
-	arcMap map[arcKey]bool
+	arcMap []arcKey
 
 	// Current value (may be under construction)
 	scalar   adt.Value // TODO: use Value in node.
@@ -769,13 +769,11 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 		e.freeListNode = n.nextFree
 
 		*n = nodeContext{
-			// TODO(perf): use another technique that doesn't require allocation.
-			// arcMap: map[arcKey]bool{},
-
 			kind:       adt.TopKind,
 			nodeShared: shared,
 			isFinal:    true,
 
+			arcMap:          n.arcMap[:0],
 			checks:          n.checks[:0],
 			dynamicFields:   n.dynamicFields[:0],
 			ifClauses:       n.ifClauses[:0],
@@ -792,7 +790,6 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 	e.stats.Allocs++
 
 	return &nodeContext{
-		// arcMap:     map[arcKey]bool{},
 		kind:       adt.TopKind,
 		nodeShared: shared,
 
@@ -1137,15 +1134,13 @@ func (n *nodeContext) addVertexConjuncts(env *adt.Environment, closeInfo adt.Clo
 	// (pointer can probably be shared). Aside from being more performant,
 	// this is probably the best way to guarantee that conjunctions are
 	// linear in this case.
-	if n.arcMap == nil {
-		n.arcMap = map[arcKey]bool{}
+	key := arcKey{arc, closeInfo}
+	for _, k := range n.arcMap {
+		if key == k {
+			return
+		}
 	}
-
-	id := closeInfo
-	if n.arcMap[arcKey{arc, id}] {
-		return
-	}
-	n.arcMap[arcKey{arc, id}] = true
+	n.arcMap = append(n.arcMap, key)
 
 	// Pass detection of structural cycles from parent to children.
 	cyclic := false
