@@ -16,6 +16,24 @@
       "message": "Are Dynamic fields from comprehensions?",
       "revId": "069cf5490cf75f7f2c48a1a073f896890548974d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3509a0_0d1ddc17",
+        "filename": "internal/core/eval/optionals.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-27T10:44:40Z",
+      "side": 1,
+      "message": "From `\"\\(foo)\": int`, for instance. As we intend to allow `(foo): int` as well, this is called dynamic fields.",
+      "parentUuid": "99386238_b034fd9d",
+      "revId": "069cf5490cf75f7f2c48a1a073f896890548974d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
