@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f4a3154_8100c913",
+        "filename": "internal/core/eval/disjunct.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-27T10:43:06Z",
+      "side": 0,
+      "message": "That seems like a worthwhile change indeed. I reckon this is unrelated to the other slowdown.",
+      "parentUuid": "9e8893e8_ccb7c8f5",
+      "revId": "50777d719fadb747a21307849eda14b7e46354ca",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd096009_e0c9bcff",
         "filename": "internal/core/eval/disjunct.go",
         "patchSetId": 4

@@ -50,6 +50,42 @@
       "message": "Some minor perf gains where slices are same size",
       "revId": "f96987a9d789a29f0faa9089d91429fb4aec8236",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1245c6dc_c029950c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-27T10:43:06Z",
+      "side": 1,
+      "message": "That is interesting. It would be good to see the relevant config. A possibility here is the change from arcKey to use a CloseInfo, instead of an ID as key. It could be that this results in conjuncts mixed in more often. As unification is idempotent, this is fine, but if this conjunct is a disjunction, together with the disjunction performance issue, this can cause significant slower running times.",
+      "parentUuid": "7f8badbd_15a395cd",
+      "revId": "f96987a9d789a29f0faa9089d91429fb4aec8236",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2256dca2_11c5b212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-27T10:43:06Z",
+      "side": 1,
+      "message": "Hmm, that is interesting. I did remove a bunch of optimizations that may have caused this. Moreover, there are some bug fixes resulting from this change that may result in different behavior. Especially with he disjunction performance issue still open, a small change in behavior can result in big performance differences.\n\nIt may be worth it to reintroduce some of the old optimizations as well before the disjunction fix, although at this point I rather fix that first as it seems to aggravate all other issues.",
+      "parentUuid": "fc0a79a5_c0fed8d2",
+      "revId": "f96987a9d789a29f0faa9089d91429fb4aec8236",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
