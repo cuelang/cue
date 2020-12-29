@@ -91,8 +91,8 @@ i1: "c"
   o8: (int){ |((int){ 2 }, (int){ 3 }) }
   o9: (int){ |((int){ 2 }, (int){ 3 }) }
   o10: (int){ |(*(int){ 2 }, (int){ 3 }) }
-  m1: (int){ |(*(int){ 2 }, (int){ 3 }) }
-  m2: (int){ |(*(int){ 2 }, (int){ 3 }) }
+  m1: (int){ |((int){ 2 }, (int){ 3 }) }
+  m2: (int){ |((int){ 2 }, (int){ 3 }) }
   m3: (int){ |(*(int){ 2 }, (int){ 3 }) }
   m4: (int){ |(*(int){ 2 }, (int){ 3 }) }
   m5: (int){ |(*(int){ 2 }, (int){ 3 }) }
