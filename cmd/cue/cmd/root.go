@@ -17,7 +17,9 @@ package cmd
 import (
 	"context"
 	"io"
+	"log"
 	"os"
+	"runtime/pprof"
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -42,6 +44,17 @@ type runFunction func(cmd *Command, args []string) error
 
 func mkRunE(c *Command, f runFunction) func(*cobra.Command, []string) error {
 	return func(cmd *cobra.Command, args []string) error {
+		if pfn := os.Getenv("CUE_PPROF"); pfn != "" {
+			pf, err := os.Create(pfn)
+			if err != nil {
+				log.Fatal("could not create CPU profile: ", err)
+			}
+			defer pf.Close() // error handling omitted for example
+			if err := pprof.StartCPUProfile(pf); err != nil {
+				log.Fatal("could not start CPU profile: ", err)
+			}
+			defer pprof.StopCPUProfile()
+		}
 		c.Command = cmd
 		err := f(c, args)
 		if err != nil {
