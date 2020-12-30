@@ -284,13 +284,62 @@ func (e *extractor) usedPkg(pkg string) {
 	e.usedPkgs[pkg] = true
 }
 
+var cueGoMod = `
+module cuelang.org/go
+`
+
 func initInterfaces() error {
-	cfg := &packages.Config{
-		Mode: packages.LoadAllSyntax,
-	}
-	p, err := packages.Load(cfg, "cuelang.org/go/cmd/cue/cmd/interfaces")
+	// tempdir needed for overlay
+	tmpDir := "./cuelang.org"
+	err := os.MkdirAll(tmpDir, 0755)
 	if err != nil {
 		return err
+	}
+
+	defer func() {
+		err := os.RemoveAll(tmpDir)
+		if err != nil {
+			fmt.Println("Error", err)
+		}
+	}()
+
+	// prefix filenames with the CWD
+	wd, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+
+	// write the cuelang go.mod
+	err = ioutil.WriteFile(filepath.Join(wd, tmpDir, "go.mod"), []byte(cueGoMod), 0644)
+	if err != nil {
+		return err
+	}
+
+	for fn, contents := range interfaceFilesOverlay {
+		dir := filepath.Join(wd, tmpDir, "cmd/cue/cmd/interfaces")
+		err := os.MkdirAll(dir, 0755)
+		if err != nil {
+			return err
+		}
+
+		filename := filepath.Join(dir, fn)
+		err = ioutil.WriteFile(filename, contents, 0644)
+		if err != nil {
+			return err
+		}
+	}
+
+	cfg := &packages.Config{
+		Mode: packages.LoadAllSyntax,
+		Dir:  filepath.Join(tmpDir, "cmd/cue/cmd/interfaces"),
+	}
+
+	p, err := packages.Load(cfg)
+	if err != nil {
+		return err
+	}
+	if len(p[0].Errors) > 0 {
+		return fmt.Errorf("error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package: %q", p[0].Errors)
 	}
 
 	for e, tt := range p[0].TypesInfo.Types {
@@ -345,6 +394,15 @@ func extract(cmd *Command, args []string) error {
 	pkgs, err := packages.Load(cfg, args...)
 	if err != nil {
 		return err
+	}
+	var errs []string
+	for _, P := range pkgs {
+		if len(P.Errors) > 0 {
+			errs = append(errs, fmt.Sprintf("%s: %v", P.PkgPath, P.Errors))
+		}
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("While loading Go packages:\n%s", strings.Join(errs, "\n"))
 	}
 
 	e := extractor{
