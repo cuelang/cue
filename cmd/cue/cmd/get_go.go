@@ -292,6 +292,9 @@ func initInterfaces() error {
 	if err != nil {
 		return err
 	}
+	if len(p[0].Errors) > 0 {
+		return fmt.Errorf("error loading cue meta: %q\nIf you are using the go mod vendor folder, ensure that the cue source is present as well", p[0].Errors)
+	}
 
 	for e, tt := range p[0].TypesInfo.Types {
 		if n, ok := tt.Type.(*types.Named); ok && n.String() == "error" {
@@ -345,6 +348,15 @@ func extract(cmd *Command, args []string) error {
 	pkgs, err := packages.Load(cfg, args...)
 	if err != nil {
 		return err
+	}
+	var errs []string
+	for _, P := range pkgs {
+		if len(P.Errors) > 0 {
+			errs = append(errs, fmt.Sprintf("%s: %v", P.PkgPath, P.Errors))
+		}
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("While loading Go packages:\n%s", strings.Join(errs, "\n"))
 	}
 
 	e := extractor{
