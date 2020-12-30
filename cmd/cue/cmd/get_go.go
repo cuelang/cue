@@ -281,13 +281,56 @@ func (e *extractor) usedPkg(pkg string) {
 	e.usedPkgs[pkg] = true
 }
 
-func initInterfaces() error {
-	cfg := &packages.Config{
-		Mode: packages.LoadAllSyntax,
-	}
-	p, err := packages.Load(cfg, "cuelang.org/go/cmd/cue/cmd/interfaces")
+const cueGoMod = `
+module cuelang.org/go
+`
+
+//go:generate go run cuelang.org/go/internal/cmd/embedpkg cuelang.org/go/cmd/cue/cmd/interfaces
+
+func initInterfaces() (err error) {
+	// tempdir needed for overlay
+	tmpDir, err := ioutil.TempDir("", "cuelang")
 	if err != nil {
 		return err
+	}
+
+	defer func() {
+		err = os.RemoveAll(tmpDir)
+	}()
+
+	// write the cuelang go.mod
+	err = ioutil.WriteFile(filepath.Join(tmpDir, "go.mod"), []byte(cueGoMod), 0666)
+	if err != nil {
+		return err
+	}
+
+	for fn, contents := range interfacesFiles {
+		dir := filepath.Join(tmpDir, "cmd", "cue", "cmd", "interfaces")
+		if err := os.MkdirAll(dir, 0777); err != nil {
+			return err
+		}
+
+		filename := filepath.Join(dir, fn)
+		if err = ioutil.WriteFile(filename, contents, 0666); err != nil {
+			return err
+		}
+	}
+
+	cfg := &packages.Config{
+		Mode: packages.LoadAllSyntax,
+		Dir:  filepath.Join(tmpDir),
+	}
+
+	p, err := packages.Load(cfg, "cuelang.org/go/cmd/cue/cmd/interfaces")
+	if err != nil {
+		return fmt.Errorf("error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package: %w", err)
+	}
+	if len(p[0].Errors) > 0 {
+		var buf bytes.Buffer
+		for _, e := range p[0].Errors {
+			fmt.Fprintf(&buf, "\t%v\n", e)
+		}
+		return fmt.Errorf("error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package:\n%s", buf.String())
 	}
 
 	for e, tt := range p[0].TypesInfo.Types {
@@ -342,6 +385,15 @@ func extract(cmd *Command, args []string) error {
 	pkgs, err := packages.Load(cfg, args...)
 	if err != nil {
 		return err
+	}
+	var errs []string
+	for _, P := range pkgs {
+		if len(P.Errors) > 0 {
+			errs = append(errs, fmt.Sprintf("\t%s: %v", P.PkgPath, P.Errors))
+		}
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("could not load Go packages:\n%s", strings.Join(errs, "\n"))
 	}
 
 	e := extractor{
@@ -408,7 +460,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		}
 	}
 
-	if err := os.MkdirAll(dir, 0755); err != nil {
+	if err := os.MkdirAll(dir, 0777); err != nil {
 		return err
 	}
 
@@ -481,7 +533,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		if err != nil {
 			return err
 		}
-		err = ioutil.WriteFile(filepath.Join(dir, file), b, 0644)
+		err = ioutil.WriteFile(filepath.Join(dir, file), b, 0666)
 		if err != nil {
 			return err
 		}
@@ -539,7 +591,7 @@ func (e *extractor) importCUEFiles(p *packages.Package, dir, args string) error 
 				w.Write(b)
 
 				dst := filepath.Join(dir, file)
-				if err := ioutil.WriteFile(dst, w.Bytes(), 0644); err != nil {
+				if err := ioutil.WriteFile(dst, w.Bytes(), 0666); err != nil {
 					return err
 				}
 			}
