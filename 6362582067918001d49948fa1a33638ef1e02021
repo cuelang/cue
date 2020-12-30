@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e8a3b5_af7441a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-30T04:07:52Z",
+      "side": 1,
+      "message": "https://github.com/cuelang/cue/issues/621 has more discussion and possible remedies",
+      "revId": "6362582067918001d49948fa1a33638ef1e02021",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
