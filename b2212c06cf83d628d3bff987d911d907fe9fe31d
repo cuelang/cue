@@ -51,6 +51,23 @@
       "parentUuid": "275ad3cb_829bd21f",
       "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02fc3cc_6ed33aac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-30T19:11:02Z",
+      "side": 1,
+      "message": "Meant incomplete rather than empty...\n\nAfter playing around with some examples I get what\u0027s going on better. Like how these recent changes are simplifying the foundations and code!",
+      "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
