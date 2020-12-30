@@ -6,7 +6,6 @@ module example.com/blah
 
 -- go.mod --
 module example.com/blah
-
 -- blah.go --
 package blah
 
