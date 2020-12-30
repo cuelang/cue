@@ -281,13 +281,59 @@ func (e *extractor) usedPkg(pkg string) {
 	e.usedPkgs[pkg] = true
 }
 
-func initInterfaces() error {
-	cfg := &packages.Config{
-		Mode: packages.LoadAllSyntax,
-	}
-	p, err := packages.Load(cfg, "cuelang.org/go/cmd/cue/cmd/interfaces")
+const cueGoMod = `
+module cuelang.org/go
+`
+
+//go:generate go run cuelang.org/go/internal/cmd/embedpkg cuelang.org/go/cmd/cue/cmd/interfaces
+
+func initInterfaces() (err error) {
+	// tempdir needed for overlay
+	tmpDir, err := ioutil.TempDir("", "cuelang")
 	if err != nil {
 		return err
+	}
+
+	defer func() {
+		rerr := os.RemoveAll(tmpDir)
+		if err == nil {
+			err = rerr
+		}
+	}()
+
+	// write the cuelang go.mod
+	err = ioutil.WriteFile(filepath.Join(tmpDir, "go.mod"), []byte(cueGoMod), 0666)
+	if err != nil {
+		return err
+	}
+
+	for fn, contents := range interfacesFiles {
+		fn = filepath.Join(tmpDir, filepath.FromSlash(fn))
+		dir := filepath.Dir(fn)
+		if err := os.MkdirAll(dir, 0777); err != nil {
+			return err
+		}
+
+		if err = ioutil.WriteFile(fn, contents, 0666); err != nil {
+			return err
+		}
+	}
+
+	cfg := &packages.Config{
+		Mode: packages.NeedName | packages.NeedFiles | packages.NeedCompiledGoFiles | packages.NeedImports | packages.NeedTypes | packages.NeedTypesSizes | packages.NeedSyntax | packages.NeedTypesInfo | packages.NeedDeps,
+		Dir:  filepath.Join(tmpDir),
+	}
+
+	p, err := packages.Load(cfg, "cuelang.org/go/cmd/cue/cmd/interfaces")
+	if err != nil {
+		return fmt.Errorf("error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package: %w", err)
+	}
+	if len(p[0].Errors) > 0 {
+		var buf bytes.Buffer
+		for _, e := range p[0].Errors {
+			fmt.Fprintf(&buf, "\t%v\n", e)
+		}
+		return fmt.Errorf("error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package:\n%s", buf.String())
 	}
 
 	for e, tt := range p[0].TypesInfo.Types {
@@ -321,6 +367,31 @@ var (
 // - consider not including types with any dropped fields.
 
 func extract(cmd *Command, args []string) error {
+	// TODO: there are various permutations when it comes to the arguments
+	// to get go and the calling context. All require that the
+	//
+	// 1. the arguments to
+	// TODO the CUE load using "." (below) assumes that a CUE module and a Go module will
+	// exist within the same directory (more precisely that a Go module could be
+	// nested within a CUE module), such that the module path in any
+	// subdirectory below the current directory will be the same.  This seems an
+	// entirely reasonable restriction, but also one that we should enforce.
+	//
+	// Enforcing this restriction also makes --local entirely redundant.
+	//
+	// TODO: GOPATH. Strictly speaking it would be better from a UX perspective
+	// to eargerly check that the two modules align. But because we still offer
+	// GOPATH support we can't know the Go module
+	// It would generally be
+	// Strictly speaking we could lazily check whether the two modules "align"
+	// but it seems better and more consistent to check early, by using the
+	// CUE and Go equivalents of loading ".", then comparing the path result.
+	// Note we need to do
+	//
+	// --local is required for GOPATH mode.
+
+	// command specifies a Go package(s) that belong to the main module
+	// and where for some reason the
 	// determine module root:
 	binst := loadFromArgs(cmd, []string{"."}, nil)[0]
 
@@ -337,11 +408,20 @@ func extract(cmd *Command, args []string) error {
 	}
 
 	cfg := &packages.Config{
-		Mode: packages.LoadAllSyntax | packages.NeedModule,
+		Mode: packages.NeedName | packages.NeedFiles | packages.NeedCompiledGoFiles | packages.NeedImports | packages.NeedTypes | packages.NeedTypesSizes | packages.NeedSyntax | packages.NeedTypesInfo | packages.NeedDeps | packages.NeedModule,
 	}
 	pkgs, err := packages.Load(cfg, args...)
 	if err != nil {
 		return err
+	}
+	var errs []string
+	for _, P := range pkgs {
+		if len(P.Errors) > 0 {
+			errs = append(errs, fmt.Sprintf("\t%s: %v", P.PkgPath, P.Errors))
+		}
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("could not load Go packages:\n%s", strings.Join(errs, "\n"))
 	}
 
 	e := extractor{
@@ -408,7 +488,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		}
 	}
 
-	if err := os.MkdirAll(dir, 0755); err != nil {
+	if err := os.MkdirAll(dir, 0777); err != nil {
 		return err
 	}
 
@@ -481,7 +561,7 @@ func (e *extractor) extractPkg(root string, p *packages.Package) error {
 		if err != nil {
 			return err
 		}
-		err = ioutil.WriteFile(filepath.Join(dir, file), b, 0644)
+		err = ioutil.WriteFile(filepath.Join(dir, file), b, 0666)
 		if err != nil {
 			return err
 		}
@@ -539,7 +619,7 @@ func (e *extractor) importCUEFiles(p *packages.Package, dir, args string) error 
 				w.Write(b)
 
 				dst := filepath.Join(dir, file)
-				if err := ioutil.WriteFile(dst, w.Bytes(), 0644); err != nil {
+				if err := ioutil.WriteFile(dst, w.Bytes(), 0666); err != nil {
 					return err
 				}
 			}
