@@ -33,6 +33,24 @@
       "message": "What happens if I have\n\na: int | *1\nb: int | *2\nc: a | b\n\nWould this reduce to `c: 1 | 2` and result in an empty disjunction error?\n\ni.e. if I have multiple defaults, CUE cannot choose and the user is given an error?",
       "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61506107_7724aa4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-30T10:10:50Z",
+      "side": 1,
+      "message": "An empty disjunction only occurs if there is no option left. In case the result would be `int | *1 | *2`, just as it is now. \n\nBasically this change only affects cases where a disjunction and a nested disjunction both have default markers.So unlike with the old implementation, the result of `c: *a | b` would be `int | *1 | 2`.",
+      "parentUuid": "275ad3cb_829bd21f",
+      "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
