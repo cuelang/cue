@@ -98,7 +98,7 @@ type disjunct struct {
 }
 
 func (n *nodeContext) addDisjunction(env *adt.Environment, x *adt.DisjunctionExpr, cloneID adt.CloseInfo) {
-	a := []disjunct{}
+	a := make([]disjunct, 0, len(x.Values))
 
 	numDefaults := 0
 	for _, v := range x.Values {
@@ -118,7 +118,7 @@ func (n *nodeContext) addDisjunction(env *adt.Environment, x *adt.DisjunctionExp
 }
 
 func (n *nodeContext) addDisjunctionValue(env *adt.Environment, x *adt.Disjunction, cloneID adt.CloseInfo) {
-	a := []disjunct{}
+	a := make([]disjunct, 0, len(x.Values))
 
 	for i, v := range x.Values {
 		a = append(a, disjunct{v, i < x.NumDefaults})
@@ -128,182 +128,170 @@ func (n *nodeContext) addDisjunctionValue(env *adt.Environment, x *adt.Disjuncti
 		envDisjunct{env, a, x.NumDefaults, cloneID})
 }
 
-func (n *nodeContext) updateResult(state adt.VertexStatus) {
-	n.postDisjunct(state)
+func (n *nodeContext) expandDisjuncts(
+	state adt.VertexStatus,
+	parent *nodeContext,
+	m defaultMode,
+	recursive bool) {
 
-	if n.hasErr() {
-		x := n.node
-		err, ok := x.BaseValue.(*adt.Bottom)
-		if !ok {
-			err = n.getErr()
-		}
-		if err == nil {
-			// TODO(disjuncts): Is this always correct? Especially for partial
-			// evaluation it is okay for child errors to have incomplete errors.
-			// Perhaps introduce an Err() method.
-			err = x.ChildErrors
-		}
-		if err != nil {
-			n.disjunctErrs = append(n.disjunctErrs, err)
-		}
-		return
+	n.eval.stats.DisjunctCount++
+
+	for n.expandOne() {
 	}
 
-	n.touched = true
-	d := &n.nodeShared.disjunct
+	// save node to snapShot in nodeContex
+	// save nodeContext.
 
-	result := *n.node
-	if result.BaseValue == nil {
-		result.BaseValue = n.getValidators()
-	}
-
-	for _, v := range d.Values {
-		if adt.Equal(n.ctx, v, &result) {
-			return
-		}
-	}
-
-	p := &result
-	d.Values = append(d.Values, p)
-
-	if n.done() {
-		n.nodeShared.isDone = true
-	}
-
-	if n.defaultMode == isDefault {
-		// Keep defaults sorted first.
-		i := d.NumDefaults
-		j := i + 1
-		copy(d.Values[j:], d.Values[i:])
-		d.Values[i] = p
-		d.NumDefaults = j
+	if recursive || len(n.disjunctions) > 0 {
+		n.snapshot = snapshotVertex(*n.node)
+	} else {
+		n.snapshot = *n.node
 	}
 
 	switch {
-	case !n.nodeShared.hasResult():
-
-	case n.nodeShared.isDefault() && n.defaultMode != isDefault:
-		return
-
-	case !n.nodeShared.isDefault() && n.defaultMode == isDefault:
-
-	default:
-		return // n.defaultMode == isDefault
-	}
-
-	n.nodeShared.setResult(n.node)
-
-	return
-}
-
-func (n *nodeContext) processDisjuncts(state adt.VertexStatus) {
-	n.processDisjunct(state, 0, len(n.disjunctions))
-
-	if n.nodeShared.hasResult() {
-		return // found something
-	}
-
-	if len(n.disjunctions) > 0 {
-		code := adt.IncompleteError
-
-		if len(n.disjunctErrs) > 0 {
-			code = adt.EvalError
-			for _, c := range n.disjunctErrs {
-				if c.Code > code {
-					code = c.Code
-				}
-			}
-		}
-
-		b := &adt.Bottom{
-			Code: code,
-			Err:  n.disjunctError(),
-		}
-		n.node.SetValue(n.ctx, adt.Finalized, b)
-	}
-}
-
-// TODO: move state to nodeShared.
-func (n *nodeContext) processDisjunct(state adt.VertexStatus, k, sub int) {
-	isSub := false
-	var d envDisjunct
-	switch {
-	case sub < len(n.disjunctions):
-		d = n.disjunctions[sub]
-		sub++
-		isSub = true
-
-	case k < len(n.disjunctions):
-		d = n.disjunctions[k]
-		k++
-
-	default:
-		n.updateResult(state)
-		return
-	}
-
-	// save current state of node and nodeContext
-	nSaved := snapshotVertex(n.node)
-	saved := *n
-
-	for i, v := range d.values {
-		n.eval.stats.DisjunctCount++
-
-		if i > 0 {
-			*n = saved
-			*(n.node) = nSaved
-			// restore state
-		}
-
-		// TODO: HACK ALERT: we ignore the default tags of the subexpression
-		// if we already have a scalar value and can no longer change the
-		// outcome.
-		// This is not conform the spec, but mimics the old implementation.
-		// It also results in nicer default semantics. Changing this will
-		// break existing CUE code in awkward ways.
-		// We probably should address this when we figure out how to change
-		// the spec to accommodate for this. For instance, we could say
-		// that if a disjunction only contributes a single disjunct to an
-		// end result, default information is ignored. Not the greatest
-		// definition, though.
-		// Another alternative might be to have a special builtin that
-		// mimics the good behavior.
-		// Note that the same result can be obtained in CUE by adding
-		// 0 to a referenced number (forces the default to be discarded).
-		wasScalar := n.scalar != nil // Hack line 1
-
-		c := adt.MakeConjunct(d.env, v.expr, d.cloneID)
-		n.addExprConjunct(c)
-
-		for n.expandOne() {
-		}
+	default: // len(n.disjunctions) == 0
+		n.postDisjunct(state)
 
 		if n.hasErr() {
-			continue
-		}
-
-		var mode defaultMode
-		switch {
-		case d.numDefaults == 0:
-			mode = maybeDefault
-		case v.isDefault:
-			mode = isDefault
-		default:
-			mode = notDefault
-		}
-
-		if isSub {
-			if !wasScalar { // Hack line 2.
-				n.subMode = combineDefault(n.subMode, mode)
+			x := n.node
+			err, ok := x.BaseValue.(*adt.Bottom)
+			if !ok {
+				err = n.getErr()
 			}
-		} else if sub == len(n.disjunctions) {
-			n.defaultMode = combineSubDefault(n.defaultMode, n.subMode)
-			n.defaultMode = combineDefault(n.defaultMode, mode)
-			n.subMode = maybeDefault
+			if err == nil {
+				// TODO(disjuncts): Is this always correct? Especially for partial
+				// evaluation it is okay for child errors to have incomplete errors.
+				// Perhaps introduce an Err() method.
+				err = x.ChildErrors
+			}
+			if err != nil {
+				n.disjunctErrs = append(n.disjunctErrs, err)
+			}
+			if recursive || len(n.disjunctions) > 0 {
+				n.eval.freeNodeContext(n)
+			}
+			return
+		}
+		// TODO: clean up this mess:
+		n.touched = true  // move result setting here
+		result := *n.node // XXX: n.result = snapshotVertex(n.node)?
+
+		if result.BaseValue == nil {
+			result.BaseValue = n.getValidators()
 		}
 
-		n.processDisjunct(state, k, sub)
+		n.nodeShared.setResult(n.node)
+		if n.node.BaseValue == nil {
+			n.node.BaseValue = result.BaseValue
+		}
+		n.result = result
+		n.disjuncts = append(n.disjuncts, n)
+
+	case len(n.disjunctions) > 0:
+
+		n.disjuncts = append(n.disjuncts, n)
+
+		for i, d := range n.disjunctions {
+			a := n.disjuncts
+			n.disjuncts = n.buffer[:0]
+			n.buffer = a[:0]
+
+			for _, dn := range a {
+				for _, v := range d.values {
+					cn := dn.clone()
+					*cn.node = snapshotVertex(dn.snapshot)
+
+					c := adt.MakeConjunct(d.env, v.expr, d.cloneID)
+					cn.addExprConjunct(c)
+
+					newMode := mode(d, v)
+
+					cn.expandDisjuncts(state, n, newMode, true)
+
+					cn.defaultMode = combineDefault(dn.defaultMode, newMode)
+				}
+			}
+
+			if i > 0 {
+				for _, d := range a {
+					n.eval.freeNodeContext(d)
+				}
+			}
+
+			if len(n.disjuncts) == 0 {
+				n.makeError()
+			}
+		}
+
+		// HACK alert: this replaces the hack of the previous algorithm with a
+		// slightly less worse hack: instead of dropping the default info when
+		// the value was scalar before, we drop this information when there
+		// is only one disjunct, while not discarding hard defaults.
+		// TODO: a more principled approach would be to recognize that there
+		// is only one default at a point where this does not break
+		// commutativity.
+		if len(n.disjuncts) == 1 && n.disjuncts[0].defaultMode != isDefault {
+			n.disjuncts[0].defaultMode = maybeDefault
+		}
 	}
+
+	// Compare to root, but add to this one.
+	// TODO: if only one value is left, set to maybeDefault.
+	switch p := parent; {
+	case p != nil:
+		k := 0
+	outer:
+		for _, d := range n.disjuncts {
+			for _, v := range p.disjuncts {
+				if adt.Equal(n.ctx, &v.result, &d.result) {
+					n.eval.freeNodeContext(n)
+					continue outer
+				}
+			}
+			n.disjuncts[k] = d
+			k++
+
+			d.defaultMode = combineDefault(m, d.defaultMode)
+		}
+
+		p.disjuncts = append(p.disjuncts, n.disjuncts[:k]...)
+		n.disjuncts = n.disjuncts[:0]
+
+	case n.done():
+		n.nodeShared.isDone = true
+	}
+}
+
+func (n *nodeShared) makeError() {
+	code := adt.IncompleteError
+
+	if len(n.disjunctErrs) > 0 {
+		code = adt.EvalError
+		for _, c := range n.disjunctErrs {
+			if c.Code > code {
+				code = c.Code
+			}
+		}
+	}
+
+	b := &adt.Bottom{
+		Code: code,
+		Err:  n.disjunctError(),
+	}
+	n.node.SetValue(n.ctx, adt.Finalized, b)
+}
+
+func mode(d envDisjunct, v disjunct) defaultMode {
+	var mode defaultMode
+	switch {
+	case d.numDefaults == 0:
+		mode = maybeDefault
+	case v.isDefault:
+		mode = isDefault
+	default:
+		mode = notDefault
+	}
+	return mode
 }
 
 // Clone makes a shallow copy of a Vertex. The purpose is to create different
@@ -316,124 +304,27 @@ func (n *nodeContext) processDisjunct(state adt.VertexStatus, k, sub int) {
 // longer needed and can become nil. All other fields can be copied shallowly.
 //
 // USE TO SAVE NODE BRANCH FOR DISJUNCTION, BUT BEFORE POSTDIJSUNCT.
-func snapshotVertex(v *adt.Vertex) adt.Vertex {
-	c := *v
-
-	if len(v.Arcs) > 0 {
-		c.Arcs = make([]*adt.Vertex, len(v.Arcs))
-		for i, arc := range v.Arcs {
+func snapshotVertex(v adt.Vertex) adt.Vertex {
+	if a := v.Arcs; len(a) > 0 {
+		v.Arcs = make([]*adt.Vertex, len(a))
+		for i, arc := range a {
 			// For child arcs, only Conjuncts are set and Arcs and
 			// Structs will be nil.
 			a := *arc
-			c.Arcs[i] = &a
+			v.Arcs[i] = &a
 
 			a.Conjuncts = make([]adt.Conjunct, len(arc.Conjuncts))
 			copy(a.Conjuncts, arc.Conjuncts)
 		}
 	}
 
-	if len(v.Structs) > 0 {
-		c.Structs = make([]*adt.StructInfo, len(v.Structs))
-		copy(c.Structs, v.Structs)
+	if a := v.Structs; len(a) > 0 {
+		v.Structs = make([]*adt.StructInfo, len(a))
+		copy(v.Structs, a)
 	}
 
-	return c
+	return v
 }
-
-// // TODO: add proper conjuncts for the ones used by the disjunctions to replace
-// // the original source.
-// //
-// func (n *nodeContext) insertDisjuncts() (inserted bool) {
-// 	p := 0
-// 	inserted = true
-
-// 	n.subDisjunctions = n.subDisjunctions[:0]
-
-// 	for _, d := range n.disjunctions {
-// 		n.subDisjunctions = append(n.subDisjunctions, d)
-
-// 		sub := len(n.disjunctions)
-// 		defMode, ok := n.insertSingleDisjunct(p, d, false)
-// 		p++
-// 		if !ok {
-// 			inserted = false
-// 			break
-// 		}
-
-// 		subMode := maybeDefault
-// 		for ; sub < len(n.disjunctions); sub++ {
-// 			d := n.disjunctions[sub]
-
-// 			// TODO: HACK ALERT: we ignore the default tags of the subexpression
-// 			// if we already have a scalar value and can no longer change the
-// 			// outcome.
-// 			// This is not conform the spec, but mimics the old implementation.
-// 			// It also results in nicer default semantics. Changing this will
-// 			// break existing CUE code in awkward ways.
-// 			// We probably should address this when we figure out how to change
-// 			// the spec to accommodate for this. For instance, we could say
-// 			// that if a disjunction only contributes a single disjunct to an
-// 			// end result, default information is ignored. Not the greatest
-// 			// definition, though.
-// 			// Another alternative might be to have a special builtin that
-// 			// mimics the good behavior.
-// 			// Note that the same result can be obtained in CUE by adding
-// 			// 0 to a referenced number (forces the default to be discarded).
-// 			wasScalar := n.scalar != nil // Hack line 1
-
-// 			n.subDisjunctions = append(n.subDisjunctions, d)
-// 			mode, ok := n.insertSingleDisjunct(p, d, true)
-// 			p++
-// 			if !ok {
-// 				inserted = false
-// 				break
-// 			}
-
-// 			if !wasScalar { // Hack line 2.
-// 				subMode = combineDefault(subMode, mode)
-// 			}
-// 		}
-// 		defMode = combineSubDefault(defMode, subMode)
-
-// 		n.defaultMode = combineDefault(n.defaultMode, defMode)
-// 	}
-
-// 	// Find last disjunction at which there is no overflow.
-// 	for ; p > 0 && n.stack[p-1]+1 >= len(n.subDisjunctions[p-1].values); p-- {
-// 	}
-// 	if p > 0 {
-// 		// Increment a valid position and set all subsequent entries to 0.
-// 		n.stack[p-1]++
-// 		n.stack = n.stack[:p]
-// 	}
-// 	return inserted
-// }
-
-// func (n *nodeContext) insertSingleDisjunct(p int, d envDisjunct, isSub bool) (mode defaultMode, ok bool) {
-// 	if p >= len(n.stack) {
-// 		n.stack = append(n.stack, 0)
-// 	}
-
-// 	k := n.stack[p]
-// 	v := d.values[k]
-// 	n.isFinal = n.isFinal && k == len(d.values)-1
-// 	c := adt.MakeConjunct(d.env, v.expr, d.cloneID)
-// 	n.addExprConjunct(c)
-
-// 	for n.expandOne() {
-// 	}
-
-// 	switch {
-// 	case d.numDefaults == 0:
-// 		mode = maybeDefault
-// 	case v.isDefault:
-// 		mode = isDefault
-// 	default:
-// 		mode = notDefault
-// 	}
-
-// 	return mode, !n.hasErr()
-// }
 
 // Default rules from spec:
 //
@@ -465,43 +356,6 @@ const (
 	notDefault
 	isDefault
 )
-
-// combineSubDefault combines default modes where b is a subexpression in
-// a disjunctions.
-//
-// Default rules from spec:
-//
-// D1: (v1, d1) | v2       => (v1|v2, d1)
-// D2: (v1, d1) | (v2, d2) => (v1|v2, d1|d2)
-//
-// Spec:
-// M1: *v        => (v, v)
-// M2: *(v1, d1) => (v1, d1)
-//
-func combineSubDefault(a, b defaultMode) defaultMode {
-	switch {
-	case a == maybeDefault && b == maybeDefault: // D1
-		return maybeDefault
-	case a == maybeDefault && b == notDefault: // D1
-		return notDefault
-	case a == maybeDefault && b == isDefault: // D1
-		return isDefault
-	case a == notDefault && b == maybeDefault: // D1
-		return notDefault
-	case a == notDefault && b == notDefault: // D2
-		return notDefault
-	case a == notDefault && b == isDefault: // D2
-		return isDefault
-	case a == isDefault && b == maybeDefault: // D1
-		return isDefault
-	case a == isDefault && b == notDefault: // M2
-		return notDefault
-	case a == isDefault && b == isDefault: // D2
-		return isDefault
-	default:
-		panic("unreachable")
-	}
-}
 
 // combineDefaults combines default modes for unifying conjuncts.
 //
@@ -535,13 +389,13 @@ func combineDefault(a, b defaultMode) defaultMode {
 //
 // TODO(perf): the set of errors is now computed during evaluation. Eventually,
 // this could be done lazily.
-func (n *nodeContext) disjunctError() (errs errors.Error) {
+func (n *nodeShared) disjunctError() (errs errors.Error) {
 	ctx := n.ctx
 
 	disjuncts := selectErrors(n.disjunctErrs)
 
 	if disjuncts == nil {
-		errs = ctx.Newf("empty disjunction")
+		errs = ctx.Newf("empty disjunction") // XXX: add space to sort first
 	} else {
 		disjuncts = errors.Sanitize(disjuncts)
 		k := len(errors.Errors(disjuncts))
