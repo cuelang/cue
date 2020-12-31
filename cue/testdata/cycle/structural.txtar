@@ -699,13 +699,19 @@ Result:
   }
   b11: (struct){
     #list: (#struct){
-      tail: (null){ null }
+      tail: ((null|struct)){ |(*(null){ null }, (#struct){
+          tail: (null){ null }
+        }) }
     }
   }
   b12: (struct){
     #list: (#struct){
       value: (int){ int }
-      tail: (null){ null }
+      tail: ((null|struct)){ |(*(null){ null }, (#struct){
+          value: (int){ int }
+          tail: (null){ null }
+          sum: (int){ int }
+        }) }
       sum: (int){ int }
     }
     list1: (#struct){
@@ -1104,7 +1110,7 @@ Result:
         // [structural cycle] 0: structural cycle:
         //     ./in.cue:264:19
       }
-      i: (int){ 1 }
+      i: (int){ |(*(int){ 1 }, (int){ int }) }
     }
     x: (_|_){
       // [structural cycle] 0: structural cycle:

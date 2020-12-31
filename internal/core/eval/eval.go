@@ -163,7 +163,7 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 
 		if s.result_.BaseValue != nil { // There is a complete result.
 			*v = s.result_
-			result = *v
+			// result = *v
 		} else if b, ok := v.BaseValue.(*adt.Bottom); ok {
 			*v = save
 			return b
@@ -174,7 +174,7 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 		switch {
 		case !s.touched:
 
-		case len(s.disjunct.Values) == 1 || s.disjunct.NumDefaults == 1:
+		case len(s.disjuncts) == 1 || s.numDefaults == 1:
 			// TODO: this seems unnecessary as long as we have a better way
 			// to handle incomplete, and perhaps referenced. nodes.
 			if c.IsTentative() && isStruct(v) {
@@ -200,6 +200,7 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 			clone := *(d.Values[last])
 			d.Values[last] = &clone
 
+			v.UpdateStatus(adt.Finalized)
 			v.BaseValue = d
 			v.Arcs = nil
 			v.Structs = nil // TODO: maybe not do this.
@@ -234,7 +235,8 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 				return b
 			}
 			// TODO: Only use result when not a cycle.
-			v = s.result()
+			w := s.result()
+			v = &w
 		}
 		// TODO: Store if concrete and fully resolved.
 	}
@@ -244,6 +246,9 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 	// gets the concrete value.
 	//
 	if v.BaseValue == nil {
+		if result.BaseValue == nil {
+			panic("nil basevalue")
+		}
 		return &result
 	}
 	return v
@@ -274,10 +279,10 @@ func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatu
 	defer e.freeSharedNode(n)
 
 	switch {
-	case len(n.disjunct.Values) == 1:
-		*v = *(n.disjunct.Values[0])
+	case len(n.disjuncts) == 1:
+		*v = n.disjuncts[0].result
 
-	case len(n.disjunct.Values) > 0:
+	case len(n.disjuncts) > 0:
 		d := n.createDisjunct()
 		v.BaseValue = d
 		// The conjuncts will have too much information. Better have no
@@ -306,7 +311,7 @@ func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatu
 
 	default:
 		if r := n.result(); r.BaseValue != nil {
-			*v = *r
+			*v = r
 		}
 	}
 
@@ -344,7 +349,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 			// conflicts at the appropriate place, to allow valid fields to
 			// be represented normally and, most importantly, to avoid
 			// recursive processing of a disallowed field.
-			v.BaseValue = err
+			// v.BaseValue = err
 			v.SetValue(c, adt.Finalized, err)
 			return shared
 		}
@@ -396,6 +401,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		e.freeNodeContext(n)
 		return shared
 	}
+
 	if !n.done() && len(n.disjunctions) > 0 && isEvaluating(v) {
 		// We disallow entering computations of disjunctions with
 		// incomplete data.
@@ -407,15 +413,13 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		return shared
 	}
 
-	n.processDisjuncts(state)
-
-	// Handle disjunctions. If there are no disjunctions, this call is
-	// equivalent to calling n.postDisjunct.
+	n.expandDisjuncts(state, nil, maybeDefault, false)
+	// TODO: reorganize nodeShared and nodeContext
+	n.nodeShared.disjuncts = append(n.nodeShared.disjuncts, n.disjuncts...)
 	if v.BaseValue == nil {
 		v.BaseValue = n.getValidators()
 	}
-
-	e.freeNodeContext(n)
+	// e.freeNodeContext(n) freed in freeSharedNode
 	return shared
 }
 
@@ -629,12 +633,12 @@ type nodeShared struct {
 
 	// Disjunction handling
 	touched      bool
-	disjunct     adt.Disjunction
+	disjuncts    []*nodeContext
 	disjunctErrs []*adt.Bottom
+	numDefaults  int
 
 	result_ adt.Vertex
 	isDone  bool
-	// stack   []int
 }
 
 func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeShared {
@@ -647,8 +651,7 @@ func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeSha
 			ctx:  ctx,
 			node: node,
 
-			// stack:        n.stack[:0],
-			disjunct:     adt.Disjunction{Values: n.disjunct.Values[:0]},
+			disjuncts:    n.disjuncts[:0],
 			disjunctErrs: n.disjunctErrs[:0],
 		}
 
@@ -667,19 +670,33 @@ func (e *Evaluator) freeSharedNode(n *nodeShared) {
 	e.stats.Freed++
 	n.nextFree = e.freeListShared
 	e.freeListShared = n
-}
 
-func (n *nodeShared) createDisjunct() *adt.Disjunction {
-	a := make([]*adt.Vertex, len(n.disjunct.Values))
-	copy(a, n.disjunct.Values)
-	return &adt.Disjunction{
-		Values:      a,
-		NumDefaults: n.disjunct.NumDefaults,
+	for _, d := range n.disjuncts {
+		e.freeNodeContext(d)
 	}
 }
 
-func (n *nodeShared) result() *adt.Vertex {
-	return &n.result_
+func (n *nodeShared) createDisjunct() *adt.Disjunction {
+	a := make([]*adt.Vertex, len(n.disjuncts))
+	p := 0
+	for i, x := range n.disjuncts {
+		v := x.result
+		if x.defaultMode == isDefault {
+			a[i] = a[p]
+			a[p] = &v
+			p++
+		} else {
+			a[i] = &v
+		}
+	}
+	return &adt.Disjunction{
+		Values:      a,
+		NumDefaults: p,
+	}
+}
+
+func (n *nodeShared) result() adt.Vertex {
+	return n.result_
 }
 
 func (n *nodeShared) setResult(v *adt.Vertex) {
@@ -687,15 +704,11 @@ func (n *nodeShared) setResult(v *adt.Vertex) {
 }
 
 func (n *nodeShared) hasResult() bool {
-	return len(n.disjunct.Values) > 1
+	return len(n.disjuncts) > 0
 }
 
 func (n *nodeShared) done() bool {
 	return n.isDone
-}
-
-func (n *nodeShared) isDefault() bool {
-	return n.disjunct.NumDefaults > 0
 }
 
 type arcKey struct {
@@ -712,7 +725,7 @@ type nodeContext struct {
 
 	*nodeShared
 
-	// TODO:
+	// TODO: (this is CL is first step)
 	// filter *adt.Vertex a subset of composite with concrete fields for
 	// bloom-like filtering of disjuncts. We should first verify, however,
 	// whether some breath-first search gives sufficient performance, as this
@@ -720,6 +733,13 @@ type nodeContext struct {
 	// discriminators.
 
 	arcMap []arcKey
+
+	// snapshot holds the last value of the vertex before calling postDisjunct.
+	snapshot adt.Vertex
+
+	// Result holds the last evaluated value of the vertex after calling
+	// postDisjunct.
+	result adt.Vertex
 
 	// Current value (may be under construction)
 	scalar   adt.Value // TODO: use Value in node.
@@ -733,7 +753,6 @@ type nodeContext struct {
 	upperBound *adt.BoundValue // < or <=
 	checks     []adt.Validator // BuiltinValidator, other bound values.
 	errs       *adt.Bottom
-	incomplete *adt.Bottom
 
 	// Struct information
 	dynamicFields []envDynamic
@@ -741,22 +760,53 @@ type nodeContext struct {
 	forClauses    []envYield
 	aStruct       adt.Expr
 	aStructID     adt.CloseInfo
-	hasTop        bool
 
 	// Expression conjuncts
 	lists  []envList
 	vLists []*adt.Vertex
 	exprs  []envExpr
 
+	hasTop      bool
 	hasCycle    bool // has conjunct with structural cycle
 	hasNonCycle bool // has conjunct without structural cycle
 
 	// Disjunction handling
 	disjunctions []envDisjunct
-	// subDisjunctions []envDisjunct
-	defaultMode defaultMode
-	subMode     defaultMode
-	// isFinal     bool
+	defaultMode  defaultMode
+	disjuncts    []*nodeContext
+	buffer       []*nodeContext
+}
+
+func (n *nodeContext) clone() *nodeContext {
+	d := n.eval.newNodeContext(n.nodeShared)
+
+	d.scalar = n.scalar
+	d.scalarID = n.scalarID
+	d.kind = n.kind
+	d.kindExpr = n.kindExpr
+	d.kindID = n.kindID
+	d.aStruct = n.aStruct
+	d.aStructID = n.aStructID
+	d.hasTop = n.hasTop
+
+	d.lowerBound = n.lowerBound
+	d.upperBound = n.upperBound
+	d.errs = n.errs
+	d.hasTop = n.hasTop
+	d.hasCycle = n.hasCycle
+	d.hasNonCycle = n.hasNonCycle
+
+	// d.arcMap = append(d.arcMap, n.arcMap...) // XXX add?
+	d.checks = append(d.checks, n.checks...)
+	d.dynamicFields = append(d.dynamicFields, n.dynamicFields...)
+	d.ifClauses = append(d.ifClauses, n.ifClauses...)
+	d.forClauses = append(d.forClauses, n.forClauses...)
+	d.lists = append(d.lists, n.lists...)
+	d.vLists = append(d.vLists, n.vLists...)
+	d.exprs = append(d.exprs, n.exprs...)
+	// No need to clone d.disjunctions
+
+	return d
 }
 
 func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
@@ -767,7 +817,6 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 		*n = nodeContext{
 			kind:       adt.TopKind,
 			nodeShared: shared,
-			// isFinal:    true,
 
 			arcMap:        n.arcMap[:0],
 			checks:        n.checks[:0],
@@ -778,7 +827,8 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 			vLists:        n.vLists[:0],
 			exprs:         n.exprs[:0],
 			disjunctions:  n.disjunctions[:0],
-			// subDisjunctions: n.subDisjunctions[:0],
+			disjuncts:     n.disjuncts[:0],
+			buffer:        n.buffer[:0],
 		}
 
 		return n
@@ -788,9 +838,6 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 	return &nodeContext{
 		kind:       adt.TopKind,
 		nodeShared: shared,
-
-		// These get cleared upon proof to the contrary.
-		// isFinal: true,
 	}
 }
 
@@ -935,7 +982,7 @@ func (n *nodeContext) getValidators() adt.BaseValue {
 }
 
 func (n *nodeContext) maybeSetCache() {
-	if n.node.Status() > adt.Evaluating { // n.node.Value != nil
+	if n.node.Status() > adt.Evaluating { // n.node.BaseValue != nil
 		return
 	}
 	if n.scalar != nil {
@@ -1313,7 +1360,7 @@ func (n *nodeContext) addValueConjunct(env *adt.Environment, v adt.Value, id adt
 		// TODO: evaluate value?
 		switch v := x.BaseValue.(type) {
 		default:
-			panic("invalid value")
+			panic(fmt.Sprintf("invalid type %T", x.BaseValue))
 
 		case *adt.ListMarker:
 			n.vLists = append(n.vLists, x)
