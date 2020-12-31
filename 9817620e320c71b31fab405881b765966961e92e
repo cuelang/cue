@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c37e1c_c928ce58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-31T14:35:07Z",
+      "side": 1,
+      "message": "I really like this change. It makes it easy to reason about and enables some really useful default capabilities. This example really helped me to see how it works out.\n\n```\na: 1 | 2 | *3\nb: 4 | *5\nc: a | b\nd: *a | b\ne: a | b | *7\n\nex1: c \u0026 5\nex2: c \u0026 3\nex3: c \u0026 1\n```",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
