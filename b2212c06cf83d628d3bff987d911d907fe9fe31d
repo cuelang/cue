@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "54a87096_80b394df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T13:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d02059_9f12e1fb",
+      "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "275ad3cb_829bd21f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "writtenOn": "2020-12-30T19:11:02Z",
       "side": 1,
       "message": "Meant incomplete rather than empty...\n\nAfter playing around with some examples I get what\u0027s going on better. Like how these recent changes are simplifying the foundations and code!",
+      "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcf54e8_24b00949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T13:25:32Z",
+      "side": 1,
+      "message": "To you point: it would also be possible to define rule D2 as:\n\n   D2: (v1, d1) | (v2, d2) \u003d\u003e (v1|v2, d1\u0026d2)\n\ninstead of\n\n   D2: (v1, d1) | (v2, d2) \u003d\u003e (v1|v2, d1|d2)\n\nI believe this does not break the invariants described in the spec.\n\nThe drawback of this is that it would only allow one default per disjunction (they really should be called preference marks).\n\nSee comments in the Proposal issue that is now linked with the CL.",
+      "parentUuid": "e02fc3cc_6ed33aac",
       "revId": "b2212c06cf83d628d3bff987d911d907fe9fe31d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
