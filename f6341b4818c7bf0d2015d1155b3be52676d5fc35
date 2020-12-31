@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d5fead_6d7a281d",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-31T15:52:17Z",
+      "side": 1,
+      "message": "are we assuming clone is called on a new or empty nodeContext? Otherwise the name \"clone\" seems misleading to me",
+      "revId": "f6341b4818c7bf0d2015d1155b3be52676d5fc35",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
