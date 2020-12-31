@@ -454,14 +454,9 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 
 				f := ctx.StringLabel(name)
 				obj.Decls = append(obj.Decls, &adt.Field{Label: f, Value: sub})
-				arc, ok := sub.(*adt.Vertex)
-				if ok {
-					arc.Label = f
-				} else {
-					arc = &adt.Vertex{Label: f, BaseValue: sub}
-					arc.UpdateStatus(adt.Finalized)
-					arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
-				}
+				arc := &adt.Vertex{Label: f, BaseValue: sub}
+				arc.UpdateStatus(adt.Finalized)
+				arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
 				v.Arcs = append(v.Arcs, arc)
 			}
 
@@ -500,14 +495,9 @@ func convertRec(ctx *adt.OpContext, nilIsTop bool, x interface{}) adt.Value {
 
 					s := fmt.Sprint(k)
 					f := ctx.StringLabel(s)
-					arc, ok := sub.(*adt.Vertex)
-					if ok {
-						arc.Label = f
-					} else {
-						arc = &adt.Vertex{Label: f, BaseValue: sub}
-						arc.UpdateStatus(adt.Finalized)
-						arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
-					}
+					arc := &adt.Vertex{Label: f, BaseValue: sub}
+					arc.UpdateStatus(adt.Finalized)
+					arc.AddConjunct(adt.MakeRootConjunct(nil, sub))
 					v.Arcs = append(v.Arcs, arc)
 				}
 
