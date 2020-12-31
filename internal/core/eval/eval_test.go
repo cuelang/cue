@@ -99,6 +99,9 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+import "list"
+
+
 	`
 
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
