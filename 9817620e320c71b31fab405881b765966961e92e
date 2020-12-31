@@ -16,6 +16,91 @@
       "message": "I really like this change. It makes it easy to reason about and enables some really useful default capabilities. This example really helped me to see how it works out.\n\n```\na: 1 | 2 | *3\nb: 4 | *5\nc: a | b\nd: *a | b\ne: a | b | *7\n\nex1: c \u0026 5\nex2: c \u0026 3\nex3: c \u0026 1\n```",
       "revId": "9817620e320c71b31fab405881b765966961e92e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2ae879_7e8312db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-12-31T16:33:20Z",
+      "side": 1,
+      "message": "I\u0027m afraid I don\u0027t really understand what\u0027s changing here, so it\u0027s hard to LGTM :)",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b169d6_7eef3f16",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-12-31T16:33:20Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this rule does and why it\u0027s useful. See my remarks below.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9330ccc2_dbcd71a6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-12-31T16:33:20Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6eb03c_796f03af",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-12-31T16:33:20Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba27e1ca_bc78ad22",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2020-12-31T16:33:20Z",
+      "side": 1,
+      "message": "Have you described what things a single term \"v\" can match? I think I know what you\u0027re getting it, but I don\u0027t see anything that says that \"v\" can\u0027t also match (v, d) which would seem to make these rules ambiguous. It\u0027s all a little odd because it seems like we\u0027re not just mapping CUE syntax on the left to the non-CUE syntax for defaults on the right.\n\nWhen you say \"for any marked disjunction `a`\" below, that seems to imply that the single letter term \"a\" _can_ match a marked disjunction, but it seems that it can\u0027t below.\n\nThis confusion is probably all my own, but could possibly use a word or two of extra explanation.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
