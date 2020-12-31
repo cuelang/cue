@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc23aa4c_03ff1ba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-31T14:57:03Z",
+      "side": 1,
+      "message": "some minor comment comments.",
+      "revId": "e1acc74a97c16f3fb52ed6e13ac1666da9be4c64",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60ca6be_d35a5386",
+        "filename": "internal/core/eval/disjunct.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-31T14:57:03Z",
+      "side": 1,
+      "message": "s/Clone/snapshotVertex/",
+      "revId": "e1acc74a97c16f3fb52ed6e13ac1666da9be4c64",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d6ad2f_a99c66e0",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2020-12-31T14:57:03Z",
+      "side": 1,
+      "message": "above this, add `// END OLD LOOP` to match the `// START OLD LOOP`",
+      "revId": "e1acc74a97c16f3fb52ed6e13ac1666da9be4c64",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
