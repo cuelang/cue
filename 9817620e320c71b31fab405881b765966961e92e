@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c853753f_956da6b6",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T16:47:40Z",
+      "side": 1,
+      "message": "This is included for completeness. Note that the section starts with a note that a value _may_ be associated with a default. This is the case where two values without a default are unified. It is basically the unification of these two values without introducing a default.",
+      "parentUuid": "85b169d6_7eef3f16",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9330ccc2_dbcd71a6",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2020-12-31T16:33:20Z",
       "side": 1,
       "message": "ditto.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04776e33_ab007227",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T16:47:40Z",
+      "side": 1,
+      "message": "Same here, this is the case where two values with no defaults are disjoined. It is pretty much a tautology (a \u003d\u003d a), but it is included for completeness, so that these rules can be mechanically be applied to form a resolution.",
+      "parentUuid": "9330ccc2_dbcd71a6",
       "revId": "9817620e320c71b31fab405881b765966961e92e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "824eff1c_74845e50",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T16:47:40Z",
+      "side": 1,
+      "message": "Here the meaning is a bit more subtle. But it means that if a value without a default is not marked as a default, it does not get a default value associated with it.",
+      "parentUuid": "6f6eb03c_796f03af",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba27e1ca_bc78ad22",
         "filename": "doc/ref/spec.md",
         "patchSetId": 4
@@ -99,6 +153,24 @@
       "writtenOn": "2020-12-31T16:33:20Z",
       "side": 1,
       "message": "Have you described what things a single term \"v\" can match? I think I know what you\u0027re getting it, but I don\u0027t see anything that says that \"v\" can\u0027t also match (v, d) which would seem to make these rules ambiguous. It\u0027s all a little odd because it seems like we\u0027re not just mapping CUE syntax on the left to the non-CUE syntax for defaults on the right.\n\nWhen you say \"for any marked disjunction `a`\" below, that seems to imply that the single letter term \"a\" _can_ match a marked disjunction, but it seems that it can\u0027t below.\n\nThis confusion is probably all my own, but could possibly use a word or two of extra explanation.",
+      "revId": "9817620e320c71b31fab405881b765966961e92e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09149785_3ec85c24",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2020-12-31T16:47:40Z",
+      "side": 1,
+      "message": "I\u0027m using kind of a logic programming pattern matching here. `v` must match a value without a default, and `(v, d)` must match a value with a default.\n\nIt is correct that this is not CUE syntax (just as the old definition). But at least in for both the RHS and LHS we are _not_ matching CUE, but rather the abstract notion of a value-with-an-optional-default pair.\n\nOne could say that the CUE `a | *b` translates to the abstract pair of `(a | b, b)`.\n\nSo in CUE, a single letter can indeed match a marked disjunction. But the rules here are of the abstract form as explained above.",
+      "parentUuid": "ba27e1ca_bc78ad22",
       "revId": "9817620e320c71b31fab405881b765966961e92e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
