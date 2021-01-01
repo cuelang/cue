@@ -16,6 +16,24 @@
       "message": "are we assuming clone is called on a new or empty nodeContext? Otherwise the name \"clone\" seems misleading to me",
       "revId": "f6341b4818c7bf0d2015d1155b3be52676d5fc35",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a80d60d_8ab72ac1",
+        "filename": "internal/core/eval/eval.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-01T19:38:04Z",
+      "side": 1,
+      "message": "It is partially completed. So it is not new or empty. It is not an exact clone, but pretty close.",
+      "parentUuid": "85d5fead_6d7a281d",
+      "revId": "f6341b4818c7bf0d2015d1155b3be52676d5fc35",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
