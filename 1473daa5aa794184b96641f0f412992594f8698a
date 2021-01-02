@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71f501f_3a56a56f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-02T16:44:31Z",
+      "side": 1,
+      "message": "Embedded the files so that this works regardless of modules / vendoring. This required a little more work than I anticipated. The test may be flakey, but not sure what the conditions are. Saw some intermittent failures on Go trying to fetch the vendored code which is imported.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
