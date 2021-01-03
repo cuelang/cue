@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b890d09b_043b7549",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-03T00:55:28Z",
+      "side": 1,
+      "message": "Cue then writes the files, reads them back in via the load.Package, and cleans up after itself. This ensures the files are always available and found regardless of mod/vendor mode.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c71f501f_3a56a56f",
@@ -14,6 +31,57 @@
       "writtenOn": "2021-01-02T16:44:31Z",
       "side": 1,
       "message": "Embedded the files so that this works regardless of modules / vendoring. This required a little more work than I anticipated. The test may be flakey, but not sure what the conditions are. Saw some intermittent failures on Go trying to fetch the vendored code which is imported.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3f1a28_174d726f",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-03T00:55:28Z",
+      "side": 1,
+      "message": "load.Packages does not work without some go to read\n\nsince this was originally reading from the Cue source tree and we want to do it without, we need to write these files somewhere\n\nwould a real temp dir be preferable?",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460518f9_8b8396eb",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-03T00:55:28Z",
+      "side": 1,
+      "message": "not thrilled with this line, got error \"no Go files detected\" without\n\noverlay is not as able to replace the normal processing as I had hoped",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c01006_bb489889",
+        "filename": "cmd/cue/cmd/interfaces/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-03T00:55:28Z",
+      "side": 1,
+      "message": "needed this so that Go would pick up the files in all mod/vendor modes, perhaps it would not be needed if the written files were in a proper temp dir?",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
