@@ -408,9 +408,9 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 		return shared
 	}
 
-	n.expandDisjuncts(state, nil, maybeDefault, false)
+	n.nodeShared.disjuncts =
+		n.expandDisjuncts(n.nodeShared.disjuncts[:0], state, maybeDefault, false)
 	// TODO: reorganize nodeShared and nodeContext
-	n.nodeShared.disjuncts = append(n.nodeShared.disjuncts, n.disjuncts...)
 	if v.BaseValue == nil {
 		v.BaseValue = n.getValidators()
 	}

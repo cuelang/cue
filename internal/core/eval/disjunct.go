@@ -128,13 +128,19 @@ func (n *nodeContext) addDisjunctionValue(env *adt.Environment, x *adt.Disjuncti
 		envDisjunct{env, a, x.NumDefaults, cloneID})
 }
 
+// expandDisjuncts evaluates the cross product of all disjuncts, if any, of n.
+//
+// After expandDisjuncts completes, n is either added to n.sharedNode.disjuncts,
+// or it is freed.
 func (n *nodeContext) expandDisjuncts(
+	parent []*nodeContext,
 	state adt.VertexStatus,
-	parent *nodeContext,
 	m defaultMode,
-	recursive bool) {
+	recursive bool) []*nodeContext {
 
 	n.eval.stats.DisjunctCount++
+
+	hasParent := len(parent) > 0
 
 	for n.expandOne() {
 	}
@@ -168,10 +174,8 @@ func (n *nodeContext) expandDisjuncts(
 			if err != nil {
 				n.disjunctErrs = append(n.disjunctErrs, err)
 			}
-			if recursive || len(n.disjunctions) > 0 {
-				n.eval.freeNodeContext(n)
-			}
-			return
+			n.eval.freeNodeContext(n)
+			return parent
 		}
 		// TODO: clean up this mess:
 		n.touched = true  // move result setting here
@@ -219,12 +223,14 @@ func (n *nodeContext) expandDisjuncts(
 
 					newMode := mode(d, v)
 
-					cn.expandDisjuncts(state, n, newMode, true)
+					n.disjuncts = cn.expandDisjuncts(n.disjuncts, state, newMode, true)
 
 					cn.defaultMode = combineDefault(dn.defaultMode, newMode)
 				}
 			}
 
+			// We continue using the buffers of the initial node. So don't free
+			// this one just yet.
 			if i > 0 {
 				for _, d := range a {
 					n.eval.freeNodeContext(d)
@@ -250,29 +256,33 @@ func (n *nodeContext) expandDisjuncts(
 
 	// Compare to root, but add to this one.
 	// TODO: if only one value is left, set to maybeDefault.
-	switch p := parent; {
-	case p != nil:
-		k := 0
-	outer:
-		for _, d := range n.disjuncts {
-			for _, v := range p.disjuncts {
-				if adt.Equal(n.ctx, &v.result, &d.result) {
-					n.eval.freeNodeContext(n)
-					continue outer
-				}
+	k := 0
+outer:
+	for _, d := range n.disjuncts {
+		for _, v := range parent {
+			if adt.Equal(n.ctx, &v.result, &d.result) {
+				n.eval.freeNodeContext(n)
+				continue outer
 			}
-			n.disjuncts[k] = d
-			k++
-
-			d.defaultMode = combineDefault(m, d.defaultMode)
 		}
+		n.disjuncts[k] = d
+		k++
 
-		p.disjuncts = append(p.disjuncts, n.disjuncts[:k]...)
-		n.disjuncts = n.disjuncts[:0]
+		d.defaultMode = combineDefault(m, d.defaultMode)
+	}
 
-	case n.done():
+	parent = append(parent, n.disjuncts[:k]...)
+	n.disjuncts = n.disjuncts[:0]
+
+	if !hasParent && n.done() {
 		n.nodeShared.isDone = true
 	}
+
+	if len(n.disjunctions) > 0 {
+		n.eval.freeNodeContext(n)
+	}
+
+	return parent
 }
 
 func (n *nodeShared) makeError() {
