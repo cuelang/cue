@@ -41,8 +41,7 @@ func verifyArc(ctx *adt.OpContext, f adt.Feature, v *adt.Vertex, isClosed bool) 
 		return true, nil
 	}
 
-	if !f.IsString() && f != adt.InvalidLabel {
-		// if f.IsHidden() && f != adt.InvalidLabel {
+	if f.IsHidden() && f != adt.InvalidLabel {
 		return false, nil
 	}
 
