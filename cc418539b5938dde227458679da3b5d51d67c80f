@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360986de_ed211517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-04T16:02:44Z",
+      "side": 1,
+      "message": "Sorry I missed the review cycle on this one. \n\nJust to note I think this change is great. Greatly simplifies things and makes things more intuitive (at least to my mind)",
+      "revId": "cc418539b5938dde227458679da3b5d51d67c80f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
