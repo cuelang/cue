@@ -51,7 +51,7 @@ func Evaluate(r adt.Runtime, v *adt.Vertex) {
 	format := func(n adt.Node) string {
 		return debug.NodeString(r, n, printConfig)
 	}
-	e := New(r)
+	e := NewEngine(r)
 	c := adt.New(v, &adt.Config{
 		Runtime: r,
 		Unifier: e,
@@ -60,8 +60,8 @@ func Evaluate(r adt.Runtime, v *adt.Vertex) {
 	e.Unify(c, v, adt.Finalized)
 }
 
-func New(r adt.Runtime) *Evaluator {
-	return &Evaluator{r: r, index: r}
+func NewEngine(r adt.Runtime) *Engine {
+	return &Engine{r: r, index: r}
 }
 
 type Stats struct {
@@ -87,7 +87,7 @@ func (s *Stats) String() string {
 	return buf.String()
 }
 
-func (e *Evaluator) Stats() *Stats {
+func (e *Engine) Stats() *Stats {
 	return &e.stats
 }
 
@@ -95,13 +95,13 @@ func (e *Evaluator) Stats() *Stats {
 // type more central, we can perhaps avoid context creation.
 
 func NewContext(r adt.Runtime, v *adt.Vertex) *adt.OpContext {
-	e := New(r)
+	e := NewEngine(r)
 	return e.NewContext(v)
 }
 
 var printConfig = &debug.Config{Compact: true}
 
-func (e *Evaluator) NewContext(v *adt.Vertex) *adt.OpContext {
+func (e *Engine) NewContext(v *adt.Vertex) *adt.OpContext {
 	format := func(n adt.Node) string {
 		return debug.NodeString(e.r, n, printConfig)
 	}
@@ -119,7 +119,7 @@ var incompleteSentinel = &adt.Bottom{
 	Err:  errors.Newf(token.NoPos, "incomplete"),
 }
 
-type Evaluator struct {
+type Engine struct {
 	r     adt.Runtime
 	index adt.StringIndexer
 
@@ -129,7 +129,7 @@ type Evaluator struct {
 	freeListShared *nodeShared
 }
 
-func (e *Evaluator) Eval(v *adt.Vertex) errors.Error {
+func (e *Engine) Eval(v *adt.Vertex) errors.Error {
 	if v.BaseValue == nil {
 		ctx := adt.NewContext(e.r, e, v)
 		e.Unify(ctx, v, adt.Partial)
@@ -146,7 +146,7 @@ func (e *Evaluator) Eval(v *adt.Vertex) errors.Error {
 // may go undetected at this point, as long as it is caught later.
 //
 // TODO: return *adt.Vertex
-func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
+func (e *Engine) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 	var result adt.Vertex
 
 	if b, _ := v.BaseValue.(*adt.Bottom); b != nil {
@@ -261,7 +261,7 @@ func (e *Evaluator) Evaluate(c *adt.OpContext, v *adt.Vertex) adt.Value {
 // Phase one: record everything concrete
 // Phase two: record incomplete
 // Phase three: record cycle.
-func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) {
+func (e *Engine) Unify(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) {
 	// defer c.PopVertex(c.PushVertex(v))
 
 	if state <= v.Status() {
@@ -327,7 +327,7 @@ func (e *Evaluator) Unify(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatu
 // evalVertex computes the vertex results. The state indicates the minimum
 // status to which this vertex should be evaluated. It should be either
 // adt.Finalized or adt.Partial.
-func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) *nodeShared {
+func (e *Engine) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) *nodeShared {
 	shared := e.newSharedNode(c, v)
 
 	if v.Label.IsDef() {
@@ -343,7 +343,7 @@ func (e *Evaluator) evalVertex(c *adt.OpContext, v *adt.Vertex, state adt.Vertex
 
 	if !v.Label.IsInt() && v.Parent != nil && !ignore && state == adt.Finalized {
 		// Visit arcs recursively to validate and compute error.
-		if _, err := verifyArc(c, v.Label, v, v.Closed); err != nil {
+		if _, err := verifyArc2(c, v.Label, v, v.Closed); err != nil {
 			// Record error in child node to allow recording multiple
 			// conflicts at the appropriate place, to allow valid fields to
 			// be represented normally and, most importantly, to avoid
@@ -622,7 +622,7 @@ func isEvaluating(v *adt.Vertex) bool {
 type nodeShared struct {
 	nextFree *nodeShared
 
-	eval *Evaluator
+	eval *Engine
 	ctx  *adt.OpContext
 	node *adt.Vertex
 
@@ -636,7 +636,7 @@ type nodeShared struct {
 	isDone  bool
 }
 
-func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeShared {
+func (e *Engine) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeShared {
 	if n := e.freeListShared; n != nil {
 		e.stats.Reused++
 		e.freeListShared = n.nextFree
@@ -661,7 +661,7 @@ func (e *Evaluator) newSharedNode(ctx *adt.OpContext, node *adt.Vertex) *nodeSha
 	}
 }
 
-func (e *Evaluator) freeSharedNode(n *nodeShared) {
+func (e *Engine) freeSharedNode(n *nodeShared) {
 	e.stats.Freed++
 	n.nextFree = e.freeListShared
 	e.freeListShared = n
@@ -804,7 +804,7 @@ func (n *nodeContext) clone() *nodeContext {
 	return d
 }
 
-func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
+func (e *Engine) newNodeContext(shared *nodeShared) *nodeContext {
 	if n := e.freeListNode; n != nil {
 		e.stats.Reused++
 		e.freeListNode = n.nextFree
@@ -835,7 +835,7 @@ func (e *Evaluator) newNodeContext(shared *nodeShared) *nodeContext {
 	}
 }
 
-func (e *Evaluator) freeNodeContext(n *nodeContext) {
+func (e *Engine) freeNodeContext(n *nodeContext) {
 	e.stats.Freed++
 	n.nextFree = e.freeListNode
 	e.freeListNode = n

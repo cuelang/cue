@@ -33,7 +33,7 @@ func isComplexStruct(ctx *adt.OpContext, v *adt.Vertex) bool {
 	return v.IsClosed(ctx)
 }
 
-func verifyArc(ctx *adt.OpContext, f adt.Feature, v *adt.Vertex, isClosed bool) (found bool, err *adt.Bottom) {
+func verifyArc2(ctx *adt.OpContext, f adt.Feature, v *adt.Vertex, isClosed bool) (found bool, err *adt.Bottom) {
 
 	defer ctx.ReleasePositions(ctx.MarkPositions())
 

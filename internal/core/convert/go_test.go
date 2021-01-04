@@ -201,7 +201,7 @@ func TestConvert(t *testing.T) {
 	}}
 	r := runtime.New()
 	for _, tc := range testCases {
-		e := eval.New(r)
+		e := eval.NewEngine(r)
 		ctx := adt.NewContext(r, e, &adt.Vertex{})
 		t.Run("", func(t *testing.T) {
 			v := convert.GoValueToValue(ctx, tc.goVal, true)
@@ -219,7 +219,7 @@ func TestX(t *testing.T) {
 	x := []string{}
 
 	r := runtime.New()
-	e := eval.New(r)
+	e := eval.NewEngine(r)
 	ctx := adt.NewContext(r, e, &adt.Vertex{})
 
 	v := convert.GoValueToValue(ctx, x, false)
@@ -342,7 +342,7 @@ func TestConvertType(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
-			e := eval.New(r)
+			e := eval.NewEngine(r)
 			ctx := adt.NewContext(r, e, &adt.Vertex{})
 			v, _ := convert.GoTypeToExpr(ctx, tc.goTyp)
 			got := debug.NodeString(ctx, v, nil)

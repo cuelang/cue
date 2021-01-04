@@ -60,7 +60,7 @@ func TestEval(t *testing.T) {
 			return
 		}
 
-		e := eval.New(r)
+		e := eval.NewEngine(r)
 		ctx := e.NewContext(v)
 		v.Finalize(ctx)
 
@@ -122,7 +122,7 @@ module: "example.com"
 	// eval.Debug = true
 
 	adt.Verbosity = 1
-	e := eval.New(r)
+	e := eval.NewEngine(r)
 	ctx := e.NewContext(v)
 	v.Finalize(ctx)
 	adt.Verbosity = 0

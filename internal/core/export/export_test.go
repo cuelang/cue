@@ -138,7 +138,7 @@ func TestGenerated(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run("", func(t *testing.T) {
 			r := runtime.New()
-			e := eval.New(r)
+			e := eval.NewEngine(r)
 			ctx := adt.NewContext(r, e, &adt.Vertex{})
 
 			v, err := tc.in(ctx)

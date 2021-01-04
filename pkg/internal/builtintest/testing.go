@@ -42,7 +42,7 @@ func Run(name string, t *testing.T) {
 			t.Fatal(errs)
 		}
 
-		e := eval.New(r)
+		e := eval.NewEngine(r)
 		ctx := e.NewContext(v)
 		v.Finalize(ctx)
 
