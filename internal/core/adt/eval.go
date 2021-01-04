@@ -43,8 +43,8 @@ import (
 // - Test closedness far more thoroughly.
 //
 
-func NewEngine(r Runtime) *Engine {
-	return &Engine{r: r, index: r}
+func NewUnifier(r Runtime) *Unifier {
+	return &Unifier{r: r, index: r}
 }
 
 type Stats struct {
@@ -70,7 +70,7 @@ func (s *Stats) String() string {
 	return buf.String()
 }
 
-func (e *Engine) Stats() *Stats {
+func (e *Unifier) Stats() *Stats {
 	return &e.stats
 }
 
@@ -78,7 +78,7 @@ func (e *Engine) Stats() *Stats {
 // type more central, we can perhaps avoid context creation.
 
 // func NewContext(r Runtime, v *Vertex) *OpContext {
-// 	e := NewEngine(r)
+// 	e := NewUnifier(r)
 // 	return e.NewContext(v)
 // }
 
@@ -89,7 +89,14 @@ var incompleteSentinel = &Bottom{
 	Err:  errors.Newf(token.NoPos, "incomplete"),
 }
 
-type Engine struct {
+// A Unifier implements a strategy for CUE's unification operation. It must
+// handle the following aspects of CUE evaluation:
+//
+//    - Structural and reference cycles
+//    - Non-monotic validation
+//    - Fixed-point computation of comprehension
+//
+type Unifier struct {
 	r     Runtime
 	index StringIndexer
 
@@ -99,9 +106,9 @@ type Engine struct {
 	freeListShared *nodeShared
 }
 
-func (e *Engine) Eval(v *Vertex) errors.Error {
+func (e *Unifier) Eval(v *Vertex) errors.Error {
 	if v.BaseValue == nil {
-		ctx := NewContext(e.r, e, v)
+		ctx := NewContext(e.r, v)
 		e.Unify(ctx, v, Partial)
 	}
 
@@ -109,14 +116,19 @@ func (e *Engine) Eval(v *Vertex) errors.Error {
 	return nil
 }
 
-// Evaluate is used to evaluate a sub expression while evaluating a Vertex
-// with Unify. It may or may not return the original Vertex. It may also
-// terminate evaluation early if it has enough evidence that a certain value
-// can be the only value in a valid configuration. This means that an error
-// may go undetected at this point, as long as it is caught later.
+// Evaluate returns the evaluated value associated with v. It may return a
+// partial result. That is, if v was not yet unified, it may return a
+// concrete value that must be the result assuming the configuration has no
+// errors.
+//
+// This semantics allows CUE to break reference cycles in a straightforward
+// manner.
+//
+// Vertex v must still be evaluated at some point to catch the underlying
+// error.
 //
 // TODO: return *Vertex
-func (e *Engine) Evaluate(c *OpContext, v *Vertex) Value {
+func (e *Unifier) Evaluate(c *OpContext, v *Vertex) Value {
 	var result Vertex
 
 	if b, _ := v.BaseValue.(*Bottom); b != nil {
@@ -224,14 +236,10 @@ func (e *Engine) Evaluate(c *OpContext, v *Vertex) Value {
 	return v
 }
 
-// Unify implements Unifier.
-//
-// May not evaluate the entire value, but just enough to be able to compute.
-//
-// Phase one: record everything concrete
-// Phase two: record incomplete
-// Phase three: record cycle.
-func (e *Engine) Unify(c *OpContext, v *Vertex, state VertexStatus) {
+// Unify fully unifies all values of a Vertex to completion and stores
+// the result in the Vertex. If Unify was called on v before it returns
+// the cached results.
+func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 	// defer c.PopVertex(c.PushVertex(v))
 
 	if state <= v.Status() {
@@ -297,7 +305,7 @@ func (e *Engine) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 // evalVertex computes the vertex results. The state indicates the minimum
 // status to which this vertex should be evaluated. It should be either
 // Finalized or Partial.
-func (e *Engine) evalVertex(c *OpContext, v *Vertex, state VertexStatus) *nodeShared {
+func (e *Unifier) evalVertex(c *OpContext, v *Vertex, state VertexStatus) *nodeShared {
 	shared := e.newSharedNode(c, v)
 
 	if v.Label.IsDef() {
@@ -592,7 +600,7 @@ func isEvaluating(v *Vertex) bool {
 type nodeShared struct {
 	nextFree *nodeShared
 
-	eval *Engine
+	eval *Unifier
 	ctx  *OpContext
 	node *Vertex
 
@@ -606,7 +614,7 @@ type nodeShared struct {
 	isDone  bool
 }
 
-func (e *Engine) newSharedNode(ctx *OpContext, node *Vertex) *nodeShared {
+func (e *Unifier) newSharedNode(ctx *OpContext, node *Vertex) *nodeShared {
 	if n := e.freeListShared; n != nil {
 		e.stats.Reused++
 		e.freeListShared = n.nextFree
@@ -631,7 +639,7 @@ func (e *Engine) newSharedNode(ctx *OpContext, node *Vertex) *nodeShared {
 	}
 }
 
-func (e *Engine) freeSharedNode(n *nodeShared) {
+func (e *Unifier) freeSharedNode(n *nodeShared) {
 	e.stats.Freed++
 	n.nextFree = e.freeListShared
 	e.freeListShared = n
@@ -774,7 +782,7 @@ func (n *nodeContext) clone() *nodeContext {
 	return d
 }
 
-func (e *Engine) newNodeContext(shared *nodeShared) *nodeContext {
+func (e *Unifier) newNodeContext(shared *nodeShared) *nodeContext {
 	if n := e.freeListNode; n != nil {
 		e.stats.Reused++
 		e.freeListNode = n.nextFree
@@ -805,7 +813,7 @@ func (e *Engine) newNodeContext(shared *nodeShared) *nodeContext {
 	}
 }
 
-func (e *Engine) freeNodeContext(n *nodeContext) {
+func (e *Unifier) freeNodeContext(n *nodeContext) {
 	e.stats.Freed++
 	n.nextFree = e.freeListNode
 	e.freeListNode = n

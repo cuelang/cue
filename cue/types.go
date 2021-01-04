@@ -2297,7 +2297,7 @@ func (v Value) Expr() (Op, []Value) {
 					a.AddConjunct(adt.MakeRootConjunct(env, n.Val))
 					b.AddConjunct(adt.MakeRootConjunct(env, disjunct.Val))
 
-					e := eval.NewEngine(v.idx.Runtime)
+					e := eval.New(v.idx.Runtime)
 					ctx := e.NewContext(nil)
 					e.Unify(ctx, &a, adt.Finalized)
 					e.Unify(ctx, &b, adt.Finalized)

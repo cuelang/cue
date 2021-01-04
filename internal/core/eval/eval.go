@@ -23,54 +23,47 @@ func Evaluate(r adt.Runtime, v *adt.Vertex) {
 	format := func(n adt.Node) string {
 		return debug.NodeString(r, n, printConfig)
 	}
-	e := adt.NewEngine(r)
 	c := adt.New(v, &adt.Config{
 		Runtime: r,
-		Unifier: e,
 		Format:  format,
 	})
-	e.Unify(c, v, adt.Finalized)
+	c.Unify(c, v, adt.Finalized)
 }
 
-func New(r adt.Runtime) *Engine {
-	return &Engine{r: r, e: adt.NewEngine(r)}
+func New(r adt.Runtime) *Unifier {
+	return &Unifier{r: r, e: adt.NewUnifier(r)}
 }
 
-func NewEngine(r adt.Runtime) *Engine {
-	return &Engine{r: r, e: adt.NewEngine(r)}
-}
-
-type Engine struct {
+type Unifier struct {
 	r adt.Runtime
-	e *adt.Engine
+	e *adt.Unifier
 }
 
-func (e *Engine) Evaluate(ctx *adt.OpContext, v *adt.Vertex) adt.Value {
+func (e *Unifier) Evaluate(ctx *adt.OpContext, v *adt.Vertex) adt.Value {
 	return e.e.Evaluate(ctx, v)
 }
 
-func (e *Engine) Unify(ctx *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) {
+func (e *Unifier) Unify(ctx *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) {
 	e.e.Unify(ctx, v, state)
 }
 
-func (e *Engine) Stats() *adt.Stats {
+func (e *Unifier) Stats() *adt.Stats {
 	return e.e.Stats()
 }
 
 // TODO: Note: NewContext takes essentially a cue.Value. By making this
 // type more central, we can perhaps avoid context creation.
 func NewContext(r adt.Runtime, v *adt.Vertex) *adt.OpContext {
-	e := NewEngine(r)
+	e := New(r)
 	return e.NewContext(v)
 }
 
-func (e *Engine) NewContext(v *adt.Vertex) *adt.OpContext {
+func (e *Unifier) NewContext(v *adt.Vertex) *adt.OpContext {
 	format := func(n adt.Node) string {
 		return debug.NodeString(e.r, n, printConfig)
 	}
 	return adt.New(v, &adt.Config{
 		Runtime: e.r,
-		Unifier: e.e,
 		Format:  format,
 	})
 }
