@@ -39,9 +39,9 @@ type Unifier struct {
 	e *adt.Unifier
 }
 
-func (e *Unifier) Evaluate(ctx *adt.OpContext, v *adt.Vertex) adt.Value {
-	return e.e.Evaluate(ctx, v)
-}
+// func (e *Unifier) Evaluate(ctx *adt.OpContext, v *adt.Vertex) adt.Value {
+// 	return e.e.Evaluate(ctx, v)
+// }
 
 func (e *Unifier) Unify(ctx *adt.OpContext, v *adt.Vertex, state adt.VertexStatus) {
 	e.e.Unify(ctx, v, state)

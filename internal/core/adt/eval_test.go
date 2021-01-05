@@ -99,7 +99,140 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+// import (
+//     "encoding/json"
+// )
+
+// jv: json.Valid
+// jv: "3"
+
+// #list12: {
+// 	tail: #list12 | *null
+// 	if tail != null {
+// 	}
+// }
+
+// a: b - 100
+// b: a + 100
+
+// c: [c[1], c[0]]
+
+// #list: {
+// 	tail: #list | *null
+// }
+
+// // circularFor: {
+// //     #list: {
+// //         tail: #list | *null
+// //         for x in tail != null {
+// //         }
+// //     }
+// // }
+
+// // // // // Print a bit more sensible error message than "empty disjunction" here.
+// // // // // Issue #465
+// // userError: {
+// //     a: string | *_|_
+// //     if a != "" {
+// //     }
+// // }
+
+// z1: z2 + 1
+// z2: z3 + 2
+// z3: z1 - 3
+// z3: 8
+
+// ref: {
+// 	a: {
+// 		x: y + "?"
+// 		y: x + "!"
+// 	}
+// 	a: x: "hey"
+// }
+
+// disCycle: {
+// 	a: b & {x: 1} | {y: 1}
+// 	b: {x: 2} | a & {z: 2}
+// }
+
+// b3: =~"[a-z]{4}"
+// b3: "foo"
+
+// condition: *true | false
+// conditional: {
+//     if condition {
+//         a: 3
+//     }
+// }
+
+// x: y + 100
+// y: x - 100
+// x: 200
+
+// cell3: a:  0 | 1
+// cell3: a:  != cell3.b
+
+// cell3: b:  0 | 1
+// cell3: b:  != cell3.a
+
+// cell3: a:  0
+// cell3: b:  _
+
+// a0: X
+// a1: a0 * 2
+// Y: a1
+
+// b0: Y
+// b1: b0 / 2
+// X: b1
+
+// X: 5.0
+
+// res: [ for x in a for y in x {y & {d: "b"}}]
+// res: [ a.b.c & {d: "b"}]
+
+// a: b: [C=string]: {d: string, s: "a" + d}
+// a: b: c: d: string
+
+// a: { b: 2, c: int }
+
+// incomplete:  {
+// 	if a.d {
+// 		2
+// 	}
+// }
+
+// incomplete:  {
+//     list: [1, 2, 3]
+// 	for x in list if a.d {
+// 		x
+// 	}
+// }
+
+// a: { x: 10 }
+// b: {
+// 	for k, v in a {
+// 		"\(k)": v
+// 	}
+// 	x: int
+// 	if x > 3 {
+// 		k: 20
+// 	}
+// }
+
+// #nonEmptyRange: {
+//     min: *1 | int
+//     min: <max
+//     max: >min
+// }
+
+a1: *0 | 1
+a1: a3 - a2
+a2: *0 | 1
+a2: a3 - a1
+a3: 1
 	`
+	t.Skip()
 
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
 		t.Skip()
