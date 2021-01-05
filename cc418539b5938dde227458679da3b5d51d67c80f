@@ -41,6 +41,23 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cabdabff_312013e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2021-01-05T18:18:27Z",
+      "side": 1,
+      "message": "Sorry about the late review, but here are some remarks anyway FWIW.\nI like the change, I think, although I don\u0027t really get the full implications of what\u0027s actually changed.",
+      "revId": "cc418539b5938dde227458679da3b5d51d67c80f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ad2b3d_68e7fcc2",
@@ -60,6 +77,40 @@
         "endLine": 701,
         "endChar": 20
       },
+      "revId": "cc418539b5938dde227458679da3b5d51d67c80f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f355ed57_0a6ef71a",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2021-01-05T18:18:27Z",
+      "side": 1,
+      "message": "Presumably this applies M0 too, as do all the other expressions AFAICS.\nI\u0027m not convinced that M0 is worth it tbh.",
+      "revId": "cc418539b5938dde227458679da3b5d51d67c80f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505c85d1_e679e3e0",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1000055
+      },
+      "writtenOn": "2021-01-05T18:18:27Z",
+      "side": 1,
+      "message": "I don\u0027t understand why the result of this isn\u0027t `{a:1} | *{b: 1}`.\nI was under the impression that x\u0026x would be the same as x for any x.",
       "revId": "cc418539b5938dde227458679da3b5d51d67c80f",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
