@@ -690,6 +690,7 @@ type nodeContext struct {
 	hasTop      bool
 	hasCycle    bool // has conjunct with structural cycle
 	hasNonCycle bool // has conjunct without structural cycle
+	hasConjunct bool
 
 	// Disjunction handling
 	disjunctions []envDisjunct
@@ -1039,6 +1040,7 @@ func (n *nodeContext) addExprConjunct(v Conjunct) {
 
 	case Value:
 		n.addValueConjunct(env, x, id)
+		return
 
 	case *BinaryExpr:
 		if x.Op == AndOp {
@@ -1059,11 +1061,13 @@ func (n *nodeContext) addExprConjunct(v Conjunct) {
 			_ = n.disjunctions
 		}
 		n.addDisjunction(env, x, id)
+		return
 
 	default:
 		// Must be Resolver or Evaluator.
 		n.evalExpr(v)
 	}
+	n.hasConjunct = true
 }
 
 // evalExpr is only called by addExprConjunct. If an error occurs, it records
@@ -1362,7 +1366,6 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 
 		case *ListMarker:
 			n.vLists = append(n.vLists, x)
-			return
 
 		case *StructMarker:
 			// TODO: this would not be necessary if acceptor.isClose were
@@ -1397,6 +1400,8 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 			}
 		}
 
+		n.hasConjunct = true
+
 		return
 		// TODO: Use the Closer to close other fields as well?
 	}
@@ -1404,6 +1409,7 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 	switch b := v.(type) {
 	case *Bottom:
 		n.addBottom(b)
+		n.hasConjunct = true
 		return
 	case *Builtin:
 		if v := b.BareValidator(); v != nil {
@@ -1416,10 +1422,14 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 		return
 	}
 
-	switch x := v.(type) {
-	case *Disjunction:
+	if x, ok := v.(*Disjunction); ok {
 		n.addDisjunctionValue(env, x, id)
+		return
+	}
 
+	n.hasConjunct = true
+
+	switch x := v.(type) {
 	case *Conjunction:
 		for _, x := range x.Values {
 			n.addValueConjunct(env, x, id)
