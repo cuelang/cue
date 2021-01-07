@@ -175,8 +175,9 @@ type Vertex struct {
 	// isData indicates that this Vertex is to be interepreted as data: pattern
 	// and additional constraints, as well as optional fields, should be
 	// ignored.
-	isData bool
-	Closed bool
+	isData      bool
+	Closed      bool
+	defaultMode defaultMode // for disjunction processing.
 
 	// EvalCount keeps track of temporary dereferencing during evaluation.
 	// If EvalCount > 0, status should be considered to be EvaluatingArcs.
