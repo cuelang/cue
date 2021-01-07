@@ -58,9 +58,10 @@ type Stats struct {
 }
 
 var stats = template.Must(template.New("stats").Parse(`{{"" -}}
-Freed:  {{.Freed}}
-Reused: {{.Reused}}
-Allocs: {{.Allocs}}
+Freed:    {{.Freed}}
+Reused:   {{.Reused}}
+Allocs:   {{.Allocs}}
+Retained: {{.Retained}}
 
 Unifications: {{.UnifyCount}}
 Disjuncts:    {{.DisjunctCount}}`))
@@ -212,7 +213,6 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 	case 0:
 		// from state 0
 		n = e.newNodeContext(c, v)
-
 		v.state = n
 
 		if v.Label.IsDef() {
@@ -298,11 +298,6 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 			}
 		}
 
-		// if len(n.disjunctions) == 0 && state <= Partial {
-		// 	n.node.UpdateStatus(Partial)
-		// 	// return
-		// }
-
 		if !n.done() && state <= Partial {
 			n.node.UpdateStatus(Partial)
 			return
@@ -320,12 +315,13 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 			return
 		}
 
-		n.expandDisjuncts(state, nil, maybeDefault, false)
+		n.expandDisjuncts(state, n, maybeDefault, false)
 
 		switch len(n.disjuncts) {
 		case 0:
 		case 1:
-			*v = n.disjuncts[0].result
+			*v = n.disjuncts[0]
+			v.state = nil
 
 		default:
 			d := n.createDisjunct()
@@ -577,8 +573,10 @@ func (n *nodeContext) createDisjunct() *Disjunction {
 	p := 0
 	hasDefaults := false
 	for i, x := range n.disjuncts {
+		x.state = nil
 		v := new(Vertex)
-		*v = x.result
+		*v = x
+
 		switch x.defaultMode {
 		case isDefault:
 			a[i] = a[p]
@@ -659,13 +657,11 @@ type nodeContext struct {
 	hasTop      bool
 	hasCycle    bool // has conjunct with structural cycle
 	hasNonCycle bool // has conjunct without structural cycle
-	isDone      bool
 
 	// Disjunction handling
 	disjunctions []envDisjunct
-	defaultMode  defaultMode
-	disjuncts    []*nodeContext
-	buffer       []*nodeContext
+	disjuncts    []Vertex
+	buffer       []Vertex
 	disjunctErrs []*Bottom
 }
 
@@ -674,6 +670,8 @@ func (n *nodeContext) clone() *nodeContext {
 
 	d.ctx = n.ctx
 	d.node = n.node
+	*d.node = snapshotVertex(n.snapshot)
+	d.node.state = d
 
 	d.scalar = n.scalar
 	d.scalarID = n.scalarID
@@ -738,22 +736,20 @@ func (e *Unifier) newNodeContext(ctx *OpContext, node *Vertex) *nodeContext {
 	}
 }
 
-func (v *Vertex) getNodeContext(c *OpContext) *nodeContext {
-	if v.state != nil {
+func (v *Vertex) getNodeContext(c *OpContext) (n *nodeContext) {
+	if v.state == nil {
 		if v.status == Finalized {
-			panic("dangling node")
+			return nil
 		}
-		return v.state
+		v.state = c.Unifier.newNodeContext(c, v)
 	}
-	v.state = c.Unifier.newNodeContext(c, v)
 	return v.state
 }
 
 func (e *Unifier) freeNodeContext(n *nodeContext) {
-	// TODO: re-enable memory management.
-	// e.stats.Freed++
-	// n.nextFree = e.freeListNode
-	// e.freeListNode = n
+	e.stats.Freed++
+	n.nextFree = e.freeListNode
+	e.freeListNode = n
 }
 
 // TODO(perf): return a dedicated ConflictError that can track original
@@ -1157,6 +1153,11 @@ func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, 
 	// values on which they depend fail.
 	ctx := n.ctx
 	ctx.Unify(ctx, arc, Finalized)
+
+	// if d, ok := arc.BaseValue.(*Disjunction); ok {
+	// 	n.addDisjunctionValue(env, d, closeInfo)
+	// 	return
+	// }
 
 	for _, c := range arc.Conjuncts {
 		var a []*Vertex
