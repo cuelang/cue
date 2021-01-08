@@ -16,6 +16,24 @@
       "message": "My immediate sense is to not make this change. Reason being, there are a number of different knobs that can be tweaked in the configuration of the pprof sampling:\n\nhttps://pkg.go.dev/runtime\n\n(specifically the \"Rate\" related variables/functions)\n\nAlso this change only considers CPU profiling; when there is also memory profiling (heap/allocs), goroutine, threadcreate, block and mutex:\n\nhttps://pkg.go.dev/runtime/pprof#Profile\n\nSo we would end up needing a relatively involved \"interface\" to setting which profiles we want, various options etc. I\u0027m not clear that we need/want to expose that for cmd/cue.\n\ngo test already provide a subset of that interface for CPU and memory profiling (go help testflag)\n\nLet\u0027s shift discussion of this to an issue in any case, so that others can contribute thoughts too.\n\nTony - are you happy creating an issue to continue this thread?",
       "revId": "72451aadd04df625cb197cb1ebc3b3a040406553",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7d5345_6026d03e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-08T00:12:53Z",
+      "side": 1,
+      "message": "Sounds good, started issue #630 (https://github.com/cuelang/cue/issues/630)",
+      "parentUuid": "49f4eb56_1783ed40",
+      "revId": "72451aadd04df625cb197cb1ebc3b3a040406553",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
