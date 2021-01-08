@@ -31,4 +31,8 @@ command: vendorgithubschema: {
 		stdin: get.response.body
 		cmd:   "go run cuelang.org/go/cmd/cue import -f -p json -l #Workflow: jsonschema: - --outfile pkg/github.com/SchemaStore/schemastore/src/schemas/json/github-workflow.cue"
 	}
+	writeImportTxtar: exec.Run & {
+		stdin: get.response.body
+		cmd:   "go run cuelang.org/go/internal/ci/updateTxtar - ../encoding/jsonschema/testdata/github.txtar workflow.json"
+	}
 }
