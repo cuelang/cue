@@ -136,9 +136,10 @@ func (n *nodeContext) expandDisjuncts(
 		n.postDisjunct(state)
 
 		if n.hasErr() {
-			if recursive {
-				n.node.Finalize(n.ctx)
-			}
+			// TODO: consider finalizing the node thusly:
+			// if recursive {
+			// 	n.node.Finalize(n.ctx)
+			// }
 			x := n.node
 			err, ok := x.BaseValue.(*Bottom)
 			// TODO: this check can go.
@@ -154,7 +155,9 @@ func (n *nodeContext) expandDisjuncts(
 			if err != nil {
 				parent.disjunctErrs = append(parent.disjunctErrs, err)
 			}
-			// n.ctx.Unifier.freeNodeContext(n)
+			if recursive {
+				n.free()
+			}
 			return
 		}
 		if n.node.BaseValue == nil {
@@ -164,19 +167,11 @@ func (n *nodeContext) expandDisjuncts(
 		// TODO: clean up this mess:
 		result := *n.node // XXX: n.result = snapshotVertex(n.node)?
 
-		// TODO: could go if we didn't store single disjunctcions.
-		// if result.BaseValue == nil {
-		// 	result.BaseValue = n.getValidators()
-		// }
-
-		// n.setResult(n.node)
-		// if n.node.BaseValue == nil {
-		// 	n.node.BaseValue = result.BaseValue
-		// }
 		if recursive && state < Finalized {
 			*n = m
 		}
 		n.result = result
+
 		if recursive {
 			n.disjuncts = append(n.disjuncts, result)
 		}
@@ -263,6 +258,7 @@ func (n *nodeContext) expandDisjuncts(
 					if d.defaultMode == isDefault {
 						p.disjuncts[i].defaultMode = isDefault
 					}
+					d.state.free()
 					continue outer
 				}
 			}
