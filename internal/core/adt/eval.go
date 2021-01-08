@@ -204,7 +204,8 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 		}
 	}
 
-	n := v.state
+	n := v.getNodeContext(c)
+	defer v.freeNode(n)
 
 	switch v.Status() {
 	case Evaluating:
@@ -214,10 +215,6 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 		return
 
 	case 0:
-		// from state 0
-		n = e.newNodeContext(c, v)
-		v.state = n
-
 		if v.Label.IsDef() {
 			v.Closed = true
 		}
@@ -317,11 +314,21 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 
 		n.expandDisjuncts(state, n, maybeDefault, false)
 
+		// If the state has changed, it is because a disjunct has been run. In this case, our node will have completed, and it will
+		// set a value soon.
+		v.state = n // alternatively, set to nil
+
+		for _, d := range n.disjuncts {
+			d.state.free()
+			d.state = nil
+		}
+
 		switch len(n.disjuncts) {
 		case 0:
 		case 1:
-			*v = n.disjuncts[0]
-			v.state = nil
+			x := n.disjuncts[0]
+			x.state = nil
+			*v = x
 
 		default:
 			d := n.createDisjunct()
@@ -630,6 +637,7 @@ type arcKey struct {
 // checks should only be performed once the full value is known.
 type nodeContext struct {
 	nextFree *nodeContext
+	refCount int
 
 	ctx  *OpContext
 	node *Vertex
@@ -698,6 +706,8 @@ func (n *nodeContext) addNotify(v *Vertex) {
 
 func (n *nodeContext) clone() *nodeContext {
 	d := n.ctx.Unifier.newNodeContext(n.ctx, n.node)
+
+	d.refCount++
 
 	d.ctx = n.ctx
 	d.node = n.node
@@ -774,14 +784,54 @@ func (v *Vertex) getNodeContext(c *OpContext) (n *nodeContext) {
 			return nil
 		}
 		v.state = c.Unifier.newNodeContext(c, v)
+	} else if v.state.node != v {
+		panic("getNodeContext: nodeContext out of sync")
 	}
+	v.state.refCount++
 	return v.state
+}
+
+func (v *Vertex) freeNode(n *nodeContext) {
+	if n == nil {
+		return
+	}
+	if n.node != v {
+		panic("freeNode: unpaired free")
+	}
+	if v.state != nil && v.state != n {
+		panic("freeNode: nodeContext out of sync")
+	}
+	if n.refCount--; n.refCount == 0 {
+		if v.status == Finalized {
+			v.freeNodeState()
+		} else {
+			n.ctx.Unifier.stats.Retained++
+		}
+	}
+}
+
+func (v *Vertex) freeNodeState() {
+	if v.state == nil {
+		return
+	}
+	state := v.state
+	v.state = nil
+
+	state.ctx.Unifier.freeNodeContext(state)
+}
+
+func (n *nodeContext) free() {
+	if n.refCount--; n.refCount == 0 {
+		n.ctx.Unifier.freeNodeContext(n)
+	}
 }
 
 func (e *Unifier) freeNodeContext(n *nodeContext) {
 	e.stats.Freed++
 	n.nextFree = e.freeListNode
 	e.freeListNode = n
+	n.node = nil
+	n.refCount = 0
 }
 
 // TODO(perf): return a dedicated ConflictError that can track original
@@ -1186,9 +1236,13 @@ func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, 
 	ctx := n.ctx
 	ctx.Unify(ctx, arc, Finalized)
 
+	// TODO: uncomment to add a completed disjunction instead of the individual
+	// conjuncts. This does currently not work for the Github workflows.
+	// Investigate the issue before enabling.
+	//
 	// if d, ok := arc.BaseValue.(*Disjunction); ok {
-	// 	n.addDisjunctionValue(env, d, closeInfo)
-	// 	return
+	//  n.addDisjunctionValue(env, d, closeInfo)
+	//  return
 	// }
 
 	for _, c := range arc.Conjuncts {

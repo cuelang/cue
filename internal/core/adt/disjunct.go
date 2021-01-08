@@ -136,9 +136,10 @@ func (n *nodeContext) expandDisjuncts(
 		n.postDisjunct(state)
 
 		if n.hasErr() {
-			if recursive {
-				n.node.Finalize(n.ctx)
-			}
+			// TODO: consider finalizing the node thusly:
+			// if recursive {
+			// 	n.node.Finalize(n.ctx)
+			// }
 			x := n.node
 			err, ok := x.BaseValue.(*Bottom)
 			// TODO: this check can go.
@@ -154,7 +155,9 @@ func (n *nodeContext) expandDisjuncts(
 			if err != nil {
 				parent.disjunctErrs = append(parent.disjunctErrs, err)
 			}
-			// n.ctx.Unifier.freeNodeContext(n)
+			if recursive {
+				n.free()
+			}
 			return
 		}
 		if n.node.BaseValue == nil {
@@ -168,6 +171,7 @@ func (n *nodeContext) expandDisjuncts(
 			*n = m
 		}
 		n.result = result
+
 		if recursive {
 			n.disjuncts = append(n.disjuncts, result)
 		}
@@ -224,8 +228,18 @@ func (n *nodeContext) expandDisjuncts(
 
 			if len(n.disjuncts) == 0 {
 				n.makeError()
+			}
+
+			if recursive || i > 0 {
+				for _, d := range a {
+					d.state.free()
+				}
+			}
+
+			if len(n.disjuncts) == 0 {
 				break
 			}
+
 		}
 
 		// HACK alert: this replaces the hack of the previous algorithm with a
@@ -254,6 +268,7 @@ func (n *nodeContext) expandDisjuncts(
 					if d.defaultMode == isDefault {
 						p.disjuncts[i].defaultMode = isDefault
 					}
+					d.state.free()
 					continue outer
 				}
 			}
