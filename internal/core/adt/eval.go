@@ -312,14 +312,17 @@ func (e *Unifier) Unify(c *OpContext, v *Vertex, state VertexStatus) {
 			return
 		}
 
-		n.expandDisjuncts(state, n, maybeDefault, false)
+		n.expandDisjuncts(state, n, n, maybeDefault, false)
+
+		for _, r := range n.garbage {
+			r.free()
+		}
 
 		// If the state has changed, it is because a disjunct has been run. In this case, our node will have completed, and it will
 		// set a value soon.
 		v.state = n // alternatively, set to nil
 
 		for _, d := range n.disjuncts {
-			d.state.free()
 			d.state = nil
 		}
 
@@ -694,6 +697,7 @@ type nodeContext struct {
 
 	// Disjunction handling
 	disjunctions []envDisjunct
+	garbage      []*nodeContext
 	disjuncts    []Vertex
 	buffer       []Vertex
 	disjunctErrs []*Bottom
@@ -763,6 +767,7 @@ func (e *Unifier) newNodeContext(ctx *OpContext, node *Vertex) *nodeContext {
 			vLists:        n.vLists[:0],
 			exprs:         n.exprs[:0],
 			disjunctions:  n.disjunctions[:0],
+			garbage:       n.garbage[:0],
 			disjunctErrs:  n.disjunctErrs[:0],
 			disjuncts:     n.disjuncts[:0],
 			buffer:        n.buffer[:0],

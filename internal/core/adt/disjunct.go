@@ -112,7 +112,7 @@ func (n *nodeContext) addDisjunctionValue(env *Environment, x *Disjunction, clon
 
 func (n *nodeContext) expandDisjuncts(
 	state VertexStatus,
-	parent *nodeContext,
+	parent, root *nodeContext,
 	m defaultMode,
 	recursive bool) {
 
@@ -154,9 +154,6 @@ func (n *nodeContext) expandDisjuncts(
 			}
 			if err != nil {
 				parent.disjunctErrs = append(parent.disjunctErrs, err)
-			}
-			if recursive {
-				n.free()
 			}
 			return
 		}
@@ -202,6 +199,7 @@ func (n *nodeContext) expandDisjuncts(
 				case d.expr != nil:
 					for _, v := range d.expr.Values {
 						cn := dn.state.clone()
+						root.garbage = append(root.garbage, cn)
 
 						c := MakeConjunct(d.env, v.Val, d.cloneID)
 						cn.addExprConjunct(c)
@@ -209,19 +207,20 @@ func (n *nodeContext) expandDisjuncts(
 						newMode := mode(d.hasDefaults, v.Default)
 						cn.node.defaultMode = combineDefault(dn.defaultMode, newMode)
 
-						cn.expandDisjuncts(state, n, newMode, true)
+						cn.expandDisjuncts(state, n, root, newMode, true)
 					}
 
 				case d.value != nil:
 					for i, v := range d.value.Values {
 						cn := dn.state.clone()
+						root.garbage = append(root.garbage, cn)
 
 						cn.addValueConjunct(d.env, v, d.cloneID)
 
 						newMode := mode(d.hasDefaults, i < d.value.NumDefaults)
 						cn.node.defaultMode = combineDefault(dn.defaultMode, newMode)
 
-						cn.expandDisjuncts(state, n, newMode, true)
+						cn.expandDisjuncts(state, n, root, newMode, true)
 					}
 				}
 			}
@@ -258,7 +257,6 @@ func (n *nodeContext) expandDisjuncts(
 					if d.defaultMode == isDefault {
 						p.disjuncts[i].defaultMode = isDefault
 					}
-					d.state.free()
 					continue outer
 				}
 			}
