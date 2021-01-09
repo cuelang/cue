@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8d713d_ee4c7b94",
+        "filename": "internal/ci/updateTxtar/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-09T08:06:46Z",
+      "side": 1,
+      "message": "Done (would be great to add this as a check in CI... along with tooling to fix files)",
+      "parentUuid": "f8f7d604_09e3c3d4",
+      "revId": "e25b1d491e199a41190153b6c1b1dd9bf8a62b76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95feb33b_58330ba9",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-09T08:01:08Z",
       "side": 1,
       "message": "Should this not be invoked as a go generate somewhere?",
+      "revId": "e25b1d491e199a41190153b6c1b1dd9bf8a62b76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3b976f_d38af266",
+        "filename": "internal/ci/updateTxtar/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-09T08:06:46Z",
+      "side": 1,
+      "message": "That happens in https://cue-review.googlesource.com/c/cue/+/8112/3/internal/ci/ci_tool.cue - which allows the same source file to be used for the cue.mod vendor and the updating of the txtar file.",
+      "parentUuid": "95feb33b_58330ba9",
       "revId": "e25b1d491e199a41190153b6c1b1dd9bf8a62b76",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
