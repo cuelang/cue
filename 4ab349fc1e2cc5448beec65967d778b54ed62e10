@@ -16,6 +16,24 @@
       "message": "\"contants\" looks to be a misspelling, but unsure if contents or constants",
       "revId": "4ab349fc1e2cc5448beec65967d778b54ed62e10",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3739cb7a_846bbcfc",
+        "filename": "internal/core/adt/disjunct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-09T11:18:31Z",
+      "side": 1,
+      "message": "comment no longer necessary.",
+      "parentUuid": "7d2b3f05_07fe1e09",
+      "revId": "4ab349fc1e2cc5448beec65967d778b54ed62e10",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
