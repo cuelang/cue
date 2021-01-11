@@ -63,7 +63,8 @@ func (x *StructLit) Source() ast.Node { return x.Src }
 func (x *StructLit) evaluate(c *OpContext) Value {
 	e := c.Env(0)
 	v := &Vertex{Conjuncts: []Conjunct{{e, x, CloseInfo{}}}}
-	c.Unifier.Unify(c, v, Finalized) // TODO: also partial okay?
+	c.Unifier.Unify(c, v, AllArcs) // TODO: also partial okay?
+	// c.Unifier.Unify(c, v, Finalized) // TODO: also partial okay?
 	return v
 }
 
@@ -279,6 +280,7 @@ func (x *ListLit) Source() ast.Node {
 func (x *ListLit) evaluate(c *OpContext) Value {
 	e := c.Env(0)
 	v := &Vertex{Conjuncts: []Conjunct{{e, x, CloseInfo{}}}}
+	// TODO: should be AllArcs and then use Finalize for builtins?
 	c.Unifier.Unify(c, v, Finalized) // TODO: also partial okay?
 	return v
 }

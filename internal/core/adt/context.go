@@ -1065,6 +1065,6 @@ func (c *OpContext) NewList(values ...Value) *Vertex {
 	for _, x := range values {
 		list.Elems = append(list.Elems, x)
 	}
-	c.Unify(c, v, Finalized)
+	c.Unify(c, v, AllArcs)
 	return v
 }
