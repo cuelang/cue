@@ -1231,7 +1231,7 @@ func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, 
 	// The reason is that disjunctions must be eliminated if checks in
 	// values on which they depend fail.
 	ctx := n.ctx
-	ctx.Unify(ctx, arc, Finalized)
+	ctx.Unify(ctx, arc, AllArcs)
 
 	for _, c := range arc.Conjuncts {
 		var a []*Vertex
@@ -1689,7 +1689,7 @@ func (n *nodeContext) insertField(f Feature, x Conjunct) *Vertex {
 	case arc.Status() == 0:
 	default:
 		// TODO: handle adding to finalized conjunct
-		panic("unhandled")
+		panic(fmt.Sprintf("unhandled %d", arc.status))
 	}
 	return arc
 }

@@ -119,6 +119,11 @@ func (n *nodeContext) expandDisjuncts(
 
 	n.ctx.stats.DisjunctCount++
 
+	node := n.node
+	defer func() {
+		n.node = node
+	}()
+
 	for n.expandOne() {
 	}
 
@@ -329,13 +334,24 @@ func snapshotVertex(v Vertex) Vertex {
 	if a := v.Arcs; len(a) > 0 {
 		v.Arcs = make([]*Vertex, len(a))
 		for i, arc := range a {
-			// For child arcs, only Conjuncts are set and Arcs and
-			// Structs will be nil.
-			a := *arc
-			v.Arcs[i] = &a
+			switch arc.status {
+			case Finalized:
+				v.Arcs[i] = arc
 
-			a.Conjuncts = make([]Conjunct, len(arc.Conjuncts))
-			copy(a.Conjuncts, arc.Conjuncts)
+			case 0:
+				a := *arc
+				v.Arcs[i] = &a
+
+				a.Conjuncts = make([]Conjunct, len(arc.Conjuncts))
+				copy(a.Conjuncts, arc.Conjuncts)
+
+			default:
+				a := *arc
+				a.state = arc.state.clone()
+				a.state.node = &a
+				a.state.snapshot = snapshotVertex(a)
+				v.Arcs[i] = &a
+			}
 		}
 	}
 
