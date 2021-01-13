@@ -36,6 +36,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fd98b0_75eb54ad",
+        "filename": "internal/ci/updateTxtar/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-13T11:36:46Z",
+      "side": 1,
+      "message": "agreed",
+      "parentUuid": "1d8d713d_ee4c7b94",
+      "revId": "e25b1d491e199a41190153b6c1b1dd9bf8a62b76",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95feb33b_58330ba9",
