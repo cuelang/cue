@@ -8,6 +8,9 @@ on:
 jobs:
   push:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
     - name: Rebuild tip.cuelang.org
       run: curl -f -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.CuelangOrgTipRebuildHook

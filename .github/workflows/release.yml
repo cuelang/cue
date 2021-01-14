@@ -8,6 +8,9 @@ on:
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -22,6 +25,9 @@ jobs:
   docker:
     name: docker
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
     - name: Check out the repo
       uses: actions/checkout@v2
