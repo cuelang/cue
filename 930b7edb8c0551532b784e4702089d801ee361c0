@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887c4e11_694542b3",
+        "filename": "cue/testdata/references/let.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-14T21:43:43Z",
+      "side": 1,
+      "message": "Might just be worth adding a quick comment here so that the reader doesn\u0027t have to jump to #609 for the context?",
+      "revId": "930b7edb8c0551532b784e4702089d801ee361c0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
