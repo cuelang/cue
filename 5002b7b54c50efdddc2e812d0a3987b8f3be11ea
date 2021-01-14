@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d7f412_070a32ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-14T21:21:14Z",
+      "side": 1,
+      "message": "I can\u0027t say I\u0027m yet at the point of fully comprehending the changes... but making progress :) So I\u0027ll +1 in the meantime.",
+      "revId": "5002b7b54c50efdddc2e812d0a3987b8f3be11ea",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
