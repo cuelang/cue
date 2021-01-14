@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9061cf6_52b038c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-14T21:41:00Z",
+      "side": 1,
+      "message": "Just one thing I spotted in this one.",
+      "revId": "6e842b3ae2d5b1b6fae73f48aedde6531b1d7482",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f7f997_8e1aa011",
+        "filename": "pkg/internal/context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-14T21:41:00Z",
+      "side": 1,
+      "message": "Should be \"... of number list argument %d\" I think?",
+      "revId": "6e842b3ae2d5b1b6fae73f48aedde6531b1d7482",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
