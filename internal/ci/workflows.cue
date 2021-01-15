@@ -42,6 +42,9 @@ test: _#bashWorkflow & {
 			strategy:  _#testStrategy
 			"runs-on": "${{ matrix.os }}"
 			steps: [
+				_#step & {
+					run: "echo hello"
+				},
 				_#writeCookiesFile,
 				_#installGo,
 				_#checkoutCode,
