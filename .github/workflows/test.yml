@@ -25,6 +25,7 @@ jobs:
       run:
         shell: bash
     steps:
+    - run: echo hello
     - name: Write the gitcookies file
       run: echo "${{ secrets.gerritCookie }}" > ~/.gitcookies
     - name: Install Go
