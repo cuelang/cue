@@ -127,7 +127,15 @@ type Runtime interface {
 type Config struct {
 	Runtime
 	Format func(Node) string
+
+	Need int
 }
+
+const (
+	NeedConjuncts = 1 << iota
+	NeedOriginType
+	NeedStructs
+)
 
 // New creates an operation context.
 func New(v *Vertex, cfg *Config) *OpContext {

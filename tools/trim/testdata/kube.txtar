@@ -1,0 +1,34 @@
+-- kube1.cue --
+package kube
+
+deployment: [ID=_]: {
+	kind:       "Deployment"
+
+	// Constraint has fields that do not occur in concrete value. The parent
+	// (metadata) should still be removed if there is no information added in
+	// the arcs that exist.
+	metadata: name: ID
+	metadata: notInBartender: component: "frontend"
+}
+
+deployment: bartender: {
+	kind:       "Deployment"
+	metadata: name: "bartender"
+}
+
+-- out/trim --
+== kube1.cue
+package kube
+
+deployment: [ID=_]: {
+	kind: "Deployment"
+
+	// Constraint has fields that do not occur in concrete value. The parent
+	// (metadata) should still be removed if there is no information added in
+	// the arcs that exist.
+	metadata: name: ID
+	metadata: notInBartender: component: "frontend"
+}
+
+deployment: bartender: {
+}
