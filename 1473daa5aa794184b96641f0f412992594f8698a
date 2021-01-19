@@ -52,6 +52,74 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b391aae_3bb6021f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Hi Tony - following up from https://github.com/cuelang/cue/issues/621#issuecomment-762648905 and https://github.com/cuelang/cue/issues/621#issuecomment-762756211. Again, apologies for the delay in getting around to this.\n\nAre you still interested in finishing up this CL? \n\nIf so, some high level thoughts/feedback/questions:\n\n* the embedding approach is I think (per my comments in the issue) the right way to go\n* on reflection I think it probably makes sense to combine the embedding change and the switch to always use GOFLAGS\u003d-mod\u003dreadonly in this CL. All of these package loading issues are closely related enough for it make sense\n\nI also think we can rename the testscript test away from exclusively being a repro of #621. Reason being, there are a number of issues conflated in that issue. Instead we need separate tests for:\n\n* the various \"rules\" of cue get go\n* the successful loading of a non-main module package (we don\u0027t need a vendor equivalent - we can and should rely on the go/packages and cmd/go tests on that front)\n* the error message from attempting to cue get go a package that does not list/resolve. We probably should have a variant of this test for a non-existent main module package, as well an a non-existent dependency\n\nThere are likely some doc changes we will need to make in this CL, but let\u0027s see where the next iteration gets us first (we might conclude splitting in into two is better, we\u0027ll see)\n\nThanks\n",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cfdc32_5d154c49",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Not sure these comments are required?\n\nAre you trying to indicate which go:generate directive originated the files?\n\nIf so, a simple comment will probably suffice",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8011dc_7c646d50",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "We should use go list to determine the files to embed rather than hard coding this list.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c164a12_997110f6",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "The load of cuelang.org/go/cmd/cue/cmd/interfaces does not need to use an overlay. You can instead create a temporary directory, create a go.mod in that directory for cuelang.org/go, expand the embedded files into the relevant subdirectories and then load with a go/packages.Config.Dir directory of the temporary directory that contains the go.mod",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd3f1a28_174d726f",
@@ -65,6 +133,24 @@
       "writtenOn": "2021-01-03T00:55:28Z",
       "side": 1,
       "message": "load.Packages does not work without some go to read\n\nsince this was originally reading from the Cue source tree and we want to do it without, we need to write these files somewhere\n\nwould a real temp dir be preferable?",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8913157f_d4ce5bfe",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "See my comment in cmd/cue/cmd/gen/gen.go. No need to use an overlay because we are loading this package entirely separately from the arguments to the command.",
+      "parentUuid": "cd3f1a28_174d726f",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -88,6 +174,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55b07be_4ea3cf96",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Overlays are pretty fragile/broken in all go versions before Go 1.16. We should avoid them where possible.",
+      "parentUuid": "460518f9_8b8396eb",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980652f6_d63a6867",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "We can afford to be very explicit here: something like \"error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package\"",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76105dea_f02b7b56",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "It probably makes sense to make the change to have go/packages assume GOFLAGS\u003d-mod\u003dreadonly as part of this CL. Reason being, it\u0027s part of the same story of ensuring that we surface the right errors, which is fairly closely linked to the loading of any packages (embedded or not).",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9d1e82_8977a043",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Per my comment in https://github.com/cuelang/cue/issues/621#issuecomment-762756211, I think we want to make this a best-efforts. So we can accept parse and type errors. Only list errors should be fatal.\n\nWe might choose to make parse and type check errors warnings... TBC.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06c01006_bb489889",
         "filename": "cmd/cue/cmd/interfaces/go.mod",
         "patchSetId": 2
@@ -99,6 +254,109 @@
       "writtenOn": "2021-01-03T00:55:28Z",
       "side": 1,
       "message": "needed this so that Go would pick up the files in all mod/vendor modes, perhaps it would not be needed if the written files were in a proper temp dir?",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515d3355_4f363fd1",
+        "filename": "cmd/cue/cmd/interfaces/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "This should not be necessary per the comments in cmd/cue/cmd/gen/gen.go",
+      "parentUuid": "06c01006_bb489889",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655b6700_11a70644",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Debug line?",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13bba7f_002fb412",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "These should be unnecessary",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caad8b4_28f6c935",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Debug line?",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafc3668_a6daf4e5",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "A mild preference for the convention of stdout.golden, i.e. the .golden suffix",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1323af_b67a7cf5",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:50Z",
+      "side": 1,
+      "message": "Let\u0027s come up with an equivalent repro that does not require us to include the Kubernetes copyright header. We should look to test all of the \"rules\" for top and string types that are covered in \u0027cue help get go\u0027. This example package can be local to the main module.",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
