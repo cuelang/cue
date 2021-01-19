@@ -69,6 +69,23 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92499240_a89a0e29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-19T11:38:51Z",
+      "side": 1,
+      "message": "Hi Tony - following up from https://github.com/cuelang/cue/issues/621#issuecomment-762648905 and https://github.com/cuelang/cue/issues/621#issuecomment-762756211. Again, apologies for the delay in getting around to this.\n\nAre you still interested in finishing up this CL? \n\nIf so, some high level thoughts/feedback/questions:\n\n* the embedding approach is I think (per my comments in the issue) the right way to go\n* on reflection I think it probably makes sense to combine the embedding change and the switch to always use GOFLAGS\u003d-mod\u003dreadonly in this CL. All of these package loading issues are closely related enough for it make sense\n\nI also think we can rename the testscript test away from exclusively being a repro of #621. Reason being, there are a number of issues conflated in that issue. Instead we need separate tests for:\n\n* the various \"rules\" of cue get go\n* the successful loading of a non-main module package (we don\u0027t need a vendor equivalent - we can and should rely on the go/packages and cmd/go tests on that front)\n* the error message from attempting to cue get go a package that does not list/resolve. We probably should have a variant of this test for a non-existent main module package, as well an a non-existent dependency\n\nThere are likely some doc changes we will need to make in this CL, but let\u0027s see where the next iteration gets us first (we might conclude splitting in into two is better, we\u0027ll see)\n\nThanks\n",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cfdc32_5d154c49",
