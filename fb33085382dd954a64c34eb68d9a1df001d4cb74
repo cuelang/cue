@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd4aa81_d12060f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T15:15:42Z",
+      "side": 1,
+      "message": "LGTM: +1 on the basis I\u0027m still learning 😊",
+      "revId": "fb33085382dd954a64c34eb68d9a1df001d4cb74",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
