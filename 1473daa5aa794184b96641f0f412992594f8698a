@@ -86,6 +86,23 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d2c67d_6aa49d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "A few questions",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cfdc32_5d154c49",
@@ -99,6 +116,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "Not sure these comments are required?\n\nAre you trying to indicate which go:generate directive originated the files?\n\nIf so, a simple comment will probably suffice",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3682b735_23715502",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "These end up in the generated file, so when `go gen ./...` it can regenerate them by knowing what commands to run (which ends up running this file)",
+      "parentUuid": "c2cfdc32_5d154c49",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -122,6 +157,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11a17b1d_e24d6eee",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "agreed",
+      "parentUuid": "dd8011dc_7c646d50",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c164a12_997110f6",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
@@ -133,6 +186,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "The load of cuelang.org/go/cmd/cue/cmd/interfaces does not need to use an overlay. You can instead create a temporary directory, create a go.mod in that directory for cuelang.org/go, expand the embedded files into the relevant subdirectories and then load with a go/packages.Config.Dir directory of the temporary directory that contains the go.mod",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56aad568_e19afadf",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "Overlay is a left over name from when I tried the seemingly broken Go overlay option. It is using a temp dir now. Do you think we should change this to use Go\u0027s temp dir function rather than the local temp dir being used currently?\n\nDo you have a preferred name for the embedded files?",
+      "parentUuid": "4c164a12_997110f6",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -312,6 +383,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1885fd0_46137667",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "655b6700_11a70644",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f13bba7f_002fb412",
         "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
         "patchSetId": 2
@@ -323,6 +412,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "These should be unnecessary",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022000e6_3c956a53",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "We\u0027ll need a resolvable module name for the interface files. Go is reaching out over the network to check the go.mod we create. I added this to deal with the issues when I did not have it.",
+      "parentUuid": "f13bba7f_002fb412",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -346,6 +453,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1fb83ac_65d2b2ca",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "This one is to get the output from the Cue generation, this will be compared against the golden value",
+      "parentUuid": "7caad8b4_28f6c935",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cafc3668_a6daf4e5",
         "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
         "patchSetId": 2
@@ -363,6 +488,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4afed0a6_68e8deea",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "sure, I like that designation",
+      "parentUuid": "cafc3668_a6daf4e5",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af1323af_b67a7cf5",
         "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
         "patchSetId": 2
@@ -374,6 +517,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "Let\u0027s come up with an equivalent repro that does not require us to include the Kubernetes copyright header. We should look to test all of the \"rules\" for top and string types that are covered in \u0027cue help get go\u0027. This example package can be local to the main module.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1656f77_c5500ad1",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T17:24:36Z",
+      "side": 1,
+      "message": "Should be pretty easy to come up with a minimal example. This was the original case but now that we know the conditions we can make one up pretty easy.",
+      "parentUuid": "af1323af_b67a7cf5",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
