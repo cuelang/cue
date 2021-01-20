@@ -16,6 +16,24 @@
       "message": "Is there a reason for the updates?\n\nFor some packages it is important to read the release notes. For instance, upgrading the proto package may result in a crash if it introduces new types that are then subsequently not handled in the CUE code.",
       "revId": "27368364eaf25dec36fd72983535b81e25baff3b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a82290a_ad40b026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2021-01-20T17:01:06Z",
+      "side": 1,
+      "message": "Agreed your suggests (opinions)\nAdandon for now. I”ll re-send upgrade package one-by-one.",
+      "parentUuid": "8ac1be71_ac2366c1",
+      "revId": "27368364eaf25dec36fd72983535b81e25baff3b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
