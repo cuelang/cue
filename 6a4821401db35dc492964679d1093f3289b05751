@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f22d05e_aef3d996",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T15:15:20Z",
+      "side": 1,
+      "message": "LGTM - the improved error messages are definitely a nice side effect!\n\nOne small question that is not directly related to this CL.\n\n+1 on the basis I\u0027m still learning 😊",
+      "revId": "6a4821401db35dc492964679d1093f3289b05751",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e4e4d9_e9b7e0a1",
+        "filename": "cue/testdata/benchmarks/dedupelem.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T15:15:20Z",
+      "side": 1,
+      "message": "Drive-by comment, but this is a weird error, no? I\u0027m guessing this is entirely a derivative error, from the second error below?",
+      "revId": "6a4821401db35dc492964679d1093f3289b05751",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
