@@ -158,6 +158,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff5b75d4_19dafd15",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T20:58:00Z",
+      "side": 1,
+      "message": "To clarify, because we are placing both files into git / the directory, we will not need the `//go:generate ...` comments anymore\n\nor\n\nwe do need them, so they should go in a non-generated file, which needs to be a third non-generated file? (separate from the interface files already there)",
+      "parentUuid": "9c0f19df_bb8f10b1",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd8011dc_7c646d50",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
@@ -240,6 +258,24 @@
       "side": 1,
       "message": "You appear to be using an overlay in get_go.go, no? In the config passed to go/packages.Load?",
       "parentUuid": "56aad568_e19afadf",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a28c90e_81efbd78",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T20:58:00Z",
+      "side": 1,
+      "message": "Oh your right, I had it in my head to make that change with the go.mod addition and having to write them out anyway... but didn\u0027t yet apparently.",
+      "parentUuid": "9e83de3c_cc3d099b",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -519,6 +555,24 @@
       "side": 1,
       "message": "Simply replace the next line with:\n\ncmp cue.mod/gen/cuelang.org/intstr/intstr_go_gen.cue intstr_go_gen.cue.golden",
       "parentUuid": "d1fb83ac_65d2b2ca",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831a81d9_95110a82",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-20T20:58:00Z",
+      "side": 1,
+      "message": "ah, cmp works with two files directly",
+      "parentUuid": "b623258b_2ee85db2",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
