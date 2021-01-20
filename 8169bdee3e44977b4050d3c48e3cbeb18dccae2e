@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9f1873_b33dc679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T15:25:07Z",
+      "side": 1,
+      "message": "I can\u0027t say I totally follow everything here, but the code for trim itself is incredibly succinct now!",
+      "revId": "8169bdee3e44977b4050d3c48e3cbeb18dccae2e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
