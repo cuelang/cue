@@ -176,6 +176,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06343135_fcde3dc1",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T21:13:03Z",
+      "side": 1,
+      "message": "\u003e we do need them, so they should go in a non-generated file, which needs to be a third non-generated file? (separate from the interface files already there)\n\nThis one. Although the go:generate directives can go near the top of either of the existing files. They\u0027re just special comments",
+      "parentUuid": "ff5b75d4_19dafd15",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd8011dc_7c646d50",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
