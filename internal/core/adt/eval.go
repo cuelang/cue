@@ -1024,7 +1024,7 @@ func (n *nodeContext) addExprConjunct(v Conjunct) {
 		if x.IsData() {
 			n.addValueConjunct(env, x, id)
 		} else {
-			n.addVertexConjuncts(env, id, x, x)
+			n.addVertexConjuncts(env, id, x, x, true)
 		}
 
 	case Value:
@@ -1089,7 +1089,7 @@ func (n *nodeContext) evalExpr(v Conjunct) {
 			break
 		}
 
-		n.addVertexConjuncts(v.Env, v.CloseInfo, v.Expr(), arc)
+		n.addVertexConjuncts(v.Env, v.CloseInfo, v.Expr(), arc, false)
 
 	case Evaluator:
 		// Interpolation, UnaryExpr, BinaryExpr, CallExpr
@@ -1133,7 +1133,7 @@ func (n *nodeContext) evalExpr(v Conjunct) {
 	}
 }
 
-func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, x Expr, arc *Vertex) {
+func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, x Expr, arc *Vertex, inline bool) {
 
 	// We need to ensure that each arc is only unified once (or at least) a
 	// bounded time, witch each conjunct. Comprehensions, for instance, may
@@ -1221,7 +1221,11 @@ func (n *nodeContext) addVertexConjuncts(env *Environment, closeInfo CloseInfo, 
 		if env != nil {
 			a = env.Deref
 		}
-		c = updateCyclic(c, cyclic, arc, a)
+		if inline {
+			c = updateCyclic(c, cyclic, nil, nil)
+		} else {
+			c = updateCyclic(c, cyclic, arc, a)
+		}
 
 		// Note that we are resetting the tree here. We hereby assume that
 		// closedness conflicts resulting from unifying the referenced arc were
@@ -1313,7 +1317,7 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 			// TODO: this really shouldn't happen anymore.
 			if isComplexStruct(ctx, x) {
 				// This really shouldn't happen, but just in case.
-				n.addVertexConjuncts(env, id, x, x)
+				n.addVertexConjuncts(env, id, x, x, true)
 				return
 			}
 
