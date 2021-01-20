@@ -140,6 +140,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c0f19df_bb8f10b1",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T20:10:17Z",
+      "side": 1,
+      "message": "There\u0027s a chicken and egg problem there though. Because the generated file needs to exist in order for \u0027go generate\u0027 to see the directives. Instead, place them in a separate, non-generated file in the package where you want the generation to happen. That file (and indeed this generator) might as well live in cuelang.org/go/cmd/cue/cmd/interfaces.\n\nThe directives are also:\n\n//go:generate ....\n\nNote: no space at the start of the line comment.",
+      "parentUuid": "3682b735_23715502",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd8011dc_7c646d50",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
@@ -204,6 +222,24 @@
       "side": 1,
       "message": "Overlay is a left over name from when I tried the seemingly broken Go overlay option. It is using a temp dir now. Do you think we should change this to use Go\u0027s temp dir function rather than the local temp dir being used currently?\n\nDo you have a preferred name for the embedded files?",
       "parentUuid": "4c164a12_997110f6",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e83de3c_cc3d099b",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T20:10:17Z",
+      "side": 1,
+      "message": "You appear to be using an overlay in get_go.go, no? In the config passed to go/packages.Load?",
+      "parentUuid": "56aad568_e19afadf",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -465,6 +501,24 @@
       "side": 1,
       "message": "This one is to get the output from the Cue generation, this will be compared against the golden value",
       "parentUuid": "7caad8b4_28f6c935",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b623258b_2ee85db2",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-20T20:10:17Z",
+      "side": 1,
+      "message": "Simply replace the next line with:\n\ncmp cue.mod/gen/cuelang.org/intstr/intstr_go_gen.cue intstr_go_gen.cue.golden",
+      "parentUuid": "d1fb83ac_65d2b2ca",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
