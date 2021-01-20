@@ -33,6 +33,24 @@
       "message": "Drive-by comment, but this is a weird error, no? I\u0027m guessing this is entirely a derivative error, from the second error below?",
       "revId": "6a4821401db35dc492964679d1093f3289b05751",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc02ae7_346a6b8e",
+        "filename": "cue/testdata/benchmarks/dedupelem.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-20T15:32:29Z",
+      "side": 1,
+      "message": "Why is it weird? Note that these are referring to the strings, not the types. I guess there should be 3 disjunction errors, really.",
+      "parentUuid": "92e4e4d9_e9b7e0a1",
+      "revId": "6a4821401db35dc492964679d1093f3289b05751",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
