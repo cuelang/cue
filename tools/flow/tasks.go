@@ -166,7 +166,7 @@ func (c *Controller) findImpliedTask(d dep.Dependency) *Task {
 
 	n := d.Node
 	for ; n != nil; n = n.Parent {
-		if c.cfg.IgnoreConcrete && n.IsConcrete() {
+		if c.cfg.IgnoreConcrete && n.IsConcrete() && n.BaseValue != nil {
 			if k := n.BaseValue.Kind(); k != adt.StructKind && k != adt.ListKind {
 				return nil
 			}
