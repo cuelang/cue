@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "942f52a5_46b9c132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b890d09b_043b7549",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c71f501f_3a56a56f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -212,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a005b6c_bd8343fc",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "The go:generate lines should not be causing test errors at all. go generate runs as an entirely separate build command.",
+      "parentUuid": "ed6ca56e_504839c0",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd8011dc_7c646d50",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
@@ -241,6 +277,24 @@
       "side": 1,
       "message": "agreed",
       "parentUuid": "dd8011dc_7c646d50",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beefda4f_65c8793e",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a17b1d_e24d6eee",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -316,6 +370,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e56011c_c8fa9228",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a28c90e_81efbd78",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd3f1a28_174d726f",
@@ -347,6 +419,24 @@
       "side": 1,
       "message": "See my comment in cmd/cue/cmd/gen/gen.go. No need to use an overlay because we are loading this package entirely separately from the arguments to the command.",
       "parentUuid": "cd3f1a28_174d726f",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485047af_26912ce2",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8913157f_d4ce5bfe",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -386,6 +476,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b9b6f2_b3667056",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b55b07be_4ea3cf96",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "980652f6_d63a6867",
@@ -399,6 +507,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "We can afford to be very explicit here: something like \"error loading embedded cuelang.org/go/cmd/cue/cmd/interfaces package\"",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e909acd_124a09fe",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "980652f6_d63a6867",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -440,6 +566,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a61fb653_d2d71952",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "The current modes are fine. GOFLAGS controls how cmd/go behaves whilst trying to load packages/modules. In Go 1.16, the new default for build commands is -mod\u003dreadonly. But because we support older Go versions, we need to make it explicit.",
+      "parentUuid": "739acf0f_6e28c563",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb9d1e82_8977a043",
         "filename": "cmd/cue/cmd/get_go.go",
         "patchSetId": 2
@@ -469,6 +613,24 @@
       "side": 1,
       "message": "do we want to just print out Go errors as Cue warnings here, as the occur?\n\nThis is where errors with Go loading (or failing to) during cue get go were lost and Cue users were reporting that their `cue.mod/gen` dir is empty while no feedback as to why",
       "parentUuid": "eb9d1e82_8977a043",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a65f35_667014f8",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "On reflection, for now let\u0027s make all Go errors (including syntax and type checking) hard errors. We needn\u0027t relax that here. We can then refine whether we print warnings etc in a later CL.\n\nBTW the reason for me suggesting/wanting this is that it\u0027s incredibly frustrating to have a code generator not be tolerant of syntax/type errors when you are developing in that same package. Arguably that\u0027s something of an edge case, another reason to not worry in this CL.\n\nSo like the load error, let\u0027s simply format the errors as continuation errors (could even be folded into the error check above)",
+      "parentUuid": "4eaf60aa_f9b2a833",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -528,6 +690,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22587d11_106430db",
+        "filename": "cmd/cue/cmd/interfaces/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Not sure I entirely follow. You are already creating a temporary directory into which you write a fake go.mod for cuelang.org/go. So this can go, right?",
+      "parentUuid": "3b6561cc_6411ad76",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "655b6700_11a70644",
         "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
         "patchSetId": 2
@@ -557,6 +737,24 @@
       "side": 1,
       "message": "yes",
       "parentUuid": "655b6700_11a70644",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f81c371_d764331b",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1885fd0_46137667",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -592,6 +790,24 @@
       "side": 1,
       "message": "We\u0027ll need a resolvable module name for the interface files. Go is reaching out over the network to check the go.mod we create. I added this to deal with the issues when I did not have it.",
       "parentUuid": "f13bba7f_002fb412",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2cbfbb_4f9c66cf",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "022000e6_3c956a53",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -667,6 +883,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b88be91_74a1b40e",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831a81d9_95110a82",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cafc3668_a6daf4e5",
@@ -702,6 +936,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a9899e_2836ac82",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afed0a6_68e8deea",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af1323af_b67a7cf5",
@@ -733,6 +985,24 @@
       "side": 1,
       "message": "Should be pretty easy to come up with a minimal example. This was the original case but now that we know the conditions we can make one up pretty easy.",
       "parentUuid": "af1323af_b67a7cf5",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b9f42c_fa28392f",
+        "filename": "cmd/cue/cmd/testdata/script/issue621.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1656f77_c5500ad1",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }

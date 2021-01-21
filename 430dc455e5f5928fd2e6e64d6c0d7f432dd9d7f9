@@ -16,6 +16,24 @@
       "message": "Not sure what we need to set here to be correct and make the test pass reliably.",
       "revId": "430dc455e5f5928fd2e6e64d6c0d7f432dd9d7f9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e6d4e1_509afadf",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "This should be fine. Any test errors are more likely related to loading, but that\u0027s separate.",
+      "parentUuid": "015d3a2f_b70516a7",
+      "revId": "430dc455e5f5928fd2e6e64d6c0d7f432dd9d7f9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }

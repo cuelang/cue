@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba1a111_5bbd7802",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Please can you rebase this on top of tip?",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6715ed_2cead325",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Given how we have changed this CL, the fix is not specific to vendor.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aaee093_af60adbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Thanks. Added a few comments\n\nI will run the trybots when this is rebased onto tip (because there was a CI change in the interim)",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6692de22_b06d2c66",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "s/var/const/?",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee8f189_efc2cddc",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Let\u0027s use ioutil.TempDir - there is no reason to clutter (even temporarily) the user\u0027s working directory.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec97486f_78e670ba",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "We should be returning this error via initInterfaces. \n\nEasiest way is to give initInterfaces a named return parameter err and assign to that (after wrapping the error to give more context via fmt.Errorf)",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94b3a9d_80433d2d",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "The perm should be 0666 - it\u0027s before umask:\n\nhttps://pkg.go.dev/io/ioutil#WriteFile",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffcb7a1_77bc45b8",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "From a readability perspective, I/we tend to prefer the:\n\nif err :\u003d X; err !\u003d nil {\n\nBecause it\u0027s well suited to this kind of check",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ba275a_e49606d3",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "In either this error case, or the one above, let\u0027s wrap the error with an appropriate message, e.g. you \"error loading\". In the second case (where there could be more than one error), let\u0027s format that one per line, tab indenting the follow on. We really shouldn\u0027t ever get this error, so if we do there are big problems we need to know about.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573ae183_7c783180",
+        "filename": "cmd/cue/cmd/interfaces.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Looks like this file is stale - else we wouldn\u0027t have these lines?",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa7eada_5ab65a22",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "This won\u0027t work on Windows. But see comment below about it not being necessary.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9bdc36_f38fd2b4",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "\"Code generated by gen.go. DO NOT EDIT\"\n\nWe know that go generate is used to run code generation. This line is intended to indicate the source of that generation.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9076d947_a136990a",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Per my previous comment, let\u0027s use go/packages (i.e. go list) here. Because that will a) ensure we don\u0027t include gen.go (because build constraints will exclude it) and b) will be slightly more future proof. Using \".\" will resolve the current directory in which go generate is being run. That will also allow you to calculate the path of this directory relative to the module root, which is what you want below.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901244c9_83aedc01",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "You need to error here. log.Fatalf is a good shorthand way of doing that for simple cases like this. Simply call log.SetFlags(0) at the start of main to avoid cluttering the output.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ca527d_92fae9c5",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "You will want a filepath.ToSlash on this value so that the embedded path is always Unix-y.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99056a4a_c608c66a",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "This golden file appears to be dirty?",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a269a46_1d6e8a6d",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Please use something like \"example.com/blah\" here - using cuelang.org seems to suggest it is relevant that the example be under the cuelang.org namespace.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911cbb89_5db93e02",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Ditto per above.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45031080_989d5132",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "Per my previous comments, let\u0027s move the get go package into the main module. The problem otherwise is that this test will appear to be flakey with earlier versions of Go. We aren\u0027t looking to exercise go/packages here.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c8a02c_dedb13ea",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-21T09:03:20Z",
+      "side": 1,
+      "message": "This covers the \"top\" rule. We\u0027re missing coverage for the other go/types based rule: MarshalText being converted to a string.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
