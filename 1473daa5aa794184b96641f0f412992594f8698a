@@ -194,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed6ca56e_504839c0",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T05:37:56Z",
+      "side": 1,
+      "message": "So with without these lines, we get the following error consistently\n\n```\n--- FAIL: TestScript (0.00s)\n    --- FAIL: TestScript/interface_vendor (3.26s)\n        testscript.go:382: \n            \u003e env GO111MODULE\u003don\n            \u003e cue get go cuelang.org/custom\n            [stderr]\n            While loading Go packages:\n            cuelang.org/custom: [-: cannot find module providing package cuelang.org/custom: unrecognized import path \"cuelang.org/custom\": reading https://cuelang.org/custom?go-get\u003d1: 404 Not Found]\n            [exit status 1]\n            FAIL: testdata/script/interface_vendor.txt:2: unexpected command failure\n```\n\nAnd with them, the test is flakey, sometimes passing, sometimes erroring with:\n\n```\n--- FAIL: TestScript (0.00s)\n    --- FAIL: TestScript/interface_vendor (1.75s)\n        testscript.go:382: \n            \u003e env GOPROXY\u003doff GOSUMDB\u003doff GO111MODULE\u003don\n            \u003e cue get go cuelang.org/custom\n            [stderr]\n            While loading Go packages:\n            cuelang.org/custom: [-: cannot find module providing package cuelang.org/custom: module lookup disabled by GOPROXY\u003doff]\n            [exit status 1]\n            FAIL: testdata/script/interface_vendor.txt:2: unexpected command failure\n```\n\nThe GOFLAGS\u003d-mod\u003dreadonly has a similar error consistently\n\n```\n--- FAIL: TestScript (0.00s)\n    --- FAIL: TestScript/interface_vendor (1.44s)\n        testscript.go:382: \n            \u003e env GO111MODULE\u003don GOFLAGS\u003d-mod\u003dreadonly\n            \u003e cue get go cuelang.org/custom\n            [stderr]\n            While loading Go packages:\n            cuelang.org/custom: [-: cannot find module providing package cuelang.org/custom: import lookup disabled by -mod\u003dreadonly]\n            [exit status 1]\n            FAIL: testdata/script/interface_vendor.txt:2: unexpected command failure\n```",
+      "parentUuid": "06343135_fcde3dc1",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd8011dc_7c646d50",
         "filename": "cmd/cue/cmd/gen/gen.go",
         "patchSetId": 2
@@ -404,6 +422,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "739acf0f_6e28c563",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T05:37:56Z",
+      "side": 1,
+      "message": "Which modes do we need to add here to match that GOFLAGS setting?\n\nWould changing this impact scripts people may have already written against the current semantics?",
+      "parentUuid": "76105dea_f02b7b56",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb9d1e82_8977a043",
         "filename": "cmd/cue/cmd/get_go.go",
         "patchSetId": 2
@@ -415,6 +451,24 @@
       "writtenOn": "2021-01-19T11:38:50Z",
       "side": 1,
       "message": "Per my comment in https://github.com/cuelang/cue/issues/621#issuecomment-762756211, I think we want to make this a best-efforts. So we can accept parse and type errors. Only list errors should be fatal.\n\nWe might choose to make parse and type check errors warnings... TBC.",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eaf60aa_f9b2a833",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T05:37:56Z",
+      "side": 1,
+      "message": "do we want to just print out Go errors as Cue warnings here, as the occur?\n\nThis is where errors with Go loading (or failing to) during cue get go were lost and Cue users were reporting that their `cue.mod/gen` dir is empty while no feedback as to why",
+      "parentUuid": "eb9d1e82_8977a043",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -450,6 +504,24 @@
       "side": 1,
       "message": "This should not be necessary per the comments in cmd/cue/cmd/gen/gen.go",
       "parentUuid": "06c01006_bb489889",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6561cc_6411ad76",
+        "filename": "cmd/cue/cmd/interfaces/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T05:37:56Z",
+      "side": 1,
+      "message": "when Cue runs, it needs this file while loading these from disk, since they are outside of GOPATH, yes?",
+      "parentUuid": "515d3355_4f363fd1",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },

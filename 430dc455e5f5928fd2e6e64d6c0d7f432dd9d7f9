@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015d3a2f_b70516a7",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T05:37:56Z",
+      "side": 1,
+      "message": "Not sure what we need to set here to be correct and make the test pass reliably.",
+      "revId": "430dc455e5f5928fd2e6e64d6c0d7f432dd9d7f9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
