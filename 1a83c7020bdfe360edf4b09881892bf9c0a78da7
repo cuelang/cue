@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e06f880_acca1c3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba1a111_5bbd7802",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a6715ed_2cead325",
@@ -86,6 +104,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57673176_1e805ca2",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6692de22_b06d2c66",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ee8f189_efc2cddc",
@@ -99,6 +135,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "Let\u0027s use ioutil.TempDir - there is no reason to clutter (even temporarily) the user\u0027s working directory.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16193abe_30d2087a",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee8f189_efc2cddc",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -120,6 +174,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0d2ddf_c5694d3d",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec97486f_78e670ba",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c94b3a9d_80433d2d",
@@ -133,6 +205,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "The perm should be 0666 - it\u0027s before umask:\n\nhttps://pkg.go.dev/io/ioutil#WriteFile",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd3f120_0df77240",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c94b3a9d_80433d2d",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -154,6 +244,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc075fee_a5a23f6b",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffcb7a1_77bc45b8",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80ba275a_e49606d3",
@@ -167,6 +275,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "In either this error case, or the one above, let\u0027s wrap the error with an appropriate message, e.g. you \"error loading\". In the second case (where there could be more than one error), let\u0027s format that one per line, tab indenting the follow on. We really shouldn\u0027t ever get this error, so if we do there are big problems we need to know about.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58264a58_672c29e4",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80ba275a_e49606d3",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -222,6 +348,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c651a50_eec0bdd9",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e9bdc36_f38fd2b4",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9076d947_a136990a",
@@ -235,6 +379,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "Per my previous comment, let\u0027s use go/packages (i.e. go list) here. Because that will a) ensure we don\u0027t include gen.go (because build constraints will exclude it) and b) will be slightly more future proof. Using \".\" will resolve the current directory in which go generate is being run. That will also allow you to calculate the path of this directory relative to the module root, which is what you want below.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd63d46_0534a638",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9076d947_a136990a",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -256,6 +418,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d74240_38b937d7",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901244c9_83aedc01",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ca527d_92fae9c5",
@@ -269,6 +449,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "You will want a filepath.ToSlash on this value so that the embedded path is always Unix-y.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1c35f9_b1b2fd85",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need this value anymore with the changes to how these files are written out",
+      "parentUuid": "d7ca527d_92fae9c5",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -354,6 +552,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "This covers the \"top\" rule. We\u0027re missing coverage for the other go/types based rule: MarshalText being converted to a string.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fb055f_0fe6ff6e",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-01-21T21:11:10Z",
+      "side": 1,
+      "message": "This should be sufficient to reproduce the error we are seeing described in my previous comment. The primary issue was #621\n\nWe should probably have multiple test files covering the other cases we\u0027d like to test.",
+      "parentUuid": "99c8a02c_dedb13ea",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
