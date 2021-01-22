@@ -177,6 +177,17 @@ type OpContext struct {
 	generation int
 	closed     map[*closeInfo]*closeStats
 	todo       *closeStats
+
+	// inDisjunct is used to disable closedness checking during disjunction
+	// expansion.
+	//
+	// TODO: replace this with a mechanism to determine the correct set (per
+	// conjunct) of StructInfos to include in closedness checking.
+	inDisjunct int
+}
+
+func (c *OpContext) skipClosedChecks() bool {
+	return c.inDisjunct > 0
 }
 
 // Impl is for internal use only. This will go.
