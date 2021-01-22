@@ -177,6 +177,16 @@ type OpContext struct {
 	generation int
 	closed     map[*closeInfo]*closeStats
 	todo       *closeStats
+
+	// inDisjunct indicates that non-monotonic checks should be skipped.
+	// This is used if we want to do some extra work to eliminate disjunctions
+	// early. The result of unificantion should be thrown away if this check is
+	// used.
+	inDisjunct int
+}
+
+func (c *OpContext) skipNonMonotonicChecks() bool {
+	return c.inDisjunct > 0
 }
 
 // Impl is for internal use only. This will go.
