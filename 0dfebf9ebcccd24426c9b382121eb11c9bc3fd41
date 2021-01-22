@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdddf1fb_3ebd739e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T21:41:05Z",
+      "side": 1,
+      "message": "Can\u0027t say I\u0027m fully following what\u0027s going on here, but we can follow up on that another day.\n\nThe test failure is almost certainly a function of the previous CL in the chain, 8282.",
+      "revId": "0dfebf9ebcccd24426c9b382121eb11c9bc3fd41",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
