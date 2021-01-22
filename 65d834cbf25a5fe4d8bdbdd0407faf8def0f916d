@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b052989b_c2d2917d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T21:34:35Z",
+      "side": 1,
+      "message": "LGTM (I\u0027ve kicked off the trybots)",
+      "revId": "65d834cbf25a5fe4d8bdbdd0407faf8def0f916d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5375d4f1_8ce8d00a",
+        "filename": "cue/testdata/disjunctions/embed.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T21:34:35Z",
+      "side": 1,
+      "message": "s/to/too/",
+      "revId": "65d834cbf25a5fe4d8bdbdd0407faf8def0f916d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
