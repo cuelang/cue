@@ -314,6 +314,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26df50f_7db49fdf",
+        "filename": "cmd/cue/cmd/interfaces.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573ae183_7c783180",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa7eada_5ab65a22",
@@ -488,6 +506,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc3ab1b_8782a6bc",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Picked up in a later comment thread.",
+      "parentUuid": "99056a4a_c608c66a",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a269a46_1d6e8a6d",
@@ -501,6 +537,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "Please use something like \"example.com/blah\" here - using cuelang.org seems to suggest it is relevant that the example be under the cuelang.org namespace.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6155e62b_faa20dc4",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a269a46_1d6e8a6d",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -522,6 +576,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "916e2e91_59fe33ce",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "911cbb89_5db93e02",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45031080_989d5132",
@@ -535,6 +607,24 @@
       "writtenOn": "2021-01-21T09:03:20Z",
       "side": 1,
       "message": "Per my previous comments, let\u0027s move the get go package into the main module. The problem otherwise is that this test will appear to be flakey with earlier versions of Go. We aren\u0027t looking to exercise go/packages here.",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85691751_ead81cb9",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Conversation picked up in a later comment.",
+      "parentUuid": "45031080_989d5132",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -570,6 +660,24 @@
       "side": 1,
       "message": "This should be sufficient to reproduce the error we are seeing described in my previous comment. The primary issue was #621\n\nWe should probably have multiple test files covering the other cases we\u0027d like to test.",
       "parentUuid": "99c8a02c_dedb13ea",
+      "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355fe77c_df6779f4",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Picked up in a later thread.",
+      "parentUuid": "56fb055f_0fe6ff6e",
       "revId": "1a83c7020bdfe360edf4b09881892bf9c0a78da7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }

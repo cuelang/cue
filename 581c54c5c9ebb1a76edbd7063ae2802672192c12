@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6be9b50_566b4ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Thanks, Tony. A few comments/questions/suggestions.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "475af920_3c43b1bd",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "This needs to be expanded to work on Windows:\n\nfilepath.Join(tmpDir, \"cmd\", \"cue\", \"cmd\", \"interfaces\")\n\nPlus the directory creation can move outside the for loop.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0038aef6_f67c557e",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Mode should be 0777 - it\u0027s before umask.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20cce45_791bd529",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "At this point should can simply pass tmpDir as the Dir value, and then load \"cuelang.org/go/cmd/cue/cmd/interfaces\".",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1581e318_f148e1ce",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "s/While/while/\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015bcf25_755ac4a0",
+        "filename": "cmd/cue/cmd/interfaces.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Is this file clean? See my comment in gen.go - I would expect to see absolute file paths as keys below based on the current code.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a726d5eb_196b3f96",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "I have a mild personal preference for being able to distinguish generated files by file name (along with the common header). Indeed cue get go follows a pattern I like, of _gen.cue - perhaps we could use a _gen.go suffix here?",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e75eb1_ad45601c",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Let\u0027s code generate a comment for this variable so that people know what it represents.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a30fa7b_f26d965e",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "I think we want this generator to be called as a go:generate directive from the cmd/cue/cmd package. In which case we should change this to be a load of \n\"cuelang.org/go/cmd/cue/cmd/interfaces\" rather than \".\"\n\nAlso, please can we make the config explicit here, for Config.Mode? I find it rather unfortunate that the docs say:\n\nhttps://pkg.go.dev/golang.org/x/tools@v0.1.0/go/packages#Load\n\nwith an exception to that nil rule buried in:\n\nhttps://pkg.go.dev/golang.org/x/tools@v0.1.0/go/packages#LoadMode\n\nI\u0027ve raised https://github.com/golang/go/issues/43850 to see if that can/should be fixed.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac909e99_3fdd25ab",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Don\u0027t need the `\"Error: \"` prefix here because the program will exit non-zero. So the error string should be sufficient.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b8b262_dd6ef3a0",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Might be nice to do the following for readability:\n\np :\u003d pkgs[0]\n\nBut not critical",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6738a1_e12cf945",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Hmm, I think fn will be the absolute path here, per https://pkg.go.dev/golang.org/x/tools@v0.1.0/go/packages#Package.\n\nWhich will mean the generated file has absolute paths which makes the generator non idempotent.\n\nI suspect you either just want the base name, or as I suggested earlier the path relative to the module root.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc1862d_de74704e",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "This then gets a bit neater when the generator is called from cmd/cue/cmd, because the working directory will then be correct.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb51f19_9a8c4f6c",
+        "filename": "cmd/cue/cmd/interfaces/generate.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Per my comment in gen.go, we can move this directive to a file in cmd/cue/cmd.\n\nApologies, I think I might have confused things in an earlier comment. But it seems neater that way.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bfef94_97f22c8d",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Please include a comment at the top of the test explaining what it does\n\nIncidentally, setting GO111MODULE should not be necessary. We support Go \u003e\u003d 1.13 and hence can rely on https://golang.org/doc/go1.13#modules, specifically:\n\n\u003e The GO111MODULE environment variable continues to default to auto, but the auto setting now activates the module-aware mode of the go command whenever the current working directory contains, or is below a directory containing, a go.mod file — even if the current directory is within GOPATH/src",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e63fc1c_ac51d1fb",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "For completeness I still think we should set this flag and document that we are doing so in order to fail the test in case cue get go _does_ end up trying to add cuelang.org/go as a dependency. Because that would be a hard error.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c88048_cb9a707f",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "No longer needed I think?",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba2979e_cb24130e",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "I\u0027m not clear how this tests passes as it stands because it doesn\u0027t include the following:\n\ngo 1.14\n\nwhich would be required for it to use the vendor directory by default.\n\nIn any case, per the comment below I think we can side-step that complexity by moving the cue get go argument package to the main module.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a91766_7ebb0277",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Whilst issue #621 started as apparently an issue related to vendor, it transpired to be a more general problem that had a number of potential triggers:\n\n* any version of Go with -mod\u003dvendor and a vendor directory that did not include cuelang.org/go\n* Go \u003e\u003d 1.14 with a vendor directory that did not include cuelang.org/go, but no specification for -mod\n* Go \u003e\u003d 1.16, no vendor directory and no specification for -mod (because now the default is -mod\u003dreadonly)\n* any version of Go with -mod\u003dreadonly with no vendor directory and cuelang.org/go not a requirement in go.mod \n\n(there could well be others cases)\n\nHence why we are now choosing to embed cuelang.org/go/cmd/cue/cmd/interfaces and load that independent of whether cuelang.org/go is available as a dependency or not (because as discussed in #621 the version we use for cue get go should correspond to the version of the cue command being used, not whatever version the developer might happen to have as a dependency/in vendor).\n\nAs discussed in #621, in a later CL we will change cue get go to always run with -mod\u003dreadonly, but for now we leave behaviour as is.\n\nSo for this CL, all we want to do is plug the gap that exists for cue get go generating output that is a function of it successfully having loaded cuelang.org/go/cmd/cue/cmd/interfaces - there were no such tests before. \n\nThe module(s) to which the package arguments to cue get go belong is really inconsequential in that respect, hence my suggestion that we make it a package in the main module for simplicity. Because what we don\u0027t want/need to do here is exercise all the potential edge cases for go/packages loading the arguments to cue get go: there are too many and it\u0027s not our job :) \n\nHence I think we simply make this test more to do with checking the rules of cue get go that are a function of cuelang.org/go/cmd/cue/cmd/interfaces having been loaded successfully.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}

@@ -653,6 +653,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0129543_cba9260c",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a65f35_667014f8",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06c01006_bb489889",
@@ -720,6 +738,24 @@
       "side": 1,
       "message": "Not sure I entirely follow. You are already creating a temporary directory into which you write a fake go.mod for cuelang.org/go. So this can go, right?",
       "parentUuid": "3b6561cc_6411ad76",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c5365a_d4bb4a5f",
+        "filename": "cmd/cue/cmd/interfaces/go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-22T17:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22587d11_106430db",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
