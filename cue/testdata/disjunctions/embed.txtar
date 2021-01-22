@@ -35,6 +35,16 @@ forceStruct: {
     {}
 }
 
+// Closedness checks should not be triggered to early, or with an improper
+// subset of StructInfos. Blindly finalizing partial disjuncts will end up
+// doing a closedness check with not all embeddings present, which can lead to
+// a field being rejected prematurely.
+disambiguateClosed: {
+    b: #Def & a
+    a: #Def
+    #Def: { {x: true} | {y: true} }
+}
+
 -- out/eval --
 (struct){
   default: (struct){
@@ -83,6 +93,23 @@ forceStruct: {
       }) }
     a: (int){ 2 }
   }
+  disambiguateClosed: (struct){
+    b: (struct){ |((#struct){
+        x: (bool){ true }
+      }, (#struct){
+        y: (bool){ true }
+      }) }
+    a: (struct){ |((#struct){
+        x: (bool){ true }
+      }, (#struct){
+        y: (bool){ true }
+      }) }
+    #Def: (struct){ |((#struct){
+        x: (bool){ true }
+      }, (#struct){
+        y: (bool){ true }
+      }) }
+  }
 }
 -- out/compile --
 --- in.cue
@@ -127,5 +154,16 @@ forceStruct: {
     })
     〈0;#y〉
     {}
+  }
+  disambiguateClosed: {
+    b: (〈0;#Def〉 & 〈0;a〉)
+    a: 〈0;#Def〉
+    #Def: {
+      ({
+        x: true
+      }|{
+        y: true
+      })
+    }
   }
 }
