@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0a67f4_8df8c902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-23T09:39:34Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "037cefa1_0ac60fb3",
+      "revId": "934e24e40348063547f23295a754e40bcb12184a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffe70f18_06c49202",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-22T21:36:03Z",
       "side": 1,
       "message": "Per our chat offline, we\u0027re not going to add any more tests for now.",
+      "revId": "934e24e40348063547f23295a754e40bcb12184a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9136ac71_fd776e29",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_crash.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-23T09:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe70f18_06c49202",
       "revId": "934e24e40348063547f23295a754e40bcb12184a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
