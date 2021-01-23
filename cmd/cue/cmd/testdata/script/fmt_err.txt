@@ -1,0 +1,21 @@
+cue fmt x.cue
+cue fmt ./...
+# ignore certain errors for cue fmt
+
+cmp x.cue out/x_cue
+-- cue.mod/module.cue --
+module: "example.com/x"
+-- x.cue --
+package x
+
+import   "blah.com/rubbish"
+
+x: 5
+y: unresolved
+-- out/x_cue --
+package x
+
+import "blah.com/rubbish"
+
+x: 5
+y: unresolved
