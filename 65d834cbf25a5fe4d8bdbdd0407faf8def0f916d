@@ -50,6 +50,24 @@
       "message": "s/to/too/",
       "revId": "65d834cbf25a5fe4d8bdbdd0407faf8def0f916d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000b3838_91bb6e6f",
+        "filename": "cue/testdata/disjunctions/embed.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-01-23T15:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5375d4f1_8ce8d00a",
+      "revId": "65d834cbf25a5fe4d8bdbdd0407faf8def0f916d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
