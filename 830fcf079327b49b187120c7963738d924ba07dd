@@ -16,6 +16,23 @@
       "message": "This CL getting two update messages is expected. We need the change to the dispatch workflow to hit master for the removal of that step to take effect.",
       "revId": "830fcf079327b49b187120c7963738d924ba07dd",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7216799b_2fef1f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-25T16:20:31Z",
+      "side": 1,
+      "message": "This CL getting two update messages is expected. We need the change to the dispatch workflow to hit master for the removal of that step to take effect.",
+      "revId": "830fcf079327b49b187120c7963738d924ba07dd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
