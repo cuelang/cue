@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc02788_7a72a43a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-25T10:05:41Z",
+      "side": 1,
+      "message": "Tony - in the interests of time I had to change the author on this commit because of the current Gerrit configuration (I suspect something along the lines of not allowing forged commits or some such?).\n\nAs you will see I\u0027ve instead @-mentioned you for credit.",
+      "revId": "55ecd0a17d7e7289f964f1355477ec73e9b8345c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
