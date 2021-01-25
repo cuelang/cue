@@ -253,7 +253,7 @@ func (c *OpContext) relNode(upCount int32) *Vertex {
 	for ; upCount > 0; upCount-- {
 		e = e.Up
 	}
-	c.Unify(c, e.Vertex, Partial)
+	c.Unify(c, e.Vertex, AllArcs)
 	return e.Vertex
 }
 
