@@ -10,6 +10,38 @@ b4: >=20 & >20
 b5: >=21 & >20
 b6: int & >5 & <= 6
 
+simplifyExpr: {
+    less1: <(<3)
+    less2: <(<=3)
+    less3: <=(<3)
+    less4: <=(<=3)
+    less5: <(!=3)
+    less6: <=(!=3)
+
+    gtr1: >(>3)
+    gtr2: >(>=3)
+    gtr3: >=(>3)
+    gtr4: >=(>=3)
+    gtr5: >(!=3)
+    gtr6: >=(!=3)
+
+    lg1: <(>3)
+    lg2: <(>=3)
+    lg3: <=(>3)
+    lg4: <=(>=3)
+
+    gl1: >(<3)
+    gl2: >(<=3)
+    gl3: >=(<3)
+    gl4: >=(<=3)
+
+    ne1: !=(!=3)
+    ne2: !=(<3)
+    ne3: !=(<=3)
+    ne4: !=(>3)
+    ne5: !=(>=3)
+}
+
 -- out/eval --
 (struct){
   x0: (int){ 5 }
@@ -21,6 +53,33 @@ b6: int & >5 & <= 6
   b4: (number){ >20 }
   b5: (number){ >=21 }
   b6: (int){ 6 }
+  simplifyExpr: (struct){
+    less1: (number){ <3 }
+    less2: (number){ <3 }
+    less3: (number){ <3 }
+    less4: (number){ <=3 }
+    less5: (number){ number }
+    less6: (number){ number }
+    gtr1: (number){ >3 }
+    gtr2: (number){ >3 }
+    gtr3: (number){ >3 }
+    gtr4: (number){ >=3 }
+    gtr5: (number){ number }
+    gtr6: (number){ number }
+    lg1: (number){ number }
+    lg2: (number){ number }
+    lg3: (number){ number }
+    lg4: (number){ number }
+    gl1: (number){ number }
+    gl2: (number){ number }
+    gl3: (number){ number }
+    gl4: (number){ number }
+    ne1: (int){ 3 }
+    ne2: (number){ >=3 }
+    ne3: (number){ >3 }
+    ne4: (number){ <=3 }
+    ne5: (number){ <3 }
+  }
 }
 -- out/compile --
 --- in.cue
@@ -34,4 +93,31 @@ b6: int & >5 & <= 6
   b4: (>=20 & >20)
   b5: (>=21 & >20)
   b6: ((int & >5) & <=6)
+  simplifyExpr: {
+    less1: <<3
+    less2: <<=3
+    less3: <=<3
+    less4: <=<=3
+    less5: <!=3
+    less6: <=!=3
+    gtr1: >>3
+    gtr2: >>=3
+    gtr3: >=>3
+    gtr4: >=>=3
+    gtr5: >!=3
+    gtr6: >=!=3
+    lg1: <>3
+    lg2: <>=3
+    lg3: <=>3
+    lg4: <=>=3
+    gl1: ><3
+    gl2: ><=3
+    gl3: >=<3
+    gl4: >=<=3
+    ne1: !=!=3
+    ne2: !=<3
+    ne3: !=<=3
+    ne4: !=>3
+    ne5: !=>=3
+  }
 }
