@@ -21,6 +21,7 @@ import (
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/ast/astutil"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/token"
 	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/core/adt"
 	"cuelang.org/go/internal/core/eval"
@@ -147,7 +148,18 @@ func (e *exporter) toFile(v *adt.Vertex, x ast.Expr) (*ast.File, errors.Error) {
 	}
 
 	if pkgName != "" {
+		if e.cfg.ShowAttributes {
+			for _, x := range ExtractPackageAttrs(v.Conjuncts) {
+				f.Decls = append(f.Decls, x)
+				ast.SetRelPos(x, token.Newline)
+			}
+		}
+
 		pkg.Name = ast.NewIdent(pkgName)
+
+		if len(f.Decls) > 0 {
+			ast.SetRelPos(pkg.Name, token.NewSection)
+		}
 		f.Decls = append(f.Decls, pkg)
 	}
 
