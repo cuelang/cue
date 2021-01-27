@@ -1,11 +1,11 @@
-These should all be an incomplete errors.
+These should all be incomplete errors.
 
 -- in.cue --
 s: string
 
 e1: s + s
-e2: >"bar" & s // TODO
-e3: >s & "foo" // TODO
+e2: >"bar" & s // okay
+e3: >s & "foo"
 
 e4: >e1 & s
 e5: <e5 & s
@@ -22,6 +22,9 @@ permanentlyIncompleteOperands: {
     a: "golang/go:1.13.5"
 }
 
+issue680: (>10 * 2) & 0
+
+
 -- out/eval --
 Errors:
 permanentlyIncompleteOperands.a: invalid operand string ('+' requires concrete value):
@@ -36,7 +39,10 @@ Result:
     //     ./in.cue:3:5
   }
   e2: (string){ >"bar" }
-  e3: (string){ "foo" }
+  e3: (_|_){
+    // [incomplete] e3: non-concrete value s for bound >:
+    //     ./in.cue:5:5
+  }
   e4: (_|_){
     // [incomplete] e1: non-concrete value string in operand to +:
     //     ./in.cue:3:5
@@ -70,6 +76,10 @@ Result:
       //     ./in.cue:18:8
     }
   }
+  issue680: (_|_){
+    // [incomplete] issue680: non-concrete value >10 in operand to *:
+    //     ./in.cue:22:12
+  }
 }
 -- out/compile --
 --- in.cue
@@ -89,4 +99,5 @@ Result:
     a: ((string + ":") + string)
     a: "golang/go:1.13.5"
   }
+  issue680: ((>10 * 2) & 0)
 }
