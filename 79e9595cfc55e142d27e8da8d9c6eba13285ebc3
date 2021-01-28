@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe45f5ea_b784c706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-28T10:25:06Z",
+      "side": 1,
+      "message": "LGTM with just one question ",
+      "revId": "79e9595cfc55e142d27e8da8d9c6eba13285ebc3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29dd6cad_b003e5b5",
+        "filename": "cmd/cue/cmd/fmt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-28T10:25:06Z",
+      "side": 1,
+      "message": "Related to my other comment, it would be good to know where we have coverage on the error cases for fmt.",
+      "revId": "79e9595cfc55e142d27e8da8d9c6eba13285ebc3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb50c45_ac31cbf1",
+        "filename": "cmd/cue/cmd/testdata/script/fmt_err.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-28T10:25:06Z",
+      "side": 1,
+      "message": "Is the error that was reported in #644 not covered in another test somewhere? \n\nIt feels like the resolution of inputs should probably be covered in a specific set of tests, and this one left to cover the case of bad imports?\n\nWould be good to chat through where these sorts of tests best live though.",
+      "revId": "79e9595cfc55e142d27e8da8d9c6eba13285ebc3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
