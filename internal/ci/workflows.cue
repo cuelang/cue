@@ -275,7 +275,7 @@ _#testStrategy: {
 	"fail-fast": false
 	matrix: {
 		// Use a stable version of 1.14.x for go generate
-		"go-version": ["1.13.x", _#codeGenGo, _#latestGo]
+		"go-version": [_#codeGenGo, _#latestGo, "1.16.0-rc1"]
 		os: [_#linuxMachine, _#macosMachine, _#windowsMachine]
 	}
 }
