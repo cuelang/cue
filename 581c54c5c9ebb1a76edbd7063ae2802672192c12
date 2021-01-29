@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f38849_7e0a45ca",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "TIL that / is actually understood by Windows (https://gist.github.com/egonelbre/b9cc965db3c76c4e818f58d8d89f7177). But for completeness we should still use filepath.Join IMHO.",
+      "parentUuid": "475af920_3c43b1bd",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0038aef6_f67c557e",
@@ -48,6 +66,42 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "Mode should be 0777 - it\u0027s before umask.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7362eea3_98a94564",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0038aef6_f67c557e",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355efdd8_d16f6122",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0038aef6_f67c557e",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -69,6 +123,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ebaa71_da5b6b9d",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20cce45_791bd529",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1581e318_f148e1ce",
@@ -82,6 +154,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "s/While/while/\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7471e930_06bbb638",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1581e318_f148e1ce",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -103,6 +193,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52da98f9_f3f64e02",
+        "filename": "cmd/cue/cmd/interfaces.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "015bcf25_755ac4a0",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a726d5eb_196b3f96",
@@ -116,6 +224,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "I have a mild personal preference for being able to distinguish generated files by file name (along with the common header). Indeed cue get go follows a pattern I like, of _gen.cue - perhaps we could use a _gen.go suffix here?",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3f94ec_340ae732",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a726d5eb_196b3f96",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -137,6 +263,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533babeb_30b97014",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e75eb1_ad45601c",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a30fa7b_f26d965e",
@@ -150,6 +294,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "I think we want this generator to be called as a go:generate directive from the cmd/cue/cmd package. In which case we should change this to be a load of \n\"cuelang.org/go/cmd/cue/cmd/interfaces\" rather than \".\"\n\nAlso, please can we make the config explicit here, for Config.Mode? I find it rather unfortunate that the docs say:\n\nhttps://pkg.go.dev/golang.org/x/tools@v0.1.0/go/packages#Load\n\nwith an exception to that nil rule buried in:\n\nhttps://pkg.go.dev/golang.org/x/tools@v0.1.0/go/packages#LoadMode\n\nI\u0027ve raised https://github.com/golang/go/issues/43850 to see if that can/should be fixed.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec0bde1_03883296",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a30fa7b_f26d965e",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -171,6 +333,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06028fbd_6f15fb59",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac909e99_3fdd25ab",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b8b262_dd6ef3a0",
@@ -184,6 +364,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "Might be nice to do the following for readability:\n\np :\u003d pkgs[0]\n\nBut not critical",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6c8dd8_b5f2774e",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b8b262_dd6ef3a0",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -205,6 +403,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b6f450_602a29da",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6738a1_e12cf945",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc1862d_de74704e",
@@ -218,6 +434,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "This then gets a bit neater when the generator is called from cmd/cue/cmd, because the working directory will then be correct.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0e3002_4b1e696d",
+        "filename": "cmd/cue/cmd/interfaces/gen.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc1862d_de74704e",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -239,6 +473,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc296f7e_1cd265db",
+        "filename": "cmd/cue/cmd/interfaces/generate.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb51f19_9a8c4f6c",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56bfef94_97f22c8d",
@@ -252,6 +504,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "Please include a comment at the top of the test explaining what it does\n\nIncidentally, setting GO111MODULE should not be necessary. We support Go \u003e\u003d 1.13 and hence can rely on https://golang.org/doc/go1.13#modules, specifically:\n\n\u003e The GO111MODULE environment variable continues to default to auto, but the auto setting now activates the module-aware mode of the go command whenever the current working directory contains, or is below a directory containing, a go.mod file — even if the current directory is within GOPATH/src",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c5c758_4312bdf1",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56bfef94_97f22c8d",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -273,6 +543,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0062efd_1364109f",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e63fc1c_ac51d1fb",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c88048_cb9a707f",
@@ -286,6 +574,42 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "No longer needed I think?",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c012bc_ca1c0577",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c88048_cb9a707f",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c8a376_bff00616",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c88048_cb9a707f",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -307,6 +631,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c101906_0e469c3a",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba2979e_cb24130e",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3a91766_7ebb0277",
@@ -320,6 +662,24 @@
       "writtenOn": "2021-01-22T17:28:37Z",
       "side": 1,
       "message": "Whilst issue #621 started as apparently an issue related to vendor, it transpired to be a more general problem that had a number of potential triggers:\n\n* any version of Go with -mod\u003dvendor and a vendor directory that did not include cuelang.org/go\n* Go \u003e\u003d 1.14 with a vendor directory that did not include cuelang.org/go, but no specification for -mod\n* Go \u003e\u003d 1.16, no vendor directory and no specification for -mod (because now the default is -mod\u003dreadonly)\n* any version of Go with -mod\u003dreadonly with no vendor directory and cuelang.org/go not a requirement in go.mod \n\n(there could well be others cases)\n\nHence why we are now choosing to embed cuelang.org/go/cmd/cue/cmd/interfaces and load that independent of whether cuelang.org/go is available as a dependency or not (because as discussed in #621 the version we use for cue get go should correspond to the version of the cue command being used, not whatever version the developer might happen to have as a dependency/in vendor).\n\nAs discussed in #621, in a later CL we will change cue get go to always run with -mod\u003dreadonly, but for now we leave behaviour as is.\n\nSo for this CL, all we want to do is plug the gap that exists for cue get go generating output that is a function of it successfully having loaded cuelang.org/go/cmd/cue/cmd/interfaces - there were no such tests before. \n\nThe module(s) to which the package arguments to cue get go belong is really inconsequential in that respect, hence my suggestion that we make it a package in the main module for simplicity. Because what we don\u0027t want/need to do here is exercise all the potential edge cases for go/packages loading the arguments to cue get go: there are too many and it\u0027s not our job :) \n\nHence I think we simply make this test more to do with checking the rules of cue get go that are a function of cuelang.org/go/cmd/cue/cmd/interfaces having been loaded successfully.",
+      "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce943574_9c586806",
+        "filename": "cmd/cue/cmd/testdata/script/interface_vendor.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a91766_7ebb0277",
       "revId": "581c54c5c9ebb1a76edbd7063ae2802672192c12",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }

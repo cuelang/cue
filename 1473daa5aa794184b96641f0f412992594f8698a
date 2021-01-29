@@ -264,6 +264,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0476a7af_ea2b0e95",
+        "filename": "cmd/cue/cmd/gen/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439e3e85_9e8c6e08",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd8011dc_7c646d50",
@@ -596,6 +614,24 @@
       "side": 1,
       "message": "The current modes are fine. GOFLAGS controls how cmd/go behaves whilst trying to load packages/modules. In Go 1.16, the new default for build commands is -mod\u003dreadonly. But because we support older Go versions, we need to make it explicit.",
       "parentUuid": "739acf0f_6e28c563",
+      "revId": "1473daa5aa794184b96641f0f412992594f8698a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d57fe0_7537e9ec",
+        "filename": "cmd/cue/cmd/get_go.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-01-29T13:20:21Z",
+      "side": 1,
+      "message": "Change of plan - we\u0027ll actually do this in a follow up CL.",
+      "parentUuid": "a61fb653_d2d71952",
       "revId": "1473daa5aa794184b96641f0f412992594f8698a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
