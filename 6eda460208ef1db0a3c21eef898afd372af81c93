@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996ecf97_0fecf4bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:25:09Z",
+      "side": 1,
+      "message": "s/the/that/?",
+      "revId": "6eda460208ef1db0a3c21eef898afd372af81c93",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f239afe1_4ed736ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:25:09Z",
+      "side": 1,
+      "message": "LGTM with a couple of questions. I definitely don\u0027t follow the code, but generally followed the reasoning we discussed yesterday. ",
+      "revId": "6eda460208ef1db0a3c21eef898afd372af81c93",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b475370_981b7b03",
+        "filename": "cue/testdata/builtins/incomplete.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:25:09Z",
+      "side": 1,
+      "message": "Is this really a cycle error?",
+      "revId": "6eda460208ef1db0a3c21eef898afd372af81c93",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa19ef5_280be469",
+        "filename": "internal/core/adt/eval.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:25:09Z",
+      "side": 1,
+      "message": "Also need to \"zero\" conjuncts?",
+      "revId": "6eda460208ef1db0a3c21eef898afd372af81c93",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e640e21_f0e963ca",
+        "filename": "internal/core/adt/expr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:25:09Z",
+      "side": 1,
+      "message": "s/note/not/",
+      "revId": "6eda460208ef1db0a3c21eef898afd372af81c93",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
