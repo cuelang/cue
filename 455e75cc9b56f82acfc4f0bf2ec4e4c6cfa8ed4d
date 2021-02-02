@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5f666d_c02ff8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:04:46Z",
+      "side": 1,
+      "message": "LGTM with a couple of questions about whether comments are still accurate in the txtar tests.",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6fa17ce_0b157ca4",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:04:46Z",
+      "side": 1,
+      "message": "Is this comment still accurate? Not sure that it is because xb1 actually resolved to 8.",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0c23c3_974947fb",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:04:46Z",
+      "side": 1,
+      "message": "This is semantically identical to the xbN example, no?",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738e6336_7405bc11",
+        "filename": "cue/testdata/cycle/052_resolved_self-reference_cycles_with_disjunction_with_defaults.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:04:46Z",
+      "side": 1,
+      "message": "Ditto - not sure this comment is still current?",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
