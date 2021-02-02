@@ -53,6 +53,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96da5b8f_87d1fdb2",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:20:29Z",
+      "side": 1,
+      "message": "Ah that makes sense.",
+      "parentUuid": "a9dac6af_7f838494",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f0c23c3_974947fb",
@@ -88,6 +106,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab0e359_89cb1f5c",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:20:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84f7e6f3_5ebc1abe",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "738e6336_7405bc11",
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "Yes, this seems to be solved, as in v0.2, but here the comment was likely changed from v0.2, probably erroneously.",
       "parentUuid": "738e6336_7405bc11",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2980c269_5760701c",
+        "filename": "cue/testdata/cycle/052_resolved_self-reference_cycles_with_disjunction_with_defaults.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-02T09:20:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "050c03d5_8172bc76",
       "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
