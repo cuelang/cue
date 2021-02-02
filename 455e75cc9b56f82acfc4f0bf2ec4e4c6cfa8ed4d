@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9dac6af_7f838494",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-02T09:16:19Z",
+      "side": 1,
+      "message": "The comment actually applies to the v0.2, where it resolved. So the comment now applies, whereas before it didn\u0027t. (although the phasing is slightly of, it should be s/in xb4/referring xb4/ or s/xb4/xb3/",
+      "parentUuid": "a6fa17ce_0b157ca4",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f0c23c3_974947fb",
         "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84f7e6f3_5ebc1abe",
+        "filename": "cue/testdata/cycle/051_resolved_self-reference_cycles_with_disjunction.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-02T09:16:19Z",
+      "side": 1,
+      "message": "Seems like it. Just parenthesized differently, but that doesn\u0027t matter here.\n\nI prefer to leave it until we did the full review of the v0.2 regressions, though.",
+      "parentUuid": "2f0c23c3_974947fb",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "738e6336_7405bc11",
         "filename": "cue/testdata/cycle/052_resolved_self-reference_cycles_with_disjunction_with_defaults.txtar",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2021-02-02T09:04:46Z",
       "side": 1,
       "message": "Ditto - not sure this comment is still current?",
+      "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050c03d5_8172bc76",
+        "filename": "cue/testdata/cycle/052_resolved_self-reference_cycles_with_disjunction_with_defaults.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-02T09:16:19Z",
+      "side": 1,
+      "message": "Yes, this seems to be solved, as in v0.2, but here the comment was likely changed from v0.2, probably erroneously.",
+      "parentUuid": "738e6336_7405bc11",
       "revId": "455e75cc9b56f82acfc4f0bf2ec4e4c6cfa8ed4d",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
