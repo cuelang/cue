@@ -33,7 +33,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Set version environment
       run: |-
-        CUE_VERSION=$(echo ${GITHUB_REF##refs/tags/v})
+        CUE_VERSION=$(echo ${GITHcueckooCopybaraImage)
         echo "CUE_VERSION=$CUE_VERSION"
         echo "CUE_VERSION=$(echo $CUE_VERSION)" >> $GITHUB_ENV
     - name: Push to Docker Hub
