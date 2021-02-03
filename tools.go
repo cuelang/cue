@@ -17,6 +17,7 @@
 package tools
 
 import (
+	_ "github.com/cue-sh/tools/cmd/cueckoo"
 	_ "golang.org/x/exp/cmd/gorelease"
 	_ "golang.org/x/tools/cmd/goimports"
 )
