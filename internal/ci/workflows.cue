@@ -176,22 +176,60 @@ test: _#bashWorkflow & {
 }
 
 repository_dispatch: _#bashWorkflow & {
+	// These constants are defined by github.com/cue-sh/tools/cmd/cueckoo
+	_#runtrybot: "runtrybot"
+	_#mirror:    "mirror"
+	_#importpr:  "importpr"
+
+	// The cueckoo/copybara Docker image to use
+	_#cueckooCopybaraImage: "cueckoo/copybara:afc4ae03eed00b0c9d7415141cd1b5dfa583da7c"
+
+	// Define the base command for copybara
+	_#copybaraCmd: {
+		#cmd: string
+		#"""
+		cd _scripts
+		docker run --rm -v $PWD/cache:/root/copybara/cache -v $PWD:/usr/src/app --entrypoint="" -it \#(_#cueckooCopybaraImage) bash -c "set -eu; echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies; chmod 600 ~/.gitcookies; git config --global user.name cueckoo; git config --global user.email cueckoo@gmail.com; git config --global http.cookiefile \$HOME/.gitcookies; echo https://cueckoo:${{ secrets.CUECKOO_GITHUB_PAT }}@github.com > ~/.git-credentials; chmod 600 ~/.git-credentials; java -jar /opt/copybara/copybara_deploy.jar migrate copy.bara.sky \#(#cmd)"
+		"""#
+	}
 
 	name: "Repository Dispatch"
 	on: ["repository_dispatch"]
 	jobs: {
-		start: {
-			if:        "${{ startsWith(github.event.action, 'Build for refs/changes/') }}"
+		"\(_#runtrybot)": {
+			if:        "${{ github.event.client_payload.type == '\(_#runtrybot)') }}"
 			"runs-on": _#linuxMachine
 			steps: [
 				_#step & {
-					name: "Checkout ref"
+					name: "Trigger trybot"
 					run:  """
 						\(_#tempCueckooGitDir)
-						git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.ref }}
-						git checkout -b ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }} FETCH_HEAD
-						git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }}
+						git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.payload.ref }}
+						git checkout -b ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }} FETCH_HEAD
+						git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }}
 						"""
+				},
+			]
+		}
+		"\(_#mirror)": {
+			if:        "${{ github.event.client_payload.type == '\(_#mirror)') }}"
+			"runs-on": _#linuxMachine
+			steps: [
+				_#checkoutCode,
+				_#step & {
+					name: "Mirror Gerrit to GitHub"
+					run:  _#copybaraCmd & {_, #cmd: "github"}
+				},
+			]
+		}
+		"\(_#importpr)": {
+			if:        "${{ github.event.client_payload.type == '\(_#importpr)') }}"
+			"runs-on": _#linuxMachine
+			steps: [
+				_#checkoutCode,
+				_#step & {
+					name: "Import PR #${{ github.event.client_payload.commit }} from GitHub to Gerrit"
+					run:  _#copybaraCmd & {_, #cmd: "github-pr ${{ github.event.client_payload.payload.pr }}"}
 				},
 			]
 		}
