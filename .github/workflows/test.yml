@@ -9,6 +9,7 @@ on:
     - v*
 jobs:
   start:
+    if: "false"
     runs-on: ubuntu-18.04
     defaults:
       run:
