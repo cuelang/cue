@@ -6,6 +6,20 @@
 # of the cue.mod/module.cue file).
 
 -- workflows.cue --
+// Copyright 2021 The CUE Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package ci
 
 import (
@@ -13,62 +27,91 @@ import (
 	encjson "encoding/json"
 )
 
-workflowsDir:        *"./" | string @tag(workflowsDir)
+workflowsDir: *"./" | string @tag(workflowsDir)
+
 _#masterBranch:      "master"
 _#releaseTagPattern: "v*"
-workflows:           [...{
-	file:   string
-	schema: json.#Workflow
-}] & [{
-	file:   "test.yml"
-	schema: test
-}, {
-	file:   "repository_dispatch.yml"
-	schema: repository_dispatch
-}, {
-	file:   "release.yml"
-	schema: release
-}, {
-	file:   "rebuild_tip_cuelang_org.yml"
-	schema: rebuild_tip_cuelang_org
-}]
+
+workflows: [...{file: string, schema: (json.#Workflow & {})}]
+workflows: [
+	{
+		file:   "test.yml"
+		schema: test
+	},
+	{
+		file:   "repository_dispatch.yml"
+		schema: repository_dispatch
+	},
+	{
+		file:   "release.yml"
+		schema: release
+	},
+	{
+		file:   "rebuild_tip_cuelang_org.yml"
+		schema: rebuild_tip_cuelang_org
+	},
+]
+
 test: _#bashWorkflow & {
+
 	name: "Test"
-	on: push: {
-		branches: ["**"]
-		"tags-ignore": [_#releaseTagPattern]
+	on: {
+		push: {
+			branches: ["**"] // any branch (including '/' namespaced branches)
+			"tags-ignore": [_#releaseTagPattern]
+		}
 	}
+
 	jobs: {
 		start: {
 			"runs-on": _#linuxMachine
-			steps:     [..._ & {
-				if: "${{ \(_#isCLCITestBranch) }}"
-			}] & [_#writeCookiesFile, _#startCLBuild]
+			steps: [...(_ & {if: "${{ \(_#isCLCITestBranch) }}"})]
+			steps: [
+				_#writeCookiesFile,
+				_#startCLBuild,
+			]
 		}
 		test: {
 			needs:     "start"
 			strategy:  _#testStrategy
 			"runs-on": "${{ matrix.os }}"
-			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#goGenerate, _#goTest, _#goTestRace & {
-				if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
-			}, _#goReleaseCheck, _#checkGitClean, _#pullThroughProxy, _#failCLBuild]
+			steps: [
+				_#writeCookiesFile,
+				_#installGo,
+				_#checkoutCode,
+				_#cacheGoModules,
+				_#goGenerate,
+				_#goTest,
+				_#goTestRace & {
+					if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
+				},
+				_#goReleaseCheck,
+				_#checkGitClean,
+				_#pullThroughProxy,
+				_#failCLBuild,
+			]
 		}
 		mark_ci_success: {
 			"runs-on": _#linuxMachine
 			if:        "${{ \(_#isCLCITestBranch) }}"
 			needs:     "test"
-			steps: [_#writeCookiesFile, _#passCLBuild]
+			steps: [
+				_#writeCookiesFile,
+				_#passCLBuild,
+			]
 		}
 		delete_build_branch: {
 			"runs-on": _#linuxMachine
 			if:        "${{ \(_#isCLCITestBranch) && always() }}"
 			needs:     "test"
-			steps: [_#step & {
-				run: """
-							\(_#tempCueckooGitDir)
-							git push https://github.com/cuelang/cue :${GITHUB_REF#\(_#branchRefPrefix)}
-							"""
-			}]
+			steps: [
+				_#step & {
+					run: """
+						\(_#tempCueckooGitDir)
+						git push https://github.com/cuelang/cue :${GITHUB_REF#\(_#branchRefPrefix)}
+						"""
+				},
+			]
 		}
 	}
 
@@ -78,7 +121,8 @@ test: _#bashWorkflow & {
 
 	// _#isMaster is an expression that evaluates to true if the
 	// job is running as a result of a master commit push
-	_#isMaster:         "github.ref == '\(_#branchRefPrefix+_#masterBranch)'"
+	_#isMaster: "github.ref == '\(_#branchRefPrefix+_#masterBranch)'"
+
 	_#pullThroughProxy: _#step & {
 		name: "Pull this commit through the proxy on \(_#masterBranch)"
 		run: """
@@ -89,63 +133,119 @@ test: _#bashWorkflow & {
 			"""
 		if: "${{ \(_#isMaster) }}"
 	}
+
 	_#startCLBuild: _#step & {
 		name: "Update Gerrit CL message with starting message"
 		run:  (_#gerrit._#setCodeReview & {
-			#args: {
-				message: "Started the build... see progress at ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
-			}
+			#args: message: "Started the build... see progress at ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
 		}).res
 	}
+
 	_#failCLBuild: _#step & {
 		if:   "${{ \(_#isCLCITestBranch) && failure() }}"
 		name: "Post any failures for this matrix entry"
 		run:  (_#gerrit._#setCodeReview & {
 			#args: {
 				message: "Build failed for ${{ runner.os }}-${{ matrix.go-version }}; see ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }} for more details"
-				labels: "Code-Review": -1
+				labels: {
+					"Code-Review": -1
+				}
 			}
 		}).res
 	}
+
 	_#passCLBuild: _#step & {
 		name: "Update Gerrit CL message with success message"
 		run:  (_#gerrit._#setCodeReview & {
 			#args: {
 				message: "Build succeeded for ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
-				labels: "Code-Review": 1
+				labels: {
+					"Code-Review": 1
+				}
 			}
 		}).res
 	}
+
 	_#gerrit: {
 		// _#setCodeReview assumes that it is invoked from a job where
 		// _#isCLCITestBranch is true
 		_#setCodeReview: {
 			#args: {
 				message: string
-				labels?: "Code-Review": int
+				labels?: {
+					"Code-Review": int
+				}
 			}
-			res: "curl -f -s -H \"Content-Type: application/json\" --request POST --data '\(encjson.Marshal(#args))' -b ~/.gitcookies https://cue-review.googlesource.com/a/changes/$(basename $(dirname $GITHUB_REF))/revisions/$(basename $GITHUB_REF)/review"
+			res: #"""
+			curl -f -s -H "Content-Type: application/json" --request POST --data '\#(encjson.Marshal(#args))' -b ~/.gitcookies https://cue-review.googlesource.com/a/changes/$(basename $(dirname $GITHUB_REF))/revisions/$(basename $GITHUB_REF)/review
+			"""#
 		}
 	}
 }
+
 repository_dispatch: _#bashWorkflow & {
+	// These constants are defined by github.com/cue-sh/tools/cmd/cueckoo
+	_#runtrybot: "runtrybot"
+	_#mirror:    "mirror"
+	_#importpr:  "importpr"
+
+	// The cueckoo/copybara Docker image to use
+	_#cueckooCopybaraImage: "cueckoo/copybara:afc4ae03eed00b0c9d7415141cd1b5dfa583da7c"
+
+	// Define the base command for copybara
+	_#copybaraCmd: {
+		#cmd: string
+		#"""
+		cd _scripts
+		docker run --rm -v $PWD/cache:/root/copybara/cache -v $PWD:/usr/src/app --entrypoint="" -it \#(_#cueckooCopybaraImage) bash -c "set -eu; echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies; chmod 600 ~/.gitcookies; git config --global user.name cueckoo; git config --global user.email cueckoo@gmail.com; git config --global http.cookiefile \$HOME/.gitcookies; echo https://cueckoo:${{ secrets.CUECKOO_GITHUB_PAT }}@github.com > ~/.git-credentials; chmod 600 ~/.git-credentials; java -jar /opt/copybara/copybara_deploy.jar migrate copy.bara.sky \#(#cmd)"
+		"""#
+	}
+
 	name: "Repository Dispatch"
 	on: ["repository_dispatch"]
-	jobs: start: {
-		if:        "${{ startsWith(github.event.action, 'Build for refs/changes/') }}"
-		"runs-on": _#linuxMachine
-		steps: [_#step & {
-			name: "Checkout ref"
-			run:  """
-							\(_#tempCueckooGitDir)
-							git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.ref }}
-							git checkout -b ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }} FETCH_HEAD
-							git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }}
-							"""
-		}]
+	jobs: {
+		"\(_#runtrybot)": {
+			if:        "${{ github.event.client_payload.type == '\(_#runtrybot)') }}"
+			"runs-on": _#linuxMachine
+			steps: [
+				_#step & {
+					name: "Trigger trybot"
+					run:  """
+						\(_#tempCueckooGitDir)
+						git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.payload.ref }}
+						git checkout -b ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }} FETCH_HEAD
+						git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }}
+						"""
+				},
+			]
+		}
+		"\(_#mirror)": {
+			if:        "${{ github.event.client_payload.type == '\(_#mirror)') }}"
+			"runs-on": _#linuxMachine
+			steps: [
+				_#checkoutCode,
+				_#step & {
+					name: "Mirror Gerrit to GitHub"
+					run:  _#copybaraCmd & {_, #cmd: "github"}
+				},
+			]
+		}
+		"\(_#importpr)": {
+			if:        "${{ github.event.client_payload.type == '\(_#importpr)') }}"
+			"runs-on": _#linuxMachine
+			steps: [
+				_#checkoutCode,
+				_#step & {
+					name: "Import PR #${{ github.event.client_payload.commit }} from GitHub to Gerrit"
+					run:  _#copybaraCmd & {_, #cmd: "github-pr ${{ github.event.client_payload.payload.pr }}"}
+				},
+			]
+		}
 	}
 }
+
 release: _#bashWorkflow & {
+
 	name: "Release"
 	on: push: tags: [_#releaseTagPattern]
 	jobs: {
@@ -155,7 +255,7 @@ release: _#bashWorkflow & {
 				name: "Checkout code"
 				uses: "actions/checkout@v2"
 			}, {
-				name: "Unshallow"
+				name: "Unshallow" // required for the changelog to work correctly.
 				run:  "git fetch --prune --unshallow"
 			}, {
 				name: "Run GoReleaser"
@@ -201,7 +301,9 @@ release: _#bashWorkflow & {
 		}
 	}
 }
+
 rebuild_tip_cuelang_org: _#bashWorkflow & {
+
 	name: "Push to tip"
 	on: push: branches: [_#masterBranch]
 	jobs: push: {
@@ -212,25 +314,24 @@ rebuild_tip_cuelang_org: _#bashWorkflow & {
 		}]
 	}
 }
+
 _#bashWorkflow: json.#Workflow & {
 	jobs: [string]: defaults: run: shell: "bash"
 }
 
 // TODO: drop when cuelang.org/issue/390 is fixed.
 // Declare definitions for sub-schemas
-_#job: ((json.#Workflow & {}).jobs & {
-	x: _
-}).x
-_#step: ((_#job & {
-	steps: _
-}).steps & [_])[0]
+_#job:  ((json.#Workflow & {}).jobs & {x: _}).x
+_#step: ((_#job & {steps:                 _}).steps & [_])[0]
 
 // We need at least go1.14 for code generation
 _#codeGenGo:      "1.14.14"
 _#latestStableGo: "1.15.x"
+
 _#linuxMachine:   "ubuntu-18.04"
 _#macosMachine:   "macos-10.15"
 _#windowsMachine: "windows-2019"
+
 _#testStrategy: {
 	"fail-fast": false
 	matrix: {
@@ -239,6 +340,7 @@ _#testStrategy: {
 		os: [_#linuxMachine, _#macosMachine, _#windowsMachine]
 	}
 }
+
 _#installGo: _#step & {
 	name: "Install Go"
 	uses: "actions/setup-go@v2"
@@ -247,10 +349,12 @@ _#installGo: _#step & {
 		stable:       false
 	}
 }
+
 _#checkoutCode: _#step & {
 	name: "Checkout code"
 	uses: "actions/checkout@v2"
 }
+
 _#cacheGoModules: _#step & {
 	name: "Cache Go modules"
 	uses: "actions/cache@v1"
@@ -262,6 +366,7 @@ _#cacheGoModules: _#step & {
 			"""
 	}
 }
+
 _#goGenerate: _#step & {
 	name: "Generate"
 	run:  "go generate ./..."
@@ -269,27 +374,34 @@ _#goGenerate: _#step & {
 	// the matrix. Skip windows for now until we work out why re-gen is flaky
 	if: "matrix.go-version == '\(_#codeGenGo)' && matrix.os != '\(_#windowsMachine)'"
 }
+
 _#goTest: _#step & {
 	name: "Test"
 	run:  "go test ./..."
 }
+
 _#goTestRace: _#step & {
 	name: "Test with -race"
 	run:  "go test -race ./..."
 }
+
 _#goReleaseCheck: _#step & {
 	name: "gorelease check"
 	run:  "go run golang.org/x/exp/cmd/gorelease"
 }
+
 _#checkGitClean: _#step & {
 	name: "Check that git is clean post generate and tests"
 	run:  "test -z \"$(git status --porcelain)\" || (git status; git diff; false)"
 }
+
 _#writeCookiesFile: _#step & {
 	name: "Write the gitcookies file"
 	run:  "echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies"
 }
+
 _#branchRefPrefix: "refs/heads/"
+
 _#tempCueckooGitDir: """
 	mkdir tmpgit
 	cd tmpgit
@@ -2025,12 +2137,13 @@ import "strings"
   workflowsDir: (*"./"|string)
   _#masterBranch: "master"
   _#releaseTagPattern: "v*"
-  workflows: ([
+  workflows: [
     ...{
       file: string
-      schema: 〈import;"github.com/SchemaStore/schemastore/src/schemas/json"〉.#Workflow
+      schema: (〈import;"github.com/SchemaStore/schemastore/src/schemas/json"〉.#Workflow & {})
     },
-  ] & [
+  ]
+  workflows: [
     {
       file: "test.yml"
       schema: 〈1;test〉
@@ -2047,7 +2160,7 @@ import "strings"
       file: "rebuild_tip_cuelang_org.yml"
       schema: 〈1;rebuild_tip_cuelang_org〉
     },
-  ])
+  ]
   test: (〈0;_#bashWorkflow〉 & {
     name: "Test"
     on: {
@@ -2063,14 +2176,15 @@ import "strings"
     jobs: {
       start: {
         "runs-on": 〈3;_#linuxMachine〉
-        steps: ([
+        steps: [
           ...(_ & {
             if: "${{ \(〈3;_#isCLCITestBranch〉) }}"
           }),
-        ] & [
+        ]
+        steps: [
           〈3;_#writeCookiesFile〉,
           〈2;_#startCLBuild〉,
-        ])
+        ]
       }
       test: {
         needs: "start"
@@ -2164,21 +2278,58 @@ import "strings"
     }
   })
   repository_dispatch: (〈0;_#bashWorkflow〉 & {
+    _#runtrybot: "runtrybot"
+    _#mirror: "mirror"
+    _#importpr: "importpr"
+    _#cueckooCopybaraImage: "cueckoo/copybara:afc4ae03eed00b0c9d7415141cd1b5dfa583da7c"
+    _#copybaraCmd: {
+      #cmd: string
+      "cd _scripts
+      docker run --rm -v $PWD/cache:/root/copybara/cache -v $PWD:/usr/src/app --entrypoint="" -it \(〈1;_#cueckooCopybaraImage〉) bash -c "set -eu; echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies; chmod 600 ~/.gitcookies; git config --global user.name cueckoo; git config --global user.email cueckoo@gmail.com; git config --global http.cookiefile \$HOME/.gitcookies; echo https://cueckoo:${{ secrets.CUECKOO_GITHUB_PAT }}@github.com > ~/.git-credentials; chmod 600 ~/.git-credentials; java -jar /opt/copybara/copybara_deploy.jar migrate copy.bara.sky \(〈0;#cmd〉)""
+    }
     name: "Repository Dispatch"
     on: [
       "repository_dispatch",
     ]
     jobs: {
-      start: {
-        if: "${{ startsWith(github.event.action, 'Build for refs/changes/') }}"
+      "\(〈1;_#runtrybot〉)": {
+        if: "${{ github.event.client_payload.type == '\(〈2;_#runtrybot〉)') }}"
         "runs-on": 〈3;_#linuxMachine〉
         steps: [
           (〈3;_#step〉 & {
-            name: "Checkout ref"
+            name: "Trigger trybot"
             run: "\(〈4;_#tempCueckooGitDir〉)
-            git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.ref }}
-            git checkout -b ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }} FETCH_HEAD
-            git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.changeID }}/${{ github.event.client_payload.commit }}"
+            git fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.payload.ref }}
+            git checkout -b ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }} FETCH_HEAD
+            git push https://github.com/cuelang/cue ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }}"
+          }),
+        ]
+      }
+      "\(〈1;_#mirror〉)": {
+        if: "${{ github.event.client_payload.type == '\(〈2;_#mirror〉)') }}"
+        "runs-on": 〈3;_#linuxMachine〉
+        steps: [
+          〈3;_#checkoutCode〉,
+          (〈3;_#step〉 & {
+            name: "Mirror Gerrit to GitHub"
+            run: (〈3;_#copybaraCmd〉 & {
+              _
+              #cmd: "github"
+            })
+          }),
+        ]
+      }
+      "\(〈1;_#importpr〉)": {
+        if: "${{ github.event.client_payload.type == '\(〈2;_#importpr〉)') }}"
+        "runs-on": 〈3;_#linuxMachine〉
+        steps: [
+          〈3;_#checkoutCode〉,
+          (〈3;_#step〉 & {
+            name: "Import PR #${{ github.event.client_payload.commit }} from GitHub to Gerrit"
+            run: (〈3;_#copybaraCmd〉 & {
+              _
+              #cmd: "github-pr ${{ github.event.client_payload.payload.pr }}"
+            })
           }),
         ]
       }
