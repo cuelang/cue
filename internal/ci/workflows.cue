@@ -42,6 +42,10 @@ workflows: [
 		file:   "rebuild_tip_cuelang_org.yml"
 		schema: rebuild_tip_cuelang_org
 	},
+	{
+		file:   "copybara.yml"
+		schema: copybara
+	},
 ]
 
 test: _#bashWorkflow & {
@@ -267,6 +271,10 @@ rebuild_tip_cuelang_org: _#bashWorkflow & {
 			run:  "curl -f -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.CuelangOrgTipRebuildHook }}"
 		}]
 	}
+}
+
+copybara: {
+
 }
 
 _#bashWorkflow: json.#Workflow & {
