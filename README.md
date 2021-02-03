@@ -93,18 +93,30 @@ Some aspects of this are:
 
 ### Download and Install
 
+#### Release builds
+
+[Download](https://github.com/cuelang/cue/releases) the latest release from GitHub.
+
 #### Install using Homebrew
 
 Using [Homebrew](https://brew.sh), you can install using the CUE Homebrew tap:
 
 `brew install cuelang/tap/cue`
 
-#### Install From Source
+#### Install from Source
+
+<!-- Keep the following in sync with cmd/cue/cmd/testdata/script/install*.txt -->
 
 If you already have Go installed, the short version is:
 
 ```
-go get -u cuelang.org/go/cmd/cue
+GO111MODULE=on go get cuelang.org/go/cmd/cue
+```
+
+Or, if you are using Go 1.16:
+
+```
+go install cuelang.org/go/cmd/cue@latest
 ```
 
 This will install the `cue` command line tool.
@@ -148,6 +160,7 @@ Changes can be contributed using Gerrit or Github pull requests.
 
 You can get in touch with the cuelang community in the following ways:
 
+- Ask questions via [GitHub Discussions](https://github.com/cuelang/cue/discussions)
 - Chat with us on our
   [Slack workspace](https://join.slack.com/t/cuelang/shared_invite/enQtNzQwODc3NzYzNTA0LTAxNWQwZGU2YWFiOWFiOWQ4MjVjNGQ2ZTNlMmIxODc4MDVjMDg5YmIyOTMyMjQ2MTkzMTU5ZjA1OGE0OGE1NmE).
 
