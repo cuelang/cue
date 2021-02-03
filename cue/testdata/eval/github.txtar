@@ -51,7 +51,7 @@ test: _#bashWorkflow & {
 			"runs-on": "${{ matrix.os }}"
 			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#setGoBuildTags & {
 				_#tags: "long"
-				if:     "${{ \(_#isMaster) }}"
+				// if:     "${{ \(_#isMaster) }}"
 			}, _#goGenerate, _#goTest, _#goTestRace & {
 				if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
 			}, _#goReleaseCheck, _#checkGitClean, _#pullThroughProxy, _#failCLBuild]
@@ -2091,7 +2091,6 @@ import "strings"
           〈3;_#cacheGoModules〉,
           (〈3;_#setGoBuildTags〉 & {
             _#tags: "long"
-            if: "${{ \(〈3;_#isMaster〉) }}"
           }),
           〈3;_#goGenerate〉,
           〈3;_#goTest〉,

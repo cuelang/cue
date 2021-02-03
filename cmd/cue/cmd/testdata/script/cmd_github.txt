@@ -178,8 +178,7 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.go-version }}-go-${{ hashFiles('**/go.sum')
           }}
         restore-keys: ${{ runner.os }}-${{ matrix.go-version }}-go-
-    - if: ${{ github.ref == 'refs/heads/master' }}
-      name: Set go build tags
+    - name: Set go build tags
       run: go env -w GOFLAGS=-tags=long
     - if: matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'
       name: Generate
@@ -1207,7 +1206,7 @@ test: _#bashWorkflow & {
 			"runs-on": "${{ matrix.os }}"
 			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#setGoBuildTags & {
 				_#tags: "long"
-				if:     "${{ \(_#isMaster) }}"
+				// if:     "${{ \(_#isMaster) }}"
 			}, _#goGenerate, _#goTest, _#goTestRace & {
 				if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
 			}, _#goReleaseCheck, _#checkGitClean, _#pullThroughProxy, _#failCLBuild]
