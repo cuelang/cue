@@ -82,9 +82,21 @@ func TestScript(t *testing.T) {
 		Dir:           filepath.Join("testdata", "script"),
 		UpdateScripts: *update,
 		Setup: func(e *testscript.Env) error {
+			// gotooltest setup below will define GOPATH as $WORK/gopath.
+			// Add $GOPATH/bin to the front of PATH
+			var p string
+			for i := len(e.Vars) - 1; i >= 0; i-- {
+				v := e.Vars[i]
+				if !strings.HasPrefix(v, "PATH=") {
+					continue
+				}
+				p = strings.TrimPrefix(v, "PATH=")
+			}
+			gpb := filepath.Join(e.WorkDir, "gopath", "bin")
 			e.Vars = append(e.Vars,
 				"GOPROXY="+srv.URL,
 				"GONOSUMDB=*", // GOPROXY is a private proxy
+				"PATH="+fmt.Sprintf("%s%s%s", gpb, string(os.PathListSeparator), p),
 			)
 			return nil
 		},
