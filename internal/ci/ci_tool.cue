@@ -74,9 +74,11 @@ command: updateTxtarTests: {
 		filename: path.Join([_path], goos.GOOS)
 		contents: string
 	}
-	cueDefInternalCI: exec.Run & {
-		cmd:    "go run cuelang.org/go/cmd/cue def cuelang.org/go/internal/ci"
-		stdout: string
+	// Workaround for cuelang.org/issue/718. We should
+	// be able to replace this with a cue def
+	cueDefInternalCI: file.Read & {
+		filename: "workflows.cue"
+		contents: string
 	}
 	// updateEvalTxtarTest updates the cue/testdata/eval testscript which exercises
 	// the evaluation of the workflows defined in internal/ci (which by definition
@@ -91,12 +93,13 @@ command: updateTxtarTests: {
 		}
 		defWorkflows: exec.Run & {
 			$after: githubSchema
-			stdin:  cueDefInternalCI.stdout
+			stdin:  cueDefInternalCI.contents
 			cmd:    "go run cuelang.org/go/internal/ci/updatetxtar - \(_path) workflows.cue"
 		}
 	}
 	// When we have a solution for cuelang.org/issue/709 we can make this a
-	// file.Glob
+	// file.Glob. Ultimately it would be better to be able to do a cue def
+	// on the tool "package"
 	readToolsFile: file.Read & {
 		filename: "ci_tool.cue"
 		contents: string
@@ -111,7 +114,7 @@ command: updateTxtarTests: {
 		}
 		defWorkflows: exec.Run & {
 			$after: githubSchema
-			stdin:  cueDefInternalCI.stdout
+			stdin:  cueDefInternalCI.contents
 			cmd:    "go run cuelang.org/go/internal/ci/updatetxtar - \(_path) internal/ci/workflows.cue"
 		}
 		toolsFile: exec.Run & {
