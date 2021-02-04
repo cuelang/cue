@@ -24,13 +24,14 @@ import (
 	"cuelang.org/go/internal/core/eval"
 	"cuelang.org/go/internal/core/export"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 )
 
 func TestExtract(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "doc",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 	}
 
 	r := cue.NewRuntime()

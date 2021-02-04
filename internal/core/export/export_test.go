@@ -15,7 +15,6 @@
 package export_test
 
 import (
-	"flag"
 	"testing"
 
 	"cuelang.org/go/cue"
@@ -32,16 +31,15 @@ import (
 	"cuelang.org/go/internal/core/export"
 	"cuelang.org/go/internal/core/runtime"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 	"github.com/rogpeppe/go-internal/txtar"
 )
-
-var update = flag.Bool("update", false, "update the test files")
 
 func TestDefinition(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "definition",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 	}
 
 	r := cue.NewRuntime()

@@ -28,19 +28,19 @@ import (
 	"cuelang.org/go/internal/core/eval"
 	"cuelang.org/go/internal/core/validate"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 	_ "cuelang.org/go/pkg"
 )
 
 var (
-	update = flag.Bool("update", false, "update the test files")
-	todo   = flag.Bool("todo", false, "run tests marked with #todo-compile")
+	todo = flag.Bool("todo", false, "run tests marked with #todo-compile")
 )
 
 func TestEval(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "../../../cue/testdata",
 		Name:   "eval",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 		Skip:   alwaysSkip,
 		ToDo:   needFix,
 	}
