@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e517a8_760e1231",
+        "filename": "cmd/cue/cmd/testdata/script/contributing_install_go1.16.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-04T09:36:01Z",
+      "side": 1,
+      "message": "better to have them disabled by default using a long tag or so.",
+      "revId": "1fd1397183eb8cd2e9e04028f4d3da04a65549c0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
