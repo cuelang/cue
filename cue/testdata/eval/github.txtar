@@ -49,7 +49,10 @@ test: _#bashWorkflow & {
 			needs:     "start"
 			strategy:  _#testStrategy
 			"runs-on": "${{ matrix.os }}"
-			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#goGenerate, _#goTest, _#goTestRace & {
+			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#setGoBuildTags & {
+				_#tags: "long"
+				if:     "${{ \(_#isMaster) }}"
+			}, _#goGenerate, _#goTest, _#goTestRace & {
 				if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
 			}, _#goReleaseCheck, _#checkGitClean, _#pullThroughProxy, _#failCLBuild]
 		}
@@ -238,6 +241,11 @@ _#testStrategy: {
 		"go-version": [_#codeGenGo, _#latestStableGo, "1.16.0-rc1"]
 		os: [_#linuxMachine, _#macosMachine, _#windowsMachine]
 	}
+}
+_#setGoBuildTags: _#step & {
+	_#tags: string
+	name:   "Set go build tags"
+	run:    "go env -w GOFLAGS=-tags=\(_#tags)"
 }
 _#installGo: _#step & {
 	name: "Install Go"
@@ -2081,6 +2089,10 @@ import "strings"
           〈3;_#installGo〉,
           〈3;_#checkoutCode〉,
           〈3;_#cacheGoModules〉,
+          (〈3;_#setGoBuildTags〉 & {
+            _#tags: "long"
+            if: "${{ \(〈3;_#isMaster〉) }}"
+          }),
           〈3;_#goGenerate〉,
           〈3;_#goTest〉,
           (〈3;_#goTestRace〉 & {
@@ -2314,6 +2326,11 @@ import "strings"
       ]
     }
   }
+  _#setGoBuildTags: (〈0;_#step〉 & {
+    _#tags: string
+    name: "Set go build tags"
+    run: "go env -w GOFLAGS=-tags=\(〈0;_#tags〉)"
+  })
   _#installGo: (〈0;_#step〉 & {
     name: "Install Go"
     uses: "actions/setup-go@v2"

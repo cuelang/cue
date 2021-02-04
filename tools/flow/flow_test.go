@@ -16,7 +16,6 @@ package flow_test
 
 import (
 	"context"
-	"flag"
 	"fmt"
 	"os"
 	"path"
@@ -28,10 +27,9 @@ import (
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 	"cuelang.org/go/tools/flow"
 )
-
-var update = flag.Bool("update", false, "update the test files")
 
 // TestTasks tests the logic that determines which nodes are tasks and what are
 // their dependencies.
@@ -39,7 +37,7 @@ func TestFlow(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "run",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 	}
 
 	test.Run(t, func(t *cuetxtar.Test) {

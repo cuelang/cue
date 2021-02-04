@@ -15,15 +15,13 @@
 package fix
 
 import (
-	"flag"
 	"fmt"
 	"testing"
 
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 )
-
-var update = flag.Bool("update", false, "update the test files")
 
 func TestInstances(t *testing.T) {
 	t.Skip()
@@ -31,7 +29,7 @@ func TestInstances(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "fixmod",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 	}
 
 	test.Run(t, func(t *cuetxtar.Test) {
