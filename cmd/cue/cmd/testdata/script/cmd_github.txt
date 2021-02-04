@@ -1202,7 +1202,11 @@ test: _#bashWorkflow & {
 			needs:     "start"
 			strategy:  _#testStrategy
 			"runs-on": "${{ matrix.os }}"
-			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#goGenerate, _#goTest, _#goTestRace & {
+			steps: [_#writeCookiesFile, _#installGo, _#checkoutCode, _#cacheGoModules, _#setGoBuildTags & {
+				_#tags: "long"
+			}, _#step & {
+				run: "go env"
+			}, _#goGenerate, _#goTest, _#goTestRace & {
 				if: "${{ \(_#isMaster) || \(_#isCLCITestBranch) && matrix.go-version == '\(_#latestStableGo)' && matrix.os == '\(_#linuxMachine)' }}"
 			}, _#goReleaseCheck, _#checkGitClean, _#pullThroughProxy, _#failCLBuild]
 		}
@@ -1391,6 +1395,11 @@ _#testStrategy: {
 		"go-version": [_#codeGenGo, _#latestStableGo, "1.16.0-rc1"]
 		os: [_#linuxMachine, _#macosMachine, _#windowsMachine]
 	}
+}
+_#setGoBuildTags: _#step & {
+	_#tags: string
+	name:   "Set go build tags"
+	run:    "go env -w GOFLAGS=-tags=\(_#tags)"
 }
 _#installGo: _#step & {
 	name: "Install Go"

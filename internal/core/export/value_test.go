@@ -27,6 +27,7 @@ import (
 	"cuelang.org/go/internal/core/export"
 	"cuelang.org/go/internal/core/runtime"
 	"cuelang.org/go/internal/cuetxtar"
+	cuetesting "cuelang.org/go/internal/testing"
 	"github.com/rogpeppe/go-internal/txtar"
 )
 
@@ -38,7 +39,7 @@ func TestValue(t *testing.T) {
 	test := cuetxtar.TxTarTest{
 		Root:   "./testdata",
 		Name:   "value",
-		Update: *update,
+		Update: cuetesting.UpdateGoldenFiles,
 		Skip:   exclude,
 	}
 
