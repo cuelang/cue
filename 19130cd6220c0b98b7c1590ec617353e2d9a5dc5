@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d01b4e2_2073c319",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-05T05:41:48Z",
+      "side": 1,
+      "message": "Might be interesting for people following along to link to the relevant part of the JSON RFC here?\n\nhttps://tools.ietf.org/html/rfc7159\n\n\"2.  JSON Grammar\" is probably the best bit?",
+      "revId": "19130cd6220c0b98b7c1590ec617353e2d9a5dc5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
