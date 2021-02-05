@@ -46,6 +46,30 @@
       },
       "revId": "3d7cbc5c0d87cd13a232e1f6714047366e1c498e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd1a9fa_e6c5b46f",
+        "filename": "_scripts/copy.bara.sky",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2021-02-05T19:52:49Z",
+      "side": 1,
+      "message": "Thought it was a brand-new workflow - apologies :)\n\nThe \"Closes #N\" trick causes the PR to be marked \"Closed\" on GitHub rather than \"Merged\", which confuses some users and tooling. Either work fine.\n\ngVisor\u0027s workflow uses a different way of closing the associated PR, which marks it as \"Merged\" and is slightly more in-line with user expectations on GitHub.",
+      "parentUuid": "7d8513cb_85dfabb4",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "3d7cbc5c0d87cd13a232e1f6714047366e1c498e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
