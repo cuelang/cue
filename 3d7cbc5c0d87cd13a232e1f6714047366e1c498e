@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18947c23_a99bddd8",
+        "filename": "_scripts/copy.bara.sky",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2021-02-05T18:13:06Z",
+      "side": 1,
+      "message": "The folk over at gVisor appear to be using a different trick in their google3 copybara workflow: https://github.com/google/gvisor/pull/5458\n\nLooks like GitHub considers the PR merged if you force push the final commit onto it before landing it on master?\n\nPerhaps a similar trick is applicable here to avoid confusion around \"closing\" PRs?",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "3d7cbc5c0d87cd13a232e1f6714047366e1c498e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
