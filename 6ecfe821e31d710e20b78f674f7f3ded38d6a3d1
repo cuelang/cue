@@ -16,6 +16,24 @@
       "message": "Build failure looks genuine. ",
       "revId": "6ecfe821e31d710e20b78f674f7f3ded38d6a3d1",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58dc114c_6a56afdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-05T09:16:59Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "26973b42_657c3c5e",
+      "revId": "6ecfe821e31d710e20b78f674f7f3ded38d6a3d1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
