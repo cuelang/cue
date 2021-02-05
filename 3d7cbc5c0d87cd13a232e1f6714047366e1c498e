@@ -22,6 +22,30 @@
       },
       "revId": "3d7cbc5c0d87cd13a232e1f6714047366e1c498e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8513cb_85dfabb4",
+        "filename": "_scripts/copy.bara.sky",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-05T19:39:18Z",
+      "side": 1,
+      "message": "Not quite sure I follow.\n\nAll we\u0027re doing here is migrating an existing copybara workflow to operate via a GitHub actions based workflow, i.e. we retain use of copybara. We can (prior to this change) already import a PR to Gerrit. And when that CL is merged, and the changes replicated, the commit landing on master causes any associated PR to be merged (because of the \"Closes #N\").\n\nBut just to be clear that\u0027s already the case.\n\nSo our intention here is not to change that workflow.\n\nWith that said (and apologies, I might well be missing your point) is there something you think we\u0027re not doing quite right here?",
+      "parentUuid": "18947c23_a99bddd8",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "3d7cbc5c0d87cd13a232e1f6714047366e1c498e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
