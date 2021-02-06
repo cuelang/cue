@@ -261,7 +261,7 @@ type DynamicField struct {
 }
 
 func (x *DynamicField) IsOptional() bool {
-	return x.Src.Optional != token.NoPos
+	return x.Src.IsFlag(token.OPTION)
 }
 
 func (x *DynamicField) Source() ast.Node {

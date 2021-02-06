@@ -309,6 +309,7 @@ func (a *Attribute) Split() (key, body string) {
 type Field struct {
 	Label    Label // must have at least one element.
 	Optional token.Pos
+	Flag     token.Token
 
 	// No TokenPos: Value must be an StructLit with one field.
 	TokenPos token.Pos
@@ -329,6 +330,16 @@ func (d *Field) End() token.Pos {
 		return d.Attrs[len(d.Attrs)-1].End()
 	}
 	return d.Value.End()
+}
+func (d *Field) IsFlag(t token.Token) bool {
+	switch t {
+	case token.NOT:
+		return t == d.Flag
+
+	case token.OPTION:
+		return t == d.Flag || (t == token.ILLEGAL && d.Optional != token.NoPos)
+	}
+	return false
 }
 
 // TODO: make Alias a type of Field. This is possible now we have different
@@ -512,6 +523,7 @@ func NewStruct(fields ...interface{}) *StructLit {
 		var (
 			label    Label
 			optional = token.NoPos
+			flag     = token.ILLEGAL
 			tok      = token.ILLEGAL
 			expr     Expr
 		)
@@ -550,8 +562,9 @@ func NewStruct(fields ...interface{}) *StructLit {
 				switch x {
 				case token.ISA:
 					tok = x
-				case token.OPTION:
+				case token.OPTION, token.NOT:
 					optional = token.Blank.Pos()
+					flag = x
 				case token.COLON, token.ILLEGAL:
 				default:
 					panic(fmt.Sprintf("invalid token %s", x))
@@ -566,6 +579,7 @@ func NewStruct(fields ...interface{}) *StructLit {
 		s.Elts = append(s.Elts, &Field{
 			Label:    label,
 			Optional: optional,
+			Flag:     flag,
 			Token:    tok,
 			Value:    expr,
 		})

@@ -869,8 +869,9 @@ func (p *parser) parseField() (decl ast.Decl) {
 			return e
 		}
 
-		if p.tok == token.OPTION {
+		if p.tok == token.OPTION || p.tok == token.NOT {
 			m.Optional = p.pos
+			m.Flag = p.tok
 			p.next()
 		}
 
@@ -942,8 +943,9 @@ func (p *parser) parseField() (decl ast.Decl) {
 		m.Value = &ast.StructLit{Elts: []ast.Decl{field}}
 		m = field
 
-		if tok != token.LSS && p.tok == token.OPTION {
+		if tok != token.LSS && (p.tok == token.OPTION || p.tok == token.NOT) {
 			m.Optional = p.pos
+			m.Flag = p.tok
 			p.next()
 		}
 

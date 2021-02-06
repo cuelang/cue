@@ -232,7 +232,7 @@ func (e *encoder) encodeDecls(decls []ast.Decl, endPos token.Pos) error {
 			if x.Token == token.ISA {
 				return errors.Newf(x.TokenPos, "json: definition not allowed")
 			}
-			if x.Optional != token.NoPos {
+			if x.IsFlag(token.OPTION) {
 				return errors.Newf(x.Optional, "json: optional fields not allowed")
 			}
 			fields = append(fields, x)

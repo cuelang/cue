@@ -553,7 +553,7 @@ func (c *compiler) decl(d ast.Decl) adt.Decl {
 				}
 			}
 
-			if x.Optional == token.NoPos {
+			if !x.IsFlag(token.OPTION) {
 				return &adt.Field{
 					Src:   x,
 					Label: label,

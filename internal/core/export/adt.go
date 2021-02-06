@@ -364,6 +364,7 @@ func (e *exporter) decl(d adt.Decl) ast.Decl {
 		f := &ast.Field{
 			Label:    e.stringLabel(x.Label),
 			Optional: token.NoSpace.Pos(),
+			Flag:     token.OPTION,
 		}
 
 		frame := e.frame(0)

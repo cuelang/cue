@@ -189,6 +189,7 @@ func (x *exporter) mergeValues(label adt.Feature, src *adt.Vertex, a []conjunct,
 
 		if isOptional(a) {
 			d.Optional = token.Blank.Pos()
+			d.Flag = token.OPTION
 		}
 		if x.cfg.ShowDocs {
 			docs := extractDocs(src, a)
@@ -364,7 +365,7 @@ func isOptional(a []adt.Conjunct) bool {
 		case nil:
 			return false
 		case *ast.Field:
-			if f.Optional == token.NoPos {
+			if !f.IsFlag(token.OPTION) {
 				return false
 			}
 		}

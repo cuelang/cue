@@ -468,6 +468,7 @@ var constraints = []*constraint{
 			f := &ast.Field{Label: name, Value: expr}
 			state.doc(f)
 			f.Optional = token.Blank.Pos()
+			f.Flag = token.OPTION
 			if len(obj.Elts) > 0 && len(f.Comments()) > 0 {
 				// TODO: change formatter such that either a a NewSection on the
 				// field or doc comment will cause a new section.
@@ -523,10 +524,11 @@ var constraints = []*constraint{
 				obj.Elts = append(obj.Elts, f)
 				continue
 			}
-			if f.Optional == token.NoPos {
+			if !f.IsFlag(token.OPTION) {
 				s.errf(n, "duplicate required field %q", str)
 			}
 			f.Optional = token.NoPos
+			f.Flag = token.ILLEGAL
 		}
 	}),
 

@@ -187,7 +187,7 @@ func encodeDecls(decls []ast.Decl) (n *yaml.Node, err error) {
 			if x.Token == token.ISA {
 				return nil, errors.Newf(x.TokenPos, "yaml: definition not allowed")
 			}
-			if x.Optional != token.NoPos {
+			if x.IsFlag(token.OPTION) {
 				return nil, errors.Newf(x.Optional, "yaml: optional fields not allowed")
 			}
 			if hasEmbed {

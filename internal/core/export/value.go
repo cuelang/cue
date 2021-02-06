@@ -408,6 +408,7 @@ func (e *exporter) structComposite(v *adt.Vertex) ast.Expr {
 				continue
 			}
 			f.Optional = token.NoSpace.Pos()
+			f.Flag = token.OPTION
 
 			arc = &adt.Vertex{Label: label}
 			v.MatchAndInsert(e.ctx, arc)

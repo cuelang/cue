@@ -384,7 +384,7 @@ func (v *validator) validate(n ast.Node) bool {
 		check(n, i.Definitions, "definitions",
 			x.Token == token.ISA || internal.IsDefinition(x.Label))
 		check(n, i.Data, "regular fields", internal.IsRegularField(x))
-		check(n, constraints, "optional fields", x.Optional != token.NoPos)
+		check(n, constraints, "optional fields", x.IsFlag(token.OPTION))
 
 		_, _, err := ast.LabelName(x.Label)
 		check(n, constraints, "optional fields", err != nil)

@@ -955,6 +955,7 @@ func (e *extractor) makeField(name string, kind cuetoken.Token, expr types.Type,
 	if kind == cuetoken.OPTION {
 		f.Token = cuetoken.COLON
 		f.Optional = cuetoken.Blank.Pos()
+		f.Flag = cuetoken.OPTION
 	}
 	b, _ := format.Node(typ)
 	return f, string(b)

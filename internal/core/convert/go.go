@@ -695,6 +695,7 @@ func goTypeToValueRec(ctx *adt.OpContext, allowNullDefault bool, t reflect.Type)
 			d := &ast.Field{Label: ast.NewIdent(name), Value: elem}
 			if isOptional(&f) {
 				d.Optional = token.Blank.Pos()
+				d.Flag = token.OPTION
 			}
 			obj.Elts = append(obj.Elts, d)
 		}

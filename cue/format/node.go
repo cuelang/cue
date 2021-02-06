@@ -276,7 +276,7 @@ func (f *formatter) decl(decl ast.Decl) {
 
 	switch n := decl.(type) {
 	case *ast.Field:
-		f.label(n.Label, n.Optional != token.NoPos)
+		f.label(n.Label, n.Flag)
 
 		regular := isRegularField(n.Token)
 		if regular {
@@ -437,7 +437,7 @@ func (f *formatter) nextNeedsFormfeed(n ast.Expr) bool {
 
 func (f *formatter) importSpec(x *ast.ImportSpec) {
 	if x.Name != nil {
-		f.label(x.Name, false)
+		f.label(x.Name, token.ILLEGAL)
 		f.print(blank)
 	} else {
 		f.current.pos++
@@ -458,7 +458,7 @@ func isValidIdent(ident string) bool {
 	return false
 }
 
-func (f *formatter) label(l ast.Label, optional bool) {
+func (f *formatter) label(l ast.Label, flag token.Token) {
 	f.before(l)
 	defer f.after(l)
 	switch n := l.(type) {
@@ -487,7 +487,7 @@ func (f *formatter) label(l ast.Label, optional bool) {
 
 	case *ast.TemplateLabel:
 		f.print(n.Langle, token.LSS, indent)
-		f.label(n.Ident, false)
+		f.label(n.Ident, token.ILLEGAL)
 		f.print(unindent, n.Rangle, token.GTR)
 
 	case *ast.ListLit:
@@ -499,8 +499,8 @@ func (f *formatter) label(l ast.Label, optional bool) {
 	default:
 		panic(fmt.Sprintf("unknown label type %T", n))
 	}
-	if optional {
-		f.print(token.OPTION)
+	if flag != token.ILLEGAL {
+		f.print(flag)
 	}
 }
 
@@ -538,7 +538,7 @@ func (f *formatter) exprRaw(expr ast.Expr, prec1, depth int) {
 
 	case *ast.Alias:
 		// Aliases in expression positions are printed in short form.
-		f.label(x.Ident, false)
+		f.label(x.Ident, token.ILLEGAL)
 		f.print(x.Equal, token.BIND)
 		f.expr(x.Expr)
 
@@ -697,13 +697,13 @@ func (f *formatter) clause(clause ast.Clause) {
 		f.print(n.For, "for", blank)
 		f.print(indent)
 		if n.Key != nil {
-			f.label(n.Key, false)
+			f.label(n.Key, token.ILLEGAL)
 			f.print(n.Colon, token.COMMA, blank)
 		} else {
 			f.current.pos++
 			f.visitComments(f.current.pos)
 		}
-		f.label(n.Value, false)
+		f.label(n.Value, token.ILLEGAL)
 		f.print(blank, n.In, "in", blank)
 		f.expr(n.Source)
 		f.markUnindentLine()
