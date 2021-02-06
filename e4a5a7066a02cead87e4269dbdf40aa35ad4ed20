@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7f2fcd_ff613cda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-06T08:15:12Z",
+      "side": 1,
+      "message": "One tiny comment. Either way is fine though.",
+      "revId": "e4a5a7066a02cead87e4269dbdf40aa35ad4ed20",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222f3747_398ad883",
+        "filename": "cmd/cue/cmd/testdata/script/contributing_install_go1.16.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-06T08:15:12Z",
+      "side": 1,
+      "message": "Maybe rename all these files to the form `instal_*` so that they all group together in a directory listing?",
+      "revId": "e4a5a7066a02cead87e4269dbdf40aa35ad4ed20",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
