@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171f5832_d6b92f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-06T08:26:01Z",
+      "side": 1,
+      "message": "There are two packages related to testing already,\nso some reorganization may be in order.\n \nLooking at it a bit, moving the new functionality\nto cuetest, or renaming cuetest to testing,\nprobably makes the most sense.\n\nThe testing functionality in cuetxtar could move\nthere too or stay in cuetxtar (a bit weird, but\nokay for an internal package).\n",
+      "revId": "0dadc98d7c262095ba43c28ba81bde3a5ea61fd9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0717d088_3afe9759",
+        "filename": "internal/cuetxtar/txtar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-06T08:26:01Z",
+      "side": 1,
+      "message": "This is an example where naming the package `cuetest` is beneficial.",
+      "revId": "0dadc98d7c262095ba43c28ba81bde3a5ea61fd9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a77ccd_815b7e23",
+        "filename": "internal/testing/longtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-06T08:26:01Z",
+      "side": 1,
+      "message": "Why not just Long? as the package name already has test in the name cuetest.Long or testing.Long seems to be clear enough.",
+      "revId": "0dadc98d7c262095ba43c28ba81bde3a5ea61fd9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
