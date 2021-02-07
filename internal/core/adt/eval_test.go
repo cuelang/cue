@@ -67,7 +67,7 @@ func TestEval(t *testing.T) {
 		stats := ctx.Stats()
 		t.Log(stats)
 		if n := stats.Leaks(); n > 0 {
-			t.Skipf("%d leaks reported", n)
+			// t.Skipf("%d leaks reported", n)
 		}
 
 		if b := validate.Validate(ctx, v, &validate.Config{
