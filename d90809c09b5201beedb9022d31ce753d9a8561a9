@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "142c09fc_1d4cf5c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-08T09:28:03Z",
+      "side": 1,
+      "message": "LGTM with one question.",
+      "revId": "d90809c09b5201beedb9022d31ce753d9a8561a9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ace13a_3c1bffb7",
+        "filename": "cue/testdata/lists/020_list_compilefail.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-08T09:28:03Z",
+      "side": 1,
+      "message": "Presumably when we actually get rid of list operators this will be an error related to that?",
+      "revId": "d90809c09b5201beedb9022d31ce753d9a8561a9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
