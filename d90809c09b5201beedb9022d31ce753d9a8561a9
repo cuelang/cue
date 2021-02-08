@@ -33,6 +33,24 @@
       "message": "Presumably when we actually get rid of list operators this will be an error related to that?",
       "revId": "d90809c09b5201beedb9022d31ce753d9a8561a9",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3894cc_7866cffa",
+        "filename": "cue/testdata/lists/020_list_compilefail.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-02-08T14:30:38Z",
+      "side": 1,
+      "message": "indeed.",
+      "parentUuid": "25ace13a_3c1bffb7",
+      "revId": "d90809c09b5201beedb9022d31ce753d9a8561a9",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
