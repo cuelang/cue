@@ -16,6 +16,24 @@
       "message": "better to have them disabled by default using a long tag or so.",
       "revId": "1fd1397183eb8cd2e9e04028f4d3da04a65549c0",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fd92af_bcca60c9",
+        "filename": "cmd/cue/cmd/testdata/script/contributing_install_go1.16.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-13T20:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e517a8_760e1231",
+      "revId": "1fd1397183eb8cd2e9e04028f4d3da04a65549c0",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }

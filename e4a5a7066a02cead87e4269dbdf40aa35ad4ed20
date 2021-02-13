@@ -33,6 +33,24 @@
       "message": "Maybe rename all these files to the form `instal_*` so that they all group together in a directory listing?",
       "revId": "e4a5a7066a02cead87e4269dbdf40aa35ad4ed20",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9bc59c1_77c68a80",
+        "filename": "cmd/cue/cmd/testdata/script/contributing_install_go1.16.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-13T20:03:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "222f3747_398ad883",
+      "revId": "e4a5a7066a02cead87e4269dbdf40aa35ad4ed20",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
