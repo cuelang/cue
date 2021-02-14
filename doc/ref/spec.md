@@ -711,6 +711,10 @@ A _marked disjunction_ is one where any of its terms are marked.
 So `a | b | *c | d` is a single marked disjunction of four terms,
 whereas `a | (b | *c | d)` is an unmarked disjunction of two terms,
 one of which is a marked disjunction of three terms.
+When during unification all disjuncts of a marked disjunction that are marked
+as default are elminated, the remaining disjuncts are considered as if
+originating from an unmarked disjunction.
+<!-- TODO: this formulation should be worked out more.  -->
 As explained below, distinguishing the nesting of disjunctions like this
 is only relevant when both an outer and nested disjunction are marked.
 
