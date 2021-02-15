@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f109e7a0_fc660a35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-15T09:21:18Z",
+      "side": 1,
+      "message": "LGTM with one suggestion on wording, and one question on oneOfs that we can chat through.",
+      "revId": "435147808248af46da936c94164a214eb581e4c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2b2671_36603812",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-15T09:21:18Z",
+      "side": 1,
+      "message": "Could potentially be reworded to read a bit more plainly, perhaps:\n\n\"During unification, if all the marked disjuncts of a marked disjunction are eliminated, then the remaining unmarked disjuncts are considered as if they originated from an unmarked disjunction\"",
+      "revId": "435147808248af46da936c94164a214eb581e4c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
