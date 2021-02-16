@@ -1,5 +1,8 @@
 -- in.cue --
-import "list"
+import (
+  "list"
+  "strings"
+)
 
 
 list1: {
@@ -40,36 +43,54 @@ value2: {
     len('sf' | 'dd')
 }
 
+incompleteArgDecimalList: {
+    a: #a & {param: 123}
+    #a: {
+        param: int
+        transformed: +param
+        listAggregated: list.Max([transformed])
+    }
+}
+
+incompleteArgStringList: {
+    a: #a & {param: "123"}
+    #a: {
+        param: string
+        transformed: param+""
+        listAggregated: strings.Join([transformed], "-")
+    }
+}
+
 -- out/eval --
 (struct){
   list1: (struct){
     Out1: (#list){
       0: (_|_){
         // [cycle] cycle error:
-        //     ./in.cue:13:23
+        //     ./in.cue:16:23
       }
     }
     Out2: (#list){
       0: (_|_){
         // [cycle] cycle error:
-        //     ./in.cue:13:23
+        //     ./in.cue:16:23
       }
     }
     Out3: (#list){
       0: (_|_){
         // [cycle] cycle error:
-        //     ./in.cue:13:23
+        //     ./in.cue:16:23
       }
     }
     Top: (#list){
       0: (_|_){
         // [cycle] cycle error:
-        //     ./in.cue:13:23
+        //     ./in.cue:16:23
       }
     }
     _Sub: (_|_){
       // [incomplete] list1._Sub: undefined field b:
-      //     ./in.cue:16:13
+      //     ./in.cue:19:13
     }
     a: (struct){
     }
@@ -77,23 +98,23 @@ value2: {
   list2: (struct){
     Out1: (_|_){
       // [cycle] cycle error:
-      //     ./in.cue:27:21
+      //     ./in.cue:30:21
     }
     Out2: (_|_){
       // [cycle] cycle error:
-      //     ./in.cue:27:21
+      //     ./in.cue:30:21
     }
     Out3: (_|_){
       // [cycle] cycle error:
-      //     ./in.cue:27:21
+      //     ./in.cue:30:21
     }
     _Top: (_|_){
       // [cycle] cycle error:
-      //     ./in.cue:27:21
+      //     ./in.cue:30:21
     }
     #Sub: (_|_){
       // [incomplete] list2.#Sub: undefined field b:
-      //     ./in.cue:30:13
+      //     ./in.cue:33:13
     }
     a: (struct){
     }
@@ -101,12 +122,48 @@ value2: {
   value1: (struct){
     a: (_|_){
       // [incomplete] value1.a: unresolved disjunction 'sf' | 'dd' (type bytes):
-      //     ./in.cue:35:8
+      //     ./in.cue:38:8
     }
   }
   value2: (_|_){
     // [incomplete] value2: unresolved disjunction 'sf' | 'dd' (type bytes):
-    //     ./in.cue:39:5
+    //     ./in.cue:42:5
+  }
+  incompleteArgDecimalList: (struct){
+    a: (#struct){
+      param: (int){ 123 }
+      transformed: (int){ 123 }
+      listAggregated: (int){ 123 }
+    }
+    #a: (#struct){
+      param: (int){ int }
+      transformed: (_|_){
+        // [incomplete] incompleteArgDecimalList.#a.transformed: operand param of '+' not concrete (was int):
+        //     ./in.cue:49:23
+      }
+      listAggregated: (_|_){
+        // [incomplete] 0: operand param of '+' not concrete (was int):
+        //     ./in.cue:49:23
+      }
+    }
+  }
+  incompleteArgStringList: (struct){
+    a: (#struct){
+      param: (string){ "123" }
+      transformed: (string){ "123" }
+      listAggregated: (string){ "123" }
+    }
+    #a: (#struct){
+      param: (string){ string }
+      transformed: (_|_){
+        // [incomplete] incompleteArgStringList.#a.transformed: non-concrete value string in operand to +:
+        //     ./in.cue:58:22
+      }
+      listAggregated: (_|_){
+        // [incomplete] 0: non-concrete value string in operand to +:
+        //     ./in.cue:58:22
+      }
+    }
   }
 }
 -- out/compile --
@@ -151,5 +208,29 @@ value2: {
   }
   value2: {
     len(('sf'|'dd'))
+  }
+  incompleteArgDecimalList: {
+    a: (〈0;#a〉 & {
+      param: 123
+    })
+    #a: {
+      param: int
+      transformed: +〈0;param〉
+      listAggregated: 〈import;list〉.Max([
+        〈0;transformed〉,
+      ])
+    }
+  }
+  incompleteArgStringList: {
+    a: (〈0;#a〉 & {
+      param: "123"
+    })
+    #a: {
+      param: string
+      transformed: (〈0;param〉 + "")
+      listAggregated: 〈import;strings〉.Join([
+        〈0;transformed〉,
+      ], "-")
+    }
   }
 }
