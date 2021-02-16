@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02464f0_781c41b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-16T11:54:54Z",
+      "side": 1,
+      "message": "LGTM.\n\nPer my thoughts in offline chat, would be good to verify as part of a test that the spec has a valid and complete grammar specification. Could use github.com/yuin/goldmark to parse the markdown, then golang.org/x/exp/ebnf to validate.",
+      "revId": "d76ca1657bb8a41d1430526351be51bd4f9205cb",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
