@@ -51,7 +51,7 @@ Jsonnet, HCL, Flabbergast, Nix, JSONPath, Haskell, Objective-C, and Python.
 
 The syntax is specified using Extended Backus-Naur Form (EBNF):
 
-```
+```grammar
 Production  = production_name "=" [ Expression ] "." .
 Expression  = Alternative { "|" Alternative } .
 Alternative = Term { Term } .
@@ -64,7 +64,7 @@ Repetition  = "{" Expression "}" .
 Productions are expressions constructed from terms and the following operators,
 in increasing precedence:
 
-```
+```grammar
 |   alternation
 ()  grouping
 []  option (0 or 1 times)
@@ -107,7 +107,7 @@ the source.
 
 The following terms are used to denote specific Unicode character classes:
 
-```
+```ebnf
 newline        = /* the Unicode code point U+000A */ .
 unicode_char   = /* an arbitrary Unicode code point except newline */ .
 unicode_letter = /* a Unicode code point classified as "Letter" */ .
@@ -124,7 +124,7 @@ as Unicode letters, and those in the Number category Nd as Unicode digits.
 
 The underscore character _ (U+005F) is considered a letter.
 
-```
+```ebnf
 letter        = unicode_letter | "_" .
 decimal_digit = "0" … "9" .
 binary_digit  = "0" … "1" .
@@ -193,7 +193,7 @@ TODO: allow identifiers as defined in Unicode UAX #31
 Identifiers are normalized using the NFC normal form.
 -->
 
-```
+```ebnf
 identifier  = [ "#" | "_#" ] letter { letter | unicode_digit } .
 ```
 
@@ -283,7 +283,7 @@ Free tokens:  ; ~ ^
 
 There are several kinds of numeric literals.
 
-```
+```ebnf
 int_lit     = decimal_lit | si_lit | octal_lit | binary_lit | hex_lit .
 decimal_lit = ( "1" … "9" ) { [ "_" ] decimal_digit } .
 decimals    = decimal_digit { [ "_" ] decimal_digit } .
@@ -292,7 +292,7 @@ si_it       = decimals [ "." decimals ] multiplier |
 binary_lit  = "0b" binary_digit { binary_digit } .
 hex_lit     = "0" ( "x" | "X" ) hex_digit { [ "_" ] hex_digit } .
 octal_lit   = "0o" octal_digit { [ "_" ] octal_digit } .
-multiplier  = ( "K" | "M" | "G" | "T" | "P" ) [ "i" ]
+multiplier  = ( "K" | "M" | "G" | "T" | "P" ) [ "i" ] .
 
 float_lit   = decimals "." [ decimals ] [ exponent ] |
               decimals exponent |
@@ -428,7 +428,7 @@ A `\(` must be followed by a valid CUE Expression, followed by a `)`.
 
 All other sequences starting with a backslash are illegal inside literals.
 
-```
+```ebnf
 escaped_char     = `\` { `#` } ( "a" | "b" | "f" | "n" | "r" | "t" | "v" | "/" | `\` | "'" | `"` ) .
 byte_value       = octal_byte_value | hex_byte_value .
 octal_byte_value = `\` octal_digit octal_digit octal_digit .
@@ -837,7 +837,7 @@ Any evaluation error is represented as bottom.
 Implementations may associate error strings with different instances of bottom;
 logically they all remain the same value.
 
-```
+```ebnf
 bottom_lit = "_|_" .
 ```
 
@@ -862,7 +862,7 @@ The _null value_ is represented with the keyword `null`.
 It has only one parent, top, and one child, bottom.
 It is unordered with respect to any other value.
 
-```
+```ebnf
 null_lit   = "null" .
 ```
 
@@ -880,7 +880,7 @@ the keywords `true` and `false`.
 The predeclared boolean type is `bool`; it is a defined type and a separate
 element in the lattice.
 
-```
+```ebnf
 bool_lit = "true" | "false" .
 ```
 
@@ -1173,7 +1173,7 @@ future extensions and relaxations:
     additionalProperties and additionalItems.
 -->
 
-```
+```ebnf
 StructLit       = "{" { Declaration "," } "}" .
 Declaration     = Field | Ellipsis | Embedding | LetClause | attribute .
 Ellipsis        = "..." [ Expression ] .
@@ -1188,7 +1188,7 @@ attr_tokens     = { attr_token |
                     "(" attr_tokens ")" |
                     "[" attr_tokens "]" |
                     "{" attr_tokens "}" } .
-attr_token      = /* any token except '(', ')', '[', ']', '{', or '}' */
+attr_token      = "FIXME" .
 ```
 
 ```
@@ -1486,7 +1486,7 @@ Aliases name values that can be referred to
 within the [scope](#declarations-and-scopes) in which they are declared.
 The name of an alias must be unique within its scope.
 
-```
+```ebnf
 AliasExpr  = Expression | identifier "=" Expression .
 ```
 
@@ -1626,7 +1626,7 @@ The length of a closed list is the number of elements it contains.
 The length of an open list is the its number of elements as a lower bound
 and an unlimited number of elements as its upper bound.
 
-```
+```ebnf
 ListLit       = "[" [ ElementList [ "," [ Ellipsis ] ] [ "," ] ] "]" .
 ElementList   = Embedding { "," Embedding } .
 ```
@@ -1853,7 +1853,7 @@ Operands denote the elementary values in an expression.
 An operand may be a literal, a (possibly qualified) identifier denoting
 field, alias, or let declaration, or a parenthesized expression.
 
-```
+```ebnf
 Operand     = Literal | OperandName | "(" Expression ")" .
 Literal     = BasicLit | ListLit | StructLit .
 BasicLit    = int_lit | float_lit | string_lit |
@@ -1865,7 +1865,7 @@ OperandName = identifier | QualifiedIdent .
 
 A qualified identifier is an identifier qualified with a package name prefix.
 
-```
+```ebnf
 QualifiedIdent = PackageName "." identifier .
 ```
 
@@ -1933,7 +1933,7 @@ bottom, where an incomplete expression is not considered bottom.
 <!-- TODO(mpvl)
 	Conversion |
 -->
-```
+```ebnf
 PrimaryExpr =
 	Operand |
 	PrimaryExpr Selector |
@@ -2121,7 +2121,7 @@ v: x[i]                 (x[i], 4)
 
 Operators combine operands into expressions.
 
-```
+```ebnf
 Expression = UnaryExpr | Expression binary_op Expression .
 UnaryExpr  = PrimaryExpr | unary_op UnaryExpr .
 
@@ -2539,7 +2539,7 @@ Within structs, the values yielded by a comprehension are embedded within the
 struct.
 Both structs and lists may contain multiple comprehensions.
 
-```
+```ebnf
 Comprehension       = Clauses StructLit .
 
 Clauses             = StartClause { [ "," ] Clause } .
@@ -2819,7 +2819,7 @@ x: {
     g: f
 }
 // introduces structural cycle
-z: x & y  
+z: x & y
 ```
 Implementations should be able to detect such structural cycles dynamically.
 
@@ -2902,7 +2902,7 @@ If the result of the unification of all embedded values is not a struct,
 it will be output instead of its enclosing file when exporting CUE
 to a data format
 
-```
+```ebnf
 SourceFile = { attribute "," } [ PackageClause "," ] { ImportDecl "," } { Declaration "," } .
 ```
 
@@ -2919,7 +2919,7 @@ place: "world"
 A package clause is an optional clause that defines the package to which
 a source file the file belongs.
 
-```
+```ebnf
 PackageClause  = "package" PackageName .
 PackageName    = identifier .
 ```
@@ -2961,7 +2961,7 @@ execution) and enables access to exported identifiers of that package.
 The import names an identifier (PackageName) to be used for access and an
 ImportPath that specifies the package to be imported.
 
-```
+```ebnf
 ImportDecl       = "import" ( ImportSpec | "(" { ImportSpec "," } ")" ) .
 ImportSpec       = [ PackageName ] ImportPath .
 ImportLocation   = { unicode_value } .
