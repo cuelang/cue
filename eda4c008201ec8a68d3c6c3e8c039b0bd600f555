@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df26cf39_d9a01bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-17T10:32:18Z",
+      "side": 1,
+      "message": "Generally LGTM - as discussed you can fix up the build by:\n\n    go generate ./internal/ci\n    CUE_UPDATE\u003d1 go test ./...\n\nThat will also allow us to see what diffs exist in:\n\n    cue.mod/pkg/github.com/SchemaStore/schemastore/src/schemas/json/github-workflow.cue\n\nas a result of this change.",
+      "revId": "eda4c008201ec8a68d3c6c3e8c039b0bd600f555",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
