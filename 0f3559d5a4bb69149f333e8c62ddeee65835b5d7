@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384aab1d_1cb2870d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-02-17T10:33:28Z",
+      "side": 1,
+      "message": "LGTM post build fix up",
+      "revId": "0f3559d5a4bb69149f333e8c62ddeee65835b5d7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
