@@ -175,6 +175,9 @@ func (fs *fileSystem) readDir(path string) ([]os.FileInfo, errors.Error) {
 			items[i] = of
 			i++
 		}
+		sort.Slice(items, func(i, j int) bool {
+			return items[i].Name() < items[j].Name()
+		})
 		return items, nil
 	}
 
