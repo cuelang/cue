@@ -142,6 +142,10 @@ func (l *loader) importPkg(pos token.Pos, p *build.Instance) []*build.Instance {
 
 	found := false
 	for _, d := range dirs {
+		if d[1] == "/" {
+			found = true
+			break
+		}
 		info, err := ctxt.stat(d[1])
 		if err == nil && info.IsDir() {
 			found = true
