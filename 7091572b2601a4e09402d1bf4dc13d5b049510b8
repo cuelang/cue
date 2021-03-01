@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b776498_06f86896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-01T10:26:05Z",
+      "side": 1,
+      "message": "Note we will need to fix up the test failures here before being able to merge.",
+      "revId": "7091572b2601a4e09402d1bf4dc13d5b049510b8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f180bb_24aa28e8",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-02-17T10:41:02Z",
       "side": 1,
       "message": "I would call it TestEBNF. We may later also test examples, for instance.",
+      "revId": "7091572b2601a4e09402d1bf4dc13d5b049510b8",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86c01a4_230bced1",
+        "filename": "doc/ref/spec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-01T10:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f180bb_24aa28e8",
       "revId": "7091572b2601a4e09402d1bf4dc13d5b049510b8",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
