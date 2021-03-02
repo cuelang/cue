@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0135d32d_e204fc56",
+        "filename": "doc/ref/spec.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-02T16:27:31Z",
+      "side": 1,
+      "message": "why is this grammar and the other sections ebnf?",
+      "revId": "6ac32b2cd2bde490c55eb3e90fcbf9c9f85b8b53",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
