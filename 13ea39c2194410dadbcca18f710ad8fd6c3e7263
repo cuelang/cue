@@ -16,6 +16,75 @@
       "message": "You mentioned this PR in a GitHub discussion, so I figured I\u0027d go ahead and ping you here. Apologies if requesting reviews like this isn\u0027t the preferred process for this project.",
       "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94831e23_c5a7d692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-08T08:24:59Z",
+      "side": 1,
+      "message": "Sorry for the delay, checking APIs takes some time.\n\nOne small change in the Sign signature proposed.",
+      "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2768eca_e3e96b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-08T08:24:59Z",
+      "side": 1,
+      "message": "This is exactly the right process. Sorry for the delayed response.",
+      "parentUuid": "00eb07c8_66229105",
+      "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a4167e_bed2220a",
+        "filename": "pkg/crypto/hmac/hmac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-08T08:24:59Z",
+      "side": 1,
+      "message": "In the future it may be nicer to pass a hash function of another package directly. I realize that this is currently not possible with the Go bridge (even though CUE itself supports it).\n\nDo you think it is worth it now? This will probably delay this CL, though.\n\nAlso note we can fix it later: by defining the CUE signature for the package directly, we can allow strings or builtin types. It will clutter the API a bit, though.",
+      "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8a1ebc_14d320df",
+        "filename": "pkg/crypto/hmac/hmac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-08T08:24:59Z",
+      "side": 1,
+      "message": "Is there any reason to put data before the key?\n\nI would put the key first, then data, as this seems more logical. Then in many examples data is put first. Is there a practical reason for that?\n\nThe key first does seems more logical and also seems to correspond better to actual APIs of other languages. Looked at Go, Java, C++,Python, Ruby, Swift, C#.\n\n\nNote for the record: most APIs put the method last. However, also most APIs made the method optional. Python seems to be moving to a mandatory method. I think this is wise. In such a scenario, putting it as the first argument makes more sense.",
+      "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
