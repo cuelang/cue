@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04248a7_f16e9db9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-09T12:47:18Z",
+      "side": 1,
+      "message": "As discussed, this feels like a v0.3.1 change - we changed #736 to be milestoned as such.\n\nWe discussed various options here for helping users fix there .cue files in response to this fix. One option was having a specific error message that suggested a specific incantation of cue fix (because we can detect very clearly when this situation happens)",
+      "revId": "7a8027cab025de7983828ba8d619d97389c4bc99",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
