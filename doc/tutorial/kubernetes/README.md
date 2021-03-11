@@ -74,7 +74,14 @@ in the subdirectories as part of one package.
 We do that later by giving all the same package name.
 
 ```
-$ cue mod init
+$ cue mod init example.com
+```
+
+We initialize a Go module so that later we can resolve the
+`k8s.io/api/apps/v1` Go package dependency:
+
+```
+$ go mod init example.com
 ```
 
 Creating a module also allows our packages import external packages.
