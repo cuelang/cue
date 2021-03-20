@@ -1,0 +1,17 @@
+# Issue #654
+! cue cmd test
+cmp stderr expect-stderr
+-- x.cue --
+package x
+
+import (
+	"tool/cli"
+)
+
+command: test: cli.Print & {
+	text: "success"
+}
+-- expect-stderr --
+cmd must be run as one of its subcommands: unknown subcommand "test"
+Ensure commands are defined in a "_tool.cue" file.
+Run 'cue help cmd' for known subcommands.
