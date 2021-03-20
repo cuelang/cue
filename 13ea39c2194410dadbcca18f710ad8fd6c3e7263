@@ -85,6 +85,24 @@
       "message": "Is there any reason to put data before the key?\n\nI would put the key first, then data, as this seems more logical. Then in many examples data is put first. Is there a practical reason for that?\n\nThe key first does seems more logical and also seems to correspond better to actual APIs of other languages. Looked at Go, Java, C++,Python, Ruby, Swift, C#.\n\n\nNote for the record: most APIs put the method last. However, also most APIs made the method optional. Python seems to be moving to a mandatory method. I think this is wise. In such a scenario, putting it as the first argument makes more sense.",
       "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904b77af_1e0f5e61",
+        "filename": "pkg/crypto/hmac/hmac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000259
+      },
+      "writtenOn": "2021-03-20T14:15:28Z",
+      "side": 1,
+      "message": "Makes good sense to me. I went ahead and made that API switch. Let me know if anything else is needed before a merge.",
+      "parentUuid": "9e8a1ebc_14d320df",
+      "revId": "13ea39c2194410dadbcca18f710ad8fd6c3e7263",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
