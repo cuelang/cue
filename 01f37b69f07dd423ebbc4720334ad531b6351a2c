@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0001617_2e9de4e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-21T06:02:19Z",
+      "side": 1,
+      "message": "nit: missing/superfluous word?",
+      "revId": "01f37b69f07dd423ebbc4720334ad531b6351a2c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
