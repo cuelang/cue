@@ -281,7 +281,7 @@ func (l *loader) reusePackage(p *build.Instance) *build.Instance {
 	// We use p.Internal.Imports==nil to detect a package that
 	// is in the midst of its own loadPackage call
 	// (all the recursion below happens before p.Internal.Imports gets set).
-	if p.ImportPaths == nil {
+	if !p.Done() {
 		if err := lastError(p); err == nil {
 			err = l.errPkgf(nil, "import cycle not allowed")
 			err.IsImportCycle = true

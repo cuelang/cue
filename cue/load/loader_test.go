@@ -294,6 +294,24 @@ module: example.org/test
 root:   $CWD/testdata
 dir:    $CWD/testdata/tagsbad
 display:./tagsbad`,
+	}, {
+		cfg: &Config{
+			Dir: testdataDir,
+		},
+		args: args("./cycle"),
+		want: `
+err:    import failed: import failed: {import cycle not allowed []}
+package example.org/test/cycle
+    imports example.org/test/cycle/dep
+    imports example.org/test/cycle
+
+path:   example.org/test/cycle
+module: example.org/test
+root:   $CWD/testdata
+dir:    $CWD/testdata/cycle
+display:./cycle
+files:
+	$CWD/testdata/cycle/cycle.cue`,
 	}}
 	for i, tc := range testCases {
 		t.Run(strconv.Itoa(i)+"/"+strings.Join(tc.args, ":"), func(t *testing.T) {

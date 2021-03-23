@@ -77,12 +77,19 @@ func (l *loader) importPkg(pos token.Pos, p *build.Instance) []*build.Instance {
 	l.stk.Push(p.ImportPath)
 	defer l.stk.Pop()
 
-	cfg := l.cfg
-	ctxt := &cfg.fileSystem
-
+	// Scan the existing import stack (ignoring the element we just added, which
+	// is added so that the reporting of import cycles makes sense).
+	for _, ip := range l.stk[:len(l.stk)-1] {
+		if p.ImportPath == ip {
+			p = l.reusePackage(p)
+		}
+	}
 	if p.Err != nil {
 		return []*build.Instance{p}
 	}
+
+	cfg := l.cfg
+	ctxt := &cfg.fileSystem
 
 	retErr := func(errs errors.Error) []*build.Instance {
 		// XXX: move this loop to ReportError

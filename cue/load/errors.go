@@ -72,7 +72,7 @@ func (p *PackageError) fillPos(cwd string, positions []token.Pos) {
 func (p *PackageError) Error() string {
 	// Import cycles deserve special treatment.
 	if p.IsImportCycle {
-		return fmt.Sprintf("%s\npackage %s\n", p.Message, strings.Join(p.ImportStack, "\n\timports "))
+		return fmt.Sprintf("%s\npackage %s\n", p.Message, strings.Join(p.ImportStack, "\n    imports "))
 	}
 	if p.Pos.IsValid() {
 		// Omit import stack. The full path to the file where the error
@@ -82,7 +82,7 @@ func (p *PackageError) Error() string {
 	if len(p.ImportStack) == 0 {
 		return p.Message.Error()
 	}
-	return "package " + strings.Join(p.ImportStack, "\n\timports ") + ": " + p.Message.Error()
+	return "package " + strings.Join(p.ImportStack, "\n    imports ") + ": " + p.Message.Error()
 }
 
 // NoFilesError is the error used by Import to describe a directory
