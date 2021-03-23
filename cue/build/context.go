@@ -77,6 +77,11 @@ func (inst *Instance) Complete() error {
 	return nil
 }
 
+// Done
+func (inst *Instance) Done() bool {
+	return inst.done
+}
+
 func (c *Context) init() {
 	if !c.initialized {
 		c.initialized = true
