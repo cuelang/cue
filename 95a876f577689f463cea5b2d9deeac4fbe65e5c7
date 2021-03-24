@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9166e766_6f491e02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-24T15:15:50Z",
+      "side": 1,
+      "message": "Nit: limit these lines to 80 chars for nice formatting in git log.",
+      "revId": "95a876f577689f463cea5b2d9deeac4fbe65e5c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e134fe94_de6cc788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-24T15:15:50Z",
+      "side": 1,
+      "message": "LGTM - with one nit.",
+      "revId": "95a876f577689f463cea5b2d9deeac4fbe65e5c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
