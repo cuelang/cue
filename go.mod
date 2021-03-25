@@ -4,7 +4,7 @@ require (
 	github.com/cockroachdb/apd v1.1.0 // indirect
 	github.com/cockroachdb/apd/v2 v2.0.1
 	github.com/emicklei/proto v1.6.15
-	github.com/google/go-cmp v0.4.0
+	github.com/google/go-cmp v0.5.5
 	github.com/kr/pretty v0.1.0
 	github.com/kylelemons/godebug v1.1.0
 	github.com/lib/pq v1.0.0 // indirect
@@ -20,6 +20,7 @@ require (
 	golang.org/x/text v0.3.2
 	golang.org/x/tools v0.0.0-20200612220849-54c614fe050c
 	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+	google.golang.org/protobuf v1.26.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200121175148-a6ecf24a6d71
 )
 
