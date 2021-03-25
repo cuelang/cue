@@ -96,7 +96,7 @@ func FromValue(name string, v cue.Value) (info Info, err error) {
 
 	case cue.StructKind:
 		if strings.HasPrefix(info.Type, "map[") {
-			a := strings.SplitN(info.Type[len("map["):], ",", 2)
+			a := strings.SplitN(info.Type[len("map["):], "]", 2)
 			info.KeyTypeString = strings.TrimSpace(a[0])
 			switch info.KeyTypeString {
 			case "string":
