@@ -1,0 +1,10 @@
+-- errors.cue --
+a: int
+
+-- input.textproto --
+
+// Silent nights
+a: 1
+
+-- out/decode --
+
