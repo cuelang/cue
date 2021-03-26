@@ -1625,14 +1625,7 @@ func (v Value) LookupField(name string) (FieldInfo, error) {
 // 	return newValueRoot(ctx, result)
 // }
 
-// Fill creates a new value by unifying v with the value of x at the given path.
-//
-// Values may be any Go value that can be converted to CUE, an ast.Expr or
-// a Value. In the latter case, it will panic if the Value is not from the same
-// Runtime.
-//
-// Any reference in v referring to the value at the given path will resolve
-// to x in the newly created value. The resulting value is not validated.
+// Deprecated: use FillPath.
 func (v Value) Fill(x interface{}, path ...string) Value {
 	if v.v == nil {
 		return v
@@ -1647,6 +1640,41 @@ func (v Value) Fill(x interface{}, path ...string) Value {
 		n = &adt.Vertex{}
 		n.AddConjunct(adt.MakeRootConjunct(nil, value))
 	}
+	n.Finalize(ctx.opCtx)
+	w := makeValue(v.idx, n)
+	return v.Unify(w)
+}
+
+// FillPath creates a new value by unifying v with the value of x at the given
+// path.
+//
+// Values may be any Go value that can be converted to CUE, an ast.Expr or a
+// Value. In the latter case, it will panic if the Value is not from the same
+// Runtime.
+//
+// Any reference in v referring to the value at the given path will resolve to x
+// in the newly created value. The resulting value is not validated.
+//
+// List paths are not supported at this time.
+func (v Value) FillPath(p Path, x interface{}) Value {
+	if v.v == nil {
+		return v
+	}
+	ctx := v.ctx()
+	if err := p.Err(); err != nil {
+		return newErrValue(v, ctx.mkErr(nil, 0, "invalid path: %v", err))
+	}
+	var expr adt.Expr = convert.GoValueToValue(ctx.opCtx, x, true)
+	for i := len(p.path) - 1; i >= 0; i-- {
+		expr = &adt.StructLit{Decls: []adt.Decl{
+			&adt.Field{
+				Label: p.path[i].sel.feature(v.idx),
+				Value: expr,
+			},
+		}}
+	}
+	n := &adt.Vertex{}
+	n.AddConjunct(adt.MakeRootConjunct(nil, expr))
 	n.Finalize(ctx.opCtx)
 	w := makeValue(v.idx, n)
 	return v.Unify(w)
