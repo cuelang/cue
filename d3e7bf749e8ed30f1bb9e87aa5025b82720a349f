@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5db8883_eac3b256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-27T11:38:51Z",
+      "side": 1,
+      "message": "Please see if this makes sense. It deviates from the CUE spec, but it makes things more convenient.\n\nOne can imagine the new meaning of parsing \u003cpath\u003e as x.\u003cpath\u003e and then removing the x component from the result.",
+      "revId": "d3e7bf749e8ed30f1bb9e87aa5025b82720a349f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
