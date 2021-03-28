@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f52ece_90fbb2fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-28T13:10:16Z",
+      "side": 1,
+      "message": "Just a couple of questions/thoughts ",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec122181_aa489753",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-28T13:10:16Z",
+      "side": 1,
+      "message": "Probably want to retain the first line of the doc comment here? And add a \"deprecated\" comment as the next paragraph? Otherwise in go doc and pkg.go.dev the docs will look a bit strange.",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afa8332_273fe61c",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-28T13:10:16Z",
+      "side": 1,
+      "message": "In line with the deprecation notice, do we not want to call FillPath here in the implementation of Fill? For consistency of behaviour if nothing else.",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8eda13_c7d146a1",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-28T13:10:16Z",
+      "side": 1,
+      "message": "Per Sam\u0027s comment in Slack, do we not also want to test hidden fields here?",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
