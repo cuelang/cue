@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a0427e_79a98f4b",
+        "filename": "cue/build/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-28T12:49:38Z",
+      "side": 1,
+      "message": "comment.",
+      "revId": "855ecd05ec1e84545077371f2c00ba74f198cf8c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
