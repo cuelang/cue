@@ -16,6 +16,23 @@
       "message": "Please see if this makes sense. It deviates from the CUE spec, but it makes things more convenient.\n\nOne can imagine the new meaning of parsing \u003cpath\u003e as x.\u003cpath\u003e and then removing the x component from the result.",
       "revId": "d3e7bf749e8ed30f1bb9e87aa5025b82720a349f",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481ed80b_4c83c8f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-28T13:14:33Z",
+      "side": 1,
+      "message": "\u003e One can imagine the new meaning of parsing \u003cpath\u003e as x.\u003cpath\u003e and then removing the x component from the result.\n\nI like that reasoning/rationale. ",
+      "revId": "d3e7bf749e8ed30f1bb9e87aa5025b82720a349f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
