@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66977626_36a2cef3",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T06:37:02Z",
+      "side": 1,
+      "message": "I\u0027m fine with that, although I\u0027m worried that it encourages using deprecated functions. godoc traditionally hasn\u0027t been very good at marking something as deprecated. That may have changed, though.",
+      "parentUuid": "ec122181_aa489753",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8afa8332_273fe61c",
@@ -52,6 +70,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "002fc1fc_dd434a23",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T06:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afa8332_273fe61c",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8eda13_c7d146a1",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-03-28T13:10:16Z",
       "side": 1,
       "message": "Per Sam\u0027s comment in Slack, do we not also want to test hidden fields here?",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7124de_77bc5696",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T06:37:02Z",
+      "side": 1,
+      "message": "It is not possible to use hidden fields with ParsePath: it is not known at the API level which package is being modified and hidden fields are scoped by package.\n\nIt is the same issue as with unexported fields in Go.\n\nI\u0027ll address this in a separate CL through adding a new Selector type.",
+      "parentUuid": "ec8eda13_c7d146a1",
       "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
