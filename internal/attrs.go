@@ -25,9 +25,31 @@ import (
 	"cuelang.org/go/cue/token"
 )
 
+// AttrKind indicates the location of an attribute within CUE source.
+type AttrKind uint8
+
+const (
+	// FieldAttr indicates an attribute is a field attribute.
+	// foo: bar @attr()
+	FieldAttr AttrKind = 1 << iota
+
+	// DeclAttr indicates an attribute was specified at a declaration position.
+	// foo: {
+	//     @attr()
+	// }
+	DeclAttr
+
+	// TODO: Possible future attr kinds
+	// ElemAttr
+	// FileAttr
+	// ValueAttr = FieldAttr|DeclAttr|ElemAttr
+)
+
 // Attr holds positional information for a single Attr.
 type Attr struct {
+	Name   string // e.g. "json" or "protobuf"
 	Body   string
+	Kind   AttrKind
 	Fields []keyValue
 	Err    error
 }
@@ -44,8 +66,16 @@ type keyValue struct {
 }
 
 func (kv *keyValue) Text() string { return kv.data }
-func (kv *keyValue) Key() string  { return kv.data[:kv.equal] }
+func (kv *keyValue) Key() string {
+	if kv.equal == 0 {
+		return kv.data
+	}
+	return kv.data[:kv.equal]
+}
 func (kv *keyValue) Value() string {
+	if kv.equal == 0 {
+		return ""
+	}
 	return strings.TrimSpace(kv.data[kv.equal+1:])
 }
 
