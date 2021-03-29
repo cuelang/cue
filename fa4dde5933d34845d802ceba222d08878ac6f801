@@ -55,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "836deef3_cd5c5e2a",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T14:09:30Z",
+      "side": 1,
+      "message": "I think the name still works, actually. It\u0027s just my head was thinking more Go, less CUE. Because if ImportPath is the qualified version, that it\u0027s true that value can be used in an import declaration.",
+      "parentUuid": "87a074ab_84709cad",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed05593_172dd2bb",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T14:09:30Z",
+      "side": 1,
+      "message": "So I guess this case happens when we have an anonymous module, correct?",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4b3677_fc07679b",
         "filename": "cue/path.go",
         "patchSetId": 1
