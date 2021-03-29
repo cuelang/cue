@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87a074ab_84709cad",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T12:43:04Z",
+      "side": 1,
+      "message": "That is already included. The name \"ImportPath\" was chosen before this was the case and it is now indeed a misleading name.",
+      "parentUuid": "dccd11e4_d4e7d272",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4b3677_fc07679b",
         "filename": "cue/path.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-03-29T09:18:03Z",
       "side": 1,
       "message": "s/definition/field name/?",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e073a44_f402374f",
+        "filename": "cue/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T12:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4b3677_fc07679b",
       "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
