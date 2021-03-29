@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814944f6_deefb2e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-29T09:00:24Z",
+      "side": 1,
+      "message": "Although there is something to say for removing the review label when things changed, it can also be annoying indeed.",
+      "revId": "669f014370bce2368a5ef33278a328513da2a7cc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
