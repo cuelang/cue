@@ -53,6 +53,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abec159e_80589f52",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T08:18:45Z",
+      "side": 1,
+      "message": "There is a plan to not show deprecated features by default in pkgsite:\n\nhttps://github.com/golang/go/issues/40850\n\nStaticcheck also alerts when you are using something deprecated:\n\nhttps://staticcheck.io/docs/checks#SA1019\n\nSo things are improving 😊",
+      "parentUuid": "66977626_36a2cef3",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8afa8332_273fe61c",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "It is not possible to use hidden fields with ParsePath: it is not known at the API level which package is being modified and hidden fields are scoped by package.\n\nIt is the same issue as with unexported fields in Go.\n\nI\u0027ll address this in a separate CL through adding a new Selector type.",
       "parentUuid": "ec8eda13_c7d146a1",
+      "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70e4f62_71727d97",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T08:18:45Z",
+      "side": 1,
+      "message": "Thanks for clarifying - that makes sense.",
+      "parentUuid": "1b7124de_77bc5696",
       "revId": "092a3cb57328e7e01a6647fd0ada54cf98a2408b",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
