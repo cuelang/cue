@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59d6785_20c9ab60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T09:18:03Z",
+      "side": 1,
+      "message": "LGTM with one question and what I think is a typo in an error message.",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccd11e4_d4e7d272",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T09:18:03Z",
+      "side": 1,
+      "message": "Does this return not need to be qualified based on whether the final element of the import path matches the package name?",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4b3677_fc07679b",
+        "filename": "cue/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-29T09:18:03Z",
+      "side": 1,
+      "message": "s/definition/field name/?",
+      "revId": "fa4dde5933d34845d802ceba222d08878ac6f801",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
