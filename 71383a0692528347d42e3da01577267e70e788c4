@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28280252_06ac2420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-29T16:37:53Z",
+      "side": 1,
+      "message": "Being able to work with an Attribute\u0027s contents in a structured format (as parsed per the spec) would be a nice addition to the API",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7deeef94_6c751115",
+        "filename": "internal/attrs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-29T16:37:53Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we can expose the parsed k/v pairs (by \",\" and \"\u003d\") that the builtin Attr uses. The public API now exposes the entire `attr.Content` as a string, so we could write a custom parser, but it seems better to be consistent with CUE\u0027s implementation.\n\nThe spec talks about balanced brackets (https://cuelang.org/docs/references/spec/#attributes), but it\u0027s unclear if that is implemented yet. (it looks like a TBD from what I can tell)",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
