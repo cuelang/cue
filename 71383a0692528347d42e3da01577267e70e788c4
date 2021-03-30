@@ -18,6 +18,41 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06fd51d0_647a7df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-30T00:00:12Z",
+      "side": 1,
+      "message": "couple more thoughts",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dda84e_7fd83fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-30T00:00:12Z",
+      "side": 1,
+      "message": "Essentially this: https://github.com/cuelang/cue/pull/529/files#diff-a9f06ac6fea16d487d3668a8758c3921fc04612221f1fe1c4ed1b46c7bfde51cR2185\n\nBut with some exported `AttributeField` type. Currently you might be able to do something by using a combination of the Attribute funcs. You are required to know what keys you are looking for. So the same desire to get all Attributes for a Value extends into all AttributeFields for an Attribute (essentially the parsed attribute content in structured form as a slice)",
+      "parentUuid": "28280252_06ac2420",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7deeef94_6c751115",
@@ -31,6 +66,23 @@
       "writtenOn": "2021-03-29T16:37:53Z",
       "side": 1,
       "message": "I\u0027m wondering if we can expose the parsed k/v pairs (by \",\" and \"\u003d\") that the builtin Attr uses. The public API now exposes the entire `attr.Content` as a string, so we could write a custom parser, but it seems better to be consistent with CUE\u0027s implementation.\n\nThe spec talks about balanced brackets (https://cuelang.org/docs/references/spec/#attributes), but it\u0027s unclear if that is implemented yet. (it looks like a TBD from what I can tell)",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae59c8f8_f5aadfc2",
+        "filename": "internal/attrs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-30T00:00:12Z",
+      "side": 1,
+      "message": "Do we need a `TrimSpace` here? (after https://cue-review.googlesource.com/c/cue/+/9186/2)",
       "revId": "71383a0692528347d42e3da01577267e70e788c4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
