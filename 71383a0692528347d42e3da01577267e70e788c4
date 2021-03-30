@@ -71,6 +71,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ea490e_842e01e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-30T15:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eb176e2_1e5c8869",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7deeef94_6c751115",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Fair question. That would be consistent.\n\nAdded it.\n\nOne drawback of this trim spacing is that it is harder to detect that two attributes are equal. But then on the other hand, to do it properly one would have to parse them anyway, so making things space insensitive seems like a good thing to do. \n\nNote that this is all a matter of interpretation of attributes by the API. According to the spec, attributes have minimal structure. The bracket matching is only done to make it scannable at all (copied definition from Swift).",
       "parentUuid": "ae59c8f8_f5aadfc2",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8b2df7_47def410",
+        "filename": "internal/attrs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000081
+      },
+      "writtenOn": "2021-03-30T15:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66486ab6_8007852b",
       "revId": "71383a0692528347d42e3da01577267e70e788c4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
