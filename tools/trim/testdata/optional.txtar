@@ -1,0 +1,29 @@
+// Optional fields should retain status after removal of unified
+// content.
+
+// Issue #855
+
+-- cue.mod/module.cue --
+module: "mod.com"
+-- a.cue --
+package pkg
+
+a: [...#A]
+
+a: [{
+	annotations: {}
+}]
+
+#A: annotations?: [string]: string
+
+-- out/trim --
+== a.cue
+package pkg
+
+a: [...#A]
+
+a: [{
+	annotations: {}
+}]
+
+#A: annotations?: [string]: string
