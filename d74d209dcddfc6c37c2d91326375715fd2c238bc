@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944f7341_1e234363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-30T14:02:07Z",
+      "side": 1,
+      "message": "LGTM with one small nit",
+      "revId": "d74d209dcddfc6c37c2d91326375715fd2c238bc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c263b2dd_2e79f0c0",
+        "filename": "cue/types.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2226,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-03-30T14:02:07Z",
+      "side": 1,
+      "message": "s/declaration position/declaration attribute/?\n\nFor consistency with the FieldAttr comment?",
+      "revId": "d74d209dcddfc6c37c2d91326375715fd2c238bc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
