@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eb176e2_1e5c8869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-30T06:20:11Z",
+      "side": 1,
+      "message": "I\u0027ve added the methods Attribute.(NumArgs|Arg|RawArg) to address this. These are quite light-weight (no allocation), while allowing the underlying data structure to change in the future, when necessary.\n\nEssentially this is exposing the slice as is in a similar style as the `reflect` library does this for Go.",
+      "parentUuid": "69dda84e_7fd83fa6",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7deeef94_6c751115",
         "filename": "internal/attrs.go",
         "patchSetId": 4
@@ -83,6 +101,24 @@
       "writtenOn": "2021-03-30T00:00:12Z",
       "side": 1,
       "message": "Do we need a `TrimSpace` here? (after https://cue-review.googlesource.com/c/cue/+/9186/2)",
+      "revId": "71383a0692528347d42e3da01577267e70e788c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66486ab6_8007852b",
+        "filename": "internal/attrs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-30T06:20:11Z",
+      "side": 1,
+      "message": "Fair question. That would be consistent.\n\nAdded it.\n\nOne drawback of this trim spacing is that it is harder to detect that two attributes are equal. But then on the other hand, to do it properly one would have to parse them anyway, so making things space insensitive seems like a good thing to do. \n\nNote that this is all a matter of interpretation of attributes by the API. According to the spec, attributes have minimal structure. The bracket matching is only done to make it scannable at all (copied definition from Swift).",
+      "parentUuid": "ae59c8f8_f5aadfc2",
       "revId": "71383a0692528347d42e3da01577267e70e788c4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
