@@ -9,7 +9,7 @@ description = ""
 CUE is a superset of JSON.
 It adds the following conveniences:
 
-- C-style comments,
+- single-line comments,
 - quotes may be omitted from field names without special characters,
 - commas at the end of fields are optional,
 - comma after last element in list is allowed,
