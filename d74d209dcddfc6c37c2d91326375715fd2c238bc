@@ -52,6 +52,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84fe66bf_cee74083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-31T08:55:23Z",
+      "side": 1,
+      "message": "awesome.",
+      "parentUuid": "201a5055_1c550971",
+      "revId": "d74d209dcddfc6c37c2d91326375715fd2c238bc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c263b2dd_2e79f0c0",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-03-30T14:02:07Z",
       "side": 1,
       "message": "s/declaration position/declaration attribute/?\n\nFor consistency with the FieldAttr comment?",
+      "revId": "d74d209dcddfc6c37c2d91326375715fd2c238bc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0126934_d6f5be30",
+        "filename": "cue/types.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2226,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-03-31T08:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c263b2dd_2e79f0c0",
       "revId": "d74d209dcddfc6c37c2d91326375715fd2c238bc",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
