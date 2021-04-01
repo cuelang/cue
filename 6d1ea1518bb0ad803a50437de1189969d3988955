@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa81b46_bd730e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-01T13:48:54Z",
+      "side": 1,
+      "message": "LGTM with what look like a couple of redundant files in txtar archives ",
+      "revId": "6d1ea1518bb0ad803a50437de1189969d3988955",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40528fae_6f02ea9f",
+        "filename": "encoding/protobuf/jsonpb/testdata/basic.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-01T13:48:54Z",
+      "side": 1,
+      "message": "Redundant?",
+      "revId": "6d1ea1518bb0ad803a50437de1189969d3988955",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa9a5b5_19f1736c",
+        "filename": "encoding/protobuf/jsonpb/testdata/basic.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-01T13:48:54Z",
+      "side": 1,
+      "message": "Redundant?",
+      "revId": "6d1ea1518bb0ad803a50437de1189969d3988955",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
