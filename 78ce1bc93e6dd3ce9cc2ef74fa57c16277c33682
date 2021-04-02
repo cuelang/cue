@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d3dfb9_61ac6464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-02T11:25:55Z",
+      "side": 1,
+      "message": "LGTM assuming CI passes.",
+      "revId": "78ce1bc93e6dd3ce9cc2ef74fa57c16277c33682",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
