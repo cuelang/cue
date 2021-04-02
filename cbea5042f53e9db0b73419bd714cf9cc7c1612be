@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ff18af_6731eee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-02T09:29:02Z",
+      "side": 1,
+      "message": "Note this change is the result of an imported PR. I\u0027ve made a subsequent change to doc/cmd/cue.md in a follow up CL.",
+      "revId": "cbea5042f53e9db0b73419bd714cf9cc7c1612be",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
