@@ -33,11 +33,24 @@ type Feature uint32
 // TODO: create labels such that list are sorted first (or last with index.)
 
 // InvalidLabel is an encoding of an erroneous label.
-const InvalidLabel Feature = 0x7 // 0xb111
+const (
+	InvalidLabel Feature = 0x7 // 0xb111
 
-// MaxIndex indicates the maximum number of unique strings that are used for
-// labeles within this CUE implementation.
-const MaxIndex int64 = 1<<28 - 1
+	// MaxIndex indicates the maximum number of unique strings that are used for
+	// labeles within this CUE implementation.
+	MaxIndex int64 = 1<<28 - 1
+)
+
+// These labels can be used for wildcard queries.
+var (
+	// AnyLabel represents any label or index.
+	AnyLabel Feature = 0
+
+	AnyDefinition Feature = makeLabel(MaxIndex, DefinitionLabel)
+	AnyHidden     Feature = makeLabel(MaxIndex, HiddenLabel)
+	AnyRegular    Feature = makeLabel(MaxIndex, StringLabel)
+	AnyIndex      Feature = makeLabel(MaxIndex, IntLabel)
+)
 
 // A StringIndexer coverts strings to and from an index that is unique for a
 // given string.
@@ -238,6 +251,10 @@ func MakeLabel(src ast.Node, index int64, f FeatureType) (Feature, errors.Error)
 				index, MaxIndex)
 	}
 	return Feature(index)<<indexShift | Feature(f), nil
+}
+
+func makeLabel(index int64, f FeatureType) Feature {
+	return Feature(index)<<indexShift | Feature(f)
 }
 
 // A FeatureType indicates the type of label.
