@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de92271_329f2486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-07T12:32:39Z",
+      "side": 1,
+      "message": "LGTM - again, I don\u0027t follow the code fully in this case. But the context of the change is totally clear from our call.",
+      "revId": "0dc7f2453c39fc8effea640269406563e10e9d37",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
