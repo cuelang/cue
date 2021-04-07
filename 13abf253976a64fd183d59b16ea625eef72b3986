@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef91acbb_e0edc36a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-07T11:30:10Z",
+      "side": 1,
+      "message": "LGTM with one comment. I don\u0027t fully follow this part of the code, but follow the reasoning for the change we discussed (hence I\u0027ll only +1)",
+      "revId": "13abf253976a64fd183d59b16ea625eef72b3986",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cae1ca9_9cc88386",
+        "filename": "cmd/cue/cmd/orphans.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-07T11:30:10Z",
+      "side": 1,
+      "message": "--schema\n\nIs there a constant we can refer to here in any case?",
+      "revId": "13abf253976a64fd183d59b16ea625eef72b3986",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
