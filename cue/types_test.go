@@ -1068,6 +1068,40 @@ func TestFillPath(t *testing.T) {
 		out: `
 		{foo: {bar: "baz"}}
 		`,
+	}, {
+		// Resolve to enclosing
+		in: `
+		foo: _
+		x: 1
+		`,
+		x:    ast.NewIdent("x"),
+		path: ParsePath("foo"),
+		out: `
+		{foo: 1, x: 1}
+		`,
+	}, {
+		// Resolve within expression
+		in: `
+		foo: {
+			bar: _
+			x: 1
+		}
+		`,
+		x:    ast.NewIdent("x"),
+		path: ParsePath("foo.bar"),
+		out: `
+		{foo: {bar: 1, x: 1}}
+		`,
+	}, {
+		// Resolve in non-existing
+		in: `
+		foo: x: 1
+		`,
+		x:    ast.NewIdent("x"),
+		path: ParsePath("foo.bar.baz"),
+		out: `
+		{foo: {x: 1, bar: baz: 1}}
+		`,
 	}}
 
 	for _, tc := range testCases {
