@@ -65,3 +65,45 @@ bar: _foo
 	// 1 <nil>
 	// 2 <nil>
 }
+
+func ExampleAllows() {
+	const file = `
+-- main.cue --
+a: [1, 2, ...int]
+
+b: #Point
+#Point: {
+	x:  int
+	y:  int
+	z?: int
+}
+`
+
+	v := load(file).Value()
+
+	a := v.LookupPath(cue.ParsePath("a"))
+	fmt.Println("a allows:")
+	fmt.Println("  index 4:       ", a.Allows(cue.Index(4)))
+	fmt.Println("  any index:     ", a.Allows(cue.AnyIndex))
+	fmt.Println("  any label:     ", a.Allows(cue.AnyLabel))
+
+	b := v.LookupPath(cue.ParsePath("b"))
+	fmt.Println("b allows:")
+	fmt.Println("  field x:       ", b.Allows(cue.Str("x")))
+	fmt.Println("  field z:       ", b.Allows(cue.Str("z")))
+	fmt.Println("  field foo:     ", b.Allows(cue.Str("foo")))
+	fmt.Println("  index 4:       ", b.Allows(cue.Index(4)))
+	fmt.Println("  any label:     ", b.Allows(cue.AnyLabel))
+
+	// Output:
+	// a allows:
+	//   index 4:        true
+	//   any index:      true
+	//   any label:      false
+	// b allows:
+	//   field x:        true
+	//   field z:        true
+	//   field foo:      false
+	//   index 4:        false
+	//   any label:      false
+}
