@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8860ea0b_ccc428d3",
+        "filename": "cmd/cue/cmd/testdata/script/eval_resolve.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-07T11:27:01Z",
+      "side": 1,
+      "message": "Apologies, I might be misremembering the context here, but this case feels a bit inconsistent; check.cue does not belong to a package, and yet it can refer to an identifier defined within a package?\n\nWhat is the rule for when references can be resolved?",
+      "revId": "2c027aa9553b22fa6b597d12a9923ee6a668e9bd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
