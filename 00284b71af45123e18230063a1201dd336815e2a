@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911d3009_a740deb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:27:12Z",
+      "side": 1,
+      "message": "LGTM - just so that I\u0027m clear, we plan to actually remove this from the API in v0.5.0, given the \"two minor version\" policy?\n\nAs discussed, we should also start actively suggesting in our release notes that people use staticcheck in order to flag the \"Deprecated\" identifiers; they are reported as full errors by staticcheck, which will hopefully minimise the amount of (automated) refactoring people have to do when we make breaking changes.",
+      "revId": "00284b71af45123e18230063a1201dd336815e2a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
