@@ -49,7 +49,12 @@ func resolveExpr(ctx *context, v *adt.Vertex, x ast.Expr) adt.Value {
 
 // LookupPath reports the value for path p relative to v.
 func (v Value) LookupPath(p Path) Value {
+	if v.v == nil {
+		return Value{}
+	}
 	n := v.v
+	ctx := v.ctx().opCtx
+
 outer:
 	for _, sel := range p.path {
 		f := sel.sel.feature(v.idx.Runtime)
@@ -59,14 +64,25 @@ outer:
 				continue outer
 			}
 		}
-		// TODO: if optional, look up template for name.
+		if sel.sel.optional() {
+			x := &adt.Vertex{
+				Parent: v.v,
+				Label:  sel.sel.feature(ctx),
+			}
+			n.MatchAndInsert(ctx, x)
+			if len(x.Conjuncts) > 0 {
+				x.Finalize(ctx)
+				n = x
+				continue
+			}
+		}
 
 		var x *adt.Bottom
 		if err, ok := sel.sel.(pathError); ok {
 			x = &adt.Bottom{Err: err.Error}
 		} else {
 			// TODO: better message.
-			x = v.idx.mkErr(n, codeNotExist, "value %q not found", sel.sel)
+			x = v.idx.mkErr(n, adt.NotExistError, "value %q not found", sel.sel)
 		}
 		v := makeValue(v.idx, n)
 		return newErrValue(v, x)
