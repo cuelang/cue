@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0996ef_2af1389a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:18:13Z",
+      "side": 1,
+      "message": "Oops, my +1 sent without me adding a comment.\n\nAs discussed, totally happy to defer fixing/agreeing on how/where/what references can exist between different files types until a later CL.",
+      "revId": "415377ea29f15a803c1b02d3eb9efe24aab793e6",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
