@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00dde8e9_37a8b053",
+        "filename": "cue/query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-08T14:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e5ccc8_93daad19",
+      "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0202aabc_61ec50de",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-08T13:09:40Z",
       "side": 1,
       "message": "Is it worth adding a test case here where `x` comes from a different scope to the value we are filling?",
+      "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2828888f_59144140",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-08T14:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0202aabc_61ec50de",
       "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
