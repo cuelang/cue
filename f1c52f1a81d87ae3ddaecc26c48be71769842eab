@@ -16,6 +16,24 @@
       "message": "All those pesky txtar-based issues that use exec ;-)",
       "revId": "f1c52f1a81d87ae3ddaecc26c48be71769842eab",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20059a7_ebdd48b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-08T14:45:57Z",
+      "side": 1,
+      "message": "Indeed! :)",
+      "parentUuid": "defdec4c_352c222a",
+      "revId": "f1c52f1a81d87ae3ddaecc26c48be71769842eab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
