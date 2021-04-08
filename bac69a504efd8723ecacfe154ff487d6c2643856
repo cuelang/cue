@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bf6c75_84d8916e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T09:09:54Z",
+      "side": 1,
+      "message": "s/decisionis/decision is/",
+      "revId": "bac69a504efd8723ecacfe154ff487d6c2643856",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97be2a10_5eee5708",
+        "filename": "cue/examples_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T09:09:54Z",
+      "side": 1,
+      "message": "Might be an idea to have an example of where AnyLabel is allowed?",
+      "revId": "bac69a504efd8723ecacfe154ff487d6c2643856",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd197be_70f0c17f",
+        "filename": "cue/testdata/benchmarks/deduparc.txtar",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T09:09:54Z",
+      "side": 1,
+      "message": "Oooh nice, does this handle #882?",
+      "revId": "bac69a504efd8723ecacfe154ff487d6c2643856",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df1ab44_2024fa6e",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T09:09:54Z",
+      "side": 1,
+      "message": "Left over?",
+      "revId": "bac69a504efd8723ecacfe154ff487d6c2643856",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aea13a5_130f4fe9",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T09:09:54Z",
+      "side": 1,
+      "message": "Def(\"#foo\") for consistency?",
+      "revId": "bac69a504efd8723ecacfe154ff487d6c2643856",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
