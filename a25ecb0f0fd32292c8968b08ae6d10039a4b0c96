@@ -33,6 +33,24 @@
       "message": "Worth adding a test to verify that definitions are indeed not supported?",
       "revId": "a25ecb0f0fd32292c8968b08ae6d10039a4b0c96",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37285dc_21988bf0",
+        "filename": "internal/core/compile/compile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-08T12:31:39Z",
+      "side": 1,
+      "message": "I don\u0027t think so. That ISA token is going to be removed soon.",
+      "parentUuid": "fe10f261_23767fb1",
+      "revId": "a25ecb0f0fd32292c8968b08ae6d10039a4b0c96",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
