@@ -103,6 +103,24 @@
       "message": "Wow, you\u0027ve written a nerdSnipe tool that understands these?! ;-)\n\nVery cool idea incidentally. I\u0027ve long wanted something like this.",
       "revId": "64a971ad477e6419ed53d72a485718d4ee5e1570",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de0c1dc_2cd0b9f3",
+        "filename": "cue/query_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-08T16:32:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00770b33_d387a9ed",
+      "revId": "64a971ad477e6419ed53d72a485718d4ee5e1570",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
