@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42629a04_8f05b175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:39:26Z",
+      "side": 1,
+      "message": "LGTM - my guess is that this got rebased/reordered to come after the previous CL (the build failures are references to codeNotExist in query.go)",
+      "revId": "78922185815906fb487e68e0f36ea7366230657f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
