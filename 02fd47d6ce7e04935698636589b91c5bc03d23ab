@@ -16,6 +16,40 @@
       "message": "LGTM, with small nits/suggestions - I don\u0027t fully understand all of the code changes, but the context of the change is clear.\n",
       "revId": "02fd47d6ce7e04935698636589b91c5bc03d23ab",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ad7d5a_1e443a16",
+        "filename": "cue/examples_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:40:51Z",
+      "side": 1,
+      "message": "s/any label/any string/",
+      "revId": "02fd47d6ce7e04935698636589b91c5bc03d23ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9057a1a3_0b5397dd",
+        "filename": "cue/examples_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:40:51Z",
+      "side": 1,
+      "message": "s/any label/any string/",
+      "revId": "02fd47d6ce7e04935698636589b91c5bc03d23ab",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
