@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba0a3735_655ebb4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T14:04:54Z",
+      "side": 1,
+      "message": "LGTM - again I don\u0027t follow all the code changes here, but the context of the change is clear (modulo the potential change we discussed for limiting concurrent placement and schema usage)",
+      "revId": "c80bf0bb64fde6a1805f7fab8623d27b179a1400",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
