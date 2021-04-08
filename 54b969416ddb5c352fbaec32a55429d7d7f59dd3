@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19a3527_1829cba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:40:07Z",
+      "side": 1,
+      "message": "LGTM - build failures from previous CL by the looks of things.",
+      "revId": "54b969416ddb5c352fbaec32a55429d7d7f59dd3",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
