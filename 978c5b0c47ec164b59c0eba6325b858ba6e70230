@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5c1833_fbcd5709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:36:34Z",
+      "side": 1,
+      "message": "LGTM - per our conversation, I don\u0027t follow all the code changes. But the context of this change makes total sense.",
+      "revId": "978c5b0c47ec164b59c0eba6325b858ba6e70230",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
