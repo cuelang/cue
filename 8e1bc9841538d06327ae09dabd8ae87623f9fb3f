@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e323b1_d7eec1a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:09:40Z",
+      "side": 1,
+      "message": "LGTM with minor questions/suggestions.",
+      "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e5ccc8_93daad19",
+        "filename": "cue/query.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:09:40Z",
+      "side": 1,
+      "message": "Nit: might be clearer to break here?",
+      "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0202aabc_61ec50de",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-08T13:09:40Z",
+      "side": 1,
+      "message": "Is it worth adding a test case here where `x` comes from a different scope to the value we are filling?",
+      "revId": "8e1bc9841538d06327ae09dabd8ae87623f9fb3f",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
