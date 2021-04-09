@@ -17,6 +17,8 @@
 package value
 
 import (
+	"strings"
+
 	"cuelang.org/go/cue"
 	"cuelang.org/go/internal/core/adt"
 	"cuelang.org/go/internal/core/runtime"
@@ -29,12 +31,30 @@ func ToInternal(v cue.Value) (*runtime.Runtime, *adt.Vertex) {
 	return t.R, t.V
 }
 
-// TODO:
-//
-// func Make(r *runtime.Runtime, v *adt.Vertex) cue.Value {
-// 	return cue.Value{}
-// }
+// Make wraps cue.MakeValue.
+func Make(ctx *adt.OpContext, v adt.Value) cue.Value {
+	index := ctx.Impl().(*runtime.Runtime)
+	return cue.MakeValue(index, v)
+}
 
 // func MakeError(r *runtime.Runtime, err error) cue.Value {
 // 	return cue.Value{}
 // }
+
+// UnifyBuiltin returns the given Value unified with the given builtin template.
+func UnifyBuiltin(v cue.Value, kind string) cue.Value {
+	p := strings.Split(kind, ".")
+	pkg, name := p[0], p[1]
+	s, _ := runtime.SharedRuntime.LoadImport(pkg)
+	if s == nil {
+		return v
+	}
+
+	r, _ := ToInternal(v)
+	a := s.Lookup(r.Label(name, false))
+	if a == nil {
+		return v
+	}
+
+	return v.Unify(cue.MakeValue(r, a))
+}

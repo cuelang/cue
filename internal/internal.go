@@ -64,9 +64,6 @@ var FromGoValue func(instance, x interface{}, allowDefault bool) interface{}
 // The returned value is a cue.Value, which the caller must cast to.
 var FromGoType func(instance, x interface{}) interface{}
 
-// UnifyBuiltin returns the given Value unified with the given builtin template.
-var UnifyBuiltin func(v interface{}, kind string) interface{}
-
 // GetRuntime reports the runtime for an Instance or Value.
 var GetRuntime func(instance interface{}) interface{}
 

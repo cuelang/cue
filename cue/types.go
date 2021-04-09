@@ -635,10 +635,8 @@ func Dereference(v Value) Value {
 // package and it will panic if this is not the case.
 //
 // For internal use only.
-func MakeValue(ctx *adt.OpContext, v adt.Value) Value {
-	index := ctx.Impl().(*runtime.Runtime)
-
-	return newValueRoot(index, newContext(index), v)
+func MakeValue(r *runtime.Runtime, v adt.Value) Value {
+	return newValueRoot(r, newContext(r), v)
 }
 
 func makeValue(idx *runtime.Runtime, v *adt.Vertex) Value {

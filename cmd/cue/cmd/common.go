@@ -374,6 +374,7 @@ func (i *expressionIter) value() cue.Value {
 	if len(i.expr) == 0 {
 		return i.iter.value()
 	}
+	// TODO: replace with FillPath.
 	return internal.EvalExpr(i.iter.value(), i.expr[i.i]).(cue.Value)
 }
 
