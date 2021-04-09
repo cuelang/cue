@@ -20,42 +20,23 @@ import (
 	"cuelang.org/go/internal/core/eval"
 )
 
-// context manages evaluation state.
-type context struct {
-	opCtx *adt.OpContext
-	*index
-}
+// TODO: eliminate alias. This will be a bigish diff, so do in separate CL.
+type context = adt.OpContext
 
 // newContext returns a new evaluation context.
-func newContext(idx *index) *context {
-	c := &context{
-		index: idx,
+func newContext(idx *index) *adt.OpContext {
+	if idx == nil {
+		return nil
 	}
-	if idx != nil {
-		c.opCtx = eval.NewContext(idx.Runtime, nil)
-	}
-	return c
+	return eval.NewContext(idx.Runtime, nil)
 }
 
 func debugStr(ctx *context, v adt.Node) string {
-	return debug.NodeString(ctx.opCtx, v, nil)
+	return debug.NodeString(ctx, v, nil)
 }
 
-func (c *context) str(v adt.Node) string {
+func str(c *context, v adt.Node) string {
 	return debugStr(c, v)
-}
-
-func (c *context) mkErr(src adt.Node, args ...interface{}) *adt.Bottom {
-	return c.index.mkErr(src, args...)
-}
-
-func (c *context) vertex(v *adt.Vertex) *adt.Vertex {
-	return v
-}
-
-// vertex returns the evaluated vertex of v.
-func (v Value) vertex(ctx *context) *adt.Vertex {
-	return ctx.vertex(v.v)
 }
 
 // eval returns the evaluated value. This may not be the vertex.
@@ -65,17 +46,12 @@ func (v Value) eval(ctx *context) adt.Value {
 	if v.v == nil {
 		panic("undefined value")
 	}
-	x := ctx.manifest(v.v)
+	x := manifest(ctx, v.v)
 	return x.Value()
 }
 
-// func (v Value) evalFull(u value) (Value, adt.Value) {
-// 	ctx := v.ctx()
-// 	x := ctx.manifest(u)
-// }
-
 // TODO: change from Vertex to Vertex.
-func (c *context) manifest(v *adt.Vertex) *adt.Vertex {
-	v.Finalize(c.opCtx)
+func manifest(ctx *adt.OpContext, v *adt.Vertex) *adt.Vertex {
+	v.Finalize(ctx)
 	return v
 }
