@@ -224,15 +224,14 @@ func (i *instanceIterator) file() *ast.File { return nil }
 func (i *instanceIterator) id() string      { return i.a[i.i].Dir }
 
 type streamingIterator struct {
-	r    *cue.Runtime
-	inst *cue.Instance
-	b    *buildPlan
-	cfg  *encoding.Config
-	a    []*decoderInfo
-	dec  *encoding.Decoder
-	v    cue.Value
-	f    *ast.File
-	e    error
+	r   *cue.Runtime
+	b   *buildPlan
+	cfg *encoding.Config
+	a   []*decoderInfo
+	dec *encoding.Decoder
+	v   cue.Value
+	f   *ast.File
+	e   error
 }
 
 func newStreamingIterator(b *buildPlan) *streamingIterator {
@@ -243,32 +242,32 @@ func newStreamingIterator(b *buildPlan) *streamingIterator {
 	}
 
 	// TODO: use orphanedSchema
-	switch len(b.insts) {
-	case 0:
-		i.r = &cue.Runtime{}
-		if v := b.encConfig.Schema; v.Exists() {
-			i.r = internal.GetRuntime(v).(*cue.Runtime)
-		}
-	case 1:
-		p := b.insts[0]
-		inst := buildInstances(b.cmd, []*build.Instance{p})[0]
-		if inst.Err != nil {
-			return &streamingIterator{e: inst.Err}
-		}
-		b.instance = inst
-		if b.schema == nil {
-			b.encConfig.Schema = inst.Value()
-		} else {
-			schema := inst.Eval(b.schema)
-			if err := schema.Err(); err != nil {
-				return &streamingIterator{e: err}
-			}
-			b.encConfig.Schema = schema
-		}
-	default:
-		return &streamingIterator{e: errors.Newf(token.NoPos,
-			"cannot combine data streaming with multiple instances")}
+	// switch len(b.insts) {
+	// case 0:
+	i.r = &cue.Runtime{}
+	if v := b.encConfig.Schema; v.Exists() {
+		i.r = internal.GetRuntime(v).(*cue.Runtime)
 	}
+	// case 1:
+	// 	p := b.insts[0]
+	// 	inst := buildInstances(b.cmd, []*build.Instance{p})[0]
+	// 	if inst.Err != nil {
+	// 		return &streamingIterator{e: inst.Err}
+	// 	}
+	// 	b.instance = inst
+	// 	if b.schema == nil {
+	// 		b.encConfig.Schema = inst.Value()
+	// 	} else {
+	// 		schema := inst.Eval(b.schema)
+	// 		if err := schema.Err(); err != nil {
+	// 			return &streamingIterator{e: err}
+	// 		}
+	// 		b.encConfig.Schema = schema
+	// 	}
+	// default:
+	// 	return &streamingIterator{e: errors.Newf(token.NoPos,
+	// 		"cannot combine data streaming with multiple instances")}
+	// }
 
 	return i
 }
@@ -278,9 +277,9 @@ func (i *streamingIterator) value() cue.Value        { return i.v }
 func (i *streamingIterator) instance() *cue.Instance { return nil }
 
 func (i *streamingIterator) id() string {
-	if i.inst != nil {
-		return i.inst.Dir
-	}
+	// if i.inst != nil {
+	// 	return i.inst.Dir
+	// }
 	return ""
 }
 
