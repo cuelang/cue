@@ -20,9 +20,6 @@ import "cuelang.org/go/cue/build"
 type Runtime struct {
 	index *index
 
-	// Data holds the legacy index strut. It is for transitional purposes only.
-	Data interface{}
-
 	Loaded map[*build.Instance]interface{}
 }
 
