@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1366e7_4dff1fcf",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-11T05:22:39Z",
+      "side": 0,
+      "message": "Do we really want to drop TestCUEFiles and ToolCUEFiles? They seem to serve valid purpose to my mind. Or is the thinking here to remove them and re-add them when we come to better define what `cuerun` and `cue test` will do? Because I can imagine needing something like `TestCUEFiles` and `XTestCUEFiles` for `cue test`, as well as `ToolCUEFiles` if only to distinguish the fact that we might force (per our discussions) tools to be declared in a separate `_tool` package (like external tests in Go).",
+      "revId": "f063a61302a4d9df979ac75ec2a614cbe3d1be18",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}

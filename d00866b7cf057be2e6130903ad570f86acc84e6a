@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dc6e2a_5cb7c75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-11T05:22:39Z",
+      "side": 1,
+      "message": "LGTM - but one question regarding tool and test files. ",
+      "revId": "d00866b7cf057be2e6130903ad570f86acc84e6a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
