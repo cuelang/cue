@@ -16,6 +16,24 @@
       "message": "Do we really want to drop TestCUEFiles and ToolCUEFiles? They seem to serve valid purpose to my mind. Or is the thinking here to remove them and re-add them when we come to better define what `cuerun` and `cue test` will do? Because I can imagine needing something like `TestCUEFiles` and `XTestCUEFiles` for `cue test`, as well as `ToolCUEFiles` if only to distinguish the fact that we might force (per our discussions) tools to be declared in a separate `_tool` package (like external tests in Go).",
       "revId": "f063a61302a4d9df979ac75ec2a614cbe3d1be18",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5a35ba_c914db6a",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-11T14:47:24Z",
+      "side": 0,
+      "message": "The idea is that the TestCUEFiles are already included in IgnoredFiles. They just need to be filtered. Rather than keeping two lists, it seems better to have some helper function to extract them. This helper could then also extract other file types.\n\nGetSpecial(b *build.Instance, name string) []*buildFile\n\nwhere name can be \"test\", \"tool\", etc. or something like that.",
+      "parentUuid": "6f1366e7_4dff1fcf",
+      "revId": "f063a61302a4d9df979ac75ec2a614cbe3d1be18",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
