@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049416e4_a04bfbfe",
+        "filename": "go.mod",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:19:53Z",
+      "side": 1,
+      "message": "Unintentional change in this CL?",
+      "revId": "4edfd92d349d048d3b427ba32a9f3be4d9e218a1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
