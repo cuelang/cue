@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02c349a_79f0d26e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T05:35:56Z",
+      "side": 1,
+      "message": "LGTM\n\nJust to be clear, when users upgrade to this version the advise will be \"re-import from protobuf\", correct? \n\nI might have missed it, but do we have a test that covers the behaviour when a type is _not_ specified, i.e. the user failed to re-import? ",
+      "revId": "d3c0041942d60c763f15ac318b3e8070e736d5e1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
