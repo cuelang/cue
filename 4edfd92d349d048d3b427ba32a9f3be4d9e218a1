@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d012db2_5fad0c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:20:21Z",
+      "side": 1,
+      "message": "Build failure is from previous CL by the looks of things",
+      "revId": "4edfd92d349d048d3b427ba32a9f3be4d9e218a1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "049416e4_a04bfbfe",
