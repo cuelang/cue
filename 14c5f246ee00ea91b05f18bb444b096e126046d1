@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1af924_2ebd9649",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:31:28Z",
+      "side": 1,
+      "message": "Could be for a later CL, but do we ever use this in CUE world? This looks like a legacy of Go, where import comments where use to constrain how a package could be imported by a user. \n\nI\u0027m pretty sure it\u0027s also superfluous in the modules world, because that constraint comes from the module path.",
+      "revId": "14c5f246ee00ea91b05f18bb444b096e126046d1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e36b2c4_20d6c661",
+        "filename": "cue/build/instance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:31:28Z",
+      "side": 1,
+      "message": "I think this comment belongs on Deps, no? ImportPaths is the direct imports, no?",
+      "revId": "14c5f246ee00ea91b05f18bb444b096e126046d1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
