@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea90248f_faafaed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:28:18Z",
+      "side": 1,
+      "message": "LGTM with a couple of questions.",
+      "revId": "fa530d0b5d984789f2372e27d7bf89cf4545ca91",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27577459_2356924e",
+        "filename": "encoding/protobuf/jsonpb/encoder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:28:18Z",
+      "side": 1,
+      "message": "s/expressions/values/?",
+      "revId": "fa530d0b5d984789f2372e27d7bf89cf4545ca91",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0801f9d6_8a073b82",
+        "filename": "encoding/protobuf/jsonpb/testdata/encoder/list.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:28:18Z",
+      "side": 1,
+      "message": "nit: s/result/value/\n\n(is I think what you mean here)",
+      "revId": "fa530d0b5d984789f2372e27d7bf89cf4545ca91",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55818e5d_3a1bc517",
+        "filename": "encoding/protobuf/jsonpb/testdata/encoder/simple.txtar",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:28:18Z",
+      "side": 1,
+      "message": "This attribute is irrelevant for this rewriting, correct?",
+      "revId": "fa530d0b5d984789f2372e27d7bf89cf4545ca91",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
