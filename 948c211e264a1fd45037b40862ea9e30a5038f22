@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ff0194_4a6249a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042875b4_b9866de9",
+        "filename": "encoding/protobuf/internal/attribute.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "Slightly unfortunate package name - pbinternal perhaps?",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9812b9a7_8ed090c0",
+        "filename": "encoding/protobuf/textproto/decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "s/calles/calls/",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693e3962_bf1a0dbb",
+        "filename": "encoding/protobuf/textproto/decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "Assuming you intended to leave this here as an aide memoire?",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5f27f9_8fe7bc49",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/errors.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "What\u0027s this file meant to be testing? The name suggests errors, but doesn\u0027t appear to be anything error-wise?",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d09c0eb1_69bbf395",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/map.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "Just checking: this is empty because it\u0027s missing the @protobuf attribute, and that attribute is required for maps, correct?",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9e6cbb_a0a2c89a",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "FYI - there is no corresponding value below for this.",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44339362_0fc05e0f",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991f31ae_a8f1f149",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c3c4c0_91ee53ca",
+        "filename": "go.mod",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T09:09:27Z",
+      "side": 1,
+      "message": "I think the build is failing because you need to run `go mod tidy`. This is a direct dependency.",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
