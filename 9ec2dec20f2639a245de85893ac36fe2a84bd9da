@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbee671a_fe0779c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:47:16Z",
+      "side": 1,
+      "message": "nit: s/Loadded/Loaded/",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25d0cb6_31cb8a72",
+        "filename": "cmd/cue/cmd/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:47:16Z",
+      "side": 1,
+      "message": "Did you mean to tidy this up this commented code in this CL? Because it doesn\u0027t appear to get removed/moved in later CLs unless I\u0027m missing something?",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d891417f_9bba5a29",
+        "filename": "cmd/cue/cmd/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:47:16Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d159d3_5bd311a9",
+        "filename": "cue/instance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-12T04:47:16Z",
+      "side": 1,
+      "message": "Just to refresh my memory here: we plan to make this a fully concurrent API in later CLs, correct?",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
