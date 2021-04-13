@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7275c3f0_74872b44",
+        "filename": "encoding/protobuf/internal/attribute.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042875b4_b9866de9",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9812b9a7_8ed090c0",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-12T09:09:27Z",
       "side": 1,
       "message": "s/calles/calls/",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4295e13b_a1395f13",
+        "filename": "encoding/protobuf/textproto/decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9812b9a7_8ed090c0",
       "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d82c1080_fa642bfa",
+        "filename": "encoding/protobuf/textproto/decoder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Yeah, it is meant as a comment to describe how a map is represented in proto.",
+      "parentUuid": "693e3962_bf1a0dbb",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a5f27f9_8fe7bc49",
         "filename": "encoding/protobuf/textproto/testdata/decoder/errors.txtar",
         "patchSetId": 3
@@ -82,6 +136,24 @@
       "writtenOn": "2021-04-12T09:09:27Z",
       "side": 1,
       "message": "What\u0027s this file meant to be testing? The name suggests errors, but doesn\u0027t appear to be anything error-wise?",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f572594_aa3f70a1",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/errors.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "The input is malformed (// comment instead of #). \n\nThere is no error, though, because the \"offical\" text proto parser is buggy. Nothing much we can do about it.\n\nAdded comment: I had to look myself a few times what exactly it is testing. 😊",
+      "parentUuid": "4a5f27f9_8fe7bc49",
       "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -105,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0295c194_cbcffad0",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/map.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Correct. Maybe we can do automated detection at some point (e.g. if we see implicit has no fields defined, it almost certainly is a map), but at this point we don\u0027t do that.",
+      "parentUuid": "d09c0eb1_69bbf395",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e9e6cbb_a0a2c89a",
         "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
         "patchSetId": 3
@@ -116,6 +206,24 @@
       "writtenOn": "2021-04-12T09:09:27Z",
       "side": 1,
       "message": "FYI - there is no corresponding value below for this.",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a099835e_c6327c56",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9e6cbb_a0a2c89a",
       "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -137,6 +245,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc44dd0_ab95bdc9",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44339362_0fc05e0f",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "991f31ae_a8f1f149",
@@ -150,6 +276,24 @@
       "writtenOn": "2021-04-12T09:09:27Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98aca552_d67051d2",
+        "filename": "encoding/protobuf/textproto/testdata/decoder/simple.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T16:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991f31ae_a8f1f149",
       "revId": "948c211e264a1fd45037b40862ea9e30a5038f22",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
