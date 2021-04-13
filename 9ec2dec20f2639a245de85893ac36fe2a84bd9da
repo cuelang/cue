@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "797263ec_ece8ac63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T06:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbee671a_fe0779c2",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f25d0cb6_31cb8a72",
@@ -101,6 +119,24 @@
       "writtenOn": "2021-04-12T04:47:16Z",
       "side": 1,
       "message": "Just to refresh my memory here: we plan to make this a fully concurrent API in later CLs, correct?",
+      "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2046300_4b7d58dd",
+        "filename": "cue/instance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T06:59:30Z",
+      "side": 1,
+      "message": "Yes. Good point. Need some more refactoring before proper locks can be added. But at least changed Loaded to accessor methods (pulled in earlier from later CLs).",
+      "parentUuid": "a5d159d3_5bd311a9",
       "revId": "9ec2dec20f2639a245de85893ac36fe2a84bd9da",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
