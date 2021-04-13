@@ -51,7 +51,7 @@ type Option func()
 //  disjunction of strings:
 //             this is assumed to represent a protobuf enum value. Strings
 //             are left as is. For integers, the disjunction is resolved
-//             by converting it to the string that has a corresponding #intValue
+//             by converting it to the string that has a corresponding #enumValue
 //             value.
 //  {}:        JSON objects representing any values will be left as is.
 //             If the CUE type corresponding to the URL can be determined within
@@ -245,7 +245,7 @@ func (r *rewriter) rewrite(schema cue.Value, expr ast.Expr) (x ast.Expr) {
 				values = []cue.Value{schema} // allow single values.
 			}
 			for _, v := range values {
-				i, err := v.LookupPath(cue.MakePath(cue.Def("#intValue"))).Int64()
+				i, err := v.LookupPath(cue.MakePath(cue.Def("#enumValue"))).Int64()
 				if err == nil && i == enum {
 					str, err := v.String()
 					if err != nil {

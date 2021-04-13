@@ -617,6 +617,8 @@ func (p *protoConverter) enum(x *proto.Enum) {
 		}
 	}
 
+	lastSingle := false
+
 	// The line comments for an enum field need to attach after the '|', which
 	// is only known at the next iteration.
 	var lastComment *proto.Comment
@@ -624,36 +626,42 @@ func (p *protoConverter) enum(x *proto.Enum) {
 		switch y := v.(type) {
 		case *proto.EnumField:
 			// Add enum value to map
+			intValue := ast.NewLit(token.INT, strconv.Itoa(y.Integer))
 			f := &ast.Field{
 				Label: p.stringLit(y.Position, y.Name),
-				Value: ast.NewLit(token.INT, strconv.Itoa(y.Integer)),
+				Value: intValue,
 			}
 			valueMap.Elts = append(valueMap.Elts, f)
 
 			// add to enum disjunction
 			value := p.stringLit(y.Position, y.Name)
 
-			var e ast.Expr = value
-			// Make the first value the default value.
-			if i > 0 {
-				value.ValuePos = newline
+			embed := &ast.EmbedDecl{Expr: value}
+			ast.SetRelPos(embed, token.Blank)
+			field := &ast.Field{Label: ast.NewIdent("#enumValue"), Value: intValue}
+			st := &ast.StructLit{
+				Lbrace: token.Blank.Pos(),
+				Elts:   []ast.Decl{embed, field},
 			}
-			addComments(e, i, y.Comment, nil)
+
+			addComments(embed, 0, y.Comment, y.InlineComment)
+			if y.Comment == nil && y.InlineComment == nil {
+				ast.SetRelPos(field, token.Blank)
+				ast.SetRelPos(field.Label, token.Blank)
+				st.Rbrace = token.Blank.Pos()
+				if i > 0 && lastSingle {
+					st.Lbrace = token.Newline.Pos()
+				}
+				lastSingle = true
+			} else {
+				lastSingle = false
+			}
+			var e ast.Expr = st
+
 			if enum.Value != nil {
 				e = &ast.BinaryExpr{X: enum.Value, Op: token.OR, Y: e}
-				if cg := comment(lastComment, false); cg != nil {
-					cg.Position = 2
-					e.AddComment(cg)
-				}
 			}
 			enum.Value = e
-
-			if y.Comment != nil {
-				lastComment = nil
-				addComments(f, 0, nil, y.InlineComment)
-			} else {
-				lastComment = y.InlineComment
-			}
 
 			// a := fmt.Sprintf("@protobuf(enum,name=%s)", y.Name)
 			// f.Attrs = append(f.Attrs, &ast.Attribute{Text: a})
