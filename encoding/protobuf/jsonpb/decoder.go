@@ -24,6 +24,7 @@ import (
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/literal"
 	"cuelang.org/go/cue/token"
+	"cuelang.org/go/encoding/protobuf/pbinternal"
 	"github.com/cockroachdb/apd/v2"
 )
 
@@ -51,7 +52,7 @@ type Option func()
 //  disjunction of strings:
 //             this is assumed to represent a protobuf enum value. Strings
 //             are left as is. For integers, the disjunction is resolved
-//             by converting it to the string that has a corresponding #intValue
+//             by converting it to the string that has a corresponding #enumValue
 //             value.
 //  {}:        JSON objects representing any values will be left as is.
 //             If the CUE type corresponding to the URL can be determined within
@@ -134,6 +135,11 @@ func (r *rewriter) rewriteDecls(schema cue.Value, decls []ast.Decl) {
 	}
 }
 
+var (
+	enumNamePath  = cue.ParsePath("#enumName").Optional()
+	enumValuePath = cue.ParsePath("#enumValue").Optional()
+)
+
 func (r *rewriter) rewrite(schema cue.Value, expr ast.Expr) (x ast.Expr) {
 	defer func() {
 		if expr != x && x != nil {
@@ -189,14 +195,16 @@ func (r *rewriter) rewrite(schema cue.Value, expr ast.Expr) (x ast.Expr) {
 		}
 
 		var info literal.NumInfo
-		if err := literal.ParseNum(str, &info); err != nil {
+		if err := literal.ParseNum(str, &info); err == nil {
+			x.Value = str
+			x.Kind = token.FLOAT
+			if info.IsInt() {
+				x.Kind = token.INT
+			}
 			break
 		}
-		x.Value = str
-		x.Kind = token.FLOAT
-		if info.IsInt() {
-			x.Kind = token.INT
-		}
+
+		pbinternal.MatchBySymbol(schema, str, x)
 
 	case cue.BytesKind:
 		x, q, str := stringValue(expr)
@@ -245,7 +253,7 @@ func (r *rewriter) rewrite(schema cue.Value, expr ast.Expr) (x ast.Expr) {
 				values = []cue.Value{schema} // allow single values.
 			}
 			for _, v := range values {
-				i, err := v.LookupPath(cue.MakePath(cue.Def("#intValue"))).Int64()
+				i, err := v.LookupPath(enumValuePath).Int64()
 				if err == nil && i == enum {
 					str, err := v.String()
 					if err != nil {
