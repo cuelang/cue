@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16776d87_86b9ab93",
+        "filename": "cue/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T06:59:42Z",
+      "side": 1,
+      "message": "changed it anyway.",
+      "parentUuid": "48c321f0_7990f554",
+      "revId": "71fe5b34db704293ec6e78d061e3ea3859cd17c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f897eea0_8cbbe60d",
@@ -52,6 +70,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab81b614_6d149eac",
+        "filename": "cue/instance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T06:59:42Z",
+      "side": 1,
+      "message": "Ditto. See other comment.",
+      "parentUuid": "f897eea0_8cbbe60d",
+      "revId": "71fe5b34db704293ec6e78d061e3ea3859cd17c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1581e18_41a89ef7",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-04-12T04:58:45Z",
       "side": 1,
       "message": "Same question on whether this was intended to be in the previous index CL?",
+      "revId": "71fe5b34db704293ec6e78d061e3ea3859cd17c7",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffbb479_eba6e85c",
+        "filename": "cue/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T06:59:42Z",
+      "side": 1,
+      "message": "Actually, this is part of this CL: context doesn\u0027t have a reference to `index` (only accessible through a cast), so getting rid of context means having to pass the runtime explicitly.",
+      "parentUuid": "d1581e18_41a89ef7",
       "revId": "71fe5b34db704293ec6e78d061e3ea3859cd17c7",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
