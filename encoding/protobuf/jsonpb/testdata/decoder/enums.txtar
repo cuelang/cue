@@ -1,15 +1,15 @@
 -- schema.cue --
 enum: [string]: {
     "foo"
-    #intValue: 1
+    #enumValue: 1
 } | {
     "bar"
-    #intValue: 2
+    #enumValue: 2
 }
 
-singleEnum: { "single", #intValue: 1 }
+singleEnum: { "single", #enumValue: 1 }
 
-badEnum: { string, #intValue: 1 } | { "two", #intValue: 2 }
+badEnum: { string, #enumValue: 1 } | { "two", #enumValue: 2 }
 
 -- data.cue --
 enum: asIs: "foo"
