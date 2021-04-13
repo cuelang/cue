@@ -16,6 +16,24 @@
       "message": "Would be nice is gopls had refactoring support for \"eliminate alias\"",
       "revId": "efe394bba7e56b9efe8f1ef3fb08f2964dd75800",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fed60a_b6b4890f",
+        "filename": "cue/parser/parser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-13T07:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ec86289_2d890477",
+      "revId": "efe394bba7e56b9efe8f1ef3fb08f2964dd75800",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
