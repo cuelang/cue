@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031ea965_b2b74828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-14T16:36:55Z",
+      "side": 1,
+      "message": "LGTM with a couple of small suggestions.",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ade31d1_da1d6a54",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-14T16:36:55Z",
+      "side": 1,
+      "message": "Should this comment perhaps make mention of what is returned in case the RHS side is, for example, a disjunction?",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd70bf6_6e73b6c7",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-14T16:36:55Z",
+      "side": 1,
+      "message": "TestReferencePath?",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316ecfef_e2adf0f7",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3191,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-14T16:36:55Z",
+      "side": 1,
+      "message": "This seems to duplicate what\u0027s below, on line 3207?",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
