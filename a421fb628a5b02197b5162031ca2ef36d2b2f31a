@@ -35,6 +35,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25de3532_9ad3017d",
+        "filename": "cue/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1873,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T15:26:26Z",
+      "side": 1,
+      "message": "It actually only returns a path if the value represents a reference. So nothing really, if the RHS is anything but a reference.",
+      "parentUuid": "9ade31d1_da1d6a54",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd70bf6_6e73b6c7",
@@ -52,6 +70,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b900e8aa_3b72c831",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T15:26:26Z",
+      "side": 1,
+      "message": "It tests both, really. But changed.",
+      "parentUuid": "2dd70bf6_6e73b6c7",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "316ecfef_e2adf0f7",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-04-14T16:36:55Z",
       "side": 1,
       "message": "This seems to duplicate what\u0027s below, on line 3207?",
+      "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd72c201_e4e71b72",
+        "filename": "cue/types_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3191,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T15:26:26Z",
+      "side": 1,
+      "message": "Yes, exact that one is for Reference and the other for ReferencePath.\n\nDidn\u0027t seem too useful to factor it out as it just complicates things and needs to be undone once Reference disappears.",
+      "parentUuid": "316ecfef_e2adf0f7",
       "revId": "a421fb628a5b02197b5162031ca2ef36d2b2f31a",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
