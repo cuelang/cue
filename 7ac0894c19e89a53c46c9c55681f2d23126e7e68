@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e35daa_33588ebe",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T16:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ff4c43_23134dc6",
+      "revId": "7ac0894c19e89a53c46c9c55681f2d23126e7e68",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b35e3687_8ec54de4",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-12T09:33:55Z",
       "side": 1,
       "message": "Worth adding any tests to verify the behaviour where a CUE package (and files) is provided as an argument for the schema?",
+      "revId": "7ac0894c19e89a53c46c9c55681f2d23126e7e68",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6316e4_63600f4b",
+        "filename": "cmd/cue/cmd/testdata/script/cmd_jsonpb.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T16:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35e3687_8ec54de4",
       "revId": "7ac0894c19e89a53c46c9c55681f2d23126e7e68",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
