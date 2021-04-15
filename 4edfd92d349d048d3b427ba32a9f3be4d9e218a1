@@ -33,6 +33,24 @@
       "message": "Unintentional change in this CL?",
       "revId": "4edfd92d349d048d3b427ba32a9f3be4d9e218a1",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1672c7a6_8e803a32",
+        "filename": "go.mod",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-15T16:05:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049416e4_a04bfbfe",
+      "revId": "4edfd92d349d048d3b427ba32a9f3be4d9e218a1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
