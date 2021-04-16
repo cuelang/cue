@@ -19,7 +19,7 @@ import (
 
 	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/ast"
-	"cuelang.org/go/cue/buildcontext"
+	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/cue/parser"
@@ -256,7 +256,7 @@ foo: entry: {
 			if err != nil {
 				t.Fatal(err)
 			}
-			r := buildcontext.New()
+			r := cuecontext.New()
 			v := r.BuildFile(f)
 			if err := v.Err(); err != nil {
 				t.Fatal(err)

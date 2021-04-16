@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	"cuelang.org/go/cue"
-	"cuelang.org/go/cue/buildcontext"
+	"cuelang.org/go/cue/cuecontext"
 	"cuelang.org/go/cue/errors"
 	"cuelang.org/go/cue/format"
 	"cuelang.org/go/internal/cuetest"
@@ -44,7 +44,7 @@ func TestFlow(t *testing.T) {
 	test.Run(t, func(t *cuetxtar.Test) {
 		a := t.ValidInstances()
 
-		insts, err := buildcontext.New().BuildInstances(a)
+		insts, err := cuecontext.New().BuildInstances(a)
 		if err != nil {
 			t.Fatal(err)
 		}
