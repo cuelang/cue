@@ -242,9 +242,9 @@ func newStreamingIterator(b *buildPlan) *streamingIterator {
 	}
 
 	// TODO: use orphanedSchema
-	i.r = &cue.Runtime{}
+	i.r = &cue.Context{}
 	if v := b.encConfig.Schema; v.Exists() {
-		i.r = internal.GetRuntime(v).(*cue.Runtime)
+		i.r = v.Context()
 	}
 
 	return i
@@ -736,7 +736,7 @@ func buildTools(cmd *Command, tags, args []string) (*cue.Instance, error) {
 		inst = cue.Merge(insts...)
 	}
 
-	r := internal.GetRuntime(inst).(*cue.Runtime)
+	r := inst.Value().Context()
 	for _, b := range binst {
 		for _, i := range b.Imports {
 			if _, err := r.Build(i); err != nil {

@@ -15,11 +15,279 @@
 package cue
 
 import (
+	"cuelang.org/go/cue/ast"
+	"cuelang.org/go/cue/build"
+	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/core/adt"
+	"cuelang.org/go/internal/core/convert"
 	"cuelang.org/go/internal/core/debug"
 	"cuelang.org/go/internal/core/eval"
 	"cuelang.org/go/internal/core/runtime"
 )
+
+// A Context is used for creating CUE Values.
+//
+// A Context keeps track of loaded instances, indices of internal
+// representations of values, and defines the set of supported builtins.
+// Any operation that involves two Values should originate from the same
+// Context.
+//
+// Use NewContext to create a new context. The first argument specifies the set
+// of builtins to use. At the moment this should always be pkg.CoreBuiltins or
+// nil to only support the builtins mentioned in the spec.
+//
+//    r := NewContext(pkg.CoreBuiltins)
+//
+type Context runtime.Runtime
+
+// NewContext creates a new Context. It is typically invoked as
+//
+//    ctx := NewContext(pkg.CoreBuiltins)
+//
+func NewContext(builtins internal.BuiltinSet, options ...build.Option) *Context {
+	r := runtime.New()
+	return (*Context)(r)
+}
+
+func (c *Context) index() *runtime.Runtime {
+	rt := (*runtime.Runtime)(c)
+	rt.Init()
+	return rt
+}
+
+func (c *Context) ctx() *adt.OpContext {
+	return newContext(c.index())
+}
+
+// Context reports the Context with which this value was created.
+func (v Value) Context() *Context {
+	return (*Context)(v.idx)
+}
+
+// A BuildOption defines options for the various build-related methods of
+// Context.
+type BuildOption func(o *buildOptions)
+
+type buildOptions struct {
+	runtime  *runtime.Runtime
+	filename string
+	scope    *adt.Vertex
+}
+
+// Scope defines a context in which to resolve unresolved identifiers.
+//
+// Only one scope may be given. It panics if more than one scope is given
+// or if the Context in which scope was created differs from the one where
+// this option is used.
+func Scope(scope Value) BuildOption {
+	return func(o *buildOptions) {
+		if o.runtime != scope.idx {
+			panic("incompatible runtime")
+		}
+		if o.scope != nil {
+			panic("more than one scope is given")
+		}
+		o.scope = scope.v
+	}
+}
+
+// Filename assigns a filename to parsed content.
+func Filename(filename string) BuildOption {
+	return func(o *buildOptions) { o.filename = filename }
+}
+
+// BuildInstance creates a Value from the given build.Instance.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) BuildInstance(i *build.Instance, options ...BuildOption) Value {
+	v, err := c.index().Build(i)
+	if err != nil {
+		return c.makeError(err)
+	}
+	return c.make(v)
+}
+
+func (c *Context) makeError(err errors.Error) Value {
+	b := &adt.Bottom{Err: err}
+	node := &adt.Vertex{BaseValue: b}
+	node.UpdateStatus(adt.Finalized)
+	node.AddConjunct(adt.MakeRootConjunct(nil, b))
+	return c.make(node)
+}
+
+// BuildInstances creates a Value for each of the given instances and reports
+// the combined errors or nil if there were no errors.
+func (c *Context) BuildInstances(instances []*build.Instance) ([]Value, error) {
+	var errs errors.Error
+	var a []Value
+	for _, b := range instances {
+		v, err := c.index().Build(b)
+		if err != nil {
+			errs = errors.Append(errs, err)
+		}
+		a = append(a, c.make(v))
+	}
+	return a, errs
+}
+
+// BuildFile creates a Value from f.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) BuildFile(f *ast.File, options ...BuildOption) Value {
+	return c.compile(c.index().CompileFile(f))
+}
+
+func (c *Context) compile(v *adt.Vertex, p *build.Instance) Value {
+	if p.Err != nil {
+		return c.makeError(p.Err)
+	}
+	return c.make(v)
+}
+
+// BuildExpr creates a Value from x.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) BuildExpr(x ast.Expr, options ...BuildOption) Value {
+	v, p, err := c.index().CompileExpr(x)
+	if err != nil {
+		return c.makeError(p.Err)
+	}
+	return c.make(v)
+}
+
+// ParseString parses and build a Value from the given source string.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) ParseString(src string, options ...BuildOption) Value {
+	return c.compile(c.index().Compile("filename", src))
+}
+
+// ParseString parses and build a Value from the given source bytes.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) ParseBytes(b []byte, options ...BuildOption) Value {
+	return c.compile(c.index().Compile("", b))
+}
+
+// TODO: fs.FS or custom wrapper?
+// // ParseFile parses and build a Value from the given source bytes.
+// //
+// // The returned Value will represent an error, accessible through Err, if any
+// // error occurred.
+// func (c *Context) ParseFile(f fs.File, options ...BuildOption) Value {
+// 	b, err := io.ReadAll(f)
+// 	if err != nil {
+// 		return c.makeError(errors.Promote(err, "parsing file system file"))
+// 	}
+// 	return c.compile(c.runtime().Compile("", b))
+// }
+
+func (c *Context) make(v *adt.Vertex) Value {
+	return newValueRoot(c.index(), newContext(c.index()), v)
+}
+
+// An EncodeOption defines options for the various encoding-related methods of
+// Context.
+type EncodeOption func(*encodeOptions)
+
+type encodeOptions struct {
+	nilIsTop bool
+}
+
+func (o *encodeOptions) process(option []EncodeOption) {
+	for _, f := range option {
+		f(o)
+	}
+}
+
+// NilIsAny indicates whether a nil value is interpreted as null or _.
+//
+// The default is to interpret nil as _.
+func NilIsAny(isAny bool) EncodeOption {
+	return func(o *encodeOptions) { o.nilIsTop = isAny }
+}
+
+// Encode converts a Go value to a CUE value.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) Encode(x interface{}, option ...EncodeOption) Value {
+	var options encodeOptions
+	options.process(option)
+
+	ctx := c.ctx()
+	// TODO: is true the right default?
+	expr := convert.GoValueToValue(ctx, x, options.nilIsTop)
+	n := &adt.Vertex{}
+	n.AddConjunct(adt.MakeRootConjunct(nil, expr))
+	n.Finalize(ctx)
+	return c.make(n)
+}
+
+// Encode converts a Go type to a CUE value.
+//
+// The returned Value will represent an error, accessible through Err, if any
+// error occurred.
+func (c *Context) EncodeType(x interface{}, option ...EncodeOption) Value {
+	switch v := x.(type) {
+	case *adt.Vertex:
+		return c.make(v)
+	}
+
+	ctx := c.ctx()
+	expr, err := convert.GoTypeToExpr(ctx, x)
+	if err != nil {
+		return c.makeError(err)
+	}
+	n := &adt.Vertex{}
+	n.AddConjunct(adt.MakeRootConjunct(nil, expr))
+	n.Finalize(ctx)
+	return c.make(n)
+}
+
+// TODO:
+
+// func (c *Context) NewExpr(op Op, v ...Value) Value {
+// 	return Value{}
+// }
+
+// func (c *Context) NewList(v ...Value) Value {
+// 	return Value{}
+// }
+
+// func (c *Context) NewValue(v ...ValueElem) Value {
+// 	return Value{}
+// }
+
+// func NewAttr(key string, values ...string) *Attribute {
+// 	return &Attribute{}
+// }
+
+// // Clear unloads all previously-loaded imports.
+// func (c *Context) Clear() {
+// }
+
+// // Values created up to the point of the Fork will be valid in both runtimes.
+// func (c *Context) Fork() *Context {
+// 	return nil
+// }
+
+// type ValueElem interface {
+// }
+
+// func NewField(sel Selector, value Value, attrs ...Attribute) ValueElem {
+// 	return nil
+// }
+
+// func NewDocComment(text string) ValueElem {
+// 	return nil
+// }
 
 // newContext returns a new evaluation context.
 func newContext(idx *runtime.Runtime) *adt.OpContext {

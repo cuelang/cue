@@ -39,6 +39,8 @@ import (
 // Right now Decimal is aliased to apd.Decimal. This may change in the future.
 type Decimal = apd.Decimal
 
+type BuiltinSet interface{ internal() }
+
 // ErrIncomplete can be used by builtins to signal the evaluation was
 // incomplete.
 var ErrIncomplete = errors.New("incomplete value")
@@ -67,16 +69,8 @@ var FromGoType func(instance, x interface{}) interface{}
 // UnifyBuiltin returns the given Value unified with the given builtin template.
 var UnifyBuiltin func(v interface{}, kind string) interface{}
 
-// GetRuntime reports the runtime for an Instance or Value.
-var GetRuntime func(instance interface{}) interface{}
-
 // MakeInstance makes a new instance from a value.
 var MakeInstance func(value interface{}) (instance interface{})
-
-// CheckAndForkRuntime checks that value is created using runtime, panicking
-// if it does not, and returns a forked runtime that will discard additional
-// keys.
-var CheckAndForkRuntime func(runtime, value interface{}) interface{}
 
 // BaseContext is used as CUEs default context for arbitrary-precision decimals
 var BaseContext = apd.BaseContext.WithPrecision(24)

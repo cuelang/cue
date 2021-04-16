@@ -36,3 +36,11 @@
 // in non-hermetic influences into configurations by using packages defined
 // in the tool subdirectory.
 package pkg
+
+import "cuelang.org/go/internal"
+
+var CoreBuiltins = &coreBuiltins{}
+
+type coreBuiltins struct {
+	internal.BuiltinSet
+}

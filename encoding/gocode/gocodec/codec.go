@@ -34,7 +34,7 @@ type Config struct {
 // A Codec decodes and encodes CUE from and to Go values and validates and
 // completes Go values based on CUE templates.
 type Codec struct {
-	runtime *cue.Runtime
+	runtime *cue.Context
 	mutex   sync.RWMutex
 }
 
@@ -43,7 +43,7 @@ type Codec struct {
 // It is safe to use the methods of Codec concurrently as long as the given
 // Runtime is not used elsewhere while using Codec. However, only the concurrent
 // use of Decode, Validate, and Complete is efficient.
-func New(r *cue.Runtime, c *Config) *Codec {
+func New(r *cue.Context, c *Config) *Codec {
 	return &Codec{runtime: r}
 }
 
@@ -93,7 +93,7 @@ func (c *Codec) Encode(v cue.Value, x interface{}) error {
 	return v.Decode(x)
 }
 
-var defaultCodec = New(&cue.Runtime{}, nil)
+var defaultCodec = New(cue.NewContext(nil), nil)
 
 // Validate calls Validate on a default Codec for the type of x.
 func Validate(x interface{}) error {
@@ -125,7 +125,7 @@ func (c *Codec) Validate(v cue.Value, x interface{}) error {
 	c.mutex.RLock()
 	defer c.mutex.RUnlock()
 
-	r := checkAndForkRuntime(c.runtime, v)
+	r := checkAndForkContext(c.runtime, v)
 	w, err := fromGoValue(r, x, false)
 	if err != nil {
 		return err
@@ -151,7 +151,7 @@ func (c *Codec) Complete(v cue.Value, x interface{}) error {
 	c.mutex.RLock()
 	defer c.mutex.RUnlock()
 
-	r := checkAndForkRuntime(c.runtime, v)
+	r := checkAndForkContext(c.runtime, v)
 	w, err := fromGoValue(r, x, true)
 	if err != nil {
 		return err
@@ -176,6 +176,10 @@ func fromGoType(r *cue.Runtime, x interface{}) (cue.Value, error) {
 	return v, nil
 }
 
-func checkAndForkRuntime(r *cue.Runtime, v cue.Value) *cue.Runtime {
-	return internal.CheckAndForkRuntime(r, v).(*cue.Runtime)
+func checkAndForkContext(r *cue.Context, v cue.Value) *cue.Context {
+	rr := v.Context()
+	if r != rr {
+		panic("value not from same runtime")
+	}
+	return rr
 }

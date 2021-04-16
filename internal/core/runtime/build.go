@@ -21,6 +21,8 @@ import (
 	"cuelang.org/go/cue/ast/astutil"
 	"cuelang.org/go/cue/build"
 	"cuelang.org/go/cue/errors"
+	"cuelang.org/go/cue/token"
+	"cuelang.org/go/internal"
 	"cuelang.org/go/internal/core/adt"
 	"cuelang.org/go/internal/core/compile"
 )
@@ -28,6 +30,9 @@ import (
 // Build builds b and all its transitive dependencies, insofar they have not
 // been build yet.
 func (x *Runtime) Build(b *build.Instance) (v *adt.Vertex, errs errors.Error) {
+	if err := b.Complete(); err != nil {
+		return nil, b.Err
+	}
 	if v := x.getNodeFromInstance(b); v != nil {
 		return v, b.Err
 	}
@@ -64,6 +69,39 @@ func (x *Runtime) Build(b *build.Instance) (v *adt.Vertex, errs errors.Error) {
 	x.AddInst(b.ImportPath, v, b)
 
 	return v, errs
+}
+
+func dummyLoad(token.Pos, string) *build.Instance { return nil }
+
+func (r *Runtime) Compile(filename string, source interface{}) (*adt.Vertex, *build.Instance) {
+	ctx := build.NewContext()
+	p := ctx.NewInstance(filename, dummyLoad)
+	if err := p.AddFile(filename, source); err != nil {
+		return nil, p
+	}
+	v, _ := r.Build(p)
+	return v, p
+}
+
+func (r *Runtime) CompileFile(file *ast.File) (*adt.Vertex, *build.Instance) {
+	ctx := build.NewContext()
+	p := ctx.NewInstance(file.Filename, dummyLoad)
+	err := p.AddSyntax(file)
+	if err != nil {
+		return nil, p
+	}
+	_, p.PkgName, _ = internal.PackageInfo(file)
+	v, _ := r.Build(p)
+	return v, p
+}
+
+func (r *Runtime) CompileExpr(expr ast.Expr) (*adt.Vertex, *build.Instance, error) {
+	f, err := astutil.ToFile(expr)
+	if err != nil {
+		return nil, nil, err
+	}
+	v, p := r.CompileFile(f)
+	return v, p, p.Err
 }
 
 func (x *Runtime) buildSpec(b *build.Instance, spec *ast.ImportSpec) (errs errors.Error) {
