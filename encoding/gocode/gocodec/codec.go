@@ -24,7 +24,7 @@ import (
 	"sync"
 
 	"cuelang.org/go/cue"
-	"cuelang.org/go/internal"
+	"cuelang.org/go/internal/value"
 )
 
 // Config has no options yet, but is defined for future extensibility.
@@ -160,16 +160,16 @@ func (c *Codec) Complete(v cue.Value, x interface{}) error {
 	return w.Unify(v).Decode(x)
 }
 
-func fromGoValue(r *cue.Runtime, x interface{}, allowDefault bool) (cue.Value, error) {
-	v := internal.FromGoValue(r, x, allowDefault).(cue.Value)
+func fromGoValue(r *cue.Context, x interface{}, allowDefault bool) (cue.Value, error) {
+	v := value.FromGoValue(r, x, allowDefault)
 	if err := v.Err(); err != nil {
 		return v, err
 	}
 	return v, nil
 }
 
-func fromGoType(r *cue.Runtime, x interface{}) (cue.Value, error) {
-	v := internal.FromGoType(r, x).(cue.Value)
+func fromGoType(r *cue.Context, x interface{}) (cue.Value, error) {
+	v := value.FromGoType(r, x)
 	if err := v.Err(); err != nil {
 		return v, err
 	}
