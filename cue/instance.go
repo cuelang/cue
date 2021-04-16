@@ -46,6 +46,8 @@ type Instance struct {
 	// complete bool // for cycle detection
 }
 
+type hiddenInstance = Instance
+
 func addInst(x *runtime.Runtime, p *Instance) *Instance {
 	if p.inst == nil {
 		p.inst = &build.Instance{
@@ -268,7 +270,7 @@ func (inst *Instance) Value() Value {
 // Eval evaluates an expression within an existing instance.
 //
 // Expressions may refer to builtin packages if they can be uniquely identified.
-func (inst *Instance) Eval(expr ast.Expr) Value {
+func (inst *hiddenInstance) Eval(expr ast.Expr) Value {
 	ctx := newContext(inst.index)
 	v := inst.root
 	v.Finalize(ctx)
@@ -342,14 +344,14 @@ func (inst *Instance) value() Value {
 // exist. The Err method reports if any error occurred during evaluation. The
 // empty path returns the top-level configuration struct. Use LookupDef for definitions or LookupField for
 // any kind of field.
-func (inst *Instance) Lookup(path ...string) Value {
+func (inst *hiddenInstance) Lookup(path ...string) Value {
 	return inst.value().Lookup(path...)
 }
 
 // LookupDef reports the definition with the given name within struct v. The
 // Exists method of the returned value will report false if the definition did
 // not exist. The Err method reports if any error occurred during evaluation.
-func (inst *Instance) LookupDef(path string) Value {
+func (inst *hiddenInstance) LookupDef(path string) Value {
 	return inst.value().LookupDef(path)
 }
 
@@ -360,7 +362,7 @@ func (inst *Instance) LookupDef(path string) Value {
 //
 // Deprecated: this API does not work with new-style definitions. Use
 // FieldByName defined on inst.Value().
-func (inst *Instance) LookupField(path ...string) (f FieldInfo, err error) {
+func (inst *hiddenInstance) LookupField(path ...string) (f FieldInfo, err error) {
 	v := inst.value()
 	for _, k := range path {
 		s, err := v.Struct()

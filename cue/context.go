@@ -50,14 +50,14 @@ func NewContext(builtins internal.BuiltinSet, options ...build.Option) *Context 
 	return (*Context)(r)
 }
 
-func (c *Context) index() *runtime.Runtime {
+func (c *Context) runtime() *runtime.Runtime {
 	rt := (*runtime.Runtime)(c)
 	rt.Init()
 	return rt
 }
 
 func (c *Context) ctx() *adt.OpContext {
-	return newContext(c.index())
+	return newContext(c.runtime())
 }
 
 // Context reports the Context with which this value was created.
@@ -102,7 +102,7 @@ func Filename(filename string) BuildOption {
 // The returned Value will represent an error, accessible through Err, if any
 // error occurred.
 func (c *Context) BuildInstance(i *build.Instance, options ...BuildOption) Value {
-	v, err := c.index().Build(i)
+	v, err := c.runtime().Build(i)
 	if err != nil {
 		return c.makeError(err)
 	}
@@ -123,7 +123,7 @@ func (c *Context) BuildInstances(instances []*build.Instance) ([]Value, error) {
 	var errs errors.Error
 	var a []Value
 	for _, b := range instances {
-		v, err := c.index().Build(b)
+		v, err := c.runtime().Build(b)
 		if err != nil {
 			errs = errors.Append(errs, err)
 		}
@@ -137,7 +137,7 @@ func (c *Context) BuildInstances(instances []*build.Instance) ([]Value, error) {
 // The returned Value will represent an error, accessible through Err, if any
 // error occurred.
 func (c *Context) BuildFile(f *ast.File, options ...BuildOption) Value {
-	return c.compile(c.index().CompileFile(f))
+	return c.compile(c.runtime().CompileFile(f))
 }
 
 func (c *Context) compile(v *adt.Vertex, p *build.Instance) Value {
@@ -152,7 +152,7 @@ func (c *Context) compile(v *adt.Vertex, p *build.Instance) Value {
 // The returned Value will represent an error, accessible through Err, if any
 // error occurred.
 func (c *Context) BuildExpr(x ast.Expr, options ...BuildOption) Value {
-	v, p, err := c.index().CompileExpr(x)
+	v, p, err := c.runtime().CompileExpr(x)
 	if err != nil {
 		return c.makeError(p.Err)
 	}
@@ -164,7 +164,7 @@ func (c *Context) BuildExpr(x ast.Expr, options ...BuildOption) Value {
 // The returned Value will represent an error, accessible through Err, if any
 // error occurred.
 func (c *Context) ParseString(src string, options ...BuildOption) Value {
-	return c.compile(c.index().Compile("filename", src))
+	return c.compile(c.runtime().Compile("filename", src))
 }
 
 // ParseString parses and build a Value from the given source bytes.
@@ -172,7 +172,7 @@ func (c *Context) ParseString(src string, options ...BuildOption) Value {
 // The returned Value will represent an error, accessible through Err, if any
 // error occurred.
 func (c *Context) ParseBytes(b []byte, options ...BuildOption) Value {
-	return c.compile(c.index().Compile("", b))
+	return c.compile(c.runtime().Compile("", b))
 }
 
 // TODO: fs.FS or custom wrapper?
@@ -189,7 +189,7 @@ func (c *Context) ParseBytes(b []byte, options ...BuildOption) Value {
 // }
 
 func (c *Context) make(v *adt.Vertex) Value {
-	return newValueRoot(c.index(), newContext(c.index()), v)
+	return newValueRoot(c.runtime(), newContext(c.runtime()), v)
 }
 
 // An EncodeOption defines options for the various encoding-related methods of
@@ -220,7 +220,7 @@ func NilIsAny(isAny bool) EncodeOption {
 func (c *Context) Encode(x interface{}, option ...EncodeOption) Value {
 	switch v := x.(type) {
 	case adt.Value:
-		return newValueRoot(c.index(), c.ctx(), v)
+		return newValueRoot(c.runtime(), c.ctx(), v)
 	}
 	var options encodeOptions
 	options.process(option)
