@@ -31,16 +31,16 @@
 package jsonschema
 
 import (
-	"cuelang.org/go/cue"
 	"cuelang.org/go/cue/ast"
 	"cuelang.org/go/cue/token"
+	"cuelang.org/go/internal/value"
 )
 
 // Extract converts JSON Schema data into an equivalent CUE representation.
 //
 // The generated CUE schema is guaranteed to deem valid any value that is
 // a valid instance of the source JSON schema.
-func Extract(data *cue.Instance, cfg *Config) (f *ast.File, err error) {
+func Extract(data value.Instance, cfg *Config) (f *ast.File, err error) {
 	d := &decoder{cfg: cfg}
 
 	f = d.decode(data.Value())
