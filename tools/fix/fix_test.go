@@ -72,13 +72,6 @@ a: {
 }
 `,
 	}, {
-		in: `
-		y = foo
-		`,
-		out: `
-let y = foo
-`,
-	}, {
 		simplify: true,
 		in: `
 		x1: 3 & _
