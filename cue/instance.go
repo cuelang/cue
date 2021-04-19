@@ -26,6 +26,9 @@ import (
 	"cuelang.org/go/internal/core/runtime"
 )
 
+// Value implements value.Instance.
+func (v hiddenValue) Value() Value { return v }
+
 // An Instance defines a single configuration based on a collection of
 // underlying CUE files.
 type Instance struct {
