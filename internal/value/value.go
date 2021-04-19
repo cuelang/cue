@@ -30,6 +30,10 @@ import (
 	"cuelang.org/go/internal/types"
 )
 
+type Instance interface {
+	Value() cue.Value
+}
+
 func ConvertToRuntime(c *cue.Context) *cue.Runtime {
 	return (*cue.Runtime)(c)
 }
