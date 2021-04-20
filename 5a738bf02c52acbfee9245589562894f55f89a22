@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3fe959_0da21425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T11:42:28Z",
+      "side": 1,
+      "message": "LGTM with one nit which might be hard to \"solve\" because of naming 😊",
+      "revId": "5a738bf02c52acbfee9245589562894f55f89a22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46927f32_2527a05b",
+        "filename": "tools/flow/flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T11:42:28Z",
+      "side": 1,
+      "message": "Nit: value is an internal package; feels a bit awkward to have a public API defined in terms of an internal type, albeit an interface and only as a temporary measure. Can we not move the definition of the Instance interface to the cue package, and call it something like InstanceValue? Maybe the naming is what makes this hard...",
+      "revId": "5a738bf02c52acbfee9245589562894f55f89a22",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
