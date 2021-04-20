@@ -18,6 +18,23 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56696c3c_77794fcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T11:50:42Z",
+      "side": 1,
+      "message": "Ignore that comment - I\u0027ve just seen the next CL in the train 😊",
+      "revId": "1a436a7e5d48cd855fcc97aa4a14275e7bbd8c7b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ecbede1_8f3a6812",
