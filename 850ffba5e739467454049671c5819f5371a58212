@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af11f493_d1a24de9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:26:43Z",
+      "side": 1,
+      "message": "Nice commentary.\n\nFYI build failure is from previous CL in the stack.",
+      "revId": "850ffba5e739467454049671c5819f5371a58212",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
