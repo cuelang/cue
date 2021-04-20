@@ -33,6 +33,23 @@
       "message": "Is this comment correct? It seems this should return the package path associated with a label, or \"_\" if the label is hidden? Or am I missing something?",
       "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacb1894_8a7d497c",
+        "filename": "cue/query_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:25:18Z",
+      "side": 1,
+      "message": "FYI /tmp/test will fail on Windows (and indeed CI is failing)",
+      "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
