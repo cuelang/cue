@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e7377b_9a6ba97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:18:18Z",
+      "side": 1,
+      "message": "LGTM with a minor nit on how/whether this CL and the previous one should/shouldn\u0027t be combined/separated. \n\nWith this revamp of the API, I wonder how much code in the cuelang.org/go module still uses the deprecated identifiers. Makes me think we should:\n\n* run staticcheck as part of CI for our packages\n* start something like Play with CUE (just guides, not interactive) that demonstrate how to do the basics (encouraging others to contribute guides), running staticcheck, vet etc as part of those guides to ensure that our examples are current and best practice. \n\nClearly neither of those are for this CL but just dumping the thought here given the changes are related.",
+      "revId": "f203843c3a571beb8ee656531f2e09e66727157e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60b7672_9f02f04f",
+        "filename": "cue/instance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:18:18Z",
+      "side": 1,
+      "message": "Minor nit: you deprecated some stuff in the previous CL. This CL appears to be a bit more deprecation+hiding. Not sure whether this deprecation leaked from the previous CL?",
+      "revId": "f203843c3a571beb8ee656531f2e09e66727157e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
