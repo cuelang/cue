@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df2fb90_8ab94739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:24:17Z",
+      "side": 1,
+      "message": "LGTM with one question about the comment for PkgPath.",
+      "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a82da2_2feec79c",
+        "filename": "cue/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-20T12:24:17Z",
+      "side": 1,
+      "message": "Is this comment correct? It seems this should return the package path associated with a label, or \"_\" if the label is hidden? Or am I missing something?",
+      "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
