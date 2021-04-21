@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9734d84f_b62eebba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-21T06:13:13Z",
+      "side": 1,
+      "message": "We certainly use deprecated calls all over the place in our code. My setup is complaining about them.\n\nRather than removing them, however, I would like to see if we can use this as a test-bed for automated rewrites down the road.",
+      "parentUuid": "10e7377b_9a6ba97a",
+      "revId": "f203843c3a571beb8ee656531f2e09e66727157e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c60b7672_9f02f04f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-20T12:18:18Z",
       "side": 1,
       "message": "Minor nit: you deprecated some stuff in the previous CL. This CL appears to be a bit more deprecation+hiding. Not sure whether this deprecation leaked from the previous CL?",
+      "revId": "f203843c3a571beb8ee656531f2e09e66727157e",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62de8bf2_0a8f8533",
+        "filename": "cue/instance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-21T06:13:13Z",
+      "side": 1,
+      "message": "The hiding and deprecation should be seen independently. Things were deprecated before; this CL just introduced hiding. Also I added deprecation notices where they were applicable.",
+      "parentUuid": "c60b7672_9f02f04f",
       "revId": "f203843c3a571beb8ee656531f2e09e66727157e",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
