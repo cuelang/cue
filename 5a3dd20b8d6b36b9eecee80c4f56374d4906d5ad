@@ -53,6 +53,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c39bea_37e22a0b",
+        "filename": "cue/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-21T16:06:51Z",
+      "side": 1,
+      "message": "Ah, that makes sense. Good analogy, thank you!",
+      "parentUuid": "9bd580de_9a6788e2",
+      "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dacb1894_8a7d497c",
