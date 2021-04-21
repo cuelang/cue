@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bd580de_9a6788e2",
+        "filename": "cue/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-21T06:18:09Z",
+      "side": 1,
+      "message": "Non-hidden labels don\u0027t have a package path. Only hidden labels do.\n\nCoincidentally, this is the exact same semantics as with PkgPath for struct fields and methods in Go\u0027s reflect library:\n\n    // PkgPath is the package path that qualifies a lower case (unexported)\n    // field name. It is empty for upper case (exported) field names.\n    // See https://golang.org/ref/spec#Uniqueness_of_identifiers\n    PkgPath string",
+      "parentUuid": "68a82da2_2feec79c",
+      "revId": "5a3dd20b8d6b36b9eecee80c4f56374d4906d5ad",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dacb1894_8a7d497c",
         "filename": "cue/query_test.go",
         "patchSetId": 1
