@@ -57,6 +57,12 @@ func TabIndent(indent bool) Option {
 	return func(c *config) { c.TabIndent = indent }
 }
 
+// Indent specifies an indentation, in terms of number of tab stops for all
+// output.
+func Indent(n int) Option {
+	return func(c *config) { c.Indent = n }
+}
+
 // TODO: make public
 // sortImportsOption causes import declarations to be sorted.
 func sortImportsOption() Option {
