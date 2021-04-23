@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15c7463_5b6ba409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-23T13:19:32Z",
+      "side": 1,
+      "message": "LGTM - build failure looks like a need to re-run go generate",
+      "revId": "b736ba5cceed64cc142f0403fe7e4f340af9fccf",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
