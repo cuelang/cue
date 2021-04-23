@@ -33,6 +33,24 @@
       "message": "s/ident/indent/",
       "revId": "1593708b1f67c782d2937d9e3976a33db5a3ffbe",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5399b230_303a6900",
+        "filename": "cue/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-23T14:50:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b4d31d_6d50f999",
+      "revId": "1593708b1f67c782d2937d9e3976a33db5a3ffbe",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
