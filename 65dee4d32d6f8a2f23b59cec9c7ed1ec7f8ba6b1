@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35772985_b1d39f18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-23T13:23:26Z",
+      "side": 1,
+      "message": "Build failure looks like it\u0027s from the previous CL",
+      "revId": "65dee4d32d6f8a2f23b59cec9c7ed1ec7f8ba6b1",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
