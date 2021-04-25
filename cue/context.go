@@ -263,13 +263,78 @@ func (c *Context) NewList(v ...Value) Value {
 	return c.make(c.ctx().NewList(a...))
 }
 
+// NewExpr creates a CUE expressions.
+//
+// This is an experimental API and the signature may change in the future.
+//
+// NewExpr panics if it is called for an operatform or form that is not
+// mentioned in the below list. The operations are grouped by the type of form
+// they support.
+//
+//     Op                  Forms for number of arguments
+//     AndOp               1:   arg1
+//     OrOp                >1:  arg1 op ... op argN
+//     BooleanAndOp
+//     BooleanOrOp
+//     AddOp
+//     MultiplyOp
+//
+//     QuotientOp          2:   arg1 op arg2
+//     EqualOp
+//
+//     NotOp               1:   !arg1
+//
+//     SubtractOp          1:   op arg1
+//     NotEqualOp          2:   arg1 op arg2
+//     LessThanOp
+//     LessThanEqualOp
+//     GreaterThanOp
+//     GreaterThanEqualOp
+//     RegexMatchOp
+//     NotRegexMatchOp
+//
+//     CallOp              1:   arg1()
+//                         >1:  arg1(arg2, ..., argN)
+//
+//     InterpolationOp     0:   ""
+//     InterpolationOp     >1:  literal strings are inserted verbatim
+//                              other expressions are wrapped in a \()
+//
+func (c *Context) NewExpr(op Op, values ...Value) Value {
+	switch op {
+	case AndOp:
+	case OrOp:
+	// case SelectorOp:
+	// case IndexOp:
+	// case SliceOp:
+	case CallOp:
+	case BooleanAndOp:
+	case BooleanOrOp:
+	case EqualOp:
+	case NotOp:
+	case NotEqualOp:
+	case LessThanOp:
+	case LessThanEqualOp:
+	case GreaterThanOp:
+	case GreaterThanEqualOp:
+	case RegexMatchOp:
+	case NotRegexMatchOp:
+	case AddOp:
+	case SubtractOp:
+	case MultiplyOp:
+	case FloatQuotientOp:
+	case InterpolationOp:
+	}
+	return Value{}
+}
+
 // TODO:
 
 // func (c *Context) NewExpr(op Op, v ...Value) Value {
 // 	return Value{}
 // }
 
-// func (c *Context) NewValue(v ...ValueElem) Value {
+// func (c *Context) NewValue(v ...ValueDecl) Value {
 // 	return Value{}
 // }
 
@@ -286,16 +351,27 @@ func (c *Context) NewList(v ...Value) Value {
 // 	return nil
 // }
 
-// type ValueElem interface {
+// type ValueDecl interface {
 // }
 
-// func NewField(sel Selector, value Value, attrs ...Attribute) ValueElem {
+// func NewField(sel Selector, value Value, attrs ...Attribute) ValueDecl {
 // 	return nil
 // }
 
-// func NewDocComment(text string) ValueElem {
+// NewDocComment creates a doc comment to be added to a value.
+// func NewDocComment(text string) ValueDecl {
 // 	return nil
 // }
+
+// AddDoc(v Value, string) Value
+// AddAttr(v Value, *Attribute) Value
+// NewValue(
+//    NewDoc(sdfsdfs),
+//    NewAttr(key, arg),
+//    NewValue(v).WithDoc(test),
+//    // COULD REALLY USE STRUCTURE SHARING
+//    NewField(cue.Str("foo"), v, NewAttr(key, value))
+// )
 
 // newContext returns a new evaluation context.
 func newContext(idx *runtime.Runtime) *adt.OpContext {
