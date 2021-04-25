@@ -49,16 +49,23 @@ const (
 	RegexMatchOp    = adt.MatchOp
 	NotRegexMatchOp = adt.NotMatchOp
 
-	AddOp           = adt.AddOp
-	SubtractOp      = adt.SubtractOp
-	MultiplyOp      = adt.MultiplyOp
+	AddOp      = adt.AddOp
+	SubtractOp = adt.SubtractOp
+	MultiplyOp = adt.MultiplyOp
+	QuotientOp = adt.FloatQuotientOp
+
+	InterpolationOp = adt.InterpolationOp
+)
+
+// Deprecated: IntQuotent* ops have been deprecated from the language. The op
+// QuotientOp replaces FloatQuotientOp. This is just a synonym to make naming
+// more consistent.
+const (
 	FloatQuotientOp = adt.FloatQuotientOp
 	IntQuotientOp   = adt.IntQuotientOp
 	IntRemainderOp  = adt.IntRemainderOp
 	IntDivideOp     = adt.IntDivideOp
 	IntModuloOp     = adt.IntModuloOp
-
-	InterpolationOp = adt.InterpolationOp
 )
 
 // isCmp reports whether an op is a comparator.
