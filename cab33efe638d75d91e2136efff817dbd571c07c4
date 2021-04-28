@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fce2d80_ff33f73d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-28T19:38:01Z",
+      "side": 1,
+      "message": "I definitely don\u0027t follow all of the code here, but the tests look good 😊",
+      "revId": "cab33efe638d75d91e2136efff817dbd571c07c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
