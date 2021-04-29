@@ -16,6 +16,24 @@
       "message": "I definitely don\u0027t follow all of the code here, but the tests look good 😊",
       "revId": "cab33efe638d75d91e2136efff817dbd571c07c4",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b48e96_7de69725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-29T06:33:31Z",
+      "side": 1,
+      "message": "The copied code from encoding/json is tricky. In order to do proper tag resolution one essentially has to implement field disambiguation as it is done in Go from scratch. For years I have wanted to implement a Go package to support doing so, as essentially any package like `json`, `xml`, etc, need to do this from scratch.\n\nAs for now it is copied and heavily modified.\n\nI do expect some bugs. But at least it fixes a whole bunch of issues related to the round tripping.",
+      "parentUuid": "9fce2d80_ff33f73d",
+      "revId": "cab33efe638d75d91e2136efff817dbd571c07c4",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
