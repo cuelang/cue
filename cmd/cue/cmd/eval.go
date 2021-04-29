@@ -89,6 +89,8 @@ func runEval(cmd *Command, args []string) error {
 	b, err := parseArgs(cmd, args, &config{outMode: filetypes.Eval})
 	exitOnErr(cmd, err, true)
 
+	b.encConfig.Force = flagForce.Bool(cmd)
+
 	syn := []cue.Option{
 		cue.Final(), // for backwards compatibility
 		cue.Definitions(true),

@@ -96,9 +96,7 @@ yaml    output as YAML
 	addOrphanFlags(cmd.Flags())
 
 	cmd.Flags().Bool(string(flagEscape), false, "use HTML escaping")
-
 	cmd.Flags().StringArrayP(string(flagExpression), "e", nil, "export this expression only")
-
 	cmd.Flags().StringArrayP(string(flagInject), "t", nil,
 		"set the value of a tagged field")
 
@@ -108,6 +106,8 @@ yaml    output as YAML
 func runExport(cmd *Command, args []string) error {
 	b, err := parseArgs(cmd, args, &config{outMode: filetypes.Export})
 	exitOnErr(cmd, err, true)
+
+	b.encConfig.Force = flagForce.Bool(cmd)
 
 	enc, err := encoding.NewEncoder(b.outFile, b.encConfig)
 	exitOnErr(cmd, err, true)
