@@ -33,6 +33,24 @@
       "message": "It probably makes sense to set this in common.go:648 (in parseFlags).\n\nDitto for the other calls.",
       "revId": "cd1c776c9c8c267c4441be4616d1c0832b217c02",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf59ffa_88faea38",
+        "filename": "cmd/cue/cmd/def.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-29T16:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df6c037_053e45f5",
+      "revId": "cd1c776c9c8c267c4441be4616d1c0832b217c02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
