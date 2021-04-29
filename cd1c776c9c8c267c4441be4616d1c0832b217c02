@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3b0bf5_93dafa2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-29T16:01:44Z",
+      "side": 1,
+      "message": "PTAL again; added some further tests to cover all commands that use output flags. ",
+      "revId": "cd1c776c9c8c267c4441be4616d1c0832b217c02",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
