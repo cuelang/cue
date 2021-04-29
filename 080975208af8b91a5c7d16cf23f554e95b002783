@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a1376b_507fbedb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-29T06:44:59Z",
+      "side": 1,
+      "message": "LGTM with a couple of small clarification questions.",
+      "revId": "080975208af8b91a5c7d16cf23f554e95b002783",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c57533_d66624f3",
+        "filename": "cue/types_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-29T06:44:59Z",
+      "side": 1,
+      "message": "I\u0027m guessing this is an additional test case from the previous CL in the stack?",
+      "revId": "080975208af8b91a5c7d16cf23f554e95b002783",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd5f8d87_3abd9197",
+        "filename": "cue/types_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-29T06:44:59Z",
+      "side": 1,
+      "message": "For completeness, do we need a test case where `b` is set?\n\nAlso what about the other \"meaning\" of optional? Where you have the input, for example:\n\n   a: 1, b?: int\n\nHow does that play with the concept of an optional selector?",
+      "revId": "080975208af8b91a5c7d16cf23f554e95b002783",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
