@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e372f6c_b966aeb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-29T15:10:46Z",
+      "side": 1,
+      "message": "LGTM.  But please check if `def` does the same.",
+      "revId": "a8a788e0ca92dcd59072f290c270d9da235ef7bd",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
