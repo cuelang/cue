@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59004fab_33f7ef3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-30T12:16:13Z",
+      "side": 1,
+      "message": "LGTM with minor suggestion.",
+      "revId": "497e5907cdea74121d4dede1ee79a62a988af197",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6137ecfa_55e4db37",
+        "filename": "cue/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-30T12:16:13Z",
+      "side": 1,
+      "message": "These are now, I think, specifically referred to as \"embedded fields\" in the Go spec https://golang.org/ref/spec#Struct_types",
+      "revId": "497e5907cdea74121d4dede1ee79a62a988af197",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
