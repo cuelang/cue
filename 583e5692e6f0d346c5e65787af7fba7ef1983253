@@ -16,6 +16,24 @@
       "message": "Ohh, good sneaky test case.",
       "revId": "583e5692e6f0d346c5e65787af7fba7ef1983253",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff7b614_901e9754",
+        "filename": "internal/core/export/testdata/alias.txtar",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-30T12:33:39Z",
+      "side": 1,
+      "message": ":)",
+      "parentUuid": "407573d2_c8efbeb1",
+      "revId": "583e5692e6f0d346c5e65787af7fba7ef1983253",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
