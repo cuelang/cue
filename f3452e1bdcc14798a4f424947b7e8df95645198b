@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2ed740_e98e167f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-30T12:56:25Z",
+      "side": 1,
+      "message": "LGTM - generally following what\u0027s going on here",
+      "revId": "f3452e1bdcc14798a4f424947b7e8df95645198b",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
