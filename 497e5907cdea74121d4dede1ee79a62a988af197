@@ -33,6 +33,24 @@
       "message": "These are now, I think, specifically referred to as \"embedded fields\" in the Go spec https://golang.org/ref/spec#Struct_types",
       "revId": "497e5907cdea74121d4dede1ee79a62a988af197",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42fefac3_14543e97",
+        "filename": "cue/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-30T12:32:38Z",
+      "side": 1,
+      "message": "The terminology was taken from the encoding/json doc.\n\nI prefer to wait until it is change there. The more the two texts look alike the easier it is to compare for differences.",
+      "parentUuid": "6137ecfa_55e4db37",
+      "revId": "497e5907cdea74121d4dede1ee79a62a988af197",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
