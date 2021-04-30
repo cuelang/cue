@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb9876b_e018480c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-04-30T12:49:44Z",
+      "side": 1,
+      "message": "LGTM - I don\u0027t totally follow the code changes here, but very much follow the explanation we discussed earlier.",
+      "revId": "1a3b017fcb511e01b706e489b5c7630e05c3a273",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
