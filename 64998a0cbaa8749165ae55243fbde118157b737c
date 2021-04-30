@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8078df78_a183b83d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-04-30T19:51:08Z",
+      "side": 1,
+      "message": "Not really following the details, but seems fine.\n\nHope this won\u0027t make the main dashboard build tag red\nif we deliberately fail things.",
+      "revId": "64998a0cbaa8749165ae55243fbde118157b737c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
