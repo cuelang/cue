@@ -331,6 +331,25 @@ field. For instance
    environment: "prod" | "staging" @tag(env,short=prod|staging)
 
 ensures the user may only specify "prod" or "staging".
+
+
+Injection variables
+
+The injection mechanism allows for the injection of system variables:
+when variable injection is enabled, tags of the form
+
+    @tag(dir,var=cwd)
+
+will the named variable (here cwd) into the tag.
+
+The following variables are supported:
+
+    now        current time
+	os         OS identifier of the current system
+	cwd        working directory
+	username   current username
+	hostname   the hostname
+	rand       a random 128-bit integer
 `,
 }
 
