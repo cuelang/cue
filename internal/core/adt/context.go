@@ -816,7 +816,7 @@ outer:
 			c.addErrf(code, pos, "index out of range [%d] with length %d",
 				l.Index(), len(x.Elems()))
 		} else {
-			if code != 0 && x.IsOptional(l) {
+			if code != 0 && x.isOptionalField(l) {
 				c.addErrf(code, pos,
 					"cannot reference optional field %s", label)
 			} else {

@@ -308,6 +308,12 @@ func (v *Vertex) UpdateStatus(s VertexStatus) {
 	v.status = s
 }
 
+// IsRegular reports whether this vertex is an arc for a regular (list element
+// or string field) non-optional field.
+func (v *Vertex) IsRegular() bool {
+	return v.Label.IsRegular()
+}
+
 // Value returns the Value of v without definitions if it is a scalar
 // or itself otherwise.
 func (v *Vertex) Value() Value {
@@ -359,7 +365,7 @@ func (v *Vertex) ToDataSingle() *Vertex {
 func (v *Vertex) ToDataAll() *Vertex {
 	arcs := make([]*Vertex, 0, len(v.Arcs))
 	for _, a := range v.Arcs {
-		if a.Label.IsRegular() {
+		if a.IsRegular() {
 			arcs = append(arcs, a.ToDataAll())
 		}
 	}
@@ -525,9 +531,9 @@ func (v *Vertex) OptionalTypes() OptionalType {
 	return mask
 }
 
-// IsOptional reports whether a field is explicitly defined as optional,
+// isOptionalField reports whether a field is explicitly defined as optional,
 // as opposed to whether it is allowed by a pattern constraint.
-func (v *Vertex) IsOptional(label Feature) bool {
+func (v *Vertex) isOptionalField(label Feature) bool {
 	for _, s := range v.Structs {
 		if s.IsOptional(label) {
 			return true

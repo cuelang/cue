@@ -1615,7 +1615,7 @@ func (x *ForClause) Source() ast.Node {
 func (x *ForClause) yield(c *OpContext, f YieldFunc) {
 	n := c.node(x, x.Src, true, AllArcs)
 	for _, a := range n.Arcs {
-		if !a.Label.IsRegular() {
+		if !a.IsRegular() {
 			continue
 		}
 

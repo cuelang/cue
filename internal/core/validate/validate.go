@@ -101,7 +101,7 @@ func (v *validator) validate(x *adt.Vertex) {
 		if !v.AllErrors && v.err != nil {
 			break
 		}
-		if a.Label.IsRegular() {
+		if a.IsRegular() {
 			v.validate(a)
 		} else {
 			v.inDefinition++
