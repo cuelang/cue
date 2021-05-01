@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7568887_6430758f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-01T07:13:25Z",
+      "side": 1,
+      "message": "This CL provides an alternative API to the previous one.",
+      "revId": "e0e6bdaa8c4e40e687aa5d4080be44226fc12b0d",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
