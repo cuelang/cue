@@ -1328,33 +1328,19 @@ func (v Value) structValOpts(ctx *adt.OpContext, o options) (s structValue, err 
 		}
 	}
 
-	features := export.VertexFeatures(obj)
+	arcs := export.SortedArcs(ctx, obj, !o.omitOptional)
 
-	arcs := make([]*adt.Vertex, len(features))
 	k := 0
-	for _, f := range features {
+	for _, arc := range arcs {
+		f := arc.Label
 		if f.IsDef() && (o.omitDefinitions || o.concrete) {
 			continue
 		}
 		if f.IsHidden() && o.omitHidden {
 			continue
 		}
-		arc := obj.Lookup(f)
-		if arc == nil {
-			if o.omitOptional {
-				continue
-			}
-			// ensure it really exists.
-			arc = &adt.Vertex{
-				Parent:     obj,
-				Label:      f,
-				IsOptional: true,
-			}
-			obj.MatchAndInsert(ctx, arc)
-			if len(arc.Conjuncts) == 0 {
-				continue
-			}
-			arc.Finalize(ctx)
+		if arc.IsOptional && o.omitOptional {
+			continue
 		}
 		arcs[k] = arc
 		k++

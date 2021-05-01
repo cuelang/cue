@@ -47,12 +47,7 @@ func VertexFeatures(v *adt.Vertex) []adt.Feature {
 	return sortedArcs(sets)
 }
 
-// func structFeatures(a []*adt.StructLit) []adt.Feature {
-// 	sets := extractFeatures(a)
-// 	return sortedArcs(sets)
-// }
-
-func (e *exporter) sortedArcs(v *adt.Vertex) (sorted []*adt.Vertex) {
+func SortedArcs(ctx *adt.OpContext, v *adt.Vertex, optional bool) (sorted []*adt.Vertex) {
 	a := extractFeatures(v.Structs)
 	if len(a) == 0 {
 		return v.Arcs
@@ -62,6 +57,27 @@ func (e *exporter) sortedArcs(v *adt.Vertex) (sorted []*adt.Vertex) {
 	copy(sorted, v.Arcs)
 
 	m := sortArcs(a)
+
+	if optional {
+	outer:
+		for f := range m {
+			for _, arc := range v.Arcs {
+				if arc.Label == f {
+					continue outer
+				}
+			}
+
+			arc := &adt.Vertex{
+				Parent:     v,
+				Label:      f,
+				IsOptional: true,
+			}
+			v.MatchAndInsert(ctx, arc)
+			arc.Finalize(ctx)
+			sorted = append(sorted, arc)
+		}
+	}
+
 	sort.SliceStable(sorted, func(i, j int) bool {
 		if m[sorted[i].Label] == 0 {
 			return m[sorted[j].Label] != 0
