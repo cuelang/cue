@@ -1328,7 +1328,7 @@ func (v Value) structValOpts(ctx *adt.OpContext, o options) (s structValue, err 
 		}
 	}
 
-	arcs := export.SortedArcs(ctx, obj, !o.omitOptional)
+	arcs := export.SortedArcs(ctx, obj)
 
 	k := 0
 	for _, arc := range arcs {
