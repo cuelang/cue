@@ -175,6 +175,9 @@ type Vertex struct {
 	// status indicates the evaluation progress of this vertex.
 	status VertexStatus
 
+	// IsOptional indicates whether this struct is optional. (TODO)
+	IsOptional bool
+
 	// isData indicates that this Vertex is to be interepreted as data: pattern
 	// and additional constraints, as well as optional fields, should be
 	// ignored.

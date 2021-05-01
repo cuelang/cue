@@ -108,19 +108,19 @@ func (o *hiddenStructValue) At(i int) (key string, v Value) {
 	return o.v.idx.LabelStr(f), newChildValue(o, i)
 }
 
-func (o *hiddenStructValue) at(i int) (v *adt.Vertex, isOpt bool) {
+func (o *hiddenStructValue) at(i int) (v *adt.Vertex) {
 	f := o.features[i]
 	arc := o.obj.Lookup(f)
 	if arc == nil {
 		arc = &adt.Vertex{
-			Parent: o.v.v,
-			Label:  f,
+			Parent:     o.v.v,
+			Label:      f,
+			IsOptional: true,
 		}
 		o.obj.MatchAndInsert(o.ctx, arc)
 		arc.Finalize(o.ctx)
-		isOpt = true
 	}
-	return arc, isOpt
+	return arc
 }
 
 // Lookup reports the field for the given key. The returned Value is invalid
@@ -216,7 +216,7 @@ type Iterator struct {
 	val   Value
 	idx   *runtime.Runtime
 	ctx   *adt.OpContext
-	arcs  []field
+	arcs  []*adt.Vertex
 	p     int
 	cur   Value
 	f     adt.Feature
@@ -225,11 +225,6 @@ type Iterator struct {
 
 type hiddenIterator = Iterator
 
-type field struct {
-	arc        *adt.Vertex
-	isOptional bool
-}
-
 // Next advances the iterator to the next value and reports whether there was
 // any. It must be called before the first call to Value or Key.
 func (i *Iterator) Next() bool {
@@ -237,12 +232,12 @@ func (i *Iterator) Next() bool {
 		i.cur = Value{}
 		return false
 	}
-	f := i.arcs[i.p]
-	f.arc.Finalize(i.ctx)
-	p := linkParent(i.val.parent_, i.val.v, f.arc)
-	i.cur = makeValue(i.val.idx, f.arc, p)
-	i.f = f.arc.Label
-	i.isOpt = f.isOptional
+	arc := i.arcs[i.p]
+	arc.Finalize(i.ctx)
+	p := linkParent(i.val.parent_, i.val.v, arc)
+	i.cur = makeValue(i.val.idx, arc, p)
+	i.f = arc.Label
+	i.isOpt = arc.IsOptional
 	i.p++
 	return true
 }
@@ -629,7 +624,7 @@ func newValueRoot(idx *runtime.Runtime, ctx *adt.OpContext, x adt.Expr) Value {
 }
 
 func newChildValue(o *structValue, i int) Value {
-	arc, _ := o.at(i)
+	arc := o.at(i)
 	return makeValue(o.v.idx, arc, linkParent(o.v.parent_, o.v.v, arc))
 }
 
@@ -1249,11 +1244,7 @@ func (v Value) List() (Iterator, error) {
 	if err := v.checkKind(ctx, adt.ListKind); err != nil {
 		return Iterator{idx: v.idx, ctx: ctx}, v.toErr(err)
 	}
-	arcs := []field{}
-	for _, a := range v.v.Elems() {
-		arcs = append(arcs, field{arc: a})
-	}
-	return Iterator{idx: v.idx, ctx: ctx, val: v, arcs: arcs}, nil
+	return Iterator{idx: v.idx, ctx: ctx, val: v, arcs: v.v.Elems()}, nil
 }
 
 // Null reports an error if v is not null.
@@ -1426,7 +1417,8 @@ func (s *hiddenStruct) Len() int {
 
 // field reports information about the ith field, i < o.Len().
 func (s *hiddenStruct) Field(i int) FieldInfo {
-	a, opt := s.at(i)
+	a := s.at(i)
+	opt := a.IsOptional
 	ctx := s.v.ctx()
 
 	v := makeChildValue(s.v, a)
@@ -1465,10 +1457,9 @@ func (v Value) Fields(opts ...Option) (*Iterator, error) {
 		return &Iterator{idx: v.idx, ctx: ctx}, v.toErr(err)
 	}
 
-	arcs := []field{}
+	arcs := []*adt.Vertex{}
 	for i := range obj.features {
-		arc, isOpt := obj.at(i)
-		arcs = append(arcs, field{arc: arc, isOptional: isOpt})
+		arcs = append(arcs, obj.at(i))
 	}
 	return &Iterator{idx: v.idx, ctx: ctx, val: v, arcs: arcs}, nil
 }
