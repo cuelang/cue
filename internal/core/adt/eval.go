@@ -1992,7 +1992,7 @@ func (n *nodeContext) addLists() (oneOfTheLists Expr, anID CloseInfo) {
 
 	if m, ok := n.node.BaseValue.(*ListMarker); ok {
 		isOpen = m.IsOpen
-		max = len(n.node.Arcs)
+		max = len(n.node.Elems())
 	}
 
 	c := n.ctx

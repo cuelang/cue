@@ -1251,9 +1251,7 @@ func (v Value) List() (Iterator, error) {
 	}
 	arcs := []field{}
 	for _, a := range v.v.Elems() {
-		if a.Label.IsInt() {
-			arcs = append(arcs, field{arc: a})
-		}
+		arcs = append(arcs, field{arc: a})
 	}
 	return Iterator{idx: v.idx, ctx: ctx, val: v, arcs: arcs}, nil
 }

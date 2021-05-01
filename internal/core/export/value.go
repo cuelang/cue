@@ -311,10 +311,7 @@ func (e *exporter) builtinValidator(n *adt.BuiltinValidator) ast.Expr {
 
 func (e *exporter) listComposite(v *adt.Vertex) ast.Expr {
 	l := &ast.ListLit{}
-	for _, a := range v.Arcs {
-		if !a.Label.IsInt() {
-			continue
-		}
+	for _, a := range v.Elems() {
 		elem := e.vertex(a)
 
 		docs := ExtractDoc(a)

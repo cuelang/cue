@@ -639,6 +639,14 @@ func (v *Vertex) Lookup(f Feature) *Vertex {
 
 // Elems returns the regular elements of a list.
 func (v *Vertex) Elems() []*Vertex {
+	for _, x := range v.Arcs {
+		if !x.Label.IsInt() {
+			goto slowPath
+		}
+	}
+	return v.Arcs
+
+slowPath:
 	// TODO: add bookkeeping for where list arcs start and end.
 	a := make([]*Vertex, 0, len(v.Arcs))
 	for _, x := range v.Arcs {

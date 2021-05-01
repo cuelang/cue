@@ -964,16 +964,18 @@ func (x *SliceExpr) evaluate(c *OpContext) Value {
 			break
 		}
 
+		elems := v.Elems()
+
 		var (
 			lo = uint64(0)
-			hi = uint64(len(v.Arcs))
+			hi = uint64(len(elems))
 		)
 		if x.Lo != nil {
 			lo = c.uint64(c.value(x.Lo), as)
 		}
 		if x.Hi != nil {
 			hi = c.uint64(c.value(x.Hi), as)
-			if hi > uint64(len(v.Arcs)) {
+			if hi > uint64(len(elems)) {
 				return c.NewErrf("index %d out of range", hi)
 			}
 		}
@@ -982,7 +984,7 @@ func (x *SliceExpr) evaluate(c *OpContext) Value {
 		}
 
 		n := c.newList(c.src, v.Parent)
-		for i, a := range v.Arcs[lo:hi] {
+		for i, a := range elems[lo:hi] {
 			label, err := MakeLabel(a.Source(), int64(i), IntLabel)
 			if err != nil {
 				c.AddBottom(&Bottom{Src: a.Source(), Err: err})

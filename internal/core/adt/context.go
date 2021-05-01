@@ -728,7 +728,7 @@ func (c *OpContext) lookup(x *Vertex, pos token.Pos, l Feature, state VertexStat
 			case l.Index() < 0:
 				c.addErrf(0, pos, "invalid list index %s (index must be non-negative)", l)
 				return nil
-			case l.Index() > len(x.Arcs):
+			case l.Index() > len(x.Elems()):
 				c.addErrf(0, pos, "invalid list index %s (out of bounds)", l)
 				return nil
 			}
