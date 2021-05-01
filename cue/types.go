@@ -86,10 +86,10 @@ const (
 //
 // TODO: remove
 type structValue struct {
-	ctx      *adt.OpContext
-	v        Value
-	obj      *adt.Vertex
-	features []adt.Feature
+	ctx  *adt.OpContext
+	v    Value
+	obj  *adt.Vertex
+	arcs []*adt.Vertex
 }
 
 type hiddenStructValue = structValue
@@ -99,28 +99,17 @@ func (o *hiddenStructValue) Len() int {
 	if o.obj == nil {
 		return 0
 	}
-	return len(o.features)
+	return len(o.arcs)
 }
 
 // At reports the key and value of the ith field, i < o.Len().
 func (o *hiddenStructValue) At(i int) (key string, v Value) {
-	f := o.features[i]
-	return o.v.idx.LabelStr(f), newChildValue(o, i)
+	arc := o.arcs[i]
+	return o.v.idx.LabelStr(arc.Label), newChildValue(o, i)
 }
 
 func (o *hiddenStructValue) at(i int) (v *adt.Vertex) {
-	f := o.features[i]
-	arc := o.obj.Lookup(f)
-	if arc == nil {
-		arc = &adt.Vertex{
-			Parent:     o.v.v,
-			Label:      f,
-			IsOptional: true,
-		}
-		o.obj.MatchAndInsert(o.ctx, arc)
-		arc.Finalize(o.ctx)
-	}
-	return arc
+	return o.arcs[i]
 }
 
 // Lookup reports the field for the given key. The returned Value is invalid
@@ -130,7 +119,7 @@ func (o *hiddenStructValue) Lookup(key string) Value {
 	i := 0
 	len := o.Len()
 	for ; i < len; i++ {
-		if o.features[i] == f {
+		if o.arcs[i].Label == f {
 			break
 		}
 	}
@@ -1341,6 +1330,7 @@ func (v Value) structValOpts(ctx *adt.OpContext, o options) (s structValue, err 
 
 	features := export.VertexFeatures(obj)
 
+	arcs := make([]*adt.Vertex, len(features))
 	k := 0
 	for _, f := range features {
 		if f.IsDef() && (o.omitDefinitions || o.concrete) {
@@ -1349,25 +1339,28 @@ func (v Value) structValOpts(ctx *adt.OpContext, o options) (s structValue, err 
 		if f.IsHidden() && o.omitHidden {
 			continue
 		}
-		if arc := obj.Lookup(f); arc == nil {
+		arc := obj.Lookup(f)
+		if arc == nil {
 			if o.omitOptional {
 				continue
 			}
 			// ensure it really exists.
-			v := adt.Vertex{
-				Parent: obj,
-				Label:  f,
+			arc = &adt.Vertex{
+				Parent:     obj,
+				Label:      f,
+				IsOptional: true,
 			}
-			obj.MatchAndInsert(ctx, &v)
-			if len(v.Conjuncts) == 0 {
+			obj.MatchAndInsert(ctx, arc)
+			if len(arc.Conjuncts) == 0 {
 				continue
 			}
+			arc.Finalize(ctx)
 		}
-		features[k] = f
+		arcs[k] = arc
 		k++
 	}
-	features = features[:k]
-	return structValue{ctx, v, obj, features}, nil
+	arcs = arcs[:k]
+	return structValue{ctx, v, obj, arcs}, nil
 }
 
 // Struct returns the underlying struct of a value or an error if the value
@@ -1432,8 +1425,8 @@ func (s *hiddenStruct) Field(i int) FieldInfo {
 // it interprets name as an arbitrary string for a regular field.
 func (s *hiddenStruct) FieldByName(name string, isIdent bool) (FieldInfo, error) {
 	f := s.v.idx.Label(name, isIdent)
-	for i, a := range s.features {
-		if a == f {
+	for i, a := range s.arcs {
+		if a.Label == f {
 			return s.Field(i), nil
 		}
 	}
@@ -1457,11 +1450,7 @@ func (v Value) Fields(opts ...Option) (*Iterator, error) {
 		return &Iterator{idx: v.idx, ctx: ctx}, v.toErr(err)
 	}
 
-	arcs := []*adt.Vertex{}
-	for i := range obj.features {
-		arcs = append(arcs, obj.at(i))
-	}
-	return &Iterator{idx: v.idx, ctx: ctx, val: v, arcs: arcs}, nil
+	return &Iterator{idx: v.idx, ctx: ctx, val: v, arcs: obj.arcs}, nil
 }
 
 // Lookup reports the value at a path starting from v. The empty path returns v
