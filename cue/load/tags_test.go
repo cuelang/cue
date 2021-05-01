@@ -27,19 +27,25 @@ import (
 	"cuelang.org/go/internal/diff"
 )
 
-type testTagger map[string]ast.Expr
-
-func (tt testTagger) Tag(name string) (ast.Expr, error) {
-	return tt[name], nil
-}
-
-var tt = testTagger{
-	"now":      ast.NewString("2021-04-30 14:22:41.280316 +0000 UTC"),
-	"os":       ast.NewString("m1"),
-	"cwd":      ast.NewString("home"),
-	"username": ast.NewString("cueser"),
-	"hostname": ast.NewString("cuebe"),
-	"rand":     ast.NewLit(token.INT, "112950970371208119678246559335704039641"),
+var testTagVars = map[string]TagVar{
+	"now": {Func: func() (ast.Expr, error) {
+		return ast.NewString("2021-04-30 14:22:41.280316 +0000 UTC"), nil
+	}},
+	"os": {Func: func() (ast.Expr, error) {
+		return ast.NewString("m1"), nil
+	}},
+	"cwd": {Func: func() (ast.Expr, error) {
+		return ast.NewString("home"), nil
+	}},
+	"username": {Func: func() (ast.Expr, error) {
+		return ast.NewString("cueser"), nil
+	}},
+	"hostname": {Func: func() (ast.Expr, error) {
+		return ast.NewString("cuebe"), nil
+	}},
+	"rand": {Func: func() (ast.Expr, error) {
+		return ast.NewLit(token.INT, "112950970371208119678246559335704039641"), nil
+	}},
 }
 
 func TestTags(t *testing.T) {
@@ -96,7 +102,7 @@ func TestTags(t *testing.T) {
 				Overlay: map[string]Source{
 					filepath.Join(dir, "foo.cue"): FromString(tc.in),
 				},
-				TagVars: tt,
+				TagVars: testTagVars,
 			}
 			b := Instances([]string{"foo.cue"}, cfg)[0]
 
