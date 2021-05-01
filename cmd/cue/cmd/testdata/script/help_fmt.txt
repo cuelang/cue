@@ -1,0 +1,21 @@
+# Verify the output of cue help fmt
+
+cue help fmt
+cmp stdout stdout.golden
+
+-- stdout.golden --
+Fmt formats the given files or the files for the given packages in place
+
+Usage:
+  cue fmt [-s] [inputs] [flags]
+
+Flags:
+  -h, --help   help for fmt
+
+Global Flags:
+  -E, --all-errors   print all available errors
+  -i, --ignore       proceed in the presence of errors
+  -s, --simplify     simplify output
+      --strict       report errors for lossy mappings
+      --trace        trace computation
+  -v, --verbose      print information about progress
