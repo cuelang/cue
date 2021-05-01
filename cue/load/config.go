@@ -222,7 +222,7 @@ type Config struct {
 	// referenced by tags.
 	//
 	// Use DefaultTagVars to get a pre-loaded map with supported values.
-	TagVars Tagger
+	TagVars map[string]TagVar
 
 	// Include all files, regardless of tags.
 	AllCUEFiles bool

@@ -33,60 +33,67 @@ import (
 	"cuelang.org/go/internal/cli"
 )
 
-// A Tagger defines default values for keys.
-type Tagger interface {
-	// Tag reports a value for a given key or an error if there was an error
-	// obtaining this value. The caller should ensure that a value is unique
-	// for a given session.
-	Tag(name string) (ast.Expr, error)
+// A TagVar represents an injection variable.
+type TagVar struct {
+	// Func returns an ast for a tag variable. It is only called once
+	// per evaluation of a configuration.
+	Func func() (ast.Expr, error)
+
+	// Description documents this TagVar.
+	Description string
 }
 
-// DefaultTagVars creates a new map with a set of supported auto tags.
-func DefaultTagVars() Tagger { return &tagger{} }
-
-type tagger struct{}
-
-func (t tagger) Tag(name string) (x ast.Expr, err error) {
-	var s string
-	switch name {
-	case "now":
-		s = time.Now().UTC().String()
-
-	case "os":
-		s = runtime.GOOS
-
-	case "cwd":
-		s, err = os.Getwd()
-
-	case "username":
-		u, err := user.Current()
-		if err != nil {
-			return nil, err
-		}
-		s = u.Username
-
-	case "hostname":
-		s, err = os.Hostname()
-
-	case "rand":
-		var b [16]byte
-		_, err := rand.Read(b[:])
-		if err != nil {
-			return nil, err
-		}
-		var hx [34]byte
-		hx[0] = '0'
-		hx[1] = 'x'
-		hex.Encode(hx[2:], b[:])
-		return ast.NewLit(token.INT, string(hx[:])), nil
-	default:
-		return nil, nil
+// DefaultTagVars creates a new map with a set of supported injection variables.
+func DefaultTagVars() map[string]TagVar {
+	return map[string]TagVar{
+		"now": {
+			Func: func() (ast.Expr, error) {
+				return ast.NewString(time.Now().UTC().String()), nil
+			},
+		},
+		"os": {
+			Func: func() (ast.Expr, error) {
+				return ast.NewString(runtime.GOOS), nil
+			},
+		},
+		"cwd": {
+			Func: func() (ast.Expr, error) {
+				return varToString(os.Getwd())
+			},
+		},
+		"username": {
+			Func: func() (ast.Expr, error) {
+				u, err := user.Current()
+				return varToString(u.Username, err)
+			},
+		},
+		"hostname": {
+			Func: func() (ast.Expr, error) {
+				return varToString(os.Hostname())
+			},
+		},
+		"rand": {
+			Func: func() (ast.Expr, error) {
+				var b [16]byte
+				_, err := rand.Read(b[:])
+				if err != nil {
+					return nil, err
+				}
+				var hx [34]byte
+				hx[0] = '0'
+				hx[1] = 'x'
+				hex.Encode(hx[2:], b[:])
+				return ast.NewLit(token.INT, string(hx[:])), nil
+			},
+		},
 	}
+}
 
+func varToString(s string, err error) (ast.Expr, error) {
 	if err != nil {
 		return nil, err
 	}
-	x = ast.NewString(s)
+	x := ast.NewString(s)
 	return x, nil
 }
 
@@ -273,10 +280,15 @@ func injectTags(tags []string, l *loader) errors.Error {
 			}
 			x, ok := vars[t.vars]
 			if !ok {
-				tag, err := l.cfg.TagVars.Tag(t.vars)
-				if err != nil || tag == nil {
-					return errors.Wrap(errors.Newf(token.NoPos,
-						"tag variable '%s' not found", t.vars), err)
+				tv, ok := l.cfg.TagVars[t.vars]
+				if !ok {
+					return errors.Newf(token.NoPos,
+						"tag variable '%s' not found", t.vars)
+				}
+				tag, err := tv.Func()
+				if err != nil {
+					return errors.Wrapf(err, token.NoPos,
+						"error getting tag variable '%s'", t.vars)
 				}
 				x = tag
 				vars[t.vars] = tag
