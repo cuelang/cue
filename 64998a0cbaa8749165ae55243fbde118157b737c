@@ -16,6 +16,24 @@
       "message": "Not really following the details, but seems fine.\n\nHope this won\u0027t make the main dashboard build tag red\nif we deliberately fail things.",
       "revId": "64998a0cbaa8749165ae55243fbde118157b737c",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70df52f_80e2df65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-01T04:26:40Z",
+      "side": 1,
+      "message": "\u003e Hope this won\u0027t make the main dashboard build tag red if we deliberately fail things.\n\nSorry, I should have been clearer about where the failures occur. They will occur within the cuelang.org repo, so will not affect our dashboard in the main repo.",
+      "parentUuid": "8078df78_a183b83d",
+      "revId": "64998a0cbaa8749165ae55243fbde118157b737c",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
