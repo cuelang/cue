@@ -175,13 +175,16 @@ type Vertex struct {
 	// status indicates the evaluation progress of this vertex.
 	status VertexStatus
 
-	// IsOptional indicates whether this struct is optional. (TODO)
+	// IsOptional indicates whether this struct is optional.
 	IsOptional bool
 
 	// isData indicates that this Vertex is to be interepreted as data: pattern
 	// and additional constraints, as well as optional fields, should be
 	// ignored.
-	isData                bool
+	isData bool
+
+	// Closed indicates whether this struct is recursively closed because
+	// it is or was unified with a definition.
 	Closed                bool
 	nonMonotonicReject    bool
 	nonMonotonicInsertGen int32
@@ -314,7 +317,17 @@ func (v *Vertex) UpdateStatus(s VertexStatus) {
 // IsRegular reports whether this vertex is an arc for a regular (list element
 // or string field) non-optional field.
 func (v *Vertex) IsRegular() bool {
-	return v.Label.IsRegular()
+	return !v.IsOptional && v.Label.IsRegular()
+}
+
+func (v *Vertex) NumRequiredArcs() int {
+	count := 0
+	for _, a := range v.Arcs {
+		if !a.IsOptional {
+			count++
+		}
+	}
+	return count
 }
 
 // Value returns the Value of v without definitions if it is a scalar
@@ -505,7 +518,7 @@ func Unwrap(v Value) Value {
 type OptionalType int8
 
 const (
-	HasField          OptionalType = 1 << iota // X: T
+	HasField          OptionalType = 1 << iota // X?: T
 	HasDynamic                                 // (X): T or "\(X)": T
 	HasPattern                                 // [X]: T
 	HasComplexPattern                          // anything but a basic type
@@ -532,17 +545,6 @@ func (v *Vertex) OptionalTypes() OptionalType {
 		mask |= s.OptionalTypes()
 	}
 	return mask
-}
-
-// isOptionalField reports whether a field is explicitly defined as optional,
-// as opposed to whether it is allowed by a pattern constraint.
-func (v *Vertex) isOptionalField(label Feature) bool {
-	for _, s := range v.Structs {
-		if s.IsOptional(label) {
-			return true
-		}
-	}
-	return false
 }
 
 func (v *Vertex) accepts(ok, required bool) bool {
@@ -659,7 +661,7 @@ slowPath:
 	// TODO: add bookkeeping for where list arcs start and end.
 	a := make([]*Vertex, 0, len(v.Arcs))
 	for _, x := range v.Arcs {
-		if x.Label.IsInt() {
+		if x.Label.IsInt() && !x.IsOptional {
 			a = append(a, x)
 		}
 	}
@@ -676,9 +678,6 @@ func (v *Vertex) GetArc(c *OpContext, f Feature) (arc *Vertex, isNew bool) {
 				arc = a
 				v.Arcs = append(v.Arcs, arc)
 				isNew = true
-				if c.nonMonotonicInsertNest > 0 {
-					a.nonMonotonicInsertGen = c.nonMonotonicGeneration
-				}
 				break
 			}
 		}
@@ -687,6 +686,8 @@ func (v *Vertex) GetArc(c *OpContext, f Feature) (arc *Vertex, isNew bool) {
 		arc = &Vertex{Parent: v, Label: f}
 		v.Arcs = append(v.Arcs, arc)
 		isNew = true
+	}
+	if isNew || arc.IsOptional {
 		if c.nonMonotonicInsertNest > 0 {
 			arc.nonMonotonicInsertGen = c.nonMonotonicGeneration
 		}

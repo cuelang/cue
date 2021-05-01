@@ -25,16 +25,17 @@ func (o *StructInfo) MatchAndInsert(c *OpContext, arc *Vertex) {
 
 	// Match normal fields
 	matched := false
-outer:
-	for _, f := range o.Fields {
-		if f.Label == arc.Label {
-			for _, e := range f.Optional {
-				arc.AddConjunct(MakeConjunct(env, e, closeInfo))
-			}
-			matched = true
-			break outer
-		}
-	}
+
+	// outer:
+	// for _, f := range o.Fields {
+	// 	if f.Label == arc.Label {
+	// 		for _, e := range f.Optional {
+	// 			arc.AddConjunct(MakeConjunct(env, e, closeInfo))
+	// 		}
+	// 		matched = true
+	// 		break outer
+	// 	}
+	// }
 
 	f := arc.Label
 	if !f.IsRegular() {

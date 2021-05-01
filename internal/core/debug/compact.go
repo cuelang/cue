@@ -48,6 +48,9 @@ func (w *compactPrinter) node(n adt.Node) {
 		case *adt.StructMarker:
 			w.string("{")
 			for i, a := range x.Arcs {
+				if a.IsOptional {
+					continue // TODO: show?
+				}
 				if i > 0 {
 					w.string(",")
 				}
@@ -60,6 +63,9 @@ func (w *compactPrinter) node(n adt.Node) {
 		case *adt.ListMarker:
 			w.string("[")
 			for i, a := range x.Arcs {
+				if a.IsOptional {
+					continue
+				}
 				if i > 0 {
 					w.string(",")
 				}

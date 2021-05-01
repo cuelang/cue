@@ -98,6 +98,9 @@ func (v *validator) validate(x *adt.Vertex) {
 	}
 
 	for _, a := range x.Arcs {
+		if a.IsOptional {
+			continue // errors always okay in optional
+		}
 		if !v.AllErrors && v.err != nil {
 			break
 		}

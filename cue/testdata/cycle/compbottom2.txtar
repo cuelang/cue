@@ -248,10 +248,10 @@ Result:
     }
     cycleFail: (_|_){
       // [eval] sameStruct.cycleFail: cycle: new field raises inserted by if clause that was previously evaluated by another if clause
-      ret: (struct){
+      raises: (struct){
         a: (int){ 1 }
       }
-      raises: (struct){
+      ret: (struct){
         a: (int){ 1 }
       }
     }

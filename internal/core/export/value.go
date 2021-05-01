@@ -404,9 +404,10 @@ func (e *exporter) structComposite(v *adt.Vertex, attrs []*ast.Attribute) ast.Ex
 			e.inDefinition++
 		}
 
-		arc := v.Lookup(label)
+		arc := v.Lookup(label) // Must exist
 		switch {
 		case arc == nil:
+			// really should not happen, but include for safety.
 			if !p.ShowOptional {
 				continue
 			}
@@ -421,8 +422,31 @@ func (e *exporter) structComposite(v *adt.Vertex, attrs []*ast.Attribute) ast.Ex
 			// fall back to expression mode.
 			f.Value = stripRefs(e.expr(arc))
 
-			// TODO: remove use of stripRefs.
-			// f.Value = e.expr(arc)
+		case arc.IsOptional:
+			if !p.ShowOptional {
+				continue
+			}
+
+			arc.Finalize(e.ctx)
+
+			// TODO: remove the field during evaluation instead.
+			// Show optional fields for >= structural cycles as they may
+			// potentally be resolved.
+			b, ok := arc.BaseValue.(*adt.Bottom)
+			if ok && b.Code < adt.StructuralCycleError {
+				continue
+			}
+
+			f.Optional = token.NoSpace.Pos()
+
+			// fall back to expression mode.
+
+			arc = &adt.Vertex{
+				Label:      label,
+				IsOptional: true,
+				Conjuncts:  arc.Conjuncts,
+			}
+			f.Value = stripRefs(e.expr(arc))
 
 		default:
 			f.Value = e.vertex(arc)

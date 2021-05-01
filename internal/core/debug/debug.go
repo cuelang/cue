@@ -209,6 +209,9 @@ func (w *printer) node(n adt.Node) {
 		}
 
 		for _, a := range x.Arcs {
+			if a.IsOptional {
+				continue // TODO: show?
+			}
 			w.string("\n")
 			w.label(a.Label)
 			w.string(": ")

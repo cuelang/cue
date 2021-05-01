@@ -123,6 +123,7 @@ valueAlias: {
 [fieldAlias simple]
 [fieldAlias simple "a-b"]
 [fieldAlias simple foo]
+[fieldAlias simple bar]
 [fieldAlias simple "a-c"]
 [fieldAlias cross]
 [fieldAlias cross baz]

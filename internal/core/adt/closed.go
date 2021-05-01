@@ -478,7 +478,7 @@ func verifyArc(ctx *OpContext, s *StructInfo, f Feature, label Value) bool {
 	}
 
 	for _, g := range o.Fields {
-		if f == g.Label {
+		if f == g {
 			return true
 		}
 	}

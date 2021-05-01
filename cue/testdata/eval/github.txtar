@@ -1130,14 +1130,14 @@ import "strings"
             "runs-on": (string){ "ubuntu-18.04" }
             steps: (#list){
               0: (#struct){
+                if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
                 name: (string){ "Write the gitcookies file" }
                 run: (string){ "echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies" }
-                if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
               }
               1: (#struct){
+                if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
                 name: (string){ "Update Gerrit CL message with starting message" }
                 run: (string){ "curl -f -s -H \"Content-Type: application/json\" --request POST --data '{\"tag\":\"trybot\",\"message\":\"Started the build... see progress at ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}\"}' -b ~/.gitcookies https://cue-review.googlesource.com/a/changes/$(basename $(dirname $GITHUB_REF))/revisions/$(basename $GITHUB_REF)/review" }
-                if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
               }
             }
             defaults: (#struct){
@@ -1191,24 +1191,24 @@ import "strings"
                 }
               }
               4: (#struct){
-                _#tags(:ci): (string){ "long" }
+                if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
                 name: (string){ "Set go build tags" }
                 run: (string){ "go env -w GOFLAGS=-tags=long" }
-                if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
+                _#tags(:ci): (string){ "long" }
               }
               5: (#struct){
+                if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
                 name: (string){ "Generate" }
                 run: (string){ "go generate ./..." }
-                if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
               }
               6: (#struct){
                 name: (string){ "Test" }
                 run: (string){ "go test ./..." }
               }
               7: (#struct){
+                if: (string){ "${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/ci/') && matrix.go-version == '1.15.8' && matrix.os == 'ubuntu-18.04' }}" }
                 name: (string){ "Test with -race" }
                 run: (string){ "go test -race ./..." }
-                if: (string){ "${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/ci/') && matrix.go-version == '1.15.8' && matrix.os == 'ubuntu-18.04' }}" }
               }
               8: (#struct){
                 name: (string){ "gorelease check" }
@@ -1219,9 +1219,9 @@ import "strings"
                 run: (string){ "test -z \"$(git status --porcelain)\" || (git status; git diff; false)" }
               }
               10: (#struct){
+                if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
                 name: (string){ "Pull this commit through the proxy on master" }
                 run: (string){ "v=$(git rev-parse HEAD)\ncd $(mktemp -d)\ngo mod init mod.com\nGOPROXY=https://proxy.golang.org go get -d cuelang.org/go/cmd/cue@$v" }
-                if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
               }
               11: (#struct){
                 if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') && failure() }}" }
@@ -1285,9 +1285,9 @@ import "strings"
         _#isCLCITestBranch(:ci): (string){ "startsWith(github.ref, 'refs/heads/ci/')" }
         _#isMaster(:ci): (string){ "github.ref == 'refs/heads/master'" }
         _#pullThroughProxy(:ci): (#struct){
+          if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
           name: (string){ "Pull this commit through the proxy on master" }
           run: (string){ "v=$(git rev-parse HEAD)\ncd $(mktemp -d)\ngo mod init mod.com\nGOPROXY=https://proxy.golang.org go get -d cuelang.org/go/cmd/cue@$v" }
-          if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
         }
         _#startCLBuild(:ci): (#struct){
           name: (string){ "Update Gerrit CL message with starting message" }
@@ -1360,7 +1360,11 @@ import "strings"
         jobs: (#struct){
           runtrybot: (#struct){
             "runs-on": (string){ "ubuntu-18.04" }
-            _#type(:ci): (string){ "runtrybot" }
+            defaults: (#struct){
+              run: (#struct){
+                shell: (string){ "bash" }
+              }
+            }
             if: (string){ "${{ github.event.client_payload.type == 'runtrybot' }}" }
             steps: (#list){
               0: (#struct){
@@ -1368,15 +1372,15 @@ import "strings"
                 run: (string){ "mkdir tmpgit\ncd tmpgit\ngit init\ngit config user.name cueckoo\ngit config user.email cueckoo@gmail.com\ngit config http.https://github.com/.extraheader \"AUTHORIZATION: basic $(echo -n cueckoo:${{ secrets.CUECKOO_GITHUB_PAT }} | base64)\"\ngit fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.payload.ref }}\ngit checkout -b ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }} FETCH_HEAD\ngit push https://github.com/cuelang/cue ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }}" }
               }
             }
+            _#type(:ci): (string){ "runtrybot" }
+          }
+          mirror: (#struct){
+            "runs-on": (string){ "ubuntu-18.04" }
             defaults: (#struct){
               run: (#struct){
                 shell: (string){ "bash" }
               }
             }
-          }
-          mirror: (#struct){
-            "runs-on": (string){ "ubuntu-18.04" }
-            _#type(:ci): (string){ "mirror" }
             if: (string){ "${{ github.event.client_payload.type == 'mirror' }}" }
             steps: (#list){
               _#name(:ci): (string){ "Mirror Gerrit to GitHub" }
@@ -1393,15 +1397,15 @@ import "strings"
                 }
               }
             }
+            _#type(:ci): (string){ "mirror" }
+          }
+          importpr: (#struct){
+            "runs-on": (string){ "ubuntu-18.04" }
             defaults: (#struct){
               run: (#struct){
                 shell: (string){ "bash" }
               }
             }
-          }
-          importpr: (#struct){
-            "runs-on": (string){ "ubuntu-18.04" }
-            _#type(:ci): (string){ "importpr" }
             if: (string){ "${{ github.event.client_payload.type == 'importpr' }}" }
             steps: (#list){
               _#name(:ci): (string){ "Import PR #${{ github.event.client_payload.commit }} from GitHub to Gerrit" }
@@ -1418,11 +1422,7 @@ import "strings"
                 }
               }
             }
-            defaults: (#struct){
-              run: (#struct){
-                shell: (string){ "bash" }
-              }
-            }
+            _#type(:ci): (string){ "importpr" }
           }
         }
         _#runtrybot(:ci): (string){ "runtrybot" }
@@ -1431,11 +1431,11 @@ import "strings"
         _#unity(:ci): (string){ "unity" }
         _#dispatchJob(:ci): (#struct){
           "runs-on": (string){ "ubuntu-18.04" }
-          _#type(:ci): (string){ string }
           if: (_|_){
             // [incomplete] workflows.1.schema._#dispatchJob.if: invalid interpolation: non-concrete value string (type string):
             //     ./workflows.cue:142:14
           }
+          _#type(:ci): (string){ string }
         }
         name: (string){ "Repository Dispatch" }
         on: (#list){
@@ -1506,13 +1506,13 @@ import "strings"
               }
               2: (#struct){
                 name: (string){ "Run GoReleaser" }
-                env: (#struct){
-                  GITHUB_TOKEN: (string){ "${{ secrets.ACTIONS_GITHUB_TOKEN }}" }
-                }
                 uses: (string){ "goreleaser/goreleaser-action@v2" }
                 with: (#struct){
                   args: (string){ "release --rm-dist" }
                   version: (string){ "v0.155.1" }
+                }
+                env: (#struct){
+                  GITHUB_TOKEN: (string){ "${{ secrets.ACTIONS_GITHUB_TOKEN }}" }
                 }
               }
             }
@@ -1536,11 +1536,6 @@ import "strings"
               }
               2: (#struct){
                 name: (string){ "Push to Docker Hub" }
-                env: (#struct){
-                  DOCKER_BUILDKIT: (int){ 1 }
-                  GOLANG_VERSION: (float){ 1.14 }
-                  CUE_VERSION: (string){ "${{ env.CUE_VERSION }}" }
-                }
                 uses: (string){ "docker/build-push-action@v1" }
                 with: (#struct){
                   tags: (string){ "${{ env.CUE_VERSION }},latest" }
@@ -1553,6 +1548,11 @@ import "strings"
                   always_pull: (bool){ true }
                   build_args: (string){ "GOLANG_VERSION=${{ env.GOLANG_VERSION }},CUE_VERSION=v${{ env.CUE_VERSION }}" }
                   add_git_labels: (bool){ true }
+                }
+                env: (#struct){
+                  DOCKER_BUILDKIT: (int){ 1 }
+                  GOLANG_VERSION: (float){ 1.14 }
+                  CUE_VERSION: (string){ "${{ env.CUE_VERSION }}" }
                 }
               }
             }
@@ -1836,14 +1836,14 @@ import "strings"
         "runs-on": (string){ "ubuntu-18.04" }
         steps: (#list){
           0: (#struct){
+            if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
             name: (string){ "Write the gitcookies file" }
             run: (string){ "echo \"${{ secrets.gerritCookie }}\" > ~/.gitcookies" }
-            if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
           }
           1: (#struct){
+            if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
             name: (string){ "Update Gerrit CL message with starting message" }
             run: (string){ "curl -f -s -H \"Content-Type: application/json\" --request POST --data '{\"tag\":\"trybot\",\"message\":\"Started the build... see progress at ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}\"}' -b ~/.gitcookies https://cue-review.googlesource.com/a/changes/$(basename $(dirname $GITHUB_REF))/revisions/$(basename $GITHUB_REF)/review" }
-            if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') }}" }
           }
         }
         defaults: (#struct){
@@ -1897,24 +1897,24 @@ import "strings"
             }
           }
           4: (#struct){
-            _#tags(:ci): (string){ "long" }
+            if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
             name: (string){ "Set go build tags" }
             run: (string){ "go env -w GOFLAGS=-tags=long" }
-            if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
+            _#tags(:ci): (string){ "long" }
           }
           5: (#struct){
+            if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
             name: (string){ "Generate" }
             run: (string){ "go generate ./..." }
-            if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
           }
           6: (#struct){
             name: (string){ "Test" }
             run: (string){ "go test ./..." }
           }
           7: (#struct){
+            if: (string){ "${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/ci/') && matrix.go-version == '1.15.8' && matrix.os == 'ubuntu-18.04' }}" }
             name: (string){ "Test with -race" }
             run: (string){ "go test -race ./..." }
-            if: (string){ "${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/ci/') && matrix.go-version == '1.15.8' && matrix.os == 'ubuntu-18.04' }}" }
           }
           8: (#struct){
             name: (string){ "gorelease check" }
@@ -1925,9 +1925,9 @@ import "strings"
             run: (string){ "test -z \"$(git status --porcelain)\" || (git status; git diff; false)" }
           }
           10: (#struct){
+            if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
             name: (string){ "Pull this commit through the proxy on master" }
             run: (string){ "v=$(git rev-parse HEAD)\ncd $(mktemp -d)\ngo mod init mod.com\nGOPROXY=https://proxy.golang.org go get -d cuelang.org/go/cmd/cue@$v" }
-            if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
           }
           11: (#struct){
             if: (string){ "${{ startsWith(github.ref, 'refs/heads/ci/') && failure() }}" }
@@ -1991,9 +1991,9 @@ import "strings"
     _#isCLCITestBranch(:ci): (string){ "startsWith(github.ref, 'refs/heads/ci/')" }
     _#isMaster(:ci): (string){ "github.ref == 'refs/heads/master'" }
     _#pullThroughProxy(:ci): (#struct){
+      if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
       name: (string){ "Pull this commit through the proxy on master" }
       run: (string){ "v=$(git rev-parse HEAD)\ncd $(mktemp -d)\ngo mod init mod.com\nGOPROXY=https://proxy.golang.org go get -d cuelang.org/go/cmd/cue@$v" }
-      if: (string){ "${{ github.ref == 'refs/heads/master' }}" }
     }
     _#startCLBuild(:ci): (#struct){
       name: (string){ "Update Gerrit CL message with starting message" }
@@ -2063,7 +2063,11 @@ import "strings"
     jobs: (#struct){
       runtrybot: (#struct){
         "runs-on": (string){ "ubuntu-18.04" }
-        _#type(:ci): (string){ "runtrybot" }
+        defaults: (#struct){
+          run: (#struct){
+            shell: (string){ "bash" }
+          }
+        }
         if: (string){ "${{ github.event.client_payload.type == 'runtrybot' }}" }
         steps: (#list){
           0: (#struct){
@@ -2071,15 +2075,15 @@ import "strings"
             run: (string){ "mkdir tmpgit\ncd tmpgit\ngit init\ngit config user.name cueckoo\ngit config user.email cueckoo@gmail.com\ngit config http.https://github.com/.extraheader \"AUTHORIZATION: basic $(echo -n cueckoo:${{ secrets.CUECKOO_GITHUB_PAT }} | base64)\"\ngit fetch https://cue-review.googlesource.com/cue ${{ github.event.client_payload.payload.ref }}\ngit checkout -b ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }} FETCH_HEAD\ngit push https://github.com/cuelang/cue ci/${{ github.event.client_payload.payload.changeID }}/${{ github.event.client_payload.payload.commit }}" }
           }
         }
+        _#type(:ci): (string){ "runtrybot" }
+      }
+      mirror: (#struct){
+        "runs-on": (string){ "ubuntu-18.04" }
         defaults: (#struct){
           run: (#struct){
             shell: (string){ "bash" }
           }
         }
-      }
-      mirror: (#struct){
-        "runs-on": (string){ "ubuntu-18.04" }
-        _#type(:ci): (string){ "mirror" }
         if: (string){ "${{ github.event.client_payload.type == 'mirror' }}" }
         steps: (#list){
           _#name(:ci): (string){ "Mirror Gerrit to GitHub" }
@@ -2096,15 +2100,15 @@ import "strings"
             }
           }
         }
+        _#type(:ci): (string){ "mirror" }
+      }
+      importpr: (#struct){
+        "runs-on": (string){ "ubuntu-18.04" }
         defaults: (#struct){
           run: (#struct){
             shell: (string){ "bash" }
           }
         }
-      }
-      importpr: (#struct){
-        "runs-on": (string){ "ubuntu-18.04" }
-        _#type(:ci): (string){ "importpr" }
         if: (string){ "${{ github.event.client_payload.type == 'importpr' }}" }
         steps: (#list){
           _#name(:ci): (string){ "Import PR #${{ github.event.client_payload.commit }} from GitHub to Gerrit" }
@@ -2121,11 +2125,7 @@ import "strings"
             }
           }
         }
-        defaults: (#struct){
-          run: (#struct){
-            shell: (string){ "bash" }
-          }
-        }
+        _#type(:ci): (string){ "importpr" }
       }
     }
     _#runtrybot(:ci): (string){ "runtrybot" }
@@ -2134,11 +2134,11 @@ import "strings"
     _#unity(:ci): (string){ "unity" }
     _#dispatchJob(:ci): (#struct){
       "runs-on": (string){ "ubuntu-18.04" }
-      _#type(:ci): (string){ string }
       if: (_|_){
         // [incomplete] repository_dispatch._#dispatchJob.if: invalid interpolation: non-concrete value string (type string):
         //     ./workflows.cue:142:14
       }
+      _#type(:ci): (string){ string }
     }
     name: (string){ "Repository Dispatch" }
     on: (#list){
@@ -2279,13 +2279,13 @@ import "strings"
           }
           2: (#struct){
             name: (string){ "Run GoReleaser" }
-            env: (#struct){
-              GITHUB_TOKEN: (string){ "${{ secrets.ACTIONS_GITHUB_TOKEN }}" }
-            }
             uses: (string){ "goreleaser/goreleaser-action@v2" }
             with: (#struct){
               args: (string){ "release --rm-dist" }
               version: (string){ "v0.155.1" }
+            }
+            env: (#struct){
+              GITHUB_TOKEN: (string){ "${{ secrets.ACTIONS_GITHUB_TOKEN }}" }
             }
           }
         }
@@ -2309,11 +2309,6 @@ import "strings"
           }
           2: (#struct){
             name: (string){ "Push to Docker Hub" }
-            env: (#struct){
-              DOCKER_BUILDKIT: (int){ 1 }
-              GOLANG_VERSION: (float){ 1.14 }
-              CUE_VERSION: (string){ "${{ env.CUE_VERSION }}" }
-            }
             uses: (string){ "docker/build-push-action@v1" }
             with: (#struct){
               tags: (string){ "${{ env.CUE_VERSION }},latest" }
@@ -2326,6 +2321,11 @@ import "strings"
               always_pull: (bool){ true }
               build_args: (string){ "GOLANG_VERSION=${{ env.GOLANG_VERSION }},CUE_VERSION=v${{ env.CUE_VERSION }}" }
               add_git_labels: (bool){ true }
+            }
+            env: (#struct){
+              DOCKER_BUILDKIT: (int){ 1 }
+              GOLANG_VERSION: (float){ 1.14 }
+              CUE_VERSION: (string){ "${{ env.CUE_VERSION }}" }
             }
           }
         }
@@ -2569,12 +2569,12 @@ import "strings"
     }
   }
   _#setGoBuildTags(:ci): (#struct){
-    _#tags(:ci): (string){ string }
     name: (string){ "Set go build tags" }
     run: (_|_){
       // [incomplete] _#setGoBuildTags.run: invalid interpolation: non-concrete value string (type string):
       //     ./workflows.cue:311:10
     }
+    _#tags(:ci): (string){ string }
   }
   _#installGo(:ci): (#struct){
     name: (string){ "Install Go" }
@@ -2598,9 +2598,9 @@ import "strings"
     }
   }
   _#goGenerate(:ci): (#struct){
+    if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
     name: (string){ "Generate" }
     run: (string){ "go generate ./..." }
-    if: (string){ "matrix.go-version == '1.14.14' && matrix.os != 'windows-2019'" }
   }
   _#goTest(:ci): (#struct){
     name: (string){ "Test" }

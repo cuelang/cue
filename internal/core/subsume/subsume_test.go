@@ -30,9 +30,10 @@ func TestX(t *testing.T) {
 
 	r := runtime.New()
 	ctx := eval.NewContext(r, nil)
+	// 406: {subsumes: true, in: `a: {foo?: 1}, b: {foo?: 1}`},
 
-	const gt = `a: *1 | int`
-	const lt = `a: (*1 | int) & 1`
+	const gt = `a: foo?: 1`
+	const lt = `a: foo?: 1`
 
 	a := parse(t, ctx, gt)
 	b := parse(t, ctx, lt)

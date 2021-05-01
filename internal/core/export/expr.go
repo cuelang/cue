@@ -235,7 +235,7 @@ func (x *exporter) mergeValues(label adt.Feature, src *adt.Vertex, a []conjunct,
 			x.inDefinition--
 		}
 
-		if isOptional(a) {
+		if (field.arc != nil && field.arc.IsOptional) || isOptional(a) {
 			d.Optional = token.Blank.Pos()
 		}
 		if x.cfg.ShowDocs {
@@ -378,6 +378,9 @@ func (e *conjuncts) addExpr(env *adt.Environment, src *adt.Vertex, x adt.Expr, i
 				}
 
 				for _, a := range v.Arcs {
+					if a.IsOptional {
+						continue // TODO: utilize optional!
+					}
 					a.Finalize(e.ctx) // TODO: should we do this?
 
 					e.addConjunct(a.Label, env, a)

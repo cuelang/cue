@@ -770,6 +770,9 @@ outer:
 		if state == Partial {
 			a.nonMonotonicLookupGen = c.nonMonotonicGeneration
 		}
+		if a.IsOptional && c.nonMonotonicRejectNest > 0 {
+			a.nonMonotonicReject = true
+		}
 
 	case x.state != nil && state == Partial:
 		for _, e := range x.state.exprs {
@@ -792,7 +795,9 @@ outer:
 		}
 		x.state.usedArcs = append(x.state.usedArcs, a)
 	}
-	if a == nil {
+
+	switch {
+	case a == nil:
 		if x.state != nil {
 			for _, e := range x.state.exprs {
 				if isCyclePlaceholder(e.err) {
@@ -816,14 +821,16 @@ outer:
 			c.addErrf(code, pos, "index out of range [%d] with length %d",
 				l.Index(), len(x.Elems()))
 		} else {
-			if code != 0 && x.isOptionalField(l) {
-				c.addErrf(code, pos,
-					"cannot reference optional field %s", label)
-			} else {
-				c.addErrf(code, pos, "undefined field %s", label)
-			}
+			c.addErrf(code, pos, "undefined field %s", label)
 		}
+
+	case a.IsOptional:
+		label := l.SelectorString(c.Runtime)
+		c.addErrf(IncompleteError, pos,
+			"cannot reference optional field %s", label)
+		a = nil
 	}
+
 	return a
 }
 

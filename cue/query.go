@@ -47,7 +47,7 @@ outer:
 	for _, sel := range p.path {
 		f := sel.sel.feature(v.idx)
 		for _, a := range n.Arcs {
-			if a.Label == f {
+			if a.Label == f && (!a.IsOptional || sel.sel.optional()) {
 				parent = linkParent(parent, n, a)
 				n = a
 				continue outer

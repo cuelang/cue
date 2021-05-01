@@ -535,7 +535,7 @@ func (n *nodeContext) postDisjunct(state VertexStatus) {
 		switch {
 		case v.Kind() == ListKind:
 			for _, a := range n.node.Arcs {
-				if a.Label.Typ() == StringLabel {
+				if !a.IsOptional && a.Label.Typ() == StringLabel {
 					n.addErr(ctx.Newf("list may not have regular fields"))
 					// TODO(errors): add positions for list and arc definitions.
 
@@ -650,6 +650,11 @@ func (n *nodeContext) completeArcs(state VertexStatus) {
 	} else {
 		// Visit arcs recursively to validate and compute error.
 		for _, a := range n.node.Arcs {
+			// TODO: consider evaluating optional fields as well, just make
+			// sure not to propagate errors.
+			if a.IsOptional {
+				continue
+			}
 			if a.nonMonotonicInsertGen >= a.nonMonotonicLookupGen && a.nonMonotonicLookupGen > 0 {
 				err := ctx.Newf(
 					"cycle: new field %s inserted by if clause that was previously evaluated by another if clause", a.Label.SelectorString(ctx))
@@ -1521,7 +1526,7 @@ func (n *nodeContext) addValueConjunct(env *Environment, v Value, id CloseInfo) 
 			// TODO(errors): report error when this is a regular field.
 			c := MakeConjunct(nil, a, id)
 			c = updateCyclic(c, cyclic, nil, nil)
-			n.insertField(a.Label, c)
+			n.insertField(a.Label, c, a.IsOptional)
 			s.MarkField(a.Label)
 		}
 		return
@@ -1719,7 +1724,7 @@ func (n *nodeContext) addStruct(
 
 	for _, d := range s.Decls {
 		switch x := d.(type) {
-		case *Field:
+		case *Field, *OptionalField:
 			// handle in next iteration.
 
 		case *DynamicField:
@@ -1745,7 +1750,7 @@ func (n *nodeContext) addStruct(
 			// push and opo embedding type.
 			n.addExprConjunct(MakeConjunct(childEnv, x, id))
 
-		case *OptionalField, *BulkOptionalField, *Ellipsis:
+		case *BulkOptionalField, *Ellipsis:
 			// Nothing to do here. Note that the precense of these fields do not
 			// excluded embedded scalars: only when they match actual fields
 			// does it exclude those.
@@ -1775,7 +1780,10 @@ func (n *nodeContext) addStruct(
 				n.aStruct = s
 				n.aStructID = closeInfo
 			}
-			n.insertField(x.Label, MakeConjunct(childEnv, x, closeInfo))
+			n.insertField(x.Label, MakeConjunct(childEnv, x, closeInfo), false)
+
+		case *OptionalField:
+			n.insertField(x.Label, MakeConjunct(childEnv, x, closeInfo), true)
 		}
 	}
 }
@@ -1791,14 +1799,16 @@ func (n *nodeContext) addStruct(
 // route) is to not recursively evaluate those arcs, even for Finalize. This is
 // possible as it is not necessary to evaluate optional arcs to evaluate
 // disjunctions.
-func (n *nodeContext) insertField(f Feature, x Conjunct) *Vertex {
+func (n *nodeContext) insertField(f Feature, x Conjunct, optional bool) *Vertex {
 	ctx := n.ctx
 	arc, isNew := n.node.GetArc(ctx, f)
 
 	arc.addConjunct(x)
+	arc.IsOptional = arc.IsOptional && optional
 
 	switch {
 	case isNew:
+		arc.IsOptional = optional
 		for _, s := range n.node.Structs {
 			if s.Disable {
 				continue
@@ -1908,7 +1918,7 @@ func (n *nodeContext) injectDynamic() (progress bool) {
 			continue
 		}
 		f = ctx.Label(d.field.Key, v)
-		n.insertField(f, MakeConjunct(d.env, d.field, d.id))
+		n.insertField(f, MakeConjunct(d.env, d.field, d.id), false)
 	}
 
 	progress = k < len(n.dynamicFields)
@@ -2027,11 +2037,11 @@ func (n *nodeContext) addLists() (oneOfTheLists Expr, anID CloseInfo) {
 		for _, a := range elems {
 			if a.Conjuncts == nil {
 				x := a.BaseValue.(Value)
-				n.insertField(a.Label, MakeConjunct(nil, x, CloseInfo{}))
+				n.insertField(a.Label, MakeConjunct(nil, x, CloseInfo{}), false)
 				continue
 			}
 			for _, c := range a.Conjuncts {
-				n.insertField(a.Label, c)
+				n.insertField(a.Label, c, false)
 			}
 		}
 	}
@@ -2050,7 +2060,7 @@ outer:
 					n.addErr(err)
 					index++
 					c := MakeConjunct(e, st, l.id)
-					n.insertField(label, c)
+					n.insertField(label, c, false)
 				})
 				hasComprehension = true
 				if err != nil {
@@ -2069,7 +2079,7 @@ outer:
 				label, err := MakeLabel(x.Source(), index, IntLabel)
 				n.addErr(err)
 				index++ // TODO: don't use insertField.
-				n.insertField(label, MakeConjunct(l.env, x, l.id))
+				n.insertField(label, MakeConjunct(l.env, x, l.id), false)
 			}
 
 			// Terminate early n case of runaway comprehension.

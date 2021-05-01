@@ -143,6 +143,9 @@ func (c *Controller) getTask(scope *Task, v cue.Value) *Task {
 
 func (c *Controller) tagChildren(n *adt.Vertex, t *Task) {
 	for _, a := range n.Arcs {
+		if a.IsOptional {
+			continue
+		}
 		c.nodes[a] = t
 		c.tagChildren(a, t)
 	}

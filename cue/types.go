@@ -1332,6 +1332,8 @@ func (v Value) structValOpts(ctx *adt.OpContext, o options) (s structValue, err 
 
 	k := 0
 	for _, arc := range arcs {
+		arc.Finalize(ctx)
+
 		f := arc.Label
 		if f.IsDef() && (o.omitDefinitions || o.concrete) {
 			continue

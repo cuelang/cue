@@ -52,8 +52,16 @@ func equalVertex(ctx *OpContext, x *Vertex, v Value, flags Flag) bool {
 		return false
 	}
 
-	if len(x.Arcs) != len(y.Arcs) {
-		return false
+	ignoreOpt := flags&IgnoreOptional != 0 || flags == 0
+
+	if ignoreOpt {
+		if x.NumRequiredArcs() != y.NumRequiredArcs() {
+			return false
+		}
+	} else {
+		if len(x.Arcs) != len(y.Arcs) {
+			return false
+		}
 	}
 
 	// TODO: this really should be subsumption.
@@ -68,7 +76,13 @@ func equalVertex(ctx *OpContext, x *Vertex, v Value, flags Flag) bool {
 
 loop1:
 	for _, a := range x.Arcs {
+		if ignoreOpt && a.IsOptional {
+			continue
+		}
 		for _, b := range y.Arcs {
+			if ignoreOpt && b.IsOptional {
+				continue
+			}
 			if a.Label == b.Label {
 				if !Equal(ctx, a, b, flags) {
 					return false

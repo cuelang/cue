@@ -339,6 +339,9 @@ func (c *compiler) resolve(n *ast.Ident) adt.Expr {
 		upCount += c.upCountOffset
 		for p := c.Scope; p != nil; p = p.Parent() {
 			for _, a := range p.Vertex().Arcs {
+				// Note: this may be an optional field.
+				// TODO: do we want to skip this and only take required?
+				// probably not as the value can still be filled.
 				if a.Label == label {
 					return &adt.FieldReference{
 						Src:     n,

@@ -105,10 +105,17 @@ func TestX(t *testing.T) {
 module: "example.com"
 
 -- in.cue --
+// #Table: {
+// 	seats: >=0
+// } & ({
+// 	seats: <0
+// } | {
+// 	seats: <=8
+// })
 	`
 
+	t.Skip()
 	if strings.HasSuffix(strings.TrimSpace(in), ".cue --") {
-		t.Skip()
 	}
 
 	a := txtar.Parse([]byte(in))
@@ -134,6 +141,8 @@ module: "example.com"
 	adt.Verbosity = 0
 
 	t.Error(debug.NodeString(r, v, nil))
+
+	t.Errorf("%#v", cuecontext.New().Encode(v))
 
 	t.Log(ctx.Stats())
 }

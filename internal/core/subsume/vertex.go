@@ -18,7 +18,6 @@ import (
 	"fmt"
 
 	"cuelang.org/go/internal/core/adt"
-	"cuelang.org/go/internal/core/export"
 )
 
 // Notes:
@@ -99,23 +98,19 @@ func (s *subsumer) vertices(x, y *adt.Vertex) bool {
 	}
 
 	// All arcs in x must exist in y and its values must subsume.
-	xFeatures := export.VertexFeatures(x)
-	for _, f := range xFeatures {
+	for _, a := range x.Arcs {
+		f := a.Label
 		if s.Final && !f.IsRegular() {
 			continue
 		}
 
-		a := x.Lookup(f)
-		aOpt := false
-		if a == nil {
-			// x.f is optional
+		aOpt := a.IsOptional
+		if aOpt {
 			if s.IgnoreOptional {
 				continue
 			}
 
-			a = &adt.Vertex{Label: f}
-			x.MatchAndInsert(ctx, a)
-			a.Finalize(ctx)
+			a.Finalize(ctx) // Optionals may not be finalized.
 
 			// If field a is optional and has value top, neither the
 			// omission of the field nor the field defined with any value
@@ -128,10 +123,11 @@ func (s *subsumer) vertices(x, y *adt.Vertex) bool {
 		}
 
 		b := y.Lookup(f)
-		if b == nil {
+		switch {
+		case b == nil:
 			// y.f is optional
 			if !aOpt {
-				s.errf("required field %s is optional in subsumed value",
+				s.errf("required field %s is missing in subsumed value",
 					f.SelectorString(ctx))
 				return false
 			}
@@ -146,8 +142,18 @@ func (s *subsumer) vertices(x, y *adt.Vertex) bool {
 
 			b = &adt.Vertex{Label: f}
 			y.MatchAndInsert(ctx, b)
-			b.Finalize(ctx)
+
+			s.errf("field %s not present in %s", f, y)
+
+		case b.IsOptional:
+			// y.f is optional
+			if !aOpt {
+				s.errf("required field %s is optional in subsumed value",
+					f.SelectorString(ctx))
+				return false
+			}
 		}
+		b.Finalize(ctx)
 
 		if s.values(a, b) {
 			continue
@@ -166,28 +172,24 @@ func (s *subsumer) vertices(x, y *adt.Vertex) bool {
 		return false
 	}
 
-	yFeatures := export.VertexFeatures(y)
 outer:
-	for _, f := range yFeatures {
+	for _, b := range y.Arcs {
+		f := b.Label
 		if s.Final && !f.IsRegular() {
 			continue
 		}
 
-		for _, g := range xFeatures {
-			if g == f {
-				// already validated
-				continue outer
-			}
-		}
-
-		b := y.Lookup(f)
-		if b == nil {
+		if b.IsOptional {
 			if s.IgnoreOptional || s.Final {
 				continue
 			}
+		}
 
-			b = &adt.Vertex{Label: f}
-			y.MatchAndInsert(ctx, b)
+		for _, a := range x.Arcs {
+			if a.Label == f {
+				// already validated
+				continue outer
+			}
 		}
 
 		if !x.Accept(ctx, f) {

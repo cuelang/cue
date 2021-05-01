@@ -38,7 +38,7 @@ type StructLit struct {
 
 	// field marks the optional conjuncts of all explicit Fields.
 	// Required Fields are marked as empty
-	Fields []FieldInfo
+	Fields []Feature
 
 	Dynamic []*DynamicField
 
@@ -61,11 +61,6 @@ func (o *StructLit) IsFile() bool {
 	return ok
 }
 
-type FieldInfo struct {
-	Label    Feature
-	Optional []Node
-}
-
 func (x *StructLit) HasOptional() bool {
 	return x.types&(HasField|HasPattern|HasAdditional) != 0
 }
@@ -85,7 +80,7 @@ func (x *StructLit) evaluate(c *OpContext) Value {
 
 // TODO: remove this method
 func (o *StructLit) MarkField(f Feature) {
-	o.Fields = append(o.Fields, FieldInfo{Label: f})
+	o.Fields = append(o.Fields, f)
 }
 
 func (o *StructLit) Init() {
@@ -97,16 +92,13 @@ func (o *StructLit) Init() {
 		switch x := d.(type) {
 		case *Field:
 			if o.fieldIndex(x.Label) < 0 {
-				o.Fields = append(o.Fields, FieldInfo{Label: x.Label})
+				o.Fields = append(o.Fields, x.Label)
 			}
 
 		case *OptionalField:
-			p := o.fieldIndex(x.Label)
-			if p < 0 {
-				p = len(o.Fields)
-				o.Fields = append(o.Fields, FieldInfo{Label: x.Label})
+			if o.fieldIndex(x.Label) < 0 {
+				o.Fields = append(o.Fields, x.Label)
 			}
-			o.Fields[p].Optional = append(o.Fields[p].Optional, x)
 			o.types |= HasField
 
 		case *DynamicField:
@@ -148,7 +140,7 @@ func (o *StructLit) Init() {
 
 func (o *StructLit) fieldIndex(f Feature) int {
 	for i := range o.Fields {
-		if o.Fields[i].Label == f {
+		if o.Fields[i] == f {
 			return i
 		}
 	}
@@ -157,15 +149,6 @@ func (o *StructLit) fieldIndex(f Feature) int {
 
 func (o *StructLit) OptionalTypes() OptionalType {
 	return o.types
-}
-
-func (o *StructLit) IsOptional(label Feature) bool {
-	for _, f := range o.Fields {
-		if f.Label == label && len(f.Optional) > 0 {
-			return true
-		}
-	}
-	return false
 }
 
 // FIELDS
