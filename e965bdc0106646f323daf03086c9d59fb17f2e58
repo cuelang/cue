@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d84e962_702b5801",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "Missing word after \"will\" - suspect you wanted \"inject\"?\n\n\"will inject the named variable (here cwd) into the tag.\"\n\nFeels like we also need some sort of description here about the precedence of the value that is set, i.e. if -t is also used. We could perhaps describe it in terms of default values?",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec04ac1c_0abc57f1",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "Perhaps caveat here that it is the string form of the current time?",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74a72d2_cc672949",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "Thinking out loud: what about a convenience mechanism for setting a value from an environment variable? \n\n    @tag(dir,var\u003denv:MY_DIR)\n\n(please bikeshed env:*)\n\nIn much the same way as the other variables, it defines a convenience for the CUE author. \n\nBut also has the subtly different semantics of only injecting the value if the environment variable is set, i.e. the different between os.Lookup and os.Getenv.",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de077b77_400d8e8f",
+        "filename": "cmd/cue/cmd/testdata/script/help_cmd.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "I just mailed https://cue-review.googlesource.com/c/cue/+/9579 so that we can easily confirm the impact on the help output of other commands (I\u0027d be meaning to suggest that for a while). Seems mildly useful generally speaking as reassurance of the API change, especially when it comes to default values.",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838bbdf6_901b44d6",
+        "filename": "cmd/cue/cmd/testdata/script/inject.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "Typo here; s/wd/os/?",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933b9da0_3255f006",
+        "filename": "cue/load/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "Thinking out loud, but what do you see as the main use case for people wanting to configure this? This feels somewhat analogous to people using custom builtins/builtin implementations. But on the basis someone using injection is already outside of the hermetic box perhaps it\u0027s ok in this case?\n\nIf there isn\u0027t a strong use case for this, I wonder whether we defer exposing this for now.",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}

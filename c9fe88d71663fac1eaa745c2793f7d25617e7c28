@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4806cf_276293cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:55:17Z",
+      "side": 1,
+      "message": "LGTM with some small suggestions/fixes.\n\nNaming of \"var\" works for me, as does the term \"system variables\". The fact that the values themselves come from the user\u0027s current environment would perhaps suggest \"environment variables\" a better name, but that obviously has a somewhat limiting connotation with actual environment variables, of which os, time etc are not actual values. ",
+      "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
