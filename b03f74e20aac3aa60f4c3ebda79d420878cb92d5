@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0c8d94_02145324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:58:17Z",
+      "side": 1,
+      "message": "This API does indeed look cleaner to my mind. But per my comment in the previous CL, I\u0027m not totally clear whether we need/want to expose this API yet",
+      "revId": "b03f74e20aac3aa60f4c3ebda79d420878cb92d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "652cea67_d3f4d1c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T04:58:17Z",
+      "side": 1,
+      "message": "LGTM - modulo the comment in the previous CL about whether we need/want to expose this API at all for now.",
+      "revId": "b03f74e20aac3aa60f4c3ebda79d420878cb92d5",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
