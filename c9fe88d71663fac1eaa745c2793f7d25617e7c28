@@ -33,6 +33,23 @@
       "message": "Sorry, forgot to +2 on that (modulo the comments/suggestions in the last reply)",
       "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63af4103_f96c8bbd",
+        "filename": "cmd/cue/cmd/testdata/script/inject.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-03T05:06:17Z",
+      "side": 1,
+      "message": "What does cue vet return in this case?\n\nFeels like we should be able to vet such CUE for correctness, without needing to specify -T for each tag with a variable?",
+      "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
