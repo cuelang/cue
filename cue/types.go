@@ -1650,6 +1650,7 @@ func (v Value) FillPath(p Path, x interface{}) Value {
 		expr = x.v
 	case ast.Expr:
 		n := getScopePrefix(v, p)
+		// TODO: inject import path of current package?
 		expr = resolveExpr(ctx, n, x)
 	default:
 		expr = convert.GoValueToValue(ctx, x, true)

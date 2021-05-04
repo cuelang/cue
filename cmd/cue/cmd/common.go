@@ -171,7 +171,11 @@ func (b *buildPlan) instances() iterator {
 			i:    -1,
 		}
 	default:
-		i = &instanceIterator{a: []*cue.Instance{b.instance}, i: -1}
+		i = &instanceIterator{
+			inst: b.instance,
+			a:    []*cue.Instance{b.instance},
+			i:    -1,
+		}
 		b.instance = nil
 	}
 	if len(b.expressions) > 0 {
@@ -216,7 +220,7 @@ func (i *instanceIterator) value() cue.Value {
 	return v
 }
 func (i *instanceIterator) instance() *cue.Instance {
-	if i.inst != nil {
+	if i.i >= len(i.a) {
 		return nil
 	}
 	return i.a[i.i]
@@ -351,9 +355,14 @@ func (i *expressionIter) value() cue.Value {
 		return i.iter.value()
 	}
 	v := i.iter.value()
+	path := ""
+	if inst := i.iter.instance(); inst != nil {
+		path = inst.ID()
+	}
 	return v.Context().BuildExpr(i.expr[i.i],
 		cue.Scope(v),
 		cue.InferBuiltins(true),
+		cue.ImportPath(path),
 	)
 }
 
