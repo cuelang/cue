@@ -351,9 +351,14 @@ func (i *expressionIter) value() cue.Value {
 		return i.iter.value()
 	}
 	v := i.iter.value()
+	path := ""
+	if inst := i.iter.instance(); inst != nil {
+		path = inst.ImportPath
+	}
 	return v.Context().BuildExpr(i.expr[i.i],
 		cue.Scope(v),
 		cue.InferBuiltins(true),
+		cue.ImportPath(path),
 	)
 }
 

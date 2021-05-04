@@ -1,0 +1,7 @@
+exec cue eval -e _a
+-- dep.cue --
+package dep
+
+_a: 34
+-- tst.cue --
+_a: 34
