@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9cb834a9_a37ab396",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T19:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61cea964_a9a44aea",
+      "revId": "a86d5e4e56238fb5bc8e97809736765c22da9935",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "71094885_7a992d77",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-04T16:36:40Z",
       "side": 1,
       "message": "For consistency with other tests I think this should be `cue eval -e _a`, i.e. no \"exec\"\n\nThis works because of a recent change in testscript, but I think it\u0027s clearer to the reader to have consistency.",
+      "revId": "a86d5e4e56238fb5bc8e97809736765c22da9935",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f03080_2ba54704",
+        "filename": "cmd/cue/cmd/testdata/script/eval_e_hidden.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T19:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5088a9f_df26e22d",
       "revId": "a86d5e4e56238fb5bc8e97809736765c22da9935",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
