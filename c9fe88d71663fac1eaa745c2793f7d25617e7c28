@@ -52,6 +52,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d14f43_b76743b6",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc9d8b5_c88940a7",
+      "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63af4103_f96c8bbd",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-05-03T05:06:17Z",
       "side": 1,
       "message": "What does cue vet return in this case?\n\nFeels like we should be able to vet such CUE for correctness, without needing to specify -T for each tag with a variable?",
+      "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339e40bf_96dbe822",
+        "filename": "cmd/cue/cmd/testdata/script/inject.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Yes that makes sense down the road.",
+      "parentUuid": "63af4103_f96c8bbd",
       "revId": "c9fe88d71663fac1eaa745c2793f7d25617e7c28",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }

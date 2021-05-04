@@ -18,6 +18,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e533ce09_a928c9d0",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d84e962_702b5801",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec04ac1c_0abc57f1",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-03T04:55:17Z",
       "side": 1,
       "message": "Perhaps caveat here that it is the string form of the current time?",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c3fb52_d4331ce8",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec04ac1c_0abc57f1",
       "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
@@ -52,6 +88,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10333db_adf6c370",
+        "filename": "cmd/cue/cmd/help.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "We could consider that indeed.",
+      "parentUuid": "f74a72d2_cc672949",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de077b77_400d8e8f",
@@ -69,6 +123,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79ddd57_7fa98496",
+        "filename": "cmd/cue/cmd/testdata/script/help_cmd.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de077b77_400d8e8f",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "838bbdf6_901b44d6",
@@ -82,6 +154,24 @@
       "writtenOn": "2021-05-03T04:55:17Z",
       "side": 1,
       "message": "Typo here; s/wd/os/?",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2dd6bc_3f092e80",
+        "filename": "cmd/cue/cmd/testdata/script/inject.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-04T17:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "838bbdf6_901b44d6",
       "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
