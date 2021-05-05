@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3ed950_1ab05460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-05T10:07:26Z",
+      "side": 1,
+      "message": "Very nice. I guess this still leaves open the question of how people could discover that files did not participate in a given configuration, i.e. something succeeded (but only partially in the eyes of the caller) but we can revisit that later because it\u0027s a hard question to my mind.",
+      "revId": "f89e207f1cca6a0fa1f576bea070712c2b413625",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
