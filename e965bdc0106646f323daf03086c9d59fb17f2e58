@@ -191,6 +191,24 @@
       "message": "Thinking out loud, but what do you see as the main use case for people wanting to configure this? This feels somewhat analogous to people using custom builtins/builtin implementations. But on the basis someone using injection is already outside of the hermetic box perhaps it\u0027s ok in this case?\n\nIf there isn\u0027t a strong use case for this, I wonder whether we defer exposing this for now.",
       "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d24dd49_5f8ee0aa",
+        "filename": "cue/load/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-05T07:13:58Z",
+      "side": 1,
+      "message": "This is mostly an API thing. We need people to be able to explicitly enable tag vars. Assuming we want configurability and backwards compatibility, making it just a boolean now will lead to a more complicated API down the line. It is better to come up with that API now.",
+      "parentUuid": "933b9da0_3255f006",
+      "revId": "e965bdc0106646f323daf03086c9d59fb17f2e58",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
