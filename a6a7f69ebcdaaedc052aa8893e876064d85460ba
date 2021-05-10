@@ -68,6 +68,24 @@
       "parentUuid": "0e751ac1_b7fd226c",
       "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2440bc4c_c90d863e",
+        "filename": "cue/parser/parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-10T14:47:58Z",
+      "side": 1,
+      "message": "Ah yes, so in the context of us not yet supporting {...int} that is correct. I agree.",
+      "parentUuid": "b87b28d4_7978bcd4",
+      "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
