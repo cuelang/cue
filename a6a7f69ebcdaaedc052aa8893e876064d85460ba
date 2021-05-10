@@ -50,6 +50,24 @@
       "message": "Does this actually fix #768? I thought that was a combination of a formatting bug, but also the fact that {...int} is not yet supported in the implementation for structs, even though default constraints are mentioned in the spec and supported for lists?",
       "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87b28d4_7978bcd4",
+        "filename": "cue/parser/parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-10T14:40:33Z",
+      "side": 1,
+      "message": "It fixes it for me: it won\u0027t format it incorrectly anymore and will generate an error instead.",
+      "parentUuid": "0e751ac1_b7fd226c",
+      "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
