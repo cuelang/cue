@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32413d9b_1622b5b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-10T14:33:48Z",
+      "side": 1,
+      "message": "LGTM - I was having a brain meltdown earlier on... this totally makes sense now.",
+      "revId": "94da42155d4d8a4b87c5ed3f9a3b3b9e2773cb39",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
