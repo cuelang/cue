@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46381598_b90dd39c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-10T14:18:57Z",
+      "side": 1,
+      "message": "Ah good, you found the other one!",
+      "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffa73f3_5425a4e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-10T14:18:57Z",
+      "side": 1,
+      "message": "LGTM with one question about whether #768.",
+      "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e751ac1_b7fd226c",
+        "filename": "cue/parser/parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-10T14:18:57Z",
+      "side": 1,
+      "message": "Does this actually fix #768? I thought that was a combination of a formatting bug, but also the fact that {...int} is not yet supported in the implementation for structs, even though default constraints are mentioned in the spec and supported for lists?",
+      "revId": "a6a7f69ebcdaaedc052aa8893e876064d85460ba",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
