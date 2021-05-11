@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cb4c4123_17364dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-11T06:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60686e30_f1305a7d",
+      "revId": "d545185d639a78f456178c64ac897dd29ff3c3ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "31b78431_b8470b05",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558766a8_e5f6d445",
+        "filename": "cue/ast/astutil/resolve_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-11T06:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670a9e55_b6e2daa1",
+      "revId": "d545185d639a78f456178c64ac897dd29ff3c3ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe10fcc_2a6ec625",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-05-10T19:35:50Z",
       "side": 1,
       "message": "s/path/filepath/\n\nMy guess would be this is the cause of the build failure too",
+      "revId": "d545185d639a78f456178c64ac897dd29ff3c3ec",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75dd169_7fb078e3",
+        "filename": "cue/ast/astutil/resolve_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-11T06:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe10fcc_2a6ec625",
       "revId": "d545185d639a78f456178c64ac897dd29ff3c3ec",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
