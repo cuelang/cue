@@ -16,6 +16,24 @@
       "message": "Still need to run go generate in the http directory.",
       "revId": "f03cc4fca1c136794b6a6f7f8dd7c2bd33de8e88",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45ac7f0_b95a70f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2021-05-11T17:53:31Z",
+      "side": 1,
+      "message": "Right, done",
+      "parentUuid": "dc75439d_2d6808ce",
+      "revId": "f03cc4fca1c136794b6a6f7f8dd7c2bd33de8e88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
