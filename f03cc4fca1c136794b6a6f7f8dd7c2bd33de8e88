@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc75439d_2d6808ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-11T07:51:27Z",
+      "side": 1,
+      "message": "Still need to run go generate in the http directory.",
+      "revId": "f03cc4fca1c136794b6a6f7f8dd7c2bd33de8e88",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
