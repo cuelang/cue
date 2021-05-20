@@ -16,6 +16,24 @@
       "message": "nit: duplicate of the case below.",
       "revId": "ba311122d92bb8c560d4efc8965b4aa6330a74fb",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4c2ffa_91bdd031",
+        "filename": "encoding/openapi/openapi_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2021-05-20T14:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90421807_410f7981",
+      "revId": "ba311122d92bb8c560d4efc8965b4aa6330a74fb",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
