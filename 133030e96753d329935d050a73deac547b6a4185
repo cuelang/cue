@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73346f5f_c04fdfb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-20T14:23:55Z",
+      "side": 1,
+      "message": "LGTM after test fixes (which should fix the build)",
+      "revId": "133030e96753d329935d050a73deac547b6a4185",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c63450c_34e7cbba",
+        "filename": "cmd/cue/cmd/testdata/script/issue986.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-20T14:23:55Z",
+      "side": 1,
+      "message": "s/\\/\\//#/",
+      "revId": "133030e96753d329935d050a73deac547b6a4185",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d67ee0_7c4f0cf0",
+        "filename": "cmd/cue/cmd/testdata/script/issue986.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-05-20T14:23:55Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually assert anything AFAICT (which is probably a bug in testscript)\n\nProbably should to assert the output as:\n\na: aaa\nb: bbb\nab: aaabbb\ncd: cccddd",
+      "revId": "133030e96753d329935d050a73deac547b6a4185",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
