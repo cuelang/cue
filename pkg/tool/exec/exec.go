@@ -137,6 +137,12 @@ func mkCommand(ctx *task.Context) (c *exec.Cmd, doc string, err error) {
 
 	cmd := exec.CommandContext(ctx.Context, bin, args...)
 
+	if v := ctx.Obj.Lookup("dir"); v.Exists() {
+		if dir, _ := v.String(); dir != "" {
+			cmd.Dir = dir
+		}
+	}
+
 	env := ctx.Obj.Lookup("env")
 
 	// List case.
