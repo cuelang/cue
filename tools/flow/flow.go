@@ -183,6 +183,11 @@ func (c *Controller) Tasks() []*Task {
 	return c.tasks
 }
 
+// Value returns the value managed by the flow controller
+func (c *Controller) Value() cue.Value {
+	return c.inst
+}
+
 func (c *Controller) cancel() {
 	if c.cancelFunc != nil {
 		c.cancelFunc()
