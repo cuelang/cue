@@ -16,6 +16,24 @@
       "message": "What is the intended usage of this method? \n\nI\u0027m guessing you want to use this during the execution of a flow?",
       "revId": "d78a1d608dad3696acfb95a333b05091875506fc",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447ac114_dd492b3a",
+        "filename": "tools/flow/flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2021-06-03T07:38:49Z",
+      "side": 1,
+      "message": "Like stated in the commit message, my use case is to get the value after the flow is completed.\n\nMaybe it shouldn\u0027t be possible to get it while the flow is running ?",
+      "parentUuid": "320bfff0_66cf0755",
+      "revId": "d78a1d608dad3696acfb95a333b05091875506fc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
