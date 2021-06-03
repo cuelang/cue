@@ -34,6 +34,24 @@
       "parentUuid": "320bfff0_66cf0755",
       "revId": "d78a1d608dad3696acfb95a333b05091875506fc",
       "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9245221_4b6139e8",
+        "filename": "tools/flow/flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2021-06-03T07:43:04Z",
+      "side": 1,
+      "message": "\u003e Like stated in the commit message, my use case is to get the value after the flow is completed.\n\nApologies, I was too hasty and and skipped the commit message :( \n\n\u003e Maybe it shouldn\u0027t be possible to get it while the flow is running ?\n\nThat\u0027s probably a sensible initial restriction, but I\u0027ll defer to Marcel to confirm. Indeed it might even be the only conceivable solution, because there is just inherent races in trying to look at the value during flow evaluation. \n\nProbably makes sense to enforce this with some sort of panic, but more importantly to document the restriction.",
+      "parentUuid": "447ac114_dd492b3a",
+      "revId": "d78a1d608dad3696acfb95a333b05091875506fc",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
     }
   ]
 }
