@@ -183,6 +183,25 @@ func (c *Controller) Tasks() []*Task {
 	return c.tasks
 }
 
+// Value returns the value managed by the flow controller
+//
+// This may only be called after Run has been called and has
+// terminated otherwise it will panic.
+func (c *Controller) Value() cue.Value {
+	terminated := true
+	for _, t := range c.tasks {
+		if t.state != Terminated {
+			terminated = false
+			break
+		}
+	}
+	if !terminated {
+		panic("flow not completed")
+	}
+
+	return c.inst
+}
+
 func (c *Controller) cancel() {
 	if c.cancelFunc != nil {
 		c.cancelFunc()
