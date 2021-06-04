@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a735fb_2fc70075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2021-06-04T07:31:40Z",
+      "side": 1,
+      "message": "Another (better) option would be to return the value in `Run()` with the error. But that would mean changing the signature",
+      "revId": "e01a452337a5759f705b02d4ef10940f513b8f17",
+      "serverId": "cf2d04e9-fd44-3a25-9e02-2b093b5119d7"
+    }
+  ]
+}
