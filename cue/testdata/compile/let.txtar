@@ -56,9 +56,70 @@ issue767: {
       out: _#volmnts
     }
 }
+
+cycles: {
+  a: {
+    let A = { c: B }
+    let B = A
+    out: A
+  }
+
+  b: {
+    let A = { c: B }
+	  let B = { A.c }
+	  out: A
+  }
+
+  issue1042: {
+    #FullAdder: {
+      // IN
+      a: bool
+      b: bool
+      c: bool
+      // OUT
+      sum: bool
+      carry: bool
+    }
+
+    #Add16: {
+      a:   [bool] * 16
+      b:   [bool] * 16
+      out: [bool] * 16
+
+      let fulladders = [
+        for i in list.Range(0, 4, 1) {
+          #FullAdder & {"a": a[i], "b": b[i], c: carries[i]}
+        }
+      ]
+      let carries = [
+        false,
+        for i in list.Range(0, 4, 1) { fulladders[i].carry }
+      ]
+      out: [
+        for i in list.Range(0, 4, 1) { fulladders[i].sum }
+      ]
+    }
+  }
+}
 -- out/compile --
 b.let[]: cyclic references in let clause or alias:
     ./in.cue:10:13
+cycles.a.let[].c.c: cyclic references in let clause or alias:
+    ./in.cue:61:18
+cycles.b.let[].c.c: cyclic references in let clause or alias:
+    ./in.cue:67:18
+cycles.issue1042.#Add16.let[]: reference "list" not found:
+    ./in.cue:89:18
+cycles.issue1042.#Add16.let[].for[].c.for[]: reference "list" not found:
+    ./in.cue:89:18
+cycles.issue1042.#Add16.let[].for[].c.for[].for[].c: cyclic references in let clause or alias:
+    ./in.cue:90:50
+cycles.issue1042.#Add16.let[]: reference "list" not found:
+    ./in.cue:95:18
+cycles.issue1042.#Add16.let[].for[].c: reference "list" not found:
+    ./in.cue:95:18
+cycles.issue1042.#Add16.out: reference "list" not found:
+    ./in.cue:98:18
 --- in.cue
 {
   a: {
@@ -92,7 +153,56 @@ b.let[]: cyclic references in let clause or alias:
       out: 〈0;let _#volmnts〉
     }
   }
+  cycles: {
+    a: {
+      out: 〈0;let A〉
+    }
+    b: {
+      out: 〈0;let A〉
+    }
+    issue1042: {
+      #FullAdder: {
+        a: bool
+        b: bool
+        c: bool
+        sum: bool
+        carry: bool
+      }
+      #Add16: {
+        a: ([
+          bool,
+        ] * 16)
+        b: ([
+          bool,
+        ] * 16)
+        out: ([
+          bool,
+        ] * 16)
+        out: [
+          for _, i in _|_(reference "list" not found).Range(0, 4, 1) {
+            〈2;let fulladders〉[〈1;i〉].sum
+          },
+        ]
+      }
+    }
+  }
 }
 -- out/eval --
 b.let[]: cyclic references in let clause or alias:
     ./in.cue:10:13
+cycles.a.let[].c.c: cyclic references in let clause or alias:
+    ./in.cue:61:18
+cycles.b.let[].c.c: cyclic references in let clause or alias:
+    ./in.cue:67:18
+cycles.issue1042.#Add16.let[]: reference "list" not found:
+    ./in.cue:89:18
+cycles.issue1042.#Add16.let[].for[].c.for[]: reference "list" not found:
+    ./in.cue:89:18
+cycles.issue1042.#Add16.let[].for[].c.for[].for[].c: cyclic references in let clause or alias:
+    ./in.cue:90:50
+cycles.issue1042.#Add16.let[]: reference "list" not found:
+    ./in.cue:95:18
+cycles.issue1042.#Add16.let[].for[].c: reference "list" not found:
+    ./in.cue:95:18
+cycles.issue1042.#Add16.out: reference "list" not found:
+    ./in.cue:98:18
