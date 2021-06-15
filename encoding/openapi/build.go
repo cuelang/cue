@@ -16,6 +16,7 @@ package openapi
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"path"
 	"regexp"
@@ -181,6 +182,7 @@ func schemas(g *Generator, inst *cue.Instance) (schemas *ast.StructLit, err erro
 }
 
 func (c *buildContext) build(name string, v cue.Value) *ast.StructLit {
+	log.Printf("cue/encoding/openapi: building schema for %v", name)
 	return newCoreBuilder(c).schema(nil, name, v)
 }
 

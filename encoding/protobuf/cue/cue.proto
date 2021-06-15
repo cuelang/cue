@@ -9,6 +9,10 @@ option java_package = "org.cuelang.cueproto";
 
 message FieldOptions {
     bool required = 1;
+
+    // Enable this option to treat this field use an unstructured object in the OpenAPI schema for this field.
+    // This is currently required to disable infinite recursion when expanding references with CUE on recursive types.
+    bool disable_openapi_validation = 2;
 }
 
 extend google.protobuf.FieldOptions {
